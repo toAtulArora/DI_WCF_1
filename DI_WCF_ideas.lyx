@@ -520,7 +520,7 @@ We consider a somewhat restricted and simultaneous slightly more general
 status open
 
 \begin_layout Plain Layout
-Noiseless WCF with cheating abort
+WCF with cheating abort
 \end_layout
 
 \end_inset
@@ -630,6 +630,10 @@ Nomenclature for Security.
 \begin_inset Formula $\vec{q}_{A}=(\alpha_{A},\alpha_{B},\alpha_{\perp}=1-\alpha_{A}-\alpha_{B})$
 \end_inset
 
+, what we call a 
+\emph on
+cheat vector,
+\emph default
  where 
 \end_layout
 
@@ -671,7 +675,11 @@ Nomenclature for Security.
 
 \begin_layout Standard
 Let 
-\begin_inset Formula $\mathcal{A}_{c}=\{\vec{q}_{A}:\text{The probabilities correspond to some cheating strategy of Alice}\}$
+\emph on
+cheat vector set
+\emph default
+ for Alice be 
+\begin_inset Formula $\mathcal{A}_{c}:=\{\vec{q}_{A}:\text{The probabilities correspond to some cheating strategy of Alice}\}$
 \end_inset
 
 .
@@ -679,7 +687,11 @@ Let
 \begin_inset Formula $\vec{q}_{B}=(\beta_{A},\beta_{B},\beta_{\perp}=1-\beta_{A}-\beta_{B})$
 \end_inset
 
- and the set 
+ and the 
+\emph on
+cheat vector set
+\emph default
+ for Bob be 
 \begin_inset Formula $\mathcal{B}_{c}$
 \end_inset
 
@@ -721,7 +733,7 @@ Standard WCF Security.
 \end_deeper
 \end_deeper
 \begin_layout Standard
-\begin_inset Branch commentary
+\begin_inset Branch rough
 inverted 0
 status collapsed
 
@@ -794,6 +806,71 @@ Let us start with an intuitive discussion.
  
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+The idea now is to combine 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Single Suppression
+\end_layout
+
+\end_inset
+
+ Consider a SCF protocol with cheating probabilities 
+\begin_inset Formula $(p_{*y},p_{x*})$
+\end_inset
+
+ for both 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ in 
+\begin_inset Formula $\{0,1\}$
+\end_inset
+
+ (assume the honest probabilities are 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+).
+ Consider a WCF with cheating abort and the cheat vector sets 
+\begin_inset Formula $\mathcal{A}_{c}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{B}_{c}$
+\end_inset
+
+.
+ Using these, one can construct a SCF protocol with 
+\begin_inset Formula $ $
 \end_inset
 
 
