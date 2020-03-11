@@ -520,7 +520,7 @@ We consider a somewhat restricted and simultaneous slightly more general
 status open
 
 \begin_layout Plain Layout
-WCF with cheating abort
+Noiseless WCF with cheating abort
 \end_layout
 
 \end_inset
@@ -549,7 +549,12 @@ When both players are honest, we assume that after the interaction, they
 \begin_inset Formula $B$
 \end_inset
 
- corresponding to Bob winning) with equal probability.
+ corresponding to Bob winning) with equal probability, i.e.
+ 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+.
  No other outcome can occur.
 \end_layout
 

@@ -549,7 +549,12 @@ When both players are honest, we assume that after the interaction, they
 \begin_inset Formula $B$
 \end_inset
 
- corresponding to Bob winning) with equal probability.
+ corresponding to Bob winning) with equal probability, i.e.
+ 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+.
  No other outcome can occur.
 \end_layout
 
@@ -666,7 +671,7 @@ Nomenclature for Security.
 
 \begin_layout Standard
 Let 
-\begin_inset Formula $\mathcal{A}_{c}=\{\vec{q}_{A}:\text{The probabilities can be realised by Alice using some strategy}\}$
+\begin_inset Formula $\mathcal{A}_{c}=\{\vec{q}_{A}:\text{The probabilities correspond to some cheating strategy of Alice}\}$
 \end_inset
 
 .
