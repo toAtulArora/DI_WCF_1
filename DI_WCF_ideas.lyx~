@@ -532,35 +532,7 @@ WCF with cheating abort
 
 \begin_deeper
 \begin_layout Itemize
-When both players are honest, we assume that after the interaction, they
- both output the same bit, either 
-\begin_inset Formula $0$
-\end_inset
-
- (or 
-\begin_inset Formula $A$
-\end_inset
-
- corresponding to Alice winning) or 
-\begin_inset Formula $1$
-\end_inset
-
- (or 
-\begin_inset Formula $B$
-\end_inset
-
- corresponding to Bob winning) with equal probability, i.e.
- 
-\begin_inset Formula $\frac{1}{2}$
-\end_inset
-
-.
- No other outcome can occur.
-\end_layout
-
-\begin_layout Itemize
-When a cheating player interacts with an honest player, each player outputs
- either 
+After the interactions, each player outputs either 
 \begin_inset Formula $A$
 \end_inset
 
@@ -608,8 +580,22 @@ Honest.
 \begin_inset Formula $BB$
 \end_inset
 
-), Alice and Bob deduce that Alice (or Bob) won.
+), Alice and Bob both conclude that Alice (or Bob) won.
+ These two outputs, 
+\begin_inset Formula $AA$
+\end_inset
+
+ and 
+\begin_inset Formula $BB$
+\end_inset
+
+, appear with probability 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+.
  In all other cases, Alice and Bob simply abort.
+ 
 \begin_inset Newline newline
 \end_inset
 
@@ -868,10 +854,31 @@ Honest.
 \begin_layout Itemize
 
 \emph on
-Security.
+(Standard SCF) Security.
 
 \emph default
  Suppose Alice is cheating and Bob is honest.
+ Then the maximum (over all possible cheating strategies of Alice) probability
+ that Bob outputs 
+\begin_inset Formula $x$
+\end_inset
+
+ is given by 
+\begin_inset Formula $p_{*x}$
+\end_inset
+
+.
+ Analogously, when Bob is cheating and Alice is honest, then the maximum
+ (over all possible cheating strategies of Bob) probability that Alice outputs
+ 
+\begin_inset Formula $y$
+\end_inset
+
+ is given by 
+\begin_inset Formula $p_{y*}$
+\end_inset
+
+.
  
 \end_layout
 
