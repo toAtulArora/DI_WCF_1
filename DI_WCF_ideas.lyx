@@ -666,7 +666,7 @@ Nomenclature for Security.
 
 \begin_layout Standard
 Let 
-\begin_inset Formula $\mathcal{A}_{c}=\{\vec{q}_{A}|\text{all possible cheating strategies of Alice}\}$
+\begin_inset Formula $\mathcal{A}_{c}=\{\vec{q}_{A}:\text{The probabilities correspond to some cheating strategy of Alice}\}$
 \end_inset
 
 .

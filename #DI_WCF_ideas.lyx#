@@ -70,13 +70,13 @@
 %\newref{thm}{name=theorem~,Name=Theorem~,names=theorems~,Names=Theorems~}
 %\newref{def}{name=definition~,Name=Definition~,names=definitions~,Names=Definitions~}
 %\newref{cor}{name=corollary~,Name=Corollary~,names=corollaries~,Names=Corollaries~}
-\newref{lem}{name=lemma~,Name=Lemma~,names=lemmas~,Names=Lemmas~}
-\newref{claim}{name=claim~,Name=Claim~,names=claims~,Names=Claims~}
+%\newref{lem}{name=lemma~,Name=Lemma~,names=lemmas~,Names=Lemmas~}
+%\newref{claim}{name=claim~,Name=Claim~,names=claims~,Names=Claims~}
 %\newref{sec}{name=section~,Name=Section~,names=sections~,Names=Sections~}
 %\newref{subsec}{name=subsection~,Name=Subsection~,names=subsections~,Names=Subsections~}
-\newref{prop}{name=proposition~,Name=Proposition~,names=propositions~,Names=Propositions~}
+%\newref{prop}{name=proposition~,Name=Proposition~,names=propositions~,Names=Propositions~}
 %\newref{conj}{name=conjecture~,Name=Conjecture~,names=conjectures~,Names=Conjectures~}
-\newref{assu}{name=assumption~,Name=Assumption~,names=assumptions~,Names=Assumptions~}
+%\newref{assu}{name=assumption~,Name=Assumption~,names=assumptions~,Names=Assumptions~}
 
 
 %% Disable Images for now
@@ -229,7 +229,8 @@ Jamie Sikora, Thomas Van Himbeeck, Atul Singh Arora
 \end_layout
 
 \begin_layout Date
-March–2020
+March–...
+ 2020
 \end_layout
 
 \begin_layout Abstract
@@ -289,7 +290,7 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-Approaches
+Notes from the meetings
 \end_layout
 
 \begin_layout Standard
@@ -457,17 +458,340 @@ Jamie presented his new abort based protocols.
 
 \begin_layout Itemize
 I presented the proofs of Alice's and Bob's security.
- We compared it with Jamie's direct analysis and saw where it differed.
+ We compared it with Jamie's direct analysis and saw where they differed.
  We worked towards characterising the set 
 \begin_inset Formula $\mathcal{A}_{c}$
+\end_inset
+
+, where in addition to the probability that Alice succeeds in convincing
+ Bob, we keep track of the probability of her getting caught cheating.
+ 
+\end_layout
+
+\begin_layout Itemize
+Tom also pointed out an oversight about testing Bob; we were sending both
+ 
+\begin_inset Formula $s_{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $r_{A}$
+\end_inset
+
+ to Bob, before testing him.
+ We must delay the sending of 
+\begin_inset Formula $r_{A}$
+\end_inset
+
+ else he can pass the test with certainty.
+\end_layout
+
+\begin_layout Section
+F1 | A framework for Distrustful DI protocols
+\end_layout
+
+\begin_layout Standard
+For the moment, consider referring to Collaborations->DI_WCF->F1 (and its
+ subsections).
+ TODO: Add the description here.
+\end_layout
+
+\begin_layout Section
+Sikora's Suppression Technique
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+We consider a somewhat restricted and simultaneous slightly more general
+ class of weak coin flipping protocols.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+WCF with cheating abort
+\end_layout
+
+\end_inset
+
+ Weak Coin Flipping is a two player (Alice and Bob) interactive protocol
+ wherein they wish to generate a random bit.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+When both players are honest, we assume that after the interaction, they
+ both output the same bit, either 
+\begin_inset Formula $0$
+\end_inset
+
+ (or 
+\begin_inset Formula $A$
+\end_inset
+
+ corresponding to Alice winning) or 
+\begin_inset Formula $1$
+\end_inset
+
+ (or 
+\begin_inset Formula $B$
+\end_inset
+
+ corresponding to Bob winning) with equal probability.
+ No other outcome can occur.
+\end_layout
+
+\begin_layout Itemize
+When a cheating player interacts with an honest player, each player outputs
+ either 
+\begin_inset Formula $A$
+\end_inset
+
+, 
+\begin_inset Formula $B$
+\end_inset
+
+ or 
+\begin_inset Formula $\perp$
+\end_inset
+
+ (for abort).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Honest.
+
+\emph default
+ The two player, together, can output 
+\begin_inset Formula $\{AA,BB,AB,BA,*\perp,\perp*\}$
+\end_inset
+
+ where 
+\begin_inset Formula $*$
+\end_inset
+
+ is either 
+\begin_inset Formula $A$
+\end_inset
+
+ or 
+\begin_inset Formula $B$
+\end_inset
+
+.
+ If the outputs are 
+\begin_inset Formula $AA$
+\end_inset
+
+ (or 
+\begin_inset Formula $BB$
+\end_inset
+
+), Alice and Bob deduce that Alice (or Bob) won.
+ In all other cases, Alice and Bob simply abort.
+\begin_inset Newline newline
+\end_inset
+
+(This is needed because to proceed, they must agree on what to do next;
+ thus even though after the interaction their outputs may vary but they
+ must, still, agree on how to proceed).
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Nomenclature for Security.
+
+\emph default
+ Suppose Alice is cheating (i.e.
+ deviating from the protocol in some way).
+ Let 
+\begin_inset Formula $\vec{q}_{A}=(\alpha_{A},\alpha_{B},\alpha_{\perp}=1-\alpha_{A}-\alpha_{B})$
+\end_inset
+
+ where 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\alpha_{A}$
+\end_inset
+
+ denotes the probability of the outcome 
+\begin_inset Formula $AA$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\alpha_{B}$
+\end_inset
+
+ denotes the probability of the outcome 
+\begin_inset Formula $BB$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\alpha_{\perp}$
+\end_inset
+
+ denotes the probability of any other outcome, i.e.
+ 
+\begin_inset Formula $\alpha_{\perp}=1-\alpha_{A}-\alpha_{B}$
 \end_inset
 
 .
  
 \end_layout
 
-\begin_layout Section
-F1 | A framework for Distrustful DI protocols
+\begin_layout Standard
+Let 
+\begin_inset Formula $\mathcal{A}_{c}=\{\vec{q}_{A}:\text{The probabilities can be realised by Alice using some strategy}\}$
+\end_inset
+
+.
+ Analogously, define 
+\begin_inset Formula $\vec{q}_{B}=(\beta_{A},\beta_{B},\beta_{\perp}=1-\beta_{A}-\beta_{B})$
+\end_inset
+
+ and the set 
+\begin_inset Formula $\mathcal{B}_{c}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Standard WCF Security.
+
+\emph default
+ A WCF protocol has bias 
+\begin_inset Formula $\max\{\epsilon_{A},\epsilon_{B}\}$
+\end_inset
+
+ if 
+\begin_inset Formula $P_{A}^{*}=\frac{1}{2}+\epsilon_{A}$
+\end_inset
+
+ where 
+\begin_inset Formula $P_{A}^{*}=\max_{(\alpha_{A},\alpha_{B},\alpha_{\perp})\in\mathcal{A}_{c}}\alpha_{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{B}^{*}=\frac{1}{2}+\epsilon_{B}$
+\end_inset
+
+ where 
+\begin_inset Formula $P_{B}^{*}=\max_{(\beta_{A},\beta_{B},\beta_{\perp})\in\mathcal{B}_{c}}\beta_{B}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status collapsed
+
+\begin_layout Standard
+[IGNORE THIS] The idea in this section is two-fold: the first is that a
+ given coin flipping protocol may be re-analysed for its abort behaviour
+ and the second is that coin flipping protocols with the possibility of
+ aborting may be composed to obtain overall better protocols.
+\end_layout
+
+\begin_layout Standard
+Let us start with an intuitive discussion.
+ Suppose we are given a WCF protocol, 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ which in the honest case case has 
+\begin_inset Formula $\vec{q}=\left(p_{A},p_{B},p_{A\perp},P_{B\perp}\right)$
+\end_inset
+
+ and it encodes the probabilities of Alice winning, Bob winning, Alice aborting
+ and Bob aborting respectively.
+ For simplicity, we assume that in the honest case, 
+\begin_inset Formula $p_{A}=p_{B}=\frac{1}{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{A\perp}=p_{B\perp}=0$
+\end_inset
+
+.
+ We thus have, for the honest case, 
+\begin_inset Formula $\vec{q}=\left(\frac{1}{2},\frac{1}{2},0,0\right)$
+\end_inset
+
+.
+ Consider the case where Alice cheats and Bob is honest.
+ Suppose there exists a strategy for Alice such that 
+\begin_inset Formula $\vec{q}_{A}=\left(p_{\alpha},p_{\beta},p_{\alpha\perp},p_{\beta\perp}\right)$
+\end_inset
+
+ encodes the probabilities of Bob accepting Alice won (which alone is of
+ relevance in the single-shot analysis), Bob deducing he has won (TODO:
+ what does Alice do in this case? does this outcome require Alice to know
+ that Bob deduced he won and so she also outputs the same thing? How do
+ we handle disagreement?), Alice aborting and finally that of Bob catching
+ Alice cheating and thus aborting (since Bob is honest).
+ We assume that a cheating Alice never aborts (because we assume she would
+ rather have a result for the coin flip than aborting).
+ Thus, we restrict to 
+\begin_inset Formula $\vec{q}_{A}=(p_{\alpha},p_{\beta},0,p_{\beta\perp})$
+\end_inset
+
+.
+ The set of 
+\begin_inset Formula $\vec{q}_{A}$
+\end_inset
+
+ (which encodes the possible probabilities of the various outcomes when
+ Alice cheats) is denoted by 
+\begin_inset Formula $\mathcal{A}_{c}$
+\end_inset
+
+.
+ One can analogously define 
+\begin_inset Formula $\vec{q}_{B}=(p_{\alpha},p_{\beta},p_{\alpha\perp},0)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
