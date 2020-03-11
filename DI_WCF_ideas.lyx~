@@ -728,6 +728,21 @@ Standard WCF Security.
 
 .
  
+\begin_inset Newline newline
+\end_inset
+
+(This formalises the fact that the players have preferences; i.e.
+ we only care about protecting Bob from Alice trying to bias towards outcome
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ and analogously, about protecting Alice from Bob trying to bias towards
+ outcome 
+\begin_inset Formula $B$
+\end_inset
+
+).
 \end_layout
 
 \end_deeper
@@ -811,20 +826,56 @@ Let us start with an intuitive discussion.
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Branch commentary
-inverted 0
+\begin_layout Definition
+\begin_inset Argument 1
 status open
 
-\begin_layout Standard
-The idea now is to combine 
+\begin_layout Plain Layout
+(Standard) SCF
 \end_layout
 
 \end_inset
 
-
+ Strong Coin Flipping is a two player (Alice and Bob) interactive protocol
+ wherein they wish to generate a random bit.
+ 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Honest.
+
+\emph default
+ When both players are honest, we assume that after the interaction, they
+ both either output 
+\begin_inset Formula $0$
+\end_inset
+
+ or they both output 
+\begin_inset Formula $1$
+\end_inset
+
+ and that these events happen with equal probability, i.e.
+ 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Security.
+
+\emph default
+ Suppose Alice is cheating and Bob is honest.
+ 
+\end_layout
+
+\end_deeper
 \begin_layout Lemma
 \begin_inset Argument 1
 status open
@@ -836,7 +887,19 @@ Single Suppression
 \end_inset
 
  Consider a SCF protocol with cheating probabilities 
-\begin_inset Formula $(p_{*y},p_{x*})$
+\begin_inset Formula $(p_{*x},p_{y*})$
+\end_inset
+
+ for both 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ in 
+\begin_inset Formula $\{0,1\}$
 \end_inset
 
  (assume the honest probabilities are 
@@ -848,7 +911,15 @@ Single Suppression
 \end_inset
 
 ).
- Consider a WCF with cheating abort and the cheat vector sets 
+ Consider a 
+\emph on
+WCF with cheating abort
+\emph default
+ and the 
+\emph on
+cheat vector sets
+\emph default
+ 
 \begin_inset Formula $\mathcal{A}_{c}$
 \end_inset
 
@@ -858,7 +929,15 @@ Single Suppression
 
 .
  Using these, one can construct a SCF protocol with 
-\begin_inset Formula $ $
+\begin_inset Formula 
+\[
+p_{*x}'=\max_{(\alpha_{A},\alpha_{B},\alpha_{\perp})\in\mathcal{A}_{C}}\alpha_{A}p_{*x}+\alpha_{B}p_{x*}
+\]
+
+\end_inset
+
+ and 
+\begin_inset Formula $p_{x*}^{'}=\max_{(\beta}$
 \end_inset
 
 
