@@ -1253,7 +1253,7 @@ Further,
 \begin_layout Standard
 \begin_inset Branch proof
 inverted 0
-status open
+status collapsed
 
 \begin_layout Proof
 \begin_inset Float figure
@@ -1497,6 +1497,10 @@ name "fig:AbortCheat-composition"
 Sikora's DI coin flipping protocols
 \end_layout
 
+\begin_layout Remark
+TODO: Explain the standard box exchange description.
+\end_layout
+
 \begin_layout Algorithm
 \begin_inset Argument 1
 status open
@@ -1507,7 +1511,10 @@ SCF, original
 
 \end_inset
 
- Bit commitment based.
+ Alice has one box and Bob has two boxes (in the security analysis, we let
+ the cheating player distribute the boxes).
+ All the boxes take one input and give one output.
+ 
 \end_layout
 
 \begin_layout Lemma
