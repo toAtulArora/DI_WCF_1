@@ -1277,7 +1277,7 @@ noprefix "false"
 \end_inset
 
 .
- Suppose Alice cheats.
+ Suppose Alice cheats (Bob is honest).
  For the WCF protocol, she will try to bias towards 
 \begin_inset Formula $A$
 \end_inset
@@ -1294,7 +1294,7 @@ noprefix "false"
 \end_inset
 
 ), is thus, 
-\begin_inset Formula $P_{A}^{*}p_{*x}+(1-P_{A}^{*})p_{x*}$
+\begin_inset Formula $p''_{*x}:=P_{A}^{*}p_{*x}+(1-P_{A}^{*})p_{x*}$
 \end_inset
 
  where we used 
@@ -1302,6 +1302,7 @@ noprefix "false"
 \end_inset
 
 .
+ Suppose Bob cheats (Alice is honest).
  Bob, similarly, would bias towards 
 \begin_inset Formula $B$
 \end_inset
@@ -1313,7 +1314,7 @@ noprefix "false"
 \end_inset
 
 ), is thus, 
-\begin_inset Formula $P_{B}^{*}p_{*y}+(1-P_{B}^{*})p_{y*}$
+\begin_inset Formula $p''_{y*}:=P_{B}^{*}p_{*y}+(1-P_{B}^{*})p_{y*}$
 \end_inset
 
  where we used 
@@ -1337,6 +1338,43 @@ noprefix "false"
 \end_inset
 
 .
+ Suppose Alice cheats (Bob is honest).
+ Further, suppose she uses some strategy corresponding to the cheat vector
+ 
+\begin_inset Formula $(\alpha_{A},\alpha_{B},\alpha_{\perp})\in\mathcal{A}_{c}$
+\end_inset
+
+.
+ Then, her success probability (i.e.
+ of convincing Bob that the output is 
+\begin_inset Formula $x$
+\end_inset
+
+) is 
+\begin_inset Formula $p'_{*x}=\alpha_{A}p_{*x}+\alpha_{B}p_{x*}$
+\end_inset
+
+.
+ The corresponding expression of success probability for a cheating Bob
+ is 
+\begin_inset Formula $p'_{y*}=\beta_{B}p_{*y}+\beta_{A}p_{y*}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+It remains to establish that 
+\begin_inset Formula $p'_{*x}\le p''_{*x}$
+\end_inset
+
+ and that 
+\begin_inset Formula $p'_{y*}\le p''_{*y}$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Proof
