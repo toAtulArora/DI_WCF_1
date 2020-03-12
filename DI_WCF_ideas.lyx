@@ -562,6 +562,13 @@ After the interactions, each player outputs either
 \end_inset
 
 .
+ Whenever the outcomes differ, the players agree to abort the protocol.
+\begin_inset Newline newline
+\end_inset
+
+(This is needed because to proceed, they must agree on what to do next;
+ thus even though after the interaction their outputs may vary but they
+ must, still, agree on how to proceed).
 \end_layout
 
 \begin_deeper
@@ -593,14 +600,7 @@ Honest.
 \end_inset
 
 .
- In all other cases, Alice and Bob simply abort.
  
-\begin_inset Newline newline
-\end_inset
-
-(This is needed because to proceed, they must agree on what to do next;
- thus even though after the interaction their outputs may vary but they
- must, still, agree on how to proceed).
 \end_layout
 
 \begin_layout Itemize
@@ -842,7 +842,7 @@ After the interactions, each player outputs either
 
  (for abort).
  The two player, together, can output 
-\begin_inset Formula $\{AA,BB,AB,BA,*\perp,\perp*\}$
+\begin_inset Formula $\{00,11,01,10,*\perp,\perp*\}$
 \end_inset
 
  where 
@@ -850,14 +850,15 @@ After the interactions, each player outputs either
 \end_inset
 
  is either 
-\begin_inset Formula $A$
+\begin_inset Formula $0$
 \end_inset
 
  or 
-\begin_inset Formula $B$
+\begin_inset Formula $1$
 \end_inset
 
 .
+ Whenever the outcomes differ, the players agree to abort the protocol.
 \end_layout
 
 \begin_deeper
@@ -867,21 +868,29 @@ After the interactions, each player outputs either
 Honest.
 
 \emph default
- When both players are honest, we assume that after the interaction, they
- both either output 
-\begin_inset Formula $0$
+ If the outputs are 
+\begin_inset Formula $00$
 \end_inset
 
- or they both output 
-\begin_inset Formula $1$
+ (or 
+\begin_inset Formula $11$
 \end_inset
 
- and that these events happen with equal probability, i.e.
- 
+), Alice and Bob both conclude that Alice (or Bob) won.
+ These two outputs, 
+\begin_inset Formula $00$
+\end_inset
+
+ and 
+\begin_inset Formula $11$
+\end_inset
+
+, appear with probability 
 \begin_inset Formula $\frac{1}{2}$
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -912,6 +921,30 @@ Honest.
 \end_inset
 
 .
+ 
+\begin_inset Newline newline
+\end_inset
+
+(E.g.
+ 
+\begin_inset Formula $p_{*x}$
+\end_inset
+
+ indicates the probability that the protocol ends with both players agreeing
+ to the outcome 
+\begin_inset Formula $x$
+\end_inset
+
+ because Alice can convince Bob of the outcome 
+\begin_inset Formula $x$
+\end_inset
+
+ and she, being the cheating player, can simply lie about her outcome being
+ 
+\begin_inset Formula $x$
+\end_inset
+
+).
  
 \end_layout
 
@@ -952,6 +985,12 @@ Single Suppression
 \end_inset
 
 ).
+ Suppose that 
+\begin_inset Formula $p_{*0}=p_{*1}\neq p_{0*}=p_{1*}$
+\end_inset
+
+, i.e.
+ the SCF protocol is unbalanced.
  Consider a 
 \emph on
 WCF with cheating abort
@@ -972,13 +1011,21 @@ cheat vector sets
  Using these, one can construct a SCF protocol with 
 \begin_inset Formula 
 \[
-p_{*x}'=\max_{(\alpha_{A},\alpha_{B},\alpha_{\perp})\in\mathcal{A}_{C}}\alpha_{A}p_{*x}+\alpha_{B}p_{x*}
+p_{*x}'=\max_{(\alpha_{A},\alpha_{B},\alpha_{\perp})\in\mathcal{A}_{c}}\alpha_{A}p_{*x}+\alpha_{B}p_{x*}
 \]
 
 \end_inset
 
  and 
-\begin_inset Formula $p_{x*}^{'}=\max_{(\beta}$
+\begin_inset Formula 
+\[
+p_{y*}^{'}=\max_{(\beta_{A},\beta_{B},\beta_{\perp})\in\mathcal{B}_{c}}\beta_{A}p_{y*}+\beta_{B}p_{*y}.
+\]
+
+\end_inset
+
+Further, 
+\begin_inset Formula $p'_{*x}\le$
 \end_inset
 
 
