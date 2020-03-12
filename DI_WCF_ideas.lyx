@@ -819,7 +819,7 @@ Let us start with an intuitive discussion.
 \end_layout
 
 \begin_layout Standard
-For clarity, we accept being redundant.
+For clarity, we will be slightly redundant.
 \end_layout
 
 \begin_layout Definition
@@ -848,12 +848,15 @@ After the interactions, each player outputs either
 \end_inset
 
 .
+ (If they catch the other player cheating, they declare themselves the winner).
  The two players, together, can output 
 \begin_inset Formula $\{AA,BB,AB,BA\}$
 \end_inset
 
 .
- Whenever the outcomes differ, the honest player is declared the winner.
+ Whenever the outcomes differ, the honest player is declared the winner
+ (assuming at least one is honest; when both are cheating, we can't say
+ anything).
 \end_layout
 
 \begin_deeper
@@ -888,16 +891,48 @@ Both Honest.
 \end_layout
 
 \begin_layout Itemize
+
+\emph on
 Security.
+
+\emph default
  Suppose Alice is cheating and Bob is honest.
- Then the highest probability of Alice convincing Bob that she has cheated
+ Then the highest probability (over all of Alice's cheating strategies)
+ of Bob outputting 
+\begin_inset Formula $A$
+\end_inset
+
  is given by 
+\begin_inset Formula $P_{A}^{*}$
+\end_inset
+
+; Alice is assumed to output 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ Analogously, the highest probability (over all of Bob's cheating strategies)
+ of Alice outputting 
+\begin_inset Formula $B$
+\end_inset
+
+ is given by 
+\begin_inset Formula $P_{B}^{*}$
+\end_inset
+
+; Bob is assumed to output 
+\begin_inset Formula $B$
+\end_inset
+
+.
 \end_layout
 
 \end_deeper
 \end_deeper
 \begin_layout Standard
-aeu
+TODO: I should be able to handle abort in the standard WCF as well, just
+ like we do in standard SCF; because if not, any non-trivial noise will
+ break the protocol.
 \end_layout
 
 \begin_layout Definition
