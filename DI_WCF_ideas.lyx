@@ -1499,6 +1499,9 @@ Sikora's DI coin flipping protocols
 
 \begin_layout Remark
 TODO: Explain the standard box exchange description.
+ | something like this: Alice and Bob shield each box so that it can't communica
+te with any other box.
+ 
 \end_layout
 
 \begin_layout Algorithm
@@ -1517,6 +1520,117 @@ SCF, original
  
 \end_layout
 
+\begin_deeper
+\begin_layout Enumerate
+Alice chooses 
+\begin_inset Formula $s_{A}\in_{R}\{0,1\}$
+\end_inset
+
+ and inputs it into her box to obtain 
+\begin_inset Formula $r_{A}$
+\end_inset
+
+.
+ She chooses 
+\begin_inset Formula $a\in_{R}\{0,1\}$
+\end_inset
+
+ to compute 
+\begin_inset Formula $c=r_{A}\oplus s_{A}.a$
+\end_inset
+
+ and sends 
+\begin_inset Formula $c$
+\end_inset
+
+ to Bob.
+\end_layout
+
+\begin_layout Enumerate
+Bob chooses 
+\begin_inset Formula $b\in_{R}\{0,1\}$
+\end_inset
+
+ and sends it to Alice.
+\end_layout
+
+\begin_layout Enumerate
+Alice sends 
+\begin_inset Formula $s_{A}$
+\end_inset
+
+ to Bob.
+ They both compute the output 
+\begin_inset Formula $s_{A}\oplus b$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Test Rounds.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+If 
+\begin_inset Formula $s_{A}\oplus b=0$
+\end_inset
+
+ then Alice sends 
+\begin_inset Formula $r_{A}$
+\end_inset
+
+ to Bob.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Bob checks if 
+\begin_inset Formula $c=r_{A}$
+\end_inset
+
+ or 
+\begin_inset Formula $c=r_{A}\oplus s_{A}$
+\end_inset
+
+.
+ He aborts if the test fails.
+\end_layout
+
+\begin_layout Enumerate
+Bob chooses 
+\begin_inset Formula $s_{B},s_{C}\in_{R}\{0,1\}$
+\end_inset
+
+ such that 
+\begin_inset Formula $s_{A}\oplus s_{B}\oplus s_{C}=1$
+\end_inset
+
+ and then performs a GHZ using 
+\begin_inset Formula $s_{A},s_{B},s_{C}$
+\end_inset
+
+ as the inputs and 
+\begin_inset Formula $r_{A},r_{B},r_{C}$
+\end_inset
+
+ as the output from the three boxes (he measures his two boxes to obtain
+ the two outcomes).
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+If 
+\begin_inset Formula $s_{A}\oplus b=1$
+\end_inset
+
+ then Bob sends his boxes to Alice.
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Lemma
 \begin_inset Argument 1
 status open
