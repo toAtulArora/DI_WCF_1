@@ -1010,7 +1010,7 @@ noprefix "false"
 
 ).
  Suppose that 
-\begin_inset Formula $p_{*0}=p_{*1}\neq p_{0*}=p_{1*}$
+\begin_inset Formula $p_{*0}=p_{*1}>p_{0*}=p_{1*}$
 \end_inset
 
 , i.e.
@@ -1053,7 +1053,7 @@ p_{*x}'=\max_{(\alpha_{A},\alpha_{B},\alpha_{\perp})\in\mathcal{A}_{c}}\alpha_{A
  and 
 \begin_inset Formula 
 \[
-p_{y*}^{'}=\max_{(\beta_{A},\beta_{B},\beta_{\perp})\in\mathcal{B}_{c}}\beta_{A}p_{y*}+\beta_{B}p_{*y}.
+p_{y*}'=\max_{(\beta_{A},\beta_{B},\beta_{\perp})\in\mathcal{B}_{c}}\beta_{A}p_{y*}+\beta_{B}p_{*y}.
 \]
 
 \end_inset
@@ -1067,8 +1067,8 @@ Further,
 \end_inset
 
 , i.e.
- the new SCF protocol necessarily performs better than the standard composition
- technique.
+ the new SCF protocol necessarily performs at least as good as the one obtained
+ using a standard composition technique.
 \end_layout
 
 \begin_layout Standard
