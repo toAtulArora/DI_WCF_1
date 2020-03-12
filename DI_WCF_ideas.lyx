@@ -1247,8 +1247,7 @@ Further,
 
 , i.e.
  the new SCF protocol necessarily performs at least as good as the one obtained
- using a standard composition technique [this last statement might be wrong
- without further qualifications].
+ using a standard composition technique (which neglects aborts in WCF).
 \end_layout
 
 \begin_layout Standard
@@ -1431,29 +1430,15 @@ noprefix "false"
  We therefore have 
 \begin_inset Formula 
 \begin{align*}
-P_{A}^{*}p_{*x} & \ge\alpha_{A}p_{*x}\\
-P_{A}^{*}p_{*x}+(1-P_{A}^{*})p_{*x} & \ge\alpha_{A}p_{*x}+(1-P_{A}^{*})p_{*x}\\
- & \ge\alpha_{A}p_{*x}+\alpha_{B}p_{*x} & \text{if }(1-P_{A}^{*})\ge\alpha_{B}\text{ for all }(\alpha_{A},\alpha_{B},\alpha_{\perp})\in\mathcal{A}_{c}.
+p''_{*x}=P_{A}^{*}p_{*x}+(1-P_{A}^{*})p_{x*} & =\left(P_{A}^{*}-(P_{A}^{*}-\alpha_{A})+(P_{A}^{*}-\alpha_{A})\right)p_{*x}+(1-P_{A}^{*})p_{x*}\\
+ & \ge\alpha_{A}p_{*x}+\left((P_{A}^{*}-\alpha_{A})+(1-P_{A}^{*})\right)p_{x*} & \because p_{*x}\ge p_{x*}\\
+ & =\alpha_{A}p_{*x}+(1-\alpha_{A})p_{*x}\\
+ & \ge\alpha_{A}p_{*x}+\alpha_{B}p_{*x}=p'_{*x}.
 \end{align*}
 
 \end_inset
 
-Suppose we picked 
-\begin_inset Formula $\alpha_{A}=P_{A}^{*}$
-\end_inset
 
- (saturating the first inequality).
- Then 
-\begin_inset Formula $1-P_{A}^{*}=1-\alpha_{A}=\alpha_{B}+\alpha_{\perp}\ge\alpha_{B}$
-\end_inset
-
-.
- Otherwise, however, we would have 
-\begin_inset Formula $1-P_{A}^{*}\le1-\alpha_{A}=\alpha_{B}+\alpha_{\perp}$
-\end_inset
-
-.
- 
 \end_layout
 
 \begin_layout Proof
