@@ -552,7 +552,7 @@ After the interactions, each player outputs either
 \end_inset
 
  (for abort).
- The two player, together, can output 
+ The two players, together, can output 
 \begin_inset Formula $\{AA,BB,AB,BA,*\perp,\perp*\}$
 \end_inset
 
@@ -582,7 +582,7 @@ After the interactions, each player outputs either
 \begin_layout Itemize
 
 \emph on
-Honest.
+Both Honest.
 
 \emph default
  If the outputs are 
@@ -818,6 +818,123 @@ Let us start with an intuitive discussion.
 
 \end_layout
 
+\begin_layout Standard
+For clarity, we will be slightly redundant.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+(Standard) WCF
+\end_layout
+
+\end_inset
+
+ (Standard) Weak Coin Flipping is a two player (Alice and Bob) interactive
+ protocol wherein they wish to generate a random bit.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+After the interactions, each player outputs either 
+\begin_inset Formula $A$
+\end_inset
+
+ or 
+\begin_inset Formula $B$
+\end_inset
+
+.
+ (If they catch the other player cheating, they declare themselves the winner).
+ The two players, together, can output 
+\begin_inset Formula $\{AA,BB,AB,BA\}$
+\end_inset
+
+.
+ Whenever the outcomes differ, the honest player is declared the winner
+ (assuming at least one is honest; when both are cheating, we can't say
+ anything).
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Both Honest.
+
+\emph default
+ If the outputs are 
+\begin_inset Formula $AA$
+\end_inset
+
+ then Alice wins and if they are 
+\begin_inset Formula $BB$
+\end_inset
+
+ then Bob wins.
+ These outputs, 
+\begin_inset Formula $AA$
+\end_inset
+
+ and 
+\begin_inset Formula $BB$
+\end_inset
+
+, appear with probability 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Security.
+
+\emph default
+ Suppose Alice is cheating and Bob is honest.
+ Then the highest probability (over all of Alice's cheating strategies)
+ of Bob outputting 
+\begin_inset Formula $A$
+\end_inset
+
+ is given by 
+\begin_inset Formula $P_{A}^{*}$
+\end_inset
+
+; Alice is assumed to output 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ Analogously, the highest probability (over all of Bob's cheating strategies)
+ of Alice outputting 
+\begin_inset Formula $B$
+\end_inset
+
+ (and thus winning) is given by 
+\begin_inset Formula $P_{B}^{*}$
+\end_inset
+
+; Bob is assumed to output 
+\begin_inset Formula $B$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+TODO: I should be able to handle abort in standard WCF as well, just like
+ we do in standard SCF; because if not, any non-trivial noise will break
+ the protocol.
+\end_layout
+
 \begin_layout Definition
 \begin_inset Argument 1
 status open
@@ -855,7 +972,7 @@ After the interactions, each player outputs either
 \end_inset
 
  (for abort).
- The two player, together, can output 
+ The two players, together, can output 
 \begin_inset Formula $\{00,11,01,10,*\perp,\perp*\}$
 \end_inset
 
@@ -879,7 +996,7 @@ After the interactions, each player outputs either
 \begin_layout Itemize
 
 \emph on
-Honest.
+Both Honest.
 
 \emph default
  If the outputs are 
@@ -964,6 +1081,34 @@ Honest.
 
 \end_deeper
 \end_deeper
+\begin_layout Remark
+A (standard) SCF protocol with security 
+\begin_inset Formula $p_{*x},p_{y*}$
+\end_inset
+
+ can be converted into a (standard) WCF protocol with 
+\begin_inset Formula $P_{A}^{*}=p_{*0}$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{B}^{*}=p_{1*}$
+\end_inset
+
+, by mapping 
+\begin_inset Formula $0$
+\end_inset
+
+ to Alice winning, 
+\begin_inset Formula $1$
+\end_inset
+
+ to Bob winning and 
+\begin_inset Formula $\perp$
+\end_inset
+
+ to the honest player winning.
+\end_layout
+
 \begin_layout Lemma
 \begin_inset Argument 1
 status open
@@ -1063,7 +1208,7 @@ Further,
 \end_inset
 
  and 
-\begin_inset Formula $p'_{y*}\le P_{B}^{*}p_{y*}+(1-P_{B}^{*})p_{*y}$
+\begin_inset Formula $p'_{y*}\le P_{B}^{*}p_{*y}+(1-P_{B}^{*})p_{y*}$
 \end_inset
 
 , i.e.
@@ -1077,7 +1222,115 @@ inverted 0
 status open
 
 \begin_layout Proof
-We compose the protocols as follows
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/temp_standardComposition.png
+	lyxscale 40
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Standard composition of a WCF protocol and unbalanced SCF protocol to produce
+ a more balanced SCF protocol.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Standard-composition"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+First, we construct a SCF protocol using the standard composition technique
+ of a (standard) WCF protocol and a (standard) SCF protocol as in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Standard-composition"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ Suppose Alice cheats.
+ For the WCF protocol, she will try to bias towards 
+\begin_inset Formula $A$
+\end_inset
+
+ because this increases her chance of running the SCF protocol where she
+ has the advantage (we assume 
+\begin_inset Formula $p_{*x}>p_{y*}$
+\end_inset
+
+).
+ Her success probability (i.e.
+ of convincing Bob that the output is 
+\begin_inset Formula $x$
+\end_inset
+
+), is thus, 
+\begin_inset Formula $P_{A}^{*}p_{*x}+(1-P_{A}^{*})p_{x*}$
+\end_inset
+
+ where we used 
+\begin_inset Formula $\bar{p}_{*x}=p_{x*}$
+\end_inset
+
+.
+ Bob, similarly, would bias towards 
+\begin_inset Formula $B$
+\end_inset
+
+ to gain an advantage.
+ His success probability (i.e.
+ of convincing Alice that the output is 
+\begin_inset Formula $y$
+\end_inset
+
+), is thus, 
+\begin_inset Formula $P_{B}^{*}p_{*y}+(1-P_{B}^{*})p_{y*}$
+\end_inset
+
+ where we used 
+\begin_inset Formula $\bar{p}_{y*}=p_{*y}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+We now compose a WCF protocol (with cheat abort) with a (standard) SCF protocol
+ as in .
+\end_layout
+
+\begin_layout Proof
+
 \end_layout
 
 \end_inset

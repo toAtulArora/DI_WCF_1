@@ -1325,7 +1325,8 @@ noprefix "false"
 \end_layout
 
 \begin_layout Proof
-We now consider the 
+We now compose a WCF protocol (with cheat abort) with a (standard) SCF protocol
+ as in .
 \end_layout
 
 \end_inset

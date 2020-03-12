@@ -1222,6 +1222,49 @@ inverted 0
 status open
 
 \begin_layout Proof
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/temp_standardComposition.png
+	lyxscale 40
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Standard composition of a WCF protocol and unbalanced SCF protocol to produce
+ a more balanced SCF protocol.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Standard-composition"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
 First, we construct a SCF protocol using the standard composition technique
  of a (standard) WCF protocol and a (standard) SCF protocol as in 
 \begin_inset CommandInset ref
@@ -1282,50 +1325,8 @@ noprefix "false"
 \end_layout
 
 \begin_layout Proof
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename figures/temp_standardComposition.png
-	lyxscale 40
-	width 6cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Standard composition of a WCF protocol and unbalanced SCF protocol to produce
- a more balanced SCF protocol.
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Standard-composition"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
+We now consider the other case.
+ We have Alice 
 \end_layout
 
 \end_inset
