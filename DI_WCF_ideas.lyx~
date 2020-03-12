@@ -1098,11 +1098,11 @@ A (standard) SCF protocol with security
 \begin_inset Formula $0$
 \end_inset
 
- to Alice won, 
+ to Alice winning, 
 \begin_inset Formula $1$
 \end_inset
 
- to Bob won and 
+ to Bob winning and 
 \begin_inset Formula $\perp$
 \end_inset
 
@@ -1208,7 +1208,7 @@ Further,
 \end_inset
 
  and 
-\begin_inset Formula $p'_{y*}\le P_{B}^{*}p_{y*}+(1-P_{B}^{*})p_{*y}$
+\begin_inset Formula $p'_{y*}\le P_{B}^{*}p_{*y}+(1-P_{B}^{*})p_{y*}$
 \end_inset
 
 , i.e.
@@ -1223,8 +1223,109 @@ status open
 
 \begin_layout Proof
 First, we construct a SCF protocol using the standard composition technique
- of a (standard) WCF protocol and a (standard) SCF protocol.
+ of a (standard) WCF protocol and a (standard) SCF protocol as in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Standard-composition"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ Suppose Alice cheats.
+ For the WCF protocol, she will try to bias towards 
+\begin_inset Formula $A$
+\end_inset
+
+ because this increases her chance of running the SCF protocol where she
+ has the advantage (we assume 
+\begin_inset Formula $p_{*x}>p_{y*}$
+\end_inset
+
+).
+ Her success probability (i.e.
+ of convincing Bob that the output is 
+\begin_inset Formula $x$
+\end_inset
+
+), is thus, 
+\begin_inset Formula $P_{A}^{*}p_{*x}+(1-P_{A}^{*})p_{x*}$
+\end_inset
+
+ where we used 
+\begin_inset Formula $\bar{p}_{*x}=p_{x*}$
+\end_inset
+
+.
+ Bob, similarly, would bias towards 
+\begin_inset Formula $B$
+\end_inset
+
+ to gain an advantage.
+ His success probability (i.e.
+ of convincing Alice that the output is 
+\begin_inset Formula $y$
+\end_inset
+
+), is thus, 
+\begin_inset Formula $P_{B}^{*}p_{*y}+(1-P_{B}^{*})p_{y*}$
+\end_inset
+
+ where we used 
+\begin_inset Formula $\bar{p}_{y*}=p_{*y}$
+\end_inset
+
+.
  
+\end_layout
+
+\begin_layout Proof
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/temp_standardComposition.png
+	lyxscale 40
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Standard composition of a WCF protocol and unbalanced SCF protocol to produce
+ a more balanced SCF protocol.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Standard-composition"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
