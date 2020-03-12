@@ -1243,7 +1243,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Standard composition of a WCF protocol and unbalanced SCF protocol to produce
+Standard composition of a WCF protocol and unbalanced SCF protocol produces
  a more balanced SCF protocol.
 \begin_inset CommandInset label
 LatexCommand label
@@ -1325,8 +1325,65 @@ noprefix "false"
 \end_layout
 
 \begin_layout Proof
-We now consider the other case.
- We have Alice 
+We now compose a WCF protocol (with cheat abort) with a (standard) SCF protocol
+ as in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:AbortCheat-composition"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/temp_cheatAbortComposition.png
+	lyxscale 40
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Composition of a WCF protocol with abort and an unbalanced SCF protocol
+ produces a (possibly better and) more balanced SCF protocol.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:AbortCheat-composition"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
