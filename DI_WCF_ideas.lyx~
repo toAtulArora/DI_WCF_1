@@ -1086,19 +1086,7 @@ A (standard) SCF protocol with security
 \begin_inset Formula $p_{*x},p_{y*}$
 \end_inset
 
- can be converted into a (standard) WCF protocol, with say 
-\begin_inset Formula $0$
-\end_inset
-
- meaning Alice won, 
-\begin_inset Formula $1$
-\end_inset
-
- meaning Bob won and 
-\begin_inset Formula $\perp$
-\end_inset
-
- meaning the honest player won, with 
+ can be converted into a (standard) WCF protocol with 
 \begin_inset Formula $P_{A}^{*}=p_{*0}$
 \end_inset
 
@@ -1106,7 +1094,19 @@ A (standard) SCF protocol with security
 \begin_inset Formula $P_{B}^{*}=p_{1*}$
 \end_inset
 
-.
+, by mapping 
+\begin_inset Formula $0$
+\end_inset
+
+ to Alice won, 
+\begin_inset Formula $1$
+\end_inset
+
+ to Bob won and 
+\begin_inset Formula $\perp$
+\end_inset
+
+ to the honest player winning.
 \end_layout
 
 \begin_layout Lemma
@@ -1222,8 +1222,9 @@ inverted 0
 status open
 
 \begin_layout Proof
-First, we construct the SCF protocol using the standard composition technique.
- We have 
+First, we construct a SCF protocol using the standard composition technique
+ of a (standard) WCF protocol and a (standard) SCF protocol.
+ 
 \end_layout
 
 \end_inset
