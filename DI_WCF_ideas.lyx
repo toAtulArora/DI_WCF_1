@@ -1559,6 +1559,133 @@ Alice sends
 \begin_inset Formula $s_{A}$
 \end_inset
 
+ and 
+\begin_inset Formula $r_{A}$
+\end_inset
+
+ to Bob.
+ They both compute the output 
+\begin_inset Formula $s_{A}\oplus b$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Test round
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Bob tests if 
+\begin_inset Formula $c=r_{A}$
+\end_inset
+
+ or 
+\begin_inset Formula $c=r_{A}\oplus s_{A}$
+\end_inset
+
+.
+ If the test fails, he aborts.
+ Bob chooses 
+\begin_inset Formula $s_{B},s_{C}\in_{R}\{0,1\}$
+\end_inset
+
+ such that 
+\begin_inset Formula $s_{A}\oplus s_{B}\oplus s_{C}=1$
+\end_inset
+
+ and then performs a GHZ using 
+\begin_inset Formula $s_{A},s_{B},s_{C}$
+\end_inset
+
+ as the inputs and 
+\begin_inset Formula $r_{A},r_{B},r_{C}$
+\end_inset
+
+ as the output from the three boxes.
+ He aborts if this test fails.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Security of SCF
+\end_layout
+
+\end_inset
+
+ Standard Security: Perhaps redo it from the original article as a warm
+ up for the next part.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+WCF
+\end_layout
+
+\end_inset
+
+ Alice has one box and Bob has two boxes (in the security analysis, we let
+ the cheating player distribute the boxes).
+ All the boxes take one input and give one output.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Alice chooses 
+\begin_inset Formula $s_{A}\in_{R}\{0,1\}$
+\end_inset
+
+ and inputs it into her box to obtain 
+\begin_inset Formula $r_{A}$
+\end_inset
+
+.
+ She chooses 
+\begin_inset Formula $a\in_{R}\{0,1\}$
+\end_inset
+
+ to compute 
+\begin_inset Formula $c=r_{A}\oplus s_{A}.a$
+\end_inset
+
+ and sends 
+\begin_inset Formula $c$
+\end_inset
+
+ to Bob.
+\end_layout
+
+\begin_layout Enumerate
+Bob chooses 
+\begin_inset Formula $b\in_{R}\{0,1\}$
+\end_inset
+
+ and sends it to Alice.
+\end_layout
+
+\begin_layout Enumerate
+Alice sends 
+\begin_inset Formula $s_{A}$
+\end_inset
+
  to Bob.
  They both compute the output 
 \begin_inset Formula $s_{A}\oplus b$
@@ -1618,6 +1745,7 @@ Bob chooses
 
  as the output from the three boxes (he measures his two boxes to obtain
  the two outcomes).
+ He aborts if the test fails.
 \end_layout
 
 \end_deeper
@@ -1626,45 +1754,27 @@ If
 \begin_inset Formula $s_{A}\oplus b=1$
 \end_inset
 
- then Bob sends his boxes to Alice.
+ then Bob sends his boxes to Alice (Alice tries to ensure he didn't tamper
+ with the boxes).
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Alice chooses 
+\begin_inset Formula $s_{B},s_{C}\in_{R}\{0,1\}$
+\end_inset
+
+ such that 
+\begin_inset Formula $s_{A}\oplus s_{B}\oplus s_{c}=1$
+\end_inset
+
+ and then performs a GHZ (like Bob did in the previous case).
+ She aborts if the test fails.
 \end_layout
 
 \end_deeper
 \end_deeper
-\begin_layout Lemma
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-Security of SCF
-\end_layout
-
-\end_inset
-
- Standard Security: Perhaps redo it from the original article as a warm
- up for the next part.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Algorithm
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-WCF
-\end_layout
-
-\end_inset
-
- Bit commitment based with an extra test on Bob.
-\end_layout
-
+\end_deeper
 \begin_layout Lemma
 \begin_inset Argument 1
 status open

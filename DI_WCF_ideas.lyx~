@@ -1618,6 +1618,7 @@ Bob chooses
 
  as the output from the three boxes (he measures his two boxes to obtain
  the two outcomes).
+ He aborts if the test fails.
 \end_layout
 
 \end_deeper
@@ -1626,9 +1627,25 @@ If
 \begin_inset Formula $s_{A}\oplus b=1$
 \end_inset
 
- then 
+ then Bob sends his boxes to Alice (Alice tries to ensure he didn't tamper
+ with the boxes).
 \end_layout
 
+\begin_deeper
+\begin_layout Enumerate
+Alice chooses 
+\begin_inset Formula $s_{B},s_{C}\in_{R}\{0,1\}$
+\end_inset
+
+ such that 
+\begin_inset Formula $s_{A}\oplus s_{B}\oplus s_{c}=1$
+\end_inset
+
+ and then performs a GHZ (like Bob did in the previous case).
+ She aborts if the test fails.
+\end_layout
+
+\end_deeper
 \end_deeper
 \end_deeper
 \begin_layout Lemma
