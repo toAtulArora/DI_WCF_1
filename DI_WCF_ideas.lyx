@@ -68,7 +68,7 @@
 }
 
 %\newref{thm}{name=theorem~,Name=Theorem~,names=theorems~,Names=Theorems~}
-%\newref{def}{name=definition~,Name=Definition~,names=definitions~,Names=Definitions~}
+\newref{def}{name=definition~,Name=Definition~,names=definitions~,Names=Definitions~}
 %\newref{cor}{name=corollary~,Name=Corollary~,names=corollaries~,Names=Corollaries~}
 %\newref{lem}{name=lemma~,Name=Lemma~,names=lemmas~,Names=Lemmas~}
 %\newref{claim}{name=claim~,Name=Claim~,names=claims~,Names=Claims~}
@@ -528,6 +528,13 @@ WCF with cheating abort
  Weak Coin Flipping is a two player (Alice and Bob) interactive protocol
  wherein they wish to generate a random bit.
  
+\begin_inset CommandInset label
+LatexCommand label
+name "def:WCF"
+
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -824,6 +831,13 @@ status open
  Strong Coin Flipping is a two player (Alice and Bob) interactive protocol
  wherein they wish to generate a random bit.
  
+\begin_inset CommandInset label
+LatexCommand label
+name "def:SCF"
+
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -960,7 +974,17 @@ Single Suppression
 
 \end_inset
 
- Consider a SCF protocol with cheating probabilities 
+ Consider a SCF protocol (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "def:SCF"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+) with cheating probabilities 
 \begin_inset Formula $(p_{*x},p_{y*})$
 \end_inset
 
@@ -993,9 +1017,19 @@ Single Suppression
  the SCF protocol is unbalanced.
  Consider a 
 \emph on
-WCF with cheating abort
+WCF with cheating abort 
 \emph default
- and the 
+(see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "def:WCF"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+) and the 
 \emph on
 cheat vector sets
 \emph default
@@ -1025,10 +1059,24 @@ p_{y*}^{'}=\max_{(\beta_{A},\beta_{B},\beta_{\perp})\in\mathcal{B}_{c}}\beta_{A}
 \end_inset
 
 Further, 
-\begin_inset Formula $p'_{*x}\le$
+\begin_inset Formula $p'_{*x}\le P_{A}^{*}p_{*x}+(1-P_{A}^{*})p_{x*}$
 \end_inset
 
+ and 
+\begin_inset Formula $p'_{y*}\le P_{B}^{*}p_{y*}+(1-P_{B}^{*})p_{*y}$
+\end_inset
 
+, i.e.
+ the new SCF protocol necessarily performs better than the standard composition
+ technique.
+\end_layout
+
+\begin_layout Proof
+TODO: Add the proof.
+\end_layout
+
+\begin_layout Section
+Sikora's DI weak coin flipping protocol
 \end_layout
 
 \end_body
