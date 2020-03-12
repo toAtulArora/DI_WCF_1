@@ -552,7 +552,7 @@ After the interactions, each player outputs either
 \end_inset
 
  (for abort).
- The two player, together, can output 
+ The two players, together, can output 
 \begin_inset Formula $\{AA,BB,AB,BA,*\perp,\perp*\}$
 \end_inset
 
@@ -582,7 +582,7 @@ After the interactions, each player outputs either
 \begin_layout Itemize
 
 \emph on
-Honest.
+Both Honest.
 
 \emph default
  If the outputs are 
@@ -818,6 +818,88 @@ Let us start with an intuitive discussion.
 
 \end_layout
 
+\begin_layout Standard
+For clarity, we accept being redundant.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+(Standard) WCF
+\end_layout
+
+\end_inset
+
+ (Standard) Weak Coin Flipping is a two player (Alice and Bob) interactive
+ protocol wherein they wish to generate a random bit.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+After the interactions, each player outputs either 
+\begin_inset Formula $A$
+\end_inset
+
+ or 
+\begin_inset Formula $B$
+\end_inset
+
+.
+ The two players, together, can output 
+\begin_inset Formula $\{AA,BB,AB,BA\}$
+\end_inset
+
+.
+ Whenever the outcomes differ, the honest player is declared the winner.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Both Honest.
+
+\emph default
+ If the outputs are 
+\begin_inset Formula $AA$
+\end_inset
+
+ then Alice wins and if they are 
+\begin_inset Formula $BB$
+\end_inset
+
+ then Bob wins.
+ These outputs, 
+\begin_inset Formula $AA$
+\end_inset
+
+ and 
+\begin_inset Formula $BB$
+\end_inset
+
+, appear with probability 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Security.
+ Suppose Alice is cheating and Bob is honest.
+ Then the highest probability of Alice convincing Bob that she has cheated
+ is given by 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+aeu
+\end_layout
+
 \begin_layout Definition
 \begin_inset Argument 1
 status open
@@ -855,7 +937,7 @@ After the interactions, each player outputs either
 \end_inset
 
  (for abort).
- The two player, together, can output 
+ The two players, together, can output 
 \begin_inset Formula $\{00,11,01,10,*\perp,\perp*\}$
 \end_inset
 
@@ -879,7 +961,7 @@ After the interactions, each player outputs either
 \begin_layout Itemize
 
 \emph on
-Honest.
+Both Honest.
 
 \emph default
  If the outputs are 
