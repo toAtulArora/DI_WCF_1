@@ -1077,7 +1077,8 @@ inverted 0
 status open
 
 \begin_layout Proof
-TODO: Add the proof.
+First, we construct the SCF protocol using the standard composition technique.
+ We have 
 \end_layout
 
 \end_inset

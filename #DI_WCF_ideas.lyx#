@@ -68,7 +68,7 @@
 }
 
 %\newref{thm}{name=theorem~,Name=Theorem~,names=theorems~,Names=Theorems~}
-%\newref{def}{name=definition~,Name=Definition~,names=definitions~,Names=Definitions~}
+\newref{def}{name=definition~,Name=Definition~,names=definitions~,Names=Definitions~}
 %\newref{cor}{name=corollary~,Name=Corollary~,names=corollaries~,Names=Corollaries~}
 %\newref{lem}{name=lemma~,Name=Lemma~,names=lemmas~,Names=Lemmas~}
 %\newref{claim}{name=claim~,Name=Claim~,names=claims~,Names=Claims~}
@@ -520,7 +520,7 @@ We consider a somewhat restricted and simultaneous slightly more general
 status open
 
 \begin_layout Plain Layout
-Noiseless WCF with cheating abort
+WCF with cheating abort
 \end_layout
 
 \end_inset
@@ -528,39 +528,18 @@ Noiseless WCF with cheating abort
  Weak Coin Flipping is a two player (Alice and Bob) interactive protocol
  wherein they wish to generate a random bit.
  
+\begin_inset CommandInset label
+LatexCommand label
+name "def:WCF"
+
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-When both players are honest, we assume that after the interaction, they
- both output the same bit, either 
-\begin_inset Formula $0$
-\end_inset
-
- (or 
-\begin_inset Formula $A$
-\end_inset
-
- corresponding to Alice winning) or 
-\begin_inset Formula $1$
-\end_inset
-
- (or 
-\begin_inset Formula $B$
-\end_inset
-
- corresponding to Bob winning) with equal probability, i.e.
- 
-\begin_inset Formula $\frac{1}{2}$
-\end_inset
-
-.
- No other outcome can occur.
-\end_layout
-
-\begin_layout Itemize
-When a cheating player interacts with an honest player, each player outputs
- either 
+After the interactions, each player outputs either 
 \begin_inset Formula $A$
 \end_inset
 
@@ -573,16 +552,6 @@ When a cheating player interacts with an honest player, each player outputs
 \end_inset
 
  (for abort).
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\emph on
-Honest.
-
-\emph default
  The two player, together, can output 
 \begin_inset Formula $\{AA,BB,AB,BA,*\perp,\perp*\}$
 \end_inset
@@ -600,6 +569,22 @@ Honest.
 \end_inset
 
 .
+ Whenever the outcomes differ, the players agree to abort the protocol.
+\begin_inset Newline newline
+\end_inset
+
+(This is needed because to proceed, they must agree on what to do next;
+ thus even though after the interaction their outputs may vary but they
+ must, still, agree on how to proceed).
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Honest.
+
+\emph default
  If the outputs are 
 \begin_inset Formula $AA$
 \end_inset
@@ -608,14 +593,21 @@ Honest.
 \begin_inset Formula $BB$
 \end_inset
 
-), Alice and Bob deduce that Alice (or Bob) won.
- In all other cases, Alice and Bob simply abort.
-\begin_inset Newline newline
+), Alice and Bob both conclude that Alice (or Bob) won.
+ These two outputs, 
+\begin_inset Formula $AA$
 \end_inset
 
-(This is needed because to proceed, they must agree on what to do next;
- thus even though after the interaction their outputs may vary but they
- must, still, agree on how to proceed).
+ and 
+\begin_inset Formula $BB$
+\end_inset
+
+, appear with probability 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -630,6 +622,10 @@ Nomenclature for Security.
 \begin_inset Formula $\vec{q}_{A}=(\alpha_{A},\alpha_{B},\alpha_{\perp}=1-\alpha_{A}-\alpha_{B})$
 \end_inset
 
+, what we call a 
+\emph on
+cheat vector,
+\emph default
  where 
 \end_layout
 
@@ -671,7 +667,11 @@ Nomenclature for Security.
 
 \begin_layout Standard
 Let 
-\begin_inset Formula $\mathcal{A}_{c}=\{\vec{q}_{A}:\text{The probabilities correspond to some cheating strategy of Alice}\}$
+\emph on
+cheat vector set
+\emph default
+ for Alice be 
+\begin_inset Formula $\mathcal{A}_{c}:=\{\vec{q}_{A}:\text{The probabilities correspond to some cheating strategy of Alice}\}$
 \end_inset
 
 .
@@ -679,7 +679,11 @@ Let
 \begin_inset Formula $\vec{q}_{B}=(\beta_{A},\beta_{B},\beta_{\perp}=1-\beta_{A}-\beta_{B})$
 \end_inset
 
- and the set 
+ and the 
+\emph on
+cheat vector set
+\emph default
+ for Bob be 
 \begin_inset Formula $\mathcal{B}_{c}$
 \end_inset
 
@@ -716,12 +720,27 @@ Standard WCF Security.
 
 .
  
+\begin_inset Newline newline
+\end_inset
+
+(This formalises the fact that the players have preferences; i.e.
+ we only care about protecting Bob from Alice trying to bias towards outcome
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ and analogously, about protecting Alice from Bob trying to bias towards
+ outcome 
+\begin_inset Formula $B$
+\end_inset
+
+).
 \end_layout
 
 \end_deeper
 \end_deeper
 \begin_layout Standard
-\begin_inset Branch commentary
+\begin_inset Branch rough
 inverted 0
 status collapsed
 
@@ -797,6 +816,346 @@ Let us start with an intuitive discussion.
 \end_inset
 
 
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+(Standard) SCF
+\end_layout
+
+\end_inset
+
+ Strong Coin Flipping is a two player (Alice and Bob) interactive protocol
+ wherein they wish to generate a random bit.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "def:SCF"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+After the interactions, each player outputs either 
+\begin_inset Formula $0$
+\end_inset
+
+, 
+\begin_inset Formula $1$
+\end_inset
+
+ or 
+\begin_inset Formula $\perp$
+\end_inset
+
+ (for abort).
+ The two player, together, can output 
+\begin_inset Formula $\{00,11,01,10,*\perp,\perp*\}$
+\end_inset
+
+ where 
+\begin_inset Formula $*$
+\end_inset
+
+ is either 
+\begin_inset Formula $0$
+\end_inset
+
+ or 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ Whenever the outcomes differ, the players agree to abort the protocol.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Honest.
+
+\emph default
+ If the outputs are 
+\begin_inset Formula $00$
+\end_inset
+
+ (or 
+\begin_inset Formula $11$
+\end_inset
+
+), Alice and Bob both conclude that Alice (or Bob) won.
+ These two outputs, 
+\begin_inset Formula $00$
+\end_inset
+
+ and 
+\begin_inset Formula $11$
+\end_inset
+
+, appear with probability 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+(Standard SCF) Security.
+
+\emph default
+ Suppose Alice is cheating and Bob is honest.
+ Then the maximum (over all possible cheating strategies of Alice) probability
+ that Bob outputs 
+\begin_inset Formula $x$
+\end_inset
+
+ is given by 
+\begin_inset Formula $p_{*x}$
+\end_inset
+
+.
+ Analogously, when Bob is cheating and Alice is honest, then the maximum
+ (over all possible cheating strategies of Bob) probability that Alice outputs
+ 
+\begin_inset Formula $y$
+\end_inset
+
+ is given by 
+\begin_inset Formula $p_{y*}$
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+(E.g.
+ 
+\begin_inset Formula $p_{*x}$
+\end_inset
+
+ indicates the probability that the protocol ends with both players agreeing
+ to the outcome 
+\begin_inset Formula $x$
+\end_inset
+
+ because Alice can convince Bob of the outcome 
+\begin_inset Formula $x$
+\end_inset
+
+ and she, being the cheating player, can simply lie about her outcome being
+ 
+\begin_inset Formula $x$
+\end_inset
+
+).
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Single Suppression
+\end_layout
+
+\end_inset
+
+ Consider a SCF protocol (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "def:SCF"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+) with cheating probabilities 
+\begin_inset Formula $(p_{*x},p_{y*})$
+\end_inset
+
+ for both 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ in 
+\begin_inset Formula $\{0,1\}$
+\end_inset
+
+ (assume the honest probabilities are 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+).
+ Suppose that 
+\begin_inset Formula $p_{*0}=p_{*1}>p_{0*}=p_{1*}$
+\end_inset
+
+, i.e.
+ the SCF protocol is unbalanced.
+ Consider a 
+\emph on
+WCF with cheating abort 
+\emph default
+(see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "def:WCF"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+) and the 
+\emph on
+cheat vector sets
+\emph default
+ 
+\begin_inset Formula $\mathcal{A}_{c}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{B}_{c}$
+\end_inset
+
+.
+ Using these, one can compose them to construct a SCF protocol with 
+\begin_inset Formula 
+\[
+p_{*x}'=\max_{(\alpha_{A},\alpha_{B},\alpha_{\perp})\in\mathcal{A}_{c}}\alpha_{A}p_{*x}+\alpha_{B}p_{x*}
+\]
+
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+p_{y*}'=\max_{(\beta_{A},\beta_{B},\beta_{\perp})\in\mathcal{B}_{c}}\beta_{A}p_{y*}+\beta_{B}p_{*y}.
+\]
+
+\end_inset
+
+Further, 
+\begin_inset Formula $p'_{*x}\le P_{A}^{*}p_{*x}+(1-P_{A}^{*})p_{x*}$
+\end_inset
+
+ and 
+\begin_inset Formula $p'_{y*}\le P_{B}^{*}p_{y*}+(1-P_{B}^{*})p_{*y}$
+\end_inset
+
+, i.e.
+ the new SCF protocol necessarily performs at least as good as the one obtained
+ using a standard composition technique.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch proof
+inverted 0
+status open
+
+\begin_layout Proof
+We compose the protocols as follows
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Sikora's DI coin flipping protocols
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+SCF, original
+\end_layout
+
+\end_inset
+
+ Bit commitment based.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Security of SCF
+\end_layout
+
+\end_inset
+
+ Standard Security: Perhaps redo it from the original article as a warm
+ up for the next part.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+WCF
+\end_layout
+
+\end_inset
+
+ Bit commitment based with an extra test on Bob.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Security of WCF
+\end_layout
+
+\end_inset
+
+ Standard Security: Need to do Bob's part again; Alice's should carry over.
+ Need to do both Alice and Bob to characterise the sets 
+\begin_inset Formula $\mathcal{A}_{c}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{B}_{c}$
+\end_inset
+
+ in addition to the usual things.
 \end_layout
 
 \end_body

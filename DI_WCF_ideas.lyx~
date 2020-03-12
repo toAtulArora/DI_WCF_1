@@ -1042,7 +1042,7 @@ cheat vector sets
 \end_inset
 
 .
- Using these, one can construct a SCF protocol with 
+ Using these, one can compose them to construct a SCF protocol with 
 \begin_inset Formula 
 \[
 p_{*x}'=\max_{(\alpha_{A},\alpha_{B},\alpha_{\perp})\in\mathcal{A}_{c}}\alpha_{A}p_{*x}+\alpha_{B}p_{x*}
@@ -1077,7 +1077,8 @@ inverted 0
 status open
 
 \begin_layout Proof
-TODO: Add the proof.
+First, we construct the SCF protocol using the standard composition technique.
+ 
 \end_layout
 
 \end_inset
