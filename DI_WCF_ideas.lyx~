@@ -77,6 +77,7 @@
 %\newref{prop}{name=proposition~,Name=Proposition~,names=propositions~,Names=Propositions~}
 %\newref{conj}{name=conjecture~,Name=Conjecture~,names=conjectures~,Names=Conjectures~}
 %\newref{assu}{name=assumption~,Name=Assumption~,names=assumptions~,Names=Assumptions~}
+\newref{rem}{name=remark~,Name=Remark~,names=remarks~,Names=Remarks~}
 
 
 %% Disable Images for now
@@ -935,6 +936,39 @@ TODO: I should be able to handle abort in standard WCF as well, just like
  the protocol.
 \end_layout
 
+\begin_layout Remark
+A WCF protocol with cheating abort can be converted into a (standard) WCF
+ protocol by mapping the outputs (of the protocol) 
+\begin_inset Formula $A$
+\end_inset
+
+ to 
+\begin_inset Formula $A$
+\end_inset
+
+, 
+\begin_inset Formula $B$
+\end_inset
+
+ to 
+\begin_inset Formula $B$
+\end_inset
+
+ and 
+\begin_inset Formula $\perp$
+\end_inset
+
+ to the honest player winning.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "rem:standardWCFfromWCFwithAbort"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Definition
 \begin_inset Argument 1
 status open
@@ -1374,7 +1408,25 @@ It remains to establish that
 \end_inset
 
 .
- 
+ To this end, from 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "rem:standardWCFfromWCFwithAbort"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+ we know that 
+\begin_inset Formula $P_{A}^{*}=\max_{(\alpha_{A},\alpha_{B},\alpha_{\perp})\in\mathcal{A}_{c}}$
+\end_inset
+
+ and similarly 
+\begin_inset Formula $P_{B}^{*}=\max_{(\beta_{A},\beta_{B},\beta_{\perp})\in\mathcal{B}_{c}}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Proof
