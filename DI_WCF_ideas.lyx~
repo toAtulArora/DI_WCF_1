@@ -916,7 +916,7 @@ Security.
 \begin_inset Formula $B$
 \end_inset
 
- is given by 
+ (and thus winning) is given by 
 \begin_inset Formula $P_{B}^{*}$
 \end_inset
 
@@ -929,6 +929,12 @@ Security.
 
 \end_deeper
 \end_deeper
+\begin_layout Standard
+TODO: I should be able to handle abort in standard WCF as well, just like
+ we do in standard SCF; because if not, any non-trivial noise will break
+ the protocol.
+\end_layout
+
 \begin_layout Definition
 \begin_inset Argument 1
 status open
@@ -1075,6 +1081,34 @@ Both Honest.
 
 \end_deeper
 \end_deeper
+\begin_layout Remark
+A (standard) SCF protocol with security 
+\begin_inset Formula $p_{*x},p_{y*}$
+\end_inset
+
+ can be converted into a (standard) WCF protocol, with say 
+\begin_inset Formula $0$
+\end_inset
+
+ meaning Alice won, 
+\begin_inset Formula $1$
+\end_inset
+
+ meaning Bob won and 
+\begin_inset Formula $\perp$
+\end_inset
+
+ meaning the honest player won, with 
+\begin_inset Formula $P_{A}^{*}=p_{*0}$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{B}^{*}=p_{1*}$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Lemma
 \begin_inset Argument 1
 status open
