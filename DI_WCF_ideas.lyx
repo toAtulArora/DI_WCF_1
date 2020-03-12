@@ -1053,7 +1053,7 @@ p_{*x}'=\max_{(\alpha_{A},\alpha_{B},\alpha_{\perp})\in\mathcal{A}_{c}}\alpha_{A
  and 
 \begin_inset Formula 
 \[
-p_{y*}^{'}=\max_{(\beta_{A},\beta_{B},\beta_{\perp})\in\mathcal{B}_{c}}\beta_{A}p_{y*}+\beta_{B}p_{*y}.
+p_{y*}'=\max_{(\beta_{A},\beta_{B},\beta_{\perp})\in\mathcal{B}_{c}}\beta_{A}p_{y*}+\beta_{B}p_{*y}.
 \]
 
 \end_inset
@@ -1071,12 +1071,91 @@ Further,
  technique.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Branch proof
+inverted 0
+status open
+
 \begin_layout Proof
 TODO: Add the proof.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
-Sikora's DI weak coin flipping protocol
+Sikora's DI coin flipping protocols
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+SCF, original
+\end_layout
+
+\end_inset
+
+ Bit commitment based.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Security of SCF
+\end_layout
+
+\end_inset
+
+ Standard Security: Perhaps redo it from the original article as a warm
+ up for the next part.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+WCF
+\end_layout
+
+\end_inset
+
+ Bit commitment based with an extra test on Bob.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Security of WCF
+\end_layout
+
+\end_inset
+
+ Standard Security: Need to do Bob's part again; Alice's should carry over.
+ Need to do both Alice and Bob to characterise the sets 
+\begin_inset Formula $\mathcal{A}_{c}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{B}_{c}$
+\end_inset
+
+ in addition to the usual things.
 \end_layout
 
 \end_body
