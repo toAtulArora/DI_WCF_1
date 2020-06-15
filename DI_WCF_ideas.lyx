@@ -78,6 +78,7 @@
 %\newref{conj}{name=conjecture~,Name=Conjecture~,names=conjectures~,Names=Conjectures~}
 %\newref{assu}{name=assumption~,Name=Assumption~,names=assumptions~,Names=Assumptions~}
 \newref{rem}{name=remark~,Name=Remark~,names=remarks~,Names=Remarks~}
+\newref{alg}{name=algorithm~,Name=Algorithm~,names=algorithms~,Names=Algorithms~}
 
 
 %% Disable Images for now
@@ -155,9 +156,11 @@ End
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine basic
-\cite_engine_type default
+\cite_engine biblatex
+\cite_engine_type authoryear
 \biblio_style plain
+\biblatex_bibstyle authoryear-comp
+\biblatex_citestyle authoryear-comp
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -511,9 +514,327 @@ We consider a somewhat restricted and simultaneous slightly more general
  class of weak coin flipping protocols.
 \end_layout
 
+\begin_layout Standard
+EDIT: I got myself thoroughly confused with the whole discussion.
+ 
+\end_layout
+
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+WCF
+\begin_inset Formula $^{\perp}$
+\end_inset
+
+: Abort-phobic Weak Coin Flipping
+\end_layout
+
+\begin_layout Assumption
+\begin_inset CommandInset label
+LatexCommand label
+name "assu:standardWCF"
+
+\end_inset
+
+In the usual definition of WCF, we assume that the players can output 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+.
+ The sole preference of Alice is to convince Bob that the outcome was 
+\begin_inset Formula $A$
+\end_inset
+
+ and, analogously, the sole preference of Bob is to convince Alice that
+ the outcome was 
+\begin_inset Formula $B$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+This is why we never care about what happens when the players disagree.
+ This is because an optimal cheating player, say Alice, will always output
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ and so if there is a disagreement, it means that Alice failed to convince
+ Bob that the outcome was 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ This case is not penalised in the standard construction; this follows directly
+ from the assumption, e.g.
+ Alice doesn't distinguish between the remaining outcomes.
+\end_layout
+
+\begin_layout Subsubsection
+Preference formalised using cones
+\end_layout
+
+\begin_layout Standard
+Distinguishing between the remaining outcomes, i.e.
+ disagreement and abort, can become important (as we shall see).
+ This in turn must be formalised by defining what the players prefer.
+ Taking the most operational perspective, any form of weak coin flipping
+ protocol must end with three possible outcomes—both players agree that
+ the output is either 
+\begin_inset Formula $A$
+\end_inset
+
+, 
+\begin_inset Formula $B$
+\end_inset
+
+ or 
+\begin_inset Formula $\perp$
+\end_inset
+
+ (abort).
+ For concreteness, suppose Alice is cheating and Bob is honest.
+ Let the elements of, what we call a cheat vector, 
+\begin_inset Formula $(\alpha_{A},\alpha_{B},\alpha_{\perp}=1-\alpha_{A}-\alpha_{B})$
+\end_inset
+
+, define the probabilities of the protocol resulting in the outputs 
+\begin_inset Formula $A,B,\perp$
+\end_inset
+
+ respectively.
+ Often, we drop the last component of the cheat vector for clarity.
+ We formalise Alice's preferences by defining an order among the vectors
+ (with respect to a cone 
+\begin_inset Formula $K$
+\end_inset
+
+) as follows: 
+\begin_inset Formula 
+\begin{align*}
+(\alpha_{A},\alpha_{B}) & \succ_{K}(\alpha_{A}',\alpha_{B}) & \iff\alpha_{A}>\alpha_{A}',\\
+(\alpha_{A},\alpha_{B}) & \succ_{K}(\alpha_{A},\alpha_{B}') & \iff\alpha_{B}>\alpha_{B}'.
+\end{align*}
+
+\end_inset
+
+The first relation captures the assumption that Alice wishes to increase
+ the probability of obtaining the outcome 
+\begin_inset Formula $A$
+\end_inset
+
+, which is the same as that of standard weak coin flipping.
+ The second captures the assumption that Alice prefers to increase the probabili
+ty of Bob winning compared to that of aborting.
+ This ordering is equivalent to defining the generalised inequality with
+ respect to the cone 
+\begin_inset Formula $K$
+\end_inset
+
+ where 
+\begin_inset Formula $K:=\{(a,b):a,b\in\mathbb{R}_{\ge0}\}$
+\end_inset
+
+.
+ We thus have the following.
+\end_layout
+
+\begin_layout Assumption
+\begin_inset CommandInset label
+LatexCommand label
+name "assu:WCFperp"
+
+\end_inset
+
+In Abort-phobic Weak Coin Flipping (written as WCF
+\begin_inset Formula $^{\perp}$
+\end_inset
+
+), the preferences of Alice are given by 
+\begin_inset Formula $(\alpha_{A},\alpha_{B})\succ_{K}(\alpha_{A}',\alpha_{B}')$
+\end_inset
+
+ while those of Bob are given by 
+\begin_inset Formula $(\beta_{A},\beta_{B})\succ_{K}(\beta_{A}',\beta_{B}')$
+\end_inset
+
+ where we used the notation of cheat vectors and the definition of 
+\begin_inset Formula $K$
+\end_inset
+
+ as described above.
+\end_layout
+
+\begin_layout Remark
+WCF
+\begin_inset Formula $^{\perp}$
+\end_inset
+
+ is relevant in situations exemplified by 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:AbortCheat-composition"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ Situations may arise where a cheating Alice may prefer to abort than have
+ Bob win with a higher probability.
+ This would mean that for Alice, 
+\begin_inset Formula $K=\{(a,-b):a,b\in\mathbb{R}_{\ge0}\}$
+\end_inset
+
+ while for Bob, we must use 
+\begin_inset Formula $-K$
+\end_inset
+
+.
+ We do not discuss these further in this work.
+\end_layout
+
+\begin_layout Subsubsection
+Disagreement vs Abort
+\end_layout
+
+\begin_layout Standard
+In the preceding discussion, we took the most operational perspective, i.e.
+ any weak coin flipping must end with both players agreeing to either the
+ outcome 
+\begin_inset Formula $A$
+\end_inset
+
+, 
+\begin_inset Formula $B$
+\end_inset
+
+ or 
+\begin_inset Formula $\perp$
+\end_inset
+
+.
+ We now consider two classes of protocols.
+\end_layout
+
+\begin_layout Enumerate
+Each player outputs
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+In the analysis, we assume the cheating player learns the output of the
+ honest player, before broadcasting his outcome.
+ This is analogous to allowing the cheating player to create and distribute
+ the boxes.
+\end_layout
+
+\end_inset
+
+ either 
+\begin_inset Formula $A$
+\end_inset
+
+, 
+\begin_inset Formula $B$
+\end_inset
+
+ or 
+\begin_inset Formula $\perp$
+\end_inset
+
+.
+ If they disagree, the protocol is aborted
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+(if they agree, then the outcome is the agreed outcome)
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Each player outputs either 
+\begin_inset Formula $A$
+\end_inset
+
+ or 
+\begin_inset Formula $B$
+\end_inset
+
+.
+ If they disagree, the protocol is aborted.
+\end_layout
+
+\begin_layout Standard
+A priori, we note that the first class is more general because a player
+ can abort the protocol with certainty by outputting 
+\begin_inset Formula $\perp$
+\end_inset
+
+ while in the second class no such mechanism exists, i.e., abort is always
+ subject to the other (read cheating) player's (a priori unknown) choice.
+ The distinction matters if 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "assu:WCFperp"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+ holds.
+ If 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "assu:standardWCF"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+ holds, then the distinction disappears because the outcome of a cheating
+ player is known and therefore the honest player can abort with certainty
+ by declaring themselves the winner.
+\end_layout
+
+\begin_layout Standard
+One drawback of this approach is that noise will break the relation between
+ abort and agreement; we defer these issues to a later stage of investigation.
+\end_layout
+
+\begin_layout Subsection
+Formal Definitions of WCF and WCF
+\begin_inset Formula $^{\perp}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+NB.
+ I am using two names for the same concept.
+ WCF
+\begin_inset Formula $^{\perp}$
+\end_inset
+
+=Abort-phobic WCF=WCF with cheating abort.
 \end_layout
 
 \begin_layout Definition
@@ -1504,6 +1825,10 @@ te with any other box.
  
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
 \begin_layout Algorithm
 \begin_inset Argument 1
 status open
@@ -1516,7 +1841,7 @@ SCF, original
 
  Alice has one box and Bob has two boxes (in the security analysis, we let
  the cheating player distribute the boxes).
- All the boxes take one input and give one output.
+ Each box takes one binary input and gives one binary output.
  
 \end_layout
 
@@ -1610,22 +1935,6 @@ Bob tests if
 
 \end_deeper
 \end_deeper
-\begin_layout Lemma
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-Security of SCF
-\end_layout
-
-\end_inset
-
- Standard Security: Perhaps redo it from the original article as a warm
- up for the next part.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
 \end_inset
 
 
@@ -1636,12 +1945,702 @@ Security of SCF
 status open
 
 \begin_layout Plain Layout
-WCF
+SCF, original
 \end_layout
 
 \end_inset
 
- Alice has one box and Bob has two boxes (in the security analysis, we let
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:SCForiginal"
+
+\end_inset
+
+Alice has one box and Bob has two boxes (in the security analysis, we let
+ the cheating player distribute the boxes).
+ Each box takes one binary input and gives one binary output.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Alice chooses 
+\begin_inset Formula $x\in_{R}\{0,1\}$
+\end_inset
+
+ and inputs it into her box to obtain 
+\begin_inset Formula $a$
+\end_inset
+
+.
+ She chooses 
+\begin_inset Formula $r\in_{R}\{0,1\}$
+\end_inset
+
+ to compute 
+\begin_inset Formula $s=a\oplus x.r$
+\end_inset
+
+ and sends 
+\begin_inset Formula $s$
+\end_inset
+
+ to Bob.
+\end_layout
+
+\begin_layout Enumerate
+Bob chooses 
+\begin_inset Formula $g\in_{R}\{0,1\}$
+\end_inset
+
+ (for 
+\begin_inset Quotes eld
+\end_inset
+
+guess
+\begin_inset Quotes erd
+\end_inset
+
+) and sends it to Alice.
+\end_layout
+
+\begin_layout Enumerate
+Alice sends 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $a$
+\end_inset
+
+ to Bob.
+ They both compute the output 
+\begin_inset Formula $x\oplus g$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Test round
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Bob tests if 
+\begin_inset Formula $s=a$
+\end_inset
+
+ or 
+\begin_inset Formula $s=a\oplus x$
+\end_inset
+
+.
+ If the test fails, he aborts.
+ Bob chooses 
+\begin_inset Formula $b,c\in_{R}\{0,1\}$
+\end_inset
+
+ such that 
+\begin_inset Formula $a\oplus b\oplus c=1$
+\end_inset
+
+ and then performs a GHZ using 
+\begin_inset Formula $a,b,c$
+\end_inset
+
+ as the inputs and 
+\begin_inset Formula $x,y,z$
+\end_inset
+
+ as the output from the three boxes.
+ He aborts if this test fails.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Security of SCF
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Silman2011"
+literal "false"
+
+\end_inset
+
+ For 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "alg:SCForiginal"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset Formula $P_{B}^{*}\le\frac{3}{4}$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{A}^{*}\le\cos^{2}(\pi/8)$
+\end_inset
+
+.
+ Further, both bounds are saturated by a quantum strategy which uses a GHZ
+ state and the honest player measures along the 
+\begin_inset Formula $\sigma_{x}/\sigma_{y}$
+\end_inset
+
+ basis corresponding to input 
+\begin_inset Formula $0/1$
+\end_inset
+
+ into the box.
+ Cheating Alice measures along 
+\begin_inset Formula $\sigma_{\hat{n}}$
+\end_inset
+
+ for 
+\begin_inset Formula $\hat{n}=\frac{1}{\sqrt{2}}(\hat{x}+\hat{y})$
+\end_inset
+
+ while cheating Bob measures his first box along 
+\begin_inset Formula $\sigma_{x}$
+\end_inset
+
+ and second along 
+\begin_inset Formula $\sigma_{y}$
+\end_inset
+
+.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:SCFstandard"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We now consider three different WCF protocols derived from this SCF protocol
+ which should be at least as secure as simply using the SCF protocol as
+ a WCF protocol.
+ We use a combination of two ideas and systematically try to see which works.
+ The first idea, 
+\emph on
+Extra Test
+\emph default
+: test Bob as well.
+ The second idea: use the 
+\emph on
+rigidity
+\emph default
+ of GHZ; enforce, for instance, that when Alice is honest, the state in
+ the boxes is GHZ and that Alice's box will measure along 
+\begin_inset Formula $\sigma_{x}/\sigma_{y}$
+\end_inset
+
+.
+ Our first objective is to see if the bias is decreased by any combination
+ of these and the second is to find the (minimal elements of the) set of
+ cheat vectors (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "tab:Variants-of-the-WCF-protocols"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+If the bias does indeed reduce, then using the standard composition technique,
+ we should also obtain a better SCF protocol.
+ With some more work, if the cheating vectors can be characterised, then
+ one should be able to use Sikora's composition technique to suppress the
+ bias further.
+ If the bias is not reduced, then the latter might still yield improvements.
+\end_layout
+
+\begin_layout Subsection
+Bidirectional rigidity
+\end_layout
+
+\begin_layout Standard
+The following may seem reasonable.
+ Suppose there are 
+\begin_inset Formula $N$
+\end_inset
+
+ boxes.
+ Alice requests Bob to send 
+\begin_inset Formula $\alpha N$
+\end_inset
+
+ of these (where 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is say 
+\begin_inset Formula $0.5$
+\end_inset
+
+), chosen at random, for testing.
+ Of the 
+\begin_inset Formula $N'=(1-\alpha)N$
+\end_inset
+
+ boxes left, Bob requests Alice to send all but one of these to be tested.
+ The has a CHSH state and measurements.
+ This conclusion is false (at least for games that only succeed probabilisticall
+y, i.e.
+ there is a finite probability of losing the game even with the ideal boxes).
+\end_layout
+
+\begin_layout Standard
+The conclusion holds if Alice is cheating.
+ Intuitively, this is because the first stage becomes irrelevant and in
+ the second stage, Bob randomly asks for all but 
+\begin_inset Formula $1$
+\end_inset
+
+ box which doesn't leave Alice with much room for deviating from CHSH in
+ the large 
+\begin_inset Formula $N'$
+\end_inset
+
+ limit.
+ However, Bob can almost always get away with using an arbitrary box.
+ Intuitively, his strategy is the following.
+ Suppose 
+\begin_inset Formula $\alpha N$
+\end_inset
+
+ is large.
+ Bob constructs 
+\begin_inset Formula $N$
+\end_inset
+
+ CHSH boxes.
+ He replaces a 
+\begin_inset Formula $\beta$
+\end_inset
+
+ fraction (where 
+\begin_inset Formula $\beta$
+\end_inset
+
+ is close to zero) of these boxes with his cheating boxes so that the likelihood
+ of having at least one box in a randomly picked 
+\begin_inset Formula $(1-\alpha)N$
+\end_inset
+
+ sized subset of 
+\begin_inset Formula $N$
+\end_inset
+
+ is close to 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ He sends these to Alice.
+ This way, when Alice tests him, he passes with a high probability.
+ However, when it is his turn, with high probability, he has a cheating
+ box still remaining.
+ He requests Alice to send all the other boxes so that the only remaining
+ box is the cheating box.
+ 
+\end_layout
+
+\begin_layout Standard
+The reasoning above works if the test was like a CHSH test where it is hard
+ to claim a violation if a small finite number of boxes diverge from the
+ CHSH behaviour.
+ However, for the GHZ case, one has to be more careful in describing Bob's
+ cheating strategy and it is not a priori clear that the same strategy works.
+ Suppose Bob has exactly one cheating box, in the 
+\begin_inset Formula $N$
+\end_inset
+
+ boxes which he sends to Alice.
+ Alice would catch him with probability 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, because she can randomly ask for any 
+\begin_inset Formula $\alpha N$
+\end_inset
+
+ of the boxes and the probability that the cheating box is among those is
+ 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ So with probability 
+\begin_inset Formula $1-\alpha$
+\end_inset
+
+, Alice doesn't ask for the cheating box to be tested and in that case,
+ Bob can simply eliminate all the other boxes.
+ So he can succeed with probability 
+\begin_inset Formula $1-\alpha$
+\end_inset
+
+ using this simple strategy.
+ Clearly, by choosing 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ sufficiently close to 
+\begin_inset Formula $1$
+\end_inset
+
+, the protocol can be made secure against such attacks.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Consequences.
+
+\series default
+ Being able to bidirectionally test GHZ doesn't seem to lead to any obvious
+ contradiction [EDIT: It does! It leads to CF; perhaps other states don't].
+ However, if one could make bidirectional rigidity work in general, it would
+ mean that a CHSH state could be shared and this in turn would mean that
+ SCF can be done perfectly which we know is impossible (Kitaev's proof).
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Speculation.
+
+\series default
+ Could it be that the states which don't correspond to perfectly winnable
+ games, could in fact be tested bidirectionally and could be used to give
+ CF protocols but never with perfect bias.
+ Perhaps one way of proceeding is just to bound the best bias possible,
+ given a certain state is shared (and only the honest player makes fixed
+ measurements on it, followed by a classical protocol) and then showing
+ what class of states can be bidirectionally self-tested.
+ Perhaps bidirectional self-testing could be studied independently and then
+ used as a subroutine in this.
+
+\series bold
+ 
+\series default
+\emph on
+Question.
+
+\emph default
+ Can one give a general result which relates bidirectional self-testing
+ with the condition that a CF protocol has the same performance in both
+ the device dependent and device independent case?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No ET
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ET
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No Rigidity
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P_{B}^{*}\le\frac{3}{4}$
+\end_inset
+
+, 
+\begin_inset Formula $P_{A}^{*}\le\cos^{2}(\pi/8)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Jamie: 
+\begin_inset Formula $P_{B}^{*}\le\frac{3}{4}$
+\end_inset
+
+, 
+\begin_inset Formula $P_{A}^{*}\le\cos^{2}(\pi/8)$
+\end_inset
+
+; cheat vectors?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bob tests Rigidity 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P_{B}^{*}\le\frac{3}{4}$
+\end_inset
+
+, 
+\begin_inset Formula $P_{A}^{*}\le\cos^{2}(\pi/8)$
+\end_inset
+
+; cheat vectors may be easier to evaluate
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Alice tests Rigidity
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P_{B}^{*}\le\frac{3}{4}$
+\end_inset
+
+, 
+\begin_inset Formula $P_{A}^{*}\le\cos^{2}(\pi/8)$
+\end_inset
+
+; cheat vectors may be easier to evaluate
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Variants of the various WCF protocols.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Variants-of-the-WCF-protocols"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+I have to understand the following, before I can do anything interesting.
+ The 
+\begin_inset Quotes eld
+\end_inset
+
+relevance
+\begin_inset Quotes erd
+\end_inset
+
+ here is with respect to the values for the cheat vector.
+\end_layout
+
+\begin_layout Enumerate
+Why is it irrelevant for Alice to test Bob (in addition to Bob testing Alice)?
+\end_layout
+
+\begin_layout Enumerate
+Why is it irrelevant for Alice to self-test Bob? (without using the GHZ
+ based optimal cheating strategy)
+\end_layout
+
+\begin_layout Enumerate
+Why is it not-irrelevant for Bob to self-test Alice? (again, without relying
+ on the GHZ based optimal cheating strategy argument).
+\end_layout
+
+\begin_layout Plain Layout
+I need to understand these precisely because they will have repercussions
+ on the cheat vectors.
+\end_layout
+
+\begin_layout Plain Layout
+Another thing I realised is that self-testing can at most guarantee that
+ the state is GHZ and the honest party makes the right measurements.
+ The dishonest party can of course change the measurement (the last box
+ after the others have been tested can be tampered, although the box with
+ the other party can't be).
+ So these are what would constitute the variables, when the player that
+ is self-tested is dishonest.
+ What happens in the other case, should be harder to characterise.
+ This in turn is related to which self-testing was irrelevant (for this
+ I need Jamie's argument).
+ If indeed, it is irrelevant for Alice to self-test Bob, then I should be
+ able to proceed.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+ET, no Rigidity
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+WCF (ET, no rigidity)
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:WCF_ET_noRigidity"
+
+\end_inset
+
+Alice has one box and Bob has two boxes (in the security analysis, we let
  the cheating player distribute the boxes).
  All the boxes take one input and give one output.
  
@@ -1650,24 +2649,24 @@ WCF
 \begin_deeper
 \begin_layout Enumerate
 Alice chooses 
-\begin_inset Formula $s_{A}\in_{R}\{0,1\}$
+\begin_inset Formula $x\in_{R}\{0,1\}$
 \end_inset
 
  and inputs it into her box to obtain 
-\begin_inset Formula $r_{A}$
+\begin_inset Formula $a$
 \end_inset
 
 .
  She chooses 
-\begin_inset Formula $a\in_{R}\{0,1\}$
+\begin_inset Formula $r\in_{R}\{0,1\}$
 \end_inset
 
  to compute 
-\begin_inset Formula $c=r_{A}\oplus s_{A}.a$
+\begin_inset Formula $s=a\oplus x.r$
 \end_inset
 
  and sends 
-\begin_inset Formula $c$
+\begin_inset Formula $s$
 \end_inset
 
  to Bob.
@@ -1675,7 +2674,7 @@ Alice chooses
 
 \begin_layout Enumerate
 Bob chooses 
-\begin_inset Formula $b\in_{R}\{0,1\}$
+\begin_inset Formula $g\in_{R}\{0,1\}$
 \end_inset
 
  and sends it to Alice.
@@ -1683,12 +2682,12 @@ Bob chooses
 
 \begin_layout Enumerate
 Alice sends 
-\begin_inset Formula $s_{A}$
+\begin_inset Formula $x$
 \end_inset
 
  to Bob.
  They both compute the output 
-\begin_inset Formula $s_{A}\oplus b$
+\begin_inset Formula $x\oplus g$
 \end_inset
 
 .
@@ -1702,24 +2701,25 @@ Test Rounds.
 \begin_deeper
 \begin_layout Enumerate
 If 
-\begin_inset Formula $s_{A}\oplus b=0$
+\begin_inset Formula $x\oplus g=0$
 \end_inset
 
- then Alice sends 
-\begin_inset Formula $r_{A}$
+ (i.e.
+ the outcome for Alice winning) Alice sends 
+\begin_inset Formula $a$
 \end_inset
 
- to Bob.
+ to Bob (to convince him that she did not cheat).
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 Bob checks if 
-\begin_inset Formula $c=r_{A}$
+\begin_inset Formula $s=a$
 \end_inset
 
  or 
-\begin_inset Formula $c=r_{A}\oplus s_{A}$
+\begin_inset Formula $s=a\oplus x$
 \end_inset
 
 .
@@ -1728,19 +2728,19 @@ Bob checks if
 
 \begin_layout Enumerate
 Bob chooses 
-\begin_inset Formula $s_{B},s_{C}\in_{R}\{0,1\}$
+\begin_inset Formula $y,z\in_{R}\{0,1\}$
 \end_inset
 
  such that 
-\begin_inset Formula $s_{A}\oplus s_{B}\oplus s_{C}=1$
+\begin_inset Formula $x\oplus y\oplus z=1$
 \end_inset
 
  and then performs a GHZ using 
-\begin_inset Formula $s_{A},s_{B},s_{C}$
+\begin_inset Formula $x,y,z$
 \end_inset
 
  as the inputs and 
-\begin_inset Formula $r_{A},r_{B},r_{C}$
+\begin_inset Formula $a,b,c$
 \end_inset
 
  as the output from the three boxes (he measures his two boxes to obtain
@@ -1751,21 +2751,22 @@ Bob chooses
 \end_deeper
 \begin_layout Enumerate
 If 
-\begin_inset Formula $s_{A}\oplus b=1$
+\begin_inset Formula $x\oplus g=1$
 \end_inset
 
- then Bob sends his boxes to Alice (Alice tries to ensure he didn't tamper
- with the boxes).
+ (i.e.
+ the outcome for Bob winning) then Bob sends his boxes (Alice tries to ensure
+ he didn't tamper with the boxes).
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 Alice chooses 
-\begin_inset Formula $s_{B},s_{C}\in_{R}\{0,1\}$
+\begin_inset Formula $y,z\in_{R}\{0,1\}$
 \end_inset
 
  such that 
-\begin_inset Formula $s_{A}\oplus s_{B}\oplus s_{c}=1$
+\begin_inset Formula $a\oplus b\oplus c=1$
 \end_inset
 
  and then performs a GHZ (like Bob did in the previous case).
@@ -1773,8 +2774,904 @@ Alice chooses
 \end_layout
 
 \end_deeper
+\begin_layout Enumerate
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+(b')
+\end_layout
+
+\end_inset
+
+ Alice sends 
+\begin_inset Formula $y,z\in_{R}\{0,1\}$
+\end_inset
+
+ to Bob and Bob returns 
+\begin_inset Formula $(b,c)$
+\end_inset
+
+.
+ Alice tests GHZ and aborts if it fails.
+\end_layout
+
 \end_deeper
 \end_deeper
+\begin_layout Remark
+Recall that the GHZ test, is that 
+\begin_inset Formula $a\oplus b\oplus c=xyz\oplus1$
+\end_inset
+
+, given the inputs satisfy 
+\begin_inset Formula $x\oplus y\oplus z=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Observations
+\end_layout
+
+\begin_layout Standard
+Clearly, 
+\begin_inset Formula $P_{A}^{*}\le\cos^{2}(\pi/8)$
+\end_inset
+
+ carries over from 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "lem:SCFstandard"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ As for Bob, note that he is only tested if he correctly guesses Alice's
+ input, 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ We consider three special cases.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+New boxes just for passing the test.
+
+\series default
+ Suppose he already used his boxes to guess Alice's input from 
+\begin_inset Formula $s$
+\end_inset
+
+.
+ We give a possible strategy for him whereby he sends new boxes to Alice.
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $x=0$
+\end_inset
+
+, he knows Alice's output, 
+\begin_inset Formula $a=s$
+\end_inset
+
+, as well.
+ He also knows that Alice will either input 
+\begin_inset Formula $(y,z)=(1,0)$
+\end_inset
+
+ or 
+\begin_inset Formula $(y,z)=(0,1)$
+\end_inset
+
+ to satisfy 
+\begin_inset Formula $x\oplus y\oplus z=1$
+\end_inset
+
+.
+ He can therefore simply send deterministic boxes that satisfy 
+\begin_inset Formula $a\oplus b\oplus c=1$
+\end_inset
+
+ regardless of the input.
+ 
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $x=1$
+\end_inset
+
+, he knows Alice's output 
+\begin_inset Formula $a$
+\end_inset
+
+ was either 
+\begin_inset Formula $s$
+\end_inset
+
+ or 
+\begin_inset Formula $s\oplus x=s\oplus1$
+\end_inset
+
+ with equal probability.
+ He assumes Alice's output is 
+\begin_inset Formula $s$
+\end_inset
+
+ (and is thus right half the times).
+ Suppose he is right.
+ Then, he can create deterministic boxes as follows.
+ When the input is 
+\begin_inset Formula $(y,z)=(0,0)$
+\end_inset
+
+ the boxes output 
+\begin_inset Formula $(1,1)$
+\end_inset
+
+ if 
+\begin_inset Formula $a=1$
+\end_inset
+
+ and 
+\begin_inset Formula $(1,0)$
+\end_inset
+
+ if 
+\begin_inset Formula $a=0$
+\end_inset
+
+, so that 
+\begin_inset Formula $a\oplus b\oplus c=xyz\oplus1=1$
+\end_inset
+
+.
+ When the input 
+\begin_inset Formula $(y,z)=(1,1)$
+\end_inset
+
+ the boxes output 
+\begin_inset Formula $(1,0)$
+\end_inset
+
+ if 
+\begin_inset Formula $a=0$
+\end_inset
+
+ and 
+\begin_inset Formula $(0,0)$
+\end_inset
+
+ if 
+\begin_inset Formula $a=1$
+\end_inset
+
+, so that 
+\begin_inset Formula $a\oplus b\oplus c=xyz\oplus1=0$
+\end_inset
+
+.
+ If he is wrong, worst case, he gets caught.
+\end_layout
+
+\begin_layout Standard
+This strategy gives him at least a 
+\begin_inset Formula $3/4$
+\end_inset
+
+ probability of passing the test, supposing he won in the first place.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Optimal Cheating Strategy when Bob wasn't tested.
+
+\series default
+ We now analyse Bob's optimal cheating strategy from the case where he wasn't
+ tested.
+ This uses GHZ boxes.
+ Bob begins by assuming that 
+\begin_inset Formula $s=a$
+\end_inset
+
+ and he is right 
+\begin_inset Formula $3/4$
+\end_inset
+
+ of the times (assuming Alice is honest; as we discussed above).
+ He measures his boxes with 
+\begin_inset Formula $(y,z)=(1,0)$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $a\oplus b\oplus c=1$
+\end_inset
+
+ he guesses that 
+\begin_inset Formula $x=0$
+\end_inset
+
+, otherwise he guesses 
+\begin_inset Formula $x=1$
+\end_inset
+
+.
+ This makes sense because if Alice inputted 
+\begin_inset Formula $0$
+\end_inset
+
+, the GHZ test passes with certainty (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "tab:GHZ-table"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+).
+ However, if Alice inputted 
+\begin_inset Formula $1$
+\end_inset
+
+, 
+\begin_inset Formula $a\oplus b\oplus c$
+\end_inset
+
+ might still equal 
+\begin_inset Formula $1$
+\end_inset
+
+ but with only 
+\begin_inset Formula $1/2$
+\end_inset
+
+ probability (I skipped the calculation but seems right).
+ So, overall then, he has a probability of 
+\begin_inset Formula $3/4$
+\end_inset
+
+ for correctly guessing Alice's input.
+ This was already known.
+ 
+\end_layout
+
+\begin_layout Standard
+Assuming he does guess correctly, can he pass Alice's test with certainty?
+ With all the information he has, it might not not seem too hard.
+ We know that either 
+\begin_inset Formula $(x,y,z)$
+\end_inset
+
+ was 
+\begin_inset Formula $(0,1,0)$
+\end_inset
+
+ or it was 
+\begin_inset Formula $(1,1,0)$
+\end_inset
+
+ with equal probability.
+ Since Bob is getting tested, he guessed 
+\begin_inset Formula $x$
+\end_inset
+
+ correctly.
+ If 
+\begin_inset Formula $x=0$
+\end_inset
+
+, then from 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "tab:GHZ-table"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, it is clear that Alice would input 
+\begin_inset Formula $(y,z)=(1,0)$
+\end_inset
+
+ or 
+\begin_inset Formula $(0,1)$
+\end_inset
+
+ but regardless, the outputs 
+\begin_inset Formula $(a,b,c)$
+\end_inset
+
+ satisfy the GHZ test.
+ He can thus send these boxes (assuming they show the same output regardless
+ of the inputs) and pass the test with certainty.
+ Now, if 
+\begin_inset Formula $x=1$
+\end_inset
+
+ and he guessed correctly, it must mean that his outputs did not satisfy
+ the GHZ test.
+ However, since he has no information about Alice's outcome (he received
+ 
+\begin_inset Formula $s=a\oplus r$
+\end_inset
+
+) and as he has already measured his boxes along 
+\begin_inset Formula $\sigma_{y}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{x}$
+\end_inset
+
+ (corresponding to 
+\begin_inset Formula $(y,z)=(1,0)$
+\end_inset
+
+), it seems that he can't succeed in passing the test with probability more
+ than 
+\begin_inset Formula $1/2$
+\end_inset
+
+.
+ Thus, his overall probability of passing the test seems to be 
+\begin_inset Formula $3/4$
+\end_inset
+
+, assuming he guessed correctly in the first place.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+New boxes for guessing and passing the test.
+
+\series default
+ This seems even easier than the optimal strategy that uses GHZ.
+ Since Bob distributes the boxes, he programs Alice's box to always output
+ 
+\begin_inset Formula $a=0$
+\end_inset
+
+.
+ Bob always guesses that 
+\begin_inset Formula $x=s$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $x=0$
+\end_inset
+
+ then he is indeed correct because 
+\begin_inset Formula $s=a=0$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $x=1$
+\end_inset
+
+ then 
+\begin_inset Formula $s=a\oplus r=r$
+\end_inset
+
+ so his guess is right half the times.
+ Overall, he guesses correctly 
+\begin_inset Formula $3/4$
+\end_inset
+
+ of the times.
+ How can he pass Alice's test? Since Bob is tested when he guesses correctly,
+ he knows 
+\begin_inset Formula $x$
+\end_inset
+
+ and that 
+\begin_inset Formula $a=0$
+\end_inset
+
+ by construction.
+ 
+\end_layout
+
+\begin_layout Itemize
+Suppose 
+\begin_inset Formula $x=1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Note that Alice will either input 
+\begin_inset Formula $y=z=0$
+\end_inset
+
+ or 
+\begin_inset Formula $y=z=1$
+\end_inset
+
+ to satisfy 
+\begin_inset Formula $x\oplus y\oplus z=1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Bob has to ensure, then, that 
+\begin_inset Formula $b\oplus c=1$
+\end_inset
+
+ when 
+\begin_inset Formula $y=z=0$
+\end_inset
+
+ and 
+\begin_inset Formula $b\oplus c=0$
+\end_inset
+
+ when 
+\begin_inset Formula $y=z=1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+He sets 
+\begin_inset Formula $c=1$
+\end_inset
+
+ (the last box always outputs one).
+ He sets 
+\begin_inset Formula $b=y$
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Or equivalently, he could set 
+\begin_inset Formula $c=0$
+\end_inset
+
+ and 
+\begin_inset Formula $b=\bar{y}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Suppose 
+\begin_inset Formula $x=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+To pass the test, if 
+\begin_inset Formula $x=1$
+\end_inset
+
+, he simply creates a pair of CHSH boxes which satisfy 
+\begin_inset Formula $b\oplus c=yz\oplus1=1$
+\end_inset
+
+ (since 
+\begin_inset Formula $yz=0$
+\end_inset
+
+ because Alice only uses 
+\begin_inset Formula $x\oplus y\oplus z=1$
+\end_inset
+
+ and 
+\begin_inset Formula $x$
+\end_inset
+
+ is already 
+\begin_inset Formula $1$
+\end_inset
+
+; BUT why can't 
+\begin_inset Formula $y=z=1$
+\end_inset
+
+?) and if 
+\begin_inset Formula $x=0$
+\end_inset
+
+, h
+\end_layout
+
+\end_inset
+
+He creates deterministic boxes satisfying 
+\begin_inset Formula $b\oplus c=1$
+\end_inset
+
+ regardless of the input.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Clearly, he passes Alice's test with certainty.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Conclusion.
+
+\series default
+ Evidently, Bob can cheat optimally and pass Alice's test by using the strategy
+ described above (optimal because for a possibly weaker protocol, 
+\begin_inset Formula $P_{B}^{*}\le3/4$
+\end_inset
+
+ and we found a strategy which saturates the bound in an a priori stronger
+ protocol).
+ However, if Bob is forced to use a GHZ state (which can be enforced by
+ rigidity) then one might be able to lower 
+\begin_inset Formula $P_{B}^{*}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $z$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $xyz\oplus1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The values for which 
+\begin_inset Formula $x\oplus y\oplus z=1$
+\end_inset
+
+, 
+\begin_inset Formula $a\oplus b\oplus c$
+\end_inset
+
+ must equal the last column for a GHZ test to pass.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:GHZ-table"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Security Analysis
+\end_layout
+
+\begin_layout Standard
+We defer the complete security analysis for this case to the end.
+ This is because, as suggested by the discussion above, self-testing Bob
+ and performing the extra test, might yield a smaller 
+\begin_inset Formula $P_{B}^{*}$
+\end_inset
+
+ and then one can construct a better protocol by using the standard composition
+ technique.
+ This saves us the effort of finding the cheat vectors (assuming of course,
+ it works).
+\end_layout
+
 \begin_layout Lemma
 \begin_inset Argument 1
 status open
@@ -1795,6 +3692,572 @@ Security of WCF
 \end_inset
 
  in addition to the usual things.
+\end_layout
+
+\begin_layout Subsection
+ET and Alice tests Rigidity (i.e.
+ Bob is self-tested)
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+WCF (ET, Alice tests rigidity)
+\end_layout
+
+\end_inset
+
+ Before the protocol begins, Bob distributes 
+\begin_inset Formula $N$
+\end_inset
+
+ boxes and Alice does a rigidity test on 
+\begin_inset Formula $N-1$
+\end_inset
+
+ randomly chosen boxes.
+ If any test fails, Alice aborts.
+ They then proceed as in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "alg:WCF_ET_noRigidity"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Using SDPs
+\end_layout
+
+\begin_layout Standard
+The analysis for a malicious Alice stays unchanged.
+ For a malicious Bob, however, the primary simplification is that we can
+ assume the state in the boxes is 
+\begin_inset Formula $\left|\psi\right\rangle =\frac{\left|000\right\rangle +\left|111\right\rangle }{\sqrt{2}}$
+\end_inset
+
+ and that Alice measures along 
+\begin_inset Formula $\sigma_{z}/\sigma_{y}$
+\end_inset
+
+.
+ We simulate the classical communication using noiseless quantum communication
+ (TODO: discuss these in more detail later).
+ We suppose that the initial state is 
+\begin_inset Formula 
+\begin{equation}
+\left|\psi_{1}\right\rangle :=\left|\psi\right\rangle _{ABC}\left(\frac{\left|001\right\rangle \left|01\right\rangle +\left|010\right\rangle \left|10\right\rangle +\left|100\right\rangle \left|00\right\rangle +\left|111\right\rangle \left|11\right\rangle }{\sqrt{4}}\right)_{X'Y'Z'Y''Z''}\left|0\right\rangle _{A'}\left|00\right\rangle _{S'S''}\left(\frac{\left|0\right\rangle +\left|1\right\rangle }{\sqrt{2}}\right)_{R'}\label{eq:psi1}
+\end{equation}
+
+\end_inset
+
+where the distribution of the systems/registers, initially, is as follows.
+ Alice possesses register 
+\begin_inset Formula $A$
+\end_inset
+
+ and Bob possesses the registers 
+\begin_inset Formula $BC$
+\end_inset
+
+.
+ All the remaining registers are assumed to be with Alice.
+ The primes are used to indicate that they correspond to classical communication
+ (and randomness).
+ In the SDP formulation, then, we note that 
+\begin_inset Formula 
+\[
+\rho_{1}=\tr_{BC}\left|\psi_{1}\right\rangle \left\langle \psi_{1}\right|
+\]
+
+\end_inset
+
+ (strictly speaking, it should really by 
+\begin_inset Formula $\rho_{1}=\tr_{BC}\left(\left|\psi_{1}\right\rangle \left\langle \psi_{1}\right|\right)$
+\end_inset
+
+ because Alice doesn't have the systems 
+\begin_inset Formula $B$
+\end_inset
+
+ and 
+\begin_inset Formula $C$
+\end_inset
+
+ but because of the preceding self-testing step, she knows what the state
+ must be).
+ According to the protocol, since Alice is honest (remember, we are analysing
+ for a malicious Bob), she is supposed 
+\end_layout
+
+\begin_layout Itemize
+to choose a random number 
+\begin_inset Formula $x$
+\end_inset
+
+ and input this into the box to obtain the outcome 
+\begin_inset Formula $a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+She then sends 
+\begin_inset Formula $s=a\oplus x\cdot r$
+\end_inset
+
+ to Bob.
+\end_layout
+
+\begin_layout Standard
+Since, later, she also has to choose 
+\begin_inset Formula $y,z$
+\end_inset
+
+ consistent with 
+\begin_inset Formula $x\oplus y\oplus z=1$
+\end_inset
+
+, without loss of generality, we assume she already chose these from the
+ beginning.
+ Further, we assume she chose them quantumly (because if we start using
+ mixed states to simulate classical randomness, then the SDP formalism allows
+ Bob to hold a purification which yields a trivial bias).
+ We thus write the random choice as the state present in the 
+\begin_inset Formula $X'Y'Z'$
+\end_inset
+
+ registers (one could imagine the register being 
+\begin_inset Formula $X'Y'Z'X''Y''Z''$
+\end_inset
+
+ and the state as 
+\begin_inset Formula $\left|001\right\rangle \left|001\right\rangle +\left|010\right\rangle \left|010\right\rangle \dots$
+\end_inset
+
+ so that tracing out one part yields the classical mixture we want while
+ also ensuring Bob doesn't have access to it; this increases the dimension
+ of the problem and so to keep it low, we only retain 
+\begin_inset Formula $X'Y'Z'$
+\end_inset
+
+; TODO: rewrite this part because now I am using 
+\begin_inset Formula $Y'$
+\end_inset
+
+, 
+\begin_inset Formula $Z'$
+\end_inset
+
+ but this only changes the notation, the idea remains the same).
+ We simulate the measurement using a unitary 
+\begin_inset Formula $U_{1}$
+\end_inset
+
+ (the details constitute the next section) which does the following two
+ things: First it uses 
+\begin_inset Formula $X'$
+\end_inset
+
+ as control and encodes the outcome of the measurement in 
+\begin_inset Formula $A'$
+\end_inset
+
+.
+ Then, it uses 
+\begin_inset Formula $X'$
+\end_inset
+
+, 
+\begin_inset Formula $R'$
+\end_inset
+
+ and 
+\begin_inset Formula $A'$
+\end_inset
+
+ as controls and encodes the output of the function 
+\begin_inset Formula $s=a\oplus x\cdot r$
+\end_inset
+
+ into 
+\begin_inset Formula $S'S''$
+\end_inset
+
+, i.e.
+ it stores the same value in both 
+\begin_inset Formula $S'$
+\end_inset
+
+ and 
+\begin_inset Formula $S''$
+\end_inset
+
+ as 
+\begin_inset Formula $\left|ss\right\rangle _{S'S''}$
+\end_inset
+
+.
+ The state at the end of this is denoted by 
+\begin_inset Formula 
+\[
+\rho_{2}=U_{1}\rho_{1}U_{1}^{\dagger}.
+\]
+
+\end_inset
+
+At this point, Alice sends the register 
+\begin_inset Formula $S'$
+\end_inset
+
+ to Bob and Bob sends the register 
+\begin_inset Formula $G'$
+\end_inset
+
+ (which contains the 
+\begin_inset Quotes eld
+\end_inset
+
+guess
+\begin_inset Quotes erd
+\end_inset
+
+ if he is cheating, a random bit if he is honest).
+ This is because the protocol at this point is that 
+\end_layout
+
+\begin_layout Itemize
+Bob sends a random number 
+\begin_inset Formula $g$
+\end_inset
+
+ to Alice.
+\end_layout
+
+\begin_layout Standard
+The most general strategy Bob can play, at this point, is to give any arbitrary
+ state 
+\begin_inset Formula $\rho_{3}$
+\end_inset
+
+ over the registers 
+\begin_inset Formula $AA'X'Y'Z'Y''Z''S''G'$
+\end_inset
+
+, constrained only by the fact that he can't touch Alice's laboratory, i.e.
+ 
+\begin_inset Formula 
+\[
+\rho_{3},\text{ s.t. }\tr_{S'}(\rho_{2})=\tr_{G'}(\rho_{3}).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since we are interested in Bob's probability of success, we note
+\end_layout
+
+\begin_layout Itemize
+if 
+\begin_inset Formula $x\oplus g=0$
+\end_inset
+
+ then Alice sends 
+\begin_inset Formula $y,z$
+\end_inset
+
+ to Bob and he responds with 
+\begin_inset Formula $b'',c''$
+\end_inset
+
+.
+ Alice accepts that Bob won if the GHZ test succeeds with 
+\begin_inset Formula $x,y,z$
+\end_inset
+
+ as the input and 
+\begin_inset Formula $a',b',c'$
+\end_inset
+
+ as the outputs.
+\end_layout
+
+\begin_layout Standard
+Thus, Alice sends 
+\begin_inset Formula $Y'$
+\end_inset
+
+ and 
+\begin_inset Formula $Z'$
+\end_inset
+
+ to Bob while Bob returns registers 
+\begin_inset Formula $B'$
+\end_inset
+
+ and 
+\begin_inset Formula $C'$
+\end_inset
+
+ with his responses.
+ Again, this means he sends an arbitrary state 
+\begin_inset Formula $\rho_{4}$
+\end_inset
+
+ over the registers 
+\begin_inset Formula $AA'B'C'X'Y''Z''S''G'$
+\end_inset
+
+, constrained only by the fact that he, again, can't influence Alice's laborator
+y, i.e.
+\begin_inset Formula 
+\[
+\rho_{4},\text{ s.t. }\tr_{Y'Z'}(\rho_{3})=\tr_{B'C'}(\rho_{4})
+\]
+
+\end_inset
+
+and Alice declares Bob a winner with probability 
+\begin_inset Formula $\tr\left(\Pi\rho_{4}\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $\Pi$
+\end_inset
+
+ just represents the winning condition, namely 
+\begin_inset Formula $x\oplus g=1$
+\end_inset
+
+ (
+\begin_inset Formula $1$
+\end_inset
+
+ is Bob wins, 
+\begin_inset Formula $0$
+\end_inset
+
+ is Alice wins, by convention) and that 
+\begin_inset Formula $a\oplus b\oplus c=xyz\oplus1$
+\end_inset
+
+.
+ We discuss this in detail, soon enough.
+ In summary then, we have 
+\begin_inset Formula 
+\[
+\max\tr(\Pi\rho_{4})
+\]
+
+\end_inset
+
+subject to 
+\begin_inset Formula 
+\begin{align*}
+\tr_{B'C'}(\rho_{4}) & =\tr_{Y'Z'}(\rho_{3}),\\
+\tr_{G'}(\rho_{3}) & =\tr_{S'}(\rho_{2}),\\
+\rho_{2} & =U_{1}\rho_{1}U_{1}^{\dagger}\\
+\rho_{1} & =\tr_{BC}(\left|\psi_{1}\right\rangle \left\langle \psi_{1}\right|)
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\left|\psi_{1}\right\rangle $
+\end_inset
+
+ is as defined in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:psi1"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset Formula $U_{1}$
+\end_inset
+
+ is as defined in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:Unitary"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset Formula $\Pi$
+\end_inset
+
+ is as defined in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:projector"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ For clarity, 
+\begin_inset Formula 
+\begin{align*}
+\rho_{1},\rho_{2} & \in\text{Pos}(\mathcal{H}_{AX'Y'Z'Y''Z''A'S'S''R'})\\
+\rho_{3} & \in\text{Pos}(\mathcal{H}_{AX'Y'Z'Y''Z''A'S''R'G'})\\
+\rho_{4} & \in\text{Pos}(\mathcal{H}_{AX'Y''Z''A'S''R'B'C'}).
+\end{align*}
+
+\end_inset
+
+Clearly, we can simplify this further.
+ We have 
+\begin_inset Formula 
+\[
+\max\tr(\Pi\sigma_{2})
+\]
+
+\end_inset
+
+subject to 
+\begin_inset Formula 
+\begin{align*}
+\tr_{B'C'}(\sigma_{2}) & =\tr_{Y'Z'}(\sigma_{1})\\
+\tr_{G'}(\sigma_{1}) & =\tr_{S'BC}(U_{1}\left|\psi_{1}\right\rangle \left\langle \psi_{1}\right|U_{1}^{\dagger})
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\begin{align*}
+\sigma_{1} & \in\text{Pos}(\mathcal{H}_{AX'Y'Z'Y''Z''A'S''R'G'})\\
+\sigma_{2} & \in\text{Pos}(\mathcal{H}_{AX'Y''Z''A'S''R'B'C'}).
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+The Unitary and the measurement
+\end_layout
+
+\begin_layout Standard
+We write 
+\begin_inset Formula 
+\begin{equation}
+U_{1}=U_{II}U_{I}\label{eq:Unitary}
+\end{equation}
+
+\end_inset
+
+ where 
+\begin_inset Formula $U_{I}$
+\end_inset
+
+ acts on 
+\begin_inset Formula $AA'$
+\end_inset
+
+ with 
+\begin_inset Formula $X'$
+\end_inset
+
+ as control while 
+\begin_inset Formula $U_{II}$
+\end_inset
+
+ acts on 
+\begin_inset Formula $SS'$
+\end_inset
+
+ with 
+\begin_inset Formula $X'R'A'$
+\end_inset
+
+ as control.
+ We define
+\begin_inset Formula 
+\begin{align*}
+U_{I} & :=\mathbb{I}_{\text{rest}}\otimes\Bigg(\left|0\right\rangle \left\langle 0\right|_{X'}\otimes\left(\Pi_{\left|0\right\rangle _{A}}\otimes\mathbb{I}_{A'}+\Pi_{\left|1\right\rangle _{A}}\otimes\hat{X}_{A'}\right)\\
+ & \hfill+\left|1\right\rangle \left\langle 1\right|_{X'}\otimes\left(\Pi_{\frac{\left|0\right\rangle +i\left|1\right\rangle }{\sqrt{2}}A}\otimes\mathbb{I}_{A'}+\Pi_{\frac{\left|0\right\rangle -i\left|1\right\rangle }{\sqrt{2}}A}\otimes\hat{X}_{A'}\right)\Bigg)
+\end{align*}
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+U_{II}:=\mathbb{I}_{\text{rest}}\otimes\sum_{a,x,r\in\{0,1\}}\hat{X}_{S}^{a\oplus x.r}\otimes\hat{X}_{S'}^{a\oplus x.r}\otimes\left|axr\right\rangle \left\langle axr\right|_{A'X'R'}.
+\]
+
+\end_inset
+
+This brings us to the final measurement.
+ We have 
+\begin_inset Formula 
+\begin{equation}
+\Pi:=\sum_{a,b,c,x,y,z\in S_{\text{GHZ}}}\left|abcxyzg\right\rangle \left\langle abcxyzg\right|_{A'B'C'X'Y''Z''G'}\label{eq:projector}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $S_{\text{GHZ}}=\{(a,b,c,x,y,z,g):x\oplus g=1\text{ and }a\oplus b\oplus c=xyz\oplus1\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Acknowledgements
+\end_layout
+
+\begin_layout Standard
+This research was supported in part by Perimeter Institute for Theoretical
+ Physics.
+ Research at Perimeter Institute is supported by the Government of Canada
+ through the Department of Innovation, Science and Economic Development
+ and by the Province of Ontario through the Ministry of Research, Innovation
+ and Science.
+\end_layout
+
+\begin_layout Standard
+You further agree that following your visit, you will keep PI apprised of
+ any manuscripts related to your visit by writing to pipublications@perimeterins
+titute.ca.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "DI_WCF_ideas"
+options "plain"
+
+\end_inset
+
+
 \end_layout
 
 \end_body
