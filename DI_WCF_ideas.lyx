@@ -490,6 +490,146 @@ Tom also pointed out an oversight about testing Bob; we were sending both
  else he can pass the test with certainty.
 \end_layout
 
+\begin_layout Subsection
+aoeu
+\end_layout
+
+\begin_layout Itemize
+Current Approach (improve bias):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Continuity; Self-testing (rigorous proof of security)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+NPA based; if
+\end_layout
+
+\begin_layout Itemize
+Quantum Messages exchange; see if this is sorted
+\end_layout
+
+\begin_layout Itemize
+Dip Dip Boom | edge of point games; Certify Unitaries
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Dip Dip Boom with entanglement + classical communication.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Entanglement based version; MBQC; have some graph states and use some operations
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Interactive protocol; like a measurement based approach; could be equivalent
+\end_layout
+
+\begin_layout Itemize
+may be more natural to translate into device independent approach
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Issue; can you share it between Alice and Bob
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsection
+July 23–25, 2020
+\end_layout
+
+\begin_layout Itemize
+[numerics] 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Results: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Post Jamie Magic: 0.42 (or some such); 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The issue was that I had not implemented the measurement of 
+\begin_inset Formula $A$
+\end_inset
+
+ (I was just measuring in the standard Z basis always);
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Post Jamie Magic, Debug 1: 0.499 (or similar): 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+I realised that after the measurement and computation of S, I wasn't actually
+ simulating the sending of S.
+ Did this by entangling it with S' and tracing it out (so the result is
+ a mixed state and Bob can hold it).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Post Jamie Magic, Debug 2; 0.625 (or similar):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This seemed to make a lot more sense; decided to do a sanity check to recover
+ 0.75 when we don't do a GHZ test (i.e.
+ the extra test for Bob).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Post Jamie Magic, Debug 3; 0.999 (or similar):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+[*] don't know what is happening;
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Two issues
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+When I remove the GHZ test, I expect the result to be 0.75 (the older value);
+ instead I get 0.999.
+ 
+\end_layout
+
+\begin_layout Itemize
+Isn't it crucial to send Z? Because how else will Bob know which basis to
+ measure in (e.g.
+ when he's honest).
+ Sure, Alice has both X and Y so for her finding Z is not an issue but Bob
+ has only Y.
+ [this still doesn't explain why the previous step is failing; this should
+ give more power to Bob but he is already able to maximally cheat (without
+ the GHZ test)].
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Section
 F1 | A framework for Distrustful DI protocols
 \end_layout
