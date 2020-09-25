@@ -1,0 +1,1613 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{color}
+\definecolor{purple}{RGB}{120,20,120}
+\newcommand\branchcolor[2]{{\color{#1} #2}}
+\newcommand\branchpurple[1]{{\color{purple} #1}}
+
+
+%\newref{thm}{name=theorem~,Name=Theorem~,names=theorems~,Names=Theorems~}
+\newref{def}{name=definition~,Name=Definition~,names=definitions~,Names=Definitions~}
+%\newref{cor}{name=corollary~,Name=Corollary~,names=corollaries~,Names=Corollaries~}
+%\newref{lem}{name=lemma~,Name=Lemma~,names=lemmas~,Names=Lemmas~}
+%\newref{claim}{name=claim~,Name=Claim~,names=claims~,Names=Claims~}
+%\newref{sec}{name=section~,Name=Section~,names=sections~,Names=Sections~}
+%\newref{subsec}{name=subsection~,Name=Subsection~,names=subsections~,Names=Subsections~}
+%\newref{prop}{name=proposition~,Name=Proposition~,names=propositions~,Names=Propositions~}
+%\newref{conj}{name=conjecture~,Name=Conjecture~,names=conjectures~,Names=Conjectures~}
+\newref{assu}{name=assumption~,Name=Assumption~,names=assumptions~,Names=Assumptions~}
+%\newref{rem}{name=remark~,Name=Remark~,names=remarks~,Names=Remarks~}
+%\newref{alg}{name=algorithm~,Name=Algorithm~,names=algorithms~,Names=Algorithms~}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 66
+InsetLayout Branch:commentary
+  Font
+    Color purple
+  EndFont
+  LatexName branchcolor{purple}
+  LatexType command
+  Requires color
+End
+InsetLayout Branch:proof
+  Font
+    Color blue
+  EndFont
+  LatexName branchcolor{blue}
+  LatexType command
+  Requires color
+End
+\end_local_layout
+\language british
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "libertine" "default"
+\font_sans "biolinum" "default"
+\font_typewriter "lmtt" "default"
+\font_math "libertine-ntxm" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\branch commentary
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch proof
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\headheight 1in
+\headsep 1in
+\footskip 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style british
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Out of the Box | Weak Coin Flipping and friends
+\end_layout
+
+\begin_layout Abstract
+TODO: Rewrite at some point.
+\end_layout
+
+\begin_layout Abstract
+We report a device independent weak coin flipping protocol
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+which are analysed 
+\end_layout
+
+\end_inset
+
+ with 
+\begin_inset Formula $P_{A}^{*}\le\cos^{2}(\pi/8)$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{B}^{*}\le0.667...$
+\end_inset
+
+, by making seemingly minor changes to the best known protocol [10.1103/PhysRevLe
+tt.106.220501] standing since 2011, with 
+\begin_inset Formula $P_{A}^{*}\le\cos^{2}(\pi/8)\approx0.85$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{B}^{*}\le3/4=0.75$
+\end_inset
+
+.
+ Our improvement is due to three ingredients: a self-testing/ridigity of
+ GHZ step, an extra cheat detection step for Bob and a new bias suppression
+ technique that ekes out further security from the abort probability.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\tr}{\text{tr}}
+{\text{tr}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+INTERNAL/Atul: Colour coding—Purple is for informal discussions, black is
+ for formal statements and blue is for proofs.
+ We can remove these from the final version; I put it to minimise verbiage.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+Secure two-party computation is a cryptographic setting where two parties,
+ conventionally called Alice and Bob, receive inputs 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ and their goal is to compute some function 
+\begin_inset Formula $f_{A}(x,y)$
+\end_inset
+
+ and 
+\begin_inset Formula $f_{B}(x,y)$
+\end_inset
+
+ respectively which depends on both their inputs.
+ However, they do not wish to reveal their inputs.
+ Coin flipping (CF) is a cryptographic primitive in this setting, i.e.
+ a building block for constructing more applicable secure two-party cryptographi
+c schemes, where Alice and Bob wish to exchange messages and agree on a
+ random bit, without trusting each other.
+ A protocol that implements coin flipping must protect an honest player
+ from a malicious
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+(or cheating, we use these adjectives interchangeably)
+\end_layout
+
+\end_inset
+
+ player.
+ 
+\end_layout
+
+\begin_layout Standard
+A weaker primitive, unsurprisingly, known as Weak Coin Flipping (WCF) is
+ where a zero corresponds to Alice winning and one corresponds to Bob winning.
+ It is weaker because now the protocol has to protect Alice from a malicious
+ Bob who tries to bias the outcome towards one (and not towards zero) and
+ conversely, it must protect Bob from a malicious Alice who tries to bias
+ the outcome towards zero (and not towards one).
+ To emphasise the distinction, the former primitive is often termed Strong
+ Coin Flipping (SCF).
+\end_layout
+
+\begin_layout Standard
+We primarily focus on WCF in this article and begin with introducing some
+ notation.
+ We denote by 
+\begin_inset Formula $P_{A}^{*}$
+\end_inset
+
+ the highest probability of a malicious Alice convincing an honest Bob that
+ she won (i.e.
+ in the WCF protocol, Alice uses her best cheating strategy against Bob
+ who in turn is following the protocol as described, to convince him that
+ the outcome is zero).
+ Analogously, 
+\begin_inset Formula $P_{B}^{*}$
+\end_inset
+
+ is the highest probability of a malicious Bob convincing an honest Alice
+ that he won.
+ The bias of a WCF protocol is defined as 
+\begin_inset Formula $\epsilon:=\max\left\{ P_{A}^{*},P_{B}^{*}\right\} -\frac{1}{2}$
+\end_inset
+
+.
+ A protocol that is completely secure, has 
+\begin_inset Formula $\epsilon=0$
+\end_inset
+
+ and one that is completely insecure has 
+\begin_inset Formula $\epsilon=\frac{1}{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Using a classical channel of communication between Alice and Bob, unless
+ one makes further assumptions such as computational hardness of certain
+ problems or relativistic assumptions,
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+in terms of the spatial locations of the observers; not to be confused with
+ the term 
+\emph on
+relativising
+\emph default
+ from computational complexity.
+\end_layout
+
+\end_inset
+
+ coin flipping (even weak) is impossible to implement with any security,
+ i.e.
+ for all classical protocols at least one of the parties, i.e.
+ a malicious Alice or a malicious Bob, can win with certainty because one
+ can show 
+\begin_inset Formula $\epsilon=\frac{1}{2}$
+\end_inset
+
+ (viz.
+ 
+\begin_inset Formula $\max\{P_{A}^{*},P_{B}^{*}\}=1$
+\end_inset
+
+).
+ Using a quantum channel of communication, it was shown that WCF can be
+ implemented with vanishing bias.
+ These works, however, do not account for noise in their implementation.
+ One path towards more robust security is device independence wherein the
+ players do not even trust their devices (recall, they already do not trust
+ the other party).
+ This is in contrast to the device independent setting considered in key
+ distribution where the two parties trust each other but neither their devices
+ nor the communication channel (TODO: is the classical communication channel
+ trusted?).
+ 
+\end_layout
+
+\begin_layout Standard
+In this work, we start with a device independent (DI) weak coin flipping
+ (WCF) protocol introduced
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+In fact, they introduced a device independent bit commitment protocol which
+ they in turn use to construct a strong coin flipping protocol with the
+ same cheating probabilities for Alice and Bob, 
+\begin_inset Formula $\approx0.854$
+\end_inset
+
+ and 
+\begin_inset Formula $0.75$
+\end_inset
+
+ respectively.
+\end_layout
+
+\end_inset
+
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Silman2011"
+literal "false"
+
+\end_inset
+
+ which has 
+\begin_inset Formula $P_{A}^{*}=\cos^{2}(\pi/8)\approx0.854$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{B}^{*}=3/4=0.75$
+\end_inset
+
+.
+ They then compose these protocols to give a balanced protocol, i.e.
+ with 
+\begin_inset Formula $P_{A}^{*}=P_{B}^{*}\approx0.336$
+\end_inset
+
+.
+ To the best of our knowledge, this DI CF protocol has the best security
+ guarantee.
+ While Kitaev's bound for CF rule out perfect DI CF, no lower bounds on
+ the bias are known for DI WCF.
+ In this work, however, we focus on improving the upper bound on the bias,
+ viz.
+ we give DI WCF protocols with lower biases.
+\end_layout
+
+\begin_layout Standard
+We introduce two key new ideas which result in better protocols.
+ The first, is the use of self-testing by one party before initiating the
+ protocol and the second, is a more general technique to convert unbalanced
+ protocols (i.e.
+ ones in which the probability of maliciously winning for Alice and Bob
+ are unequal) into balanced ones.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+An illustration of a Device Dependent Weak Coin Flipping protocol
+\end_layout
+
+\begin_layout Standard
+As an illustration of a WCF protocol, we present one due to 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Spekkens2002"
+literal "false"
+
+\end_inset
+
+.
+ For 
+\begin_inset Formula $\left|\psi\right\rangle =\frac{1}{\sqrt{2}}\left|00\right\rangle +\left(1-\frac{1}{\sqrt{2}}\right)\left|11\right\rangle $
+\end_inset
+
+ and 
+\begin_inset Formula $E_{0}=\frac{1}{\sqrt{2}}\left|0\right\rangle \left\langle 0\right|$
+\end_inset
+
+, the following yields 
+\begin_inset Formula $P_{A}^{*}=P_{B}^{*}=\frac{1}{\sqrt{2}}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/temp_SR_1.png
+	lyxscale 50
+	width 50text%
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/temp_SR_2.png
+	lyxscale 50
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Device Independent Weak Coin Flipping protocols | State Of The Art
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+In the following, we first discuss how one can describe DI WCF protocols
+ in terms of the players exchanging 
+\begin_inset Quotes bls
+\end_inset
+
+boxes
+\begin_inset Quotes brs
+\end_inset
+
+—devices which take classical inputs and give classical outputs.
+ Subsequently we recall the GHZ test and finally we use these to delineate
+ the DI-CF due to 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Silman2011"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Device Independence and the Box Paradigm
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+We describe device independent protocols as classical protocols with the
+ one modification: we assume that the two parties can exchange boxes and
+ that the parties can shield their boxes (from the other boxes i.e.
+ the boxes can't communicate with each other once shielded).
+ 
+\end_layout
+
+\begin_layout Standard
+TODO: Verify if this notion is in fact correct; I hope I'm not making a
+ major mistake somehow.
+ I should be able to take the POVMs as tensor products right, because I
+ can change them at will, independent of the others (and ensuring that there's
+ no communication between them; could they be somehow entangled, i.e.
+ could it be that somehow the measurement operators are themselves quantum
+ correlated?); I would like to reach the conclusion starting from the locality
+ assumption.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Slightly anticipating the upcoming discussion, consider the following partially
+ specified protocol:
+\end_layout
+
+\begin_layout Itemize
+Three boxes, each of which accept a binary input and produce a binary output,
+ are prepared (we do not make any assumptions on who prepares the boxes;
+ when we analyse the security, we assume the adversary prepared them).
+\end_layout
+
+\begin_layout Itemize
+Alice is given the first box and Bob is given the second and third boxes.
+ Further, Bob ensures that his two boxes are shielded to prevent any inter-commu
+nication.
+ (An alternative is to keep the boxes sufficiently far so that during the
+ course of the protocol, not even light can be used to communicate; but
+ under such relativistic settings, CF can already be performed, making this
+ discussion irrelevant).
+\end_layout
+
+\begin_layout Itemize
+Bob uses local randomness (that we assume Alice cannot access) to determine
+ the inputs to his box.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Using the outputs of the boxes, and possibly more randomness, she determines
+ a message.
+ She sends this message to Bob.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The protocol, of course, must specify the recipes for these steps precisely
+ but we don't need them here
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Alice, using the incoming message and his local randomness, determines the
+ input to her box.
+ Using all the information she has, she determines who won
+\end_layout
+
+\begin_layout Plain Layout
+More formally, we make the following assumptions.
+\end_layout
+
+\begin_layout Plain Layout
+——————
+\end_layout
+
+\begin_layout Plain Layout
+Slightly anticipating the upcoming discussion, consider the following partially
+ specified protocol:
+\end_layout
+
+\begin_layout Itemize
+Three boxes, each of which accept a binary input and produce a binary output,
+ are prepared (we do not make any assumptions on who prepares the boxes;
+ when we analyse the security, we assume the adversary prepared them).
+\end_layout
+
+\begin_layout Itemize
+Alice is given the first box and Bob is given the second and third boxes.
+ Further, Bob ensures that his two boxes are shielded to prevent any inter-commu
+nication.
+ (An alternative is to keep the boxes sufficiently far so that during the
+ course of the protocol, not even light can be used to communicate; but
+ under such relativistic settings, CF can already be performed, making this
+ discussion irrelevant).
+\end_layout
+
+\begin_layout Itemize
+Alice sends 
+\end_layout
+
+\begin_layout Plain Layout
+More formally, we make the following assumptions.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Box
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "def:box"
+
+\end_inset
+
+A 
+\emph on
+box
+\emph default
+ is a device that takes an input 
+\begin_inset Formula $x\in\mathcal{X}$
+\end_inset
+
+ and yields an outputs 
+\begin_inset Formula $a\in\mathcal{A}$
+\end_inset
+
+ where 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ are finite sets.
+ Typically, a set of 
+\begin_inset Formula $n$
+\end_inset
+
+ boxes, taking inputs 
+\begin_inset Formula $x_{1},x_{2},\dots x_{n}$
+\end_inset
+
+ and yielding outputs 
+\begin_inset Formula $a_{1},a_{2}\dots a_{n}$
+\end_inset
+
+ are 
+\emph on
+characterised
+\emph default
+ by a joint conditional probability distribution, denoted by 
+\begin_inset Formula 
+\[
+p(a_{1},a_{2}\dots a_{n}|x_{1},x_{2}\dots x_{n}).
+\]
+
+\end_inset
+
+Further, if 
+\begin_inset Formula $p(a_{1},a_{2}\dots a_{n}|x_{1},x_{2}\dots x_{n})=\tr\left[M_{a_{1}|x_{1}}^{1}\otimes M_{a_{2}|x_{2}}^{2}\dots\otimes M_{a_{n}|x_{n}}^{n}\rho\right]$
+\end_inset
+
+ then we call the set of boxes, 
+\emph on
+quantum boxes
+\emph default
+, where 
+\begin_inset Formula $\{M_{a'|x'}^{i}\}_{a'\in\mathcal{A}_{i}}$
+\end_inset
+
+constitute a POVM for a fixed 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $x'$
+\end_inset
+
+, 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is a density matrix and their dimensions are mutually consistent.
+\end_layout
+
+\begin_layout Standard
+Henceforth, we restrict ourselves to quantum boxes.
+ 
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Protocol in the box formalism
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "def:BoxProtocol"
+
+\end_inset
+
+A generic two-party protocol in the box formalism has the following form:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Inputs:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Alice is given boxes 
+\begin_inset Formula $\Box_{1}^{A},\Box_{2}^{A}\dots\Box_{p}^{A}$
+\end_inset
+
+ and Bob is given boxes 
+\begin_inset Formula $\Box_{1}^{B},\Box_{2}^{B},\dots\Box_{q}^{B}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Alice is given a random string 
+\begin_inset Formula $r^{A}$
+\end_inset
+
+ and Bob is given a random string 
+\begin_inset Formula $r^{B}$
+\end_inset
+
+ (of arbitrary but finite length).
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Structure: At each round of the protocol, the following is allowed.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Alice and Bob can locally perform arbitrary but finite time computations
+ on a Turing Machine.
+ 
+\end_layout
+
+\begin_layout Enumerate
+They can exchange classical strings/messages and boxes.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Definition
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+A protocol in the box formalism is readily expressed as a protocol which
+ uses a (trusted) classical channel (i.e.
+ they trust their classical devices to reliably send/receive messages),
+ untrusted quantum devices and an untrusted quantum channel (i.e.
+ a channel that can carry quantum states).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Assumption
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Setup of Device Independent Two-Party Protocols
+\end_layout
+
+\end_inset
+
+ Alice and Bob 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+both have private sources of randomness,
+\end_layout
+
+\begin_layout Enumerate
+can send and receive classical messages over a (trusted) classical channel,
+\end_layout
+
+\begin_layout Enumerate
+can prevent parts of their untrusted quantum devices from communicating
+ with each other, and
+\end_layout
+
+\begin_layout Enumerate
+have access to an untrusted quantum channel.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+We restrict ourselves to a 
+\begin_inset Quotes bls
+\end_inset
+
+measure and exchange
+\begin_inset Quotes brs
+\end_inset
+
+ class of protocols—protocols where Alice and Bob start with some pre-prepared
+ states and subsequently, only perform classical computation and quantum
+ measurements locally in conjunction with exchanging classical and quantum
+ messages.
+ More precisely, we consider the following (likely restricted) class of
+ device independent protocols.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Measure and Exchange (Device Independent Two-Party) Protocols
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "def:MEprotocol"
+
+\end_inset
+
+ A 
+\emph on
+measure and exchange (device independent two-party) protocol
+\emph default
+ has the following form:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Inputs:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Alice is given quantum registers 
+\begin_inset Formula $A_{1},A_{2},\dots A_{p}$
+\end_inset
+
+ together with POVMs
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+For concreteness, take the case of binary measurements.
+ By 
+\begin_inset Formula $\{M_{a|x}^{A_{1}}\}_{a}$
+\end_inset
+
+, for instance, we mean 
+\begin_inset Formula $\{M_{0|x}^{A_{1}},M_{1|x}^{A_{1}}\}$
+\end_inset
+
+ is a POVM for 
+\begin_inset Formula $x\in\{0,1\}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\{M_{a|x}^{A_{1}}\}_{a},\{M_{a|x}^{A_{2}}\}_{a},\dots\{M_{a|x}^{A_{p}}\}_{a}
+\]
+
+\end_inset
+
+which act on them and Bob is, analogously, given quantum registers 
+\begin_inset Formula $B_{1},B_{2},\dots B_{q}$
+\end_inset
+
+ together with POVMs 
+\begin_inset Formula 
+\[
+\{M_{b|y}^{B_{1}}\}_{b},\{M_{b|y}^{B_{2}}\}_{b},\dots,\{M_{b|y}^{B_{q}}\}_{b}.
+\]
+
+\end_inset
+
+Alice shields 
+\begin_inset Formula $A_{1},A_{2},\dots A_{p}$
+\end_inset
+
+ (and the POVMs) from each other and from Bob's lab.
+ Bob similarly shields 
+\begin_inset Formula $B_{1},B_{2}\dots B_{q}$
+\end_inset
+
+ (and the POVMs) from each other and from Alice's lab.
+\end_layout
+
+\begin_layout Enumerate
+Alice is given a random string 
+\begin_inset Formula $r^{A}$
+\end_inset
+
+ and Bob is given a random string 
+\begin_inset Formula $r^{B}$
+\end_inset
+
+ (of arbitrary but finite length).
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Structure: At each round of the protocol, the following is allowed.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Alice and Bob can locally perform arbitrary but finite time computations
+ on a Turing Machine.
+\end_layout
+
+\begin_layout Enumerate
+They can exchange classical strings/messages.
+\end_layout
+
+\begin_layout Enumerate
+Alice (for instance) can 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+send a register 
+\begin_inset Formula $A_{l}$
+\end_inset
+
+ and the encoding of her POVMs 
+\begin_inset Formula $\{M_{i}^{A_{l}}\}_{i}$
+\end_inset
+
+ to Bob, or
+\end_layout
+
+\begin_layout Enumerate
+receive a register 
+\begin_inset Formula $B_{m}$
+\end_inset
+
+ and the encoding of the POVMs 
+\begin_inset Formula $\{M_{i}^{B_{m}}\}_{i}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Analogously for Bob.
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+It is clear that a protocol in the box formalism (
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "def:BoxProtocol"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+) can be implemented as a measure and exchange protocol (
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "def:MEprotocol"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+) by noting that we restrict to quantum boxes (
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "def:box"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsubsection
+The GHZ Test
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+Before we define the current best DI CF protocol, which relies on the GHZ
+ test, we briefly remind the reader and set up some conventions.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Suppose we are given three boxes, 
+\begin_inset Formula $\Box^{A},\Box^{B}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Box^{C}$
+\end_inset
+
+, which accept binary inputs 
+\begin_inset Formula $a,b,c\in\{0,1\}$
+\end_inset
+
+ and produces binary output 
+\begin_inset Formula $x,y,z\in\{0,1\}$
+\end_inset
+
+ respectively.
+ The boxes pass the GHZ test if 
+\begin_inset Formula $a\oplus b\oplus c=xyz\oplus1$
+\end_inset
+
+, given the inputs satisfy 
+\begin_inset Formula $x\oplus y\oplus z=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+Quantum boxes pass the GHZ test with certainty (even if they cannot communicate)
+, for the state 
+\begin_inset Formula $\left|\psi\right\rangle _{ABC}=\frac{\left|000\right\rangle _{ABC}+\left|111\right\rangle _{ABC}}{\sqrt{2}}$
+\end_inset
+
+, and measurement
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+we added the identity so that the eigenvalues associated become 
+\begin_inset Formula $0,1$
+\end_inset
+
+ instead of 
+\begin_inset Formula $-1,1$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\frac{\sigma_{x}+\mathbb{I}}{2}$
+\end_inset
+
+ for input 
+\begin_inset Formula $0$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{\sigma_{y}+\mathbb{I}}{2}$
+\end_inset
+
+ for input 
+\begin_inset Formula $1$
+\end_inset
+
+ (in the notation introduced earlier, 
+\begin_inset Formula $M_{0|0}^{A}=\left|+\right\rangle \left\langle +\right|,M_{1|0}^{A}=\left|-\right\rangle \left\langle -\right|$
+\end_inset
+
+ and so on, where 
+\begin_inset Formula $\left|+\right\rangle =\frac{\left|0\right\rangle +\left|1\right\rangle }{\sqrt{2}}$
+\end_inset
+
+).
+ TODO: Think: Should I add the classical value? This would require me to
+ add what it means to have a classical box.
+\end_layout
+
+\begin_layout Standard
+The proof is easier to see in the case where the outcomes are 
+\begin_inset Formula $\pm1$
+\end_inset
+
+; it follows from the observations that 
+\begin_inset Formula $\sigma_{y}\otimes\sigma_{y}\otimes\sigma_{y}\left|\psi\right\rangle =-\left|\psi\right\rangle $
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{x}\otimes\sigma_{x}\otimes\sigma_{x}\left|\psi\right\rangle =\left|\psi\right\rangle $
+\end_inset
+
+ and the anti-commutation of 
+\begin_inset Formula $\sigma_{x}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{y}$
+\end_inset
+
+ matrices, i.e.
+ 
+\begin_inset Formula $\sigma_{x}\sigma_{y}+\sigma_{y}\sigma_{x}=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+The Protocol
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+The best DI CF protocol known is the one introduced in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Silman2011"
+literal "false"
+
+\end_inset
+
+.
+ This works in both cases.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+SCF, original
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:SCForiginal"
+
+\end_inset
+
+Alice has one box and Bob has two boxes (in the security analysis, we let
+ the cheating player distribute the boxes).
+ Each box takes one binary input and gives one binary output.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Alice chooses 
+\begin_inset Formula $x\in_{R}\{0,1\}$
+\end_inset
+
+ and inputs it into her box to obtain 
+\begin_inset Formula $a$
+\end_inset
+
+.
+ She chooses 
+\begin_inset Formula $r\in_{R}\{0,1\}$
+\end_inset
+
+ to compute 
+\begin_inset Formula $s=a\oplus x.r$
+\end_inset
+
+ and sends 
+\begin_inset Formula $s$
+\end_inset
+
+ to Bob.
+\end_layout
+
+\begin_layout Enumerate
+Bob chooses 
+\begin_inset Formula $g\in_{R}\{0,1\}$
+\end_inset
+
+ (for 
+\begin_inset Quotes eld
+\end_inset
+
+guess
+\begin_inset Quotes erd
+\end_inset
+
+) and sends it to Alice.
+\end_layout
+
+\begin_layout Enumerate
+Alice sends 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $a$
+\end_inset
+
+ to Bob.
+ They both compute the output 
+\begin_inset Formula $x\oplus g$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Test round
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Bob tests if 
+\begin_inset Formula $s=a$
+\end_inset
+
+ or 
+\begin_inset Formula $s=a\oplus x$
+\end_inset
+
+.
+ If the test fails, he aborts.
+ Bob chooses 
+\begin_inset Formula $b,c\in_{R}\{0,1\}$
+\end_inset
+
+ such that 
+\begin_inset Formula $a\oplus b\oplus c=1$
+\end_inset
+
+ and then performs a GHZ using 
+\begin_inset Formula $a,b,c$
+\end_inset
+
+ as the inputs and 
+\begin_inset Formula $x,y,z$
+\end_inset
+
+ as the output from the three boxes.
+ He aborts if this test fails.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Security of SCF
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Silman2011"
+literal "false"
+
+\end_inset
+
+ For 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "alg:SCForiginal"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset Formula $P_{B}^{*}\le\frac{3}{4}$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{A}^{*}\le\cos^{2}(\pi/8)$
+\end_inset
+
+.
+ Further, both bounds are saturated by a quantum strategy which uses a GHZ
+ state and the honest player measures along the 
+\begin_inset Formula $\sigma_{x}/\sigma_{y}$
+\end_inset
+
+ basis corresponding to input 
+\begin_inset Formula $0/1$
+\end_inset
+
+ into the box.
+ Cheating Alice measures along 
+\begin_inset Formula $\sigma_{\hat{n}}$
+\end_inset
+
+ for 
+\begin_inset Formula $\hat{n}=\frac{1}{\sqrt{2}}(\hat{x}+\hat{y})$
+\end_inset
+
+ while cheating Bob measures his first box along 
+\begin_inset Formula $\sigma_{x}$
+\end_inset
+
+ and second along 
+\begin_inset Formula $\sigma_{y}$
+\end_inset
+
+.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:SCFstandard"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+First Technique: Self-testing and its limitations
+\end_layout
+
+\begin_layout Subsubsection
+Idea
+\end_layout
+
+\begin_layout Subsubsection
+Limitation
+\end_layout
+
+\begin_layout Subsubsection
+Protocols (single shot, unbalanced)
+\end_layout
+
+\begin_layout Subsection
+Second Technique: Suppression Technique
+\end_layout
+
+\begin_layout Subsubsection
+Idea
+\end_layout
+
+\begin_layout Subsubsection
+Limitation
+\end_layout
+
+\begin_layout Subsubsection
+Protocol
+\end_layout
+
+\begin_layout Subsection
+Beyond WCF—SCF and OT
+\end_layout
+
+\begin_layout Subsubsection
+SCF
+\end_layout
+
+\begin_layout Subsubsection
+OT
+\end_layout
+
+\begin_layout Section
+Background
+\end_layout
+
+\begin_layout Section
+Security Proofs using Semidefinite Programming
+\end_layout
+
+\begin_layout Subsection
+SDP when Alice self-tests
+\end_layout
+
+\begin_layout Subsection
+SDP when Bob self-tests 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "DI_WCF_ideas"
+options "amsalpha"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Jamie's
+\end_layout
+
+\begin_layout Standard
+Section 
+\end_layout
+
+\begin_layout Standard
+1) Introduction
+\end_layout
+
+\begin_layout Standard
+1.1) Intro, blah blah.
+ 
+\end_layout
+
+\begin_layout Standard
+1.2) WCF protocol with no DI security.
+ Spekkens-Rudolph? 
+\end_layout
+
+\begin_layout Standard
+1.3) 2011 protocol, why it is DI (idea) and its bias.
+ 
+\end_layout
+
+\begin_layout Standard
+1.4) New idea: self-testing.
+ Also, no self-testing Alice AND Bob (due to Kitaev).
+ 
+\end_layout
+
+\begin_layout Standard
+1.5) Our NEW protocol(s).
+ Self-test Alice, Self-test Bob (these are two protocols).
+ Their DD security, and why DD security equals DI security (approximately,
+ conceptually).
+ 
+\end_layout
+
+\begin_layout Standard
+1.6) Suppression technique.
+ Final bias.
+ 
+\end_layout
+
+\begin_layout Standard
+1.7) Applications: WCF new bias.
+ SCF new bias.
+ OT new bias.
+ 
+\end_layout
+
+\begin_layout Standard
+Section 
+\end_layout
+
+\begin_layout Standard
+2) Background 
+\end_layout
+
+\begin_layout Standard
+2.1) Self-testing bounds.
+ 
+\end_layout
+
+\begin_layout Standard
+Section 3) Semidefinite programming 
+\end_layout
+
+\begin_layout Standard
+3.1) SDP for self-testing Alice.
+ SDP for self-testing Bob.
+ (single-shot cases).
+ Cheat vector graphs here as well.
+ 
+\end_layout
+
+\begin_layout Standard
+3.2) SDP for suppression technique for WCF, SCF.
+ 
+\end_layout
+
+\begin_layout Standard
+3.3) SDP continuity bounds (I will do this).
+ 
+\end_layout
+
+\begin_layout Standard
+Section 4) Conclusions, and why we're awesome.
+ 
+\end_layout
+
+\begin_layout Standard
+-- 
+\end_layout
+
+\begin_layout Standard
+Here is a crappy DI-OT protocol.
+ 
+\end_layout
+
+\begin_layout Standard
+Fix two OT protocols, one with P_A,OT* = 1, P_B,OT* = 1/2 and the other
+ with P_A,OT* = 1/2, P_B,OT* = 1.
+ 
+\end_layout
+
+\begin_layout Standard
+DI-OT protocol: 
+\end_layout
+
+\begin_layout Standard
+Step 0) Do DI-WCF from our paper.
+ Step 1) If no abort, and Alice wins, they use the P_A,OT* = 1 protocol.
+ Step 2) If no abort, and Alice loses, they use the P_A,OT* = 1/2 protocol.
+ 
+\end_layout
+
+\begin_layout Standard
+This yields a bias of < 1/2.
+ Not pretty, but it works.
+ There is likely a way to make this better, but it's a first step.
+ 
+\end_layout
+
+\end_body
+\end_document

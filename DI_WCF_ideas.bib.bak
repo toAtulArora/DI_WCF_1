@@ -1,3 +1,15 @@
 % Encoding: UTF-8
 
+@Article{Silman2011,
+  author    = {J. Silman and A. Chailloux and N. Aharon and I. Kerenidis and S. Pironio and S. Massar},
+  journal   = {Physical Review Letters},
+  title     = {Fully Distrustful Quantum Bit Commitment and Coin Flipping},
+  year      = {2011},
+  month     = {jun},
+  number    = {22},
+  volume    = {106},
+  doi       = {10.1103/physrevlett.106.220501},
+  publisher = {American Physical Society ({APS})},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
