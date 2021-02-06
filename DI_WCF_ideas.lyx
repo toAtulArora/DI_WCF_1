@@ -294,7 +294,7 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-Notes from the meetings
+Notes from the meetings/thoughts
 \end_layout
 
 \begin_layout Standard
@@ -630,6 +630,376 @@ Isn't it crucial to send Z? Because how else will Bob know which basis to
 
 \end_deeper
 \end_deeper
+\begin_layout Subsection
+Meeting notes | Thursday, October 8, 2020
+\end_layout
+
+\begin_layout Standard
+I'm only writing the salient features
+\end_layout
+
+\begin_layout Itemize
+Tom pointed out that the composition techniques, both tree like and recursive,
+ are essentially equivalent; they're a ladder
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Issue: There's a discrepancy with the numerics
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+[EDIT: Oct 14] I checked, there was a mistake with the numerics; both logical
+ and conceptual (discussed later)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Question: it seems that the ladder is unique for most compositions; is this
+ true in general (Jamie seemed to suggest that if the path to a node is
+ relevant, such as majority to win, it may no longer be unique; this is
+ another direction altogether though)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Jamie pointed out that one could use better protocols in terms of 
+\begin_inset Formula $P_{A/B}^{*}$
+\end_inset
+
+ at the leaf and the ones with abort on higher layers.
+\end_layout
+
+\begin_layout Subsection
+Thoughts + Results | Thursday, October 14, 2020
+\end_layout
+
+\begin_layout Itemize
+Notation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Protocols
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Original: 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+; 
+\begin_inset Formula $p_{A}^{*}(\mathcal{I})\approx0.853\dots$
+\end_inset
+
+, 
+\begin_inset Formula $p_{B}^{*}(\mathcal{I})\approx0.75$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Intermediate Result | Alice self-tests + extra test: 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+; 
+\begin_inset Formula $p_{A}^{*}(\mathcal{P})\apprle0.853\dots$
+\end_inset
+
+, 
+\begin_inset Formula $p_{B}^{*}(\mathcal{P})\apprle0.667\dots$
+\end_inset
+
+; 
+\begin_inset Formula $\mathcal{C}_{B}(\mathcal{P})$
+\end_inset
+
+ as an SDP (but low abort probability; heavy computationally)
+\end_layout
+
+\begin_layout Itemize
+Intermediate Result | Bob self-tests: 
+\begin_inset Formula $p_{A/B}^{*}(\mathcal{Q})=p_{A/B}^{*}(\mathcal{I})$
+\end_inset
+
+; 
+\begin_inset Formula $\mathcal{C}_{A}(\mathcal{Q})$
+\end_inset
+
+ as an SDP 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Compositions: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $k$
+\end_inset
+
+ compositions of 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+, for instance, are denote by 
+\begin_inset Formula $C(\mathcal{P},k)$
+\end_inset
+
+.
+ When 
+\begin_inset Formula $k$
+\end_inset
+
+ is suppressed, it is assumed that we pick a large enough 
+\begin_inset Formula $k$
+\end_inset
+
+ such that 
+\begin_inset Formula $p_{A}^{*}(C(\mathcal{P},k))\approx p_{B}^{*}(C(\mathcal{P},k))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Standard Composition: 
+\begin_inset Formula $C_{\text{stand.}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sikora Composition: 
+\begin_inset Formula $C_{\text{Sikora}}$
+\end_inset
+
+ (for 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+, uses the cheat vectors for Bob and for 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ uses the cheat vectors for Alice).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+State of the art: 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{\text{stand.}}$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $p_{A/B}^{*}(C_{\text{stand.}}(\mathcal{I}))\approx\frac{1}{2}+0.336\dots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cumulative Result 1: 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{\text{stand.}}$
+\end_inset
+
+: 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $p_{A/B}^{*}(C_{\text{stand.}}(\mathcal{P}))\approx\frac{1}{2}+0.3199\dots$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+TODO: prove that under standard composition, if 
+\begin_inset Formula $p_{A}^{*}(\mathcal{P})\ge p_{B}^{*}(\mathcal{P})$
+\end_inset
+
+ then 
+\begin_inset Formula $p_{A}^{*}(C_{\text{stand.}}(\mathcal{P},1))\ge p_{B}^{*}(C_{\text{stand.}}(\mathcal{P},1))$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Cumulative Result 2: 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{\text{Sikora}}$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $p_{A/B}^{*}(C_{\text{Sikora}}(\mathcal{Q}))\approx\frac{1}{2}+0.317\dots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cumulative Result 3: 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ at the leaves, 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ otherwise and 
+\begin_inset Formula $C_{\text{Sikora}}$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $p_{A/B}^{*}(C_{\text{Sikora}}(\mathcal{Q},\mathcal{Q}\dots\mathcal{P}))\approx\frac{1}{2}+0.2908\dots$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+where I abused the definition of 
+\begin_inset Formula $C_{\text{Sikora}}$
+\end_inset
+
+ slightly.
+\begin_inset Newline newline
+\end_inset
+
+TODO: perhaps output how many times I change the 
+\begin_inset Quotes eld
+\end_inset
+
+polarity
+\begin_inset Quotes erd
+\end_inset
+
+ of the protocol?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Issues and their resolution:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+I was essentially making two (related) mistakes; one was that in the code,
+ I had 
+\begin_inset Formula $p_{A}^{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{B}^{*}$
+\end_inset
+
+ flipped; but this I didn't realise at the time, was because of the following:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+While 
+\begin_inset Formula 
+\[
+0.853\dots\approx p_{A}^{*}(Q)>p_{B}^{*}(Q)=0.75,
+\]
+
+\end_inset
+
+ we have 
+\begin_inset Formula 
+\[
+0.8123\dots\approx p_{A}^{*}(C_{\text{Sikora}}(\mathcal{Q},1))<p_{B}^{*}(C_{\text{Sikora}}(\mathcal{Q},1))\approx0.827.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+So effectively, I had to solve the sub-tree and flip it as needed before
+ joining it to the upper branch for constructing the ones higher up in the
+ hierarchy.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Questions:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+So how does this relate to Tom's ladder? 
+\end_layout
+
+\begin_layout Itemize
+What tree must one consider for the majority ladder? I think there, each
+ path becomes a node somehow because it corresponds to a different strategy...
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Meeting
+\end_layout
+
+\begin_layout Standard
+* Sum instead of max; as a measure of how good the protocol is, one could
+ consider using 
+\begin_inset Formula $P_{A}^{*}+P_{B}^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+* Lower than the original perfectly balanced; this was using perfect WCF
+ (so kind of strange but still makes some sense)
+\end_layout
+
+\begin_layout Standard
+* Check that the same protocol being analysed, despite flipping polarities;
+ 
+\end_layout
+
+\begin_layout Standard
+** try to show this never happens in the simple case
+\end_layout
+
 \begin_layout Section
 F1 | A framework for Distrustful DI protocols
 \end_layout

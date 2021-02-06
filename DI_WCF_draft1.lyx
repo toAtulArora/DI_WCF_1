@@ -410,7 +410,7 @@ literal "false"
 .
  They then compose these protocols to give a balanced protocol, i.e.
  with 
-\begin_inset Formula $P_{A}^{*}=P_{B}^{*}\approx0.336$
+\begin_inset Formula $P_{A}^{*}=P_{B}^{*}\approx\frac{1}{2}+0.336$
 \end_inset
 
 .

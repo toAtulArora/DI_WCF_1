@@ -2169,6 +2169,20 @@ name "fig:Standard-composition-technique"
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Idea
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
 \begin_layout Standard
 A key observation here is that here, we treated the probability of aborting
  as the honest player winning.
@@ -2189,10 +2203,6 @@ A key observation here is that here, we treated the probability of aborting
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsubsection
-Idea
 \end_layout
 
 \begin_layout Subsubsection
