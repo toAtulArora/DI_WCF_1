@@ -129,7 +129,7 @@ End
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style british
+\quotes_style english
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -176,7 +176,7 @@ which are analysed
 \end_inset
 
 .
- In terms of bias, we improved the SCAKPM'11 result from 
+ In terms of bias, we improve the SCAKPM'11 result from 
 \begin_inset Formula $\approx0.336$
 \end_inset
 
@@ -416,7 +416,7 @@ literal "false"
 .
  To the best of our knowledge, this DI CF protocol has the best security
  guarantee.
- While Kitaev's bound for CF rule out perfect DI CF, no lower bounds on
+ While Kitaev's bound for CF rules out perfect DI CF, no lower bounds on
  the bias are known for DI WCF.
  In this work, however, we focus on improving the upper bound on the bias,
  viz.
@@ -442,6 +442,836 @@ We introduce two key new ideas which result in better protocols.
 \end_layout
 
 \begin_layout Subsection
+Proof Technique
+\end_layout
+
+\begin_layout Subsubsection*
+Notation and Cheat Vectors
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+We introduce some notation to facilitate the discussion here.
+ Denote the DI CF protocol introduced in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Silman2011"
+literal "false"
+
+\end_inset
+
+ by 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ and let 
+\begin_inset Formula $p_{A}^{*}(\mathcal{I})\approx0.853\dots$
+\end_inset
+
+ denote the maximum probability with which a malicious Alice can win against
+ honest Bob who is following the protocol 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ and similarly, let 
+\begin_inset Formula $p_{B}^{*}(\mathcal{I})\approx0.75$
+\end_inset
+
+ denote the maximum probability with which a malicious Bob can win against
+ an honest Alice who is following the protocol 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+One of the key observations we make in this work is the use of what we call
+ 
+\begin_inset Quotes eld
+\end_inset
+
+cheat vectors
+\begin_inset Quotes erd
+\end_inset
+
+—it is any tuple of probabilities which can arise in a CF protocol when
+ one player is honest.
+ More precisely, suppose Alice is (possibly) malicious and Bob follows the
+ protocol 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+.
+ Then, the cheat vectors for Alice constitute the set
+\begin_inset Formula 
+\[
+\mathbb{C}{}_{A}(\mathcal{I}):=\{(\alpha,\beta,\gamma):\exists\text{ a strategy for }A\text{ s.t. an honest }B\text{ outputs }\text{1,0, \text{ and }\ensuremath{\perp} with probabilities \ensuremath{\alpha,\beta} and \ensuremath{\gamma}}\}.
+\]
+
+\end_inset
+
+We analogously define 
+\begin_inset Formula $\mathbb{C}_{B}(\mathcal{I})$
+\end_inset
+
+.
+ Cheat vectors become useful when we try to compose protocols.
+ The observation then, is that the abort event can be taken to abort the
+ full protocol instead of being treated as the honest player winning.
+ The latter gives the malicious player further opportunity to cheat and
+ so preventing it improves the security.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Protocols
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+We introduce two variants of protocol 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+, which we call 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ is essentially the same as 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ except that Alice self-tests her boxes before starting the protocol and
+ performs an additional test to ensure Bob doesn't cheat.
+ We show that 
+\begin_inset Formula $p_{A}^{*}(\mathcal{P})\apprle0.853\dots$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{B}^{*}(\mathcal{P})\apprle0.667\dots$
+\end_inset
+
+.
+ We also show that 
+\begin_inset Formula $\mathbb{C}_{B}(\mathcal{P})$
+\end_inset
+
+ can be cast as an SDP.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ is also essentially the same as 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ except that Bob self-tests his boxes before starting the protocol.
+ In this case, 
+\begin_inset Formula $p_{X}^{*}(\mathcal{Q})=p_{X}^{*}(\mathcal{I})$
+\end_inset
+
+ for both values of 
+\begin_inset Formula $X\in\{A,B\}$
+\end_inset
+
+ so the advantage isn't manifest.
+ However, now 
+\begin_inset Formula $\mathbb{C}_{A}(\mathcal{Q})$
+\end_inset
+
+ can be cast as an SDP which, as we shall see, yields an advantage when
+ 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ is composed.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Compositions
+\end_layout
+
+\begin_layout Standard
+aoeu
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+As the protocols 
+\begin_inset Formula $\mathcal{X}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$
+\end_inset
+
+ all have skewed security—either 
+\begin_inset Formula $p_{A}^{*}(\mathcal{X})>p_{B}^{*}(\mathcal{X})$
+\end_inset
+
+ or the other way—and therefore the bias is determined by 
+\begin_inset Formula $p_{\max}^{*}(\mathcal{X}):=\max\{p_{A}^{*}(\mathcal{X}),p_{B}^{*}(\mathcal{X})\}$
+\end_inset
+
+.
+ Note that, 
+\begin_inset Formula $p_{\max}^{*}(\mathcal{X})=p_{\max}^{*}(\mathcal{Y})$
+\end_inset
+
+ for all 
+\begin_inset Formula $\mathcal{X},\mathcal{Y}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$
+\end_inset
+
+, which means that we don't immediately obtain an advantage.
+ However, the most obvious method of composing these protocols to obtain
+ a new protocol, which we describe later, 
+\begin_inset Quotes eld
+\end_inset
+
+balances
+\begin_inset Quotes erd
+\end_inset
+
+ the advantage.
+ After this composition procedure is applied to some protocol 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+, we denote the resulting protocol by 
+\begin_inset Formula $C_{{\rm stand}}(\mathcal{X})$
+\end_inset
+
+.
+ Applying this technique to 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+, we already obtain a more secure protocol.
+\end_layout
+
+\begin_layout Itemize
+For all 
+\begin_inset Formula $X\in\{A,B\}$
+\end_inset
+
+ the cheating probabilities for protocol 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ under the standard composition is given by
+\begin_inset Formula 
+\[
+p_{X}^{*}(C_{{\rm stand}}(\mathcal{I}))\approx\frac{1}{2}+0.336\dots
+\]
+
+\end_inset
+
+while for the improved protocol 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+, these are given by
+\begin_inset Formula 
+\begin{equation}
+p_{X}^{*}(C_{{\rm Sikora}}(\mathcal{P}))\approx\frac{1}{2}+0.3199\dots.\label{eq:SikoraP}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The standard composition technique doesn't yield any improvement for 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ because the cheating probabilities are identical to those of 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+.
+ We can extract an advantage by using a composition technique that uses
+ 
+\begin_inset Quotes eld
+\end_inset
+
+cheat vectors
+\begin_inset Quotes erd
+\end_inset
+
+ and the abort event.
+ We describe it in detail later but for now, we simply denote the new protocol
+ obtained using this improved composition (of protocol 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+) by 
+\begin_inset Formula $C_{{\rm Sikora}}(\mathcal{X})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Using this technique on 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+, the cheating probabilities become 
+\begin_inset Formula 
+\[
+p_{X}^{*}(C_{{\rm Sikora}}(\mathcal{Q}))\approx\frac{1}{2}+0.317\dots
+\]
+
+\end_inset
+
+for all 
+\begin_inset Formula $X\in\{A,B\}$
+\end_inset
+
+, which is even better than 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:SikoraP"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Finally, we combine both these protocols to obtain (again, for all 
+\begin_inset Formula $X\in\{A,B\}$
+\end_inset
+
+)
+\begin_inset Formula 
+\[
+p_{X}^{*}(C_{{\rm Sikora}}(\mathcal{Q},\mathcal{Q},\dots,\mathcal{Q},\mathcal{P}))\approx\frac{1}{2}+0.2908\dots
+\]
+
+\end_inset
+
+where we use the same composition technique except that at the last 
+\begin_inset Quotes eld
+\end_inset
+
+level
+\begin_inset Quotes erd
+\end_inset
+
+ we use 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ instead of 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+TODO: Obvious questions (answers to which I don't have anymore; stupid memory):
+ what about 
+\begin_inset Formula $p_{X}^{*}(C_{{\rm Sikora}}(\mathcal{P}))$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{X}^{*}(C_{{\rm Sikora}}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{Q}))$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+aoeu
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+Notation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Compositions: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $k$
+\end_inset
+
+ compositions of 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+, for instance, are denote by 
+\begin_inset Formula $C(\mathcal{P},k)$
+\end_inset
+
+.
+ When 
+\begin_inset Formula $k$
+\end_inset
+
+ is suppressed, it is assumed that we pick a large enough 
+\begin_inset Formula $k$
+\end_inset
+
+ such that 
+\begin_inset Formula $p_{A}^{*}(C(\mathcal{P},k))\approx p_{B}^{*}(C(\mathcal{P},k))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Standard Composition: 
+\begin_inset Formula $C_{\text{stand.}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sikora Composition: 
+\begin_inset Formula $C_{\text{Sikora}}$
+\end_inset
+
+ (for 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+, uses the cheat vectors for Bob and for 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ uses the cheat vectors for Alice).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+State of the art: 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{\text{stand.}}$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $p_{A/B}^{*}(C_{\text{stand.}}(\mathcal{I}))\approx\frac{1}{2}+0.336\dots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cumulative Result 1: 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{\text{stand.}}$
+\end_inset
+
+: 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $p_{A/B}^{*}(C_{\text{stand.}}(\mathcal{P}))\approx\frac{1}{2}+0.3199\dots$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+TODO: prove that under standard composition, if 
+\begin_inset Formula $p_{A}^{*}(\mathcal{P})\ge p_{B}^{*}(\mathcal{P})$
+\end_inset
+
+ then 
+\begin_inset Formula $p_{A}^{*}(C_{\text{stand.}}(\mathcal{P},1))\ge p_{B}^{*}(C_{\text{stand.}}(\mathcal{P},1))$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Cumulative Result 2: 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{\text{Sikora}}$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $p_{A/B}^{*}(C_{\text{Sikora}}(\mathcal{Q}))\approx\frac{1}{2}+0.317\dots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cumulative Result 3: 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ at the leaves, 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ otherwise and 
+\begin_inset Formula $C_{\text{Sikora}}$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $p_{A/B}^{*}(C_{\text{Sikora}}(\mathcal{Q},\mathcal{Q}\dots\mathcal{P}))\approx\frac{1}{2}+0.2908\dots$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+where I abused the definition of 
+\begin_inset Formula $C_{\text{Sikora}}$
+\end_inset
+
+ slightly.
+\begin_inset Newline newline
+\end_inset
+
+TODO: perhaps output how many times I change the 
+\begin_inset Quotes eld
+\end_inset
+
+polarity
+\begin_inset Quotes erd
+\end_inset
+
+ of the protocol?
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+Notation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Protocols
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Original: 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+; 
+\begin_inset Formula $p_{A}^{*}(\mathcal{I})\approx0.853\dots$
+\end_inset
+
+, 
+\begin_inset Formula $p_{B}^{*}(\mathcal{I})\approx0.75$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Intermediate Result | Alice self-tests + extra test: 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+; 
+\begin_inset Formula $p_{A}^{*}(\mathcal{P})\apprle0.853\dots$
+\end_inset
+
+, 
+\begin_inset Formula $p_{B}^{*}(\mathcal{P})\apprle0.667\dots$
+\end_inset
+
+; 
+\begin_inset Formula $\mathcal{C}_{B}(\mathcal{P})$
+\end_inset
+
+ as an SDP (but low abort probability; heavy computationally)
+\end_layout
+
+\begin_layout Itemize
+Intermediate Result | Bob self-tests: 
+\begin_inset Formula $p_{A/B}^{*}(\mathcal{Q})=p_{A/B}^{*}(\mathcal{I})$
+\end_inset
+
+; 
+\begin_inset Formula $\mathcal{C}_{A}(\mathcal{Q})$
+\end_inset
+
+ as an SDP 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Compositions: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $k$
+\end_inset
+
+ compositions of 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+, for instance, are denote by 
+\begin_inset Formula $C(\mathcal{P},k)$
+\end_inset
+
+.
+ When 
+\begin_inset Formula $k$
+\end_inset
+
+ is suppressed, it is assumed that we pick a large enough 
+\begin_inset Formula $k$
+\end_inset
+
+ such that 
+\begin_inset Formula $p_{A}^{*}(C(\mathcal{P},k))\approx p_{B}^{*}(C(\mathcal{P},k))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Standard Composition: 
+\begin_inset Formula $C_{\text{stand.}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sikora Composition: 
+\begin_inset Formula $C_{\text{Sikora}}$
+\end_inset
+
+ (for 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+, uses the cheat vectors for Bob and for 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ uses the cheat vectors for Alice).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+State of the art: 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{\text{stand.}}$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $p_{A/B}^{*}(C_{\text{stand.}}(\mathcal{I}))\approx\frac{1}{2}+0.336\dots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cumulative Result 1: 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{\text{stand.}}$
+\end_inset
+
+: 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $p_{A/B}^{*}(C_{\text{stand.}}(\mathcal{P}))\approx\frac{1}{2}+0.3199\dots$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+TODO: prove that under standard composition, if 
+\begin_inset Formula $p_{A}^{*}(\mathcal{P})\ge p_{B}^{*}(\mathcal{P})$
+\end_inset
+
+ then 
+\begin_inset Formula $p_{A}^{*}(C_{\text{stand.}}(\mathcal{P},1))\ge p_{B}^{*}(C_{\text{stand.}}(\mathcal{P},1))$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Cumulative Result 2: 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{\text{Sikora}}$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $p_{A/B}^{*}(C_{\text{Sikora}}(\mathcal{Q}))\approx\frac{1}{2}+0.317\dots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cumulative Result 3: 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ at the leaves, 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ otherwise and 
+\begin_inset Formula $C_{\text{Sikora}}$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $p_{A/B}^{*}(C_{\text{Sikora}}(\mathcal{Q},\mathcal{Q}\dots\mathcal{P}))\approx\frac{1}{2}+0.2908\dots$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+where I abused the definition of 
+\begin_inset Formula $C_{\text{Sikora}}$
+\end_inset
+
+ slightly.
+\begin_inset Newline newline
+\end_inset
+
+TODO: perhaps output how many times I change the 
+\begin_inset Quotes eld
+\end_inset
+
+polarity
+\begin_inset Quotes erd
+\end_inset
+
+ of the protocol?
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 An illustration of a Device Dependent Weak Coin Flipping protocol
 \end_layout
 
@@ -495,14 +1325,14 @@ literal "false"
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Device Independent Weak Coin Flipping protocols | State Of The Art
 \end_layout
 
 \begin_layout Standard
 \begin_inset Branch commentary
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 In the following, we first discuss how one can describe DI WCF protocols
@@ -532,7 +1362,7 @@ literal "false"
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Device Independence and the Box Paradigm
 \end_layout
 
@@ -1096,7 +1926,7 @@ noprefix "false"
 ).
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 The GHZ Test
 \end_layout
 
@@ -1253,7 +2083,7 @@ The proof is easier to see in the case where the outcomes are
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 The Protocol
 \end_layout
 
@@ -1520,11 +2350,11 @@ Note that both players can cheat maximally assuming they share a GHZ state
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 First Technique: Self-testing and its limitations
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Idea
 \end_layout
 
@@ -1792,7 +2622,11 @@ Alice sends
 \begin_inset Formula $x$
 \end_inset
 
- and 
+ [EDIT: maybe not send 
+\begin_inset Formula $a$
+\end_inset
+
+] and 
 \begin_inset Formula $a$
 \end_inset
 
@@ -1816,6 +2650,14 @@ If
 \end_inset
 
 :
+\begin_inset Newline newline
+\end_inset
+
+[EDIT: Send 
+\begin_inset Formula $a$
+\end_inset
+
+]
 \begin_inset Newline newline
 \end_inset
 
@@ -1921,6 +2763,231 @@ noprefix "false"
 .
 \end_layout
 
+\begin_layout Proof
+The analysis for cheating Alice is the same as the original protocol.
+ We consider the analysis for cheating Bob.
+ We call the tuple 
+\begin_inset Formula $(\alpha,\beta,\gamma)$
+\end_inset
+
+ a 
+\emph on
+cheat vector
+\emph default
+ if for some cheating strategy of Bob,
+\begin_inset Formula 
+\begin{align*}
+\alpha & =\Pr[\text{Alice outputs }0]\\
+\beta & =\Pr[\text{Alice outputs }1]\\
+\gamma & =\Pr[\text{Alice aborts}].
+\end{align*}
+
+\end_inset
+
+We model Alice's steps as follows: We use 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left|+\right\rangle _{x}$
+\end_inset
+
+ for her choice of input 
+\begin_inset Formula $x$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left|+\right\rangle _{r}$
+\end_inset
+
+ for her choice of 
+\begin_inset Formula $r$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\frac{1}{2}\mathbb{I}_{H}$
+\end_inset
+
+ for her part of the GHZ state
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left|0\right\rangle _{s}$
+\end_inset
+
+ a qubit to be used to send 
+\begin_inset Formula $s$
+\end_inset
+
+ to Bob
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left|0\right\rangle _{a}$
+\end_inset
+
+ the outcome of Alice's GHZ state measurement
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+The argument proceeds as follows.
+ Let 
+\begin_inset Formula $\rho_{0}$
+\end_inset
+
+ be Alice's state after measuring to get and creating 
+\begin_inset Formula $s$
+\end_inset
+
+ (TODO: complete this part; likely in the code already).
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Observe that 
+\begin_inset Formula $\tr_{s}(\rho_{0})$
+\end_inset
+
+ can be used to denote Alice's state after sending 
+\begin_inset Formula $s$
+\end_inset
+
+ to Bob.
+ This is because Bob can hold a purification of 
+\begin_inset Formula $\tr_{s}(\rho_{0})$
+\end_inset
+
+ thereby holding 
+\begin_inset Formula $s$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Similarly, observe that Bob sending a the variable 
+\begin_inset Formula $g$
+\end_inset
+
+ can be modelled as 
+\begin_inset Formula $\tr_{g}(\rho_{1})=\tr_{s}(\rho_{0})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+While on the third step, Alice sends 
+\begin_inset Formula $x$
+\end_inset
+
+ to Bob, we need not formally include this because if Alice is testing Bob,
+ he knows 
+\begin_inset Formula $x\oplus g=1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Test rounds
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $x\oplus g=0$
+\end_inset
+
+ is the case where Alice outputs 
+\begin_inset Formula $0$
+\end_inset
+
+; this means Bob already failed; not the event we are interested in.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $x\oplus g=1$
+\end_inset
+
+ is the case where Alice tests Bob.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+While Alice sends 
+\begin_inset Formula $y$
+\end_inset
+
+ and 
+\begin_inset Formula $z$
+\end_inset
+
+ to Bob, 
+\begin_inset Formula $z$
+\end_inset
+
+ can be determined from the condition 
+\begin_inset Formula $x\oplus y\oplus z=1$
+\end_inset
+
+ and the values of 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ Therefore, formally, it suffices that Alice appends 
+\begin_inset Formula $\frac{1}{2}\mathbb{I}_{y}$
+\end_inset
+
+ to 
+\begin_inset Formula $\rho_{1}$
+\end_inset
+
+ to account for this step.
+\end_layout
+
+\begin_layout Enumerate
+Bob is supposed to respond with 
+\begin_inset Formula $b,c$
+\end_inset
+
+ but formally, it suffices to send 
+\begin_inset Formula $d=b\oplus c$
+\end_inset
+
+ because the GHZ condition only requires Alice to test 
+\begin_inset Formula $a\oplus b\oplus c=xyz\oplus1$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Proof
+The SDP is therefore 
+\end_layout
+
+\begin_layout Proof
+Note: 
+\end_layout
+
 \begin_layout Standard
 We defer the proof to 
 \begin_inset CommandInset ref
@@ -1936,7 +3003,7 @@ noprefix "false"
  
 \begin_inset Branch commentary
 inverted 0
-status collapsed
+status open
 
 \begin_layout Standard
 The analysis for a cheating Bob, 
@@ -1965,14 +3032,14 @@ The analysis for a cheating Bob,
 .
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Second Technique: Suppression Technique
 \end_layout
 
 \begin_layout Standard
 \begin_inset Branch commentary
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 Consider a WCF protocol, 
@@ -2006,7 +3073,7 @@ The subscript
  Thus, 
 \begin_inset Formula 
 \[
-p_{A}^{*}(\mathcal{P}_{B})=\beta<\alpha=p_{B}^{*}(\mathcal{P}_{A}).
+p_{A}^{*}(\mathcal{P}_{B})=\beta<\alpha=p_{B}^{*}(\mathcal{P}_{B}).
 \]
 
 \end_inset
@@ -2174,7 +3241,7 @@ name "fig:Standard-composition-technique"
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Idea
 \end_layout
 
@@ -2205,23 +3272,23 @@ A key observation here is that here, we treated the probability of aborting
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Limitation
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Protocol
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Beyond WCF—SCF and OT
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 SCF
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 OT
 \end_layout
 
