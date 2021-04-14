@@ -22,7 +22,7 @@
 \newref{alg}{name=algorithm~,Name=Algorithm~,names=algorithms~,Names=Algorithms~}
 %\newref{cor}{name=corollary~,Name=Corollary~,names=corollaries~,Names=Corollaries~}
 %\newref{lem}{name=lemma~,Name=Lemma~,names=lemmas~,Names=Lemmas~}
-%\newref{claim}{name=claim~,Name=Claim~,names=claims~,Names=Claims~}
+\newref{claim}{name=claim~,Name=Claim~,names=claims~,Names=Claims~}
 %\newref{sec}{name=section~,Name=Section~,names=sections~,Names=Sections~}
 %\newref{subsec}{name=subsection~,Name=Subsection~,names=subsections~,Names=Subsections~}
 %\newref{prop}{name=proposition~,Name=Proposition~,names=propositions~,Names=Propositions~}
@@ -784,7 +784,7 @@ Finally, we combine both these protocols to obtain (again, for all
 )
 \begin_inset Formula 
 \[
-p_{X}^{*}(C_{{\rm Sikora}}(\mathcal{Q},\mathcal{Q},\dots,\mathcal{P}))\approx\frac{1}{2}+0.2908\dots
+p_{X}^{*}(C_{{\rm Sikora}}(\mathcal{Q},\mathcal{Q},\dots,\mathcal{Q},\mathcal{P}))\approx\frac{1}{2}+0.2908\dots
 \]
 
 \end_inset
@@ -809,9 +809,26 @@ level
  
 \end_layout
 
+\begin_layout Standard
+TODO: Obvious questions (answers to which I don't have anymore; stupid memory):
+ what about 
+\begin_inset Formula $p_{X}^{*}(C_{{\rm Sikora}}(\mathcal{P}))$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{X}^{*}(C_{{\rm Sikora}}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{Q}))$
+\end_inset
+
+.
+\end_layout
+
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+aoeu
 \end_layout
 
 \begin_layout Standard
@@ -1926,6 +1943,12 @@ Before we define the current best DI CF protocol, we briefly remind the
 \end_layout
 
 \begin_layout Definition
+\begin_inset CommandInset label
+LatexCommand label
+name "def:GHZ-box"
+
+\end_inset
+
 Suppose we are given three boxes, 
 \begin_inset Formula $\Box^{A},\Box^{B}$
 \end_inset
@@ -2232,7 +2255,17 @@ noprefix "false"
 
 \end_inset
 
-, then Bob never aborts and they win with equal probabilities.
+ using GHZ boxes (
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "def:GHZ-box"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+), Bob never aborts and they win with equal probabilities.
  The security of the protocol is summarised next.
 \end_layout
 
