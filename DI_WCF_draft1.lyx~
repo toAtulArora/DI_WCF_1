@@ -108,7 +108,7 @@ End
 \color #faf0e6
 \end_branch
 \branch proof
-\selected 0
+\selected 1
 \filename_suffix 0
 \color #faf0e6
 \end_branch
@@ -2765,7 +2765,7 @@ noprefix "false"
 \end_inset
 
 , Alice's cheating probability 
-\begin_inset Formula $P_{A}^{*}\apprle\cos^{2}(\pi/8)\approx0.852$
+\begin_inset Formula $P_{A}^{*}\le\cos^{2}(\pi/8)\approx0.852$
 \end_inset
 
  and Bob's cheating probability 
@@ -2774,6 +2774,11 @@ noprefix "false"
 
 .
 \end_layout
+
+\begin_layout Standard
+\begin_inset Branch proof
+inverted 0
+status open
 
 \begin_layout Proof
 The analysis for cheating Alice is the same as the original protocol.
@@ -2801,7 +2806,7 @@ We model Alice's steps as follows: We use
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Formula $\left|+\right\rangle _{x}$
+\begin_inset Formula $\left|+\right\rangle _{X}$
 \end_inset
 
  for her choice of input 
@@ -2812,7 +2817,7 @@ We model Alice's steps as follows: We use
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\left|+\right\rangle _{r}$
+\begin_inset Formula $\left|+\right\rangle _{R}$
 \end_inset
 
  for her choice of 
@@ -2830,7 +2835,7 @@ We model Alice's steps as follows: We use
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\left|0\right\rangle _{s}$
+\begin_inset Formula $\left|0\right\rangle _{S}$
 \end_inset
 
  a qubit to be used to send 
@@ -2841,7 +2846,7 @@ We model Alice's steps as follows: We use
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\left|0\right\rangle _{a}$
+\begin_inset Formula $\left|0\right\rangle _{A}$
 \end_inset
 
  the outcome of Alice's GHZ state measurement
@@ -2851,10 +2856,14 @@ We model Alice's steps as follows: We use
 \begin_layout Proof
 The argument proceeds as follows.
  Let 
-\begin_inset Formula $\rho_{0}$
+\begin_inset Formula $\rho_{0}\in\mathcal{D}(HXRAS)$
 \end_inset
 
- be Alice's state after measuring to get and creating 
+ be Alice's state after measuring to get 
+\begin_inset Formula $a$
+\end_inset
+
+ and creating 
 \begin_inset Formula $s$
 \end_inset
 
@@ -2881,16 +2890,38 @@ Observe that
 \end_inset
 
 .
- 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+This doesn't mean that Alice forgets 
+\begin_inset Formula $s$
+\end_inset
+
+.
+ She can always construct 
+\begin_inset Formula $s$
+\end_inset
+
+ again because she has all the remaining registers
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
-Similarly, observe that Bob sending a the variable 
+Similarly, observe that Bob sending the variable 
 \begin_inset Formula $g$
 \end_inset
 
  can be modelled as 
 \begin_inset Formula $\tr_{g}(\rho_{1})=\tr_{s}(\rho_{0})$
+\end_inset
+
+ where 
+\begin_inset Formula $\rho_{1}\in\mathcal{D}(HXRAG)$
 \end_inset
 
 .
@@ -2971,6 +3002,21 @@ While Alice sends
 \end_inset
 
  to account for this step.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+This would mean that Bob can hold a purification, thereby 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -2987,6 +3033,16 @@ Bob is supposed to respond with
 \end_inset
 
 .
+ We model this as 
+\begin_inset Formula $\tr_{d}(\rho_{2})=\rho_{1}\otimes\frac{1}{2}\mathbb{I}_{y}$
+\end_inset
+
+ where 
+\begin_inset Formula $\rho_{2}\in\mathcal{D}(HXRAGYD)$
+\end_inset
+
+.
+ 
 \end_layout
 
 \end_deeper
@@ -2997,7 +3053,43 @@ The SDP is therefore
 \end_layout
 
 \begin_layout Proof
-Note: 
+\begin_inset Formula 
+\[
+\max\tr[\Pi_{2}\rho_{2}]
+\]
+
+\end_inset
+
+subject to 
+\begin_inset Formula 
+\begin{align*}
+\tr_{D}(\rho_{2}) & =\rho_{1}\otimes\frac{1}{2}\mathbb{I}_{y}\\
+\tr_{G}(\rho_{1}) & =\tr_{S}(\rho_{0})
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\begin{align*}
+\rho_{0} & \in\mathcal{D}(HXRAS)\\
+\rho_{1} & \in\mathcal{D}(HXRAG)\\
+\rho_{2} & \in\mathcal{D}(HXRAGYD)
+\end{align*}
+
+\end_inset
+
+and 
+\begin_inset Formula $\rho_{0}:=\dots$
+\end_inset
+
+ (TODO: from the code).
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
