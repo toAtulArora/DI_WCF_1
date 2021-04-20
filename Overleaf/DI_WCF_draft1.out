@@ -1,0 +1,22 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{About Weak Coin Flipping}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Contributions}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Proof Technique}{section.1}% 4
+\BOOKMARK [1][-]{section.2}{An illustration of a Device Dependent Weak Coin Flipping protocol}{}% 5
+\BOOKMARK [1][-]{section.3}{Device Independent Weak Coin Flipping protocols | State Of The Art}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{Device Independence and the Box Paradigm}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{The GHZ Test}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.3}{The Protocol}{section.3}% 9
+\BOOKMARK [1][-]{section.4}{First Technique: Self-testing \(single shot, unbalanced\)}{}% 10
+\BOOKMARK [2][-]{subsection.4.1}{Cheat Vectors }{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.2}{Alice self-tests | Protocol P}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.3}{Bob self-tests | Protocol Q}{section.4}% 13
+\BOOKMARK [1][-]{section.5}{Second Technique: Bias Suppression Technique \(composed, balanced\)}{}% 14
+\BOOKMARK [2][-]{subsection.5.1}{Standard Composition}{section.5}% 15
+\BOOKMARK [2][-]{subsection.5.2}{Abort Augmented Composition \(AAC\)}{section.5}% 16
+\BOOKMARK [1][-]{section.6}{Security Proofs }{}% 17
+\BOOKMARK [2][-]{subsection.6.1}{Cheat vectors optimisation using Semi Definite Programming}{section.6}% 18
+\BOOKMARK [3][-]{subsubsection.6.1.1}{SDP when Alice self-tests}{subsection.6.1}% 19
+\BOOKMARK [3][-]{subsubsection.6.1.2}{SDP when Bob self-tests}{subsection.6.1}% 20
+\BOOKMARK [2][-]{subsection.6.2}{The self-testing step [Discuss with Tom before writing] }{section.6}% 21
+\BOOKMARK [2][-]{subsection.6.3}{The continuity argument [Enter Jamie]}{section.6}% 22

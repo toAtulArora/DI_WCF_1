@@ -375,7 +375,7 @@ relativising
 \end_layout
 
 \begin_layout Standard
-[TODO: fixit—this is outdated] In this work, we start with a device independent
+[TODO: fix it—this is outdated] In this work, we start with a device independent
  (DI) coin flipping (CF) protocol introduced
 \begin_inset Foot
 status collapsed
@@ -3247,7 +3247,7 @@ noprefix "false"
 \end_layout
 
 \begin_layout Section
-Second Technique: Suppression Technique (composed, balanced)
+Second Technique: Bias Suppression Technique (composed, balanced)
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Second-Technique"
@@ -3481,7 +3481,7 @@ We now describe perhaps the most obvious composition scheme.
 \end_layout
 
 \begin_layout Subsection
-Standard Composition Technique
+Standard Composition
 \end_layout
 
 \begin_layout Standard
@@ -4164,7 +4164,7 @@ Recall that the key observation here is that we treated the probability
 \end_layout
 
 \begin_layout Subsection
-Sikora Composition
+Abort Augmented Composition (AAC)
 \end_layout
 
 \begin_layout Algorithm
@@ -4172,11 +4172,11 @@ Sikora Composition
 status open
 
 \begin_layout Plain Layout
-\begin_inset Formula $C_{{\rm Sikora}}(.,.)$
+\begin_inset Formula $C_{{\rm ACC}}(.,.)$
 \end_inset
 
  and 
-\begin_inset Formula $C_{{\rm Sikora}}(.)$
+\begin_inset Formula $C_{{\rm ACC}}(.)$
 \end_inset
 
 
@@ -4212,7 +4212,7 @@ noprefix "false"
 
 ).
  Define 
-\begin_inset Formula $C_{{\rm Sikora}}(\mathcal{X},\mathcal{Y})$
+\begin_inset Formula $C_{{\rm ACC}}(\mathcal{X},\mathcal{Y})$
 \end_inset
 
  as follows:
