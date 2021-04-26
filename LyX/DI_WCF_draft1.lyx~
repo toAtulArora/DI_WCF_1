@@ -4046,7 +4046,7 @@ Let
 \end_inset
 
 .
- 
+ [TODO: remove approx eq]
 \end_layout
 
 \begin_layout Standard
@@ -4343,7 +4343,7 @@ If
 \end_inset
 
  and obtain outcome 
-\begin_inset Formula $Y\in\{A,B\}$
+\begin_inset Formula $Y\in\{A,B,\perp\}$
 \end_inset
 
 , else if
@@ -4358,7 +4358,7 @@ If
 \end_inset
 
  and obtain outcome 
-\begin_inset Formula $Y\in\{A,B\}$
+\begin_inset Formula $Y\in\{A,B,\perp\}$
 \end_inset
 
 , and finally if
