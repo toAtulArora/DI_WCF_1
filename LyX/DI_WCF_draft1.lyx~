@@ -4857,7 +4857,12 @@ inverted 0
 status open
 
 \begin_layout Standard
-TODO: Either show that 
+TODO: Argue why 
+\begin_inset Formula $\mathbb{C}_{{\rm AAC}}(\mathcal{P})$
+\end_inset
+
+ was not such a great idea? Perhaps do the simulation and add the results.
+ 
 \end_layout
 
 \end_inset
