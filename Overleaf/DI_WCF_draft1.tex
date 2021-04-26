@@ -28,7 +28,9 @@
 \AtBeginDocument{\providecommand\Secref[1]{\ref{Sec:#1}}}
 \AtBeginDocument{\providecommand\Subsubsecref[1]{\ref{Subsubsec:#1}}}
 \AtBeginDocument{\providecommand\Lemref[1]{\ref{Lem:#1}}}
+\AtBeginDocument{\providecommand\Assuref[1]{\ref{Assu:#1}}}
 \AtBeginDocument{\providecommand\Figref[1]{\ref{Fig:#1}}}
+\AtBeginDocument{\providecommand\Thmref[1]{\ref{Thm:#1}}}
 \RS@ifundefined{subsecref}
   {\newref{subsec}{name = \RSsectxt}}
   {}
@@ -70,7 +72,7 @@
 
 
 
-%\newref{thm}{name=theorem~,Name=Theorem~,names=theorems~,Names=Theorems~}
+\newref{thm}{name=theorem~,Name=Theorem~,names=theorems~,Names=Theorems~}
 \newref{def}{name=definition~,Name=Definition~,names=definitions~,Names=Definitions~}
 \newref{alg}{name=algorithm~,Name=Algorithm~,names=algorithms~,Names=Algorithms~}
 %\newref{cor}{name=corollary~,Name=Corollary~,names=corollaries~,Names=Corollaries~}
@@ -274,26 +276,25 @@ $\mathcal{Q}$ because the cheating probabilities are identical to
 those of $\mathcal{I}$. We can extract an advantage by using a composition
 technique that uses ``cheat vectors'' and the abort event. We describe
 it in detail later but for now, we simply denote the new protocol
-obtained using this improved composition (of protocol $\mathcal{X}$)
-by $C_{{\rm Sikora}}(\mathcal{X})$. 
+obtained using this improved ``abort augmented'' composition (of
+protocol $\mathcal{X}$) by $C_{{\rm AAC}}(\mathcal{X})$. 
 \begin{itemize}
 \item Using this technique on $\mathcal{Q}$, the cheating probabilities
 become 
 \[
-p_{X}^{*}(C_{{\rm Sikora}}(\mathcal{Q}))\approx\frac{1}{2}+0.317\dots
+p_{X}^{*}(C_{{\rm AAC}}(\mathcal{Q}))\approx\frac{1}{2}+0.317\dots
 \]
 for all $X\in\{A,B\}$, which is even better than \Eqref{SikoraP}. 
 \item Finally, we combine both these protocols to obtain (again, for all
 $X\in\{A,B\}$)
 \[
-p_{X}^{*}(C_{{\rm Sikora}}(\mathcal{Q},\mathcal{Q},\dots,\mathcal{Q},\mathcal{P}))\approx\frac{1}{2}+0.2908\dots
+p_{X}^{*}(C_{{\rm AAC}}(\mathcal{Q},\mathcal{Q},\dots,\mathcal{Q},\mathcal{P}))\approx\frac{1}{2}+0.2908\dots
 \]
 where we use the same composition technique except that at the last
 ``level'' we use $\mathcal{P}$ instead of $\mathcal{Q}$. 
 \end{itemize}
 TODO: Obvious questions (answers to which I don't have anymore; stupid
-memory): what about $p_{X}^{*}(C_{{\rm Sikora}}(\mathcal{P}))$ and
-$p_{X}^{*}(C_{{\rm Sikora}}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{Q}))$.}
+memory): what about $p_{X}^{*}(C_{{\rm AAC}}(\mathcal{P}))$ and $p_{X}^{*}(C_{{\rm AAC}}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{Q}))$.}
 
 aoeu
 
@@ -665,8 +666,8 @@ $p_{A}^{*}(\mathcal{Q})\le3/4$ and Bob's cheating probability, $p_{B}^{*}(\mathc
 $c_{0},c_{1},c_{\perp}\in\mathbb{R}$, and $\mathbb{C}_{A}(\mathcal{Q})$
 be the set of cheat vectors for Alice. Then, as $N\to\infty$, the
 solution to the optimisation problem $\max(c_{0}\alpha+c_{1}\beta+c_{\perp}\gamma)$
-over $\mathbb{C}_{A}(\mathcal{Q})$ approaches that of a semi definite
-programme. 
+over $(\alpha,\beta,\gamma)\in\mathbb{C}_{A}(\mathcal{Q})$ approaches
+that of a semi definite programme. 
 \end{lem}
 
 The proof is again deferred; see \Subsecref{SDP-when-Bob}.
@@ -705,14 +706,19 @@ We now describe perhaps the most obvious composition scheme. }
 
 We define a procedure, $C_{{\rm stand}}$, for composing a given unbalanced
 WCF protocol to obtain a more balanced protocol. In this subsection,
-we assume that if an honest player aborts, they consider themselves
-the winner, i.e. an honest player either outputs $A$ or $B$ but
-not $\perp$. \branchcolor{purple}{TODO: maybe explain this a little better? }
+we make the following assumption.
+\begin{assumption}[Abort means I won]
+If an honest player aborts, they consider themselves the winner,
+i.e. an honest player either outputs $A$ or $B$ but not $\perp$.\label{assu:noAbort}
+\end{assumption}
+
+\branchcolor{purple}{TODO: maybe explain this a little better? }
 \begin{lyxalgorithm}[$C_{{\rm stand}}(.,.)$ and $C_{{\rm stand}}(.)$]
 Given two unbalanced WCF protocols, $\mathcal{X}$ and $\mathcal{Y}$,
 let $\mathcal{X}_{A},\mathcal{X}_{B}$ and $\mathcal{Y}_{A},\mathcal{Y}_{B}$
-be their polarisations (see \Defref{unbalanced-polarity}). Define
-$C_{{\rm stand}}(\mathcal{X},\mathcal{Y})$ as follows:
+be their polarisations (see \Defref{unbalanced-polarity}). All protocols
+are executed under \Assuref{noAbort}. Define $C_{{\rm stand}}(\mathcal{X},\mathcal{Y})$
+as follows:
 \begin{enumerate}
 \item Alice and Bob execute $\mathcal{X}_{A}$ and obtain outcome $X\in\{A,B\}$. 
 \item If
@@ -745,7 +751,7 @@ Perhaps have this in the appendix.
 \end{example}
 
 \branchcolor{purple}{To be concrete, let us workout an example. Consider protocol $\mathcal{P}$
-(see \Algref{AliceSelfTestsHerBoxes}) and let
+(see \Algref{AliceSelfTestsHerBoxes}) and recall (see \Lemref{AliceSelfTests})
 \begin{align*}
 p_{A}^{*}(\mathcal{P}_{A}) & \le\alpha\approx0.852\dots,\\
 p_{B}^{*}(\mathcal{P}_{A}) & \le\beta\approx0.667\dots.
@@ -753,7 +759,7 @@ p_{B}^{*}(\mathcal{P}_{A}) & \le\beta\approx0.667\dots.
 Note that therefore $p_{A}^{*}(\mathcal{P}_{B})\le\beta$ and $p_{B}^{*}(\mathcal{P}_{B})\le\alpha$.
 Further, let $\mathcal{P}':=C_{{\rm stand}}(\mathcal{P},\mathcal{P})$,
 i.e. Alice and Bob first execute $\mathcal{P}_{A}$ and if the outcome
-is $A$, the execute $\mathcal{P}_{A}$, otherwise they execute $\mathcal{P}_{B}$
+is $A$, they execute $\mathcal{P}_{A}$, otherwise they execute $\mathcal{P}_{B}$
 (see \Figref{Standard-composition-technique}). Then, 
 \begin{align*}
 p_{A}^{*}(\mathcal{P}'_{A}) & \le\alpha\alpha+(1-\alpha)\beta=:\alpha^{(1)},\\
@@ -806,7 +812,7 @@ the malicious player from cheating further.}
 \begin{lyxalgorithm}[$C_{{\rm ACC}}(.,.)$ and $C_{{\rm ACC}}(.)$]
  Given two unbalanced WCF protocols, $\mathcal{X}$ and $\mathcal{Y}$,
 let $\mathcal{X}_{A},\mathcal{X}_{B}$ and $\mathcal{Y}_{A},\mathcal{Y}_{B}$
-be their polarisations (see \Defref{unbalanced-polarity}). Define
+be their polarisations (see \Defref{unbalanced-polarity}).  Define
 $C_{{\rm ACC}}(\mathcal{X},\mathcal{Y})$ as follows:
 \begin{enumerate}
 \item Alice and Bob execute $\mathcal{X}_{A}$ and obtain outcome $X\in\{A,B,\perp\}$. 
@@ -821,18 +827,113 @@ and finally if
 Output $Y$.
 
 \end{enumerate}
-Let $\mathcal{Z}^{i+1}:=C_{{\rm stand}}(\mathcal{X},\mathcal{Z}^{i})$
+Let $\mathcal{Z}^{i+1}:=C_{{\rm AAC}}(\mathcal{X},\mathcal{Z}^{i})$
 for $i\ge1$, and $\mathcal{Z}^{1}:=\mathcal{X}$. Then, formally,
 define $C_{{\rm stand}}(\mathcal{X}):=\lim_{i\to\infty}\mathcal{Z}^{i}$.
 \end{lyxalgorithm}
 
 \begin{rem}
-Again, even though it seems that Alice might be favoured, $C_{{\rm Sikora}}$
-may result in a protocol with the opposite polarity---let $\mathcal{Z}:=C_{{\rm stand}}(\mathcal{X},\mathcal{Y})$,
+Again, even though it seems that Alice might be favoured, $C_{{\rm AAC}}$
+may result in a protocol with the opposite polarity---let $\mathcal{Z}:=C_{{\rm AAC}}(\mathcal{X},\mathcal{Y})$,
 then $\mathcal{Z}_{A}$ is not necessarily the same as $\mathcal{Z}$. 
 \end{rem}
 
-{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}I am here{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}
+\branchcolor{purple}{As before, to be concrete, let us workout an example. Consider protocol
+$Q$ (see \Algref{BobSelfTests}) and let $(v_{A},v_{B},v_{\perp})\in\mathbb{C}_{A}(\mathcal{Q}_{A})$
+be a cheat vector for $\mathcal{Q}$ (in this discussion, we reserve
+$\alpha,\beta$ for notational simplicity). Further, recall that 
+\begin{align*}
+p_{A}^{*}(\mathcal{Q}_{A}) & \le\alpha=3/4=0.75\\
+p_{B}^{*}(\mathcal{Q}_{A}) & \le\beta=\cos^{2}(\pi/8)=0.8535\dots
+\end{align*}
+and note that, therefore, $p_{A}^{*}(\mathcal{Q}_{B})\le\beta$ and
+$p_{B}^{*}(\mathcal{Q}_{B})\le\alpha$. Let $\mathcal{Q}':=C_{{\rm AAC}}(\mathcal{Q},\mathcal{Q})$,
+i.e. Alice and Bob first execute $\mathcal{Q}_{A}$ and if the outcome
+is $A$, they execute $\mathcal{Q}_{A}$, otherwise they execute $\mathcal{Q}_{B}$
+(see \Figref{Abort-Augmented-Composition}). Our goal is to obtain
+an upper bound on $p_{A}^{*}(\mathcal{Q}')$ and $p_{B}^{*}(\mathcal{Q}')$.
+We start from the bottom of \Figref{Abort-Augmented-Composition}. 
+
+Suppose Alice is malicious. Conditioned on the event that the protocol
+reaches the bottom left step, it is clear that Alice's highest probability
+of winning is $\alpha$. In this case, the abort probability doesn't
+play a role. Similarly, conditioned on the event that the protocol
+reaches the bottom right step, it is clear that Alice's highest probability
+of winning is $\beta$. At the first step then, it is clear that the
+highest probability of Alice winning is 
+\begin{align}
+p_{A}^{*}(\mathcal{Q}') & \le\max_{(v_{A},v_{B},v_{\perp})\in\mathbb{C}_{A}}\alpha v_{A}+\beta v_{B}\label{eq:maxExplain}\\
+ & \le\alpha^{2}+\beta(1-\alpha).\label{eq:weakBound}
+\end{align}
+The first inequality is saturated if $\alpha$ and $\beta$ are tight
+bounds. The second inequality holds because $\alpha>\beta$ so putting
+all the maximum weight on $\alpha$ (i.e. $\alpha$) while the remaining
+on $\beta$ (i.e. $1-\alpha$) is the best one can do. Operationally,
+this means that Alice is forcing the outcome $A$ and treating the
+outcomes $B$ and $\perp$ as proceeding to the $\mathcal{Q}_{B}$
+step (i.e. the bottom right step). However, Bob only agrees to proceed
+to the bottom right step if the outcome is $B$ and hence the maximization,
+\Eqref{maxExplain}, potentially yields a better bound.
+
+The case for malicious Bob would have been similar if we had a good
+characterisation for $\mathbb{C}_{B}(\mathcal{Q})$. Since we don't,
+we content ourselves with a weaker bound, the one analogous to \Eqref{weakBound}:
+\[
+p_{B}^{*}(\mathcal{Q}')\le\beta\alpha+(1-\beta)\beta.
+\]
+TODO: put the numbers (they seem to be off). 
+
+Thus to obtain $p_{A}^{*}(\mathcal{Q}')$, one solves an SDP (numerically)
+and $p_{B}^{*}(\mathcal{Q}')$ is obtained readily. Using this, one
+can consider $\mathcal{Q}'':=\mathbb{C}_{{\rm AAC}}(\mathcal{Q},\mathcal{Q}')$
+and evaluate the cheating probabilities $p_{A}^{*}(\mathcal{Q}'')$
+again as an SDP and $p_{B}^{*}(\mathcal{Q}'')$ directly. This leads
+us to the following result. 
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=6cm]{figures/temp_AAC_Qs}
+\par\end{centering}
+\caption{Abort Augmented Composition technique. (TODO: improve the caption)\protect \\
+$(v_{A},v_{B},v_{\perp})\in\mathbb{C}_{A}$; because we don't have
+a good characterisation of $\mathbb{C}_{B}$, we use (red) $1-\beta$
+and $\beta$ for obtaining a bound on $p_{B}^{*}(\mathcal{Q}')$.
+\label{fig:Abort-Augmented-Composition}}
+\end{figure}
+}
+\begin{thm}
+Let $X\in\{A,B\}$. Then 
+\[
+p_{X}^{*}(\mathbb{C}_{{\rm AAC}}(\mathcal{Q}))\apprle0.8175\dots
+\]
+and 
+\[
+p_{X}^{*}(\mathbb{C}_{{\rm AAC}}(\mathcal{Q}))\apprle
+\]
+(TODO: calculate). 
+\end{thm}
+
+\branchcolor{purple}{To suppress the bias further, we note that at the very last step,
+only the cheating probabilities $p_{A}^{*}(\mathcal{Q})\le\alpha$
+and $p_{B}^{*}(\mathcal{Q})\le\beta$ played a role (i.e. the fact
+that the cheating vectors $\mathbb{C}_{A}$ for $\mathcal{Q}$ had
+an SDP characterisation was not used). Further, we know that $p_{A}^{*}(\mathcal{P})=p_{A}^{*}(\mathcal{Q})$
+but $p_{B}^{*}(\mathcal{P})<p_{B}^{*}(\mathcal{Q})$, i.e. using $\mathcal{P}$
+at the very last step will result in a strictly better protocol. }
+\begin{thm}
+Let $X\in\{A,B\}$, 
+\begin{align*}
+\mathcal{Z}^{1} & :=\mathbb{C}_{{\rm AAC}}(\mathcal{Q},\mathcal{P}),\quad{\rm and}\\
+\mathcal{Z}^{i+1} & :=\mathbb{C}_{{\rm AAC}}(\mathcal{Q},\mathcal{Z}^{i})\quad i>1.
+\end{align*}
+Then 
+\[
+\lim_{i\to\infty}p_{X}^{*}(\mathcal{Z}^{i})\apprle0.7908\dots
+\]
+\end{thm}
+
+\branchcolor{purple}{TODO: Argue why $\mathbb{C}_{{\rm AAC}}(\mathcal{P})$ was not such
+a great idea? Perhaps do the simulation and add the results. }
 
 \section{Security Proofs }
 
@@ -979,6 +1080,34 @@ where
 }
 
 \subsection{The self-testing step {[}Discuss with Tom before writing{]} }
+\begin{thm}
+\label{thm:Martingale}Let $\{X_{1},X_{2}\dots X_{n}\}$ be $n$ random
+variables which are possibly correlated and take values in $\{0,1\}$.
+Let $\Pi\in S_{n}$ be a random variable (which takes values in the
+permutation group), picked from the uniformly random distribution.
+Then, 
+\[
+\Pr\left\{ \left|\frac{X_{\Pi(1)}+\dots X_{\Pi(n-1)}}{n-1}-\mathbb{E}(X_{\Pi(n)})\right|>r\right\} \le\exp(-cnr^{2})
+\]
+for some fixed $c>0$. 
+\end{thm}
+
+\begin{lem}
+Let $X_{i}$s and $\Pi$ be as in \Thmref{Martingale}, above. Then
+\[
+\Pr\left\{ \left|X_{\Pi(1)}+\dots+X_{\Pi(n-1)}-\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}\left(X_{\pi(1)}+\dots X_{\pi(n-1)}\right)\right|\ge r\right\} \le2e^{-\frac{cr^{2}}{n}}
+\]
+for some $c>0$. 
+\end{lem}
+
+\begin{lem}
+Let $X_{i}$s be as in \Thmref{Martingale}, above. Then 
+\[
+\Pr\left\{ \left|\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}\left(\frac{n}{n-1}(X_{\pi(1)}+\dots+X_{\pi(n-1)})-\mathbb{E}(X_{\pi(1)}+\dots+X_{\pi(n)}\right)\ge r\right|\right\} \le2e^{-\frac{cr^{2}}{n}}
+\]
+for some $c>0$. 
+\end{lem}
+
 
 \subsection{The continuity argument {[}Enter Jamie{]}}
 
