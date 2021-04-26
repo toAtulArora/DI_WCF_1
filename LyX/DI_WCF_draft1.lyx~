@@ -3741,7 +3741,7 @@ From the form of
 \end_inset
 
  it might seem that Alice is favoured and this is indeed the case.
- 
+ [TODO: split the Algorithm/Definition]
 \end_layout
 
 \begin_layout Claim
@@ -3773,7 +3773,8 @@ Let
 \end_inset
 
 .
- 
+ TODO: i.e.
+ Could be clearer: 
 \end_layout
 
 \begin_layout Standard
