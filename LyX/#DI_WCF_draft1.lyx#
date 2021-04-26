@@ -17,7 +17,7 @@
 
 
 
-\newref{thm}{name=theorem~,Name=Theorem~,names=theorems~,Names=Theorems~}
+%\newref{thm}{name=theorem~,Name=Theorem~,names=theorems~,Names=Theorems~}
 \newref{def}{name=definition~,Name=Definition~,names=definitions~,Names=Definitions~}
 \newref{alg}{name=algorithm~,Name=Algorithm~,names=algorithms~,Names=Algorithms~}
 %\newref{cor}{name=corollary~,Name=Corollary~,names=corollaries~,Names=Corollaries~}
@@ -4851,20 +4851,6 @@ Then
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Branch commentary
-inverted 0
-status open
-
-\begin_layout Standard
-TODO: Either show that 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Security Proofs 
 \end_layout
@@ -5585,12 +5571,6 @@ The self-testing step [Discuss with Tom before writing]
 \end_layout
 
 \begin_layout Theorem
-\begin_inset CommandInset label
-LatexCommand label
-name "thm:Martingale"
-
-\end_inset
-
 Let 
 \begin_inset Formula $\{X_{1},X_{2}\dots X_{n}\}$
 \end_inset
@@ -5613,7 +5593,7 @@ Let
  Then, 
 \begin_inset Formula 
 \[
-\Pr\left\{ \left|\frac{X_{\Pi(1)}+\dots X_{\Pi(n-1)}}{n-1}-\mathbb{E}(X_{\Pi(n)})\right|>r\right\} \le\exp(-cnr^{2})
+\Pr\left\{ \left|\frac{X_{\Pi(1)}+X_{\Pi(2)}+\dots X_{\Pi(n-1)}}{n-1}-\mathbb{E}(X_{\Pi(n)})\right|>r\right\} \le\exp(-cnr^{2})
 \]
 
 \end_inset
@@ -5627,78 +5607,7 @@ for some fixed
 \end_layout
 
 \begin_layout Lemma
-Let 
-\begin_inset Formula $X_{i}$
-\end_inset
-
-s and 
-\begin_inset Formula $\Pi$
-\end_inset
-
- be as in 
-\begin_inset CommandInset ref
-LatexCommand formatted
-reference "thm:Martingale"
-plural "false"
-caps "true"
-noprefix "false"
-
-\end_inset
-
-, above.
- Then 
-\begin_inset Formula 
-\[
-\Pr\left\{ \left|X_{\Pi(1)}+\dots+X_{\Pi(n-1)}-\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}\left(X_{\pi(1)}+\dots X_{\pi(n-1)}\right)\right|\ge r\right\} \le2e^{-\frac{cr^{2}}{n}}
-\]
-
-\end_inset
-
-for some 
-\begin_inset Formula $c>0$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Lemma
-Let 
-\begin_inset Formula $X_{i}$
-\end_inset
-
-s be as in 
-\begin_inset CommandInset ref
-LatexCommand formatted
-reference "thm:Martingale"
-plural "false"
-caps "true"
-noprefix "false"
-
-\end_inset
-
-, above.
- Then 
-\begin_inset Formula 
-\[
-\Pr\left\{ \left|\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}\left(\frac{n}{n-1}(X_{\pi(1)}+\dots+X_{\pi(n-1)})-\mathbb{E}(X_{\pi(1)}+\dots+X_{\pi(n)}\right)\ge r\right|\right\} \le2e^{-\frac{cr^{2}}{n}}
-\]
-
-\end_inset
-
-for some 
-\begin_inset Formula $c>0$
-\end_inset
-
-.
- 
+aoeu
 \end_layout
 
 \begin_layout Subsection

@@ -17,7 +17,7 @@
 
 
 
-%\newref{thm}{name=theorem~,Name=Theorem~,names=theorems~,Names=Theorems~}
+\newref{thm}{name=theorem~,Name=Theorem~,names=theorems~,Names=Theorems~}
 \newref{def}{name=definition~,Name=Definition~,names=definitions~,Names=Definitions~}
 \newref{alg}{name=algorithm~,Name=Algorithm~,names=algorithms~,Names=Algorithms~}
 %\newref{cor}{name=corollary~,Name=Corollary~,names=corollaries~,Names=Corollaries~}
@@ -763,12 +763,20 @@ cheat vectors
 
  and the abort event.
  We describe it in detail later but for now, we simply denote the new protocol
- obtained using this improved composition (of protocol 
+ obtained using this improved 
+\begin_inset Quotes eld
+\end_inset
+
+abort augmented
+\begin_inset Quotes erd
+\end_inset
+
+ composition (of protocol 
 \begin_inset Formula $\mathcal{X}$
 \end_inset
 
 ) by 
-\begin_inset Formula $C_{{\rm Sikora}}(\mathcal{X})$
+\begin_inset Formula $C_{{\rm AAC}}(\mathcal{X})$
 \end_inset
 
 .
@@ -783,7 +791,7 @@ Using this technique on
 , the cheating probabilities become 
 \begin_inset Formula 
 \[
-p_{X}^{*}(C_{{\rm Sikora}}(\mathcal{Q}))\approx\frac{1}{2}+0.317\dots
+p_{X}^{*}(C_{{\rm AAC}}(\mathcal{Q}))\approx\frac{1}{2}+0.317\dots
 \]
 
 \end_inset
@@ -814,7 +822,7 @@ Finally, we combine both these protocols to obtain (again, for all
 )
 \begin_inset Formula 
 \[
-p_{X}^{*}(C_{{\rm Sikora}}(\mathcal{Q},\mathcal{Q},\dots,\mathcal{Q},\mathcal{P}))\approx\frac{1}{2}+0.2908\dots
+p_{X}^{*}(C_{{\rm AAC}}(\mathcal{Q},\mathcal{Q},\dots,\mathcal{Q},\mathcal{P}))\approx\frac{1}{2}+0.2908\dots
 \]
 
 \end_inset
@@ -842,11 +850,11 @@ level
 \begin_layout Standard
 TODO: Obvious questions (answers to which I don't have anymore; stupid memory):
  what about 
-\begin_inset Formula $p_{X}^{*}(C_{{\rm Sikora}}(\mathcal{P}))$
+\begin_inset Formula $p_{X}^{*}(C_{{\rm AAC}}(\mathcal{P}))$
 \end_inset
 
  and 
-\begin_inset Formula $p_{X}^{*}(C_{{\rm Sikora}}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{Q}))$
+\begin_inset Formula $p_{X}^{*}(C_{{\rm AAC}}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{Q}))$
 \end_inset
 
 .
@@ -3243,7 +3251,7 @@ noprefix "false"
 \end_inset
 
  over 
-\begin_inset Formula $\mathbb{C}_{A}(\mathcal{Q})$
+\begin_inset Formula $(\alpha,\beta,\gamma)\in\mathbb{C}_{A}(\mathcal{Q})$
 \end_inset
 
  approaches that of a semi definite programme.
@@ -3509,8 +3517,20 @@ We define a procedure,
 
 , for composing a given unbalanced WCF protocol to obtain a more balanced
  protocol.
- In this subsection, we assume that if an honest player aborts, they consider
- themselves the winner, i.e.
+ In this subsection, we make the following assumption.
+\end_layout
+
+\begin_layout Assumption
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Abort means I won
+\end_layout
+
+\end_inset
+
+If an honest player aborts, they consider themselves the winner, i.e.
  an honest player either outputs 
 \begin_inset Formula $A$
 \end_inset
@@ -3524,7 +3544,16 @@ We define a procedure,
 \end_inset
 
 .
- 
+\begin_inset CommandInset label
+LatexCommand label
+name "assu:noAbort"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Branch commentary
 inverted 0
 status open
@@ -3582,6 +3611,17 @@ noprefix "false"
 \end_inset
 
 ).
+ All protocols are executed under 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "assu:noAbort"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
  Define 
 \begin_inset Formula $C_{{\rm stand}}(\mathcal{X},\mathcal{Y})$
 \end_inset
@@ -3774,7 +3814,17 @@ noprefix "false"
 
 \end_inset
 
-) and let
+) and recall (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "lem:AliceSelfTests"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+)
 \begin_inset Formula 
 \begin{align*}
 p_{A}^{*}(\mathcal{P}_{A}) & \le\alpha\approx0.852\dots,\\
@@ -3805,7 +3855,7 @@ Note that therefore
 \begin_inset Formula $A$
 \end_inset
 
-, the execute 
+, they execute 
 \begin_inset Formula $\mathcal{P}_{A}$
 \end_inset
 
@@ -3928,7 +3978,7 @@ We thus have the following.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -4229,6 +4279,30 @@ noprefix "false"
 \end_inset
 
 ).
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Protocol 
+\begin_inset Formula $\mathcal{Y}$
+\end_inset
+
+ is executed under 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "assu:noAbort"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
  Define 
 \begin_inset Formula $C_{{\rm ACC}}(\mathcal{X},\mathcal{Y})$
 \end_inset
@@ -4308,7 +4382,7 @@ Output
 \end_deeper
 \begin_layout Algorithm
 Let 
-\begin_inset Formula $\mathcal{Z}^{i+1}:=C_{{\rm stand}}(\mathcal{X},\mathcal{Z}^{i})$
+\begin_inset Formula $\mathcal{Z}^{i+1}:=C_{{\rm AAC}}(\mathcal{X},\mathcal{Z}^{i})$
 \end_inset
 
  for 
@@ -4329,11 +4403,11 @@ Let
 
 \begin_layout Remark
 Again, even though it seems that Alice might be favoured, 
-\begin_inset Formula $C_{{\rm Sikora}}$
+\begin_inset Formula $C_{{\rm AAC}}$
 \end_inset
 
  may result in a protocol with the opposite polarity—let 
-\begin_inset Formula $\mathcal{Z}:=C_{{\rm stand}}(\mathcal{X},\mathcal{Y})$
+\begin_inset Formula $\mathcal{Z}:=C_{{\rm AAC}}(\mathcal{X},\mathcal{Y})$
 \end_inset
 
 , then 
@@ -4349,7 +4423,451 @@ Again, even though it seems that Alice might be favoured,
 \end_layout
 
 \begin_layout Standard
-**************I am here*************
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+As before, to be concrete, let us workout an example.
+ Consider protocol 
+\begin_inset Formula $Q$
+\end_inset
+
+ (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "alg:BobSelfTests"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+) and let 
+\begin_inset Formula $(v_{A},v_{B},v_{\perp})\in\mathbb{C}_{A}(\mathcal{Q}_{A})$
+\end_inset
+
+ be a cheat vector for 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ (in this discussion, we reserve 
+\begin_inset Formula $\alpha,\beta$
+\end_inset
+
+ for notational simplicity).
+ Further, recall that 
+\begin_inset Formula 
+\begin{align*}
+p_{A}^{*}(\mathcal{Q}_{A}) & \le\alpha=3/4=0.75\\
+p_{B}^{*}(\mathcal{Q}_{A}) & \le\beta=\cos^{2}(\pi/8)=0.8535\dots
+\end{align*}
+
+\end_inset
+
+and note that, therefore, 
+\begin_inset Formula $p_{A}^{*}(\mathcal{Q}_{B})\le\beta$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{B}^{*}(\mathcal{Q}_{B})\le\alpha$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\mathcal{Q}':=C_{{\rm AAC}}(\mathcal{Q},\mathcal{Q})$
+\end_inset
+
+, i.e.
+ Alice and Bob first execute 
+\begin_inset Formula $\mathcal{Q}_{A}$
+\end_inset
+
+ and if the outcome is 
+\begin_inset Formula $A$
+\end_inset
+
+, they execute 
+\begin_inset Formula $\mathcal{Q}_{A}$
+\end_inset
+
+, otherwise they execute 
+\begin_inset Formula $\mathcal{Q}_{B}$
+\end_inset
+
+ (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Abort-Augmented-Composition"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+).
+ Our goal is to obtain an upper bound on 
+\begin_inset Formula $p_{A}^{*}(\mathcal{Q}')$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{B}^{*}(\mathcal{Q}')$
+\end_inset
+
+.
+ We start from the bottom of 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Abort-Augmented-Composition"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Suppose Alice is malicious.
+ Conditioned on the event that the protocol reaches the bottom left step,
+ it is clear that Alice's highest probability of winning is 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ In this case, the abort probability doesn't play a role.
+ Similarly, conditioned on the event that the protocol reaches the bottom
+ right step, it is clear that Alice's highest probability of winning is
+ 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ At the first step then, it is clear that the highest probability of Alice
+ winning is 
+\begin_inset Formula 
+\begin{align}
+p_{A}^{*}(\mathcal{Q}') & \le\max_{(v_{A},v_{B},v_{\perp})\in\mathbb{C}_{A}}\alpha v_{A}+\beta v_{B}\label{eq:maxExplain}\\
+ & \le\alpha^{2}+\beta(1-\alpha).\label{eq:weakBound}
+\end{align}
+
+\end_inset
+
+The first inequality is saturated if 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ are tight bounds.
+ The second inequality holds because 
+\begin_inset Formula $\alpha>\beta$
+\end_inset
+
+ so putting all the maximum weight on 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ (i.e.
+ 
+\begin_inset Formula $\alpha$
+\end_inset
+
+) while the remaining on 
+\begin_inset Formula $\beta$
+\end_inset
+
+ (i.e.
+ 
+\begin_inset Formula $1-\alpha$
+\end_inset
+
+) is the best one can do.
+ Operationally, this means that Alice is forcing the outcome 
+\begin_inset Formula $A$
+\end_inset
+
+ and treating the outcomes 
+\begin_inset Formula $B$
+\end_inset
+
+ and 
+\begin_inset Formula $\perp$
+\end_inset
+
+ as proceeding to the 
+\begin_inset Formula $\mathcal{Q}_{B}$
+\end_inset
+
+ step (i.e.
+ the bottom right step).
+ However, Bob only agrees to proceed to the bottom right step if the outcome
+ is 
+\begin_inset Formula $B$
+\end_inset
+
+ and hence the maximization, 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:maxExplain"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, potentially yields a better bound.
+\end_layout
+
+\begin_layout Standard
+The case for malicious Bob would have been similar if we had a good characterisa
+tion for 
+\begin_inset Formula $\mathbb{C}_{B}(\mathcal{Q})$
+\end_inset
+
+.
+ Since we don't, we content ourselves with a weaker bound, the one analogous
+ to 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:weakBound"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+p_{B}^{*}(\mathcal{Q}')\le\beta\alpha+(1-\beta)\beta.
+\]
+
+\end_inset
+
+TODO: put the numbers (they seem to be off).
+ 
+\end_layout
+
+\begin_layout Standard
+Thus to obtain 
+\begin_inset Formula $p_{A}^{*}(\mathcal{Q}')$
+\end_inset
+
+, one solves an SDP (numerically) and 
+\begin_inset Formula $p_{B}^{*}(\mathcal{Q}')$
+\end_inset
+
+ is obtained readily.
+ Using this, one can consider 
+\begin_inset Formula $\mathcal{Q}'':=\mathbb{C}_{{\rm AAC}}(\mathcal{Q},\mathcal{Q}')$
+\end_inset
+
+ and evaluate the cheating probabilities 
+\begin_inset Formula $p_{A}^{*}(\mathcal{Q}'')$
+\end_inset
+
+ again as an SDP and 
+\begin_inset Formula $p_{B}^{*}(\mathcal{Q}'')$
+\end_inset
+
+ directly.
+ This leads us to the following result.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/temp_AAC_Qs.png
+	lyxscale 50
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Abort Augmented Composition technique.
+ (TODO: improve the caption)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $(v_{A},v_{B},v_{\perp})\in\mathbb{C}_{A}$
+\end_inset
+
+; because we don't have a good characterisation of 
+\begin_inset Formula $\mathbb{C}_{B}$
+\end_inset
+
+, we use (red) 
+\begin_inset Formula $1-\beta$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ for obtaining a bound on 
+\begin_inset Formula $p_{B}^{*}(\mathcal{Q}')$
+\end_inset
+
+.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Abort-Augmented-Composition"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+Let 
+\begin_inset Formula $X\in\{A,B\}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula 
+\[
+p_{X}^{*}(\mathbb{C}_{{\rm AAC}}(\mathcal{Q}))\apprle0.8175\dots
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+p_{X}^{*}(\mathbb{C}_{{\rm AAC}}(\mathcal{Q}))\apprle
+\]
+
+\end_inset
+
+(TODO: calculate).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+To suppress the bias further, we note that at the very last step, only the
+ cheating probabilities 
+\begin_inset Formula $p_{A}^{*}(\mathcal{Q})\le\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{B}^{*}(\mathcal{Q})\le\beta$
+\end_inset
+
+ played a role (i.e.
+ the fact that the cheating vectors 
+\begin_inset Formula $\mathbb{C}_{A}$
+\end_inset
+
+ for 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ had an SDP characterisation was not used).
+ Further, we know that 
+\begin_inset Formula $p_{A}^{*}(\mathcal{P})=p_{A}^{*}(\mathcal{Q})$
+\end_inset
+
+ but 
+\begin_inset Formula $p_{B}^{*}(\mathcal{P})<p_{B}^{*}(\mathcal{Q})$
+\end_inset
+
+, i.e.
+ using 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ at the very last step will result in a strictly better protocol.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+Let 
+\begin_inset Formula $X\in\{A,B\}$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{align*}
+\mathcal{Z}^{1} & :=\mathbb{C}_{{\rm AAC}}(\mathcal{Q},\mathcal{P}),\quad{\rm and}\\
+\mathcal{Z}^{i+1} & :=\mathbb{C}_{{\rm AAC}}(\mathcal{Q},\mathcal{Z}^{i})\quad i>1.
+\end{align*}
+
+\end_inset
+
+Then 
+\begin_inset Formula 
+\[
+\lim_{i\to\infty}p_{X}^{*}(\mathcal{Z}^{i})\apprle0.7908\dots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+TODO: Argue why 
+\begin_inset Formula $\mathbb{C}_{{\rm AAC}}(\mathcal{P})$
+\end_inset
+
+ was not such a great idea? Perhaps do the simulation and add the results.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -5069,6 +5587,123 @@ where
 
 \begin_layout Subsection
 The self-testing step [Discuss with Tom before writing] 
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:Martingale"
+
+\end_inset
+
+Let 
+\begin_inset Formula $\{X_{1},X_{2}\dots X_{n}\}$
+\end_inset
+
+ be 
+\begin_inset Formula $n$
+\end_inset
+
+ random variables which are possibly correlated and take values in 
+\begin_inset Formula $\{0,1\}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\Pi\in S_{n}$
+\end_inset
+
+ be a random variable (which takes values in the permutation group), picked
+ from the uniformly random distribution.
+ Then, 
+\begin_inset Formula 
+\[
+\Pr\left\{ \left|\frac{X_{\Pi(1)}+\dots X_{\Pi(n-1)}}{n-1}-\mathbb{E}(X_{\Pi(n)})\right|>r\right\} \le\exp(-cnr^{2})
+\]
+
+\end_inset
+
+for some fixed 
+\begin_inset Formula $c>0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Lemma
+Let 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+s and 
+\begin_inset Formula $\Pi$
+\end_inset
+
+ be as in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "thm:Martingale"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, above.
+ Then 
+\begin_inset Formula 
+\[
+\Pr\left\{ \left|X_{\Pi(1)}+\dots+X_{\Pi(n-1)}-\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}\left(X_{\pi(1)}+\dots X_{\pi(n-1)}\right)\right|\ge r\right\} \le2e^{-\frac{cr^{2}}{n}}
+\]
+
+\end_inset
+
+for some 
+\begin_inset Formula $c>0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+Let 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+s be as in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "thm:Martingale"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, above.
+ Then 
+\begin_inset Formula 
+\[
+\Pr\left\{ \left|\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}\left(\frac{n}{n-1}(X_{\pi(1)}+\dots+X_{\pi(n-1)})-\mathbb{E}(X_{\pi(1)}+\dots+X_{\pi(n)}\right)\ge r\right|\right\} \le2e^{-\frac{cr^{2}}{n}}
+\]
+
+\end_inset
+
+for some 
+\begin_inset Formula $c>0$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Subsection
