@@ -4400,7 +4400,7 @@ Let
 
 .
  Then, formally, define 
-\begin_inset Formula $C_{{\rm stand}}(\mathcal{X}):=\lim_{i\to\infty}\mathcal{Z}^{i}$
+\begin_inset Formula $C_{{\rm AAC}}(\mathcal{X}):=\lim_{i\to\infty}\mathcal{Z}^{i}$
 \end_inset
 
 .

@@ -2415,6 +2415,10 @@ inverted 0
 status open
 
 \begin_layout Standard
+TODO: Assumption: No honest abort.
+\end_layout
+
+\begin_layout Standard
 We make two observations.
  
 \end_layout
