@@ -17,7 +17,7 @@
 
 
 
-%\newref{thm}{name=theorem~,Name=Theorem~,names=theorems~,Names=Theorems~}
+\newref{thm}{name=theorem~,Name=Theorem~,names=theorems~,Names=Theorems~}
 \newref{def}{name=definition~,Name=Definition~,names=definitions~,Names=Definitions~}
 \newref{alg}{name=algorithm~,Name=Algorithm~,names=algorithms~,Names=Algorithms~}
 %\newref{cor}{name=corollary~,Name=Corollary~,names=corollaries~,Names=Corollaries~}
@@ -2415,6 +2415,10 @@ inverted 0
 status open
 
 \begin_layout Standard
+TODO: Assumption: No honest abort.
+\end_layout
+
+\begin_layout Standard
 We make two observations.
  
 \end_layout
@@ -3273,7 +3277,7 @@ noprefix "false"
 \end_layout
 
 \begin_layout Section
-Second Technique: Bias Suppression Technique (composed, balanced)
+Second Technique: Bias Suppression 
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Second-Technique"
@@ -3430,20 +3434,20 @@ Finally, let
 \end_inset
 
  be distinct and suppose that 
-\begin_inset Formula $\mathcal{X}$
+\begin_inset Formula $\mathcal{R}$
 \end_inset
 
- is unbalanced.
+ is an unbalanced protocol.
  Then, we define 
-\begin_inset Formula $\mathcal{X}_{X}$
+\begin_inset Formula $\mathcal{\mathcal{R}}_{X}$
 \end_inset
 
  to be protocol 
-\begin_inset Formula $\mathcal{X}$
+\begin_inset Formula $\mathcal{R}$
 \end_inset
 
  where Alice's and Bob's roles are possibly interchanged so that 
-\begin_inset Formula $\mathcal{X}_{X}$
+\begin_inset Formula $\mathcal{R}_{X}$
 \end_inset
 
  has polarity 
@@ -3452,16 +3456,16 @@ Finally, let
 
 , i.e.
  
-\begin_inset Formula $p_{X}^{*}(\mathcal{X}_{X})>p_{Y}^{*}(\mathcal{X}_{X})$
+\begin_inset Formula $p_{X}^{*}(\mathcal{\mathcal{R}}_{X})>p_{Y}^{*}(\mathcal{R}_{X})$
 \end_inset
 
 .
  We refer to 
-\begin_inset Formula $\mathcal{X}_{X}$
+\begin_inset Formula $\mathcal{R}_{X}$
 \end_inset
 
  as 
-\begin_inset Formula $\mathcal{X}$
+\begin_inset Formula $\mathcal{R}$
 \end_inset
 
  polarised towards 
@@ -3497,69 +3501,20 @@ flip and declare
 \end_layout
 
 \begin_layout Standard
-We now describe perhaps the most obvious composition scheme.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Standard Composition
+TODO: Winner gets Polarity
 \end_layout
 
 \begin_layout Standard
-We define a procedure, 
-\begin_inset Formula $C_{{\rm stand}}$
+We now describe how these protocols can be composed such that the 
+\begin_inset Quotes eld
 \end_inset
 
-, for composing a given unbalanced WCF protocol to obtain a more balanced
- protocol.
- In this subsection, we make the following assumption.
-\end_layout
-
-\begin_layout Assumption
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-Abort means I won
-\end_layout
-
-\end_inset
-
-If an honest player aborts, they consider themselves the winner, i.e.
- an honest player either outputs 
-\begin_inset Formula $A$
-\end_inset
-
- or 
-\begin_inset Formula $B$
-\end_inset
-
- but not 
-\begin_inset Formula $\perp$
+winner gets polarity
+\begin_inset Quotes erd
 \end_inset
 
 .
-\begin_inset CommandInset label
-LatexCommand label
-name "assu:noAbort"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Branch commentary
-inverted 0
-status open
-
-\begin_layout Standard
-TODO: maybe explain this a little better? 
+ 
 \end_layout
 
 \end_inset
@@ -3572,11 +3527,11 @@ TODO: maybe explain this a little better?
 status open
 
 \begin_layout Plain Layout
-\begin_inset Formula $C_{{\rm stand}}(.,.)$
+\begin_inset Formula $C(.,.)$
 \end_inset
 
  and 
-\begin_inset Formula $C_{{\rm stand}}(.)$
+\begin_inset Formula $C(.)$
 \end_inset
 
 
@@ -3584,7 +3539,7 @@ status open
 
 \end_inset
 
-Given two unbalanced WCF protocols, 
+ Given two unbalanced WCF protocols, 
 \begin_inset Formula $\mathcal{X}$
 \end_inset
 
@@ -3611,7 +3566,16 @@ noprefix "false"
 \end_inset
 
 ).
- All protocols are executed under 
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Protocol 
+\begin_inset Formula $\mathcal{Y}$
+\end_inset
+
+ is executed under 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "assu:noAbort"
@@ -3622,8 +3586,12 @@ noprefix "false"
 \end_inset
 
 .
+\end_layout
+
+\end_inset
+
  Define 
-\begin_inset Formula $C_{{\rm stand}}(\mathcal{X},\mathcal{Y})$
+\begin_inset Formula $C(\mathcal{X},\mathcal{Y})$
 \end_inset
 
  as follows:
@@ -3636,7 +3604,7 @@ Alice and Bob execute
 \end_inset
 
  and obtain outcome 
-\begin_inset Formula $X\in\{A,B\}$
+\begin_inset Formula $X\in\{A,B,\perp\}$
 \end_inset
 
 .
@@ -3657,7 +3625,7 @@ If
 \end_inset
 
  and obtain outcome 
-\begin_inset Formula $Y\in\{A,B\}$
+\begin_inset Formula $Y\in\{A,B,\perp\}$
 \end_inset
 
 , else if
@@ -3672,11 +3640,21 @@ If
 \end_inset
 
  and obtain outcome 
-\begin_inset Formula $Y\in\{A,B\}$
+\begin_inset Formula $Y\in\{A,B,\perp\}$
+\end_inset
+
+, and finally if
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $X=\perp$
+\end_inset
+
+, set 
+\begin_inset Formula $Y=\perp$
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Standard
@@ -3691,7 +3669,7 @@ Output
 \end_deeper
 \begin_layout Algorithm
 Let 
-\begin_inset Formula $\mathcal{Z}_{i+1}:=C_{{\rm stand}}(\mathcal{X},\mathcal{Z}_{i})$
+\begin_inset Formula $\mathcal{Z}^{i+1}:=C_{{\rm AAC}}(\mathcal{X},\mathcal{Z}^{i})$
 \end_inset
 
  for 
@@ -3699,16 +3677,15 @@ Let
 \end_inset
 
 , and 
-\begin_inset Formula $\mathcal{Z}_{1}:=\mathcal{X}$
+\begin_inset Formula $\mathcal{Z}^{1}:=\mathcal{X}$
 \end_inset
 
 .
  Then, formally, define 
-\begin_inset Formula $C_{{\rm stand}}(\mathcal{X}):=\lim_{i\to\infty}\mathcal{Z}_{i}$
+\begin_inset Formula $C(\mathcal{X}):=\lim_{i\to\infty}\mathcal{Z}^{i}$
 \end_inset
 
 .
- 
 \begin_inset Foot
 status collapsed
 
@@ -3732,65 +3709,22 @@ This is just to facilitate notation.
 \end_layout
 
 \begin_layout Standard
-From the form of 
-\begin_inset Formula $C_{{\rm stand}}$
-\end_inset
-
- it might seem that Alice is favoured and this is indeed the case.
- 
-\end_layout
-
-\begin_layout Claim
-\begin_inset Argument 1
+\begin_inset Branch commentary
+inverted 0
 status open
 
-\begin_layout Plain Layout
-\begin_inset Formula $C_{{\rm stand}}$
-\end_inset
-
- preserves polarity
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "claim:polarityPreserved"
-
-\end_inset
-
-Let 
-\begin_inset Formula $\mathcal{Z}:=C_{{\rm stand}}(\mathcal{X},\mathcal{Y})$
-\end_inset
-
-, then 
-\begin_inset Formula $\mathcal{Z}_{A}=\mathcal{Z}$
-\end_inset
-
-.
- 
-\end_layout
-
 \begin_layout Standard
-\begin_inset Separator plain
+In the following sections, we work out some examples and analyse their security
+ and see where having a neat characterisation of cheat vectors helps.
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
-\begin_layout Example
-TODO: Perhaps show how 
-\begin_inset Formula $\mathcal{Z}_{B}$
-\end_inset
-
- is constructed from 
-\begin_inset Formula $\mathcal{Z}=C_{{\rm stand}}(\mathcal{X},\mathcal{Y})$
-\end_inset
-
-.
- Perhaps have this in the appendix.
- 
+\begin_layout Subsection
+Standard Analysis
 \end_layout
 
 \begin_layout Standard
@@ -3799,7 +3733,18 @@ inverted 0
 status open
 
 \begin_layout Standard
-To be concrete, let us workout an example.
+In the standard analysis, we only use (bounds on) the cheating probabilities,
+ 
+\begin_inset Formula $p_{A}^{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{B}^{*}$
+\end_inset
+
+, of the protocols being composed to obtain the corresponding probabilities
+ for the resultant protocol.
+ Let us take an example.
  Consider protocol 
 \begin_inset Formula $\mathcal{P}$
 \end_inset
@@ -3843,7 +3788,7 @@ Note that therefore
 
 .
  Further, let 
-\begin_inset Formula $\mathcal{P}':=C_{{\rm stand}}(\mathcal{P},\mathcal{P})$
+\begin_inset Formula $\mathcal{P}':=C_{{\rm }}(\mathcal{P},\mathcal{P})$
 \end_inset
 
 , i.e.
@@ -4041,7 +3986,7 @@ Let
 \end_inset
 
 .
- 
+ [TODO: remove approx eq]
 \end_layout
 
 \begin_layout Standard
@@ -4232,182 +4177,16 @@ Recall that the key observation here is that we treated the probability
 \end_layout
 
 \begin_layout Subsection
-Abort Augmented Composition (AAC)
-\end_layout
-
-\begin_layout Algorithm
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula $C_{{\rm ACC}}(.,.)$
-\end_inset
-
- and 
-\begin_inset Formula $C_{{\rm ACC}}(.)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- Given two unbalanced WCF protocols, 
-\begin_inset Formula $\mathcal{X}$
-\end_inset
-
- and 
-\begin_inset Formula $\mathcal{Y}$
-\end_inset
-
-, let 
-\begin_inset Formula $\mathcal{X}_{A},\mathcal{X}_{B}$
-\end_inset
-
- and 
-\begin_inset Formula $\mathcal{Y}_{A},\mathcal{Y}_{B}$
-\end_inset
-
- be their polarisations (see 
-\begin_inset CommandInset ref
-LatexCommand formatted
-reference "def:unbalanced-polarity"
-plural "false"
-caps "true"
-noprefix "false"
-
-\end_inset
-
-).
- 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Protocol 
-\begin_inset Formula $\mathcal{Y}$
-\end_inset
-
- is executed under 
-\begin_inset CommandInset ref
-LatexCommand formatted
-reference "assu:noAbort"
-plural "false"
-caps "true"
-noprefix "false"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- Define 
-\begin_inset Formula $C_{{\rm ACC}}(\mathcal{X},\mathcal{Y})$
-\end_inset
-
- as follows:
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Alice and Bob execute 
-\begin_inset Formula $\mathcal{X}_{A}$
-\end_inset
-
- and obtain outcome 
-\begin_inset Formula $X\in\{A,B,\perp\}$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Enumerate
-If
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-\begin_inset Formula $X=A$
-\end_inset
-
-, execute 
-\begin_inset Formula $\mathcal{Y}_{A}$
-\end_inset
-
- and obtain outcome 
-\begin_inset Formula $Y\in\{A,B\}$
-\end_inset
-
-, else if
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $X=B$
-\end_inset
-
-, execute 
-\begin_inset Formula $\mathcal{Y}_{B}$
-\end_inset
-
- and obtain outcome 
-\begin_inset Formula $Y\in\{A,B\}$
-\end_inset
-
-, and finally if
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $X=\perp$
-\end_inset
-
-, set 
-\begin_inset Formula $Y=\perp$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Output 
-\begin_inset Formula $Y$
-\end_inset
-
-.
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Algorithm
-Let 
-\begin_inset Formula $\mathcal{Z}^{i+1}:=C_{{\rm AAC}}(\mathcal{X},\mathcal{Z}^{i})$
-\end_inset
-
- for 
-\begin_inset Formula $i\ge1$
-\end_inset
-
-, and 
-\begin_inset Formula $\mathcal{Z}^{1}:=\mathcal{X}$
-\end_inset
-
-.
- Then, formally, define 
-\begin_inset Formula $C_{{\rm stand}}(\mathcal{X}):=\lim_{i\to\infty}\mathcal{Z}^{i}$
-\end_inset
-
-.
+Cheat Vector Analysis
 \end_layout
 
 \begin_layout Remark
 Again, even though it seems that Alice might be favoured, 
-\begin_inset Formula $C_{{\rm AAC}}$
+\begin_inset Formula $C$
 \end_inset
 
  may result in a protocol with the opposite polarity—let 
-\begin_inset Formula $\mathcal{Z}:=C_{{\rm AAC}}(\mathcal{X},\mathcal{Y})$
+\begin_inset Formula $\mathcal{Z}:=C(\mathcal{X},\mathcal{Y})$
 \end_inset
 
 , then 
@@ -4422,6 +4201,20 @@ Again, even though it seems that Alice might be favoured,
  
 \end_layout
 
+\begin_layout Example
+TODO: Perhaps show how 
+\begin_inset Formula $\mathcal{Z}_{B}$
+\end_inset
+
+ is constructed from 
+\begin_inset Formula $\mathcal{Z}=C_{{\rm stand}}(\mathcal{X},\mathcal{Y})$
+\end_inset
+
+.
+ Perhaps have this in the appendix.
+ 
+\end_layout
+
 \begin_layout Standard
 \begin_inset Branch commentary
 inverted 0
@@ -4433,7 +4226,7 @@ As before, to be concrete, let us workout an example.
 \begin_inset Formula $Q$
 \end_inset
 
- (see 
+ this time (see 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "alg:BobSelfTests"
@@ -4664,7 +4457,7 @@ Thus to obtain
 
  is obtained readily.
  Using this, one can consider 
-\begin_inset Formula $\mathcal{Q}'':=\mathbb{C}_{{\rm AAC}}(\mathcal{Q},\mathcal{Q}')$
+\begin_inset Formula $\mathcal{Q}'':=\mathbb{C}(\mathcal{Q},\mathcal{Q}')$
 \end_inset
 
  and evaluate the cheating probabilities 
@@ -4762,7 +4555,7 @@ Let
  Then 
 \begin_inset Formula 
 \[
-p_{X}^{*}(\mathbb{C}_{{\rm AAC}}(\mathcal{Q}))\apprle0.8175\dots
+p_{X}^{*}(C(\mathcal{Q}))\apprle0.8175\dots
 \]
 
 \end_inset
@@ -4770,7 +4563,7 @@ p_{X}^{*}(\mathbb{C}_{{\rm AAC}}(\mathcal{Q}))\apprle0.8175\dots
 and 
 \begin_inset Formula 
 \[
-p_{X}^{*}(\mathbb{C}_{{\rm AAC}}(\mathcal{Q}))\apprle
+p_{X}^{*}(C(\mathcal{Q}))\apprle
 \]
 
 \end_inset
@@ -4834,8 +4627,8 @@ Let
 , 
 \begin_inset Formula 
 \begin{align*}
-\mathcal{Z}^{1} & :=\mathbb{C}_{{\rm AAC}}(\mathcal{Q},\mathcal{P}),\quad{\rm and}\\
-\mathcal{Z}^{i+1} & :=\mathbb{C}_{{\rm AAC}}(\mathcal{Q},\mathcal{Z}^{i})\quad i>1.
+\mathcal{Z}^{1} & :=C(\mathcal{Q},\mathcal{P}),\quad{\rm and}\\
+\mathcal{Z}^{i+1} & :=C(\mathcal{Q},\mathcal{Z}^{i})\quad i>1.
 \end{align*}
 
 \end_inset
@@ -4845,6 +4638,25 @@ Then
 \[
 \lim_{i\to\infty}p_{X}^{*}(\mathcal{Z}^{i})\apprle0.7908\dots
 \]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+TODO: Argue why 
+\begin_inset Formula $\mathbb{C}_{{\rm AAC}}(\mathcal{P})$
+\end_inset
+
+ was not such a great idea? Perhaps do the simulation and add the results.
+ 
+\end_layout
 
 \end_inset
 
@@ -5571,6 +5383,12 @@ The self-testing step [Discuss with Tom before writing]
 \end_layout
 
 \begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:Martingale"
+
+\end_inset
+
 Let 
 \begin_inset Formula $\{X_{1},X_{2}\dots X_{n}\}$
 \end_inset
@@ -5593,7 +5411,7 @@ Let
  Then, 
 \begin_inset Formula 
 \[
-\Pr\left\{ \left|\frac{X_{\Pi(1)}+X_{\Pi(2)}+\dots X_{\Pi(n-1)}}{n-1}-\mathbb{E}(X_{\Pi(n)})\right|>r\right\} \le\exp(-cnr^{2})
+\Pr\left\{ \left|\frac{X_{\Pi(1)}+\dots X_{\Pi(n-1)}}{n-1}-\mathbb{E}(X_{\Pi(n)})\right|>r\right\} \le\exp(-cnr^{2})
 \]
 
 \end_inset
@@ -5607,7 +5425,78 @@ for some fixed
 \end_layout
 
 \begin_layout Lemma
-aoeu
+Let 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+s and 
+\begin_inset Formula $\Pi$
+\end_inset
+
+ be as in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "thm:Martingale"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, above.
+ Then 
+\begin_inset Formula 
+\[
+\Pr\left\{ \left|X_{\Pi(1)}+\dots+X_{\Pi(n-1)}-\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}\left(X_{\pi(1)}+\dots X_{\pi(n-1)}\right)\right|\ge r\right\} \le2e^{-\frac{cr^{2}}{n}}
+\]
+
+\end_inset
+
+for some 
+\begin_inset Formula $c>0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+Let 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+s be as in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "thm:Martingale"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, above.
+ Then 
+\begin_inset Formula 
+\[
+\Pr\left\{ \left|\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}\left(\frac{n}{n-1}(X_{\pi(1)}+\dots+X_{\pi(n-1)})-\mathbb{E}(X_{\pi(1)}+\dots+X_{\pi(n)}\right)\ge r\right|\right\} \le2e^{-\frac{cr^{2}}{n}}
+\]
+
+\end_inset
+
+for some 
+\begin_inset Formula $c>0$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Subsection
