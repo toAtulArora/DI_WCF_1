@@ -28,7 +28,6 @@
 \AtBeginDocument{\providecommand\Secref[1]{\ref{Sec:#1}}}
 \AtBeginDocument{\providecommand\Subsubsecref[1]{\ref{Subsubsec:#1}}}
 \AtBeginDocument{\providecommand\Lemref[1]{\ref{Lem:#1}}}
-\AtBeginDocument{\providecommand\Assuref[1]{\ref{Assu:#1}}}
 \AtBeginDocument{\providecommand\Figref[1]{\ref{Fig:#1}}}
 \AtBeginDocument{\providecommand\Thmref[1]{\ref{Thm:#1}}}
 \RS@ifundefined{subsecref}
@@ -299,15 +298,6 @@ memory): what about $p_{X}^{*}(C_{{\rm AAC}}(\mathcal{P}))$ and $p_{X}^{*}(C_{{\
 aoeu
 
 
-\section{An illustration of a Device Dependent Weak Coin Flipping protocol}
-
-As an illustration of an interesting WCF protocol, we present the
-one due to \cite{Spekkens2002}. For $\left|\psi\right\rangle =\frac{1}{\sqrt{2}}\left|00\right\rangle +\left(1-\frac{1}{\sqrt{2}}\right)\left|11\right\rangle $
-and $E_{0}=\frac{1}{\sqrt{2}}\left|0\right\rangle \left\langle 0\right|$,
-the following yields $P_{A}^{*}=P_{B}^{*}=\frac{1}{\sqrt{2}}$.\\
-\includegraphics[width=0.5\textwidth]{figures/temp_SR_1}\\
-\includegraphics[width=0.5\textwidth]{figures/temp_SR_2}
-
 \section{Device Independent Weak Coin Flipping protocols | State Of The Art}
 
 \branchcolor{purple}{In the following, we first discuss how one can describe DI WCF protocols
@@ -514,7 +504,9 @@ player. }
 
 \section{First Technique: Self-testing (single shot, unbalanced)}
 
-\branchcolor{purple}{We make two observations. 
+\branchcolor{purple}{TODO: Assumption: No honest abort.
+
+We make two observations. 
 
 First, in \Algref{SCForiginal} only Bob performs the test round.
 In WCF, there is a notion of Alice winning and Bob winning. Thus,
@@ -672,7 +664,7 @@ that of a semi definite programme.
 
 The proof is again deferred; see \Subsecref{SDP-when-Bob}.
 
-\section{Second Technique: Bias Suppression Technique (composed, balanced)\label{sec:Second-Technique}}
+\section{Second Technique: Bias Suppression \label{sec:Second-Technique}}
 
 In this section, we use the convention that $\mathcal{I},\mathcal{P}$
 and $\mathcal{Q}$ correspond to the protocols described in \Algref{SCForiginal},
@@ -689,85 +681,86 @@ we say that it is unbalanced if $p_{A}^{*}(\mathcal{X})\neq p_{B}^{*}(\mathcal{X
 We say that $\mathcal{X}$ has polarity $A$ if $p_{A}^{*}(\mathcal{X})>p_{B}^{*}(\mathcal{X})$
 and polarity $B$ if $p_{A}^{*}(\mathcal{X})<p_{B}^{*}(\mathcal{X})$. 
 
-Finally, let $X,Y\in\{A,B\}$ be distinct and suppose that $\mathcal{X}$
-is unbalanced. Then, we define $\mathcal{X}_{X}$ to be protocol $\mathcal{X}$
-where Alice's and Bob's roles are possibly interchanged so that $\mathcal{X}_{X}$
-has polarity $X$, i.e. $p_{X}^{*}(\mathcal{X}_{X})>p_{Y}^{*}(\mathcal{X}_{X})$.
-We refer to $\mathcal{X}_{X}$ as $\mathcal{X}$ polarised towards
+Finally, let $X,Y\in\{A,B\}$ be distinct and suppose that $\mathcal{R}$
+is an unbalanced protocol. Then, we define $\mathcal{\mathcal{R}}_{X}$
+to be protocol $\mathcal{R}$ where Alice's and Bob's roles are possibly
+interchanged so that $\mathcal{R}_{X}$ has polarity $X$, i.e. $p_{X}^{*}(\mathcal{\mathcal{R}}_{X})>p_{Y}^{*}(\mathcal{R}_{X})$.
+We refer to $\mathcal{R}_{X}$ as $\mathcal{R}$ polarised towards
 $X$.
 \end{defn}
 
 \branchcolor{purple}{TODO: It might help to explain ``roles of Alice and Bob'' are interchanged
 a little bit using the ``flip and declare'' protocol.
 
-We now describe perhaps the most obvious composition scheme. }
+TODO: Winner gets Polarity
 
-\subsection{Standard Composition}
-
-We define a procedure, $C_{{\rm stand}}$, for composing a given unbalanced
-WCF protocol to obtain a more balanced protocol. In this subsection,
-we make the following assumption.
-\begin{assumption}[Abort means I won]
-If an honest player aborts, they consider themselves the winner,
-i.e. an honest player either outputs $A$ or $B$ but not $\perp$.\label{assu:noAbort}
-\end{assumption}
-
-\branchcolor{purple}{TODO: maybe explain this a little better? }
-\begin{lyxalgorithm}[$C_{{\rm stand}}(.,.)$ and $C_{{\rm stand}}(.)$]
-Given two unbalanced WCF protocols, $\mathcal{X}$ and $\mathcal{Y}$,
+We now describe how these protocols can be composed such that the
+``winner gets polarity''. }
+\begin{lyxalgorithm}[$C(.,.)$ and $C(.)$]
+ Given two unbalanced WCF protocols, $\mathcal{X}$ and $\mathcal{Y}$,
 let $\mathcal{X}_{A},\mathcal{X}_{B}$ and $\mathcal{Y}_{A},\mathcal{Y}_{B}$
-be their polarisations (see \Defref{unbalanced-polarity}). All protocols
-are executed under \Assuref{noAbort}. Define $C_{{\rm stand}}(\mathcal{X},\mathcal{Y})$
-as follows:
+be their polarisations (see \Defref{unbalanced-polarity}).  Define
+$C(\mathcal{X},\mathcal{Y})$ as follows:
 \begin{enumerate}
-\item Alice and Bob execute $\mathcal{X}_{A}$ and obtain outcome $X\in\{A,B\}$. 
+\item Alice and Bob execute $\mathcal{X}_{A}$ and obtain outcome $X\in\{A,B,\perp\}$. 
 \item If
 \begin{enumerate}
-\item $X=A$, execute $\mathcal{Y}_{A}$ and obtain outcome $Y\in\{A,B\}$,
+\item $X=A$, execute $\mathcal{Y}_{A}$ and obtain outcome $Y\in\{A,B,\perp\}$,
 else if
-\item $X=B$, execute $\mathcal{Y}_{B}$ and obtain outcome $Y\in\{A,B\}$. 
+\item $X=B$, execute $\mathcal{Y}_{B}$ and obtain outcome $Y\in\{A,B,\perp\}$,
+and finally if
+\item $X=\perp$, set $Y=\perp$.
 \end{enumerate}
 Output $Y$.
 
 \end{enumerate}
-Let $\mathcal{Z}_{i+1}:=C_{{\rm stand}}(\mathcal{X},\mathcal{Z}_{i})$
-for $i\ge1$, and $\mathcal{Z}_{1}:=\mathcal{X}$. Then, formally,
-define $C_{{\rm stand}}(\mathcal{X}):=\lim_{i\to\infty}\mathcal{Z}_{i}$.
-\footnote{This is just to facilitate notation. This way the cheating probabilities
+Let $\mathcal{Z}^{i+1}:=C_{{\rm AAC}}(\mathcal{X},\mathcal{Z}^{i})$
+for $i\ge1$, and $\mathcal{Z}^{1}:=\mathcal{X}$. Then, formally,
+define $C(\mathcal{X}):=\lim_{i\to\infty}\mathcal{Z}^{i}$.\footnote{This is just to facilitate notation. This way the cheating probabilities
 $p_{A}^{*}$ and $p_{B}^{*}$ converge and numerically this only takes
 a few compositions to reach in our case.} 
 \end{lyxalgorithm}
-
-From the form of $C_{{\rm stand}}$ it might seem that Alice is favoured
-and this is indeed the case. 
-\begin{claim}[$C_{{\rm stand}}$ preserves polarity]
-\label{claim:polarityPreserved}Let $\mathcal{Z}:=C_{{\rm stand}}(\mathcal{X},\mathcal{Y})$,
-then $\mathcal{Z}_{A}=\mathcal{Z}$. 
-\end{claim}
 
 \begin{example}
 TODO: Perhaps show how $\mathcal{Z}_{B}$ is constructed from $\mathcal{Z}=C_{{\rm stand}}(\mathcal{X},\mathcal{Y})$.
 Perhaps have this in the appendix. 
 \end{example}
 
-\branchcolor{purple}{To be concrete, let us workout an example. Consider protocol $\mathcal{P}$
-(see \Algref{AliceSelfTestsHerBoxes}) and recall (see \Lemref{AliceSelfTests})
+\branchcolor{purple}{In the following sections, we work out some examples and analyse their
+security and see where having a neat characterisation of cheat vectors
+helps.}
+
+\subsection{Standard Analysis}
+
+\branchcolor{purple}{In the standard analysis, we only use bounds on the cheating probabilities,
+$p_{A}^{*}$ and $p_{B}^{*}$, of the protocols being composed to
+obtain the corresponding bounds for the resultant protocol. Let us
+take an example. Consider protocol $\mathcal{P}$ (see \Algref{AliceSelfTestsHerBoxes})
+and recall (see \Lemref{AliceSelfTests})
 \begin{align*}
 p_{A}^{*}(\mathcal{P}_{A}) & \le\alpha\approx0.852\dots,\\
 p_{B}^{*}(\mathcal{P}_{A}) & \le\beta\approx0.667\dots.
 \end{align*}
 Note that therefore $p_{A}^{*}(\mathcal{P}_{B})\le\beta$ and $p_{B}^{*}(\mathcal{P}_{B})\le\alpha$.
-Further, let $\mathcal{P}':=C_{{\rm stand}}(\mathcal{P},\mathcal{P})$,
+Further, let $\mathcal{P}':=C_{{\rm }}(\mathcal{P},\mathcal{P})$,
 i.e. Alice and Bob first execute $\mathcal{P}_{A}$ and if the outcome
 is $A$, they execute $\mathcal{P}_{A}$, otherwise they execute $\mathcal{P}_{B}$
 (see \Figref{Standard-composition-technique}). Then, 
-\begin{align*}
-p_{A}^{*}(\mathcal{P}'_{A}) & \le\alpha\alpha+(1-\alpha)\beta=:\alpha^{(1)},\\
-p_{B}^{*}(\mathcal{P}'_{B}) & \le\beta\alpha+(1-\beta)\beta=:\beta^{(1)}.
-\end{align*}
-Note\footnote{$\alpha^{(1)}-\beta^{(1)}=(\alpha-\beta)\alpha-(\alpha-\beta)\beta=(\alpha-\beta)^{2}>0$}
-that $\alpha^{(1)}>\beta^{(1)}$. Proceeding similarly, i.e. defining
-$\mathcal{\mathcal{P}}'':=C_{{\rm stand}}(\mathcal{P},\mathcal{P}')$,
+\begin{align}
+p_{A}^{*}(\mathcal{P}'_{A}) & \le\alpha\alpha+(1-\alpha)\beta=:\alpha^{(1)},\label{eq:pStarAPprimeA}\\
+p_{B}^{*}(\mathcal{P}'_{B}) & \le\beta\alpha+(1-\beta)\beta=:\beta^{(1)}.\nonumber 
+\end{align}
+To see this, focus on \Eqref{pStarAPprimeA}. Alice knows that if
+she wins the first round, her probability of winning is $\alpha>\beta$.
+She knows that in the first round, she can force the outcome $A$
+with probability at most $\alpha$. Assuming that with all the remaining
+probability, the outcome is $B$ (which it is not because Bob will
+abort with some probability) gives us a bound on the best that Alice
+can do. Evidently, this bound may not be tight and we address that
+in the following subsection. 
+
+A side remark: one consequence of this simplified analysis is that\footnote{$\alpha^{(1)}-\beta^{(1)}=(\alpha-\beta)\alpha-(\alpha-\beta)\beta=(\alpha-\beta)^{2}>0$}
+$\alpha^{(1)}>\beta^{(1)}$. Proceeding similarly, i.e. defining $\mathcal{\mathcal{P}}'':=C_{{\rm stand}}(\mathcal{P},\mathcal{P}')$,
 and repeating $k+1$ times overall, one obtains\footnote{Note that $\alpha^{(k+1)}-\beta^{(k+1)}=(\alpha^{(k)}-\beta^{(k)})(\alpha-\beta)>0$,
 which proves \Claimref{polarityPreserved}.} 
 \begin{align*}
@@ -788,71 +781,37 @@ We thus have the following.
 \begin{centering}
 \includegraphics[width=6cm]{figures/temp_standardComp}
 \par\end{centering}
-\caption{Standard composition technique. (TODO: improve the caption)\label{fig:Standard-composition-technique}}
+\caption{Standard analysis (TODO: improve the caption)\label{fig:Standard-composition-technique}}
 \end{figure}
 }
 \begin{thm}
 Let $X\in\{A,B\}$ and $\mathcal{X}\in\{\mathcal{I},\mathcal{Q}\}$.
-Then $p_{X}^{*}(C_{{\rm stand}}(\mathcal{P}))\apprle0.8199\dots$
-and $p_{X}^{*}(C_{{\rm stand}}(\mathcal{X})\apprle0.836\dots$. 
+Then $p_{X}^{*}(C(\mathcal{P}))\apprle0.8199\dots$ and $p_{X}^{*}(C(\mathcal{X}))\apprle0.836\dots$.
+{[}TODO: remove approx eq{]}
 \end{thm}
 
-\branchcolor{purple}{Recall that the key observation here is that we treated the probability
-of aborting as the honest player winning. We did this, for instance
-when Alice cheats, by assuming that the probability of Bob winning
-is $1-p_{A}^{*}$. However, this probability actually constitutes
-two events: first, that Bob deduces he wins and second, that Bob detects
-Alice cheating (for instance, when the GHZ test fails). In usual treatments,
-we simply assume that if Bob detects Alice cheating, he declares himself
-the winner. However, when we compose protocols, we can use the intermediate
-abort events to immediately abort the full protocol as this prevents
-the malicious player from cheating further.}
 
-\subsection{Abort Augmented Composition (AAC)}
-\begin{lyxalgorithm}[$C_{{\rm ACC}}(.,.)$ and $C_{{\rm ACC}}(.)$]
- Given two unbalanced WCF protocols, $\mathcal{X}$ and $\mathcal{Y}$,
-let $\mathcal{X}_{A},\mathcal{X}_{B}$ and $\mathcal{Y}_{A},\mathcal{Y}_{B}$
-be their polarisations (see \Defref{unbalanced-polarity}).  Define
-$C_{{\rm ACC}}(\mathcal{X},\mathcal{Y})$ as follows:
-\begin{enumerate}
-\item Alice and Bob execute $\mathcal{X}_{A}$ and obtain outcome $X\in\{A,B,\perp\}$. 
-\item If
-\begin{enumerate}
-\item $X=A$, execute $\mathcal{Y}_{A}$ and obtain outcome $Y\in\{A,B\}$,
-else if
-\item $X=B$, execute $\mathcal{Y}_{B}$ and obtain outcome $Y\in\{A,B\}$,
-and finally if
-\item $X=\perp$, set $Y=\perp$.
-\end{enumerate}
-Output $Y$.
-
-\end{enumerate}
-Let $\mathcal{Z}^{i+1}:=C_{{\rm AAC}}(\mathcal{X},\mathcal{Z}^{i})$
-for $i\ge1$, and $\mathcal{Z}^{1}:=\mathcal{X}$. Then, formally,
-define $C_{{\rm stand}}(\mathcal{X}):=\lim_{i\to\infty}\mathcal{Z}^{i}$.
-\end{lyxalgorithm}
-
+\subsection{Cheat Vector Analysis}
 \begin{rem}
-Again, even though it seems that Alice might be favoured, $C_{{\rm AAC}}$
-may result in a protocol with the opposite polarity---let $\mathcal{Z}:=C_{{\rm AAC}}(\mathcal{X},\mathcal{Y})$,
+Again, even though it seems that Alice might be favoured, $C$ may
+result in a protocol with the opposite polarity---let $\mathcal{Z}:=C(\mathcal{X},\mathcal{Y})$,
 then $\mathcal{Z}_{A}$ is not necessarily the same as $\mathcal{Z}$. 
 \end{rem}
 
-\branchcolor{purple}{As before, to be concrete, let us workout an example. Consider protocol
-$Q$ (see \Algref{BobSelfTests}) and let $(v_{A},v_{B},v_{\perp})\in\mathbb{C}_{A}(\mathcal{Q}_{A})$
-be a cheat vector for $\mathcal{Q}$ (in this discussion, we reserve
-$\alpha,\beta$ for notational simplicity). Further, recall that 
+\branchcolor{purple}{As before, let us workout an example. Consider protocol $Q$ this
+time (see \Algref{BobSelfTests}) and let $(v_{A},v_{B},v_{\perp})\in\mathbb{C}_{A}(\mathcal{Q}_{A})$
+be a cheat vector for $\mathcal{Q}$. Further, recall that 
 \begin{align*}
 p_{A}^{*}(\mathcal{Q}_{A}) & \le\alpha=3/4=0.75\\
 p_{B}^{*}(\mathcal{Q}_{A}) & \le\beta=\cos^{2}(\pi/8)=0.8535\dots
 \end{align*}
 and note that, therefore, $p_{A}^{*}(\mathcal{Q}_{B})\le\beta$ and
-$p_{B}^{*}(\mathcal{Q}_{B})\le\alpha$. Let $\mathcal{Q}':=C_{{\rm AAC}}(\mathcal{Q},\mathcal{Q})$,
+$p_{B}^{*}(\mathcal{Q}_{B})\le\alpha$. Let $\mathcal{Q}':=C(\mathcal{Q},\mathcal{Q})$,
 i.e. Alice and Bob first execute $\mathcal{Q}_{A}$ and if the outcome
 is $A$, they execute $\mathcal{Q}_{A}$, otherwise they execute $\mathcal{Q}_{B}$
-(see \Figref{Abort-Augmented-Composition}). Our goal is to obtain
-an upper bound on $p_{A}^{*}(\mathcal{Q}')$ and $p_{B}^{*}(\mathcal{Q}')$.
-We start from the bottom of \Figref{Abort-Augmented-Composition}. 
+(see \Figref{Abort-Augmented-Composition}). Our goal is again to
+obtain an upper bound on $p_{A}^{*}(\mathcal{Q}')$ and $p_{B}^{*}(\mathcal{Q}')$,
+but this time, using cheat vectors. We start from the bottom of \Figref{Abort-Augmented-Composition}. 
 
 Suppose Alice is malicious. Conditioned on the event that the protocol
 reaches the bottom left step, it is clear that Alice's highest probability
@@ -866,9 +825,10 @@ p_{A}^{*}(\mathcal{Q}') & \le\max_{(v_{A},v_{B},v_{\perp})\in\mathbb{C}_{A}}\alp
  & \le\alpha^{2}+\beta(1-\alpha).\label{eq:weakBound}
 \end{align}
 The first inequality is saturated if $\alpha$ and $\beta$ are tight
-bounds. The second inequality holds because $\alpha>\beta$ so putting
-all the maximum weight on $\alpha$ (i.e. $\alpha$) while the remaining
-on $\beta$ (i.e. $1-\alpha$) is the best one can do. Operationally,
+bounds. The second inequality holds because $\alpha>\beta$ so one
+cannot do better than putting all the weight on $\alpha$ (i.e. $\alpha$)
+and the remaining on $\beta$ (i.e. $1-\alpha$), as we did earlier.
+{[}DISCUSS/TODO: Remove repetition; I already explained this.{]} Operationally,
 this means that Alice is forcing the outcome $A$ and treating the
 outcomes $B$ and $\perp$ as proceeding to the $\mathcal{Q}_{B}$
 step (i.e. the bottom right step). However, Bob only agrees to proceed
@@ -885,7 +845,7 @@ TODO: put the numbers (they seem to be off).
 
 Thus to obtain $p_{A}^{*}(\mathcal{Q}')$, one solves an SDP (numerically)
 and $p_{B}^{*}(\mathcal{Q}')$ is obtained readily. Using this, one
-can consider $\mathcal{Q}'':=\mathbb{C}_{{\rm AAC}}(\mathcal{Q},\mathcal{Q}')$
+can consider $\mathcal{Q}'':=\mathbb{C}(\mathcal{Q},\mathcal{Q}')$
 and evaluate the cheating probabilities $p_{A}^{*}(\mathcal{Q}'')$
 again as an SDP and $p_{B}^{*}(\mathcal{Q}'')$ directly. This leads
 us to the following result. 
@@ -894,7 +854,7 @@ us to the following result.
 \begin{centering}
 \includegraphics[width=6cm]{figures/temp_AAC_Qs}
 \par\end{centering}
-\caption{Abort Augmented Composition technique. (TODO: improve the caption)\protect \\
+\caption{Cheat vector analysis. (TODO: improve the caption)\protect \\
 $(v_{A},v_{B},v_{\perp})\in\mathbb{C}_{A}$; because we don't have
 a good characterisation of $\mathbb{C}_{B}$, we use (red) $1-\beta$
 and $\beta$ for obtaining a bound on $p_{B}^{*}(\mathcal{Q}')$.
@@ -904,11 +864,11 @@ and $\beta$ for obtaining a bound on $p_{B}^{*}(\mathcal{Q}')$.
 \begin{thm}
 Let $X\in\{A,B\}$. Then 
 \[
-p_{X}^{*}(\mathbb{C}_{{\rm AAC}}(\mathcal{Q}))\apprle0.8175\dots
+p_{X}^{*}(C(\mathcal{Q}))\apprle0.8175\dots
 \]
 and 
 \[
-p_{X}^{*}(\mathbb{C}_{{\rm AAC}}(\mathcal{Q}))\apprle
+p_{X}^{*}(C(\mathcal{Q}))\apprle
 \]
 (TODO: calculate). 
 \end{thm}
@@ -923,8 +883,8 @@ at the very last step will result in a strictly better protocol. }
 \begin{thm}
 Let $X\in\{A,B\}$, 
 \begin{align*}
-\mathcal{Z}^{1} & :=\mathbb{C}_{{\rm AAC}}(\mathcal{Q},\mathcal{P}),\quad{\rm and}\\
-\mathcal{Z}^{i+1} & :=\mathbb{C}_{{\rm AAC}}(\mathcal{Q},\mathcal{Z}^{i})\quad i>1.
+\mathcal{Z}^{1} & :=C(\mathcal{Q},\mathcal{P}),\quad{\rm and}\\
+\mathcal{Z}^{i+1} & :=C(\mathcal{Q},\mathcal{Z}^{i})\quad i>1.
 \end{align*}
 Then 
 \[
@@ -932,8 +892,14 @@ Then
 \]
 \end{thm}
 
-\branchcolor{purple}{TODO: Argue why $\mathbb{C}_{{\rm AAC}}(\mathcal{P})$ was not such
-a great idea? Perhaps do the simulation and add the results. }
+\branchcolor{purple}{TODO: Argue why $C(\mathcal{P})$ was not such a great idea? I think
+this was because the cheat vector with the first component, e.g.,
+maxed out, the abort probaibility was tiny for $\mathcal{P}$. Perhaps
+do the simulation and add the results. }
+
+\section{Application: Strong Coin Flipping}
+
+Using ... 
 
 \section{Security Proofs }
 
@@ -1100,6 +1066,32 @@ Let $X_{i}$s and $\Pi$ be as in \Thmref{Martingale}, above. Then
 for some $c>0$. 
 \end{lem}
 
+\branchcolor{blue}{\begin{proof}
+Let 
+\[
+Q_{i}:=\mathbb{E}(X_{\Pi(1)}+\dots X_{\Pi(n-1)}|F^{i-1})
+\]
+where $\{F^{i}\}_{i=0}^{n}$ is a filteration which specifies $\Pi(i)$
+and $F^{0}$ specifies $X_{1},X_{2}\dots X_{n}$. It is known that
+the sequence $Q_{i}$ forms a martingale (see TODO: put a claim and
+a simple proof). Further, $\left|Q_{i}-Q_{i-1}\right|\le d$ for some
+$d>0$ (TODO: maybe show $d=2$ or something). We can therefore apply
+the Azum-Hoeffding inequality (see TODO) to get 
+\[
+\Pr\left\{ \left|Q_{1}-Q_{n}\right|>r\right\} \le e^{-cr^{2}}
+\]
+for some constant $c>0$. Noting that 
+\[
+Q_{1}=\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}(X_{\pi(1)}+\dots X_{\pi(n-1)})
+\]
+and 
+\[
+Q_{n}=X_{\Pi(1)}+\dots X_{\Pi(n-1)}
+\]
+we obtain the result.
+\end{proof}
+}
+
 \begin{lem}
 Let $X_{i}$s be as in \Thmref{Martingale}, above. Then 
 \[
@@ -1108,6 +1100,45 @@ Let $X_{i}$s be as in \Thmref{Martingale}, above. Then
 for some $c>0$. 
 \end{lem}
 
+\branchcolor{blue}{\begin{proof}
+Let 
+\[
+Y_{i}=\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}X_{\pi(i)},\quad\text{for }i\in\{1,2\dots n\}.
+\]
+Note that $Y_{1}=Y_{2}\dots=Y_{n}$. Define 
+\[
+Y:=\frac{1}{n}\sum_{i=1}^{n}Y_{i}.
+\]
+We want to estimate 
+\begin{align*}
+\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}\mathbb{E}(X_{\pi(n)}) & =\mathbb{E}\left(\sum_{\pi\in S_{n}}\frac{X_{\pi(n)}}{\left|S_{n}\right|}\right)\\
+ & =\mathbb{E}(Y).
+\end{align*}
+This motivates the following definition 
+\[
+Z_{i}:=\mathbb{E}(Y|F^{i-1})
+\]
+where the filteration $F^{i-1}$ fixes $\Pi=\pi$ and $X_{\pi(1)},X_{\pi(2)}\dots X_{\pi(i-1)}$,
+and $F^{0}$ is the trivial filteration. Now, $\{Z_{i},F^{i}\}$ form
+a martingale (TODO: put that examlpe), and $\left|Z_{i+1}-Z_{i}\right|<d$
+for some fixed $d$. From Azum-Hoeffding we have that 
+\[
+\Pr\left\{ \left|Z_{0}-Z_{n}\right|>r\right\} \le2e^{-cr^{2}}
+\]
+for some $c>0$. Noting that 
+\begin{align*}
+Z_{n} & =Y\\
+ & =\frac{\left(\sum_{\pi\in S_{n}}X_{\pi(1)}+X_{\pi(2)}+\dots X_{\pi(n-1)}\right)+\sum_{\pi\in S_{n}}X_{\pi(n)}}{n\left|S_{n}\right|}\\
+ & =\frac{n}{n-1}\frac{\left(\sum_{\pi\in S_{n}}X_{\pi(1)}+\dots X_{\pi(n-1)}\right)}{n.\left|S_{n}\right|}
+\end{align*}
+and 
+\begin{align*}
+Z_{0} & =\mathbb{E}(Y)\\
+ & =\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}\mathbb{E}(X_{\pi(1)}+\dots X_{\pi(n)})
+\end{align*}
+we obtain the result.
+\end{proof}
+}
 
 \subsection{The continuity argument {[}Enter Jamie{]}}
 
