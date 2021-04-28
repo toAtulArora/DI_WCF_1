@@ -5442,6 +5442,369 @@ The self-testing step [Discuss with Tom before writing]
 \end_layout
 
 \begin_layout Theorem
+Let 
+\begin_inset Formula $\{X_{1},X_{2}\dots X_{n}\}$
+\end_inset
+
+ be 
+\begin_inset Formula $n$
+\end_inset
+
+ random variables which are possibly correlated and take values in 
+\begin_inset Formula $\{0,1\}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $J\in\{1,2\dots n\}$
+\end_inset
+
+ be a random variable, sampled from a uniformly random distribution.
+ Then 
+\begin_inset Formula 
+\[
+\Pr\left\{ \left|\frac{1}{n-1}\cdot\sum_{i\in\{1,2\dots n\}\backslash J}X_{i}-\mathbb{E}(X_{J}|J)\right|>r\right\} \le{\rm exp}(-cnr^{2})
+\]
+
+\end_inset
+
+ for some 
+\begin_inset Formula $c>0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch proof
+inverted 0
+status open
+
+\begin_layout Proof
+Let 
+\begin_inset Formula 
+\[
+Z_{i}:=\mathbb{E}\left[\frac{1}{n-1}\left(\sum_{l\in[n]\backslash J}X_{l}\right)-X_{J}|F^{i}\right]
+\]
+
+\end_inset
+
+for 
+\begin_inset Formula $i\in\{0,1,\dots n+1\}$
+\end_inset
+
+ where 
+\begin_inset Formula $\{F^{i}\}$
+\end_inset
+
+ is a filteration.
+ From 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fact:simplestMartingale"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset Formula $Z_{0}\dots Z_{n}$
+\end_inset
+
+ is a martingale.
+ Let 
+\begin_inset Formula $F^{0}$
+\end_inset
+
+ be the trivial sigma algebra.
+ Suppose 
+\begin_inset Formula $F^{1}$
+\end_inset
+
+ specifies 
+\begin_inset Formula $J$
+\end_inset
+
+ and 
+\begin_inset Formula $F^{i+1}$
+\end_inset
+
+ specifies 
+\begin_inset Formula $\{J,X_{1}\dots X_{i}\}$
+\end_inset
+
+ for 
+\begin_inset Formula $i\in\{1,2\dots n-1\}$
+\end_inset
+
+.
+ Note that 
+\begin_inset Formula 
+\begin{align*}
+Z_{0} & =\frac{1}{n-1}\mathbb{E}\left(\sum_{l\in[n]\backslash J}X_{l}\right)-\frac{1}{n}\sum_{j\in[n]}\mathbb{E}(X_{j})\\
+ & =\frac{1}{n-1}\frac{1}{n}\sum_{j\in[n]}\sum_{l\in[n]\backslash j}\mathbb{E}(X_{l})-\frac{1}{n}\sum_{j\in[n]}\mathbb{E}(X_{j})\\
+ & =0.
+\end{align*}
+
+\end_inset
+
+Also note that 
+\begin_inset Formula 
+\[
+Z_{n}=\frac{1}{n-1}\sum_{l\in[n]\backslash J}X_{i}-\mathbb{E}(X_{J}|J).
+\]
+
+\end_inset
+
+Finally, since 
+\begin_inset Formula $\left|Z_{i}-Z_{i-1}\right|\le d/n$
+\end_inset
+
+ for some fixed 
+\begin_inset Formula $d>0$
+\end_inset
+
+ (the filteration only fixes one 
+\begin_inset Formula $X$
+\end_inset
+
+ at a time so the differences can change by at most 
+\begin_inset Formula $1/n$
+\end_inset
+
+; TODO argue for the 
+\begin_inset Formula $0$
+\end_inset
+
+ case), we can apply 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "thm:Azuma-Hoeffding"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+ to deduce 
+\begin_inset Formula 
+\[
+\mathbb{P}\left(\left|\frac{1}{n-1}\sum_{l\in[n]\backslash J}X_{i}-\mathbb{E}(X_{J}|J)\right|>r\right)\le e^{-cnr^{2}}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $c>0$
+\end_inset
+
+ is some constant.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Notes on Martingales
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Martingale
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $(\Omega,F,\mathbb{P})$
+\end_inset
+
+ be a probability space.
+ Consider random variables 
+\begin_inset Formula $X_{0},\dots X_{n}$
+\end_inset
+
+ and a filteration 
+\begin_inset Formula $F_{0},F_{1}\dots F_{n}$
+\end_inset
+
+ i.e.
+ sigma algebras satisfying 
+\begin_inset Formula $F_{0}\subseteq F_{1}\dots\subseteq F_{n}\subseteq F$
+\end_inset
+
+.
+ Then the sequence 
+\begin_inset Formula $(X_{i},F_{i})_{i=0}^{n}$
+\end_inset
+
+ is a 
+\emph on
+martingale
+\emph default
+ if
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $X_{i}\in\mathbb{L}^{1}(\Omega,F_{i},\mathbb{P})$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\mathbb{E}(\left|X_{i}\right|)<\infty$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $X_{i-1}=\mathbb{E}(X_{i}|F_{i-1})$
+\end_inset
+
+ (almost surely) for all 
+\begin_inset Formula $i\in\{1,2\dots n\}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Fact
+\begin_inset CommandInset label
+LatexCommand label
+name "fact:simplestMartingale"
+
+\end_inset
+
+Let 
+\begin_inset Formula $X\in\mathbb{L}^{1}(\Omega,F,\mathbb{P})$
+\end_inset
+
+ be a random variable and suppose 
+\begin_inset Formula $\{F^{i}\}_{i=1}^{n}$
+\end_inset
+
+ is an arbitrary filteration.
+ Define 
+\begin_inset Formula $Z_{i}:=\mathbb{E}(X|F^{i})$
+\end_inset
+
+ for 
+\begin_inset Formula $i\in\{1,2\dots n\}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $Z_{1},Z_{2}\dots Z_{n}$
+\end_inset
+
+ forms a martingale with respect to the filteration.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+The main property we need is 
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}(Z_{i}|F_{i-1}) & =\mathbb{E}(\mathbb{E}(X|F_{i})|F_{i-1})\\
+ & =\mathbb{E}(X|F_{i-1}) & \because F_{i-1}\subseteq F_{i}\\
+ & =Z_{i-1}.
+\end{align*}
+
+\end_inset
+
+In particular, when 
+\begin_inset Formula $F_{0}=\{\emptyset,\Omega\}$
+\end_inset
+
+ and 
+\begin_inset Formula $F_{n}=F$
+\end_inset
+
+ we have 
+\begin_inset Formula 
+\[
+Z_{0}=\mathbb{E}(X|F_{0})=\mathbb{E}(X),\quad Z_{n}=\mathbb{E}(X|F_{n})=X.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+The Azuma-Hoeffding inequality
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:Azuma-Hoeffding"
+
+\end_inset
+
+Let 
+\begin_inset Formula $(Z_{k},F_{k})_{k=0}^{n}$
+\end_inset
+
+ be a real-valued martingale sequence.
+ Suppose that there exist nonnegative reals 
+\begin_inset Formula $d_{1},\dots d_{n}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\left|Z_{k}-Z_{k-1}\right|\le d_{k}$
+\end_inset
+
+ (almost surely) for all 
+\begin_inset Formula $k\in\{1,\dots n\}$
+\end_inset
+
+.
+ Then, for every 
+\begin_inset Formula $r>0$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+\mathbb{P}\left(\left|Z_{n}-Z_{0}\right|\ge0\right)\le2\exp\left(-\frac{r^{2}}{2\sum_{k=1}^{n}d_{k}^{2}}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Theorem
 \begin_inset CommandInset label
 LatexCommand label
 name "thm:Martingale"
@@ -5519,7 +5882,7 @@ for some
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Branch proof
 inverted 0
 status collapsed
@@ -5606,7 +5969,7 @@ we obtain the result.
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Separator plain
 \end_inset
 
@@ -5645,7 +6008,7 @@ for some
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Branch proof
 inverted 0
 status collapsed
@@ -5752,6 +6115,11 @@ Z_{0} & =\mathbb{E}(Y)\\
 \end_inset
 
 we obtain the result.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset

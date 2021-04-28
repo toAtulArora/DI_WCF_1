@@ -1,0 +1,24 @@
+\babel@toc {british}{}
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}About Weak Coin Flipping}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Contributions}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Proof Technique}{2}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Device Independent Weak Coin Flipping protocols | State Of The Art}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Device Independence and the Box Paradigm}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}The GHZ Test}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}The Protocol}{6}{subsection.2.3}%
+\contentsline {section}{\numberline {3}First Technique: Self-testing (single shot, unbalanced)}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Cheat Vectors }{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Alice self-tests | Protocol $\mathcal {P}$}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Bob self-tests | Protocol $\mathcal {Q}$}{8}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Second Technique: Bias Suppression }{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Standard Analysis}{9}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Cheat Vector Analysis}{9}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Application: Strong Coin Flipping}{11}{section.5}%
+\contentsline {section}{\numberline {6}Security Proofs }{11}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Cheat vectors optimisation using Semi Definite Programming}{11}{subsection.6.1}%
+\contentsline {subsubsection}{\numberline {6.1.1}SDP when Alice self-tests}{11}{subsubsection.6.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.2}SDP when Bob self-tests}{13}{subsubsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.2}The self-testing step {[}Discuss with Tom before writing{]} }{14}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}Notes on Martingales}{14}{subsubsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.3}The continuity argument {[}Enter Jamie{]}}{15}{subsection.6.3}%
