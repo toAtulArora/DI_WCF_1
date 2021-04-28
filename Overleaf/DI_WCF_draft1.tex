@@ -18,6 +18,15 @@
 
 \makeatletter
 
+%%%%%%%%%%% added by Tom
+\usepackage{algorithm}
+\floatname{algorithm}{Algorithm}
+\usepackage{algcompatible}
+\newcommand{\aspace}{\hspace{\algorithmicindent}}
+\usepackage{IEEEtrantools}
+
+\newtheorem{prop}{Proposition}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
 
 \AtBeginDocument{\providecommand\Eqref[1]{\ref{Eq:#1}}}
@@ -30,6 +39,7 @@
 \AtBeginDocument{\providecommand\Lemref[1]{\ref{Lem:#1}}}
 \AtBeginDocument{\providecommand\Figref[1]{\ref{Fig:#1}}}
 \AtBeginDocument{\providecommand\Thmref[1]{\ref{Thm:#1}}}
+\AtBeginDocument{\providecommand\Factref[1]{\ref{Fact:#1}}}
 \RS@ifundefined{subsecref}
   {\newref{subsec}{name = \RSsectxt}}
   {}
@@ -58,7 +68,8 @@
 \newtheorem{example}[thm]{\protect\examplename}
 \theoremstyle{remark}
 \newtheorem{rem}[thm]{\protect\remarkname}
-
+\theoremstyle{plain}
+\newtheorem{fact}[thm]{\protect\factname}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage{color}
 \definecolor{purple}{RGB}{120,20,120}
@@ -80,7 +91,7 @@
 \newref{sec}{name=section~,Name=Section~,names=sections~,Names=Sections~}
 \newref{subsec}{name=section~,Name=Section~,names=sections~,Names=Sections~}
 \newref{subsubsec}{name=section~,Name=Section~,names=sections~,Names=Sections~}
-%\newref{prop}{name=proposition~,Name=Proposition~,names=propositions~,Names=Propositions~}
+\newref{prop}{name=proposition~,Name=Proposition~,names=propositions~,Names=Propositions~}
 %\newref{conj}{name=conjecture~,Name=Conjecture~,names=conjectures~,Names=Conjectures~}
 \newref{assu}{name=assumption~,Name=Assumption~,names=assumptions~,Names=Assumptions~}
 %\newref{rem}{name=remark~,Name=Remark~,names=remarks~,Names=Remarks~}
@@ -97,6 +108,7 @@
 \providecommand{\lemmaname}{Lemma}
 \providecommand{\remarkname}{Remark}
 \providecommand{\theoremname}{Theorem}
+\providecommand{\factname}{Fact}
 
 \begin{document}
 \title{Improved Device Independent Weak Coin Flipping Protocols}
@@ -227,6 +239,7 @@ malicious player further opportunity to cheat and so preventing it
 improves the security. }
 
 \subsubsection*{Protocols}
+
 
 \branchcolor{purple}{We introduce two variants of protocol $\mathcal{I}$, which we call
 $\mathcal{P}$ and $\mathcal{Q}$. 
@@ -1045,100 +1058,176 @@ where
 \end{proof}
 }
 
-\subsection{The self-testing step {[}Discuss with Tom before writing{]} }
+\section{Self-testing: asymptotic case}
+
+\section{Self-testing: finite testing}
+
+\subsection{Estimation of GHZ winning probability}
+\begin{algorithm}[H]
+\caption{Estimation of the GHZ value}
+\begin{algorithmic}[1]
+    \STATEx 
+	\STATE Pick a box $J \in [ n ]$ uniformly at random.
+	\STATE For $i \in [n]\backslash J$, play the GHZ game with box $i$ with result $X_i\in \{0,1\}$ 
+	\STATE Verify if 
+	\begin{IEEEeqnarray}{r'L}
+		\Omega:&\frac{1}{n-1}\sum_{i\in [n] \backslash J} X_i \geq\mu
+	\end{IEEEeqnarray}
+	\STATE If the test $\Omega$ passes, conclude that 
+	\begin{IEEEeqnarray}{r'L}
+		T:& E[X_J|J] \geq \mu - \delta\,,
+	\end{IEEEeqnarray}
+\end{algorithmic}
+\end{algorithm}
+
+\begin{prop}[Security statement]
+	\label{prop:security}
+	For any implementation of the boxes, the joint probability that that the test $\Omega$ passes and that the conclusion $T$ is false is exponentially small: $\Pr[ \Omega \cap \bar T] \leq \epsilon = e^{-c\delta^2(n-1)}$ for some constant $c$.
+\end{prop}
+
+Note that in practice we can chose the free parameters $\mu$ and $\delta$ such that $\mu \rightarrow 1$, $\delta \rightarrow 0$ and $\epsilon \rightarrow 0$ when $n\rightarrow \infty$, so in the asymptotic limit we can certify that $\mathbb{E}[X_J|J] = 1$ with arbitrary confidence. 
+
+\begin{lem}[Azuma-Hoeffding]
+	Let $0\leq X_i \leq 1$ be iid. bounded random variables, with $E[X_i] = \mu$, and $\delta >0$ then
+	\begin{IEEEeqnarray}{rL}
+		\Pr\left[ \left|\frac{1}{n} \sum_{i= 1}^n X_i - \mu\right| \geq \delta\right] \leq e^{-cn\delta^2}\,,
+	\end{IEEEeqnarray}
+	for some constant $c$.
+\end{lem}
+
+\begin{proof}[Proof of Proposition~\ref{prop:security}]
+	Denote by $\vect p = p(x_1,\cdots x_n)$ the joint distribution of the results of the GHZ games, for a given strategy (states and measurements) implemented by the adversary. 
+	
+	We first show that, when proving the security, we can consider without loss of generality a symmetric distribution $\vect p$ for the GHZ tests. For this, we note that the quantity $\Pr[\Omega \cap \bar T]_{\vect p}$ is invariant under permutations $\vect p \mapsto \sigma\cdot \vect p$, with $\sigma \in S_n$, which permuting the order of the variables $x_i$. Since the probability distribution $\Pr[\Omega \cap \overline T]_{\vect p}$ is also linear in $\vect p$, we find $\Pr[\Omega \cap \overline T]_{\vect p} = \frac{1}{|S_n|} \sum_{\sigma \in S_n} \Pr[\Omega \cap \bar T]_{\sigma\cdot \vect p} = \Pr[\Omega \cap \bar T]_{\bar {\vect p}}$, where $\bar{\vect p} = \frac{1}{|S_n|}\sum_{\sigma \in S_n} \sigma \cdot \vect p$ is the symmetrized version of $\vect p$. 
+	
+	Furthermore, we find that, under a symmetric attack $\bar{\vect p}$, we can assume without loss of generality that $J$ takes on the fixed value $J = 1$. Indeed, we have
+	\begin{IEEEeqnarray}{rL}
+		\Pr[\Omega \cap \overline T]_{\bar{\vect p}}
+			&= \sum_{j\in [n]} \tfrac{1}{n} \Pr[\Omega \cap \overline T|J = j]_{\bar{\vect p}}\\
+			&= \Pr[\Omega \cap \overline T|J=1]_{\bar{\vect p}}
+	\end{IEEEeqnarray}
+	where we have conditioned and averaged over the possible values taken by $J$ and then noted that each term is equal because $\bar{\vect p}$ is symmetric.
+	
+	We now only need to upper-bound $\Pr[\Omega\cap \overline T|J=1]_{\bar{\vect p}}$. Since $J = 1$ is fixed, the event $T$ is either true or false. When it is true then $\Pr[\Omega \cap \overline T]_{\bar{\vect p}} = 0$, so the result is trivial. Assuming it is false (so that $E[X_1]_{\bar{\vect p}} < \mu - \delta$), then the event $\Omega$ implies the event $\frac{1}{n-1}\sum_{i=2}^n X_i  -\mathbb{E}(X_1) \geq\delta$ and so we find
+	\begin{IEEEeqnarray}{rL}
+		 \Pr[\Omega\cap \bar T]_{\bar {\vect p}} \leq \Pr\left[\tfrac{1}{n-1}\sum_{i=2}^n X_i - E[X_1] \geq  \delta \right]_{\vect q} \leq e^{-c(n-1)\delta^2}
+	\end{IEEEeqnarray}
+	where we concluded using the Azuma-Hoeffding inequality and used the fact that the symmetrised distribution satisfies $E[X_i] = E[X_1]$ for all $i \in [n]$.
+\end{proof}
+
+Alternative statement
 \begin{thm}
-\label{thm:Martingale}Let $\{X_{1},X_{2}\dots X_{n}\}$ be $n$ random
-variables which are possibly correlated and take values in $\{0,1\}$.
-Let $\Pi\in S_{n}$ be a random variable (which takes values in the
-permutation group), picked from the uniformly random distribution.
+\label{thm:Martingale}
+Let $\{X_{1},X_{2}\dots X_{n}\}$ be $n$ random
+variables which joint distribution $p(x_1,\cdots x_n)$ and take values in $\{0,1\}$.
+Let $N\in \{1,\cdots n\}$ be a uniform random variable.
 Then, 
 \[
-\Pr\left\{ \left|\frac{X_{\Pi(1)}+\dots X_{\Pi(n-1)}}{n-1}-\mathbb{E}(X_{\Pi(n)})\right|>r\right\} \le\exp(-cnr^{2})
+    \Pr\left[ \left| \frac{1}{n-1}\sum _{i \in \{1,\cdots n\}\backslash N} X_i -\mathbb{E}(X_{N}|N)\right|>r\right]_{p} \le\exp(-cnr^{2})
+    \label{eq:application_martingale}
 \]
-for some fixed $c>0$. 
+for some fixed $c>0$ and $\mathbb{E}(X_N|N) = \sum_{x_N = 0}^1  x_N.p(x_N)$
 \end{thm}
 
-\begin{lem}
-Let $X_{i}$s and $\Pi$ be as in \Thmref{Martingale}, above. Then
+\begin{proof}
+    First note that the probability in the left hand side (LHS) of \eqref{eq:application_martingale} is linear in the distribution $p(x_1,\cdots x_n)$ (as any probability) and also invariant under permutations  $\sigma \in S_n$ of that distribution $p(x_1,\cdots x_n) \mapsto \simga\cdot p'(x_1,\cdots x_n) = p(x_{\sigma(1)}, \cdots x_{\sigma(n)})$, because $N$ was chosen uniformly at random. We therefore conclude that the RHS of \eqref{eq:application_martingale} takes on the same value if we evaluate if for the symmetrised distribution $\tilde p(x_1,\cdots x_n) = \sum_{\sigma \in S_n} p(x_{\sigma(1)}, \cdots x_{\sigma(n)})$. 
+    
+    Let $\{\tilde X_1,\cdots \tilde X_n\}$ be the symmetrized random variables with joint distribution $\tilde p(\tilde x_1,\cdots \tilde x_n)$. Then we note that for all $i\in\{1,\cdots n\}$, $\mathbb{E}(\tilde X_i) = \mathbb{E}(X_N) $. Furthermore  
+    
+    Under the symmetrised distribution, we have
+    
+    
+    Define the random variable $Y_i = \sum_i X_i$
+\end{proof}
+
+\subsection{Robust self-testing and continuity of SDP}
+
+
+
+\subsection{The self-testing step {[}Discuss with Tom before writing{]} }
+\begin{thm}
+Let $\{X_{1},X_{2}\dots X_{n}\}$ be $n$ random variables which are
+possibly correlated and take values in $\{0,1\}$. Let $J\in\{1,2\dots n\}$
+be a random variable, sampled from a uniformly random distribution.
+Then 
 \[
-\Pr\left\{ \left|X_{\Pi(1)}+\dots+X_{\Pi(n-1)}-\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}\left(X_{\pi(1)}+\dots X_{\pi(n-1)}\right)\right|\ge r\right\} \le2e^{-\frac{cr^{2}}{n}}
+\Pr\left\{ \left|\frac{1}{n-1}\cdot\sum_{i\in\{1,2\dots n\}\backslash J}X_{i}-\mathbb{E}(X_{J}|J)\right|>r\right\} \le{\rm exp}(-cnr^{2})
 \]
-for some $c>0$. 
-\end{lem}
+ for some $c>0$. 
+\end{thm}
 
 \branchcolor{blue}{\begin{proof}
 Let 
 \[
-Q_{i}:=\mathbb{E}(X_{\Pi(1)}+\dots X_{\Pi(n-1)}|F^{i-1})
+Z_{i}:=\mathbb{E}\left[\frac{1}{n-1}\left(\sum_{l\in[n]\backslash J}X_{l}\right)-X_{J}|F^{i}\right]
 \]
-where $\{F^{i}\}_{i=0}^{n}$ is a filteration which specifies $\Pi(i)$
-and $F^{0}$ specifies $X_{1},X_{2}\dots X_{n}$. It is known that
-the sequence $Q_{i}$ forms a martingale (see TODO: put a claim and
-a simple proof). Further, $\left|Q_{i}-Q_{i-1}\right|\le d$ for some
-$d>0$ (TODO: maybe show $d=2$ or something). We can therefore apply
-the Azum-Hoeffding inequality (see TODO) to get 
+for $i\in\{0,1,\dots n+1\}$ where $\{F^{i}\}$ is a filteration.
+From \Factref{simplestMartingale}, $Z_{0}\dots Z_{n}$ is a martingale.
+Let $F^{0}$ be the trivial sigma algebra. Suppose $F^{1}$ specifies
+$J$ and $F^{i+1}$ specifies $\{J,X_{1}\dots X_{i}\}$ for $i\in\{1,2\dots n-1\}$.
+Note that 
+\begin{align*}
+Z_{0} & =\frac{1}{n-1}\mathbb{E}\left(\sum_{l\in[n]\backslash J}X_{l}\right)-\frac{1}{n}\sum_{j\in[n]}\mathbb{E}(X_{j})\\
+ & =\frac{1}{n-1}\frac{1}{n}\sum_{j\in[n]}\sum_{l\in[n]\backslash j}\mathbb{E}(X_{l})-\frac{1}{n}\sum_{j\in[n]}\mathbb{E}(X_{j})\\
+ & =0.
+\end{align*}
+Also note that 
 \[
-\Pr\left\{ \left|Q_{1}-Q_{n}\right|>r\right\} \le e^{-cr^{2}}
+Z_{n}=\frac{1}{n-1}\sum_{l\in[n]\backslash J}X_{i}-\mathbb{E}(X_{J}|J).
 \]
-for some constant $c>0$. Noting that 
+Finally, since $\left|Z_{i}-Z_{i-1}\right|\le d/n$ for some fixed
+$d>0$ (the filteration only fixes one $X$ at a time so the differences
+can change by at most $1/n$; TODO argue for the $0$ case), we can
+apply \Thmref{Azuma-Hoeffding} to deduce 
 \[
-Q_{1}=\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}(X_{\pi(1)}+\dots X_{\pi(n-1)})
+\mathbb{P}\left(\left|\frac{1}{n-1}\sum_{l\in[n]\backslash J}X_{i}-\mathbb{E}(X_{J}|J)\right|>r\right)\le e^{-cnr^{2}}
 \]
-and 
-\[
-Q_{n}=X_{\Pi(1)}+\dots X_{\Pi(n-1)}
-\]
-we obtain the result.
+where $c>0$ is some constant.
 \end{proof}
 }
 
-\begin{lem}
-Let $X_{i}$s be as in \Thmref{Martingale}, above. Then 
-\[
-\Pr\left\{ \left|\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}\left(\frac{n}{n-1}(X_{\pi(1)}+\dots+X_{\pi(n-1)})-\mathbb{E}(X_{\pi(1)}+\dots+X_{\pi(n)}\right)\ge r\right|\right\} \le2e^{-\frac{cr^{2}}{n}}
-\]
-for some $c>0$. 
-\end{lem}
+\subsubsection{Notes on Martingales}
+\begin{defn}[Martingale]
+Let $(\Omega,F,\mathbb{P})$ be a probability space. Consider random
+variables $X_{0},\dots X_{n}$ and a filteration $F_{0},F_{1}\dots F_{n}$
+i.e. sigma algebras satisfying $F_{0}\subseteq F_{1}\dots\subseteq F_{n}\subseteq F$.
+Then the sequence $(X_{i},F_{i})_{i=0}^{n}$ is a \emph{martingale}
+if
+\begin{enumerate}
+\item $X_{i}\in\mathbb{L}^{1}(\Omega,F_{i},\mathbb{P})$, i.e. $\mathbb{E}(\left|X_{i}\right|)<\infty$
+\item $X_{i-1}=\mathbb{E}(X_{i}|F_{i-1})$ (almost surely) for all $i\in\{1,2\dots n\}$.
+\end{enumerate}
+\end{defn}
 
-\branchcolor{blue}{\begin{proof}
-Let 
-\[
-Y_{i}=\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}X_{\pi(i)},\quad\text{for }i\in\{1,2\dots n\}.
-\]
-Note that $Y_{1}=Y_{2}\dots=Y_{n}$. Define 
-\[
-Y:=\frac{1}{n}\sum_{i=1}^{n}Y_{i}.
-\]
-We want to estimate 
+\begin{fact}
+\label{fact:simplestMartingale}Let $X\in\mathbb{L}^{1}(\Omega,F,\mathbb{P})$
+be a random variable and suppose $\{F^{i}\}_{i=1}^{n}$ is an arbitrary
+filteration. Define $Z_{i}:=\mathbb{E}(X|F^{i})$ for $i\in\{1,2\dots n\}$.
+Then $Z_{1},Z_{2}\dots Z_{n}$ forms a martingale with respect to
+the filteration. 
+\end{fact}
+
+\branchcolor{purple}{The main property we need is 
 \begin{align*}
-\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}\mathbb{E}(X_{\pi(n)}) & =\mathbb{E}\left(\sum_{\pi\in S_{n}}\frac{X_{\pi(n)}}{\left|S_{n}\right|}\right)\\
- & =\mathbb{E}(Y).
+\mathbb{E}(Z_{i}|F_{i-1}) & =\mathbb{E}(\mathbb{E}(X|F_{i})|F_{i-1})\\
+ & =\mathbb{E}(X|F_{i-1}) & \because F_{i-1}\subseteq F_{i}\\
+ & =Z_{i-1}.
 \end{align*}
-This motivates the following definition 
+In particular, when $F_{0}=\{\emptyset,\Omega\}$ and $F_{n}=F$ we
+have 
 \[
-Z_{i}:=\mathbb{E}(Y|F^{i-1})
+Z_{0}=\mathbb{E}(X|F_{0})=\mathbb{E}(X),\quad Z_{n}=\mathbb{E}(X|F_{n})=X.
 \]
-where the filteration $F^{i-1}$ fixes $\Pi=\pi$ and $X_{\pi(1)},X_{\pi(2)}\dots X_{\pi(i-1)}$,
-and $F^{0}$ is the trivial filteration. Now, $\{Z_{i},F^{i}\}$ form
-a martingale (TODO: put that examlpe), and $\left|Z_{i+1}-Z_{i}\right|<d$
-for some fixed $d$. From Azum-Hoeffding we have that 
-\[
-\Pr\left\{ \left|Z_{0}-Z_{n}\right|>r\right\} \le2e^{-cr^{2}}
-\]
-for some $c>0$. Noting that 
-\begin{align*}
-Z_{n} & =Y\\
- & =\frac{\left(\sum_{\pi\in S_{n}}X_{\pi(1)}+X_{\pi(2)}+\dots X_{\pi(n-1)}\right)+\sum_{\pi\in S_{n}}X_{\pi(n)}}{n\left|S_{n}\right|}\\
- & =\frac{n}{n-1}\frac{\left(\sum_{\pi\in S_{n}}X_{\pi(1)}+\dots X_{\pi(n-1)}\right)}{n.\left|S_{n}\right|}
-\end{align*}
-and 
-\begin{align*}
-Z_{0} & =\mathbb{E}(Y)\\
- & =\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}\mathbb{E}(X_{\pi(1)}+\dots X_{\pi(n)})
-\end{align*}
-we obtain the result.
-\end{proof}
 }
+\begin{thm}[The Azuma-Hoeffding inequality]
+ \label{thm:Azuma-Hoeffding}Let $(Z_{k},F_{k})_{k=0}^{n}$ be a
+real-valued martingale sequence. Suppose that there exist nonnegative
+reals $d_{1},\dots d_{n}$ such that $\left|Z_{k}-Z_{k-1}\right|\le d_{k}$
+(almost surely) for all $k\in\{1,\dots n\}$. Then, for every $r>0$,
+\[
+\mathbb{P}\left(\left|Z_{n}-Z_{0}\right|\ge0\right)\le2\exp\left(-\frac{r^{2}}{2\sum_{k=1}^{n}d_{k}^{2}}\right).
+\]
+\end{thm}
 
 \subsection{The continuity argument {[}Enter Jamie{]}}
 
