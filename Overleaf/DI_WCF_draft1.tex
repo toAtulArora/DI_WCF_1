@@ -96,6 +96,7 @@
 \newref{assu}{name=assumption~,Name=Assumption~,names=assumptions~,Names=Assumptions~}
 %\newref{rem}{name=remark~,Name=Remark~,names=remarks~,Names=Remarks~}
 %\newref{alg}{name=algorithm~,Name=Algorithm~,names=algorithms~,Names=Algorithms~}
+\newref{fact}{name=fact~,Name=Fact~,names=facts~,Names=Facts~}
 
 \makeatother
 
@@ -1061,84 +1062,69 @@ where
 \section{Self-testing: asymptotic case}
 
 \section{Self-testing: finite testing}
+We assume that the $3$n boxes are described by some joint quantum state and local measurement operators. After playing the GHZ game with $3(n-1)$ of them, and verifying that they all pass, we want to make a statement about the remaining box, whose state $\tilde \rho$ is conditioned on the passing of all the other test. 
 
 \subsection{Estimation of GHZ winning probability}
 \begin{algorithm}[H]
+\label{alg:self-test}
 \caption{Estimation of the GHZ value}
 \begin{algorithmic}[1]
     \STATEx 
 	\STATE Pick a box $J \in [ n ]$ uniformly at random.
-	\STATE For $i \in [n]\backslash J$, play the GHZ game with box $i$ with result $X_i\in \{0,1\}$ 
-	\STATE Verify if 
+	\STATE For $i \in [n]\backslash J$, play the GHZ game with box $i$, denote outcome of game as $X_i\in \{0,1\}$ 
+	\STATE If 
 	\begin{IEEEeqnarray}{r'L}
-		\Omega:&\frac{1}{n-1}\sum_{i\in [n] \backslash J} X_i \geq\mu
+	     \Omega:& X_i = 1 \text{, for all } i\in [n] \backslash J
 	\end{IEEEeqnarray}
-	\STATE If the test $\Omega$ passes, conclude that 
+	\STATE Then conclude that the remaining box satisfies
 	\begin{IEEEeqnarray}{r'L}
-		T:& E[X_J|J] \geq \mu - \delta\,,
+	     T:& E[X_J|J,\Omega] \geq 1 - \delta 
 	\end{IEEEeqnarray}
 \end{algorithmic}
 \end{algorithm}
 
+The expectation value of $E[X_J|J,\Omega]$ accurately describes the expected GHZ value associated to the state of the remaining boxes $J$, conditioned on having measuring some outcome sequence in the other boxes which passes all the GHZ tests. Note that the conditioning in $J$ is important because otherwise we would get a bound on the GHZ averaged over all boxes, but we are only interested in the remaining box.
+
 \begin{prop}[Security statement]
 	\label{prop:security}
-	For any implementation of the boxes, the joint probability that that the test $\Omega$ passes and that the conclusion $T$ is false is exponentially small: $\Pr[ \Omega \cap \bar T] \leq \epsilon = e^{-c\delta^2(n-1)}$ for some constant $c$.
+	For any implementation of the boxes, the joint probability that that the test $\Omega$ passes and that the conclusion $T$ is false is small $\Pr[ \Omega \cap \bar T] \leq \frac{1}{1-\delta + n\delta} \leq \frac{1}{n\delta}$, where the first upper-bound is tight.
 \end{prop}
 
-Note that in practice we can chose the free parameters $\mu$ and $\delta$ such that $\mu \rightarrow 1$, $\delta \rightarrow 0$ and $\epsilon \rightarrow 0$ when $n\rightarrow \infty$, so in the asymptotic limit we can certify that $\mathbb{E}[X_J|J] = 1$ with arbitrary confidence. 
+This is the correct form of the security statement. It is important to bound the joint distribution of $\Omega$ and $\overline T$, and not $\Pr[\overline T|\Omega]$, conditioning on passing the test $\Omega$. Indeed in the latter case, it would not be possible to conclude anything of value about the remaining box $J$, as there could be some implementation of the boxes which has a very low expectation value of GHZ, but which passes the test with small but non-zero probability. The present security definition has a nice interpretation in the composable security framework of [ref]. Consider an hypothetical ideal protocol, which after having chosen $J$, only passes when $T$ is true. In that case, $\Pr[\Omega\cap \overline T] = 0$. Then the actual protocol is equivalent the ideal one, except that if fails with probability $\epsilon$, and so it is $\epsilon$-close to the ideal algorithm. 
 
-\begin{lem}[Azuma-Hoeffding]
-	Let $0\leq X_i \leq 1$ be iid. bounded random variables, with $E[X_i] = \mu$, and $\delta >0$ then
-	\begin{IEEEeqnarray}{rL}
-		\Pr\left[ \left|\frac{1}{n} \sum_{i= 1}^n X_i - \mu\right| \geq \delta\right] \leq e^{-cn\delta^2}\,,
-	\end{IEEEeqnarray}
-	for some constant $c$.
-\end{lem}
-
-\begin{proof}[Proof of Proposition~\ref{prop:security}]
-	Denote by $\vect p = p(x_1,\cdots x_n)$ the joint distribution of the results of the GHZ games, for a given strategy (states and measurements) implemented by the adversary. 
-	
-	We first show that, when proving the security, we can consider without loss of generality a symmetric distribution $\vect p$ for the GHZ tests. For this, we note that the quantity $\Pr[\Omega \cap \bar T]_{\vect p}$ is invariant under permutations $\vect p \mapsto \sigma\cdot \vect p$, with $\sigma \in S_n$, which permuting the order of the variables $x_i$. Since the probability distribution $\Pr[\Omega \cap \overline T]_{\vect p}$ is also linear in $\vect p$, we find $\Pr[\Omega \cap \overline T]_{\vect p} = \frac{1}{|S_n|} \sum_{\sigma \in S_n} \Pr[\Omega \cap \bar T]_{\sigma\cdot \vect p} = \Pr[\Omega \cap \bar T]_{\bar {\vect p}}$, where $\bar{\vect p} = \frac{1}{|S_n|}\sum_{\sigma \in S_n} \sigma \cdot \vect p$ is the symmetrized version of $\vect p$. 
-	
-	Furthermore, we find that, under a symmetric attack $\bar{\vect p}$, we can assume without loss of generality that $J$ takes on the fixed value $J = 1$. Indeed, we have
-	\begin{IEEEeqnarray}{rL}
-		\Pr[\Omega \cap \overline T]_{\bar{\vect p}}
-			&= \sum_{j\in [n]} \tfrac{1}{n} \Pr[\Omega \cap \overline T|J = j]_{\bar{\vect p}}\\
-			&= \Pr[\Omega \cap \overline T|J=1]_{\bar{\vect p}}
-	\end{IEEEeqnarray}
-	where we have conditioned and averaged over the possible values taken by $J$ and then noted that each term is equal because $\bar{\vect p}$ is symmetric.
-	
-	We now only need to upper-bound $\Pr[\Omega\cap \overline T|J=1]_{\bar{\vect p}}$. Since $J = 1$ is fixed, the event $T$ is either true or false. When it is true then $\Pr[\Omega \cap \overline T]_{\bar{\vect p}} = 0$, so the result is trivial. Assuming it is false (so that $E[X_1]_{\bar{\vect p}} < \mu - \delta$), then the event $\Omega$ implies the event $\frac{1}{n-1}\sum_{i=2}^n X_i  -\mathbb{E}(X_1) \geq\delta$ and so we find
-	\begin{IEEEeqnarray}{rL}
-		 \Pr[\Omega\cap \bar T]_{\bar {\vect p}} \leq \Pr\left[\tfrac{1}{n-1}\sum_{i=2}^n X_i - E[X_1] \geq  \delta \right]_{\vect q} \leq e^{-c(n-1)\delta^2}
-	\end{IEEEeqnarray}
-	where we concluded using the Azuma-Hoeffding inequality and used the fact that the symmetrised distribution satisfies $E[X_i] = E[X_1]$ for all $i \in [n]$.
-\end{proof}
-
-Alternative statement
-\begin{thm}
-\label{thm:Martingale}
-Let $\{X_{1},X_{2}\dots X_{n}\}$ be $n$ random
-variables which joint distribution $p(x_1,\cdots x_n)$ and take values in $\{0,1\}$.
-Let $N\in \{1,\cdots n\}$ be a uniform random variable.
-Then, 
-\[
-    \Pr\left[ \left| \frac{1}{n-1}\sum _{i \in \{1,\cdots n\}\backslash N} X_i -\mathbb{E}(X_{N}|N)\right|>r\right]_{p} \le\exp(-cnr^{2})
-    \label{eq:application_martingale}
-\]
-for some fixed $c>0$ and $\mathbb{E}(X_N|N) = \sum_{x_N = 0}^1  x_N.p(x_N)$
-\end{thm}
 
 \begin{proof}
-    First note that the probability in the left hand side (LHS) of \eqref{eq:application_martingale} is linear in the distribution $p(x_1,\cdots x_n)$ (as any probability) and also invariant under permutations  $\sigma \in S_n$ of that distribution $p(x_1,\cdots x_n) \mapsto \simga\cdot p'(x_1,\cdots x_n) = p(x_{\sigma(1)}, \cdots x_{\sigma(n)})$, because $N$ was chosen uniformly at random. We therefore conclude that the RHS of \eqref{eq:application_martingale} takes on the same value if we evaluate if for the symmetrised distribution $\tilde p(x_1,\cdots x_n) = \sum_{\sigma \in S_n} p(x_{\sigma(1)}, \cdots x_{\sigma(n)})$. 
-    
-    Let $\{\tilde X_1,\cdots \tilde X_n\}$ be the symmetrized random variables with joint distribution $\tilde p(\tilde x_1,\cdots \tilde x_n)$. Then we note that for all $i\in\{1,\cdots n\}$, $\mathbb{E}(\tilde X_i) = \mathbb{E}(X_N) $. Furthermore  
-    
-    Under the symmetrised distribution, we have
-    
-    
-    Define the random variable $Y_i = \sum_i X_i$
+	For a given implementation of the boxes, let $p(x_1,\cdots x_n)$ denote the joint probability distribution of passing the GHZ games. Let $S = \{j|\ E[X_j|j, \Omega] < 1-\delta\} \subset [n]$ be the set of boxes that have an expectation value for GHZ (conditioned on passing in the other boxes) below our target threshold and let $m = |S|$ be the number of such boxes. The value of $m$ is unknown, so we will need to maximise over it in the end.
+	
+	Let $\alpha = \Pr(\{X_i\}_i = 1)$ and $\beta_i = \Pr(\{X_i\}_{i\neq j} = 1 \cap X_j = 0)$ be respectively the probabilities of the events where all the tests pass, or they all pass except for the $j$th test. This allows us to rewrite $E[X_j|J=j,\Omega] = \Pr(\{X_i\}=1)/\Pr(\{X_i\}_{i\neq j} = 1) = \alpha/(\alpha + \beta_j)$, and so, by definition of $S$, we have $ \alpha/(\alpha + \beta_j)<(1-\delta)$, for $i\in S$, which is equivalent to $\beta_j > \frac{\delta}{1-\delta} \alpha$. 
+	
+	The aim of the proof is to bound the probability $\Pr[\Omega \cap \overline T]$, which we can rewrite as
+    \begin{IEEEeqnarray}{rL}
+         \Pr(\Omega \cap \overline T) = \sum_j \frac{1}{n} \Pr(\Omega \cap \overline{T}| J = j) = \sum_{j\in S} \frac{1}{n} \Pr(\{X_i\}_{i\neq j} = 1) = \frac{1}{n} \sum_{j\in S} (\alpha + \beta_i)\,,
+    \end{IEEEeqnarray}
+    where we have conditioned and summed over the different values of $J$ and kept the ones, conditioned on which $T$ is false. 
+    We are thus left with the optimisation problem 
+	\begin{IEEEeqnarray}{L'L}
+		\max_{\alpha>0,(\beta_i)_i>0} 	
+		    &\frac{1}{n}\left( \sum_{j\in S} \alpha + \beta_j\right)\\
+		\mathrm{subject\ to}					
+		    &\alpha + \sum_{j\in S} \beta_j \leq 1\\
+			& \beta_j \geq \frac{\delta}{1-\delta} \alpha \text{, for }j\in S		
+	\end{IEEEeqnarray}	    
+	This is a linear problem. Simplifying it by defining $\Sigma = \sum_{j\in S} \beta_j$, gives
+	\begin{IEEEeqnarray}{L'L}
+		\max_{\alpha>0,\Sigma>0} 	&\frac{1}{n}( m\alpha + \Sigma)\\
+		\mathrm{subject\ to}					
+		    &\alpha + \Sigma \leq 1\\
+			& \Sigma \geq m\frac{\delta}{1-\delta} \alpha			
+	\end{IEEEeqnarray}
+	It is easily shown that the maximum is attained for $(\alpha,\Sigma) = \left(\frac{1-\delta}{1-\delta + m\delta}, \frac{m \delta}{1-\delta + m}\right)$ which gives the upper-bound 
+	\begin{IEEEeqnarray}{rL}
+		\Pr[\Omega\cap \overline T] \leq \frac{1}{n} \max_m \frac{m}{1-\delta + m\delta} = \frac{1}{1-\delta + n\delta}
+	\end{IEEEeqnarray}
+	We note that the upper-bound is an increasing function of $m$ and so the maximum is attained for $m=n$. This yield the desired upper-bound. From the converse statement, we note that from the present proof we can construct a probability distribution $p(x_1,\cdots x_n)$, which saturates all inequalities, and so the upper-bound $\frac{1}{1-\delta + n\delta}$ is tight.
 \end{proof}
+
 
 \subsection{Robust self-testing and continuity of SDP}
 
@@ -1225,7 +1211,7 @@ real-valued martingale sequence. Suppose that there exist nonnegative
 reals $d_{1},\dots d_{n}$ such that $\left|Z_{k}-Z_{k-1}\right|\le d_{k}$
 (almost surely) for all $k\in\{1,\dots n\}$. Then, for every $r>0$,
 \[
-\mathbb{P}\left(\left|Z_{n}-Z_{0}\right|\ge0\right)\le2\exp\left(-\frac{r^{2}}{2\sum_{k=1}^{n}d_{k}^{2}}\right).
+\mathbb{P}\left(\left|Z_{n}-Z_{0}\right|\ge r\right)\le2\exp\left(-\frac{r^{2}}{2\sum_{k=1}^{n}d_{k}^{2}}\right).
 \]
 \end{thm}
 
