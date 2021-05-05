@@ -1062,7 +1062,7 @@ where
 \section{Self-testing: asymptotic case}
 
 \section{Self-testing: finite testing}
-We assume that the $3$n boxes are described by some joint quantum state and local measurement operators. After playing the GHZ game with $3(n-1)$ of them, and verifying that they all pass, we want to make a statement about the remaining box, whose state $\tilde \rho$ is conditioned on the passing of all the other test. 
+We assume that the $3n$ boxes are described by some joint quantum state and local measurement operators. After playing the GHZ game with $3(n-1)$ of them, and verifying that they all pass, we want to make a statement about the remaining box, whose state $\tilde \rho$ is conditioned on the passing of all the other test. 
 
 \subsection{Estimation of GHZ winning probability}
 \begin{algorithm}[H]
@@ -1087,16 +1087,16 @@ The expectation value of $E[X_J|J,\Omega]$ accurately describes the expected GHZ
 
 \begin{prop}[Security statement]
 	\label{prop:security}
-	For any implementation of the boxes, the joint probability that that the test $\Omega$ passes and that the conclusion $T$ is false is small $\Pr[ \Omega \cap \bar T] \leq \frac{1}{1-\delta + n\delta} \leq \frac{1}{n\delta}$, where the first upper-bound is tight.
+	For any implementation of the boxes, the joint probability that that the test $\Omega$ passes and that the conclusion $T$ is false is small $\Pr[ \Omega \cap \bar T] \leq \frac{1}{1-\delta + n\delta} \leq \frac{1}{n\delta}$, where the first upper-bound is tight. {\bf [$\delta >0$ should appear somewhere :-)]}
 \end{prop}
 
 This is the correct form of the security statement. It is important to bound the joint distribution of $\Omega$ and $\overline T$, and not $\Pr[\overline T|\Omega]$, conditioning on passing the test $\Omega$. Indeed in the latter case, it would not be possible to conclude anything of value about the remaining box $J$, as there could be some implementation of the boxes which has a very low expectation value of GHZ, but which passes the test with small but non-zero probability. The present security definition has a nice interpretation in the composable security framework of [ref]. Consider an hypothetical ideal protocol, which after having chosen $J$, only passes when $T$ is true. In that case, $\Pr[\Omega\cap \overline T] = 0$. Then the actual protocol is equivalent the ideal one, except that if fails with probability $\epsilon$, and so it is $\epsilon$-close to the ideal algorithm. 
 
 
 \begin{proof}
-	For a given implementation of the boxes, let $p(x_1,\cdots x_n)$ denote the joint probability distribution of passing the GHZ games. Let $S = \{j|\ E[X_j|j, \Omega] < 1-\delta\} \subset [n]$ be the set of boxes that have an expectation value for GHZ (conditioned on passing in the other boxes) below our target threshold and let $m = |S|$ be the number of such boxes. The value of $m$ is unknown, so we will need to maximise over it in the end.
+	For a given implementation of the boxes, let $p(x_1,\cdots x_n)$ denote the joint probability distribution of passing the GHZ games. Let $S = \{j|\ E[X_j|J=j, \Omega] < 1-\delta\} \subset [n]$ {\bf Minor: added J=j} be the set of boxes that have an expectation value for GHZ (conditioned on passing in the other boxes) below our target threshold and let $m = |S|$ be the number of such boxes. The value of $m$ is unknown, so we will need to maximise over it in the end.
 	
-	Let $\alpha = \Pr(\{X_i\}_i = 1)$ and $\beta_i = \Pr(\{X_i\}_{i\neq j} = 1 \cap X_j = 0)$ be respectively the probabilities of the events where all the tests pass, or they all pass except for the $j$th test. This allows us to rewrite $E[X_j|J=j,\Omega] = \Pr(\{X_i\}=1)/\Pr(\{X_i\}_{i\neq j} = 1) = \alpha/(\alpha + \beta_j)$, and so, by definition of $S$, we have $ \alpha/(\alpha + \beta_j)<(1-\delta)$, for $i\in S$, which is equivalent to $\beta_j > \frac{\delta}{1-\delta} \alpha$. 
+	Let $\alpha = \Pr(\{X_i\}_i = 1)$ and $\beta_i = \Pr(\{X_i\}_{i\neq j} = 1 \cap X_j = 0)$ be respectively the probabilities of the events where all the tests pass, or they all pass except for the $j$th test. This allows us to rewrite $E[X_j|J=j,\Omega] = \Pr(\{X_i\}=1)/\Pr(\{X_i\}_{i\neq j} = 1) = \alpha/(\alpha + \beta_j)$, and so, by definition of $S$, we have $ \alpha/(\alpha + \beta_j)<(1-\delta)$, for $i\in S$ {\bf [Should be $j$ right?]}, which is equivalent to $\beta_j > \frac{\delta}{1-\delta} \alpha$. 
 	
 	The aim of the proof is to bound the probability $\Pr[\Omega \cap \overline T]$, which we can rewrite as
     \begin{IEEEeqnarray}{rL}
@@ -1118,7 +1118,7 @@ This is the correct form of the security statement. It is important to bound the
 		    &\alpha + \Sigma \leq 1\\
 			& \Sigma \geq m\frac{\delta}{1-\delta} \alpha			
 	\end{IEEEeqnarray}
-	It is easily shown that the maximum is attained for $(\alpha,\Sigma) = \left(\frac{1-\delta}{1-\delta + m\delta}, \frac{m \delta}{1-\delta + m}\right)$ which gives the upper-bound 
+	It is easily shown that the maximum is attained for $(\alpha,\Sigma) = \left(\frac{1-\delta}{1-\delta + m\delta}, \frac{m \delta}{1-\delta + m}\right)$ which gives the upper-bound {\bf [for $\Sigma$ I think the $m$ should be $\delta m$]}
 	\begin{IEEEeqnarray}{rL}
 		\Pr[\Omega\cap \overline T] \leq \frac{1}{n} \max_m \frac{m}{1-\delta + m\delta} = \frac{1}{1-\delta + n\delta}
 	\end{IEEEeqnarray}
