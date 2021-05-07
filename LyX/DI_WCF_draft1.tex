@@ -976,14 +976,14 @@ We proceed step by step.
 \item We can model (justified below) Alice's act of inputting a random $x$
 and obtaining an outcome $a$ from her box through the state 
 \[
-\left|\Psi_{0}\right\rangle :=\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}\left|\Phi(x,a)\right\rangle _{IJ}
+\left|\Psi_{0}\right\rangle :=\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|xa\right\rangle _{XA}\left|\Phi(x,a)\right\rangle _{IJ}
 \]
 where $X$ represents the random input and $A$ the output. Here,
 $\left|\Phi(x,a)\right\rangle _{IJ}$ are Bell states (see \Eqref{bellStates})
 and the registers $IJ$ are held by Bob. Alice's act of choosing $r$
 at random, computing $s=a\oplus x.r$ is modelled as 
 \begin{equation}
-\left|\Psi_{1}\right\rangle :=\frac{1}{2}\sum_{x,a,r\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}\left|\Phi(x,a)\right\rangle _{IJ}\left|r\right\rangle _{R}\left|a\oplus x.r\right\rangle _{S}.\label{eq:Alice_Psi1}
+\left|\Psi_{1}\right\rangle :=\frac{1}{2}\sum_{x,a,r\in\{0,1\}}\left|xa\right\rangle _{XA}\left|\Phi(x,a)\right\rangle _{IJ}\left|r\right\rangle _{R}\left|a\oplus x.r\right\rangle _{S}.\label{eq:Alice_Psi1}
 \end{equation}
 Finally, Alice's act of sending $s$ is modelled as Alice starting
 with the state
@@ -1046,11 +1046,11 @@ $\rho_{3}\in XARGYD$ satisfying $\rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2}=\tr_{D}
 Alice now measures $\rho_{3}$ to determine $x\oplus g$ and if it
 is one, whether the GHZ test passed. Let 
 \begin{align}
-\Pi_{i} & :=\sum_{x,y\in\{0,1\}:x\oplus g=i}\left|x\right\rangle \left\langle x\right|_{X}\left|g\right\rangle \left\langle g\right|_{G}\otimes\mathbb{I}_{AIJRYD},\nonumber \\
+\Pi_{i} & :=\sum_{x,y\in\{0,1\}:x\oplus g=i}\left|xg\right\rangle \left\langle xg\right|_{XG}\otimes\mathbb{I}_{AIJRYD},\nonumber \\
 \Pi^{{\rm GHZ}} & :=\sum_{\substack{x,y\in\{0,1\},\\
 a,d\in\{0,1\}:a\oplus d\oplus1=xy\cdot(1\oplus x\oplus y)
 }
-}\left|x\right\rangle \left\langle x\right|_{X}\left|y\right\rangle \left\langle y\right|_{Y}\left|a\right\rangle \left\langle a\right|_{A}\left|d\right\rangle \left\langle d\right|_{D}.\label{eq:AliceProjs}
+}\left|xyad\right\rangle \left\langle xyad\right|_{XYAD}.\label{eq:AliceProjs}
 \end{align}
 Then, we can write the cheat vector for Alice, i.e. the tuple of probabilities
 that Alice outputs 0, 1 and abort (see \Defref{CheatVectors}), as
@@ -1122,53 +1122,51 @@ be absorbed into the initial state).
 satisfying $\tr_{S}(\rho_{1})=\rho_{0}$. 
 \item Bob sending $g\in_{R}\{0,1\}$ can be seen as appending a mixed state:
 $\rho_{1}\otimes\frac{1}{2}\mathbb{I}_{G}$.
-\item As in the previous proof, either $x\oplus g=1$, in which case Bob
-is convinced he won or $x\oplus g=0$ in which case he will test Alice.
-We proceed under the latter assumption, i.e. suppose that $x=g$.
-The other case will be captured by normalisation (explained shortly).
-\item Alice sending $a$ can be modelled as introducing $\rho_{2}\in ASIJG$
+\item Alice sending $x$ (and $a$) can be modelled as introducing $\rho_{2}\in AXSIJG$
 satisfying $\tr_{A}(\rho_{2})=\rho_{1}\otimes\frac{\mathbb{I}_{G}}{2}$.
-
-To model the GHZ test, introduce a register $Y$ in the state $\frac{\left|0\right\rangle _{Y}+\left|1\right\rangle _{Y}}{\sqrt{2}}$.
-Recall that since we assumed $x=g$ and that to perform the GHZ test,
-we need $x\oplus y\oplus z=1$ i.e. $z=1\oplus y\oplus g$. Further
-introduce registers $B$ and $C$ to hold the measurement results
-and with the aforesaid in mind, define 
+\item To model the GHZ test, introduce a register $Y$ in the state $\frac{\left|0\right\rangle _{Y}+\left|1\right\rangle _{Y}}{\sqrt{2}}$.
+Recall that to perform the GHZ test, we need $x\oplus y\oplus z=1$
+i.e. $z=1\oplus y\oplus x$. Further introduce registers $B$ and
+$C$ to hold the measurement results, define 
 \begin{equation}
-U:=\sum_{y,g\in\{0,1\}}\left|y\right\rangle \left\langle y\right|_{Y}\left|g\right\rangle \left\langle g\right|_{G}\otimes(\mathbb{I}_{B}\otimes\Pi_{0|y}^{I}+X_{B}\otimes\Pi_{1|y}^{I})\otimes(\mathbb{I}_{C}\otimes\Pi_{0|(1\oplus y\oplus g)}^{J}+X_{C}\otimes\Pi_{1|(1\oplus y\oplus g)}^{J})\otimes\mathbb{I}_{AS}.\label{eq:Bob-u}
+U:=\sum_{y,x\in\{0,1\}}\left|y\right\rangle \left\langle y\right|_{Y}\left|x\right\rangle \left\langle x\right|_{X}\otimes(\mathbb{I}_{B}\otimes\Pi_{0|y}^{I}+X_{B}\otimes\Pi_{1|y}^{I})\otimes(\mathbb{I}_{C}\otimes\Pi_{0|(1\oplus y\oplus x)}^{J}+X_{C}\otimes\Pi_{1|(1\oplus y\oplus x)}^{J})\otimes\mathbb{I}_{ASG}.\label{eq:Bob-u}
 \end{equation}
-By construction, $\rho_{3}:=U\left(\left|+\right\rangle \left\langle +\right|_{Y}\otimes\left|00\right\rangle \left\langle 00\right|_{BC}\otimes\rho_{2}\right)U^{\dagger}\in YBCASIJG$
+By construction, $\rho_{3}:=U\left(\left|+\right\rangle \left\langle +\right|_{Y}\otimes\left|00\right\rangle \left\langle 00\right|_{BC}\otimes\rho_{2}\right)U^{\dagger}\in YBCAXSIJG$
 models the measurement process. (TODO: this equality would become
 approximately true...but perhaps the noise can be absorbed in $\rho_{0}$
 with some argument)
 \item Since we postponed the measurements to the end, we add this step.
 Define 
 \[
-\Pi^{{\rm sTest}}:=\sum_{s,a,x:s=a\lor s=a\oplus x}\left|sax\right\rangle \left\langle sax\right|_{SAG}\otimes\mathbb{I}_{YBCIJ}
+\Pi_{i}:=\sum_{x,g\in\{0,1\}:x\oplus g=i}\left|xg\right\rangle \left\langle xg\right|_{XG}\otimes\mathbb{I}_{YABSIJ}
 \]
- to model the first test, i.e. $s$ should either be $a$ or $a\oplus x$
-(and used the assumption $x=g$). Define 
+to determine who won. Define 
+\[
+\Pi^{{\rm sTest}}:=\sum_{s,a,x\in\{0,1\}:s=a\lor s=a\oplus x}\left|sax\right\rangle \left\langle sax\right|_{SAX}\otimes\mathbb{I}_{GYBCIJ}
+\]
+ to model the first test, i.e. $s$ should either be $a$ or $a\oplus x$.
+Define 
 \[
 \Pi^{{\rm GHZ}}:=\sum_{\substack{x,y\in\{0,1\},\\
 a,b,c\in\{0,1\}:a\oplus b\oplus c\oplus1=xy\cdot(1\oplus x\oplus y)
 }
-}\left|xyabc\right\rangle \left\langle xyabc\right|_{GYABC}\otimes\mathbb{I}_{SIJ}
+}\left|xyabc\right\rangle \left\langle xyabc\right|_{XYABC}\otimes\mathbb{I}_{GSIJ}
 \]
 to model the GHZ test. Let 
 \begin{equation}
-\Pi_{0}:=\Pi^{{\rm GHZ}}\Pi^{{\rm sTest}},\quad\Pi_{\perp}:=(\mathbb{I}-\Pi^{{\rm sTest}})(\mathbb{I}-\Pi^{{\rm GHZ}}),\quad\text{and}\quad\Pi_{1}:=\mathbb{I}-\Pi_{0}-\Pi_{\perp}.\label{eq:BobProjs}
+\Pi^{{\rm Test}}:=\Pi^{{\rm GHZ}}\Pi^{{\rm sTest}},\quad\bar{\Pi}^{{\rm Test}}:=\mathbb{I}-\Pi^{{\rm Test}}.\label{eq:BobProjs}
 \end{equation}
 One can then write the cheat vector for Bob, i.e. the tuple of probabilities
 that Bob outputs $0,1$ and abort (see \Defref{CheatVectors}), as
 \[
-(\alpha,\beta,\gamma)=(\tr(\Pi_{0}\rho_{3}),\tr(\Pi_{1}\rho_{3}),\tr(\Pi_{\perp}\rho_{3})).
+(\alpha,\beta,\gamma)=(\tr(\Pi_{0}\Pi^{{\rm Test}}\rho_{3}),\tr(\Pi_{1}\rho_{3}),\tr(\Pi_{0}\bar{\Pi}^{{\rm Test}}\rho_{3})).
 \]
 \end{enumerate}
 To summarise, the final SDP is as follows: let $\rho_{0}\in IJ$ be
-as defined in \Eqref{Bob_initState}, $\rho_{1}\in SIJ$ and $\rho_{2}\in ASIJG$.
+as defined in \Eqref{Bob_initState}, $\rho_{1}\in SIJ$ and $\rho_{2}\in AXSIJG$.
 Then, 
 \[
-\max\quad\tr\left([c_{0}\Pi_{0}+c_{1}\Pi_{1}+c_{\perp}\Pi_{\perp})U\left(\left|+00\right\rangle \left\langle +00\right|_{YBC}\otimes\rho_{2}\right)U^{\dagger}\right)
+\max\quad\tr\left([\Pi_{0}(c_{0}\Pi^{{\rm Test}}+c_{\perp}\bar{\Pi}^{{\rm Test}})+c_{1}\Pi_{1}]U\left(\left|+00\right\rangle \left\langle +00\right|_{YBC}\otimes\rho_{2}\right)U^{\dagger}\right)
 \]
 subject to 
 \begin{align*}

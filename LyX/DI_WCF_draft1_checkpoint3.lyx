@@ -2800,6 +2800,14 @@ Alice sends
 \begin_inset Formula $x$
 \end_inset
 
+ [EDIT: maybe not send 
+\begin_inset Formula $a$
+\end_inset
+
+] and 
+\begin_inset Formula $a$
+\end_inset
+
  to Bob.
  They both compute the output 
 \begin_inset Formula $x\oplus g$
@@ -2823,11 +2831,11 @@ If
 \begin_inset Newline newline
 \end_inset
 
-Alice sends 
+[EDIT: Send 
 \begin_inset Formula $a$
 \end_inset
 
- to Bob.
+]
 \begin_inset Newline newline
 \end_inset
 
@@ -6134,11 +6142,11 @@ Alice sending
 \begin_inset Formula $x$
 \end_inset
 
- (and 
+ and 
 \begin_inset Formula $a$
 \end_inset
 
-) can be modelled as introducing 
+ can be modelled as introducing 
 \begin_inset Formula $\rho_{2}\in AXSIJG$
 \end_inset
 
@@ -6185,13 +6193,17 @@ To model the GHZ test, introduce a register
 \end_inset
 
 .
- Recall that to perform the GHZ test, we need 
+ Recall that since we assumed 
+\begin_inset Formula $x=g$
+\end_inset
+
+ and that to perform the GHZ test, we need 
 \begin_inset Formula $x\oplus y\oplus z=1$
 \end_inset
 
  i.e.
  
-\begin_inset Formula $z=1\oplus y\oplus x$
+\begin_inset Formula $z=1\oplus y\oplus g$
 \end_inset
 
 .
@@ -6203,16 +6215,17 @@ To model the GHZ test, introduce a register
 \begin_inset Formula $C$
 \end_inset
 
- to hold the measurement results, define 
+ to hold the measurement results and with the aforesaid in mind, define
+ 
 \begin_inset Formula 
 \begin{equation}
-U:=\sum_{y,x\in\{0,1\}}\left|y\right\rangle \left\langle y\right|_{Y}\left|x\right\rangle \left\langle x\right|_{X}\otimes(\mathbb{I}_{B}\otimes\Pi_{0|y}^{I}+X_{B}\otimes\Pi_{1|y}^{I})\otimes(\mathbb{I}_{C}\otimes\Pi_{0|(1\oplus y\oplus x)}^{J}+X_{C}\otimes\Pi_{1|(1\oplus y\oplus x)}^{J})\otimes\mathbb{I}_{ASG}.\label{eq:Bob-u}
+U:=\sum_{y,g\in\{0,1\}}\left|y\right\rangle \left\langle y\right|_{Y}\left|g\right\rangle \left\langle g\right|_{G}\otimes(\mathbb{I}_{B}\otimes\Pi_{0|y}^{I}+X_{B}\otimes\Pi_{1|y}^{I})\otimes(\mathbb{I}_{C}\otimes\Pi_{0|(1\oplus y\oplus g)}^{J}+X_{C}\otimes\Pi_{1|(1\oplus y\oplus g)}^{J})\otimes\mathbb{I}_{AS}.\label{eq:Bob-u}
 \end{equation}
 
 \end_inset
 
 By construction, 
-\begin_inset Formula $\rho_{3}:=U\left(\left|+\right\rangle \left\langle +\right|_{Y}\otimes\left|00\right\rangle \left\langle 00\right|_{BC}\otimes\rho_{2}\right)U^{\dagger}\in YBCAXSIJG$
+\begin_inset Formula $\rho_{3}:=U\left(\left|+\right\rangle \left\langle +\right|_{Y}\otimes\left|00\right\rangle \left\langle 00\right|_{BC}\otimes\rho_{2}\right)U^{\dagger}\in YBCASIJG$
 \end_inset
 
  models the measurement process.
@@ -6229,16 +6242,7 @@ Since we postponed the measurements to the end, we add this step.
  Define 
 \begin_inset Formula 
 \[
-\Pi_{i}:=\sum_{x,g\in\{0,1\}:x\oplus g=i}\left|xg\right\rangle \left\langle xg\right|_{XG}\otimes\mathbb{I}_{YABSIJ}
-\]
-
-\end_inset
-
-to determine who won.
- Define 
-\begin_inset Formula 
-\[
-\Pi^{{\rm sTest}}:=\sum_{s,a,x\in\{0,1\}:s=a\lor s=a\oplus x}\left|sax\right\rangle \left\langle sax\right|_{SAX}\otimes\mathbb{I}_{GYBCIJ}
+\Pi^{{\rm sTest}}:=\sum_{s,a,x:s=a\lor s=a\oplus x}\left|sax\right\rangle \left\langle sax\right|_{SAG}\otimes\mathbb{I}_{YBCIJ}
 \]
 
 \end_inset
@@ -6256,14 +6260,18 @@ to determine who won.
 \begin_inset Formula $a\oplus x$
 \end_inset
 
-.
+ (and used the assumption 
+\begin_inset Formula $x=g$
+\end_inset
+
+).
  Define 
 \begin_inset Formula 
 \[
 \Pi^{{\rm GHZ}}:=\sum_{\substack{x,y\in\{0,1\},\\
 a,b,c\in\{0,1\}:a\oplus b\oplus c\oplus1=xy\cdot(1\oplus x\oplus y)
 }
-}\left|xyabc\right\rangle \left\langle xyabc\right|_{XYABC}\otimes\mathbb{I}_{GSIJ}
+}\left|xyabc\right\rangle \left\langle xyabc\right|_{GYABC}\otimes\mathbb{I}_{SIJ}
 \]
 
 \end_inset
@@ -6272,7 +6280,7 @@ to model the GHZ test.
  Let 
 \begin_inset Formula 
 \begin{equation}
-\Pi^{{\rm Test}}:=\Pi^{{\rm GHZ}}\Pi^{{\rm sTest}},\quad\bar{\Pi}^{{\rm Test}}:=\mathbb{I}-\Pi^{{\rm Test}}.\label{eq:BobProjs}
+\Pi_{0}:=\Pi^{{\rm GHZ}}\Pi^{{\rm sTest}},\quad\Pi_{\perp}:=(\mathbb{I}-\Pi^{{\rm sTest}})(\mathbb{I}-\Pi^{{\rm GHZ}}),\quad\text{and}\quad\Pi_{1}:=\mathbb{I}-\Pi_{0}-\Pi_{\perp}.\label{eq:BobProjs}
 \end{equation}
 
 \end_inset
@@ -6295,7 +6303,7 @@ noprefix "false"
 ), as 
 \begin_inset Formula 
 \[
-(\alpha,\beta,\gamma)=(\tr(\Pi_{0}\Pi^{{\rm Test}}\rho_{3}),\tr(\Pi_{1}\rho_{3}),\tr(\Pi_{0}\bar{\Pi}^{{\rm Test}}\rho_{3})).
+(\alpha,\beta,\gamma)=(\tr(\Pi_{0}\rho_{3}),\tr(\Pi_{1}\rho_{3}),\tr(\Pi_{\perp}\rho_{3})).
 \]
 
 \end_inset
@@ -6324,14 +6332,14 @@ noprefix "false"
 \end_inset
 
  and 
-\begin_inset Formula $\rho_{2}\in AXSIJG$
+\begin_inset Formula $\rho_{2}\in ASIJG$
 \end_inset
 
 .
  Then, 
 \begin_inset Formula 
 \[
-\max\quad\tr\left([\Pi_{0}(c_{0}\Pi^{{\rm Test}}+c_{\perp}\bar{\Pi}^{{\rm Test}})+c_{1}\Pi_{1}]U\left(\left|+00\right\rangle \left\langle +00\right|_{YBC}\otimes\rho_{2}\right)U^{\dagger}\right)
+\max\quad\tr\left([c_{0}\Pi_{0}+c_{1}\Pi_{1}+c_{\perp}\Pi_{\perp}]U\left(\left|+00\right\rangle \left\langle +00\right|_{YBC}\otimes\rho_{2}\right)U^{\dagger}\right)
 \]
 
 \end_inset
