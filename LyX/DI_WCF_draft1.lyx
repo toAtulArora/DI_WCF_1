@@ -1610,19 +1610,19 @@ Further, if
 \emph on
 quantum boxes
 \emph default
-, where 
-\begin_inset Formula $\{M_{a'|x'}^{i}\}_{a'\in\mathcal{A}_{i}}$
-\end_inset
-
-constitute a POVM for a fixed 
-\begin_inset Formula $i$
-\end_inset
-
- and 
+, where for a fixed 
 \begin_inset Formula $x'$
 \end_inset
 
-, 
+ 
+\begin_inset Formula $\{M_{a'|x'}^{i}\}_{a'\in\mathcal{A}_{i}}$
+\end_inset
+
+ constitute a POVM for the 
+\begin_inset Formula $i$
+\end_inset
+
+th subsystem, 
 \begin_inset Formula $\rho$
 \end_inset
 
@@ -2850,19 +2850,19 @@ Bob tests if
 .
  If the test fails, he aborts.
  Bob chooses 
-\begin_inset Formula $b,c\in_{R}\{0,1\}$
+\begin_inset Formula $y,z\in_{R}\{0,1\}$
 \end_inset
 
  such that 
-\begin_inset Formula $a\oplus b\oplus c=1$
+\begin_inset Formula $x\oplus y\oplus z=1$
 \end_inset
 
  and then performs a GHZ using 
-\begin_inset Formula $a,b,c$
+\begin_inset Formula $x,y,z$
 \end_inset
 
  as the inputs and 
-\begin_inset Formula $x,y,z$
+\begin_inset Formula $a,b,c$
 \end_inset
 
  as the output from the three boxes.
@@ -4521,7 +4521,7 @@ Thus to obtain
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -4724,7 +4724,168 @@ Using ...
 \end_layout
 
 \begin_layout Section
-Security Proofs 
+Security Proof | Asymptotic
+\end_layout
+
+\begin_layout Standard
+In this section, we prove the security under the following assumption:
+\end_layout
+
+\begin_layout Assumption
+\begin_inset CommandInset label
+LatexCommand label
+name "assu:asymptotic"
+
+\end_inset
+
+In protocol 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ (
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+), Alice (Bob) does not perform the box verification step and instead it
+ is assumed that her box is (his boxes are) taken from a trio of boxes which
+ win the GHZ game with certainty.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+Later, we drop the assumption and use the box verification step (see ..) to
+ estimate the probability of winning the GHZ game.
+ When the winning probability is exactly one, the states and measurements
+ are the same as the GHZ state and 
+\begin_inset Formula $\sigma_{x},\sigma_{y}$
+\end_inset
+
+ measurements, up to local isometries and this allows us to use semi definite
+ programming.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:self-testAsymptotic"
+
+\end_inset
+
+Let 
+\begin_inset Formula $a,b,c,x,y,z\in\{0,1\}$
+\end_inset
+
+.
+ Consider a trio of quantum boxes, specified by projectors 
+\begin_inset Formula $\{M_{a|x}^{A},M_{b|y}^{B},M_{c|z}^{C}\}$
+\end_inset
+
+ acting on finite dimensional Hilbert spaces 
+\begin_inset Formula $\mathcal{H}^{A},\mathcal{H}^{B}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{H}^{C}$
+\end_inset
+
+, and 
+\begin_inset Formula $\left|\psi\right\rangle \in\mathcal{H}^{A}\otimes\mathcal{H}^{B}\otimes\mathcal{H}^{C}=:\mathcal{H}^{ABC}$
+\end_inset
+
+.
+ If the trio pass the GHZ test with certainty, then there exists a local
+ isometry 
+\begin_inset Formula 
+\[
+\Phi=\Phi^{A}\otimes\Phi^{B}\otimes\Phi^{C}:\mathcal{H}^{ABC}\to\mathcal{H}^{ABC}\otimes\mathbb{C}^{2\times3}
+\]
+
+\end_inset
+
+such that 
+\begin_inset Formula 
+\begin{align*}
+\Phi\left(\left|\psi\right\rangle \right) & =\left|\chi\right\rangle \otimes\left|{\rm junk}\right\rangle ,\\
+\Phi\left(M_{d|t}^{D}\left|\psi\right\rangle \right) & =\Pi_{d|t}^{D}\left|{\rm GHZ}\right\rangle \otimes\left|{\rm junk}\right\rangle \quad\forall D\in\{A,B,C\},\text{ and }d,t\in\{0,1\}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\left|{\rm GHZ}\right\rangle =\frac{\left|000\right\rangle +\left|111\right\rangle }{\sqrt{2}}\in\mathbb{C}^{2\times3}$
+\end_inset
+
+, 
+\begin_inset Formula $\left|{\rm junk}\right\rangle \in\mathcal{H}^{ABC}$
+\end_inset
+
+ is some arbitrary state and 
+\begin_inset Formula $\{\Pi_{a|x}^{A},\Pi_{b|y}^{B},\Pi_{c|z}^{C}\}$
+\end_inset
+
+ are projectors corresponding to 
+\begin_inset Formula $\sigma_{x}$
+\end_inset
+
+ on the first, second and third qubit of 
+\begin_inset Formula $\left|{\rm GHZ}\right\rangle $
+\end_inset
+
+ respectively, for 
+\begin_inset Formula $x=0$
+\end_inset
+
+ and corresponding to 
+\begin_inset Formula $\sigma_{y}$
+\end_inset
+
+ for 
+\begin_inset Formula $x=1$
+\end_inset
+
+, as in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "claim:Quantum-boxes-pass"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+INTERNAL; (TODO: remove): Isometries can only increase dimensions (they
+ must be injective; that is to ensure they preserve inner products of vectors).
+ Therefore the isometry can't get rid of the 
+\begin_inset Formula $\left|{\rm junk}\right\rangle $
+\end_inset
+
+ part.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -4745,7 +4906,562 @@ name "subsubsec:SDP-when-Alice"
 \begin_layout Standard
 \begin_inset Branch proof
 inverted 0
+status open
+
+\begin_layout Proof
+\begin_inset Argument 1
 status collapsed
+
+\begin_layout Plain Layout
+Asymptotic proof of 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "lem:AliceSelfTests"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+We prove 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "lem:AliceSelfTests"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+ under 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "assu:asymptotic"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ We begin by making two observations.
+ 
+\end_layout
+
+\begin_layout Proof
+First, note that in the protocol, if Alice applies an isometry on her box
+ 
+\emph on
+after
+\emph default
+ she has inputted 
+\begin_inset Formula $x$
+\end_inset
+
+, obtained the outcome 
+\begin_inset Formula $a$
+\end_inset
+
+ (and has noted it somewhere), the security of the resulting protocol is
+ unchanged because the rest of the protocol only depends on 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $a$
+\end_inset
+
+, and Alice's isometry only amounts to relabelling of the post measurement
+ state.
+ This freedom allows us to simplify the analysis.
+\end_layout
+
+\begin_layout Proof
+Second, in the analysis, we cannot model Alice's random choice, say for
+ 
+\begin_inset Formula $x$
+\end_inset
+
+, as a mixed state because Bob can always hold a purification and thus know
+ 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ Therefore, we model the randomness using pure states and measure them in
+ the end.
+\end_layout
+
+\begin_layout Proof
+Notation: Other than 
+\begin_inset Formula $PQR$
+\end_inset
+
+, all other registers store qubits.
+\end_layout
+
+\begin_layout Proof
+We proceed step by step.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+We can model (justified below) Alice's act of inputting a random 
+\begin_inset Formula $x$
+\end_inset
+
+ and obtaining an outcome 
+\begin_inset Formula $a$
+\end_inset
+
+ from her box through the state 
+\begin_inset Formula 
+\[
+\left|\Psi_{0}\right\rangle :=\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}\left|\Phi(x,a)\right\rangle _{IJ}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $X$
+\end_inset
+
+ represents the random input and 
+\begin_inset Formula $A$
+\end_inset
+
+ the output.
+ Here, 
+\begin_inset Formula $\left|\Phi(x,a)\right\rangle _{IJ}$
+\end_inset
+
+ are Bell states (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:bellStates"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+) and the registers 
+\begin_inset Formula $IJ$
+\end_inset
+
+ are held by Bob.
+ Alice's act of choosing 
+\begin_inset Formula $r$
+\end_inset
+
+ at random, computing 
+\begin_inset Formula $s=a\oplus x.r$
+\end_inset
+
+ is modelled as 
+\begin_inset Formula 
+\begin{equation}
+\left|\Psi_{1}\right\rangle :=\frac{1}{2}\sum_{x,a,r\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}\left|\Phi(x,a)\right\rangle _{IJ}\left|r\right\rangle _{R}\left|a\oplus x.r\right\rangle _{S}.\label{eq:Alice_Psi1}
+\end{equation}
+
+\end_inset
+
+Finally, Alice's act of sending 
+\begin_inset Formula $s$
+\end_inset
+
+ is modelled as Alice starting with the state
+\begin_inset Formula 
+\[
+\tr_{IJS}\left[\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|\right]\in XAR.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Branch proof
+inverted 0
+status open
+
+\begin_layout Standard
+
+\series bold
+Justification for starting with 
+\begin_inset Formula $\left|\Psi_{0}\right\rangle $
+\end_inset
+
+.
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+To see why we start with the state 
+\begin_inset Formula $\left|\Psi_{0}\right\rangle $
+\end_inset
+
+, model Alice's choice of 
+\begin_inset Formula $x$
+\end_inset
+
+ as 
+\begin_inset Formula $\left|+\right\rangle _{X}$
+\end_inset
+
+, suppose her measurement result is stored in 
+\begin_inset Formula $\left|0\right\rangle _{A}$
+\end_inset
+
+, the state of the boxes before measurement is 
+\begin_inset Formula $\left|\psi\right\rangle _{PQR}$
+\end_inset
+
+ and Alice holds 
+\begin_inset Formula $P$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula 
+\[
+\left|\Psi_{0}'\right\rangle :=\left|+\right\rangle _{X}\left|0\right\rangle _{A}\left|\psi\right\rangle _{PQR}.
+\]
+
+\end_inset
+
+Let 
+\begin_inset Formula $\{M_{a|x}^{P}\}$
+\end_inset
+
+ be the measurement operators corresponding to Alice's box.
+ The measurement process is unitarily modelled as 
+\begin_inset Formula 
+\[
+\left|\Psi_{1}'\right\rangle :=U_{{\rm measure}}\left|\Psi_{0}'\right\rangle =\frac{1}{\sqrt{2}}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}M_{a|x}^{P}\left|\psi\right\rangle _{PQR}
+\]
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+U_{{\rm measure}}=\sum_{x\in\{0,1\}}\left|x\right\rangle \left\langle x\right|_{X}\otimes\left[\mathbb{I}_{A}\otimes M_{0|x}^{P}+X_{X}\otimes M_{1|x}^{P}\right]\otimes\mathbb{I}_{QR}.
+\]
+
+\end_inset
+
+Now we harness the freedom of applying an isometry to the post measured
+ state (as observed above).
+ We choose the local isometry in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "lem:self-testAsymptotic"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ Without loss of generality, we can assume that Bob had already applied
+ his part of the isometry before sending the boxes (because he can always
+ reverse it when it is his turn).
+ We thus have, 
+\begin_inset Formula 
+\begin{align*}
+\left|\Psi_{2}'\right\rangle :=\Phi_{PQR}\left|\Psi_{1}'\right\rangle  & =\frac{1}{\sqrt{2}}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}\Pi_{x|a}^{H}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR}\\
+ & =\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}U^{H}(x,a)\left|0\right\rangle _{H}\left|\Phi(x,a)\right\rangle _{IJ}\otimes\left|{\rm junk}\right\rangle _{PQR}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\begin{equation}
+\left|\Phi(x,a)\right\rangle _{IJ}=\frac{\left|00\right\rangle +(-1)^{a}(i)^{x}\left|11\right\rangle }{\sqrt{2}}\label{eq:bellStates}
+\end{equation}
+
+\end_inset
+
+ and 
+\begin_inset Formula $U^{H}(x,a)\left|0\right\rangle _{H}$
+\end_inset
+
+ is 
+\begin_inset Formula $\frac{\left|0\right\rangle +(-1)^{a}(i)^{x}\left|1\right\rangle }{\sqrt{2}}$
+\end_inset
+
+.
+ Since the state of register 
+\begin_inset Formula $H$
+\end_inset
+
+ is completely determined by registers 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $A$
+\end_inset
+
+, we can drop it from the analysis without loss of generality.
+ Finally, since 
+\begin_inset Formula $\left|{\rm junk}\right\rangle _{PQR}$
+\end_inset
+
+ is completely tensored out, we can drop it too without affecting the security.
+ Formally, we can assume that Alice gives Bob the register 
+\begin_inset Formula $P$
+\end_inset
+
+ at this point.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+(TODO: but earlier I said Bob could reverse his isometry and for this 
+\begin_inset Formula $\left|{\rm junk}\right\rangle $
+\end_inset
+
+ must be present; EDIT: well, we can formally give Bob the register 
+\begin_inset Formula $P$
+\end_inset
+
+ which doesn't make the protocol any more secure).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Bob sending 
+\begin_inset Formula $g$
+\end_inset
+
+ is modelled by introducing 
+\begin_inset Formula $\rho_{2}\in XARG$
+\end_inset
+
+ satisfying 
+\begin_inset Formula $\tr_{IJS}\left[\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|\right]=\tr_{G}(\rho_{2})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+At this point, either 
+\begin_inset Formula $x\oplus g$
+\end_inset
+
+ is zero, in which case Alice's output is fixed or 
+\begin_inset Formula $x\oplus g$
+\end_inset
+
+ is one, and in that case Bob will already know 
+\begin_inset Formula $x$
+\end_inset
+
+ because he knows 
+\begin_inset Formula $g$
+\end_inset
+
+ (he sent it) and Alice will proceed to testing Bob.
+ Formally, therefore, we needn't do anything at this step.
+\end_layout
+
+\begin_layout Enumerate
+Assuming 
+\begin_inset Formula $x\oplus g=1$
+\end_inset
+
+, Alice sends 
+\begin_inset Formula $y,z$
+\end_inset
+
+ to Bob such that 
+\begin_inset Formula $x\oplus y\oplus z=1$
+\end_inset
+
+.
+ However, since Bob already knows 
+\begin_inset Formula $x$
+\end_inset
+
+, he can deduce 
+\begin_inset Formula $z$
+\end_inset
+
+ from 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ We thus only need to model Alice sending 
+\begin_inset Formula $y$
+\end_inset
+
+ and Bob responding with 
+\begin_inset Formula $d=b\oplus c$
+\end_inset
+
+ (because Alice will only use 
+\begin_inset Formula $b\oplus c$
+\end_inset
+
+ to test the GHZ game, so it suffices for Bob to send 
+\begin_inset Formula $d$
+\end_inset
+
+).
+ This amounts to introducing 
+\begin_inset Formula $\rho_{3}\in XARGYD$
+\end_inset
+
+ satisfying 
+\begin_inset Formula $\rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2}=\tr_{D}(\rho_{3})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Since we postponed the measurements to the end, we add this last step.
+ Alice now measures 
+\begin_inset Formula $\rho_{3}$
+\end_inset
+
+ to determine 
+\begin_inset Formula $x\oplus g$
+\end_inset
+
+ and if it is one, whether the GHZ test passed.
+ Let 
+\begin_inset Formula 
+\begin{align}
+\Pi_{i} & :=\sum_{x,y\in\{0,1\}:x\oplus g=i}\left|x\right\rangle \left\langle x\right|_{X}\left|g\right\rangle \left\langle g\right|_{G}\otimes\mathbb{I}_{AIJRYD},\nonumber \\
+\Pi^{{\rm GHZ}} & :=\sum_{\substack{x,y\in\{0,1\},\\
+a,d\in\{0,1\}:a\oplus d\oplus1=xy\cdot(1\oplus x\oplus y)
+}
+}\left|x\right\rangle \left\langle x\right|_{X}\left|y\right\rangle \left\langle y\right|_{Y}\left|a\right\rangle \left\langle a\right|_{A}\left|d\right\rangle \left\langle d\right|_{D}.\label{eq:AliceProjs}
+\end{align}
+
+\end_inset
+
+Then, we can write the cheat vector for Alice, i.e.
+ the tuple of probabilities that Alice outputs 0, 1 and abort (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "def:CheatVectors"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+), as 
+\begin_inset Formula 
+\[
+(\alpha,\beta,\gamma)=(\tr(\Pi_{0}\rho_{3}),\tr(\Pi_{1}\Pi^{{\rm GHZ}}\rho_{3}),\tr(\Pi_{1}\bar{\Pi}^{{\rm GHZ}}\rho_{3}))
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $\bar{\Pi}:=\mathbb{I}-\Pi$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+To summarise, the final SDP is as follows: let 
+\begin_inset Formula $\left|\Psi_{1}\right\rangle \in XAIJRS$
+\end_inset
+
+ be as given in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:Alice_Psi1"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset Formula $\rho_{2}\in XARG$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho_{3}\in XARGYD$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\max\quad\tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{3})
+\]
+
+\end_inset
+
+subject to 
+\begin_inset Formula 
+\begin{align*}
+\tr_{IJS}\left[\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|\right] & =\tr_{G}(\rho_{2})\\
+\rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2} & =\tr_{D}(\rho_{3})
+\end{align*}
+
+\end_inset
+
+where the projectors are defined in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:AliceProjs"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Branch proof
+inverted 0
+status open
 
 \begin_layout Proof
 \begin_inset Argument 1
@@ -5152,7 +5868,6 @@ and
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Proof
@@ -5184,6 +5899,11 @@ status collapsed
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 SDP when Bob self-tests
 \begin_inset CommandInset label
@@ -5198,7 +5918,7 @@ name "subsec:SDP-when-Bob"
 \begin_layout Standard
 \begin_inset Branch proof
 inverted 0
-status collapsed
+status open
 
 \begin_layout Proof
 \begin_inset Argument 1
@@ -5312,15 +6032,357 @@ This establishes the first part of the lemma.
 \end_inset
 
  is an SDP, we proceed as follows.
- We know that Bob starts with the state 
+ Suppose 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "assu:asymptotic"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+ holds.
+ Then we can assume that Bob starts with the state 
+\begin_inset Formula 
+\begin{equation}
+\rho_{0}:=\tr_{H}(\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ})\label{eq:Bob_initState}
+\end{equation}
+
+\end_inset
+
+ and the effect of measuring the two boxes can be represented by the application
+ of projectors of pauli operators 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Z$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+The justification is similar to that given in the former proof.
+ Suppose Bob holds registers 
+\begin_inset Formula $QR$
+\end_inset
+
+ of 
+\begin_inset Formula $\left|\psi\right\rangle _{PQR}$
+\end_inset
+
+ which is the combined state of the three boxes.
+ Suppose his measurement operators are 
+\begin_inset Formula $\{M_{b|y}^{Q},M_{c|z}^{R}\}$
+\end_inset
+
+.
+ Then using the isometry in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "lem:self-testAsymptotic"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, Bob can relabel his state (and without loss of generality, we can suppose
+ Alice also relabels according to the aforementioned isometry) to get 
+\begin_inset Formula $\Phi_{PQR}\left|\psi\right\rangle _{PQR}=\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR}$
+\end_inset
+
+.
+ Further, since 
+\begin_inset Formula $\Phi_{PQR}(M_{b|y}^{Q}\otimes M_{c|z}^{R}\left|\psi\right\rangle _{PQR})=\Pi_{b|y}^{I}\Pi_{c|z}^{J}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR}$
+\end_inset
+
+ Bob's act of measurement, in the new labelling, corresponds to simply measuring
+ the GHZ state in the appropriate Pauli basis.
+ (TODO: in the approximate case, the initial state will be close to the
+ one mentioned and the post-measured state will similarly only be close
+ to the one post projectors; There should be some way of showing that this
+ can be absorbed into the initial state).
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Bob receiving 
+\begin_inset Formula $s$
+\end_inset
+
+ from Alice is modelled by introducing 
+\begin_inset Formula $\rho_{1}\in SIJ$
+\end_inset
+
+ satisfying 
+\begin_inset Formula $\tr_{S}(\rho_{1})=\rho_{0}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Bob sending 
+\begin_inset Formula $g\in_{R}\{0,1\}$
+\end_inset
+
+ can be seen as appending a mixed state: 
+\begin_inset Formula $\rho_{1}\otimes\frac{1}{2}\mathbb{I}_{G}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+As in the previous proof, either 
+\begin_inset Formula $x\oplus g=1$
+\end_inset
+
+, in which case Bob is convinced he won or 
+\begin_inset Formula $x\oplus g=0$
+\end_inset
+
+ in which case he will test Alice.
+ We proceed under the latter assumption, i.e.
+ suppose that 
+\begin_inset Formula $x=g$
+\end_inset
+
+.
+ The other case will be captured by normalisation (explained shortly).
+\end_layout
+
+\begin_layout Enumerate
+Alice sending 
+\begin_inset Formula $a$
+\end_inset
+
+ can be modelled as introducing 
+\begin_inset Formula $\rho_{2}\in ASIJG$
+\end_inset
+
+ satisfying 
+\begin_inset Formula $\tr_{A}(\rho_{2})=\rho_{1}\otimes\frac{\mathbb{I}_{G}}{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+To model the GHZ test, introduce a register 
+\begin_inset Formula $Y$
+\end_inset
+
+ in the state 
+\begin_inset Formula $\frac{\left|0\right\rangle _{Y}+\left|1\right\rangle _{Y}}{\sqrt{2}}$
+\end_inset
+
+.
+ Recall that since we assumed 
+\begin_inset Formula $x=g$
+\end_inset
+
+ and that to perform the GHZ test, we need 
+\begin_inset Formula $x\oplus y\oplus z=1$
+\end_inset
+
+ i.e.
+ 
+\begin_inset Formula $z=1\oplus y\oplus g$
+\end_inset
+
+.
+ Further introduce registers 
+\begin_inset Formula $B$
+\end_inset
+
+ and 
+\begin_inset Formula $C$
+\end_inset
+
+ to hold the measurement results and with the aforesaid in mind, define
+ 
+\begin_inset Formula 
+\begin{equation}
+U:=\sum_{y,g\in\{0,1\}}\left|y\right\rangle \left\langle y\right|_{Y}\left|g\right\rangle \left\langle g\right|_{G}\otimes(\mathbb{I}_{B}\otimes\Pi_{0|y}^{I}+X_{B}\otimes\Pi_{1|y}^{I})\otimes(\mathbb{I}_{C}\otimes\Pi_{0|(1\oplus y\oplus g)}^{J}+X_{C}\otimes\Pi_{1|(1\oplus y\oplus g)}^{J})\otimes\mathbb{I}_{AS}.\label{eq:Bob-u}
+\end{equation}
+
+\end_inset
+
+By construction, 
+\begin_inset Formula $\rho_{3}:=U\left(\left|+\right\rangle \left\langle +\right|_{Y}\otimes\left|00\right\rangle \left\langle 00\right|_{BC}\otimes\rho_{2}\right)U^{\dagger}\in YBCASIJG$
+\end_inset
+
+ models the measurement process.
+ (TODO: this equality would become approximately true...but perhaps the noise
+ can be absorbed in 
+\begin_inset Formula $\rho_{0}$
+\end_inset
+
+ with some argument)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Since we postponed the measurements to the end, we add this step.
+ Define 
+\begin_inset Formula 
+\[
+\Pi^{{\rm sTest}}:=\sum_{s,a,x:s=a\lor s=a\oplus x}\left|sax\right\rangle \left\langle sax\right|_{SAG}\otimes\mathbb{I}_{YBCIJ}
+\]
+
+\end_inset
+
+ to model the first test, i.e.
+ 
+\begin_inset Formula $s$
+\end_inset
+
+ should either be 
+\begin_inset Formula $a$
+\end_inset
+
+ or 
+\begin_inset Formula $a\oplus x$
+\end_inset
+
+ (and used the assumption 
+\begin_inset Formula $x=g$
+\end_inset
+
+).
+ Define 
+\begin_inset Formula 
+\[
+\Pi^{{\rm GHZ}}:=\sum_{\substack{x,y\in\{0,1\},\\
+a,b,c\in\{0,1\}:a\oplus b\oplus c\oplus1=xy\cdot(1\oplus x\oplus y)
+}
+}\left|xyabc\right\rangle \left\langle xyabc\right|_{GYABC}\otimes\mathbb{I}_{SIJ}
+\]
+
+\end_inset
+
+to model the GHZ test.
+ Let 
+\begin_inset Formula 
+\begin{equation}
+\Pi_{0}:=\Pi^{{\rm GHZ}}\Pi^{{\rm sTest}},\quad\Pi_{\perp}:=(\mathbb{I}-\Pi^{{\rm sTest}})(\mathbb{I}-\Pi^{{\rm GHZ}}),\quad\text{and}\quad\Pi_{1}:=\mathbb{I}-\Pi_{0}-\Pi_{\perp}.\label{eq:BobProjs}
+\end{equation}
+
+\end_inset
+
+One can then write the cheat vector for Bob, i.e.
+ the tuple of probabilities that Bob outputs 
+\begin_inset Formula $0,1$
+\end_inset
+
+ and abort (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "def:CheatVectors"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+), as 
+\begin_inset Formula 
+\[
+(\alpha,\beta,\gamma)=(\tr(\Pi_{0}\rho_{3}),\tr(\Pi_{1}\rho_{3}),\tr(\Pi_{\perp}\rho_{3})).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+To summarise, the final SDP is as follows: let 
+\begin_inset Formula $\rho_{0}\in IJ$
+\end_inset
+
+ be as defined in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:Bob_initState"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset Formula $\rho_{1}\in SIJ$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho_{2}\in ASIJG$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula 
+\[
+\max\quad\tr\left([c_{0}\Pi_{0}+c_{1}\Pi_{1}+c_{\perp}\Pi_{\perp})U\left(\left|+00\right\rangle \left\langle +00\right|_{YBC}\otimes\rho_{2}\right)U^{\dagger}\right)
+\]
+
+\end_inset
+
+subject to 
+\begin_inset Formula 
+\begin{align*}
+\tr_{S}(\rho_{1}) & =\rho_{0}\\
+\tr_{A}(\rho_{2}) & =\frac{1}{2}\rho_{1}\otimes\mathbb{I}_{G}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $U$
+\end_inset
+
+ is as defined in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:Bob-u"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+ and the projectors as in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:BobProjs"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+We know that Bob starts with the state 
 \begin_inset Formula $\sigma_{0}=\tr_{H}(\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HBC})$
 \end_inset
 
  due to the self-testing step.
- 
 \end_layout
 
-\begin_deeper
 \begin_layout Enumerate
 Alice sending 
 \begin_inset Formula $s$
@@ -5335,7 +6397,6 @@ Alice sending
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Enumerate
@@ -5377,10 +6438,10 @@ Alice sending
 \end_inset
 
 .
- 
 \end_layout
 
-\begin_layout Standard
+\begin_deeper
+\begin_layout Plain Layout
 As in the previous proof, let 
 \begin_inset Formula 
 \begin{align*}
@@ -5438,9 +6499,39 @@ where
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 The self-testing step [Discuss with Tom before writing] 
 \end_layout
+
+\begin_layout Proposition
+For any implementation of the boxes and choice of 
+\begin_inset Formula $\delta>0$
+\end_inset
+
+, the joint probability that the test 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ passes and that the conclusion 
+\begin_inset Formula $T$
+\end_inset
+
+ is false is small, i.e.
+ 
+\begin_inset Formula $\Pr[\Omega\cap\bar{T}]\leq\frac{1}{1-\delta+n\delta}\leq\frac{1}{n\delta}$
+\end_inset
+
+ where the first upper-bound is tight.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
 
 \begin_layout Lemma
 Let 
@@ -5517,7 +6608,7 @@ s except possibly
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Then, 
 \begin_inset Formula 
 \[
@@ -5562,13 +6653,13 @@ or
 \end_layout
 
 \end_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Branch proof
 inverted 0
-status open
+status collapsed
 
 \begin_layout Proof
-[EDIT: as it stands, this is wrong] 
+[EDIT: as it stands, this is wrong]
 \end_layout
 
 \begin_layout Proof
@@ -5632,7 +6723,6 @@ s are one,
 \end_inset
 
  respectively.
- 
 \end_layout
 
 \begin_layout Proof
@@ -5710,7 +6800,6 @@ s are one is exactly
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Proof
@@ -5732,7 +6821,11 @@ as claimed.
 \end_inset
 
 as stated.
- 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
