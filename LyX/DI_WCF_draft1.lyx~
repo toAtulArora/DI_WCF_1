@@ -1,0 +1,7725 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{color}
+\definecolor{purple}{RGB}{120,20,120}
+\newcommand\branchcolor[2]{{\color{#1} #2}}
+\newcommand\branchpurple[1]{{\color{purple} #1}}
+
+\usepackage{hyperref}
+
+\hypersetup{colorlinks=true,urlcolor=blue}
+
+
+
+\newref{thm}{name=theorem~,Name=Theorem~,names=theorems~,Names=Theorems~}
+\newref{def}{name=definition~,Name=Definition~,names=definitions~,Names=Definitions~}
+\newref{alg}{name=algorithm~,Name=Algorithm~,names=algorithms~,Names=Algorithms~}
+%\newref{cor}{name=corollary~,Name=Corollary~,names=corollaries~,Names=Corollaries~}
+\newref{lem}{name=lemma~,Name=Lemma~,names=lemmas~,Names=Lemmas~}
+\newref{claim}{name=claim~,Name=Claim~,names=claims~,Names=Claims~}
+\newref{sec}{name=section~,Name=Section~,names=sections~,Names=Sections~}
+\newref{subsec}{name=section~,Name=Section~,names=sections~,Names=Sections~}
+\newref{subsubsec}{name=section~,Name=Section~,names=sections~,Names=Sections~}
+%\newref{prop}{name=proposition~,Name=Proposition~,names=propositions~,Names=Propositions~}
+%\newref{conj}{name=conjecture~,Name=Conjecture~,names=conjectures~,Names=Conjectures~}
+\newref{assu}{name=assumption~,Name=Assumption~,names=assumptions~,Names=Assumptions~}
+%\newref{rem}{name=remark~,Name=Remark~,names=remarks~,Names=Remarks~}
+%\newref{alg}{name=algorithm~,Name=Algorithm~,names=algorithms~,Names=Algorithms~}
+\newref{fact}{name=fact~,Name=Fact~,names=facts~,Names=Facts~}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 66
+InsetLayout Branch:commentary
+  Font
+    Color purple
+  EndFont
+  LatexName branchcolor{purple}
+  LatexType command
+  Requires color
+End
+InsetLayout Branch:proof
+  Font
+    Color blue
+  EndFont
+  LatexName branchcolor{blue}
+  LatexType command
+  Requires color
+End
+\end_local_layout
+\language british
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "libertine" "default"
+\font_sans "biolinum" "default"
+\font_typewriter "lmtt" "default"
+\font_math "libertine-ntxm" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\branch commentary
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch proof
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\headheight 1in
+\headsep 1in
+\footskip 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Improved Device Independent Weak Coin Flipping Protocols
+\end_layout
+
+\begin_layout Abstract
+[OUTDATED: Needs to be rewritten]
+\begin_inset Newline newline
+\end_inset
+
+We report a device independent weak coin flipping protocol
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+which are analysed 
+\end_layout
+
+\end_inset
+
+ with 
+\begin_inset Formula $P_{A}^{*}\le\cos^{2}(\pi/8)$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{B}^{*}\le0.667...$
+\end_inset
+
+, by making seemingly minor changes to the best known protocol due to SCAKPM'11
+ [10.1103/PhysRevLett.106.220501], with 
+\begin_inset Formula $P_{A}^{*}\le\cos^{2}(\pi/8)\approx0.85$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{B}^{*}\le3/4=0.75$
+\end_inset
+
+.
+ In terms of bias, we improve the SCAKPM'11 result from 
+\begin_inset Formula $\approx0.336$
+\end_inset
+
+ to 
+\begin_inset Formula $\approx0.3199$
+\end_inset
+
+.
+ This improvement is due to two ingredients: a self-testing (of GHZ) step
+ and an extra cheat detection step for Bob.
+ We also introduce a new bias suppression technique that ekes out further
+ security from the abort probability to obtain ...
+ Note that the SCAKPM'11 result held for both strong and weak coin flipping;
+ ours holds only for the latter.
+ TODO: Fix me!
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\tr}{\text{tr}}
+{\text{tr}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+INTERNAL/Atul: Colour coding—Purple is for informal discussions, black is
+ for formal statements and blue is for proofs.
+ We can remove these from the final version; I put it to minimise verbiage.
+\end_layout
+
+\begin_layout Subsection
+About Weak Coin Flipping
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+Secure two-party computation is a cryptographic setting where two parties,
+ conventionally called Alice and Bob, receive inputs 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ and their goal is to compute some function 
+\begin_inset Formula $f_{A}(x,y)$
+\end_inset
+
+ and 
+\begin_inset Formula $f_{B}(x,y)$
+\end_inset
+
+ respectively which depends on both their inputs.
+ However, they do not wish to reveal their inputs.
+ Coin flipping (CF) is a cryptographic primitive in this setting, i.e.
+ a building block for constructing more applicable secure two-party cryptographi
+c schemes, where Alice and Bob wish to exchange messages and agree on a
+ random bit, without trusting each other.
+ A protocol that implements coin flipping must protect an honest player
+ from a malicious
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+(or cheating, we use these adjectives interchangeably)
+\end_layout
+
+\end_inset
+
+ player.
+ 
+\end_layout
+
+\begin_layout Standard
+A weaker primitive, unsurprisingly, known as 
+\emph on
+weak coin flipping
+\emph default
+ (WCF) is where a zero corresponds to Alice winning and one corresponds
+ to Bob winning.
+ It is weaker because now the protocol has to protect Alice from a malicious
+ Bob who tries to bias the outcome towards one (and not towards zero) and
+ conversely, it must protect Bob from a malicious Alice who tries to bias
+ the outcome towards zero (and not towards one).
+ To emphasise the distinction, the former primitive is often termed 
+\emph on
+strong coin flipping
+\emph default
+ (SCF).
+\end_layout
+
+\begin_layout Standard
+We primarily focus on WCF in this article and begin with introducing some
+ notation.
+ We denote by 
+\begin_inset Formula $P_{A}^{*}$
+\end_inset
+
+ the highest probability of a malicious Alice convincing an honest Bob that
+ she won (i.e.
+ in the WCF protocol, Alice uses her best cheating strategy against Bob
+ who in turn is following the protocol as described, to convince him that
+ the outcome is zero).
+ Analogously, 
+\begin_inset Formula $P_{B}^{*}$
+\end_inset
+
+ is the highest probability of a malicious Bob convincing an honest Alice
+ that he won.
+ The bias of a WCF protocol is defined as 
+\begin_inset Formula $\epsilon:=\max\left\{ P_{A}^{*},P_{B}^{*}\right\} -\frac{1}{2}$
+\end_inset
+
+.
+ A protocol that is completely secure, has 
+\begin_inset Formula $\epsilon=0$
+\end_inset
+
+ and one that is completely insecure has 
+\begin_inset Formula $\epsilon=\frac{1}{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Using a classical channel of communication between Alice and Bob, unless
+ one makes further assumptions such as computational hardness of certain
+ problems or relativistic assumptions,
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+in terms of the spatial locations of the observers; not to be confused with
+ the term 
+\emph on
+relativising
+\emph default
+ from computational complexity.
+\end_layout
+
+\end_inset
+
+ coin flipping (even weak) is impossible to implement with any security,
+ to wit: for all classical protocols at least one of the parties, viz.
+ a malicious Alice or a malicious Bob, can win with certainty because one
+ can show 
+\begin_inset Formula $\epsilon=\frac{1}{2}$
+\end_inset
+
+ (viz.
+ 
+\begin_inset Formula $\max\{P_{A}^{*},P_{B}^{*}\}=1$
+\end_inset
+
+).
+ Using a quantum channel of communication, it was shown that WCF can be
+ implemented with vanishing bias.
+ These works, however, do not account for noise in their implementation.
+ One path towards more robust security is device independence wherein the
+ players do not even trust their devices (recall, they already do not trust
+ the other party).
+ This is in contrast to the device independent setting considered in key
+ distribution where the two parties trust each other but neither their devices
+ nor the communication channel (TODO: is the classical communication channel
+ trusted?).
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Contributions
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+[TODO: fix it—this is outdated] In this work, we start with a device independent
+ (DI) coin flipping (CF) protocol introduced
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+In fact, they introduced a device independent bit commitment protocol which
+ they in turn use to construct a strong coin flipping protocol with the
+ same cheating probabilities for Alice and Bob, 
+\begin_inset Formula $\approx0.854$
+\end_inset
+
+ and 
+\begin_inset Formula $0.75$
+\end_inset
+
+ respectively.
+\end_layout
+
+\end_inset
+
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Silman2011"
+literal "false"
+
+\end_inset
+
+ which has 
+\begin_inset Formula $P_{A}^{*}=\cos^{2}(\pi/8)\approx0.854$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{B}^{*}=3/4=0.75$
+\end_inset
+
+.
+ They then compose these protocols to give a balanced protocol, i.e.
+ with 
+\begin_inset Formula $P_{A}^{*}=P_{B}^{*}\approx\frac{1}{2}+0.336$
+\end_inset
+
+.
+ To the best of our knowledge, this DI CF protocol has the best security
+ guarantee.
+ While Kitaev's bound for CF rules out perfect DI CF, no lower bounds on
+ the bias are known for DI WCF.
+ In this work, however, we focus on improving the upper bound on the bias,
+ viz.
+ we give DI WCF protocols with biases 
+\begin_inset Formula $\approx0.319$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We introduce two key new ideas which result in better protocols.
+ The first, is the use of self-testing by one party before initiating the
+ protocol and the second, is a more general technique to convert unbalanced
+ protocols (i.e.
+ ones in which the probability of maliciously winning for Alice and Bob
+ are unequal) into balanced ones.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Proof Technique
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Proof-Technique"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Notation and Cheat Vectors
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+We introduce some notation to facilitate the discussion here.
+ Denote the DI CF protocol introduced in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Silman2011"
+literal "false"
+
+\end_inset
+
+ by 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ and let 
+\begin_inset Formula $p_{A}^{*}(\mathcal{I})\approx0.853\dots$
+\end_inset
+
+ denote the maximum probability with which a malicious Alice can win against
+ honest Bob who is following the protocol 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ and similarly, let 
+\begin_inset Formula $p_{B}^{*}(\mathcal{I})\approx0.75$
+\end_inset
+
+ denote the maximum probability with which a malicious Bob can win against
+ an honest Alice who is following the protocol 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+One of the key observations we make in this work is the use of what we call
+ 
+\begin_inset Quotes eld
+\end_inset
+
+cheat vectors
+\begin_inset Quotes erd
+\end_inset
+
+—it is any tuple of probabilities which can arise in a CF protocol when
+ one player is honest.
+ More precisely, suppose Alice is (possibly) malicious and Bob follows the
+ protocol 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+.
+ Then, the cheat vectors for Alice constitute the set
+\begin_inset Formula 
+\begin{equation}
+\mathbb{C}{}_{A}(\mathcal{I}):=\{(\alpha,\beta,\gamma):\exists\text{ a strategy for }A\text{ s.t. an honest }B\text{ outputs }\text{0,1, \text{ and }\ensuremath{\perp} with probabilities \ensuremath{\alpha,\beta} and \ensuremath{\gamma}}\}.\label{eq:cheatVectors}
+\end{equation}
+
+\end_inset
+
+We analogously define 
+\begin_inset Formula $\mathbb{C}_{B}(\mathcal{I})$
+\end_inset
+
+.
+ Cheat vectors become useful when we try to compose protocols.
+ The observation then, is that the abort event can be taken to abort the
+ full protocol instead of being treated as the honest player winning.
+ The latter gives the malicious player further opportunity to cheat and
+ so preventing it improves the security.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Protocols
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+We introduce two variants of protocol 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+, which we call 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ is essentially the same as 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ except that Alice self-tests her boxes before starting the protocol and
+ performs an additional test to ensure Bob doesn't cheat.
+ We show that 
+\begin_inset Formula $p_{A}^{*}(\mathcal{P})\apprle0.853\dots$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{B}^{*}(\mathcal{P})\apprle0.667\dots$
+\end_inset
+
+.
+ We also show that 
+\begin_inset Formula $\mathbb{C}_{B}(\mathcal{P})$
+\end_inset
+
+ can be cast as an SDP.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ is also essentially the same as 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ except that Bob self-tests his boxes before starting the protocol.
+ In this case, 
+\begin_inset Formula $p_{X}^{*}(\mathcal{Q})=p_{X}^{*}(\mathcal{I})$
+\end_inset
+
+ for both values of 
+\begin_inset Formula $X\in\{A,B\}$
+\end_inset
+
+ so the advantage isn't manifest.
+ However, now 
+\begin_inset Formula $\mathbb{C}_{A}(\mathcal{Q})$
+\end_inset
+
+ can be cast as an SDP which, as we shall see, yields an advantage when
+ 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ is composed.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Compositions
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+As the protocols 
+\begin_inset Formula $\mathcal{X}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$
+\end_inset
+
+ all have skewed security—either 
+\begin_inset Formula $p_{A}^{*}(\mathcal{X})>p_{B}^{*}(\mathcal{X})$
+\end_inset
+
+ or the other way—and therefore the bias is determined by 
+\begin_inset Formula $p_{\max}^{*}(\mathcal{X}):=\max\{p_{A}^{*}(\mathcal{X}),p_{B}^{*}(\mathcal{X})\}$
+\end_inset
+
+.
+ Note that, 
+\begin_inset Formula $p_{\max}^{*}(\mathcal{X})=p_{\max}^{*}(\mathcal{Y})$
+\end_inset
+
+ for all 
+\begin_inset Formula $\mathcal{X},\mathcal{Y}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$
+\end_inset
+
+, which means that we don't immediately obtain an advantage.
+ However, the most obvious method of composing these protocols to obtain
+ a new protocol, which we describe later, 
+\begin_inset Quotes eld
+\end_inset
+
+balances
+\begin_inset Quotes erd
+\end_inset
+
+ the advantage.
+ After this composition procedure is applied to some protocol 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+, we denote the resulting protocol by 
+\begin_inset Formula $C_{{\rm stand}}(\mathcal{X})$
+\end_inset
+
+.
+ Applying this technique to 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+, we already obtain a more secure protocol.
+\end_layout
+
+\begin_layout Itemize
+For all 
+\begin_inset Formula $X\in\{A,B\}$
+\end_inset
+
+ the cheating probabilities for protocol 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ under the standard composition is given by
+\begin_inset Formula 
+\[
+p_{X}^{*}(C_{{\rm stand}}(\mathcal{I}))\approx\frac{1}{2}+0.336\dots
+\]
+
+\end_inset
+
+while for the improved protocol 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+, these are given by
+\begin_inset Formula 
+\begin{equation}
+p_{X}^{*}(C_{{\rm stand}}(\mathcal{P}))\approx\frac{1}{2}+0.3199\dots.\label{eq:SikoraP}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The standard composition technique doesn't yield any improvement for 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ because the cheating probabilities are identical to those of 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+.
+ We can extract an advantage by using a composition technique that uses
+ 
+\begin_inset Quotes eld
+\end_inset
+
+cheat vectors
+\begin_inset Quotes erd
+\end_inset
+
+ and the abort event.
+ We describe it in detail later but for now, we simply denote the new protocol
+ obtained using this improved 
+\begin_inset Quotes eld
+\end_inset
+
+abort augmented
+\begin_inset Quotes erd
+\end_inset
+
+ composition (of protocol 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+) by 
+\begin_inset Formula $C_{{\rm AAC}}(\mathcal{X})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Using this technique on 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+, the cheating probabilities become 
+\begin_inset Formula 
+\[
+p_{X}^{*}(C_{{\rm AAC}}(\mathcal{Q}))\approx\frac{1}{2}+0.317\dots
+\]
+
+\end_inset
+
+for all 
+\begin_inset Formula $X\in\{A,B\}$
+\end_inset
+
+, which is even better than 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:SikoraP"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Finally, we combine both these protocols to obtain (again, for all 
+\begin_inset Formula $X\in\{A,B\}$
+\end_inset
+
+)
+\begin_inset Formula 
+\[
+p_{X}^{*}(C_{{\rm AAC}}(\mathcal{Q},\mathcal{Q},\dots,\mathcal{Q},\mathcal{P}))\approx\frac{1}{2}+0.2908\dots
+\]
+
+\end_inset
+
+where we use the same composition technique except that at the last 
+\begin_inset Quotes eld
+\end_inset
+
+level
+\begin_inset Quotes erd
+\end_inset
+
+ we use 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ instead of 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+TODO: Obvious questions (answers to which I don't have anymore; stupid memory):
+ what about 
+\begin_inset Formula $p_{X}^{*}(C_{{\rm AAC}}(\mathcal{P}))$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{X}^{*}(C_{{\rm AAC}}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{Q}))$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+aoeu
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+Notation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Compositions: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $k$
+\end_inset
+
+ compositions of 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+, for instance, are denote by 
+\begin_inset Formula $C(\mathcal{P},k)$
+\end_inset
+
+.
+ When 
+\begin_inset Formula $k$
+\end_inset
+
+ is suppressed, it is assumed that we pick a large enough 
+\begin_inset Formula $k$
+\end_inset
+
+ such that 
+\begin_inset Formula $p_{A}^{*}(C(\mathcal{P},k))\approx p_{B}^{*}(C(\mathcal{P},k))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Standard Composition: 
+\begin_inset Formula $C_{\text{stand.}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sikora Composition: 
+\begin_inset Formula $C_{\text{Sikora}}$
+\end_inset
+
+ (for 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+, uses the cheat vectors for Bob and for 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ uses the cheat vectors for Alice).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+State of the art: 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{\text{stand.}}$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $p_{A/B}^{*}(C_{\text{stand.}}(\mathcal{I}))\approx\frac{1}{2}+0.336\dots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cumulative Result 1: 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{\text{stand.}}$
+\end_inset
+
+: 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $p_{A/B}^{*}(C_{\text{stand.}}(\mathcal{P}))\approx\frac{1}{2}+0.3199\dots$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+TODO: prove that under standard composition, if 
+\begin_inset Formula $p_{A}^{*}(\mathcal{P})\ge p_{B}^{*}(\mathcal{P})$
+\end_inset
+
+ then 
+\begin_inset Formula $p_{A}^{*}(C_{\text{stand.}}(\mathcal{P},1))\ge p_{B}^{*}(C_{\text{stand.}}(\mathcal{P},1))$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Cumulative Result 2: 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{\text{Sikora}}$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $p_{A/B}^{*}(C_{\text{Sikora}}(\mathcal{Q}))\approx\frac{1}{2}+0.317\dots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cumulative Result 3: 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ at the leaves, 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ otherwise and 
+\begin_inset Formula $C_{\text{Sikora}}$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $p_{A/B}^{*}(C_{\text{Sikora}}(\mathcal{Q},\mathcal{Q}\dots\mathcal{P}))\approx\frac{1}{2}+0.2908\dots$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+where I abused the definition of 
+\begin_inset Formula $C_{\text{Sikora}}$
+\end_inset
+
+ slightly.
+\begin_inset Newline newline
+\end_inset
+
+TODO: perhaps output how many times I change the 
+\begin_inset Quotes eld
+\end_inset
+
+polarity
+\begin_inset Quotes erd
+\end_inset
+
+ of the protocol?
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+Notation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Protocols
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Original: 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+; 
+\begin_inset Formula $p_{A}^{*}(\mathcal{I})\approx0.853\dots$
+\end_inset
+
+, 
+\begin_inset Formula $p_{B}^{*}(\mathcal{I})\approx0.75$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Intermediate Result | Alice self-tests + extra test: 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+; 
+\begin_inset Formula $p_{A}^{*}(\mathcal{P})\apprle0.853\dots$
+\end_inset
+
+, 
+\begin_inset Formula $p_{B}^{*}(\mathcal{P})\apprle0.667\dots$
+\end_inset
+
+; 
+\begin_inset Formula $\mathcal{C}_{B}(\mathcal{P})$
+\end_inset
+
+ as an SDP (but low abort probability; heavy computationally)
+\end_layout
+
+\begin_layout Itemize
+Intermediate Result | Bob self-tests: 
+\begin_inset Formula $p_{A/B}^{*}(\mathcal{Q})=p_{A/B}^{*}(\mathcal{I})$
+\end_inset
+
+; 
+\begin_inset Formula $\mathcal{C}_{A}(\mathcal{Q})$
+\end_inset
+
+ as an SDP 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Compositions: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $k$
+\end_inset
+
+ compositions of 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+, for instance, are denote by 
+\begin_inset Formula $C(\mathcal{P},k)$
+\end_inset
+
+.
+ When 
+\begin_inset Formula $k$
+\end_inset
+
+ is suppressed, it is assumed that we pick a large enough 
+\begin_inset Formula $k$
+\end_inset
+
+ such that 
+\begin_inset Formula $p_{A}^{*}(C(\mathcal{P},k))\approx p_{B}^{*}(C(\mathcal{P},k))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Standard Composition: 
+\begin_inset Formula $C_{\text{stand.}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sikora Composition: 
+\begin_inset Formula $C_{\text{Sikora}}$
+\end_inset
+
+ (for 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+, uses the cheat vectors for Bob and for 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ uses the cheat vectors for Alice).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+State of the art: 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{\text{stand.}}$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $p_{A/B}^{*}(C_{\text{stand.}}(\mathcal{I}))\approx\frac{1}{2}+0.336\dots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cumulative Result 1: 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{\text{stand.}}$
+\end_inset
+
+: 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $p_{A/B}^{*}(C_{\text{stand.}}(\mathcal{P}))\approx\frac{1}{2}+0.3199\dots$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+TODO: prove that under standard composition, if 
+\begin_inset Formula $p_{A}^{*}(\mathcal{P})\ge p_{B}^{*}(\mathcal{P})$
+\end_inset
+
+ then 
+\begin_inset Formula $p_{A}^{*}(C_{\text{stand.}}(\mathcal{P},1))\ge p_{B}^{*}(C_{\text{stand.}}(\mathcal{P},1))$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Cumulative Result 2: 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{\text{Sikora}}$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $p_{A/B}^{*}(C_{\text{Sikora}}(\mathcal{Q}))\approx\frac{1}{2}+0.317\dots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cumulative Result 3: 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ at the leaves, 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ otherwise and 
+\begin_inset Formula $C_{\text{Sikora}}$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $p_{A/B}^{*}(C_{\text{Sikora}}(\mathcal{Q},\mathcal{Q}\dots\mathcal{P}))\approx\frac{1}{2}+0.2908\dots$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+where I abused the definition of 
+\begin_inset Formula $C_{\text{Sikora}}$
+\end_inset
+
+ slightly.
+\begin_inset Newline newline
+\end_inset
+
+TODO: perhaps output how many times I change the 
+\begin_inset Quotes eld
+\end_inset
+
+polarity
+\begin_inset Quotes erd
+\end_inset
+
+ of the protocol?
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Section
+An illustration of a Device Dependent Weak Coin Flipping protocol
+\end_layout
+
+\begin_layout Plain Layout
+As an illustration of an interesting WCF protocol, we present the one due
+ to 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Spekkens2002"
+literal "false"
+
+\end_inset
+
+.
+ For 
+\begin_inset Formula $\left|\psi\right\rangle =\frac{1}{\sqrt{2}}\left|00\right\rangle +\left(1-\frac{1}{\sqrt{2}}\right)\left|11\right\rangle $
+\end_inset
+
+ and 
+\begin_inset Formula $E_{0}=\frac{1}{\sqrt{2}}\left|0\right\rangle \left\langle 0\right|$
+\end_inset
+
+, the following yields 
+\begin_inset Formula $P_{A}^{*}=P_{B}^{*}=\frac{1}{\sqrt{2}}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/temp_SR_1.png
+	lyxscale 50
+	width 50text%
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/temp_SR_2.png
+	lyxscale 50
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Device Independent Weak Coin Flipping protocols | State Of The Art
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+In the following, we first discuss how one can describe DI WCF protocols
+ in terms of the players exchanging 
+\begin_inset Quotes bls
+\end_inset
+
+boxes
+\begin_inset Quotes brs
+\end_inset
+
+—devices which take classical inputs and give classical outputs.
+ Subsequently we recall the GHZ test and finally we use these to delineate
+ the DI-CF due to 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Silman2011"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Device Independence and the Box Paradigm
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+We describe device independent protocols as classical protocols with the
+ one modification: we assume that the two parties can exchange boxes and
+ that the parties can shield their boxes (from the other boxes i.e.
+ the boxes can't communicate with each other once shielded).
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+TODO: Verify if this notion is in fact correct; I hope I'm not making a
+ major mistake somehow.
+ I should be able to take the POVMs as tensor products right, because I
+ can change them at will, independent of the others (and ensuring that there's
+ no communication between them; could they be somehow entangled, i.e.
+ could it be that somehow the measurement operators are themselves quantum
+ correlated?); I would like to reach the conclusion starting from the locality
+ assumption.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Slightly anticipating the upcoming discussion, consider the following partially
+ specified protocol:
+\end_layout
+
+\begin_layout Itemize
+Three boxes, each of which accept a binary input and produce a binary output,
+ are prepared (we do not make any assumptions on who prepares the boxes;
+ when we analyse the security, we assume the adversary prepared them).
+\end_layout
+
+\begin_layout Itemize
+Alice is given the first box and Bob is given the second and third boxes.
+ Further, Bob ensures that his two boxes are shielded to prevent any inter-commu
+nication.
+ (An alternative is to keep the boxes sufficiently far so that during the
+ course of the protocol, not even light can be used to communicate; but
+ under such relativistic settings, CF can already be performed, making this
+ discussion irrelevant).
+\end_layout
+
+\begin_layout Itemize
+Bob uses local randomness (that we assume Alice cannot access) to determine
+ the inputs to his box.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Using the outputs of the boxes, and possibly more randomness, she determines
+ a message.
+ She sends this message to Bob.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The protocol, of course, must specify the recipes for these steps precisely
+ but we don't need them here
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Alice, using the incoming message and his local randomness, determines the
+ input to her box.
+ Using all the information she has, she determines who won
+\end_layout
+
+\begin_layout Plain Layout
+More formally, we make the following assumptions.
+\end_layout
+
+\begin_layout Plain Layout
+——————
+\end_layout
+
+\begin_layout Plain Layout
+Slightly anticipating the upcoming discussion, consider the following partially
+ specified protocol:
+\end_layout
+
+\begin_layout Itemize
+Three boxes, each of which accept a binary input and produce a binary output,
+ are prepared (we do not make any assumptions on who prepares the boxes;
+ when we analyse the security, we assume the adversary prepared them).
+\end_layout
+
+\begin_layout Itemize
+Alice is given the first box and Bob is given the second and third boxes.
+ Further, Bob ensures that his two boxes are shielded to prevent any inter-commu
+nication.
+ (An alternative is to keep the boxes sufficiently far so that during the
+ course of the protocol, not even light can be used to communicate; but
+ under such relativistic settings, CF can already be performed, making this
+ discussion irrelevant).
+\end_layout
+
+\begin_layout Itemize
+Alice sends 
+\end_layout
+
+\begin_layout Plain Layout
+More formally, we make the following assumptions.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Box
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "def:box"
+
+\end_inset
+
+A 
+\emph on
+box
+\emph default
+ is a device that takes an input 
+\begin_inset Formula $x\in\mathcal{X}$
+\end_inset
+
+ and yields an outputs 
+\begin_inset Formula $a\in\mathcal{A}$
+\end_inset
+
+ where 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ are finite sets.
+ Typically, a set of 
+\begin_inset Formula $n$
+\end_inset
+
+ boxes, taking inputs 
+\begin_inset Formula $x_{1},x_{2},\dots x_{n}$
+\end_inset
+
+ and yielding outputs 
+\begin_inset Formula $a_{1},a_{2}\dots a_{n}$
+\end_inset
+
+ are 
+\emph on
+characterised
+\emph default
+ by a joint conditional probability distribution, denoted by 
+\begin_inset Formula 
+\[
+p(a_{1},a_{2}\dots a_{n}|x_{1},x_{2}\dots x_{n}).
+\]
+
+\end_inset
+
+Further, if 
+\begin_inset Formula $p(a_{1},a_{2}\dots a_{n}|x_{1},x_{2}\dots x_{n})=\tr\left[M_{a_{1}|x_{1}}^{1}\otimes M_{a_{2}|x_{2}}^{2}\dots\otimes M_{a_{n}|x_{n}}^{n}\rho\right]$
+\end_inset
+
+ then we call the set of boxes, 
+\emph on
+quantum boxes
+\emph default
+, where for a fixed 
+\begin_inset Formula $x'$
+\end_inset
+
+ 
+\begin_inset Formula $\{M_{a'|x'}^{i}\}_{a'\in\mathcal{A}_{i}}$
+\end_inset
+
+ constitute a POVM for the 
+\begin_inset Formula $i$
+\end_inset
+
+th subsystem, 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is a density matrix and their dimensions are mutually consistent.
+\end_layout
+
+\begin_layout Standard
+Henceforth, we restrict ourselves to quantum boxes.
+ 
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Protocol in the box formalism
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "def:BoxProtocol"
+
+\end_inset
+
+A generic two-party protocol in the box formalism has the following form:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Inputs:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Alice is given boxes 
+\begin_inset Formula $\Box_{1}^{A},\Box_{2}^{A}\dots\Box_{p}^{A}$
+\end_inset
+
+ and Bob is given boxes 
+\begin_inset Formula $\Box_{1}^{B},\Box_{2}^{B},\dots\Box_{q}^{B}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Alice is given a random string 
+\begin_inset Formula $r^{A}$
+\end_inset
+
+ and Bob is given a random string 
+\begin_inset Formula $r^{B}$
+\end_inset
+
+ (of arbitrary but finite length).
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Structure: At each round of the protocol, the following is allowed.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Alice and Bob can locally perform arbitrary but finite time computations
+ on a Turing Machine.
+ 
+\end_layout
+
+\begin_layout Enumerate
+They can exchange classical strings/messages and boxes.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Definition
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+A protocol in the box formalism is readily expressed as a protocol which
+ uses a (trusted) classical channel (i.e.
+ they trust their classical devices to reliably send/receive messages),
+ untrusted quantum devices and an untrusted quantum channel (i.e.
+ a channel that can carry quantum states but may be controlled by the adversary).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Assumption
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Setup of Device Independent Two-Party Protocols
+\end_layout
+
+\end_inset
+
+ Alice and Bob 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+both have private sources of randomness,
+\end_layout
+
+\begin_layout Enumerate
+can send and receive classical messages over a (trusted) classical channel,
+\end_layout
+
+\begin_layout Enumerate
+can prevent parts of their untrusted quantum devices from communicating
+ with each other, and
+\end_layout
+
+\begin_layout Enumerate
+have access to an untrusted quantum channel.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+We restrict ourselves to a 
+\begin_inset Quotes bls
+\end_inset
+
+measure and exchange
+\begin_inset Quotes brs
+\end_inset
+
+ class of protocols—protocols where Alice and Bob start with some pre-prepared
+ states and subsequently, only perform classical computation and quantum
+ measurements locally in conjunction with exchanging classical and quantum
+ messages.
+ More precisely, we consider the following (likely restricted) class of
+ device independent protocols.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Measure and Exchange (Device Independent Two-Party) Protocols
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "def:MEprotocol"
+
+\end_inset
+
+ A 
+\emph on
+measure and exchange (device independent two-party) protocol
+\emph default
+ has the following form:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Inputs:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Alice is given quantum registers 
+\begin_inset Formula $A_{1},A_{2},\dots A_{p}$
+\end_inset
+
+ together with POVMs
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+For concreteness, take the case of binary measurements.
+ By 
+\begin_inset Formula $\{M_{a|x}^{A_{1}}\}_{a}$
+\end_inset
+
+, for instance, we mean 
+\begin_inset Formula $\{M_{0|x}^{A_{1}},M_{1|x}^{A_{1}}\}$
+\end_inset
+
+ is a POVM for 
+\begin_inset Formula $x\in\{0,1\}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\{M_{a|x}^{A_{1}}\}_{a},\{M_{a|x}^{A_{2}}\}_{a},\dots\{M_{a|x}^{A_{p}}\}_{a}
+\]
+
+\end_inset
+
+which act on them and Bob is, analogously, given quantum registers 
+\begin_inset Formula $B_{1},B_{2},\dots B_{q}$
+\end_inset
+
+ together with POVMs 
+\begin_inset Formula 
+\[
+\{M_{b|y}^{B_{1}}\}_{b},\{M_{b|y}^{B_{2}}\}_{b},\dots,\{M_{b|y}^{B_{q}}\}_{b}.
+\]
+
+\end_inset
+
+Alice shields 
+\begin_inset Formula $A_{1},A_{2},\dots A_{p}$
+\end_inset
+
+ (and the POVMs) from each other and from Bob's lab.
+ Bob similarly shields 
+\begin_inset Formula $B_{1},B_{2}\dots B_{q}$
+\end_inset
+
+ (and the POVMs) from each other and from Alice's lab.
+\end_layout
+
+\begin_layout Enumerate
+Alice is given a random string 
+\begin_inset Formula $r^{A}$
+\end_inset
+
+ and Bob is given a random string 
+\begin_inset Formula $r^{B}$
+\end_inset
+
+ (of arbitrary but finite length).
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Structure: At each round of the protocol, the following is allowed.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Alice and Bob can locally perform arbitrary but finite time computations
+ on a Turing Machine.
+\end_layout
+
+\begin_layout Enumerate
+They can exchange classical strings/messages.
+\end_layout
+
+\begin_layout Enumerate
+Alice (for instance) can 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+send a register 
+\begin_inset Formula $A_{l}$
+\end_inset
+
+ and the encoding of her POVMs 
+\begin_inset Formula $\{M_{i}^{A_{l}}\}_{i}$
+\end_inset
+
+ to Bob, or
+\end_layout
+
+\begin_layout Enumerate
+receive a register 
+\begin_inset Formula $B_{m}$
+\end_inset
+
+ and the encoding of the POVMs 
+\begin_inset Formula $\{M_{i}^{B_{m}}\}_{i}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Analogously for Bob.
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+It is clear that a protocol in the box formalism (
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "def:BoxProtocol"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+) which uses only quantum boxes (
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "def:box"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+) can be implemented as a measure and exchange protocol (
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "def:MEprotocol"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+The GHZ Test
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+Before we define the current best DI CF protocol, we briefly remind the
+ reader of the GHZ test, upon which the aforementioned protocol depends,
+ and set up some conventions.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset CommandInset label
+LatexCommand label
+name "def:GHZ-box"
+
+\end_inset
+
+Suppose we are given three boxes, 
+\begin_inset Formula $\Box^{A},\Box^{B}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Box^{C}$
+\end_inset
+
+, which accept binary inputs 
+\begin_inset Formula $a,b,c\in\{0,1\}$
+\end_inset
+
+ and produces binary output 
+\begin_inset Formula $x,y,z\in\{0,1\}$
+\end_inset
+
+ respectively.
+ The boxes pass the GHZ test if 
+\begin_inset Formula $a\oplus b\oplus c=xyz\oplus1$
+\end_inset
+
+, given the inputs satisfy 
+\begin_inset Formula $x\oplus y\oplus z=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+\begin_inset CommandInset label
+LatexCommand label
+name "claim:Quantum-boxes-pass"
+
+\end_inset
+
+Quantum boxes pass the GHZ test with certainty (even if they cannot communicate)
+, for the state 
+\begin_inset Formula $\left|\psi\right\rangle _{ABC}=\frac{\left|000\right\rangle _{ABC}+\left|111\right\rangle _{ABC}}{\sqrt{2}}$
+\end_inset
+
+, and measurement
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+we added the identity so that the eigenvalues associated become 
+\begin_inset Formula $0,1$
+\end_inset
+
+ instead of 
+\begin_inset Formula $-1,1$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\frac{\sigma_{x}+\mathbb{I}}{2}$
+\end_inset
+
+ for input 
+\begin_inset Formula $0$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{\sigma_{y}+\mathbb{I}}{2}$
+\end_inset
+
+ for input 
+\begin_inset Formula $1$
+\end_inset
+
+ (in the notation introduced earlier, 
+\begin_inset Formula $M_{0|0}^{A}=\left|+\right\rangle \left\langle +\right|,M_{1|0}^{A}=\left|-\right\rangle \left\langle -\right|$
+\end_inset
+
+ and so on, where 
+\begin_inset Formula $\left|\pm\right\rangle =\frac{\left|0\right\rangle \pm\left|1\right\rangle }{\sqrt{2}}$
+\end_inset
+
+).
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+TODO: Think: Should I add the classical value? This would require me to
+ add what it means to have a classical box.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+The proof is easier to see in the case where the outcomes are 
+\begin_inset Formula $\pm1$
+\end_inset
+
+; it follows from the observations that 
+\begin_inset Formula $\sigma_{y}\otimes\sigma_{y}\otimes\sigma_{y}\left|\psi\right\rangle =-\left|\psi\right\rangle $
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{x}\otimes\sigma_{x}\otimes\sigma_{x}\left|\psi\right\rangle =\left|\psi\right\rangle $
+\end_inset
+
+ and the anti-commutation of 
+\begin_inset Formula $\sigma_{x}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{y}$
+\end_inset
+
+ matrices, i.e.
+ 
+\begin_inset Formula $\sigma_{x}\sigma_{y}+\sigma_{y}\sigma_{x}=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+The Protocol
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+The best DI CF protocol known is the one introduced in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Silman2011"
+literal "false"
+
+\end_inset
+
+.
+ While this is a protocol for SCF, and so also works as a WCF protocol,
+ we do not know of any better protocol for the latter.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+SCF, original
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:SCForiginal"
+
+\end_inset
+
+Alice has one box and Bob has two boxes (in the security analysis, we let
+ the cheating player distribute the boxes).
+ Each box takes one binary input and gives one binary output.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Alice chooses 
+\begin_inset Formula $x\in_{R}\{0,1\}$
+\end_inset
+
+ and inputs it into her box to obtain 
+\begin_inset Formula $a$
+\end_inset
+
+.
+ She chooses 
+\begin_inset Formula $r\in_{R}\{0,1\}$
+\end_inset
+
+ to compute 
+\begin_inset Formula $s=a\oplus x.r$
+\end_inset
+
+ and sends 
+\begin_inset Formula $s$
+\end_inset
+
+ to Bob.
+\end_layout
+
+\begin_layout Enumerate
+Bob chooses 
+\begin_inset Formula $g\in_{R}\{0,1\}$
+\end_inset
+
+ (for 
+\begin_inset Quotes eld
+\end_inset
+
+guess
+\begin_inset Quotes erd
+\end_inset
+
+) and sends it to Alice.
+\end_layout
+
+\begin_layout Enumerate
+Alice sends 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $a$
+\end_inset
+
+ to Bob.
+ They both compute the output 
+\begin_inset Formula $x\oplus g$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Test round
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Bob tests if 
+\begin_inset Formula $s=a$
+\end_inset
+
+ or 
+\begin_inset Formula $s=a\oplus x$
+\end_inset
+
+.
+ If the test fails, he aborts.
+ Bob chooses 
+\begin_inset Formula $b,c\in_{R}\{0,1\}$
+\end_inset
+
+ such that 
+\begin_inset Formula $a\oplus b\oplus c=1$
+\end_inset
+
+ and then performs a GHZ using 
+\begin_inset Formula $a,b,c$
+\end_inset
+
+ as the inputs and 
+\begin_inset Formula $x,y,z$
+\end_inset
+
+ as the output from the three boxes.
+ He aborts if this test fails.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+From 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "claim:Quantum-boxes-pass"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, it is clear that when both players follow 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "alg:SCForiginal"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+ using GHZ boxes (
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "def:GHZ-box"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+), Bob never aborts and they win with equal probabilities.
+ The security of the protocol is summarised next.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Security of SCF
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Silman2011"
+literal "false"
+
+\end_inset
+
+ Let 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ denote the protocol corresponding to 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "alg:SCForiginal"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ Then, the success probability of cheating Bob, 
+\begin_inset Formula $p_{B}^{*}(\mathcal{I})\le\frac{3}{4}$
+\end_inset
+
+ and that of cheating Alice, 
+\begin_inset Formula $p_{A}^{*}(\mathcal{I})\le\cos^{2}(\pi/8)$
+\end_inset
+
+.
+ Further, both bounds are saturated by a quantum strategy which uses a GHZ
+ state and the honest player measures along the 
+\begin_inset Formula $\sigma_{x}/\sigma_{y}$
+\end_inset
+
+ basis corresponding to input 
+\begin_inset Formula $0/1$
+\end_inset
+
+ into the box.
+ Cheating Alice measures along 
+\begin_inset Formula $\sigma_{\hat{n}}$
+\end_inset
+
+ for 
+\begin_inset Formula $\hat{n}=\frac{1}{\sqrt{2}}(\hat{x}+\hat{y})$
+\end_inset
+
+ while cheating Bob measures his first box along 
+\begin_inset Formula $\sigma_{x}$
+\end_inset
+
+ and second along 
+\begin_inset Formula $\sigma_{y}$
+\end_inset
+
+.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:SCFstandard"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+Note that both players can cheat maximally assuming they share a GHZ state
+ and the honest player measures along the associated basis.
+ This entails that even though the cheating player could potentially tamper
+ with the boxes before handing them to the honest player, surprisingly,
+ exploiting this freedom does not offer any advantage to the cheating player.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+First Technique: Self-testing (single shot, unbalanced)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+TODO: Assumption: No honest abort.
+\end_layout
+
+\begin_layout Standard
+We make two observations.
+ 
+\end_layout
+
+\begin_layout Standard
+First, in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "alg:SCForiginal"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+ only Bob performs the test round.
+ In WCF, there is a notion of Alice winning and Bob winning.
+ Thus, if 
+\begin_inset Formula $x\oplus g=0$
+\end_inset
+
+, i.e.
+ the outcome corresponding to 
+\begin_inset Quotes bls
+\end_inset
+
+Alice wins
+\begin_inset Quotes brs
+\end_inset
+
+, we can imagine that Bob continues to perform the test to ensure (at least
+ to some extend) that Alice did not cheat.
+ However, if 
+\begin_inset Formula $x\oplus g=1$
+\end_inset
+
+, i.e.
+ the outcome corresponding to 
+\begin_inset Quotes bls
+\end_inset
+
+Bob wins
+\begin_inset Quotes brs
+\end_inset
+
+, we can require Alice to now complete the GHZ test to ensure that Bob did
+ not cheat.
+ It turns out that this does not lower 
+\begin_inset Formula $p_{B}^{*}$
+\end_inset
+
+.
+ Interestingly, the best cheating strategy deviates from the GHZ state and
+ measurements for the honest player.
+ We omit the details here (see TODO: write this down somewhere) but mention
+ this to motivate the following.
+ 
+\end_layout
+
+\begin_layout Standard
+Second, Alice (say) can harness the self-testing property of GHZ states
+ and measurements to ensure that Bob has not tampered with her boxes.
+ One way of proceeding is that 
+\begin_inset Formula $N$
+\end_inset
+
+ copies of the supposedly correct boxes are distributed.
+ Alice now picks one out of these 
+\begin_inset Formula $N$
+\end_inset
+
+ boxes at random and asks Bob to send the associated two boxes to each 
+\begin_inset Formula $N-1$
+\end_inset
+
+ box that Alice posses.
+ Alice runs the GHZ test on each box and if even one test fails, she declares
+ that Bob cheated.
+ This way, for a large 
+\begin_inset Formula $N$
+\end_inset
+
+, Alice can ensure with near certainty, that she has a box containing the
+ correct state and (which performs the correct) measurements.
+ Note that no such scheme can be concocted which simultaneously self-tests
+ Alice and Bob's boxes.
+ More precisely, no such procedure can ensure that Alice and Bob share a
+ GHZ state (Alice one part, Bob the other two, for instance) because this
+ would mean perfect (or near perfect) SCF is possible which is forbidden
+ even in the device dependent case.
+ Kitaev showed that for any SCF protocol, 
+\begin_inset Formula $\epsilon\ge\frac{1}{\sqrt{2}}-\frac{1}{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Combining these two observations, results in an improvement in the security
+ for Alice.
+ We obtain a protocol with 
+\begin_inset Formula $P_{A}^{*}\le3/4$
+\end_inset
+
+, which is the same as before, but 
+\begin_inset Formula $P_{B}^{*}\apprle0.667...$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Cheat Vectors 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+As alluded to in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "subsec:Proof-Technique"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, using cheat vectors, it is sometimes possible to compose protocols and
+ obtain a lower bias compared to protocols which are composed without using
+ cheat vectors.
+ We describe such procedures in the next section, 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Second-Technique"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ Here, we simply define cheat vectors and show that self-testing allows
+ one to express relevant optimisation problems over cheat vectors as semi
+ definite programmes.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Cheat Vectors
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "def:CheatVectors"
+
+\end_inset
+
+Given a protocol 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+, denote by 
+\begin_inset Formula $\mathbb{C}_{B}(\mathcal{I})$
+\end_inset
+
+ the set of 
+\emph on
+cheat vectors
+\emph default
+ for Bob, which is defined as follows :
+\begin_inset Formula 
+\[
+\mathbb{C}_{B}(\mathcal{I}):=\{(\alpha,\beta,\gamma):\exists\text{ a strategy of \ensuremath{B} s.t. an honest \ensuremath{A} outputs }\text{0,1, \text{ and }\ensuremath{\perp} with probabilities \ensuremath{\alpha,\beta} and \ensuremath{\gamma}}\}
+\]
+
+\end_inset
+
+and analogously, denote by 
+\begin_inset Formula $\mathbb{C}_{A}(\mathcal{I})$
+\end_inset
+
+ the set of cheat vectors for Alice (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:cheatVectors"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+Alice self-tests | Protocol 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+We begin with the case where Alice self-tests.
+\end_layout
+
+\end_inset
+
+ In the honest implementation, the 
+\emph on
+trio
+\emph default
+ of boxes used in the following are characterised by the GHZ setup (see
+ 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "claim:Quantum-boxes-pass"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Alice self-tests her boxes
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:AliceSelfTestsHerBoxes"
+
+\end_inset
+
+There are 
+\begin_inset Formula $N$
+\end_inset
+
+ trios of boxes; Alice has the first part and Bob has the remaining two
+ parts, of each trio.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Alice selects a number 
+\begin_inset Formula $i\in_{R}\{1,2\dots N\}$
+\end_inset
+
+ and sends it to Bob.
+\end_layout
+
+\begin_layout Enumerate
+Bob sends his part of the trio of boxes corresponding to 
+\begin_inset Formula $\{1,2\dots N\}\backslash i$
+\end_inset
+
+, i.e.
+ he sends all the boxes, except the ones corresponding to the trio 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Alice performs a GHZ test on all the trios labelled 
+\begin_inset Formula $\left\{ 1,2\dots N\right\} \backslash i$
+\end_inset
+
+, i.e.
+ all the trios except the 
+\begin_inset Formula $i$
+\end_inset
+
+th.
+\end_layout
+
+\begin_layout Standard
+We restrict ourselves to the 
+\begin_inset Formula $i$
+\end_inset
+
+th trio.
+ Alice has one box and Bob has two boxes.
+ Each box takes one binary input and gives one binary output.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Alice chooses 
+\begin_inset Formula $x\in_{R}\{0,1\}$
+\end_inset
+
+ and inputs it into her box to obtain 
+\begin_inset Formula $a$
+\end_inset
+
+.
+ She chooses 
+\begin_inset Formula $r\in_{R}\{0,1\}$
+\end_inset
+
+ to compute 
+\begin_inset Formula $s=a\oplus x.r$
+\end_inset
+
+ and sends 
+\begin_inset Formula $s$
+\end_inset
+
+ to Bob.
+\end_layout
+
+\begin_layout Enumerate
+Bob chooses 
+\begin_inset Formula $g\in_{R}\{0,1\}$
+\end_inset
+
+ (for 
+\begin_inset Quotes eld
+\end_inset
+
+guess
+\begin_inset Quotes erd
+\end_inset
+
+) and sends it to Alice.
+\end_layout
+
+\begin_layout Enumerate
+Alice sends 
+\begin_inset Formula $x$
+\end_inset
+
+ to Bob.
+ They both compute the output 
+\begin_inset Formula $x\oplus g$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Test rounds:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+If 
+\begin_inset Formula $x\oplus g=0$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+Alice sends 
+\begin_inset Formula $a$
+\end_inset
+
+ to Bob.
+\begin_inset Newline newline
+\end_inset
+
+Bob tests if 
+\begin_inset Formula $s=a$
+\end_inset
+
+ or 
+\begin_inset Formula $s=a\oplus x$
+\end_inset
+
+.
+ If the test fails, he aborts.
+ Bob chooses 
+\begin_inset Formula $y,z\in_{R}\{0,1\}$
+\end_inset
+
+ such that 
+\begin_inset Formula $x\oplus y\oplus z=1$
+\end_inset
+
+ and then performs a GHZ using 
+\begin_inset Formula $x,y,z$
+\end_inset
+
+ as the inputs and 
+\begin_inset Formula $a,b,c$
+\end_inset
+
+ as the output from the three boxes.
+ He aborts if this test fails.
+\end_layout
+
+\begin_layout Enumerate
+Else, if 
+\begin_inset Formula $x\oplus g=1$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Alice chooses 
+\begin_inset Formula $y,z\in_{R}\{0,1\}$
+\end_inset
+
+ s.t.
+ 
+\begin_inset Formula $x\oplus y\oplus z=1$
+\end_inset
+
+ and sends them to Bob.
+\end_layout
+
+\begin_layout Enumerate
+Bob inputs 
+\begin_inset Formula $y,z$
+\end_inset
+
+ into his boxes, obtains and sends 
+\begin_inset Formula $b,c$
+\end_inset
+
+ to Alice.
+\end_layout
+
+\begin_layout Standard
+Alice tests if 
+\begin_inset Formula $x,y,z$
+\end_inset
+
+ as inputs and 
+\begin_inset Formula $a,b,c$
+\end_inset
+
+ as outputs, satisfy the GHZ test.
+ She aborts if this test fails.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:AliceSelfTests"
+
+\end_inset
+
+Let 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ denote the protocol corresponding to 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "alg:AliceSelfTestsHerBoxes"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ Then Alice's cheating probability 
+\begin_inset Formula $p_{A}^{*}(\mathcal{P})\le\cos^{2}(\pi/8)\approx0.852$
+\end_inset
+
+.
+ Further, let 
+\begin_inset Formula $c_{0},c_{1},c_{\perp}\in\mathbb{R}$
+\end_inset
+
+, and 
+\begin_inset Formula $\mathbb{C}_{B}(\mathcal{P})$
+\end_inset
+
+ be the set of cheat vectors for Bob.
+ Then, as 
+\begin_inset Formula $N\to\infty$
+\end_inset
+
+, the solution to the optimisation problem 
+\begin_inset Formula $\max(c_{0}\alpha+c_{1}\beta+c_{\perp}\gamma)$
+\end_inset
+
+ over 
+\begin_inset Formula $\mathbb{C}_{B}(\mathcal{Q})$
+\end_inset
+
+ approaches that of a semi definite programme.
+ In particular, i.e.
+ for 
+\begin_inset Formula $c_{0}=c_{\perp}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $c_{1}=1$
+\end_inset
+
+, 
+\begin_inset Formula $p_{B}^{*}(\mathcal{P})\apprle0.667...$
+\end_inset
+
+ (in the limit).
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+In the limit of 
+\begin_inset Formula $N\to\infty$
+\end_inset
+
+, Bob's cheating probability 
+\begin_inset Formula $p_{B}^{*}(\mathcal{P})\apprle0.667...$
+\end_inset
+
+ and, more generally, the optimisation problem 
+\begin_inset Formula $\max(c_{0}\alpha+c_{1}\beta+c_{\perp}\gamma)$
+\end_inset
+
+ over 
+\begin_inset Formula $\mathbb{C}_{B}(\mathcal{P})$
+\end_inset
+
+ is a semi definite programme for 
+\begin_inset Formula $c_{0},c_{1},c_{\perp}\in\mathbb{R}$
+\end_inset
+
+, where 
+\begin_inset Formula $\mathbb{C}_{B}(\mathcal{P})$
+\end_inset
+
+ is the set of cheating vectors for cheating Bob.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We defer the proof to 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "subsubsec:SDP-when-Alice"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+The value for 
+\begin_inset Formula $p_{B}^{*}(\mathcal{P})$
+\end_inset
+
+ was obtained by numerically solving the corresponding semi definite programme
+ while the analysis for cheating Alice is the same as that of the original
+ protocol.
+ 
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Using a standard composition technique, which we outline in the following
+ section, the cheating probabilities can be balanced.
+ The key idea is to repeat the unbalanced protocol and appropriately alternate
+ between giving the advantage to Alice and Bob.
+ The resulting bias is 
+\begin_inset Formula $0.319...$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Bob self-tests | Protocol 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+What if we modified the protocol and had Bob self-test his boxes? Does that
+ yield a better protocol? We address the first question now and the second
+ in the subsequent section.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Bob self-tests his boxes
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:BobSelfTests"
+
+\end_inset
+
+Proceed exactly as in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "alg:AliceSelfTestsHerBoxes"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, except for the self-testing where the rolls of Alice and Bob are reversed.
+ More explicitly, suppose there are 
+\begin_inset Formula $N$
+\end_inset
+
+ trios of boxes; Alice has the first part and Bob has the remaining two
+ parts, of each trio.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Bob selects a number 
+\begin_inset Formula $i\in_{R}\{1,2\dots N\}$
+\end_inset
+
+ and sends it to Alice.
+\end_layout
+
+\begin_layout Enumerate
+Alice sends her part of the trio of boxes corresponding to 
+\begin_inset Formula $\{1,2\dots N\}\backslash i$
+\end_inset
+
+, i.e.
+ she sends all the boxes, except the ones corresponding to the trio 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Bob performs a GHZ test on all the trios labelled 
+\begin_inset Formula $\left\{ 1,2\dots N\right\} \backslash i$
+\end_inset
+
+, i.e.
+ all the trios except the 
+\begin_inset Formula $i$
+\end_inset
+
+th.
+\end_layout
+
+\begin_layout Standard
+Henceforth, proceed as in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "alg:AliceSelfTestsHerBoxes"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+ after the self-testing step.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+As already indicated in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "subsec:Proof-Technique"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, we don't expect the cheating probabilities to improve but we do expect
+ an SDP characterisation of Alice's cheat vectors.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Bob-self-tests"
+
+\end_inset
+
+Let 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ denote the protocol corresponding to 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "alg:BobSelfTests"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ Then, Alice's cheating probability, 
+\begin_inset Formula $p_{A}^{*}(\mathcal{Q})\le3/4$
+\end_inset
+
+ and Bob's cheating probability, 
+\begin_inset Formula $p_{B}^{*}(\mathcal{Q})\le\cos^{2}(\pi/8)$
+\end_inset
+
+ (which are the same as those in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "lem:SCFstandard"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+).
+ Further, let 
+\begin_inset Formula $c_{0},c_{1},c_{\perp}\in\mathbb{R}$
+\end_inset
+
+, and 
+\begin_inset Formula $\mathbb{C}_{A}(\mathcal{Q})$
+\end_inset
+
+ be the set of cheat vectors for Alice.
+ Then, as 
+\begin_inset Formula $N\to\infty$
+\end_inset
+
+, the solution to the optimisation problem 
+\begin_inset Formula $\max(c_{0}\alpha+c_{1}\beta+c_{\perp}\gamma)$
+\end_inset
+
+ over 
+\begin_inset Formula $(\alpha,\beta,\gamma)\in\mathbb{C}_{A}(\mathcal{Q})$
+\end_inset
+
+ approaches that of a semi definite programme.
+ 
+\end_layout
+
+\begin_layout Standard
+The proof is again deferred; see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "subsec:SDP-when-Bob"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Second Technique: Bias Suppression 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Second-Technique"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this section, we use the convention that 
+\begin_inset Formula $\mathcal{I},\mathcal{P}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ correspond to the protocols described in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "alg:SCForiginal"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "alg:AliceSelfTestsHerBoxes"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "alg:BobSelfTests"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, respectively.
+ 
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+Notice that 
+\begin_inset Formula $p_{A}^{*}(\mathcal{X})\ge p_{B}^{*}(\mathcal{X})$
+\end_inset
+
+ where 
+\begin_inset Formula $\mathcal{X}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$
+\end_inset
+
+.
+ We call such protocols 
+\begin_inset Quotes eld
+\end_inset
+
+unbalanced
+\begin_inset Quotes erd
+\end_inset
+
+.
+ In this section we start from unbalanced WCF protocols and compose them
+ to construct balanced WCF protocols.
+ To this end, we introduce some notation and the term 
+\begin_inset Quotes eld
+\end_inset
+
+polarity
+\begin_inset Quotes erd
+\end_inset
+
+, to capture which among 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ is favoured.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Unbalanced protocols, Polarity
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "def:unbalanced-polarity"
+
+\end_inset
+
+Given a WCF protocol 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+, we say that it is unbalanced if 
+\begin_inset Formula $p_{A}^{*}(\mathcal{X})\neq p_{B}^{*}(\mathcal{X})$
+\end_inset
+
+.
+ We say that 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+ has polarity 
+\begin_inset Formula $A$
+\end_inset
+
+ if 
+\begin_inset Formula $p_{A}^{*}(\mathcal{X})>p_{B}^{*}(\mathcal{X})$
+\end_inset
+
+ and polarity 
+\begin_inset Formula $B$
+\end_inset
+
+ if 
+\begin_inset Formula $p_{A}^{*}(\mathcal{X})<p_{B}^{*}(\mathcal{X})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Definition
+Finally, let 
+\begin_inset Formula $X,Y\in\{A,B\}$
+\end_inset
+
+ be distinct and suppose that 
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+ is an unbalanced protocol.
+ Then, we define 
+\begin_inset Formula $\mathcal{\mathcal{R}}_{X}$
+\end_inset
+
+ to be protocol 
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+ where Alice's and Bob's roles are possibly interchanged so that 
+\begin_inset Formula $\mathcal{R}_{X}$
+\end_inset
+
+ has polarity 
+\begin_inset Formula $X$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $p_{X}^{*}(\mathcal{\mathcal{R}}_{X})>p_{Y}^{*}(\mathcal{R}_{X})$
+\end_inset
+
+.
+ We refer to 
+\begin_inset Formula $\mathcal{R}_{X}$
+\end_inset
+
+ as 
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+ polarised towards 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+TODO: It might help to explain 
+\begin_inset Quotes eld
+\end_inset
+
+roles of Alice and Bob
+\begin_inset Quotes erd
+\end_inset
+
+ are interchanged a little bit using the 
+\begin_inset Quotes eld
+\end_inset
+
+flip and declare
+\begin_inset Quotes erd
+\end_inset
+
+ protocol.
+\end_layout
+
+\begin_layout Standard
+TODO: Winner gets Polarity
+\end_layout
+
+\begin_layout Standard
+We now describe how these protocols can be composed such that the 
+\begin_inset Quotes eld
+\end_inset
+
+winner gets polarity
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $C(.,.)$
+\end_inset
+
+ and 
+\begin_inset Formula $C(.)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Given two unbalanced WCF protocols, 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{Y}$
+\end_inset
+
+, let 
+\begin_inset Formula $\mathcal{X}_{A},\mathcal{X}_{B}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{Y}_{A},\mathcal{Y}_{B}$
+\end_inset
+
+ be their polarisations (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "def:unbalanced-polarity"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+).
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Protocol 
+\begin_inset Formula $\mathcal{Y}$
+\end_inset
+
+ is executed under 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "assu:noAbort"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ Define 
+\begin_inset Formula $C(\mathcal{X},\mathcal{Y})$
+\end_inset
+
+ as follows:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Alice and Bob execute 
+\begin_inset Formula $\mathcal{X}_{A}$
+\end_inset
+
+ and obtain outcome 
+\begin_inset Formula $X\in\{A,B,\perp\}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+If
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $X=A$
+\end_inset
+
+, execute 
+\begin_inset Formula $\mathcal{Y}_{A}$
+\end_inset
+
+ and obtain outcome 
+\begin_inset Formula $Y\in\{A,B,\perp\}$
+\end_inset
+
+, else if
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $X=B$
+\end_inset
+
+, execute 
+\begin_inset Formula $\mathcal{Y}_{B}$
+\end_inset
+
+ and obtain outcome 
+\begin_inset Formula $Y\in\{A,B,\perp\}$
+\end_inset
+
+, and finally if
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $X=\perp$
+\end_inset
+
+, set 
+\begin_inset Formula $Y=\perp$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Output 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Algorithm
+Let 
+\begin_inset Formula $\mathcal{Z}^{i+1}:=C(\mathcal{X},\mathcal{Z}^{i})$
+\end_inset
+
+ for 
+\begin_inset Formula $i\ge1$
+\end_inset
+
+, and 
+\begin_inset Formula $\mathcal{Z}^{1}:=\mathcal{X}$
+\end_inset
+
+.
+ Then, formally, define 
+\begin_inset Formula $C(\mathcal{X}):=\lim_{i\to\infty}\mathcal{Z}^{i}$
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+This is just to facilitate notation.
+ This way the cheating probabilities 
+\begin_inset Formula $p_{A}^{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{B}^{*}$
+\end_inset
+
+ converge and numerically this only takes a few compositions to reach in
+ our case.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Example
+TODO: Perhaps show how 
+\begin_inset Formula $\mathcal{Z}_{B}$
+\end_inset
+
+ is constructed from 
+\begin_inset Formula $\mathcal{Z}=C(\mathcal{X},\mathcal{Y})$
+\end_inset
+
+.
+ Perhaps have this in the appendix.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+In the following sections, we work out some examples and analyse their security
+ and see where having a neat characterisation of cheat vectors helps.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Standard Analysis
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+In the standard analysis, we only use bounds on the cheating probabilities,
+ 
+\begin_inset Formula $p_{A}^{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{B}^{*}$
+\end_inset
+
+, of the protocols being composed to obtain the corresponding bounds for
+ the resultant protocol.
+ Let us take an example.
+ Consider protocol 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "alg:AliceSelfTestsHerBoxes"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+) and recall (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "lem:AliceSelfTests"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+)
+\begin_inset Formula 
+\begin{align*}
+p_{A}^{*}(\mathcal{P}_{A}) & \le\alpha\approx0.852\dots,\\
+p_{B}^{*}(\mathcal{P}_{A}) & \le\beta\approx0.667\dots.
+\end{align*}
+
+\end_inset
+
+Note that therefore 
+\begin_inset Formula $p_{A}^{*}(\mathcal{P}_{B})\le\beta$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{B}^{*}(\mathcal{P}_{B})\le\alpha$
+\end_inset
+
+.
+ Further, let 
+\begin_inset Formula $\mathcal{P}':=C_{{\rm }}(\mathcal{P},\mathcal{P})$
+\end_inset
+
+, i.e.
+ Alice and Bob first execute 
+\begin_inset Formula $\mathcal{P}_{A}$
+\end_inset
+
+ and if the outcome is 
+\begin_inset Formula $A$
+\end_inset
+
+, they execute 
+\begin_inset Formula $\mathcal{P}_{A}$
+\end_inset
+
+, otherwise they execute 
+\begin_inset Formula $\mathcal{P}_{B}$
+\end_inset
+
+ (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Standard-composition-technique"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+).
+ Then, 
+\begin_inset Formula 
+\begin{align}
+p_{A}^{*}(\mathcal{P}'_{A}) & \le\alpha\alpha+(1-\alpha)\beta=:\alpha^{(1)},\label{eq:pStarAPprimeA}\\
+p_{B}^{*}(\mathcal{P}'_{B}) & \le\beta\alpha+(1-\beta)\beta=:\beta^{(1)}.\nonumber 
+\end{align}
+
+\end_inset
+
+To see this, focus on 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:pStarAPprimeA"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ Alice knows that if she wins the first round, her probability of winning
+ is 
+\begin_inset Formula $\alpha>\beta$
+\end_inset
+
+.
+ She knows that in the first round, she can force the outcome 
+\begin_inset Formula $A$
+\end_inset
+
+ with probability at most 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ Assuming that with all the remaining probability, the outcome is 
+\begin_inset Formula $B$
+\end_inset
+
+ (which it is not because Bob will abort with some probability) gives us
+ a bound on the best that Alice can do.
+ Evidently, this bound may not be tight and we address that in the following
+ subsection.
+ 
+\end_layout
+
+\begin_layout Standard
+A side remark: one consequence of this simplified analysis is that
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha^{(1)}-\beta^{(1)}=(\alpha-\beta)\alpha-(\alpha-\beta)\beta=(\alpha-\beta)^{2}>0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\alpha^{(1)}>\beta^{(1)}$
+\end_inset
+
+.
+ Proceeding similarly, i.e.
+ defining 
+\begin_inset Formula $\mathcal{\mathcal{P}}'':=C(\mathcal{P},\mathcal{P}')$
+\end_inset
+
+, and repeating 
+\begin_inset Formula $k+1$
+\end_inset
+
+ times overall, one obtains
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Note that 
+\begin_inset Formula $\alpha^{(k+1)}-\beta^{(k+1)}=(\alpha^{(k)}-\beta^{(k)})(\alpha-\beta)>0$
+\end_inset
+
+, which proves 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "claim:polarityPreserved"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align*}
+\alpha^{(k+1)} & =\alpha\alpha^{(k)}+(1-\alpha)\beta^{(k)}\\
+\beta^{(k+1)} & =\beta\alpha^{(k)}+(1-\beta)\beta^{(k)}.
+\end{align*}
+
+\end_inset
+
+In the limit of 
+\begin_inset Formula $k\to\infty$
+\end_inset
+
+, one obtains 
+\begin_inset Formula 
+\[
+p_{A}^{*}(C(\mathcal{P}))=p_{B}^{*}(C(\mathcal{P}))\le\lim_{k\to\infty}\alpha^{(k)}=\lim_{k\to\infty}\beta^{(k)}\approx0.8199\dots.
+\]
+
+\end_inset
+
+Proceeding similarly, one obtains for 
+\begin_inset Formula $X\in\{A,B\}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{X}\in\{\mathcal{I},\mathcal{Q}\}$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+p_{X}^{*}(C(\mathcal{X}))\apprle0.836\dots
+\]
+
+\end_inset
+
+We thus have the following.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/temp_standardComp.png
+	lyxscale 50
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Standard analysis (TODO: improve the caption)
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Standard-composition-technique"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+Let 
+\begin_inset Formula $X\in\{A,B\}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{X}\in\{\mathcal{I},\mathcal{Q}\}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $p_{X}^{*}(C(\mathcal{P}))\apprle0.8199\dots$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{X}^{*}(C(\mathcal{X}))\apprle0.836\dots$
+\end_inset
+
+.
+ [TODO: remove approx eq]
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 1
+status collapsed
+
+\begin_layout Standard
+Consider a WCF protocol, 
+\begin_inset Formula $\mathcal{P}_{A}$
+\end_inset
+
+, where the success probability of cheating Alice is greater than that of
+ cheating Bob.
+ We denote this by 
+\begin_inset Formula 
+\[
+p_{A}^{*}(\mathcal{P}_{A})=\alpha>\beta=p_{B}^{*}(\mathcal{P}_{A}).
+\]
+
+\end_inset
+
+The subscript 
+\begin_inset Formula $A$
+\end_inset
+
+ in 
+\begin_inset Formula $\mathcal{P}_{A}$
+\end_inset
+
+ simply represents that Alice has the advantage.
+ By 
+\begin_inset Formula $\mathcal{P}_{B}$
+\end_inset
+
+ we denote the same protocol is run with Alice's and Bob's roles swapped.
+ Thus, 
+\begin_inset Formula 
+\[
+p_{A}^{*}(\mathcal{P}_{B})=\beta<\alpha=p_{B}^{*}(\mathcal{P}_{B}).
+\]
+
+\end_inset
+
+One can compose these protocols, into a new protocol 
+\begin_inset Formula $\mathcal{P}'_{A}$
+\end_inset
+
+ as follows (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Standard-composition-technique"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+): Alice and Bob run 
+\begin_inset Formula $\mathcal{P}_{A}$
+\end_inset
+
+ (to decide whether they run 
+\begin_inset Formula $\mathcal{P}_{A}$
+\end_inset
+
+ in the subsequent round or 
+\begin_inset Formula $\mathcal{P}_{B}$
+\end_inset
+
+).
+ If the outcome is 
+\begin_inset Formula $A$
+\end_inset
+
+, they run 
+\begin_inset Formula $\mathcal{P}_{A}$
+\end_inset
+
+ and if the outcome is 
+\begin_inset Formula $B$
+\end_inset
+
+, they run 
+\begin_inset Formula $\mathcal{P}_{B}$
+\end_inset
+
+.
+ The outcome of this round, determines the outcome of the full protocol.
+ It is easy to see that 
+\begin_inset Formula 
+\begin{align*}
+p_{A}^{*}(\mathcal{P}'_{A}) & =\alpha^{2}+(1-\alpha)\beta=:\alpha^{(1)},\quad\text{and}\\
+p_{B}^{*}(\mathcal{P}'_{A}) & =\beta\alpha+(1-\beta)\beta=:\beta^{(1)}.
+\end{align*}
+
+\end_inset
+
+One can repeat this procedure with 
+\begin_inset Formula $\mathcal{P}'_{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{P}'_{B}$
+\end_inset
+
+ (which is defined by switching the roles of Alice and Bob in 
+\begin_inset Formula $\mathcal{P}'_{A}$
+\end_inset
+
+) to obtain 
+\begin_inset Formula $\mathcal{P}''_{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{P}''_{B}$
+\end_inset
+
+, together with 
+\begin_inset Formula $\alpha^{(2)}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta^{(2)}$
+\end_inset
+
+.
+ More explicitly, one can write, 
+\begin_inset Formula 
+\begin{align*}
+\alpha^{(i+1)} & =(\alpha^{(i)})^{2}+(1-\alpha^{(i)})\beta^{(i)}\\
+\beta^{(i+1)} & =\beta^{(i)}\alpha^{(i)}+(1-\beta^{(i)})\beta^{(i)}
+\end{align*}
+
+\end_inset
+
+Applying this to 
+\begin_inset Formula $\alpha^{(0)}=\cos^{2}(\pi/8)\approx0.852$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta^{(0)}\apprle0.667$
+\end_inset
+
+, we obtain 
+\begin_inset Formula 
+\[
+\lim_{n\to\infty}\alpha^{(n)}=\lim_{n\to\infty}\beta^{(n)}\approx0.8199\dots
+\]
+
+\end_inset
+
+which yields the biases stated in the previous subsection.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 1
+status collapsed
+
+\begin_layout Standard
+Recall that the key observation here is that we treated the probability
+ of aborting as the honest player winning.
+ We did this, for instance when Alice cheats, by assuming that the probability
+ of Bob winning is 
+\begin_inset Formula $1-p_{A}^{*}$
+\end_inset
+
+.
+ However, this probability actually constitutes two events: first, that
+ Bob deduces he wins and second, that Bob detects Alice cheating (for instance,
+ when the GHZ test fails).
+ In usual treatments, we simply assume that if Bob detects Alice cheating,
+ he declares himself the winner.
+ However, when we compose protocols, we can use the intermediate abort events
+ to immediately abort the full protocol as this prevents the malicious player
+ from cheating further.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Cheat Vector Analysis
+\end_layout
+
+\begin_layout Remark
+Again, even though it seems that Alice might be favoured, 
+\begin_inset Formula $C$
+\end_inset
+
+ may result in a protocol with the opposite polarity—let 
+\begin_inset Formula $\mathcal{Z}:=C(\mathcal{X},\mathcal{Y})$
+\end_inset
+
+, then 
+\begin_inset Formula $\mathcal{Z}_{A}$
+\end_inset
+
+ is not necessarily the same as 
+\begin_inset Formula $\mathcal{Z}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+As before, let us workout an example.
+ Consider protocol 
+\begin_inset Formula $Q$
+\end_inset
+
+ this time (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "alg:BobSelfTests"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+) and let 
+\begin_inset Formula $(v_{A},v_{B},v_{\perp})\in\mathbb{C}_{A}(\mathcal{Q}_{A})$
+\end_inset
+
+ be a cheat vector for 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+.
+ Further, recall that 
+\begin_inset Formula 
+\begin{align*}
+p_{A}^{*}(\mathcal{Q}_{A}) & \le\alpha=3/4=0.75\\
+p_{B}^{*}(\mathcal{Q}_{A}) & \le\beta=\cos^{2}(\pi/8)=0.8535\dots
+\end{align*}
+
+\end_inset
+
+and note that, therefore, 
+\begin_inset Formula $p_{A}^{*}(\mathcal{Q}_{B})\le\beta$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{B}^{*}(\mathcal{Q}_{B})\le\alpha$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\mathcal{Q}':=C(\mathcal{Q},\mathcal{Q})$
+\end_inset
+
+, i.e.
+ Alice and Bob first execute 
+\begin_inset Formula $\mathcal{Q}_{A}$
+\end_inset
+
+ and if the outcome is 
+\begin_inset Formula $A$
+\end_inset
+
+, they execute 
+\begin_inset Formula $\mathcal{Q}_{A}$
+\end_inset
+
+, otherwise they execute 
+\begin_inset Formula $\mathcal{Q}_{B}$
+\end_inset
+
+ (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Abort-Augmented-Composition"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+).
+ Our goal is again to obtain an upper bound on 
+\begin_inset Formula $p_{A}^{*}(\mathcal{Q}')$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{B}^{*}(\mathcal{Q}')$
+\end_inset
+
+, but this time, using cheat vectors.
+ We start from the bottom of 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Abort-Augmented-Composition"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Suppose Alice is malicious.
+ Conditioned on the event that the protocol reaches the bottom left step,
+ it is clear that Alice's highest probability of winning is 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ In this case, the abort probability doesn't play a role.
+ Similarly, conditioned on the event that the protocol reaches the bottom
+ right step, it is clear that Alice's highest probability of winning is
+ 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ At the first step then, it is clear that the highest probability of Alice
+ winning is 
+\begin_inset Formula 
+\begin{align}
+p_{A}^{*}(\mathcal{Q}') & \le\max_{(v_{A},v_{B},v_{\perp})\in\mathbb{C}_{A}}\alpha v_{A}+\beta v_{B}\label{eq:maxExplain}\\
+ & \le\alpha^{2}+\beta(1-\alpha).\label{eq:weakBound}
+\end{align}
+
+\end_inset
+
+The first inequality is saturated if 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ are tight bounds.
+ The second inequality holds because 
+\begin_inset Formula $\alpha>\beta$
+\end_inset
+
+ so one cannot do better than putting all the weight on 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ (i.e.
+ 
+\begin_inset Formula $\alpha$
+\end_inset
+
+) and the remaining on 
+\begin_inset Formula $\beta$
+\end_inset
+
+ (i.e.
+ 
+\begin_inset Formula $1-\alpha$
+\end_inset
+
+), as we did earlier.
+ [DISCUSS/TODO: Remove repetition; I already explained this.] Operationally,
+ this means that Alice is forcing the outcome 
+\begin_inset Formula $A$
+\end_inset
+
+ and treating the outcomes 
+\begin_inset Formula $B$
+\end_inset
+
+ and 
+\begin_inset Formula $\perp$
+\end_inset
+
+ as proceeding to the 
+\begin_inset Formula $\mathcal{Q}_{B}$
+\end_inset
+
+ step (i.e.
+ the bottom right step).
+ However, Bob only agrees to proceed to the bottom right step if the outcome
+ is 
+\begin_inset Formula $B$
+\end_inset
+
+ and hence the maximization, 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:maxExplain"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, potentially yields a better bound.
+\end_layout
+
+\begin_layout Standard
+The case for malicious Bob would have been similar if we had a good characterisa
+tion for 
+\begin_inset Formula $\mathbb{C}_{B}(\mathcal{Q})$
+\end_inset
+
+.
+ Since we don't, we content ourselves with a weaker bound, the one analogous
+ to 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:weakBound"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+p_{B}^{*}(\mathcal{Q}')\le\beta\alpha+(1-\beta)\beta.
+\]
+
+\end_inset
+
+TODO: put the numbers (they seem to be off).
+ 
+\end_layout
+
+\begin_layout Standard
+Thus to obtain 
+\begin_inset Formula $p_{A}^{*}(\mathcal{Q}')$
+\end_inset
+
+, one solves an SDP (numerically) and 
+\begin_inset Formula $p_{B}^{*}(\mathcal{Q}')$
+\end_inset
+
+ is obtained readily.
+ Using this, one can consider 
+\begin_inset Formula $\mathcal{Q}'':=\mathbb{C}(\mathcal{Q},\mathcal{Q}')$
+\end_inset
+
+ and evaluate the cheating probabilities 
+\begin_inset Formula $p_{A}^{*}(\mathcal{Q}'')$
+\end_inset
+
+ again as an SDP and 
+\begin_inset Formula $p_{B}^{*}(\mathcal{Q}'')$
+\end_inset
+
+ directly.
+ This leads us to the following result.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/temp_AAC_Qs.png
+	lyxscale 50
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Cheat vector analysis.
+ (TODO: improve the caption)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $(v_{A},v_{B},v_{\perp})\in\mathbb{C}_{A}$
+\end_inset
+
+; because we don't have a good characterisation of 
+\begin_inset Formula $\mathbb{C}_{B}$
+\end_inset
+
+, we use (red) 
+\begin_inset Formula $1-\beta$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ for obtaining a bound on 
+\begin_inset Formula $p_{B}^{*}(\mathcal{Q}')$
+\end_inset
+
+.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Abort-Augmented-Composition"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+Let 
+\begin_inset Formula $X\in\{A,B\}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula 
+\[
+p_{X}^{*}(C(\mathcal{Q}))\apprle0.8175\dots
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+p_{X}^{*}(C(\mathcal{Q}))\apprle
+\]
+
+\end_inset
+
+(TODO: calculate).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+To suppress the bias further, we note that at the very last step, only the
+ cheating probabilities 
+\begin_inset Formula $p_{A}^{*}(\mathcal{Q})\le\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{B}^{*}(\mathcal{Q})\le\beta$
+\end_inset
+
+ played a role (i.e.
+ the fact that the cheating vectors 
+\begin_inset Formula $\mathbb{C}_{A}$
+\end_inset
+
+ for 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ had an SDP characterisation was not used).
+ Further, we know that 
+\begin_inset Formula $p_{A}^{*}(\mathcal{P})=p_{A}^{*}(\mathcal{Q})$
+\end_inset
+
+ but 
+\begin_inset Formula $p_{B}^{*}(\mathcal{P})<p_{B}^{*}(\mathcal{Q})$
+\end_inset
+
+, i.e.
+ using 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ at the very last step will result in a strictly better protocol.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+Let 
+\begin_inset Formula $X\in\{A,B\}$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{align*}
+\mathcal{Z}^{1} & :=C(\mathcal{Q},\mathcal{P}),\quad{\rm and}\\
+\mathcal{Z}^{i+1} & :=C(\mathcal{Q},\mathcal{Z}^{i})\quad i>1.
+\end{align*}
+
+\end_inset
+
+Then 
+\begin_inset Formula 
+\[
+\lim_{i\to\infty}p_{X}^{*}(\mathcal{Z}^{i})\apprle0.7908\dots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+TODO: Argue why 
+\begin_inset Formula $C(\mathcal{P})$
+\end_inset
+
+ was not such a great idea? I think this was because the cheat vector with
+ the first component, e.g., maxed out, the abort probaibility was tiny for
+ 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+.
+ Perhaps do the simulation and add the results.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Application: Strong Coin Flipping
+\end_layout
+
+\begin_layout Standard
+Using ...
+ 
+\end_layout
+
+\begin_layout Section
+Security Proof | Asymptotic
+\end_layout
+
+\begin_layout Standard
+In this section, we prove the security under the following assumption:
+\end_layout
+
+\begin_layout Assumption
+\begin_inset CommandInset label
+LatexCommand label
+name "assu:asymptotic"
+
+\end_inset
+
+In protocol 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ (
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+), Alice (Bob) does not perform the box verification step and instead it
+ is assumed that her box is (his boxes are) taken from a trio of boxes which
+ win the GHZ game with certainty.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+Later, we drop the assumption and use the box verification step (see ..) to
+ estimate the probability of winning the GHZ game.
+ When the winning probability is exactly one, the states and measurements
+ are the same as the GHZ state and 
+\begin_inset Formula $\sigma_{x},\sigma_{y}$
+\end_inset
+
+ measurements, up to local isometries and this allows us to use semi definite
+ programming.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:self-testAsymptotic"
+
+\end_inset
+
+Let 
+\begin_inset Formula $a,b,c,x,y,z\in\{0,1\}$
+\end_inset
+
+.
+ Consider a trio of quantum boxes, specified by projectors 
+\begin_inset Formula $\{M_{a|x}^{A},M_{b|y}^{B},M_{c|z}^{C}\}$
+\end_inset
+
+ acting on finite dimensional Hilbert spaces 
+\begin_inset Formula $\mathcal{H}^{A},\mathcal{H}^{B}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{H}^{C}$
+\end_inset
+
+, and 
+\begin_inset Formula $\left|\psi\right\rangle \in\mathcal{H}^{A}\otimes\mathcal{H}^{B}\otimes\mathcal{H}^{C}=:\mathcal{H}^{ABC}$
+\end_inset
+
+.
+ If the trio pass the GHZ test with certainty, then there exists a local
+ isometry 
+\begin_inset Formula 
+\[
+\Phi=\Phi^{A}\otimes\Phi^{B}\otimes\Phi^{C}:\mathcal{H}^{ABC}\to\mathcal{H}^{ABC}\otimes\mathbb{C}^{2\times3}
+\]
+
+\end_inset
+
+such that 
+\begin_inset Formula 
+\begin{align*}
+\Phi\left(\left|\psi\right\rangle \right) & =\left|\chi\right\rangle \otimes\left|{\rm junk}\right\rangle ,\\
+\Phi\left(M_{d|t}^{D}\left|\psi\right\rangle \right) & =\Pi_{d|t}^{D}\left|{\rm GHZ}\right\rangle \otimes\left|{\rm junk}\right\rangle \quad\forall D\in\{A,B,C\},\text{ and }d,t\in\{0,1\}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\left|{\rm GHZ}\right\rangle =\frac{\left|000\right\rangle +\left|111\right\rangle }{\sqrt{2}}\in\mathbb{C}^{2\times3}$
+\end_inset
+
+, 
+\begin_inset Formula $\left|{\rm junk}\right\rangle \in\mathcal{H}^{ABC}$
+\end_inset
+
+ is some arbitrary state and 
+\begin_inset Formula $\{\Pi_{a|x}^{A},\Pi_{b|y}^{B},\Pi_{c|z}^{C}\}$
+\end_inset
+
+ are projectors corresponding to 
+\begin_inset Formula $\sigma_{x}$
+\end_inset
+
+ on the first, second and third qubit of 
+\begin_inset Formula $\left|{\rm GHZ}\right\rangle $
+\end_inset
+
+ respectively, for 
+\begin_inset Formula $x=0$
+\end_inset
+
+ and corresponding to 
+\begin_inset Formula $\sigma_{y}$
+\end_inset
+
+ for 
+\begin_inset Formula $x=1$
+\end_inset
+
+, as in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "claim:Quantum-boxes-pass"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+INTERNAL; (TODO: remove): Isometries can only increase dimensions (they
+ must be injective; that is to ensure they preserve inner products of vectors).
+ Therefore the isometry can't get rid of the 
+\begin_inset Formula $\left|{\rm junk}\right\rangle $
+\end_inset
+
+ part.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Cheat vectors optimisation using Semi Definite Programming
+\end_layout
+
+\begin_layout Subsubsection
+SDP when Alice self-tests
+\begin_inset CommandInset label
+LatexCommand label
+name "subsubsec:SDP-when-Alice"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch proof
+inverted 0
+status open
+
+\begin_layout Proof
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Asymptotic proof of 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "lem:AliceSelfTests"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+We prove 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "lem:AliceSelfTests"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+ under 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "assu:asymptotic"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ We begin by making two observations.
+ 
+\end_layout
+
+\begin_layout Proof
+First, note that in the protocol, if Alice applies an isometry on her box
+ 
+\emph on
+after
+\emph default
+ she has inputted 
+\begin_inset Formula $x$
+\end_inset
+
+, obtained the outcome 
+\begin_inset Formula $a$
+\end_inset
+
+ (and has noted it somewhere), the security of the resulting protocol is
+ unchanged because the rest of the protocol only depends on 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $a$
+\end_inset
+
+, and Alice's isometry only amounts to relabelling of the post measurement
+ state.
+ This freedom allows us to simplify the analysis.
+\end_layout
+
+\begin_layout Proof
+Second, in the analysis, we cannot model Alice's random choice, say for
+ 
+\begin_inset Formula $x$
+\end_inset
+
+, as a mixed state because Bob can always hold a purification and thus know
+ 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ Therefore, we model the randomness using pure states and measure them in
+ the end.
+\end_layout
+
+\begin_layout Proof
+Notation: Other than 
+\begin_inset Formula $PQR$
+\end_inset
+
+, all other registers store qubits.
+\end_layout
+
+\begin_layout Proof
+We proceed step by step.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+We can model (justified below) Alice's act of inputting a random 
+\begin_inset Formula $x$
+\end_inset
+
+ and obtaining an outcome 
+\begin_inset Formula $a$
+\end_inset
+
+ from her box through the state 
+\begin_inset Formula 
+\[
+\left|\Psi_{0}\right\rangle :=\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|xa\right\rangle _{XA}\left|\Phi(x,a)\right\rangle _{IJ}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $X$
+\end_inset
+
+ represents the random input and 
+\begin_inset Formula $A$
+\end_inset
+
+ the output.
+ Here, 
+\begin_inset Formula $\left|\Phi(x,a)\right\rangle _{IJ}$
+\end_inset
+
+ are Bell states (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:bellStates"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+) and the registers 
+\begin_inset Formula $IJ$
+\end_inset
+
+ are held by Bob.
+ Alice's act of choosing 
+\begin_inset Formula $r$
+\end_inset
+
+ at random, computing 
+\begin_inset Formula $s=a\oplus x.r$
+\end_inset
+
+ is modelled as 
+\begin_inset Formula 
+\begin{equation}
+\left|\Psi_{1}\right\rangle :=\frac{1}{2}\sum_{x,a,r\in\{0,1\}}\left|xa\right\rangle _{XA}\left|\Phi(x,a)\right\rangle _{IJ}\left|r\right\rangle _{R}\left|a\oplus x.r\right\rangle _{S}.\label{eq:Alice_Psi1}
+\end{equation}
+
+\end_inset
+
+Finally, Alice's act of sending 
+\begin_inset Formula $s$
+\end_inset
+
+ is modelled as Alice starting with the state
+\begin_inset Formula 
+\[
+\tr_{IJS}\left[\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|\right]\in XAR.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Branch proof
+inverted 0
+status collapsed
+
+\begin_layout Standard
+
+\series bold
+Justification for starting with 
+\begin_inset Formula $\left|\Psi_{0}\right\rangle $
+\end_inset
+
+.
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+To see why we start with the state 
+\begin_inset Formula $\left|\Psi_{0}\right\rangle $
+\end_inset
+
+, model Alice's choice of 
+\begin_inset Formula $x$
+\end_inset
+
+ as 
+\begin_inset Formula $\left|+\right\rangle _{X}$
+\end_inset
+
+, suppose her measurement result is stored in 
+\begin_inset Formula $\left|0\right\rangle _{A}$
+\end_inset
+
+, the state of the boxes before measurement is 
+\begin_inset Formula $\left|\psi\right\rangle _{PQR}$
+\end_inset
+
+ and Alice holds 
+\begin_inset Formula $P$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula 
+\[
+\left|\Psi_{0}'\right\rangle :=\left|+\right\rangle _{X}\left|0\right\rangle _{A}\left|\psi\right\rangle _{PQR}.
+\]
+
+\end_inset
+
+Let 
+\begin_inset Formula $\{M_{a|x}^{P}\}$
+\end_inset
+
+ be the measurement operators corresponding to Alice's box.
+ The measurement process is unitarily modelled as 
+\begin_inset Formula 
+\[
+\left|\Psi_{1}'\right\rangle :=U_{{\rm measure}}\left|\Psi_{0}'\right\rangle =\frac{1}{\sqrt{2}}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}M_{a|x}^{P}\left|\psi\right\rangle _{PQR}
+\]
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+U_{{\rm measure}}=\sum_{x\in\{0,1\}}\left|x\right\rangle \left\langle x\right|_{X}\otimes\left[\mathbb{I}_{A}\otimes M_{0|x}^{P}+X_{X}\otimes M_{1|x}^{P}\right]\otimes\mathbb{I}_{QR}.
+\]
+
+\end_inset
+
+Now we harness the freedom of applying an isometry to the post measured
+ state (as observed above).
+ We choose the local isometry in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "lem:self-testAsymptotic"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ Without loss of generality, we can assume that Bob had already applied
+ his part of the isometry before sending the boxes (because he can always
+ reverse it when it is his turn).
+ We thus have, 
+\begin_inset Formula 
+\begin{align*}
+\left|\Psi_{2}'\right\rangle :=\Phi_{PQR}\left|\Psi_{1}'\right\rangle  & =\frac{1}{\sqrt{2}}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}\Pi_{x|a}^{H}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR}\\
+ & =\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}U^{H}(x,a)\left|0\right\rangle _{H}\left|\Phi(x,a)\right\rangle _{IJ}\otimes\left|{\rm junk}\right\rangle _{PQR}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\begin{equation}
+\left|\Phi(x,a)\right\rangle _{IJ}=\frac{\left|00\right\rangle +(-1)^{a}(i)^{x}\left|11\right\rangle }{\sqrt{2}}\label{eq:bellStates}
+\end{equation}
+
+\end_inset
+
+ and 
+\begin_inset Formula $U^{H}(x,a)\left|0\right\rangle _{H}$
+\end_inset
+
+ is 
+\begin_inset Formula $\frac{\left|0\right\rangle +(-1)^{a}(i)^{x}\left|1\right\rangle }{\sqrt{2}}$
+\end_inset
+
+.
+ Since the state of register 
+\begin_inset Formula $H$
+\end_inset
+
+ is completely determined by registers 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $A$
+\end_inset
+
+, we can drop it from the analysis without loss of generality.
+ Finally, since 
+\begin_inset Formula $\left|{\rm junk}\right\rangle _{PQR}$
+\end_inset
+
+ is completely tensored out, we can drop it too without affecting the security.
+ Formally, we can assume that Alice gives Bob the register 
+\begin_inset Formula $P$
+\end_inset
+
+ at this point.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+(TODO: but earlier I said Bob could reverse his isometry and for this 
+\begin_inset Formula $\left|{\rm junk}\right\rangle $
+\end_inset
+
+ must be present; EDIT: well, we can formally give Bob the register 
+\begin_inset Formula $P$
+\end_inset
+
+ which doesn't make the protocol any more secure).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Bob sending 
+\begin_inset Formula $g$
+\end_inset
+
+ is modelled by introducing 
+\begin_inset Formula $\rho_{2}\in XARG$
+\end_inset
+
+ satisfying 
+\begin_inset Formula $\tr_{IJS}\left[\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|\right]=\tr_{G}(\rho_{2})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+At this point, either 
+\begin_inset Formula $x\oplus g$
+\end_inset
+
+ is zero, in which case Alice's output is fixed or 
+\begin_inset Formula $x\oplus g$
+\end_inset
+
+ is one, and in that case Bob will already know 
+\begin_inset Formula $x$
+\end_inset
+
+ because he knows 
+\begin_inset Formula $g$
+\end_inset
+
+ (he sent it) and Alice will proceed to testing Bob.
+ Formally, therefore, we needn't do anything at this step.
+\end_layout
+
+\begin_layout Enumerate
+Assuming 
+\begin_inset Formula $x\oplus g=1$
+\end_inset
+
+, Alice sends 
+\begin_inset Formula $y,z$
+\end_inset
+
+ to Bob such that 
+\begin_inset Formula $x\oplus y\oplus z=1$
+\end_inset
+
+.
+ However, since Bob already knows 
+\begin_inset Formula $x$
+\end_inset
+
+, he can deduce 
+\begin_inset Formula $z$
+\end_inset
+
+ from 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ We thus only need to model Alice sending 
+\begin_inset Formula $y$
+\end_inset
+
+ and Bob responding with 
+\begin_inset Formula $d=b\oplus c$
+\end_inset
+
+ (because Alice will only use 
+\begin_inset Formula $b\oplus c$
+\end_inset
+
+ to test the GHZ game, so it suffices for Bob to send 
+\begin_inset Formula $d$
+\end_inset
+
+).
+ This amounts to introducing 
+\begin_inset Formula $\rho_{3}\in XARGYD$
+\end_inset
+
+ satisfying 
+\begin_inset Formula $\rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2}=\tr_{D}(\rho_{3})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Since we postponed the measurements to the end, we add this last step.
+ Alice now measures 
+\begin_inset Formula $\rho_{3}$
+\end_inset
+
+ to determine 
+\begin_inset Formula $x\oplus g$
+\end_inset
+
+ and if it is one, whether the GHZ test passed.
+ Let 
+\begin_inset Formula 
+\begin{align}
+\Pi_{i} & :=\sum_{x,y\in\{0,1\}:x\oplus g=i}\left|xg\right\rangle \left\langle xg\right|_{XG}\otimes\mathbb{I}_{AIJRYD},\nonumber \\
+\Pi^{{\rm GHZ}} & :=\sum_{\substack{x,y\in\{0,1\},\\
+a,d\in\{0,1\}:a\oplus d\oplus1=xy\cdot(1\oplus x\oplus y)
+}
+}\left|xyad\right\rangle \left\langle xyad\right|_{XYAD}.\label{eq:AliceProjs}
+\end{align}
+
+\end_inset
+
+Then, we can write the cheat vector for Alice, i.e.
+ the tuple of probabilities that Alice outputs 0, 1 and abort (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "def:CheatVectors"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+), as 
+\begin_inset Formula 
+\[
+(\alpha,\beta,\gamma)=(\tr(\Pi_{0}\rho_{3}),\tr(\Pi_{1}\Pi^{{\rm GHZ}}\rho_{3}),\tr(\Pi_{1}\bar{\Pi}^{{\rm GHZ}}\rho_{3}))
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $\bar{\Pi}:=\mathbb{I}-\Pi$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+To summarise, the final SDP is as follows: let 
+\begin_inset Formula $\left|\Psi_{1}\right\rangle \in XAIJRS$
+\end_inset
+
+ be as given in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:Alice_Psi1"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset Formula $\rho_{2}\in XARG$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho_{3}\in XARGYD$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\max\quad\tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{3})
+\]
+
+\end_inset
+
+subject to 
+\begin_inset Formula 
+\begin{align*}
+\tr_{IJS}\left[\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|\right] & =\tr_{G}(\rho_{2})\\
+\rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2} & =\tr_{D}(\rho_{3})
+\end{align*}
+
+\end_inset
+
+where the projectors are defined in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:AliceProjs"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Branch proof
+inverted 0
+status open
+
+\begin_layout Proof
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Proof of 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "lem:AliceSelfTests"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The analysis for cheating Alice is the same as the original protocol.
+ We consider the analysis for cheating Bob.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Note that since 
+\begin_inset Formula $\alpha+\beta+\gamma=1$
+\end_inset
+
+, we need only two variables to characterise the cheating vectors.
+ Further, as we shall discuss in detail later (TODO: add reference), the
+ function we wish to maximise will have the form 
+\begin_inset Formula $c_{0}\alpha+c_{1}\beta$
+\end_inset
+
+ for some fixed non-negative 
+\begin_inset Formula $c_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $c_{1}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+We model Alice's steps as follows: We use
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left|+\right\rangle _{X}$
+\end_inset
+
+ for her choice of input 
+\begin_inset Formula $x$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left|+\right\rangle _{R}$
+\end_inset
+
+ for her choice of 
+\begin_inset Formula $r$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\frac{1}{2}\mathbb{I}_{H}$
+\end_inset
+
+ for her part of the GHZ state
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left|0\right\rangle _{S}$
+\end_inset
+
+ a qubit to be used to send 
+\begin_inset Formula $s$
+\end_inset
+
+ to Bob
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left|0\right\rangle _{A}$
+\end_inset
+
+ the outcome of Alice's GHZ state measurement
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+The argument proceeds as follows.
+ Let 
+\begin_inset Formula $\rho_{0}\in\mathcal{D}(HXRAS)$
+\end_inset
+
+ be Alice's state after measuring to get 
+\begin_inset Formula $a$
+\end_inset
+
+ and creating 
+\begin_inset Formula $s$
+\end_inset
+
+ (TODO: complete this part; likely in the code already).
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Observe that 
+\begin_inset Formula $\tr_{s}(\rho_{0})$
+\end_inset
+
+ can be used to denote Alice's state after sending 
+\begin_inset Formula $s$
+\end_inset
+
+ to Bob.
+ This is because Bob can hold a purification of 
+\begin_inset Formula $\tr_{s}(\rho_{0})$
+\end_inset
+
+ thereby holding 
+\begin_inset Formula $s$
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+This doesn't mean that Alice forgets 
+\begin_inset Formula $s$
+\end_inset
+
+.
+ She can always construct 
+\begin_inset Formula $s$
+\end_inset
+
+ again because she has all the remaining registers
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Similarly, observe that Bob sending the variable 
+\begin_inset Formula $g$
+\end_inset
+
+ can be modelled as 
+\begin_inset Formula $\tr_{g}(\rho_{1})=\tr_{s}(\rho_{0})$
+\end_inset
+
+ where 
+\begin_inset Formula $\rho_{1}\in\mathcal{D}(HXRAG)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+While on the third step, Alice sends 
+\begin_inset Formula $x$
+\end_inset
+
+ to Bob, we need not formally include this because if Alice is testing Bob,
+ he knows 
+\begin_inset Formula $x\oplus g=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Test rounds
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $x\oplus g=0$
+\end_inset
+
+ is the case where Alice outputs 
+\begin_inset Formula $0$
+\end_inset
+
+; this means Bob already failed; not the event we are interested in.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $x\oplus g=1$
+\end_inset
+
+ is the case where Alice tests Bob.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+While Alice sends 
+\begin_inset Formula $y$
+\end_inset
+
+ and 
+\begin_inset Formula $z$
+\end_inset
+
+ to Bob, 
+\begin_inset Formula $z$
+\end_inset
+
+ can be determined from the condition 
+\begin_inset Formula $x\oplus y\oplus z=1$
+\end_inset
+
+ and the values of 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ Therefore, formally, it suffices that Alice appends 
+\begin_inset Formula $\frac{1}{2}\mathbb{I}_{y}$
+\end_inset
+
+ to 
+\begin_inset Formula $\rho_{1}$
+\end_inset
+
+ to account for this step.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+This would mean that Bob can hold a purification, thereby 
+\begin_inset Formula $y$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Bob is supposed to respond with 
+\begin_inset Formula $b,c$
+\end_inset
+
+ but formally, it suffices to send 
+\begin_inset Formula $d=b\oplus c$
+\end_inset
+
+ because the GHZ condition only requires Alice to test 
+\begin_inset Formula $a\oplus b\oplus c=xyz\oplus1$
+\end_inset
+
+.
+ We model this as 
+\begin_inset Formula $\tr_{d}(\rho_{2})=\rho_{1}\otimes\frac{1}{2}\mathbb{I}_{y}$
+\end_inset
+
+ where 
+\begin_inset Formula $\rho_{2}\in\mathcal{D}(HXRAGYD)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Proof
+Let 
+\begin_inset Formula $(\alpha,\beta,\gamma)$
+\end_inset
+
+ be a 
+\emph on
+cheat vector
+\emph default
+ (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "def:CheatVectors"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+), i.e.
+ for some cheating strategy of Bob,
+\begin_inset Formula 
+\begin{align*}
+\alpha & =\Pr[\text{Alice outputs }0]\\
+\beta & =\Pr[\text{Alice outputs }1]\\
+\gamma & =\Pr[\text{Alice aborts}].
+\end{align*}
+
+\end_inset
+
+Clearly, for the strategy encoded by the variables 
+\begin_inset Formula $\rho_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho_{2}$
+\end_inset
+
+, one can write
+\begin_inset Formula 
+\begin{align*}
+\alpha & =\tr(\Pi_{0}\rho_{2})\\
+\beta & =\tr(\Pi_{1}\Pi_{{\rm GHZ}}\rho_{2})\\
+\gamma & =\tr(\Pi_{1}\Pi_{{\rm abort}}\rho_{2})
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\Pi_{i}$
+\end_inset
+
+ checks if 
+\begin_inset Formula $x\oplus g=i$
+\end_inset
+
+ holds, 
+\begin_inset Formula $\Pi_{{\rm GHZ}}$
+\end_inset
+
+ checks if the GHZ test passed and 
+\begin_inset Formula $\Pi_{{\rm abort}}:=\mathbb{I}-\Pi_{{\rm GHZ}}$
+\end_inset
+
+.
+ The SDP is therefore
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+\max\quad c_{0}\alpha+c_{1}\beta+c_{\perp}\gamma
+\]
+
+\end_inset
+
+subject to 
+\begin_inset Formula 
+\begin{align*}
+\tr_{D}(\rho_{2}) & =\rho_{1}\otimes\frac{1}{2}\mathbb{I}_{y}\\
+\tr_{G}(\rho_{1}) & =\tr_{S}(\rho_{0})
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\begin{align*}
+\rho_{0} & \in\mathcal{D}(HXRAS)\\
+\rho_{1} & \in\mathcal{D}(HXRAG)\\
+\rho_{2} & \in\mathcal{D}(HXRAGYD)
+\end{align*}
+
+\end_inset
+
+and 
+\begin_inset Formula $\rho_{0}:=\dots$
+\end_inset
+
+ (TODO: from the code).
+ To obtain 
+\begin_inset Formula $p_{B}^{*}(\mathcal{P})$
+\end_inset
+
+, this SDP was numerically solved for 
+\begin_inset Formula $c_{1}=1,$
+\end_inset
+
+ 
+\begin_inset Formula $c_{0}=c_{\perp}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Branch commentary
+inverted 0
+status collapsed
+
+\begin_layout Standard
+[TODO: explain if really needed] This can be seen graphically if we evaluate
+ 
+\begin_inset Formula $\beta_{\max}(\alpha):=\max_{(\alpha,\beta,\gamma)\in\mathcal{C}}\beta$
+\end_inset
+
+ and plot it as a function of 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ Then
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+SDP when Bob self-tests
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:SDP-when-Bob"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch proof
+inverted 0
+status open
+
+\begin_layout Proof
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Proof of 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "alg:BobSelfTests"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Denote by 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ the protocol corresponding to 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "alg:SCForiginal"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+It is evident that 
+\begin_inset Formula $p_{B}^{*}(\mathcal{Q})\le p_{B}^{*}(\mathcal{I})$
+\end_inset
+
+ because compared to 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+, in 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ Alice performs an extra test.
+ However, it is not hard to see that the inequality is saturated, i.e.
+ 
+\begin_inset Formula $p_{B}^{*}(\mathcal{Q})=p_{B}^{*}(\mathcal{I})$
+\end_inset
+
+.
+ Consider ...
+ (TODO: recall/re-construct the cheating strategy for Bob that lets him
+ win with the same 
+\begin_inset Formula $3/4$
+\end_inset
+
+ probability).
+ 
+\end_layout
+
+\begin_layout Proof
+From 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "lem:SCFstandard"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, it is also clear that 
+\begin_inset Formula $p_{A}^{*}(\mathcal{Q})=p_{A}^{*}(\mathcal{I})$
+\end_inset
+
+ because the only difference between Bob's actions in 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ is that Bob self-tests to ensure his boxes are indeed GHZ.
+ However, the optimal cheating strategy for 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ can be implemented using GHZ boxes.
+ 
+\end_layout
+
+\begin_layout Proof
+This establishes the first part of the lemma.
+ For the second part, i.e.
+ establishing that optimising 
+\begin_inset Formula $c_{0}\alpha+c_{1}\beta+c_{\perp}\gamma$
+\end_inset
+
+ over 
+\begin_inset Formula $(\alpha,\beta,\gamma)\in\mathbb{C}_{A}$
+\end_inset
+
+ is an SDP, we proceed as follows.
+ Suppose 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "assu:asymptotic"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+ holds.
+ Then we can assume that Bob starts with the state 
+\begin_inset Formula 
+\begin{equation}
+\rho_{0}:=\tr_{H}(\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ})\label{eq:Bob_initState}
+\end{equation}
+
+\end_inset
+
+ and the effect of measuring the two boxes can be represented by the application
+ of projectors of pauli operators 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Z$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+The justification is similar to that given in the former proof.
+ Suppose Bob holds registers 
+\begin_inset Formula $QR$
+\end_inset
+
+ of 
+\begin_inset Formula $\left|\psi\right\rangle _{PQR}$
+\end_inset
+
+ which is the combined state of the three boxes.
+ Suppose his measurement operators are 
+\begin_inset Formula $\{M_{b|y}^{Q},M_{c|z}^{R}\}$
+\end_inset
+
+.
+ Then using the isometry in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "lem:self-testAsymptotic"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, Bob can relabel his state (and without loss of generality, we can suppose
+ Alice also relabels according to the aforementioned isometry) to get 
+\begin_inset Formula $\Phi_{PQR}\left|\psi\right\rangle _{PQR}=\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR}$
+\end_inset
+
+.
+ Further, since 
+\begin_inset Formula $\Phi_{PQR}(M_{b|y}^{Q}\otimes M_{c|z}^{R}\left|\psi\right\rangle _{PQR})=\Pi_{b|y}^{I}\Pi_{c|z}^{J}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR}$
+\end_inset
+
+ Bob's act of measurement, in the new labelling, corresponds to simply measuring
+ the GHZ state in the appropriate Pauli basis.
+ (TODO: in the approximate case, the initial state will be close to the
+ one mentioned and the post-measured state will similarly only be close
+ to the one post projectors; There should be some way of showing that this
+ can be absorbed into the initial state).
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Bob receiving 
+\begin_inset Formula $s$
+\end_inset
+
+ from Alice is modelled by introducing 
+\begin_inset Formula $\rho_{1}\in SIJ$
+\end_inset
+
+ satisfying 
+\begin_inset Formula $\tr_{S}(\rho_{1})=\rho_{0}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Bob sending 
+\begin_inset Formula $g\in_{R}\{0,1\}$
+\end_inset
+
+ can be seen as appending a mixed state: 
+\begin_inset Formula $\rho_{1}\otimes\frac{1}{2}\mathbb{I}_{G}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Alice sending 
+\begin_inset Formula $x$
+\end_inset
+
+ (and 
+\begin_inset Formula $a$
+\end_inset
+
+) can be modelled as introducing 
+\begin_inset Formula $\rho_{2}\in AXSIJG$
+\end_inset
+
+ satisfying 
+\begin_inset Formula $\tr_{A}(\rho_{2})=\rho_{1}\otimes\frac{\mathbb{I}_{G}}{2}$
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+As in the previous proof, either 
+\begin_inset Formula $x\oplus g=1$
+\end_inset
+
+, in which case Bob is convinced he won or 
+\begin_inset Formula $x\oplus g=0$
+\end_inset
+
+ in which case he will test Alice.
+ We proceed under the latter assumption, i.e.
+ suppose that 
+\begin_inset Formula $x=g$
+\end_inset
+
+.
+ The other case will be captured by normalisation (explained shortly).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+To model the GHZ test, introduce a register 
+\begin_inset Formula $Y$
+\end_inset
+
+ in the state 
+\begin_inset Formula $\frac{\left|0\right\rangle _{Y}+\left|1\right\rangle _{Y}}{\sqrt{2}}$
+\end_inset
+
+.
+ Recall that to perform the GHZ test, we need 
+\begin_inset Formula $x\oplus y\oplus z=1$
+\end_inset
+
+ i.e.
+ 
+\begin_inset Formula $z=1\oplus y\oplus x$
+\end_inset
+
+.
+ Further introduce registers 
+\begin_inset Formula $B$
+\end_inset
+
+ and 
+\begin_inset Formula $C$
+\end_inset
+
+ to hold the measurement results, define 
+\begin_inset Formula 
+\begin{equation}
+U:=\sum_{y,x\in\{0,1\}}\left|y\right\rangle \left\langle y\right|_{Y}\left|x\right\rangle \left\langle x\right|_{X}\otimes(\mathbb{I}_{B}\otimes\Pi_{0|y}^{I}+X_{B}\otimes\Pi_{1|y}^{I})\otimes(\mathbb{I}_{C}\otimes\Pi_{0|(1\oplus y\oplus x)}^{J}+X_{C}\otimes\Pi_{1|(1\oplus y\oplus x)}^{J})\otimes\mathbb{I}_{ASG}.\label{eq:Bob-u}
+\end{equation}
+
+\end_inset
+
+By construction, 
+\begin_inset Formula $\rho_{3}:=U\left(\left|+\right\rangle \left\langle +\right|_{Y}\otimes\left|00\right\rangle \left\langle 00\right|_{BC}\otimes\rho_{2}\right)U^{\dagger}\in YBCAXSIJG$
+\end_inset
+
+ models the measurement process.
+ (TODO: this equality would become approximately true...but perhaps the noise
+ can be absorbed in 
+\begin_inset Formula $\rho_{0}$
+\end_inset
+
+ with some argument)
+\end_layout
+
+\begin_layout Enumerate
+Since we postponed the measurements to the end, we add this step.
+ Define 
+\begin_inset Formula 
+\[
+\Pi_{i}:=\sum_{x,g\in\{0,1\}:x\oplus g=i}\left|xg\right\rangle \left\langle xg\right|_{XG}\otimes\mathbb{I}_{YABSIJ}
+\]
+
+\end_inset
+
+to determine who won.
+ Define 
+\begin_inset Formula 
+\[
+\Pi^{{\rm sTest}}:=\sum_{s,a,x\in\{0,1\}:s=a\lor s=a\oplus x}\left|sax\right\rangle \left\langle sax\right|_{SAX}\otimes\mathbb{I}_{GYBCIJ}
+\]
+
+\end_inset
+
+ to model the first test, i.e.
+ 
+\begin_inset Formula $s$
+\end_inset
+
+ should either be 
+\begin_inset Formula $a$
+\end_inset
+
+ or 
+\begin_inset Formula $a\oplus x$
+\end_inset
+
+.
+ Define 
+\begin_inset Formula 
+\[
+\Pi^{{\rm GHZ}}:=\sum_{\substack{x,y\in\{0,1\},\\
+a,b,c\in\{0,1\}:a\oplus b\oplus c\oplus1=xy\cdot(1\oplus x\oplus y)
+}
+}\left|xyabc\right\rangle \left\langle xyabc\right|_{XYABC}\otimes\mathbb{I}_{GSIJ}
+\]
+
+\end_inset
+
+to model the GHZ test.
+ Let 
+\begin_inset Formula 
+\begin{equation}
+\Pi^{{\rm Test}}:=\Pi^{{\rm GHZ}}\Pi^{{\rm sTest}},\quad\bar{\Pi}^{{\rm Test}}:=\mathbb{I}-\Pi^{{\rm Test}}.\label{eq:BobProjs}
+\end{equation}
+
+\end_inset
+
+One can then write the cheat vector for Bob, i.e.
+ the tuple of probabilities that Bob outputs 
+\begin_inset Formula $0,1$
+\end_inset
+
+ and abort (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "def:CheatVectors"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+), as 
+\begin_inset Formula 
+\[
+(\alpha,\beta,\gamma)=(\tr(\Pi_{0}\Pi^{{\rm Test}}\rho_{3}),\tr(\Pi_{1}\rho_{3}),\tr(\Pi_{0}\bar{\Pi}^{{\rm Test}}\rho_{3})).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+To summarise, the final SDP is as follows: let 
+\begin_inset Formula $\rho_{0}\in IJ$
+\end_inset
+
+ be as defined in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:Bob_initState"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset Formula $\rho_{1}\in SIJ$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho_{2}\in AXSIJG$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula 
+\[
+\max\quad\tr\left([\Pi_{0}(c_{0}\Pi^{{\rm Test}}+c_{\perp}\bar{\Pi}^{{\rm Test}})+c_{1}\Pi_{1}]U\left(\left|+00\right\rangle \left\langle +00\right|_{YBC}\otimes\rho_{2}\right)U^{\dagger}\right)
+\]
+
+\end_inset
+
+subject to 
+\begin_inset Formula 
+\begin{align*}
+\tr_{S}(\rho_{1}) & =\rho_{0}\\
+\tr_{A}(\rho_{2}) & =\frac{1}{2}\rho_{1}\otimes\mathbb{I}_{G}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $U$
+\end_inset
+
+ is as defined in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:Bob-u"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+ and the projectors as in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:BobProjs"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+We know that Bob starts with the state 
+\begin_inset Formula $\sigma_{0}=\tr_{H}(\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HBC})$
+\end_inset
+
+ due to the self-testing step.
+\end_layout
+
+\begin_layout Enumerate
+Alice sending 
+\begin_inset Formula $s$
+\end_inset
+
+ is modelled as 
+\begin_inset Formula $\tr_{S}(\sigma_{1})=\sigma_{0}$
+\end_inset
+
+ where 
+\begin_inset Formula $\sigma_{1}\in\mathcal{D}(SBC)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Bob sending 
+\begin_inset Formula $g\in_{R}\{0,1\}$
+\end_inset
+
+ is modelled as 
+\begin_inset Formula $\sigma_{1}\otimes\frac{1}{2}\mathbb{I}_{G}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+As in the previous proof, since Bob is testing, he can deduce 
+\begin_inset Formula $x$
+\end_inset
+
+ from 
+\begin_inset Formula $x\oplus g=0$
+\end_inset
+
+.
+ So formally we do nothing.
+\end_layout
+
+\begin_layout Enumerate
+Alice sending 
+\begin_inset Formula $a$
+\end_inset
+
+ is modelled as 
+\begin_inset Formula $\tr_{A}(\sigma_{2})=\sigma_{1}\otimes\frac{1}{2}\mathbb{I}_{G}$
+\end_inset
+
+ where 
+\begin_inset Formula $\sigma_{2}\in\mathcal{D}(SBCGA)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+As in the previous proof, let 
+\begin_inset Formula 
+\begin{align*}
+\alpha & =\tr(\Pi_{0}\Pi_{{\rm GHZ}},\sigma_{2})\\
+\beta & =\tr(\Pi_{1}\Pi_{{\rm GHZ}},\sigma_{2})\\
+\gamma & =\tr(\Pi_{{\rm Abort}},\sigma_{2})
+\end{align*}
+
+\end_inset
+
+(TODO: See why I have an asymmetry between abort and GHZ in the two proofs)
+ [TODO: complete these] where 
+\begin_inset Formula $\Pi_{i}$
+\end_inset
+
+ are ...
+ and 
+\begin_inset Formula $\Pi_{{\rm GHZ}}$
+\end_inset
+
+ is ...
+ .
+ Then the final SDP can be expressed as 
+\begin_inset Formula 
+\[
+\max\quad(c_{0}\alpha+c_{1}\beta+c_{\perp}\gamma)
+\]
+
+\end_inset
+
+subject to 
+\begin_inset Formula 
+\begin{align*}
+\tr_{A}(\sigma_{2}) & =\sigma_{1}\otimes\frac{1}{2}\mathbb{I}_{G}\\
+\tr_{S}(\sigma_{1}) & =\tr_{H}(\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HBC})
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\begin{align*}
+\sigma_{1} & \in\mathcal{D}(SBC)\\
+\sigma_{2} & \in\mathcal{D}(SBCGA).
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+The self-testing step [Discuss with Tom before writing] 
+\end_layout
+
+\begin_layout Proposition
+For any implementation of the boxes and choice of 
+\begin_inset Formula $\delta>0$
+\end_inset
+
+, the joint probability that the test 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ passes and that the conclusion 
+\begin_inset Formula $T$
+\end_inset
+
+ is false is small, i.e.
+ 
+\begin_inset Formula $\Pr[\Omega\cap\bar{T}]\leq\frac{1}{1-\delta+n\delta}\leq\frac{1}{n\delta}$
+\end_inset
+
+ where the first upper-bound is tight.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Lemma
+Let 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $X_{1},X_{2}\dots X_{n}$
+\end_inset
+
+ be random variables taking values in 
+\begin_inset Formula $\{0,1\}$
+\end_inset
+
+, which are possibly correlated,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $J\in\{1,2\dots n\}$
+\end_inset
+
+ be another random variable, sampled from a uniform distribution, 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\alpha$
+\end_inset
+
+ be the probability that all 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+s are one, i.e.
+ 
+\begin_inset Formula $\alpha:=\Pr[X_{1}=X_{2}\dots=X_{n}=1]$
+\end_inset
+
+, and 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\beta$
+\end_inset
+
+ be the probability that exactly one 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ is zero, i.e.
+ 
+\begin_inset Formula $\beta:={\rm Pr}[\lor_{i=1}^{n}\{X_{i}=0,X_{1}=X_{2}=\dots X_{i-1}=X_{i+1}=\dots X_{n}=1\}]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\neg\perp$
+\end_inset
+
+ be the event that all 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+s except possibly 
+\begin_inset Formula $X_{J}$
+\end_inset
+
+ are one, i.e.
+ 
+\begin_inset Formula $\neg\perp:=\{X_{i\neq J}=1\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+Then, 
+\begin_inset Formula 
+\[
+\mathbb{E}(X_{J}|J,\neg\perp)\ge\frac{\alpha}{\alpha+\frac{\beta}{n}}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+\Pr(\perp)=1-\alpha-\frac{\beta}{n}.
+\]
+
+\end_inset
+
+In particular, either 
+\begin_inset Formula $\alpha>0$
+\end_inset
+
+, in which case 
+\begin_inset Formula 
+\[
+\lim_{n\to\infty}\mathbb{E}(X_{J}|J,\neg\perp)=1,\quad\lim_{n\to\infty}\Pr(\perp)=1-\alpha
+\]
+
+\end_inset
+
+or 
+\begin_inset Formula $\alpha=0$
+\end_inset
+
+, in which case 
+\begin_inset Formula 
+\[
+\lim_{n\to\infty}\Pr(\perp)=1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Branch proof
+inverted 0
+status collapsed
+
+\begin_layout Proof
+[EDIT: as it stands, this is wrong]
+\end_layout
+
+\begin_layout Proof
+It may help to imagine that the adversary controls the joint distribution
+ over 
+\begin_inset Formula $\{X_{1},X_{2}\dots X_{n}\}$
+\end_inset
+
+ while the verifier selects 
+\begin_inset Formula $J$
+\end_inset
+
+ from a uniform distribution and decides whether or not to abort.
+ Let 
+\begin_inset Formula $S$
+\end_inset
+
+ be the sample space associated with the variables 
+\begin_inset Formula $\{X_{1},X_{2}\dots X_{n}\}$
+\end_inset
+
+.
+ Consider three events: 
+\begin_inset Formula $E_{A}$
+\end_inset
+
+ the event that all the 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+s are one, 
+\begin_inset Formula $E_{B}$
+\end_inset
+
+ that all 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ are one except one, and finally 
+\begin_inset Formula $E_{C}$
+\end_inset
+
+ which contains all the remaining outcomes, i.e.
+ 
+\begin_inset Formula $E_{A}:=\{X_{1}=X_{2}\dots X_{n}=1\}$
+\end_inset
+
+, 
+\begin_inset Formula $E_{B}:=\{\lor_{i=1}^{n}\{X_{i}=0,X_{j:j\neq i}=1\}\}$
+\end_inset
+
+, 
+\begin_inset Formula $E_{C}:=S\backslash\left(E_{A}\cup E_{B}\right)$
+\end_inset
+
+.
+ For our analysis, it suffices to consider the probability assigned to these
+ three events by the adversary.
+ Let these be 
+\begin_inset Formula $\alpha,\beta,\gamma$
+\end_inset
+
+ respectively.
+\end_layout
+
+\begin_layout Proof
+Our goal is to evaluate 
+\begin_inset Formula $\mathbb{E}(X_{J}|J,\neg\perp)$
+\end_inset
+
+.
+ Clearly, for the outcome in 
+\begin_inset Formula $E_{A}$
+\end_inset
+
+, the verifier accepts with certainty, for outcomes in 
+\begin_inset Formula $E_{B}$
+\end_inset
+
+, the verifier accepts with probability 
+\begin_inset Formula $1/n$
+\end_inset
+
+ (i.e.
+ if 
+\begin_inset Formula $J$
+\end_inset
+
+ happens to be exactly the 
+\begin_inset Formula $X_{J}$
+\end_inset
+
+ which is zero), and for outcomes in 
+\begin_inset Formula $E_{C}$
+\end_inset
+
+, the verifier never accepts.
+ Therefore, 
+\begin_inset Formula 
+\begin{align*}
+\Pr(X_{J}=1,J,\neg\perp) & =\alpha,\\
+\Pr(X_{J}=0,J,\neg\perp) & \le\beta\cdot\frac{1}{n},\\
+\Pr(J,\neg\perp) & \le\alpha+\frac{\beta}{n}.
+\end{align*}
+
+\end_inset
+
+The first equation follows from noting that the probability that all 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+s are one is exactly 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and in this case, the verifier always accepts.
+ For the second step, clearly outcomes in 
+\begin_inset Formula $E_{A}$
+\end_inset
+
+ will not contribute to the probability and neither will outcomes in 
+\begin_inset Formula $E_{C}$
+\end_inset
+
+.
+ As for outcomes in 
+\begin_inset Formula $E_{B}$
+\end_inset
+
+, it is clear that the verifier will accept any given outcome for exactly
+ one value of 
+\begin_inset Formula $J$
+\end_inset
+
+.
+ Thus the probability is at most 
+\begin_inset Formula $\beta.\frac{1}{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+We therefore have 
+\begin_inset Formula 
+\[
+\mathbb{E}(X_{J}|J,\neg\perp)=\frac{\Pr(X_{J}=1,J,\neg\perp)}{\Pr(J,\neg\perp)}\ge\frac{\alpha}{\alpha+\frac{\beta}{n}}
+\]
+
+\end_inset
+
+as claimed.
+ Further, 
+\begin_inset Formula 
+\[
+\Pr(\neg\perp)=\alpha+\frac{\beta}{n}\implies\Pr(\perp)=1-\alpha-\frac{\beta}{n}
+\]
+
+\end_inset
+
+as stated.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Lemma
+Let 
+\begin_inset Formula $\{X_{1},X_{2}\dots X_{n}\}$
+\end_inset
+
+ be 
+\begin_inset Formula $n$
+\end_inset
+
+ random variables which are possibly correlated and take values in 
+\begin_inset Formula $\{0,1\}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $J\in\{1,2\dots n\}$
+\end_inset
+
+ be a random variable, sampled from a uniformly random distribution.
+ Then 
+\begin_inset Formula 
+\[
+\Pr\left\{ \left|\frac{1}{n-1}\cdot\sum_{i\in\{1,2\dots n\}\backslash J}X_{i}-\mathbb{E}(X_{J}|J)\right|>r\right\} \le{\rm 2exp}\left(-\frac{r^{2}}{2+2\frac{n}{(n-1)^{2}}}\right)
+\]
+
+\end_inset
+
+ for some 
+\begin_inset Formula $c>0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Branch proof
+inverted 0
+status collapsed
+
+\begin_layout Proof
+Let 
+\begin_inset Formula 
+\[
+Z_{i}:=\mathbb{E}\left[\frac{1}{n-1}\left(\sum_{l\in[n]\backslash J}X_{l}\right)-X_{J}\Bigg|F^{i}\right]
+\]
+
+\end_inset
+
+for 
+\begin_inset Formula $i\in\{0,1,\dots n+1\}$
+\end_inset
+
+ where 
+\begin_inset Formula $\{F^{i}\}$
+\end_inset
+
+ is a filteration.
+ From 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fact:simplestMartingale"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset Formula $Z_{0}\dots Z_{n}$
+\end_inset
+
+ is a martingale.
+ Let 
+\begin_inset Formula $F^{0}$
+\end_inset
+
+ be the trivial sigma algebra.
+ Suppose 
+\begin_inset Formula $F^{1}$
+\end_inset
+
+ specifies 
+\begin_inset Formula $J$
+\end_inset
+
+ and 
+\begin_inset Formula $F^{i+1}$
+\end_inset
+
+ specifies 
+\begin_inset Formula $\{J,X_{1}\dots,X_{J-1},X_{J+1},\dots,X_{i}\}$
+\end_inset
+
+ for 
+\begin_inset Formula $i\in\{1,2\dots n\}$
+\end_inset
+
+.
+ Note that 
+\begin_inset Formula 
+\begin{align*}
+Z_{0} & =\frac{1}{n-1}\mathbb{E}\left(\sum_{l\in[n]\backslash J}X_{l}\right)-\frac{1}{n}\sum_{j\in[n]}\mathbb{E}(X_{j})\\
+ & =\frac{1}{n-1}\frac{1}{n}\sum_{j\in[n]}\sum_{l\in[n]\backslash j}\mathbb{E}(X_{l})-\frac{1}{n}\sum_{j\in[n]}\mathbb{E}(X_{j})\\
+ & =0.
+\end{align*}
+
+\end_inset
+
+Also note that 
+\begin_inset Formula 
+\[
+Z_{n}=\frac{1}{n-1}\sum_{l\in[n]\backslash J}X_{l}-\mathbb{E}(X_{J}|J).
+\]
+
+\end_inset
+
+Finally, since for all 
+\begin_inset Formula $i\in\{2,3\dots n-1\}$
+\end_inset
+
+, 
+\begin_inset Formula $\left|Z_{i}-Z_{i-1}\right|\le1/(n-1)$
+\end_inset
+
+ for some fixed 
+\begin_inset Formula $d>0$
+\end_inset
+
+ and 
+\begin_inset Formula $\left|Z_{1}-Z_{0}\right|\le1$
+\end_inset
+
+ (the filteration only fixes one 
+\begin_inset Formula $X$
+\end_inset
+
+ at a time so the differences can change by at most 
+\begin_inset Formula $1/n$
+\end_inset
+
+; and once 
+\begin_inset Formula $n$
+\end_inset
+
+ is fixed, it could be that all 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+s except the 
+\begin_inset Formula $J$
+\end_inset
+
+th have an average 
+\begin_inset Formula $1$
+\end_inset
+
+ each and the 
+\begin_inset Formula $J$
+\end_inset
+
+th has average 0), we can apply 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "thm:Azuma-Hoeffding"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+ to deduce 
+\begin_inset Formula 
+\[
+\mathbb{P}\left(\left|\frac{1}{n-1}\sum_{l\in[n]\backslash J}X_{i}-\mathbb{E}(X_{J}|J)\right|>r\right)\le2\exp\left(-\frac{r^{2}}{2+2\frac{n}{(n-1)^{2}}}\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $c>0$
+\end_inset
+
+ is some constant.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Notes on Martingales
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Martingale
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $(\Omega,F,\mathbb{P})$
+\end_inset
+
+ be a probability space.
+ Consider random variables 
+\begin_inset Formula $X_{0},\dots X_{n}$
+\end_inset
+
+ and a filteration 
+\begin_inset Formula $F_{0},F_{1}\dots F_{n}$
+\end_inset
+
+ i.e.
+ sigma algebras satisfying 
+\begin_inset Formula $F_{0}\subseteq F_{1}\dots\subseteq F_{n}\subseteq F$
+\end_inset
+
+.
+ Then the sequence 
+\begin_inset Formula $(X_{i},F_{i})_{i=0}^{n}$
+\end_inset
+
+ is a 
+\emph on
+martingale
+\emph default
+ if
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $X_{i}\in\mathbb{L}^{1}(\Omega,F_{i},\mathbb{P})$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\mathbb{E}(\left|X_{i}\right|)<\infty$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $X_{i-1}=\mathbb{E}(X_{i}|F_{i-1})$
+\end_inset
+
+ (almost surely) for all 
+\begin_inset Formula $i\in\{1,2\dots n\}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Fact
+\begin_inset CommandInset label
+LatexCommand label
+name "fact:simplestMartingale"
+
+\end_inset
+
+Let 
+\begin_inset Formula $X\in\mathbb{L}^{1}(\Omega,F,\mathbb{P})$
+\end_inset
+
+ be a random variable and suppose 
+\begin_inset Formula $\{F^{i}\}_{i=1}^{n}$
+\end_inset
+
+ is an arbitrary filteration.
+ Define 
+\begin_inset Formula $Z_{i}:=\mathbb{E}(X|F^{i})$
+\end_inset
+
+ for 
+\begin_inset Formula $i\in\{1,2\dots n\}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $Z_{1},Z_{2}\dots Z_{n}$
+\end_inset
+
+ forms a martingale with respect to the filteration.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+The main property we need is 
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}(Z_{i}|F_{i-1}) & =\mathbb{E}(\mathbb{E}(X|F_{i})|F_{i-1})\\
+ & =\mathbb{E}(X|F_{i-1}) & \because F_{i-1}\subseteq F_{i}\\
+ & =Z_{i-1}.
+\end{align*}
+
+\end_inset
+
+In particular, when 
+\begin_inset Formula $F_{0}=\{\emptyset,\Omega\}$
+\end_inset
+
+ and 
+\begin_inset Formula $F_{n}=F$
+\end_inset
+
+ we have 
+\begin_inset Formula 
+\[
+Z_{0}=\mathbb{E}(X|F_{0})=\mathbb{E}(X),\quad Z_{n}=\mathbb{E}(X|F_{n})=X.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+The Azuma-Hoeffding inequality
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:Azuma-Hoeffding"
+
+\end_inset
+
+Let 
+\begin_inset Formula $(Z_{k},F_{k})_{k=0}^{n}$
+\end_inset
+
+ be a real-valued martingale sequence.
+ Suppose that there exist nonnegative reals 
+\begin_inset Formula $d_{1},\dots d_{n}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\left|Z_{k}-Z_{k-1}\right|\le d_{k}$
+\end_inset
+
+ (almost surely) for all 
+\begin_inset Formula $k\in\{1,\dots n\}$
+\end_inset
+
+.
+ Then, for every 
+\begin_inset Formula $r>0$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+\mathbb{P}\left(\left|Z_{n}-Z_{0}\right|\ge0\right)\le2\exp\left(-\frac{r^{2}}{2\sum_{k=1}^{n}d_{k}^{2}}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:mart"
+
+\end_inset
+
+Let 
+\begin_inset Formula $\{X_{1},X_{2}\dots X_{n}\}$
+\end_inset
+
+ be 
+\begin_inset Formula $n$
+\end_inset
+
+ random variables which are possibly correlated and take values in 
+\begin_inset Formula $\{0,1\}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\Pi\in S_{n}$
+\end_inset
+
+ be a random variable (which takes values in the permutation group), picked
+ from the uniformly random distribution.
+ Then, 
+\begin_inset Formula 
+\[
+\Pr\left\{ \left|\frac{X_{\Pi(1)}+\dots X_{\Pi(n-1)}}{n-1}-\mathbb{E}(X_{\Pi(n)})\right|>r\right\} \le\exp(-cnr^{2})
+\]
+
+\end_inset
+
+for some fixed 
+\begin_inset Formula $c>0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+Let 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+s and 
+\begin_inset Formula $\Pi$
+\end_inset
+
+ be as in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "lem:mart"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, above.
+ Then 
+\begin_inset Formula 
+\[
+\Pr\left\{ \left|X_{\Pi(1)}+\dots+X_{\Pi(n-1)}-\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}\left(X_{\pi(1)}+\dots X_{\pi(n-1)}\right)\right|\ge r\right\} \le2e^{-\frac{cr^{2}}{n}}
+\]
+
+\end_inset
+
+for some 
+\begin_inset Formula $c>0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Branch proof
+inverted 0
+status open
+
+\begin_layout Proof
+Let 
+\begin_inset Formula 
+\[
+Q_{i}:=\mathbb{E}(X_{\Pi(1)}+\dots X_{\Pi(n-1)}|F^{i-1})
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\{F^{i}\}_{i=0}^{n}$
+\end_inset
+
+ is a filteration which specifies 
+\begin_inset Formula $\Pi(i)$
+\end_inset
+
+ and 
+\begin_inset Formula $F^{0}$
+\end_inset
+
+ specifies 
+\begin_inset Formula $X_{1},X_{2}\dots X_{n}$
+\end_inset
+
+.
+ It is known that the sequence 
+\begin_inset Formula $Q_{i}$
+\end_inset
+
+ forms a martingale (see TODO: put a claim and a simple proof).
+ Further, 
+\begin_inset Formula $\left|Q_{i}-Q_{i-1}\right|\le d$
+\end_inset
+
+ for some 
+\begin_inset Formula $d>0$
+\end_inset
+
+ (TODO: maybe show 
+\begin_inset Formula $d=2$
+\end_inset
+
+ or something).
+ We can therefore apply the Azum-Hoeffding inequality (see TODO) to get
+ 
+\begin_inset Formula 
+\[
+\Pr\left\{ \left|Q_{1}-Q_{n}\right|>r\right\} \le e^{-cr^{2}}
+\]
+
+\end_inset
+
+for some constant 
+\begin_inset Formula $c>0$
+\end_inset
+
+.
+ Noting that 
+\begin_inset Formula 
+\[
+Q_{1}=\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}(X_{\pi(1)}+\dots X_{\pi(n-1)})
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+Q_{n}=X_{\Pi(1)}+\dots X_{\Pi(n-1)}
+\]
+
+\end_inset
+
+we obtain the result.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+Let 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+s be as in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "thm:Martingale"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+, above.
+ Then 
+\begin_inset Formula 
+\[
+\Pr\left\{ \left|\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}\left(\frac{n}{n-1}(X_{\pi(1)}+\dots+X_{\pi(n-1)})-\mathbb{E}(X_{\pi(1)}+\dots+X_{\pi(n)}\right)\ge r\right|\right\} \le2e^{-\frac{cr^{2}}{n}}
+\]
+
+\end_inset
+
+for some 
+\begin_inset Formula $c>0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Branch proof
+inverted 0
+status open
+
+\begin_layout Proof
+Let 
+\begin_inset Formula 
+\[
+Y_{i}=\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}X_{\pi(i)},\quad\text{for }i\in\{1,2\dots n\}.
+\]
+
+\end_inset
+
+Note that 
+\begin_inset Formula $Y_{1}=Y_{2}\dots=Y_{n}$
+\end_inset
+
+.
+ Define 
+\begin_inset Formula 
+\[
+Y:=\frac{1}{n}\sum_{i=1}^{n}Y_{i}.
+\]
+
+\end_inset
+
+We want to estimate 
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}\mathbb{E}(X_{\pi(n)}) & =\mathbb{E}\left(\sum_{\pi\in S_{n}}\frac{X_{\pi(n)}}{\left|S_{n}\right|}\right)\\
+ & =\mathbb{E}(Y).
+\end{align*}
+
+\end_inset
+
+This motivates the following definition 
+\begin_inset Formula 
+\[
+Z_{i}:=\mathbb{E}(Y|F^{i-1})
+\]
+
+\end_inset
+
+where the filteration 
+\begin_inset Formula $F^{i-1}$
+\end_inset
+
+ fixes 
+\begin_inset Formula $\Pi=\pi$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{\pi(1)},X_{\pi(2)}\dots X_{\pi(i-1)}$
+\end_inset
+
+, and 
+\begin_inset Formula $F^{0}$
+\end_inset
+
+ is the trivial filteration.
+ Now, 
+\begin_inset Formula $\{Z_{i},F^{i}\}$
+\end_inset
+
+ form a martingale (TODO: put that examlpe), and 
+\begin_inset Formula $\left|Z_{i+1}-Z_{i}\right|<d$
+\end_inset
+
+ for some fixed 
+\begin_inset Formula $d$
+\end_inset
+
+.
+ From Azum-Hoeffding we have that 
+\begin_inset Formula 
+\[
+\Pr\left\{ \left|Z_{0}-Z_{n}\right|>r\right\} \le2e^{-cr^{2}}
+\]
+
+\end_inset
+
+for some 
+\begin_inset Formula $c>0$
+\end_inset
+
+.
+ Noting that 
+\begin_inset Formula 
+\begin{align*}
+Z_{n} & =Y\\
+ & =\frac{\left(\sum_{\pi\in S_{n}}X_{\pi(1)}+X_{\pi(2)}+\dots X_{\pi(n-1)}\right)+\sum_{\pi\in S_{n}}X_{\pi(n)}}{n\left|S_{n}\right|}\\
+ & =\frac{n}{n-1}\frac{\left(\sum_{\pi\in S_{n}}X_{\pi(1)}+\dots X_{\pi(n-1)}\right)}{n.\left|S_{n}\right|}
+\end{align*}
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\begin{align*}
+Z_{0} & =\mathbb{E}(Y)\\
+ & =\frac{1}{\left|S_{n}\right|}\sum_{\pi\in S_{n}}\mathbb{E}(X_{\pi(1)}+\dots X_{\pi(n)})
+\end{align*}
+
+\end_inset
+
+we obtain the result.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+The continuity argument [Enter Jamie]
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "DI_WCF_ideas"
+options "amsalpha"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Section
+Jamie's
+\end_layout
+
+\begin_layout Plain Layout
+Section 
+\end_layout
+
+\begin_layout Plain Layout
+1) Introduction
+\end_layout
+
+\begin_layout Plain Layout
+1.1) Intro, blah blah.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+1.2) WCF protocol with no DI security.
+ Spekkens-Rudolph? 
+\end_layout
+
+\begin_layout Plain Layout
+1.3) 2011 protocol, why it is DI (idea) and its bias.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+1.4) New idea: self-testing.
+ Also, no self-testing Alice AND Bob (due to Kitaev).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+1.5) Our NEW protocol(s).
+ Self-test Alice, Self-test Bob (these are two protocols).
+ Their DD security, and why DD security equals DI security (approximately,
+ conceptually).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+1.6) Suppression technique.
+ Final bias.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+1.7) Applications: WCF new bias.
+ SCF new bias.
+ OT new bias.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Section 
+\end_layout
+
+\begin_layout Plain Layout
+2) Background 
+\end_layout
+
+\begin_layout Plain Layout
+2.1) Self-testing bounds.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Section 3) Semidefinite programming 
+\end_layout
+
+\begin_layout Plain Layout
+3.1) SDP for self-testing Alice.
+ SDP for self-testing Bob.
+ (single-shot cases).
+ Cheat vector graphs here as well.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+3.2) SDP for suppression technique for WCF, SCF.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+3.3) SDP continuity bounds (I will do this).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Section 4) Conclusions, and why we're awesome.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+-- 
+\end_layout
+
+\begin_layout Plain Layout
+Here is a crappy DI-OT protocol.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Fix two OT protocols, one with P_A,OT* = 1, P_B,OT* = 1/2 and the other
+ with P_A,OT* = 1/2, P_B,OT* = 1.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+DI-OT protocol: 
+\end_layout
+
+\begin_layout Plain Layout
+Step 0) Do DI-WCF from our paper.
+ Step 1) If no abort, and Alice wins, they use the P_A,OT* = 1 protocol.
+ Step 2) If no abort, and Alice loses, they use the P_A,OT* = 1/2 protocol.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+This yields a bias of < 1/2.
+ Not pretty, but it works.
+ There is likely a way to make this better, but it's a first step.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
