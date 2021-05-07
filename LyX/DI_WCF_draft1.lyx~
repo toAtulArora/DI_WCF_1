@@ -3710,6 +3710,10 @@ This is just to facilitate notation.
  
 \end_layout
 
+\begin_layout Algorithm
+\begin_inset Note Note
+status collapsed
+
 \begin_layout Example
 TODO: Perhaps show how 
 \begin_inset Formula $\mathcal{Z}_{B}$
@@ -3722,6 +3726,11 @@ TODO: Perhaps show how
 .
  Perhaps have this in the appendix.
  
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3949,7 +3958,7 @@ In the limit of
 , one obtains 
 \begin_inset Formula 
 \[
-p_{A}^{*}(C_{{\rm stand}}(\mathcal{P}))=p_{B}^{*}(C_{{\rm stand}}(\mathcal{P}))\le\lim_{k\to\infty}\alpha^{(k)}=\lim_{k\to\infty}\beta^{(k)}\approx0.8199\dots.
+p_{A}^{*}(C(\mathcal{P}))=p_{B}^{*}(C(\mathcal{P}))\le\lim_{k\to\infty}\alpha^{(k)}=\lim_{k\to\infty}\beta^{(k)}\approx0.8199\dots.
 \]
 
 \end_inset

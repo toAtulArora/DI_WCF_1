@@ -3958,7 +3958,7 @@ In the limit of
 , one obtains 
 \begin_inset Formula 
 \[
-p_{A}^{*}(C_{{\rm stand}}(\mathcal{P}))=p_{B}^{*}(C_{{\rm stand}}(\mathcal{P}))\le\lim_{k\to\infty}\alpha^{(k)}=\lim_{k\to\infty}\beta^{(k)}\approx0.8199\dots.
+p_{A}^{*}(C(\mathcal{P}))=p_{B}^{*}(C(\mathcal{P}))\le\lim_{k\to\infty}\alpha^{(k)}=\lim_{k\to\infty}\beta^{(k)}\approx0.8199\dots.
 \]
 
 \end_inset
@@ -3974,7 +3974,7 @@ Proceeding similarly, one obtains for
 , 
 \begin_inset Formula 
 \[
-p_{X}^{*}(C_{{\rm stand}}(\mathcal{X}))\apprle0.836\dots
+p_{X}^{*}(C(\mathcal{X}))\apprle0.836\dots
 \]
 
 \end_inset
