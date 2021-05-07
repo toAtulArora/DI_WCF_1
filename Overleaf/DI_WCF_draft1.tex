@@ -22,7 +22,7 @@
 \usepackage{algorithm}
 \floatname{algorithm}{Algorithm}
 \usepackage{algcompatible}
-\newcommand{\aspace}{\hspace{\algorithmicindent}}
+%\newcomhttps://www.overleaf.com/project/607e36cf16fc680c8be3f0a2mand{\aspace}{\hspace{\algorithmicindent}}
 \usepackage{IEEEtrantools}
 
 \newtheorem{prop}{Proposition}
@@ -915,92 +915,173 @@ do the simulation and add the results. }
 
 Using ... 
 
-\section{Security Proofs }
+\section{Security Proof | Asymptotic}
+
+In this section, we prove the security under the following assumption:
+\begin{assumption}
+\label{assu:asymptotic}In protocol $\mathcal{P}$ ($\mathcal{Q}$),
+Alice (Bob) does not perform the box verification step and instead
+it is assumed that her box is (his boxes are) taken from a trio of
+boxes which win the GHZ game with certainty. 
+\end{assumption}
+
+\branchcolor{purple}{Later, we drop the assumption and use the box verification step (see
+..) to estimate the probability of winning the GHZ game. When the
+winning probability is exactly one, the states and measurements are
+the same as the GHZ state and $\sigma_{x},\sigma_{y}$ measurements,
+up to local isometries and this allows us to use semi definite programming. }
+\begin{lem}
+\label{lem:self-testAsymptotic}Let $a,b,c,x,y,z\in\{0,1\}$. Consider
+a trio of quantum boxes, specified by projectors $\{M_{a|x}^{A},M_{b|y}^{B},M_{c|z}^{C}\}$
+acting on finite dimensional Hilbert spaces $\mathcal{H}^{A},\mathcal{H}^{B}$
+and $\mathcal{H}^{C}$, and $\left|\psi\right\rangle \in\mathcal{H}^{A}\otimes\mathcal{H}^{B}\otimes\mathcal{H}^{C}=:\mathcal{H}^{ABC}$.
+If the trio pass the GHZ test with certainty, then there exists a
+local isometry 
+\[
+\Phi=\Phi^{A}\otimes\Phi^{B}\otimes\Phi^{C}:\mathcal{H}^{ABC}\to\mathcal{H}^{ABC}\otimes\mathbb{C}^{2\times3}
+\]
+such that 
+\begin{align*}
+\Phi\left(\left|\psi\right\rangle \right) & =\left|\chi\right\rangle \otimes\left|{\rm junk}\right\rangle ,\\
+\Phi\left(M_{d|t}^{D}\left|\psi\right\rangle \right) & =\Pi_{d|t}^{D}\left|{\rm GHZ}\right\rangle \otimes\left|{\rm junk}\right\rangle \quad\forall D\in\{A,B,C\},\text{ and }d,t\in\{0,1\}
+\end{align*}
+where $\left|{\rm GHZ}\right\rangle =\frac{\left|000\right\rangle +\left|111\right\rangle }{\sqrt{2}}\in\mathbb{C}^{2\times3}$,
+$\left|{\rm junk}\right\rangle \in\mathcal{H}^{ABC}$ is some arbitrary
+state and $\{\Pi_{a|x}^{A},\Pi_{b|y}^{B},\Pi_{c|z}^{C}\}$ are projectors
+corresponding to $\sigma_{x}$ on the first, second and third qubit of $\left|{\rm GHZ}\right\rangle$  respectively,
+for $x=0$ and corresponding to $\sigma_{y}$ for $x=1$, as in \Claimref{Quantum-boxes-pass}.
+\end{lem}
+
+\branchcolor{purple}{INTERNAL; (TODO: remove): Isometries can only increase dimensions
+(they must be injective; that is to ensure they preserve inner products
+of vectors). Therefore the isometry can't get rid of the $\left|{\rm junk}\right\rangle $
+part. }
 
 \subsection{Cheat vectors optimisation using Semi Definite Programming}
 
 \subsubsection{SDP when Alice self-tests\label{subsubsec:SDP-when-Alice}}
 
-\branchcolor{blue}{\begin{proof}[Proof of \Lemref{AliceSelfTests}]
-The analysis for cheating Alice is the same as the original protocol.
-We consider the analysis for cheating Bob. We model Alice's steps
-as follows: We use
-\begin{itemize}
-\item $\left|+\right\rangle _{X}$ for her choice of input $x$,
-\item $\left|+\right\rangle _{R}$ for her choice of $r$,
-\item $\frac{1}{2}\mathbb{I}_{H}$ for her part of the GHZ state
-\item $\left|0\right\rangle _{S}$ a qubit to be used to send $s$ to Bob
-\item $\left|0\right\rangle _{A}$ the outcome of Alice's GHZ state measurement
-\end{itemize}
-The argument proceeds as follows. Let $\rho_{0}\in\mathcal{D}(HXRAS)$
-be Alice's state after measuring to get $a$ and creating $s$ (TODO:
-complete this part; likely in the code already).
-\begin{enumerate}
-\item Observe that $\tr_{s}(\rho_{0})$ can be used to denote Alice's state
-after sending $s$ to Bob. This is because Bob can hold a purification
-of $\tr_{s}(\rho_{0})$ thereby holding $s$.\footnote{This doesn't mean that Alice forgets $s$. She can always construct
-$s$ again because she has all the remaining registers}
-\item Similarly, observe that Bob sending the variable $g$ can be modelled
-as $\tr_{g}(\rho_{1})=\tr_{s}(\rho_{0})$ where $\rho_{1}\in\mathcal{D}(HXRAG)$.
-\item While on the third step, Alice sends $x$ to Bob, we need not formally
-include this because if Alice is testing Bob, he knows $x\oplus g=1$.
-\item Test rounds
-\begin{enumerate}
-\item $x\oplus g=0$ is the case where Alice outputs $0$; this means Bob
-already failed; not the event we are interested in.
-\item $x\oplus g=1$ is the case where Alice tests Bob.
-\begin{enumerate}
-\item While Alice sends $y$ and $z$ to Bob, $z$ can be determined from
-the condition $x\oplus y\oplus z=1$ and the values of $x$ and $y$.
-Therefore, formally, it suffices that Alice appends $\frac{1}{2}\mathbb{I}_{y}$
-to $\rho_{1}$ to account for this step.\footnote{This would mean that Bob can hold a purification, thereby $y$.}
-\item Bob is supposed to respond with $b,c$ but formally, it suffices to
-send $d=b\oplus c$ because the GHZ condition only requires Alice
-to test $a\oplus b\oplus c=xyz\oplus1$. We model this as $\tr_{d}(\rho_{2})=\rho_{1}\otimes\frac{1}{2}\mathbb{I}_{y}$
-where $\rho_{2}\in\mathcal{D}(HXRAGYD)$.
-\end{enumerate}
-\end{enumerate}
-\end{enumerate}
-Let $(\alpha,\beta,\gamma)$ be a \emph{cheat vector} (see \Defref{CheatVectors}),
-i.e. for some cheating strategy of Bob,
-\begin{align*}
-\alpha & =\Pr[\text{Alice outputs }0]\\
-\beta & =\Pr[\text{Alice outputs }1]\\
-\gamma & =\Pr[\text{Alice aborts}].
-\end{align*}
-Clearly, for the strategy encoded by the variables $\rho_{1}$ and
-$\rho_{2}$, one can write
-\begin{align*}
-\alpha & =\tr(\Pi_{0}\rho_{2})\\
-\beta & =\tr(\Pi_{1}\Pi_{{\rm GHZ}}\rho_{2})\\
-\gamma & =\tr(\Pi_{1}\Pi_{{\rm abort}}\rho_{2})
-\end{align*}
-where $\Pi_{i}$ checks if $x\oplus g=i$ holds, $\Pi_{{\rm GHZ}}$
-checks if the GHZ test passed and $\Pi_{{\rm abort}}:=\mathbb{I}-\Pi_{{\rm GHZ}}$.
-The SDP is therefore
+\branchcolor{blue}{\begin{proof}[Asymptotic proof of \Lemref{AliceSelfTests}]
+We prove \Lemref{AliceSelfTests} under \Assuref{asymptotic}. We
+begin by making two observations. 
 
+First, note that in the protocol, if Alice applies an isometry on
+her box \emph{after} she has inputted $x$, obtained the outcome $a$
+(and has noted it somewhere), the security of the resulting protocol
+is unchanged because the rest of the protocol only depends on $x$
+and $a$, and Alice's isometry only amounts to relabelling of the
+post measurement state. This freedom allows us to simplify the analysis.
+
+Second, in the analysis, we cannot model Alice's random choice, say
+for $x$, as a mixed state because Bob can always hold a purification
+and thus know $x$. Therefore, we model the randomness using pure
+states and measure them in the end.
+
+Notation: Other than $PQR$, all other registers store qubits.
+
+We proceed step by step. 
+\begin{enumerate}
+\item We can model (justified below) Alice's act of inputting a random $x$
+and obtaining an outcome $a$ from her box through the state 
 \[
-\max\quad c_{0}\alpha+c_{1}\beta+c_{\perp}\gamma
+\left|\Psi_{0}\right\rangle :=\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}\left|\Phi(x,a)\right\rangle _{IJ}
+\]
+where $X$ represents the random input and $A$ the output. Here,
+$\left|\Phi(x,a)\right\rangle _{IJ}$ are Bell states (see \Eqref{bellStates})
+and the registers $IJ$ are held by Bob. Alice's act of choosing $r$
+at random, computing $s=a\oplus x.r$ is modelled as 
+\begin{equation}
+\left|\Psi_{1}\right\rangle :=\frac{1}{2}\sum_{x,a,r\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}\left|\Phi(x,a)\right\rangle _{IJ}\left|r\right\rangle _{R}\left|a\oplus x.r\right\rangle _{S}.\label{eq:Alice_Psi1}
+\end{equation}
+Finally, Alice's act of sending $s$ is modelled as Alice starting
+with the state
+\[
+\tr_{IJS}\left[\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|\right]\in XAR.
+\]
+
+\branchcolor{blue}{\textbf{Justification for starting with $\left|\Psi_{0}\right\rangle $.}\\
+To see why we start with the state $\left|\Psi_{0}\right\rangle $,
+model Alice's choice of $x$ as $\left|+\right\rangle _{X}$, suppose
+her measurement result is stored in $\left|0\right\rangle _{A}$,
+the state of the boxes before measurement is $\left|\psi\right\rangle _{PQR}$
+and Alice holds $P$, i.e. 
+\[
+\left|\Psi_{0}'\right\rangle :=\left|+\right\rangle _{X}\left|0\right\rangle _{A}\left|\psi\right\rangle _{PQR}.
+\]
+Let $\{M_{a|x}^{P}\}$ be the measurement operators corresponding
+to Alice's box. The measurement process is unitarily modelled as 
+\[
+\left|\Psi_{1}'\right\rangle :=U_{{\rm measure}}\left|\Psi_{0}'\right\rangle =\frac{1}{\sqrt{2}}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}M_{a|x}^{P}\left|\psi\right\rangle _{PQR}
+\]
+where
+\[
+U_{{\rm measure}}=\sum_{x\in\{0,1\}}\left|x\right\rangle \left\langle x\right|_{X}\otimes\left[\mathbb{I}_{A}\otimes M_{0|x}^{P}+X_{X}\otimes M_{1|x}^{P}\right]\otimes\mathbb{I}_{QR}.
+\]
+Now we harness the freedom of applying an isometry to the post measured
+state (as observed above). We choose the local isometry in \Lemref{self-testAsymptotic}.
+Without loss of generality, we can assume that Bob had already applied
+his part of the isometry before sending the boxes (because he can
+always reverse it when it is his turn). We thus have, 
+\begin{align*}
+\left|\Psi_{2}'\right\rangle :=\Phi_{PQR}\left|\Psi_{1}'\right\rangle  & =\frac{1}{\sqrt{2}}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}\Pi_{x|a}^{H}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR}\\
+ & =\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}U^{H}(x,a)\left|0\right\rangle _{H}\left|\Phi(x,a)\right\rangle _{IJ}\otimes\left|{\rm junk}\right\rangle _{PQR}
+\end{align*}
+where 
+\begin{equation}
+\left|\Phi(x,a)\right\rangle _{IJ}=\frac{\left|00\right\rangle +(-1)^{a}(i)^{x}\left|11\right\rangle }{\sqrt{2}}\label{eq:bellStates}
+\end{equation}
+ and $U^{H}(x,a)\left|0\right\rangle _{H}$ is $\frac{\left|0\right\rangle +(-1)^{a}(i)^{x}\left|1\right\rangle }{\sqrt{2}}$.
+Since the state of register $H$ is completely determined by registers
+$X$ and $A$, we can drop it from the analysis without loss of generality.
+Finally, since $\left|{\rm junk}\right\rangle _{PQR}$ is completely
+tensored out, we can drop it too without affecting the security. Formally,
+we can assume that Alice gives Bob the register $P$ at this point.
+}
+\item Bob sending $g$ is modelled by introducing $\rho_{2}\in XARG$ satisfying
+$\tr_{IJS}\left[\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|\right]=\tr_{G}(\rho_{2})$. 
+\item At this point, either $x\oplus g$ is zero, in which case Alice's
+output is fixed or $x\oplus g$ is one, and in that case Bob will
+already know $x$ because he knows $g$ (he sent it) and Alice will
+proceed to testing Bob. Formally, therefore, we needn't do anything
+at this step.
+\item Assuming $x\oplus g=1$, Alice sends $y,z$ to Bob such that $x\oplus y\oplus z=1$.
+However, since Bob already knows $x$, he can deduce $z$ from $y$.
+We thus only need to model Alice sending $y$ and Bob responding with
+$d=b\oplus c$ (because Alice will only use $b\oplus c$ to test the
+GHZ game, so it suffices for Bob to send $d$). This amounts to introducing
+$\rho_{3}\in XARGYD$ satisfying $\rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2}=\tr_{D}(\rho_{3})$. 
+\item Since we postponed the measurements to the end, we add this last step.
+Alice now measures $\rho_{3}$ to determine $x\oplus g$ and if it
+is one, whether the GHZ test passed. Let 
+\begin{align}
+\Pi_{i} & :=\sum_{x,y\in\{0,1\}:x\oplus g=i}\left|x\right\rangle \left\langle x\right|_{X}\left|g\right\rangle \left\langle g\right|_{G}\otimes\mathbb{I}_{AIJRYD},\nonumber \\
+\Pi^{{\rm GHZ}} & :=\sum_{\substack{x,y\in\{0,1\},\\
+a,d\in\{0,1\}:a\oplus d\oplus1=xy\cdot(1\oplus x\oplus y)
+}
+}\left|x\right\rangle \left\langle x\right|_{X}\left|y\right\rangle \left\langle y\right|_{Y}\left|a\right\rangle \left\langle a\right|_{A}\left|d\right\rangle \left\langle d\right|_{D}.\label{eq:AliceProjs}
+\end{align}
+Then, we can write the cheat vector, i.e. the tuple of probabilities
+that Alice outputs 0, 1 and abort, (see \Defref{CheatVectors}) for
+Alice as 
+\[
+(\alpha,\beta,\gamma)=(\tr(\Pi_{0}\rho_{3}),\tr(\Pi_{1}\Pi^{{\rm GHZ}}\rho_{3}),\tr(\Pi_{1}\bar{\Pi}^{{\rm GHZ}}\rho_{3}))
+\]
+ where $\bar{\Pi}:=\mathbb{I}-\Pi$.
+\end{enumerate}
+To summarise, the final SDP is as follows: let $\left|\Psi_{1}\right\rangle \in XAIJRS$
+be as given in \Eqref{Alice_Psi1}, $\rho_{2}\in XARG$ and $\rho_{3}\in XARGYD$
+\[
+\max\quad\tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{3})
 \]
 subject to 
 \begin{align*}
-\tr_{D}(\rho_{2}) & =\rho_{1}\otimes\frac{1}{2}\mathbb{I}_{y}\\
-\tr_{G}(\rho_{1}) & =\tr_{S}(\rho_{0})
+\tr_{IJS}\left[\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|\right] & =\tr_{G}(\rho_{2})\\
+\rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2} & =\tr_{D}(\rho_{3})
 \end{align*}
-where 
-\begin{align*}
-\rho_{0} & \in\mathcal{D}(HXRAS)\\
-\rho_{1} & \in\mathcal{D}(HXRAG)\\
-\rho_{2} & \in\mathcal{D}(HXRAGYD)
-\end{align*}
-and $\rho_{0}:=\dots$ (TODO: from the code). To obtain $p_{B}^{*}(\mathcal{P})$,
-this SDP was numerically solved for $c_{1}=1,$ $c_{0}=c_{\perp}=0$. 
-
-\branchcolor{purple}{{[}TODO: explain if really needed{]} This can be seen graphically
-if we evaluate $\beta_{\max}(\alpha):=\max_{(\alpha,\beta,\gamma)\in\mathcal{C}}\beta$
-and plot it as a function of $\alpha$. Then}
+where the projectors are defined in \Eqref{AliceProjs}.
 \end{proof}
 }
+
 
 \subsubsection{SDP when Bob self-tests\label{subsec:SDP-when-Bob}}
 
@@ -1023,39 +1104,87 @@ can be implemented using GHZ boxes.
 This establishes the first part of the lemma. For the second part,
 i.e. establishing that optimising $c_{0}\alpha+c_{1}\beta+c_{\perp}\gamma$
 over $(\alpha,\beta,\gamma)\in\mathbb{C}_{A}$ is an SDP, we proceed
-as follows. We know that Bob starts with the state $\sigma_{0}=\tr_{H}(\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HBC})$
-due to the self-testing step. 
+as follows. Suppose \Assuref{asymptotic} holds. Then we can assume
+that Bob starts with the state 
+\begin{equation}
+\rho_{0}:=\tr_{H}(\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ})\label{eq:Bob_initState}
+\end{equation}
+ and the effect of measuring the two boxes can be represented by the
+application of projectors of pauli operators $X$ and $Z$.
+
+The justification is similar to that given in the former proof. Suppose
+Bob holds registers $QR$ of $\left|\psi\right\rangle _{PQR}$ which
+is the combined state of the three boxes. Suppose his measurement
+operators are $\{M_{b|y}^{Q},M_{c|z}^{R}\}$. Then using the isometry
+in \Lemref{self-testAsymptotic}, Bob can relabel his state (and without
+loss of generality, we can suppose Alice also relabels according to
+the aforementioned isometry) to get $\Phi_{PQR}\left|\psi\right\rangle _{PQR}=\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR}$.
+Further, since $\Phi_{PQR}(M_{b|y}^{Q}\otimes M_{c|z}^{R}\left|\psi\right\rangle _{PQR})=\Pi_{b|y}^{I}\Pi_{c|z}^{J}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR}$
+Bob's act of measurement, in the new labelling, corresponds to simply
+measuring the GHZ state in the appropriate Pauli basis. (TODO: in
+the approximate case, the initial state will be close to the one mentioned
+and the post-measured state will similarly only be close to the one
+post projectors; There should be some way of showing that this can
+be absorbed into the initial state).
 \begin{enumerate}
-\item Alice sending $s$ is modelled as $\tr_{S}(\sigma_{1})=\sigma_{0}$
-where $\sigma_{1}\in\mathcal{D}(SBC)$. 
-\item Bob sending $g\in_{R}\{0,1\}$ is modelled as $\sigma_{1}\otimes\frac{1}{2}\mathbb{I}_{G}$.
-\item As in the previous proof, since Bob is testing, he can deduce $x$
-from $x\oplus g=0$. So formally we do nothing.
-\item Alice sending $a$ is modelled as $\tr_{A}(\sigma_{2})=\sigma_{1}\otimes\frac{1}{2}\mathbb{I}_{G}$
-where $\sigma_{2}\in\mathcal{D}(SBCGA)$. 
-\end{enumerate}
-As in the previous proof, let 
-\begin{align*}
-\alpha & =\tr(\Pi_{0}\Pi_{{\rm GHZ}},\sigma_{2})\\
-\beta & =\tr(\Pi_{1}\Pi_{{\rm GHZ}},\sigma_{2})\\
-\gamma & =\tr(\Pi_{{\rm Abort}},\sigma_{2})
-\end{align*}
-(TODO: See why I have an asymmetry between abort and GHZ in the two
-proofs) {[}TODO: complete these{]} where $\Pi_{i}$ are ... and $\Pi_{{\rm GHZ}}$
-is ... . Then the final SDP can be expressed as 
+\item Bob receiving $s$ from Alice is modelled by introducing $\rho_{1}\in SIJ$
+satisfying $\tr_{S}(\rho_{1})=\rho_{0}$. 
+\item Bob sending $g\in_{R}\{0,1\}$ can be seen as appending a mixed state:
+$\rho_{1}\otimes\frac{1}{2}\mathbb{I}_{G}$.
+\item Alice sending $x$ (and $a$) can be modelled as introducing $\rho_{2}\in AXSIJG$
+satisfying $\tr_{A}(\rho_{2})=\rho_{1}\otimes\frac{\mathbb{I}_{G}}{2}$.
+\item To model the GHZ test, introduce a register $Y$ in the state $\frac{\left|0\right\rangle _{Y}+\left|1\right\rangle _{Y}}{\sqrt{2}}$.
+Recall that to perform the GHZ test, we need $x\oplus y\oplus z=1$
+i.e. $z=1\oplus y\oplus x$. Further introduce registers $B$ and
+$C$ to hold the measurement results, define 
+\begin{equation}
+U:=\sum_{y,x\in\{0,1\}}\left|y\right\rangle \left\langle y\right|_{Y}\left|x\right\rangle \left\langle x\right|_{X}\otimes(\mathbb{I}_{B}\otimes\Pi_{0|y}^{I}+X_{B}\otimes\Pi_{1|y}^{I})\otimes(\mathbb{I}_{C}\otimes\Pi_{0|(1\oplus y\oplus x)}^{J}+X_{C}\otimes\Pi_{1|(1\oplus y\oplus x)}^{J})\otimes\mathbb{I}_{ASG}.\label{eq:Bob-u}
+\end{equation}
+By construction, $\rho_{3}:=U\left(\left|+\right\rangle \left\langle +\right|_{Y}\otimes\left|00\right\rangle \left\langle 00\right|_{BC}\otimes\rho_{2}\right)U^{\dagger}\in YBCAXSIJG$
+models the measurement process. (TODO: this equality would become
+approximately true...but perhaps the noise can be absorbed in $\rho_{0}$
+with some argument)
+\item Since we postponed the measurements to the end, we add this step.
+Define 
 \[
-\max\quad(c_{0}\alpha+c_{1}\beta+c_{\perp}\gamma)
+\Pi_{i}:=\sum_{x,g\in\{0,1\}:x\oplus g=i}\left|xg\right\rangle \left\langle xg\right|_{XG}\otimes\mathbb{I}_{YABSIJ}
+\]
+to determine who won. Define 
+\[
+\Pi^{{\rm sTest}}:=\sum_{s,a,x\in\{0,1\}:s=a\lor s=a\oplus x}\left|sax\right\rangle \left\langle sax\right|_{SAX}\otimes\mathbb{I}_{GYBCIJ}
+\]
+ to model the first test, i.e. $s$ should either be $a$ or $a\oplus x$.
+Define 
+\[
+\Pi^{{\rm GHZ}}:=\sum_{\substack{x,y\in\{0,1\},\\
+a,b,c\in\{0,1\}:a\oplus b\oplus c\oplus1=xy\cdot(1\oplus x\oplus y)
+}
+}\left|xyabc\right\rangle \left\langle xyabc\right|_{XYABC}\otimes\mathbb{I}_{GSIJ}
+\]
+to model the GHZ test. Let 
+\begin{equation}
+\Pi^{{\rm Test}}:=\Pi^{{\rm GHZ}}\Pi^{{\rm sTest}},\quad\bar{\Pi}^{{\rm Test}}:=\mathbb{I}-\Pi^{{\rm Test}}.\label{eq:BobProjs}
+\end{equation}
+One can then write the cheat vector for Bob, i.e. the tuple of probabilities
+that Bob outputs $0,1$ and abort (see \Defref{CheatVectors}), as
+\[
+(\alpha,\beta,\gamma)=(\tr(\Pi_{0}\Pi^{{\rm Test}}\rho_{3}),\tr(\Pi_{1}\rho_{3}),\tr(\Pi_{0}\bar{\Pi}^{{\rm Test}}\rho_{3})).
+\]
+\end{enumerate}
+To summarise, the final SDP is as follows: let $\rho_{0}\in IJ$ be
+as defined in \Eqref{Bob_initState}, $\rho_{1}\in SIJ$ and $\rho_{2}\in AXSIJG$.
+Then, 
+\[
+\max\quad\tr\left([\Pi_{0}(c_{0}\Pi^{{\rm Test}}+c_{\perp}\bar{\Pi}^{{\rm Test}})+c_{1}\Pi_{1}]U\left(\left|+00\right\rangle \left\langle +00\right|_{YBC}\otimes\rho_{2}\right)U^{\dagger}\right)
 \]
 subject to 
 \begin{align*}
-\tr_{A}(\sigma_{2}) & =\sigma_{1}\otimes\frac{1}{2}\mathbb{I}_{G}\\
-\tr_{S}(\sigma_{1}) & =\tr_{H}(\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HBC})
+\tr_{S}(\rho_{1}) & =\rho_{0}\\
+\tr_{A}(\rho_{2}) & =\frac{1}{2}\rho_{1}\otimes\mathbb{I}_{G}
 \end{align*}
-where 
-\begin{align*}
-\sigma_{1} & \in\mathcal{D}(SBC)\\
-\sigma_{2} & \in\mathcal{D}(SBCGA).
-\end{align*}
+where $U$ is as defined in \Eqref{Bob-u} and the projectors as in
+\Eqref{BobProjs}.
+
 \end{proof}
 }
 
@@ -1087,16 +1216,16 @@ The expectation value of $E[X_J|J,\Omega]$ accurately describes the expected GHZ
 
 \begin{prop}[Security statement]
 	\label{prop:security}
-	For any implementation of the boxes, the joint probability that that the test $\Omega$ passes and that the conclusion $T$ is false is small $\Pr[ \Omega \cap \bar T] \leq \frac{1}{1-\delta + n\delta} \leq \frac{1}{n\delta}$, where the first upper-bound is tight. {\bf [$\delta >0$ should appear somewhere :-)]}
+	For any implementation of the boxes and choice of $\delta>0$ the joint probability that that the test $\Omega$ passes and that the conclusion $T$ is false is small $\Pr[ \Omega \cap \bar T] \leq \frac{1}{1-\delta + n\delta} \leq \frac{1}{n\delta}$, where the first upper-bound is tight.
 \end{prop}
 
-This is the correct form of the security statement. It is important to bound the joint distribution of $\Omega$ and $\overline T$, and not $\Pr[\overline T|\Omega]$, conditioning on passing the test $\Omega$. Indeed in the latter case, it would not be possible to conclude anything of value about the remaining box $J$, as there could be some implementation of the boxes which has a very low expectation value of GHZ, but which passes the test with small but non-zero probability. The present security definition has a nice interpretation in the composable security framework of [ref]. Consider an hypothetical ideal protocol, which after having chosen $J$, only passes when $T$ is true. In that case, $\Pr[\Omega\cap \overline T] = 0$. Then the actual protocol is equivalent the ideal one, except that if fails with probability $\epsilon$, and so it is $\epsilon$-close to the ideal algorithm. 
+This is the correct form of the security statement. It is important to bound the joint distribution of $\Omega$ and $\overline T$, and not $\Pr[\overline T|\Omega]$, conditioning on passing the test $\Omega$. Indeed in the latter case, it would not be possible to conclude anything of value about the remaining box $J$, as there could be some implementation of the boxes which has a very low expectation value of GHZ, but which passes the test with small but non-zero probability. The present security definition has a nice interpretation in the composable security framework of [ref]. Consider an hypothetical ideal protocol, which after having chosen $J$, only passes when $T$ is true. In that case, $\Pr[\Omega\cap \overline T] = 0$. Then the actual protocol is equivalent the ideal one, except that if fails with probability $\epsilon = \frac{1}{1-\delta + m\delta}$, and so it is $\epsilon$-close to the ideal algorithm. 
 
 
 \begin{proof}
-	For a given implementation of the boxes, let $p(x_1,\cdots x_n)$ denote the joint probability distribution of passing the GHZ games. Let $S = \{j|\ E[X_j|J=j, \Omega] < 1-\delta\} \subset [n]$ {\bf Minor: added J=j} be the set of boxes that have an expectation value for GHZ (conditioned on passing in the other boxes) below our target threshold and let $m = |S|$ be the number of such boxes. The value of $m$ is unknown, so we will need to maximise over it in the end.
+	For a given implementation of the boxes, let $p(x_1,\cdots x_n)$ denote the joint probability distribution of passing the GHZ games. Let $S = \{j|\ E[X_j|J=j, \Omega] < 1-\delta\} \subset [n]$ be the set of boxes that have an expectation value for GHZ (conditioned on passing in the other boxes) below our target threshold and let $m = |S|$ be the number of such boxes. The value of $m$ is unknown, so we will need to maximise over it in the end.
 	
-	Let $\alpha = \Pr(\{X_i\}_i = 1)$ and $\beta_i = \Pr(\{X_i\}_{i\neq j} = 1 \cap X_j = 0)$ be respectively the probabilities of the events where all the tests pass, or they all pass except for the $j$th test. This allows us to rewrite $E[X_j|J=j,\Omega] = \Pr(\{X_i\}=1)/\Pr(\{X_i\}_{i\neq j} = 1) = \alpha/(\alpha + \beta_j)$, and so, by definition of $S$, we have $ \alpha/(\alpha + \beta_j)<(1-\delta)$, for $i\in S$ {\bf [Should be $j$ right?]}, which is equivalent to $\beta_j > \frac{\delta}{1-\delta} \alpha$. 
+	Let $\alpha = \Pr(\{X_i\}_i = 1)$ and $\beta_i = \Pr(\{X_i\}_{i\neq j} = 1 \cap X_j = 0)$ be respectively the probabilities of the events where all the tests pass, or they all pass except for the $j$th test. This allows us to rewrite $E[X_j|J=j,\Omega] = \Pr(\{X_i\}=1)/\Pr(\{X_i\}_{i\neq j} = 1) = \alpha/(\alpha + \beta_j)$, and so, by definition of $S$, we have $ \alpha/(\alpha + \beta_j)<(1-\delta)$, for $j\in S$, which is equivalent to $\beta_j > \frac{\delta}{1-\delta} \alpha$. 
 	
 	The aim of the proof is to bound the probability $\Pr[\Omega \cap \overline T]$, which we can rewrite as
     \begin{IEEEeqnarray}{rL}
@@ -1118,7 +1247,7 @@ This is the correct form of the security statement. It is important to bound the
 		    &\alpha + \Sigma \leq 1\\
 			& \Sigma \geq m\frac{\delta}{1-\delta} \alpha			
 	\end{IEEEeqnarray}
-	It is easily shown that the maximum is attained for $(\alpha,\Sigma) = \left(\frac{1-\delta}{1-\delta + m\delta}, \frac{m \delta}{1-\delta + m}\right)$ which gives the upper-bound {\bf [for $\Sigma$ I think the $m$ should be $\delta m$]}
+	It is easily shown that the maximum is attained for $(\alpha,\Sigma) = \left(\frac{1-\delta}{1-\delta + m\delta}, \frac{m \delta}{1-\delta + m\delta}\right)$ which gives the upper-bound
 	\begin{IEEEeqnarray}{rL}
 		\Pr[\Omega\cap \overline T] \leq \frac{1}{n} \max_m \frac{m}{1-\delta + m\delta} = \frac{1}{1-\delta + n\delta}
 	\end{IEEEeqnarray}
@@ -1127,7 +1256,9 @@ This is the correct form of the security statement. It is important to bound the
 
 
 \subsection{Robust self-testing and continuity of SDP}
+\subsubsection{Bob dishonest}
 
+Assume Alice's device Assume the devices are described by a state $\ket{\psi'}_{Q_A Q_B}$
 
 
 \subsection{The self-testing step {[}Discuss with Tom before writing{]} }
