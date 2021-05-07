@@ -3671,7 +3671,7 @@ Output
 \end_deeper
 \begin_layout Algorithm
 Let 
-\begin_inset Formula $\mathcal{Z}^{i+1}:=C_{{\rm AAC}}(\mathcal{X},\mathcal{Z}^{i})$
+\begin_inset Formula $\mathcal{Z}^{i+1}:=C(\mathcal{X},\mathcal{Z}^{i})$
 \end_inset
 
  for 
@@ -3710,18 +3710,27 @@ This is just to facilitate notation.
  
 \end_layout
 
+\begin_layout Algorithm
+\begin_inset Note Note
+status collapsed
+
 \begin_layout Example
 TODO: Perhaps show how 
 \begin_inset Formula $\mathcal{Z}_{B}$
 \end_inset
 
  is constructed from 
-\begin_inset Formula $\mathcal{Z}=C_{{\rm stand}}(\mathcal{X},\mathcal{Y})$
+\begin_inset Formula $\mathcal{Z}=C(\mathcal{X},\mathcal{Y})$
 \end_inset
 
 .
  Perhaps have this in the appendix.
  
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

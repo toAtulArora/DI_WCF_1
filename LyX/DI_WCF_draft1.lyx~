@@ -2800,14 +2800,6 @@ Alice sends
 \begin_inset Formula $x$
 \end_inset
 
- [EDIT: maybe not send 
-\begin_inset Formula $a$
-\end_inset
-
-] and 
-\begin_inset Formula $a$
-\end_inset
-
  to Bob.
  They both compute the output 
 \begin_inset Formula $x\oplus g$
@@ -2831,11 +2823,11 @@ If
 \begin_inset Newline newline
 \end_inset
 
-[EDIT: Send 
+Alice sends 
 \begin_inset Formula $a$
 \end_inset
 
-]
+ to Bob.
 \begin_inset Newline newline
 \end_inset
 
@@ -3679,7 +3671,7 @@ Output
 \end_deeper
 \begin_layout Algorithm
 Let 
-\begin_inset Formula $\mathcal{Z}^{i+1}:=C_{{\rm AAC}}(\mathcal{X},\mathcal{Z}^{i})$
+\begin_inset Formula $\mathcal{Z}^{i+1}:=C(\mathcal{X},\mathcal{Z}^{i})$
 \end_inset
 
  for 
@@ -3724,7 +3716,7 @@ TODO: Perhaps show how
 \end_inset
 
  is constructed from 
-\begin_inset Formula $\mathcal{Z}=C_{{\rm stand}}(\mathcal{X},\mathcal{Y})$
+\begin_inset Formula $\mathcal{Z}=C(\mathcal{X},\mathcal{Y})$
 \end_inset
 
 .
