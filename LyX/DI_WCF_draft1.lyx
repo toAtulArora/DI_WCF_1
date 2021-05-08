@@ -5079,7 +5079,7 @@ noprefix "false"
  is modelled as 
 \begin_inset Formula 
 \begin{equation}
-\left|\Psi_{1}\right\rangle :=\frac{1}{2}\sum_{x,a,r\in\{0,1\}}\left|xa\right\rangle _{XA}\left|\Phi(x,a)\right\rangle _{IJ}\left|r\right\rangle _{R}\left|a\oplus x.r\right\rangle _{S}.\label{eq:Alice_Psi1}
+\left|\Psi_{1}\right\rangle :=\frac{1}{2\sqrt{2}}\sum_{x,a,r\in\{0,1\}}\left|xa\right\rangle _{XA}\left|\Phi(x,a)\right\rangle _{IJ}\left|r\right\rangle _{R}\left|a\oplus x.r\right\rangle _{S}.\label{eq:Alice_Psi1}
 \end{equation}
 
 \end_inset
