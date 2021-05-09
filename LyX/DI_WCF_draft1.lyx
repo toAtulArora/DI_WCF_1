@@ -5372,11 +5372,11 @@ Since we postponed the measurements to the end, we add this last step.
  Let 
 \begin_inset Formula 
 \begin{align}
-\Pi_{i} & :=\sum_{x,y\in\{0,1\}:x\oplus g=i}\left|xg\right\rangle \left\langle xg\right|_{XG}\otimes\mathbb{I}_{AIJRYD},\nonumber \\
+\Pi_{i} & :=\sum_{x,y\in\{0,1\}:x\oplus g=i}\left|xg\right\rangle \left\langle xg\right|_{XG}\otimes\mathbb{I}_{ARYD},\nonumber \\
 \Pi^{{\rm GHZ}} & :=\sum_{\substack{x,y\in\{0,1\},\\
 a,d\in\{0,1\}:a\oplus d\oplus1=xy\cdot(1\oplus x\oplus y)
 }
-}\left|xyad\right\rangle \left\langle xyad\right|_{XYAD}.\label{eq:AliceProjs}
+}\left|xyad\right\rangle \left\langle xyad\right|_{XYAD}\otimes\mathbb{I}_{RG}.\label{eq:AliceProjs}
 \end{align}
 
 \end_inset
