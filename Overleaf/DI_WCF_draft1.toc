@@ -1,38 +1,36 @@
 \babel@toc {british}{}
 \contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Our main result}{3}{subsection.1.1}%
-\contentsline {subsubsection}{\numberline {1.1.1}Pre-processing step: Self-testing}{3}{subsubsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.2}Pre-processing step: Self-testing}{3}{subsection.1.2}%
 \contentsline {paragraph}{Rigidity of the GHZ game.}{4}{section*.2}%
 \contentsline {paragraph}{Continuity of semidefinite programs.}{4}{section*.3}%
-\contentsline {subsection}{\numberline {1.2}Post-processing step: Abort-phobic composition}{4}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Post-processing step: Abort-phobic composition}{4}{subsection.1.3}%
 \contentsline {paragraph}{Protocol polarity.}{4}{section*.4}%
 \contentsline {paragraph}{Abort-phobic composition.}{5}{section*.5}%
-\contentsline {subsection}{\numberline {1.3}Applications}{5}{subsection.1.3}%
-\contentsline {section}{\numberline {2}Introduction}{6}{section.2}%
-\contentsline {subsection}{\numberline {2.1}About Weak Coin Flipping}{6}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Contributions}{6}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Proof Technique}{6}{subsection.2.3}%
-\contentsline {section}{\numberline {3}Device Independent Weak Coin Flipping protocols | State Of The Art}{8}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Device Independence and the Box Paradigm}{8}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}The GHZ Test}{9}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}The Protocol}{10}{subsection.3.3}%
-\contentsline {section}{\numberline {4}First Technique: Self-testing (single shot, unbalanced)}{10}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Cheat Vectors }{11}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Alice self-tests | Protocol $\mathcal {P}$}{11}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Bob self-tests | Protocol $\mathcal {Q}$}{12}{subsection.4.3}%
-\contentsline {section}{\numberline {5}Second Technique: Bias Suppression }{12}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Composition}{13}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Standard Composition | $C^{LL}$}{14}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Abort Phobic Compositions | $C^{L\perp },C^{\perp L}$}{14}{subsection.5.3}%
-\contentsline {section}{\numberline {6}Security Proof | Asymptotic}{16}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Cheat vectors optimisation using Semi Definite Programming}{16}{subsection.6.1}%
-\contentsline {subsubsection}{\numberline {6.1.1}SDP when Alice self-tests}{16}{subsubsection.6.1.1}%
-\contentsline {subsubsection}{\numberline {6.1.2}SDP when Bob self-tests}{18}{subsubsection.6.1.2}%
-\contentsline {section}{\numberline {7}Self-testing: asymptotic case}{20}{section.7}%
-\contentsline {section}{\numberline {8}Self-testing: finite testing}{20}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Estimation of GHZ winning probability}{20}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}Robust self-testing and continuity of SDP}{21}{subsection.8.2}%
-\contentsline {subsubsection}{\numberline {8.2.1}Bob dishonest}{21}{subsubsection.8.2.1}%
-\contentsline {subsection}{\numberline {8.3}The self-testing step {[}Discuss with Tom before writing{]} }{21}{subsection.8.3}%
-\contentsline {subsubsection}{\numberline {8.3.1}Notes on Martingales}{22}{subsubsection.8.3.1}%
-\contentsline {subsection}{\numberline {8.4}The continuity argument {[}Enter Jamie{]}}{22}{subsection.8.4}%
+\contentsline {subsection}{\numberline {1.4}Applications}{5}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}(in progress) Contributions}{6}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}Proof Technique}{6}{subsection.1.6}%
+\contentsline {section}{\numberline {2}Device Independent Weak Coin Flipping protocols | State Of The Art}{7}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Device Independence and the Box Paradigm}{7}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}The GHZ Test}{9}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}The Protocol}{9}{subsection.2.3}%
+\contentsline {section}{\numberline {3}First Technique: Self-testing (single shot, unbalanced)}{10}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Cheat Vectors }{10}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Alice self-tests | Protocol $\mathcal {P}$}{10}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Bob self-tests | Protocol $\mathcal {Q}$}{11}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Second Technique: Bias Suppression }{12}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Composition}{12}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Standard Composition | $C^{LL}$}{13}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Abort Phobic Compositions | $C^{L\perp },C^{\perp L}$}{14}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Security Proof | Asymptotic}{15}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Cheat vectors optimisation using Semi Definite Programming}{16}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}SDP when Alice self-tests}{16}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}SDP when Bob self-tests}{17}{subsubsection.5.1.2}%
+\contentsline {section}{\numberline {6}Self-testing: asymptotic case}{19}{section.6}%
+\contentsline {section}{\numberline {7}Self-testing: finite testing}{19}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Estimation of GHZ winning probability}{19}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Robust self-testing and continuity of SDP}{20}{subsection.7.2}%
+\contentsline {subsubsection}{\numberline {7.2.1}Bob dishonest}{20}{subsubsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.3}The self-testing step {[}Discuss with Tom before writing{]} }{20}{subsection.7.3}%
+\contentsline {subsubsection}{\numberline {7.3.1}Notes on Martingales}{21}{subsubsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.4}The continuity argument {[}Enter Jamie{]}}{21}{subsection.7.4}%
