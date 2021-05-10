@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.18)  7 MAY 2021 11:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.18)  10 MAY 2021 00:09
 entering extended mode
 **c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/LyX/DI_WCF_draft1.tex
 (c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/LyX/DI_WCF_draft1.tex
@@ -492,87 +492,87 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 )
 \Hy@SectionHShift=\skip55
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 72.
-Package refstyle Info: Reference template \newref{thm} redefined on input line 76.
-Package refstyle Info: \thmkey created on input line 76.
-Package refstyle Info: \thmlabel created on input line 76.
-Package refstyle Info: \thmref created on input line 76.
-Package refstyle Info: \Thmref created on input line 76.
-Package refstyle Info: \thmrangeref created on input line 76.
-Package refstyle Info: \Thmrangeref created on input line 76.
-Package refstyle Info: \thmpageref created on input line 76.
-Package refstyle Info: New reference template \newref{def} on input line 77.
-Package refstyle Info: \defkey created on input line 77.
-Package refstyle Info: \deflabel created on input line 77.
-Package refstyle Info: \defref created on input line 77.
-Package refstyle Info: \Defref created on input line 77.
-Package refstyle Info: \defrangeref created on input line 77.
-Package refstyle Info: \Defrangeref created on input line 77.
-Package refstyle Info: \defpageref created on input line 77.
-Package refstyle Info: New reference template \newref{alg} on input line 78.
-Package refstyle Info: \algkey created on input line 78.
-Package refstyle Info: \alglabel created on input line 78.
-Package refstyle Info: \algref created on input line 78.
-Package refstyle Info: \Algref created on input line 78.
-Package refstyle Info: \algrangeref created on input line 78.
-Package refstyle Info: \Algrangeref created on input line 78.
-Package refstyle Info: \algpageref created on input line 78.
-Package refstyle Info: Reference template \newref{lem} redefined on input line 80.
-Package refstyle Info: \lemkey created on input line 80.
-Package refstyle Info: \lemlabel created on input line 80.
-Package refstyle Info: \lemref created on input line 80.
-Package refstyle Info: \Lemref created on input line 80.
-Package refstyle Info: \lemrangeref created on input line 80.
-Package refstyle Info: \Lemrangeref created on input line 80.
-Package refstyle Info: \lempageref created on input line 80.
-Package refstyle Info: New reference template \newref{claim} on input line 81.
-Package refstyle Info: \claimkey created on input line 81.
-Package refstyle Info: \claimlabel created on input line 81.
-Package refstyle Info: \claimref created on input line 81.
-Package refstyle Info: \Claimref created on input line 81.
-Package refstyle Info: \claimrangeref created on input line 81.
-Package refstyle Info: \Claimrangeref created on input line 81.
-Package refstyle Info: \claimpageref created on input line 81.
-Package refstyle Info: Reference template \newref{sec} redefined on input line 82.
-Package refstyle Info: \seckey created on input line 82.
-Package refstyle Info: \seclabel created on input line 82.
-Package refstyle Info: \secref created on input line 82.
-Package refstyle Info: \Secref created on input line 82.
-Package refstyle Info: \secrangeref created on input line 82.
-Package refstyle Info: \Secrangeref created on input line 82.
-Package refstyle Info: \secpageref created on input line 82.
-Package refstyle Info: Reference template \newref{subsec} redefined on input line 83.
-Package refstyle Info: \subseckey created on input line 83.
-Package refstyle Info: \subseclabel created on input line 83.
-Package refstyle Info: \subsecref created on input line 83.
-Package refstyle Info: \Subsecref created on input line 83.
-Package refstyle Info: \subsecrangeref created on input line 83.
-Package refstyle Info: \Subsecrangeref created on input line 83.
-Package refstyle Info: \subsecpageref created on input line 83.
-Package refstyle Info: New reference template \newref{subsubsec} on input line 84.
-Package refstyle Info: \subsubseckey created on input line 84.
-Package refstyle Info: \subsubseclabel created on input line 84.
-Package refstyle Info: \subsubsecref created on input line 84.
-Package refstyle Info: \Subsubsecref created on input line 84.
-Package refstyle Info: \subsubsecrangeref created on input line 84.
-Package refstyle Info: \Subsubsecrangeref created on input line 84.
-Package refstyle Info: \subsubsecpageref created on input line 84.
-Package refstyle Info: New reference template \newref{assu} on input line 87.
-Package refstyle Info: \assukey created on input line 87.
-Package refstyle Info: \assulabel created on input line 87.
-Package refstyle Info: \assuref created on input line 87.
-Package refstyle Info: \Assuref created on input line 87.
-Package refstyle Info: \assurangeref created on input line 87.
-Package refstyle Info: \Assurangeref created on input line 87.
-Package refstyle Info: \assupageref created on input line 87.
-Package refstyle Info: New reference template \newref{fact} on input line 90.
-Package refstyle Info: \factkey created on input line 90.
-Package refstyle Info: \factlabel created on input line 90.
-Package refstyle Info: \factref created on input line 90.
-Package refstyle Info: \Factref created on input line 90.
-Package refstyle Info: \factrangeref created on input line 90.
-Package refstyle Info: \Factrangeref created on input line 90.
-Package refstyle Info: \factpageref created on input line 90.
+Package hyperref Info: Option `colorlinks' set `true' on input line 68.
+Package refstyle Info: Reference template \newref{thm} redefined on input line 72.
+Package refstyle Info: \thmkey created on input line 72.
+Package refstyle Info: \thmlabel created on input line 72.
+Package refstyle Info: \thmref created on input line 72.
+Package refstyle Info: \Thmref created on input line 72.
+Package refstyle Info: \thmrangeref created on input line 72.
+Package refstyle Info: \Thmrangeref created on input line 72.
+Package refstyle Info: \thmpageref created on input line 72.
+Package refstyle Info: New reference template \newref{def} on input line 73.
+Package refstyle Info: \defkey created on input line 73.
+Package refstyle Info: \deflabel created on input line 73.
+Package refstyle Info: \defref created on input line 73.
+Package refstyle Info: \Defref created on input line 73.
+Package refstyle Info: \defrangeref created on input line 73.
+Package refstyle Info: \Defrangeref created on input line 73.
+Package refstyle Info: \defpageref created on input line 73.
+Package refstyle Info: New reference template \newref{alg} on input line 74.
+Package refstyle Info: \algkey created on input line 74.
+Package refstyle Info: \alglabel created on input line 74.
+Package refstyle Info: \algref created on input line 74.
+Package refstyle Info: \Algref created on input line 74.
+Package refstyle Info: \algrangeref created on input line 74.
+Package refstyle Info: \Algrangeref created on input line 74.
+Package refstyle Info: \algpageref created on input line 74.
+Package refstyle Info: Reference template \newref{lem} redefined on input line 76.
+Package refstyle Info: \lemkey created on input line 76.
+Package refstyle Info: \lemlabel created on input line 76.
+Package refstyle Info: \lemref created on input line 76.
+Package refstyle Info: \Lemref created on input line 76.
+Package refstyle Info: \lemrangeref created on input line 76.
+Package refstyle Info: \Lemrangeref created on input line 76.
+Package refstyle Info: \lempageref created on input line 76.
+Package refstyle Info: New reference template \newref{claim} on input line 77.
+Package refstyle Info: \claimkey created on input line 77.
+Package refstyle Info: \claimlabel created on input line 77.
+Package refstyle Info: \claimref created on input line 77.
+Package refstyle Info: \Claimref created on input line 77.
+Package refstyle Info: \claimrangeref created on input line 77.
+Package refstyle Info: \Claimrangeref created on input line 77.
+Package refstyle Info: \claimpageref created on input line 77.
+Package refstyle Info: Reference template \newref{sec} redefined on input line 78.
+Package refstyle Info: \seckey created on input line 78.
+Package refstyle Info: \seclabel created on input line 78.
+Package refstyle Info: \secref created on input line 78.
+Package refstyle Info: \Secref created on input line 78.
+Package refstyle Info: \secrangeref created on input line 78.
+Package refstyle Info: \Secrangeref created on input line 78.
+Package refstyle Info: \secpageref created on input line 78.
+Package refstyle Info: Reference template \newref{subsec} redefined on input line 79.
+Package refstyle Info: \subseckey created on input line 79.
+Package refstyle Info: \subseclabel created on input line 79.
+Package refstyle Info: \subsecref created on input line 79.
+Package refstyle Info: \Subsecref created on input line 79.
+Package refstyle Info: \subsecrangeref created on input line 79.
+Package refstyle Info: \Subsecrangeref created on input line 79.
+Package refstyle Info: \subsecpageref created on input line 79.
+Package refstyle Info: New reference template \newref{subsubsec} on input line 80.
+Package refstyle Info: \subsubseckey created on input line 80.
+Package refstyle Info: \subsubseclabel created on input line 80.
+Package refstyle Info: \subsubsecref created on input line 80.
+Package refstyle Info: \Subsubsecref created on input line 80.
+Package refstyle Info: \subsubsecrangeref created on input line 80.
+Package refstyle Info: \Subsubsecrangeref created on input line 80.
+Package refstyle Info: \subsubsecpageref created on input line 80.
+Package refstyle Info: New reference template \newref{assu} on input line 83.
+Package refstyle Info: \assukey created on input line 83.
+Package refstyle Info: \assulabel created on input line 83.
+Package refstyle Info: \assuref created on input line 83.
+Package refstyle Info: \Assuref created on input line 83.
+Package refstyle Info: \assurangeref created on input line 83.
+Package refstyle Info: \Assurangeref created on input line 83.
+Package refstyle Info: \assupageref created on input line 83.
+Package refstyle Info: New reference template \newref{fact} on input line 86.
+Package refstyle Info: \factkey created on input line 86.
+Package refstyle Info: \factlabel created on input line 86.
+Package refstyle Info: \factref created on input line 86.
+Package refstyle Info: \Factref created on input line 86.
+Package refstyle Info: \factrangeref created on input line 86.
+Package refstyle Info: \Factrangeref created on input line 86.
+Package refstyle Info: \factpageref created on input line 86.
  ("C:\Program Files\MiKTeX\tex/generic/babel\babel.sty"
 Package: babel 2020/07/13 3.47 The Babel package
  ("C:\Program Files\MiKTeX\tex/generic/babel\babel.def"
@@ -607,42 +607,42 @@ File: l3backend-pdfmode.def 2020-06-29 L3 backend support: PDF mode
 ) (DI_WCF_draft1.aux)
 \openout1 = `DI_WCF_draft1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/nxlmi/m/it on input line 105.
-LaTeX Font Info:    Trying to load font information for OML+nxlmi on input line 105.
+LaTeX Font Info:    Checking defaults for OML/nxlmi/m/it on input line 99.
+LaTeX Font Info:    Trying to load font information for OML+nxlmi on input line 99.
  ("C:\Program Files\MiKTeX\tex/latex/newtx\omlnxlmi.fd"
 File: omlnxlmi.fd 2013/11/19 Fontinst v1.933 font definitions for OML/nxlmi.
 )
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 105.
-LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 105.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 99.
+LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 99.
  ("C:\Program Files\MiKTeX\tex/latex/newtx\untxexa.fd"
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 105.
-LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line 105.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 99.
+LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line 99.
  ("C:\Program Files\MiKTeX\tex/latex/newtx\lmsntxsy.fd"
 File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
 )
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 105.
-LaTeX Font Info:    Trying to load font information for LMX+ntxexx on input line 105.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 99.
+LaTeX Font Info:    Trying to load font information for LMX+ntxexx on input line 99.
  ("C:\Program Files\MiKTeX\tex/latex/newtx\lmxntxexx.fd"
 File: lmxntxexx.fd 2016/07/03 Fontinst v1.933 font definitions for LMX/ntxexx.
 )
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
 \c@mv@tabular=\count282
 \c@mv@boldtabular=\count283
 
@@ -702,7 +702,7 @@ Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
 )
 \AtBeginShipoutBox=\box49
-Package hyperref Info: Link coloring ON on input line 105.
+Package hyperref Info: Link coloring ON on input line 99.
  ("C:\Program Files\MiKTeX\tex/latex/hyperref\nameref.sty"
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
  ("C:\Program Files\MiKTeX\tex/latex/refcount\refcount.sty"
@@ -712,36 +712,36 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count290
 )
-LaTeX Info: Redefining \ref on input line 105.
-LaTeX Info: Redefining \pageref on input line 105.
-LaTeX Info: Redefining \nameref on input line 105.
+LaTeX Info: Redefining \ref on input line 99.
+LaTeX Info: Redefining \pageref on input line 99.
+LaTeX Info: Redefining \nameref on input line 99.
  (DI_WCF_draft1.out) (DI_WCF_draft1.out)
 \@outlinefile=\write3
 \openout3 = `DI_WCF_draft1.out'.
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 17.28pt on input line 108.
+(Font)              scaled to size 17.28pt on input line 102.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 108.
+(Font)              scaled to size 12.0pt on input line 102.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 108.
+(Font)              scaled to size 12.0pt on input line 102.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 8.8pt on input line 108.
+(Font)              scaled to size 8.8pt on input line 102.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.6pt on input line 108.
-LaTeX Font Info:    Trying to load font information for U+ntxmia on input line 108.
+(Font)              scaled to size 6.6pt on input line 102.
+LaTeX Font Info:    Trying to load font information for U+ntxmia on input line 102.
  ("C:\Program Files\MiKTeX\tex/latex/newtx\untxmia.fd"
 File: untxmia.fd 2018/04/14 Fontinst v1.933 font definitions for U/ntxmia.
 )
-LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 108.
+LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 102.
  ("C:\Program Files\MiKTeX\tex/latex/newtx\untxsym.fd"
 File: untxsym.fd 2015/03/20 Fontinst v1.933 font definitions for U/ntxsym.
 )
-LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 108.
+LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 102.
  ("C:\Program Files\MiKTeX\tex/latex/newtx\untxsyc.fd"
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
-LaTeX Font Info:    Trying to load font information for U+wasy on input line 108.
+LaTeX Font Info:    Trying to load font information for U+wasy on input line 102.
  ("C:\Program Files\MiKTeX\tex/latex/wasysym\uwasy.fd"
 File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
 )
@@ -749,33 +749,33 @@ File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
 LaTeX Warning: No \author given.
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 108.
+(Font)              scaled to size 9.0pt on input line 102.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 9.0pt on input line 108.
+(Font)              scaled to size 9.0pt on input line 102.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 110.
+(Font)              scaled to size 9.0pt on input line 104.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 110.
+(Font)              scaled to size 7.3pt on input line 104.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 5.5pt on input line 110.
+(Font)              scaled to size 5.5pt on input line 104.
 
 LaTeX Font Warning: Font shape `U/wasy/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 110.
+(Font)              size <5> substituted on input line 104.
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 110.
+(Font)              scaled to size 7.3pt on input line 104.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 110.
+(Font)              scaled to size 8.0pt on input line 104.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 110.
+(Font)              scaled to size 8.0pt on input line 104.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.2pt on input line 110.
+(Font)              scaled to size 6.2pt on input line 104.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.2pt on input line 110.
+(Font)              scaled to size 6.2pt on input line 104.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 126.
+(Font)              scaled to size 14.4pt on input line 120.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 126.
+(Font)              scaled to size 14.4pt on input line 120.
 (DI_WCF_draft1.toc
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 10.0pt on input line 2.
@@ -787,90 +787,120 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 
 {C:/Users/atuls/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 134.
+(Font)              scaled to size 12.0pt on input line 128.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 183.
+(Font)              scaled to size 10.0pt on input line 177.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 8.0pt on input line 183.
+(Font)              scaled to size 8.0pt on input line 177.
  [2]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 5.5pt on input line 231.
-LaTeX Font Info:    Trying to load font information for TS1+LinuxLibertineT-TLF on input line 250.
+(Font)              scaled to size 5.5pt on input line 225.
+LaTeX Font Info:    Trying to load font information for TS1+LinuxLibertineT-TLF on input line 244.
  ("C:\Program Files\MiKTeX\tex/latex/libertine\ts1linuxlibertinet-tlf.fd"
 File: TS1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for TS1/LinuxLibertineT-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 250.
+(Font)              scaled to size 10.0pt on input line 244.
  [3] [4] [5] [6]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 569.
+(hyperref)                removing `math shift' on input line 568.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 569.
+(hyperref)                removing `math shift' on input line 568.
+
+[7]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 631.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 633.
+(hyperref)                removing `math shift' on input line 631.
+
+[8]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 780.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 633.
-
-[7] [8]
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 8.0pt on input line 791.
+(hyperref)                removing `superscript' on input line 780.
 
 
-LaTeX Warning: Reference `claim:polarityPreserved' on page 9 undefined on input line 791.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 780.
 
-<figures/temp_standardComp.png, id=279, 781.41937pt x 875.52094pt>
+[9]
+<figures/temp_standardComp.png, id=290, 781.41937pt x 875.52094pt>
 File: figures/temp_standardComp.png Graphic file (type png)
 <use figures/temp_standardComp.png>
-Package pdftex.def Info: figures/temp_standardComp.png  used on input line 791.
+Package pdftex.def Info: figures/temp_standardComp.png  used on input line 843.
 (pdftex.def)             Requested size: 170.71652pt x 191.2659pt.
-[9]
-<figures/temp_AAC_Qs.png, id=299, 791.95876pt x 820.56563pt>
-File: figures/temp_AAC_Qs.png Graphic file (type png)
-<use figures/temp_AAC_Qs.png>
-Package pdftex.def Info: figures/temp_AAC_Qs.png  used on input line 868.
-(pdftex.def)             Requested size: 170.71652pt x 176.88144pt.
- [10 <./figures/temp_standardComp.png>] [11 <./figures/temp_AAC_Qs.png>]
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 850.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 850.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\perp' on input line 850.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 850.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\perp' on input line 850.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 850.
+
+[10]
+<figures/temp_AAC_Ps.png, id=305, 978.65625pt x 851.43094pt>
+File: figures/temp_AAC_Ps.png Graphic file (type png)
+<use figures/temp_AAC_Ps.png>
+Package pdftex.def Info: figures/temp_AAC_Ps.png  used on input line 903.
+(pdftex.def)             Requested size: 170.71652pt x 148.52194pt.
+ [11 <./figures/temp_standardComp.png> <./figures/temp_AAC_Ps.png>]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 7.3pt on input line 938.
+(Font)              scaled to size 7.3pt on input line 967.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 5.5pt on input line 938.
- [12] [13] [14] (DI_WCF_draft1.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1197.
- [15]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1197.
+(Font)              scaled to size 5.5pt on input line 967.
+ [12] [13] [14] (DI_WCF_draft1.bbl [15])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1226.
+ [16]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1226.
  (DI_WCF_draft1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1197.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1197.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1226.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1226.
 Package rerunfilecheck Info: File `DI_WCF_draft1.out' has not changed.
-(rerunfilecheck)             Checksum: F93B84E78FC4F8BF8A17D204145D3A3E;1680.
+(rerunfilecheck)             Checksum: CB4375FFBD29ADAA9588097A7272BCC0;1693.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.97499pt have occurred.
 
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 12241 strings out of 481225
- 178222 string characters out of 2915928
- 457346 words of memory out of 3000000
- 27357 multiletter control sequences out of 15000+200000
- 705759 words of font info for 229 fonts, out of 3000000 for 9000
+ 12239 strings out of 481225
+ 178155 string characters out of 2915928
+ 457159 words of memory out of 3000000
+ 27347 multiletter control sequences out of 15000+200000
+ 703339 words of font info for 235 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,13n,39p,854b,528s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 43i,13n,39p,854b,576s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\atuls\AppData\Local\MiKTeX\fonts/pk/ljfour/public/wasy/dpi600\wasy10.pk>{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}<C:/Program Files/MiKTeX/fonts/type1/public/newtx/LibertineMathMI.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/LibertineMathMI5.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/LibertineMathMI7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/LibertineMathRM.pfb><C:/Program Files/MiKTeX/fonts/type1/public/libertine/LinLibertineT.pfb><C:/Program Files/MiKTeX/fonts/type1/public/libertine/LinLibertineTB.pfb><C:/Program Files/MiKTeX/fonts/type1/public/libertine/LinLibertineTI.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/NewTXMI.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/NewTXMI7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/txexs.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/txmiaX.pfb><C:/Program Files/MiKTeX/fonts/type1/public/txfonts/txsya.pfb><C:/Program Files/MiKTeX/fonts/type1/public/txfonts/txsyb.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/txsys.pfb>
-Output written on DI_WCF_draft1.pdf (15 pages, 694296 bytes).
+Output written on DI_WCF_draft1.pdf (16 pages, 690814 bytes).
 PDF statistics:
- 475 PDF objects out of 1000 (max. 8388607)
- 144 named destinations out of 1000 (max. 500000)
+ 481 PDF objects out of 1000 (max. 8388607)
+ 145 named destinations out of 1000 (max. 500000)
  187 words of extra memory for PDF output out of 10000 (max. 10000000)
 

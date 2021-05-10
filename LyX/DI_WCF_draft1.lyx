@@ -700,7 +700,7 @@ balances
 \end_inset
 
 , we denote the resulting protocol by 
-\begin_inset Formula $C_{{\rm stand}}(\mathcal{X})$
+\begin_inset Formula $C_{LL}(\mathcal{X})$
 \end_inset
 
 .
@@ -723,7 +723,7 @@ For all
  under the standard composition is given by
 \begin_inset Formula 
 \[
-p_{X}^{*}(C_{{\rm stand}}(\mathcal{I}))\approx\frac{1}{2}+0.336\dots
+p_{X}^{*}(C^{LL}(\mathcal{I}))\approx\frac{1}{2}+0.336\dots
 \]
 
 \end_inset
@@ -735,7 +735,7 @@ while for the improved protocol
 , these are given by
 \begin_inset Formula 
 \begin{equation}
-p_{X}^{*}(C_{{\rm stand}}(\mathcal{P}))\approx\frac{1}{2}+0.3199\dots.\label{eq:SikoraP}
+p_{X}^{*}(C^{LL}(\mathcal{P}))\approx\frac{1}{2}+0.3199\dots.\label{eq:SikoraP}
 \end{equation}
 
 \end_inset
@@ -768,7 +768,7 @@ cheat vectors
 \begin_inset Quotes eld
 \end_inset
 
-abort augmented
+abort phobic
 \begin_inset Quotes erd
 \end_inset
 
@@ -777,11 +777,31 @@ abort augmented
 \end_inset
 
 ) by 
-\begin_inset Formula $C_{{\rm AAC}}(\mathcal{X})$
+\begin_inset Formula $C_{\perp L}(\mathcal{X})$
+\end_inset
+
+ or 
+\begin_inset Formula $C_{L\perp}(\mathcal{X})$
 \end_inset
 
 .
  
+\end_layout
+
+\begin_layout Itemize
+Applying the technique to 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+, the cheating probabilities become 
+\begin_inset Formula 
+\[
+p_{X}^{*}(C^{\perp L}(\mathcal{P}))\approx\frac{1}{2}+0.3148\dots
+\]
+
+\end_inset
+
+which is a further improvement.
 \end_layout
 
 \begin_layout Itemize
@@ -792,7 +812,7 @@ Using this technique on
 , the cheating probabilities become 
 \begin_inset Formula 
 \[
-p_{X}^{*}(C_{{\rm AAC}}(\mathcal{Q}))\approx\frac{1}{2}+0.317\dots
+p_{X}^{*}(C^{L\perp}(\mathcal{Q}))\approx\frac{1}{2}+0.3226\dots
 \]
 
 \end_inset
@@ -801,7 +821,7 @@ for all
 \begin_inset Formula $X\in\{A,B\}$
 \end_inset
 
-, which is even better than 
+, which is worse than even 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "eq:SikoraP"
@@ -816,14 +836,15 @@ noprefix "false"
 \end_layout
 
 \begin_layout Itemize
-Finally, we combine both these protocols to obtain (again, for all 
+However, when we combine both these protocols to obtain (again, for all
+ 
 \begin_inset Formula $X\in\{A,B\}$
 \end_inset
 
 )
 \begin_inset Formula 
 \[
-p_{X}^{*}(C_{{\rm AAC}}(\mathcal{Q},\mathcal{Q},\dots,\mathcal{Q},\mathcal{P}))\approx\frac{1}{2}+0.2908\dots
+p_{X}^{*}(C^{L\perp}(\mathcal{Q},\mathcal{Q},\dots,\mathcal{Q},\mathcal{P}))\approx\frac{1}{2}+0.29104\dots
 \]
 
 \end_inset
@@ -836,7 +857,24 @@ level
 \begin_inset Quotes erd
 \end_inset
 
- we use 
+ we use
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula $C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{Q})$
+\end_inset
+
+ is strictly worse than considering 
+\begin_inset Formula $C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{P})$
+\end_inset
+
+; this should become evident later.
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset Formula $\mathcal{P}$
 \end_inset
 
@@ -849,6 +887,10 @@ level
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 TODO: Obvious questions (answers to which I don't have anymore; stupid memory):
  what about 
 \begin_inset Formula $p_{X}^{*}(C_{{\rm AAC}}(\mathcal{P}))$
@@ -866,8 +908,9 @@ TODO: Obvious questions (answers to which I don't have anymore; stupid memory):
 
 \end_layout
 
-\begin_layout Standard
-aoeu
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3730,7 +3773,7 @@ This is just to facilitate notation.
 \end_layout
 
 \end_deeper
-\begin_layout Algorithm
+\begin_layout Standard
 \begin_inset Note Note
 status collapsed
 
@@ -3759,8 +3802,13 @@ inverted 0
 status open
 
 \begin_layout Standard
-The study of composed protocols is simplified by assuming that honest players
- output either 
+The study of such composed protocols is simplified by assuming that in an
+ honest run, neither player outputs 
+\begin_inset Formula $\perp$
+\end_inset
+
+ (abort), i.e.
+ they either output 
 \begin_inset Formula $A$
 \end_inset
 
@@ -3768,11 +3816,7 @@ The study of composed protocols is simplified by assuming that honest players
 \begin_inset Formula $B$
 \end_inset
 
- but never 
-\begin_inset Formula $\perp$
-\end_inset
-
- (abort).
+.
  We take a moment to explain this.
 \end_layout
 
@@ -3798,7 +3842,7 @@ For instance, suppose that in the execution of the aforementioned protocol
  (with no-honest-abort), Alice behaves honestly but Bob is malicious.
  Suppose after interacting with Bob, Alice reaches the conclusion that she
  must abort.
- Since she knows that if Bob were honest, the outcome abort could not have
+ Since she knows that if Bob was honest, the outcome abort could not have
  arisen, she concludes that Bob is cheating and declares herself the winner,
  i.e.
  she outputs 
@@ -3884,7 +3928,15 @@ name "def:lenientR"
 \begin_inset Quotes erd
 \end_inset
 
- we mean that Alice (Bob) follows 
+, which we denote by 
+\begin_inset Formula $\mathcal{R}^{L\perp}$
+\end_inset
+
+ (
+\begin_inset Formula $\mathcal{R}^{\perp L}$
+\end_inset
+
+), we mean that Alice (Bob) follows 
 \begin_inset Formula $\mathcal{R}$
 \end_inset
 
@@ -3917,7 +3969,11 @@ lenient
 \begin_inset Quotes erd
 \end_inset
 
- we mean 
+, which we denote by 
+\begin_inset Formula $\mathcal{R}^{LL}$
+\end_inset
+
+, we mean 
 \begin_inset Formula $\mathcal{R}$
 \end_inset
 
@@ -3932,22 +3988,22 @@ status open
 
 \begin_layout Standard
 For clarity and conciseness, we define 
-\begin_inset Formula $C_{LL}$
+\begin_inset Formula $C^{LL}$
 \end_inset
 
- to be compositions with lenient protocols.
+ to be compositions with lenient variants of the given protocols.
  We work out some examples of such protocols and analyse their security
  in the following section.
  These can be improved by considering 
-\begin_inset Formula $C_{\perp L}$
+\begin_inset Formula $C^{L\perp}$
 \end_inset
 
  and 
-\begin_inset Formula $C_{L\perp}$
+\begin_inset Formula $C^{\perp L}$
 \end_inset
 
-, compositions where only one player is lenient.
- 
+—compositions where only one player is lenient.
+ We discuss those afterwards.
 \end_layout
 
 \end_inset
@@ -3960,15 +4016,15 @@ For clarity and conciseness, we define
 status open
 
 \begin_layout Plain Layout
-\begin_inset Formula $C_{LL}$
+\begin_inset Formula $C^{LL}$
 \end_inset
 
 , 
-\begin_inset Formula $C_{\perp L}$
+\begin_inset Formula $C^{\perp L}$
 \end_inset
 
  and 
-\begin_inset Formula $C_{L\perp}$
+\begin_inset Formula $C^{L\perp}$
 \end_inset
 
 
@@ -3976,7 +4032,7 @@ status open
 
 \end_inset
 
- Suppose WCF protocol 
+ Suppose a WCF protocol 
 \begin_inset Formula $\mathcal{X}$
 \end_inset
 
@@ -3994,33 +4050,47 @@ noprefix "false"
 
 \end_inset
 
-) and let 
-\begin_inset Formula $\mathcal{X}$
-\end_inset
-
- and 
-\begin_inset Formula $\mathcal{Y}'$
-\end_inset
-
- be their 
-\emph on
-lenient
-\emph default
- variants, respectively.
+).
  Then define 
 \begin_inset Formula 
 \begin{align*}
-C_{LL}(\mathcal{X},\mathcal{Y}) & :=C(\mathcal{X}',\mathcal{Y}')\\
-C_{\perp L}(\mathcal{X},\mathcal{Y}) & :=C(\mathcal{X},\mathcal{Y}')
+C^{LL}(\mathcal{X},\mathcal{Y}) & :=C(\mathcal{X}^{LL},\mathcal{Y}),\\
+C^{\perp L}(\mathcal{X},\mathcal{Y}) & :=C(\mathcal{X}^{\perp L},\mathcal{Y}),\quad\text{and}\\
+C^{L\perp}(\mathcal{X},\mathcal{Y}) & :=C(\mathcal{X}^{L\perp},\mathcal{Y}).
 \end{align*}
 
 \end_inset
 
-.
+In words, 
+\begin_inset Formula $C^{LL}$
+\end_inset
+
+ is referred to as a 
+\emph on
+standard 
+\emph default
+composition, while 
+\begin_inset Formula $C^{\perp L}$
+\end_inset
+
+ and 
+\begin_inset Formula $C^{L\perp}$
+\end_inset
+
+ are referred to as 
+\emph on
+abort-phobic
+\emph default
+ compositions.
+ 
 \end_layout
 
 \begin_layout Subsection
-Standard Analysis
+Standard Composition | 
+\begin_inset Formula $C^{LL}$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4029,17 +4099,11 @@ inverted 0
 status open
 
 \begin_layout Standard
-In the standard analysis, we only use bounds on the cheating probabilities,
- 
-\begin_inset Formula $p_{A}^{*}$
+We begin with the simplest case, standard composition, 
+\begin_inset Formula $C^{LL}$
 \end_inset
 
- and 
-\begin_inset Formula $p_{B}^{*}$
-\end_inset
-
-, of the protocols being composed to obtain the corresponding bounds for
- the resultant protocol.
+.
  Let us take an example.
  Consider protocol 
 \begin_inset Formula $\mathcal{P}$
@@ -4068,27 +4132,27 @@ noprefix "false"
 )
 \begin_inset Formula 
 \begin{align*}
-p_{A}^{*}(\mathcal{P}_{A}) & \le\alpha\approx0.852\dots,\\
-p_{B}^{*}(\mathcal{P}_{A}) & \le\beta\approx0.667\dots.
+p_{A}^{*}(\mathcal{P}_{A}) & =:\alpha\approx0.852\dots,\\
+p_{B}^{*}(\mathcal{P}_{A}) & =:\beta\approx0.667\dots.
 \end{align*}
 
 \end_inset
 
 Note that therefore 
-\begin_inset Formula $p_{A}^{*}(\mathcal{P}_{B})\le\beta$
+\begin_inset Formula $p_{A}^{*}(\mathcal{P}_{B})=\beta$
 \end_inset
 
  and 
-\begin_inset Formula $p_{B}^{*}(\mathcal{P}_{B})\le\alpha$
+\begin_inset Formula $p_{B}^{*}(\mathcal{P}_{B})=\alpha$
 \end_inset
 
 .
  Further, let 
-\begin_inset Formula $\mathcal{P}':=C_{{\rm }}(\mathcal{P},\mathcal{P})$
+\begin_inset Formula $\mathcal{P}':=C^{LL}(\mathcal{P},\mathcal{P})$
 \end_inset
 
 , i.e.
- Alice and Bob first execute 
+ Alice and Bob (who are both lenient) first execute 
 \begin_inset Formula $\mathcal{P}_{A}$
 \end_inset
 
@@ -4100,11 +4164,16 @@ Note that therefore
 \begin_inset Formula $\mathcal{P}_{A}$
 \end_inset
 
-, otherwise they execute 
+, while if the outcome is 
+\begin_inset Formula $B$
+\end_inset
+
+, they execute 
 \begin_inset Formula $\mathcal{P}_{B}$
 \end_inset
 
- (see 
+.
+ This is illustrated in 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "fig:Standard-composition-technique"
@@ -4114,17 +4183,18 @@ noprefix "false"
 
 \end_inset
 
-).
- Then, 
+ where note that the event abort doesn't appear due to the leniency assumption.
+ This allows us to evaluate the cheating probabilities for the resulting
+ protocol as 
 \begin_inset Formula 
 \begin{align}
-p_{A}^{*}(\mathcal{P}'_{A}) & \le\alpha\alpha+(1-\alpha)\beta=:\alpha^{(1)},\label{eq:pStarAPprimeA}\\
-p_{B}^{*}(\mathcal{P}'_{B}) & \le\beta\alpha+(1-\beta)\beta=:\beta^{(1)}.\nonumber 
+p_{A}^{*}(\mathcal{P}') & =\alpha\alpha+(1-\alpha)\beta=:\alpha^{(1)},\quad\text{and}\label{eq:pStarAPprimeA}\\
+p_{B}^{*}(\mathcal{P}') & =\beta\alpha+(1-\beta)\beta=:\beta^{(1)}.\nonumber 
 \end{align}
 
 \end_inset
 
-To see this, focus on 
+To see this, consider 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "eq:pStarAPprimeA"
@@ -4145,20 +4215,67 @@ noprefix "false"
 \begin_inset Formula $A$
 \end_inset
 
- with probability at most 
+ with probability 
 \begin_inset Formula $\alpha$
 \end_inset
 
 .
- Assuming that with all the remaining probability, the outcome is 
+ From leniency, she knows that Bob would output 
 \begin_inset Formula $B$
 \end_inset
 
- (which it is not because Bob will abort with some probability) gives us
- a bound on the best that Alice can do.
- Evidently, this bound may not be tight and we address that in the following
- subsection.
+ with the remaining probability.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Without leniency, this probability could have been shared between the outcomes
  
+\begin_inset Formula $\perp$
+\end_inset
+
+ (abort) and 
+\begin_inset Formula $B$
+\end_inset
+
+.
+ Consequently, only upper bounds could be obtained on 
+\begin_inset Formula $p_{A}^{*}(\mathcal{P}')$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{B}^{*}(\mathcal{P}')$
+\end_inset
+
+ using only 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ as security guarantees for 
+\begin_inset Formula $\mathcal{P}_{A}$
+\end_inset
+
+.
+ Upper bounds, however, would not be enough to determine the polarity of
+ 
+\begin_inset Formula $\mathcal{P}'$
+\end_inset
+
+ and an stymie unambiguous repetition of the composition procedure (at least
+ as it is defined).
+ One could nevertheless compose by hoping that the upper bounds can be used
+ to accurately represent the polarity.
+ This would still yield a protocol and the same calculation would yield
+ correct bounds but the composition itself might be sub-optimal.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4180,9 +4297,10 @@ status collapsed
 \end_inset
 
 .
+ Intuitively, it means that plority is preserved by the composition procedure.
  Proceeding similarly, i.e.
  defining 
-\begin_inset Formula $\mathcal{\mathcal{P}}'':=C(\mathcal{P},\mathcal{P}')$
+\begin_inset Formula $\mathcal{\mathcal{P}}'':=C^{LL}(\mathcal{P},\mathcal{P}')$
 \end_inset
 
 , and repeating 
@@ -4191,10 +4309,10 @@ status collapsed
 
  times overall, one obtains
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Note that 
+Again, note that 
 \begin_inset Formula $\alpha^{(k+1)}-\beta^{(k+1)}=(\alpha^{(k)}-\beta^{(k)})(\alpha-\beta)>0$
 \end_inset
 
@@ -4240,7 +4358,7 @@ In the limit of
 , one obtains 
 \begin_inset Formula 
 \[
-p_{A}^{*}(C(\mathcal{P}))=p_{B}^{*}(C(\mathcal{P}))\le\lim_{k\to\infty}\alpha^{(k)}=\lim_{k\to\infty}\beta^{(k)}\approx0.8199\dots.
+p_{A}^{*}(C^{LL}(\mathcal{P}))=p_{B}^{*}(C^{LL}(\mathcal{P}))=\lim_{k\to\infty}\alpha^{(k)}=\lim_{k\to\infty}\beta^{(k)}\approx0.8199\dots.
 \]
 
 \end_inset
@@ -4256,7 +4374,7 @@ Proceeding similarly, one obtains for
 , 
 \begin_inset Formula 
 \[
-p_{X}^{*}(C(\mathcal{X}))\apprle0.836\dots
+p_{X}^{*}(C^{LL}(\mathcal{X}))\approx0.836\dots
 \]
 
 \end_inset
@@ -4286,7 +4404,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Standard analysis (TODO: improve the caption)
+Standard analysis (TODO: remove the abort)
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Standard-composition-technique"
@@ -4322,15 +4440,15 @@ Let
 
 .
  Then 
-\begin_inset Formula $p_{X}^{*}(C(\mathcal{P}))\apprle0.8199\dots$
+\begin_inset Formula $p_{X}^{*}(C^{LL}(\mathcal{P}))\approx0.8199\dots$
 \end_inset
 
  and 
-\begin_inset Formula $p_{X}^{*}(C(\mathcal{X}))\apprle0.836\dots$
+\begin_inset Formula $p_{X}^{*}(C^{LL}(\mathcal{X}))\approx0.836\dots$
 \end_inset
 
 .
- [TODO: remove approx eq]
+ 
 \end_layout
 
 \begin_layout Standard
@@ -4521,8 +4639,16 @@ Recall that the key observation here is that we treated the probability
 \end_layout
 
 \begin_layout Subsection
-Cheat Vector Analysis
+Abort Phobic Compositions | 
+\begin_inset Formula $C^{L\perp},C^{\perp L}$
+\end_inset
+
+
 \end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
 
 \begin_layout Remark
 Again, even though it seems that Alice might be favoured, 
@@ -4545,14 +4671,223 @@ Again, even though it seems that Alice might be favoured,
  
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Branch commentary
 inverted 0
 status open
 
 \begin_layout Standard
-As before, let us workout an example.
+We now look at the case of abort phobic compositions, 
+\begin_inset Formula $C^{L\perp}$
+\end_inset
+
+ and 
+\begin_inset Formula $C^{\perp L}$
+\end_inset
+
+.
+ We work through essentially the same example as above and see what changes
+ in this setting.
  Consider protocol 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ (see ...) and recall that as before 
+\begin_inset Formula 
+\begin{align*}
+p_{A}^{*}(\mathcal{P}_{A}) & =:\alpha\approx0.852\dots,\\
+p_{B}^{*}(\mathcal{P}_{A}) & =:\beta\approx0.667\dots.
+\end{align*}
+
+\end_inset
+
+In addition, we know from 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "lem:AliceSelfTests"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+ that cheat vectors for Bob, 
+\begin_inset Formula $(\alpha,\beta,\gamma)\in\mathbb{C}_{B}(\mathcal{P}_{A})$
+\end_inset
+
+ admit a nice characterisation courtesy of the self testing step.
+ Let 
+\begin_inset Formula $\mathcal{P}':=C^{\perp L}(\mathcal{P},\mathcal{P})$
+\end_inset
+
+, i.e.
+ Alice and Bob execute 
+\begin_inset Formula $\mathcal{P}_{A}$
+\end_inset
+
+ and if the outcome is 
+\begin_inset Formula $A$
+\end_inset
+
+, they execute 
+\begin_inset Formula $\mathcal{P}_{A}$
+\end_inset
+
+ while if the outcome is 
+\begin_inset Formula $B$
+\end_inset
+
+, they execute 
+\begin_inset Formula $\mathcal{P}_{B}$
+\end_inset
+
+.
+ Bob is assumed to be lenient so an honest Bob never outputs abort, 
+\begin_inset Formula $\perp$
+\end_inset
+
+.
+ However, an honest Alice can output abort, 
+\begin_inset Formula $\perp$
+\end_inset
+
+ so we keep that output in the illustration, 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "lem:AliceSelfTests"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ Our goal is to find 
+\begin_inset Formula $p_{A}^{*}(\mathcal{P}')$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{B}^{*}(\mathcal{P}')$
+\end_inset
+
+.
+ The former is the same as before because Bob is lenient: 
+\begin_inset Formula 
+\[
+p_{A}^{*}(\mathcal{P}')=\alpha\cdot\alpha+(1-\alpha)\cdot\beta.
+\]
+
+\end_inset
+
+Clearly, 
+\begin_inset Formula $p_{B}^{*}(\mathcal{P}')\le\beta\alpha+(1-\beta)\beta$
+\end_inset
+
+ but this bound may not be tight because 
+\begin_inset Formula $(1-\beta)$
+\end_inset
+
+ is the combined probability of Alice aborting and Alice outputting 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ However, we can use cheat vectors to obtain 
+\begin_inset Formula 
+\[
+p_{B}^{*}(\mathcal{P}')=\max_{(v_{A},v_{B},v_{\perp})\in\mathbb{C}_{B}}v_{B}\alpha+v_{A}\beta
+\]
+
+\end_inset
+
+which is an SDP one can solve numerically.
+ Unlike the previous case, the polarity of the resulting protocol, 
+\begin_inset Formula $\mathcal{P}'$
+\end_inset
+
+, might have flipped (compared to the polarity of 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+Repeating this procedure, one can consider 
+\begin_inset Formula $\mathcal{P}'':=C^{\perp L}(\mathcal{P},\mathcal{P}')$
+\end_inset
+
+ and obtain 
+\begin_inset Formula $p_{A}^{*}(\mathcal{P}'')$
+\end_inset
+
+ directly as illustrated above and numerically solve for 
+\begin_inset Formula $p_{B}^{*}(\mathcal{P}'')$
+\end_inset
+
+ using the cheat vectors.
+ Numerically, we found that ten-fifteen repetitions caused the cheating
+ probabilities to converge to approximately 
+\begin_inset Formula $0.81459$
+\end_inset
+
+.
+ We saw that the abort probabilities associated with 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ were quite small and therefore one could hope that 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ fares better.
+ Proceed analogously for protocol and considering 
+\begin_inset Formula $\mathcal{Q}':=C^{L\perp}(\mathcal{Q},\mathcal{Q})$
+\end_inset
+
+, 
+\begin_inset Formula $\mathcal{Q}'':=C^{L\perp}(\mathcal{Q},\mathcal{Q}')$
+\end_inset
+
+, etc., the cheating probabilities converge to approximately 
+\begin_inset Formula $0.822655$
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+As before, let us workout an example for 
+\begin_inset Formula $C^{\perp L}$
+\end_inset
+
+.
+ Consider protocol 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ again and observe that 
+\end_layout
+
+\begin_layout Plain Layout
+and let 
+\begin_inset Formula $(v_{A},v_{B},v_{\perp})\in\mathbb{C}_{B}(\mathcal{P}_{A})$
+\end_inset
+
+ be a cheat vector for Bob.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Consider protocol 
 \begin_inset Formula $Q$
 \end_inset
 
@@ -4578,18 +4913,18 @@ noprefix "false"
  Further, recall that 
 \begin_inset Formula 
 \begin{align*}
-p_{A}^{*}(\mathcal{Q}_{A}) & \le\alpha=3/4=0.75\\
-p_{B}^{*}(\mathcal{Q}_{A}) & \le\beta=\cos^{2}(\pi/8)=0.8535\dots
+p_{A}^{*}(\mathcal{Q}_{A}) & =:\alpha=3/4=0.75\\
+p_{B}^{*}(\mathcal{Q}_{A}) & =:\beta=\cos^{2}(\pi/8)=0.8535\dots
 \end{align*}
 
 \end_inset
 
 and note that, therefore, 
-\begin_inset Formula $p_{A}^{*}(\mathcal{Q}_{B})\le\beta$
+\begin_inset Formula $p_{A}^{*}(\mathcal{Q}_{B})=\beta$
 \end_inset
 
  and 
-\begin_inset Formula $p_{B}^{*}(\mathcal{Q}_{B})\le\alpha$
+\begin_inset Formula $p_{B}^{*}(\mathcal{Q}_{B})=\alpha$
 \end_inset
 
 .
@@ -4648,7 +4983,7 @@ noprefix "false"
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Suppose Alice is malicious.
  Conditioned on the event that the protocol reaches the bottom left step,
  it is clear that Alice's highest probability of winning is 
@@ -4743,7 +5078,7 @@ noprefix "false"
 , potentially yields a better bound.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The case for malicious Bob would have been similar if we had a good characterisa
 tion for 
 \begin_inset Formula $\mathbb{C}_{B}(\mathcal{Q})$
@@ -4773,7 +5108,7 @@ TODO: put the numbers (they seem to be off).
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Thus to obtain 
 \begin_inset Formula $p_{A}^{*}(\mathcal{Q}')$
 \end_inset
@@ -4800,17 +5135,22 @@ Thus to obtain
  
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename figures/temp_AAC_Qs.png
-	lyxscale 50
+	filename figures/temp_AAC_Ps.png
+	lyxscale 40
 	width 6cm
 
 \end_inset
@@ -4828,10 +5168,15 @@ Cheat vector analysis.
 \end_inset
 
 
-\begin_inset Formula $(v_{A},v_{B},v_{\perp})\in\mathbb{C}_{A}$
+\begin_inset Formula $(v_{A},v_{B},v_{\perp})\in\mathbb{C}_{B}$
 \end_inset
 
-; because we don't have a good characterisation of 
+; 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+because we don't have a good characterisation of 
 \begin_inset Formula $\mathbb{C}_{B}$
 \end_inset
 
@@ -4848,6 +5193,10 @@ Cheat vector analysis.
 \end_inset
 
 .
+\end_layout
+
+\end_inset
+
  
 \begin_inset CommandInset label
 LatexCommand label
@@ -4882,7 +5231,7 @@ Let
  Then 
 \begin_inset Formula 
 \[
-p_{X}^{*}(C(\mathcal{Q}))\apprle0.8175\dots
+p_{X}^{*}(C^{\perp L}(\mathcal{P}))\approx0.81459
 \]
 
 \end_inset
@@ -4890,13 +5239,39 @@ p_{X}^{*}(C(\mathcal{Q}))\apprle0.8175\dots
 and 
 \begin_inset Formula 
 \[
-p_{X}^{*}(C(\mathcal{Q}))\apprle
+p_{X}^{*}(C^{L\perp}(\mathcal{Q}))\approx0.822655
 \]
 
 \end_inset
 
-(TODO: calculate).
+where the latter holds assuming Conjecture ?? is true.
  
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $p_{X}^{*}(C^{L\perp}(\mathcal{Q}))\approx0.8175\dots$
+\end_inset
+
+ likely the old, wrong result
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4905,13 +5280,17 @@ inverted 0
 status open
 
 \begin_layout Standard
-To suppress the bias further, we note that at the very last step, only the
- cheating probabilities 
-\begin_inset Formula $p_{A}^{*}(\mathcal{Q})\le\alpha$
+While by itself 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ doesn't seem to help, one can suppress the bias further, by noting that
+ at the very last step, only the cheating probabilities 
+\begin_inset Formula $p_{A}^{*}(\mathcal{Q})$
 \end_inset
 
  and 
-\begin_inset Formula $p_{B}^{*}(\mathcal{Q})\le\beta$
+\begin_inset Formula $p_{B}^{*}(\mathcal{Q})$
 \end_inset
 
  played a role (i.e.
@@ -4963,15 +5342,20 @@ Let
 Then 
 \begin_inset Formula 
 \[
-\lim_{i\to\infty}p_{X}^{*}(\mathcal{Z}^{i})\apprle0.7908\dots
+\lim_{i\to\infty}p_{X}^{*}(\mathcal{Z}^{i})\approx0.791044\dots
 \]
 
 \end_inset
 
-
+assuming Conjecture ?? holds.
+ 
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Branch commentary
 inverted 0
 status open
@@ -4989,7 +5373,6 @@ TODO: Argue why
 
 .
  Perhaps do the simulation and add the results.
- 
 \end_layout
 
 \end_inset
@@ -4997,13 +5380,9 @@ TODO: Argue why
 
 \end_layout
 
-\begin_layout Section
-Application: Strong Coin Flipping
-\end_layout
+\end_inset
 
-\begin_layout Standard
-Using ...
- 
+
 \end_layout
 
 \begin_layout Section

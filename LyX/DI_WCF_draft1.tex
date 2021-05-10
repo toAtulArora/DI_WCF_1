@@ -54,10 +54,6 @@
 \newtheorem{lyxalgorithm}[thm]{\protect\algorithmname}
 \theoremstyle{plain}
 \newtheorem{lem}[thm]{\protect\lemmaname}
-\theoremstyle{definition}
-\newtheorem{example}[thm]{\protect\examplename}
-\theoremstyle{remark}
-\newtheorem{rem}[thm]{\protect\remarkname}
 \theoremstyle{plain}
 \newtheorem{prop}[thm]{\protect\propositionname}
 
@@ -96,10 +92,8 @@
 \providecommand{\assumptionname}{Assumption}
 \providecommand{\claimname}{Claim}
 \providecommand{\definitionname}{Definition}
-\providecommand{\examplename}{Example}
 \providecommand{\lemmaname}{Lemma}
 \providecommand{\propositionname}{Proposition}
-\providecommand{\remarkname}{Remark}
 \providecommand{\theoremname}{Theorem}
 
 \begin{document}
@@ -260,18 +254,18 @@ which means that we don't immediately obtain an advantage. However,
 the most obvious method of composing these protocols to obtain a new
 protocol, which we describe later, ``balances'' the advantage. After
 this composition procedure is applied to some protocol $\mathcal{X}$,
-we denote the resulting protocol by $C_{{\rm stand}}(\mathcal{X})$.
-Applying this technique to $\mathcal{P}$, we already obtain a more
-secure protocol.
+we denote the resulting protocol by $C_{LL}(\mathcal{X})$. Applying
+this technique to $\mathcal{P}$, we already obtain a more secure
+protocol.
 \begin{itemize}
 \item For all $X\in\{A,B\}$ the cheating probabilities for protocol $\mathcal{I}$
 under the standard composition is given by
 \[
-p_{X}^{*}(C_{{\rm stand}}(\mathcal{I}))\approx\frac{1}{2}+0.336\dots
+p_{X}^{*}(C^{LL}(\mathcal{I}))\approx\frac{1}{2}+0.336\dots
 \]
 while for the improved protocol $\mathcal{P}$, these are given by
 \begin{equation}
-p_{X}^{*}(C_{{\rm stand}}(\mathcal{P}))\approx\frac{1}{2}+0.3199\dots.\label{eq:SikoraP}
+p_{X}^{*}(C^{LL}(\mathcal{P}))\approx\frac{1}{2}+0.3199\dots.\label{eq:SikoraP}
 \end{equation}
 \end{itemize}
 The standard composition technique doesn't yield any improvement for
@@ -279,27 +273,32 @@ $\mathcal{Q}$ because the cheating probabilities are identical to
 those of $\mathcal{I}$. We can extract an advantage by using a composition
 technique that uses ``cheat vectors'' and the abort event. We describe
 it in detail later but for now, we simply denote the new protocol
-obtained using this improved ``abort augmented'' composition (of
-protocol $\mathcal{X}$) by $C_{{\rm AAC}}(\mathcal{X})$. 
+obtained using this improved ``abort phobic'' composition (of protocol
+$\mathcal{X}$) by $C_{\perp L}(\mathcal{X})$ or $C_{L\perp}(\mathcal{X})$. 
 \begin{itemize}
+\item Applying the technique to $\mathcal{P}$, the cheating probabilities
+become 
+\[
+p_{X}^{*}(C^{\perp L}(\mathcal{P}))\approx\frac{1}{2}+0.3148\dots
+\]
+which is a further improvement.
 \item Using this technique on $\mathcal{Q}$, the cheating probabilities
 become 
 \[
-p_{X}^{*}(C_{{\rm AAC}}(\mathcal{Q}))\approx\frac{1}{2}+0.317\dots
+p_{X}^{*}(C^{L\perp}(\mathcal{Q}))\approx\frac{1}{2}+0.3226\dots
 \]
-for all $X\in\{A,B\}$, which is even better than \Eqref{SikoraP}. 
-\item Finally, we combine both these protocols to obtain (again, for all
-$X\in\{A,B\}$)
+for all $X\in\{A,B\}$, which is worse than even \Eqref{SikoraP}. 
+\item However, when we combine both these protocols to obtain (again, for
+all $X\in\{A,B\}$)
 \[
-p_{X}^{*}(C_{{\rm AAC}}(\mathcal{Q},\mathcal{Q},\dots,\mathcal{Q},\mathcal{P}))\approx\frac{1}{2}+0.2908\dots
+p_{X}^{*}(C^{L\perp}(\mathcal{Q},\mathcal{Q},\dots,\mathcal{Q},\mathcal{P}))\approx\frac{1}{2}+0.29104\dots
 \]
 where we use the same composition technique except that at the last
-``level'' we use $\mathcal{P}$ instead of $\mathcal{Q}$. 
+``level'' we use\footnote{$C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{Q})$
+is strictly worse than considering $C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{P})$;
+this should become evident later.} $\mathcal{P}$ instead of $\mathcal{Q}$. 
 \end{itemize}
-TODO: Obvious questions (answers to which I don't have anymore; stupid
-memory): what about $p_{X}^{*}(C_{{\rm AAC}}(\mathcal{P}))$ and $p_{X}^{*}(C_{{\rm AAC}}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{Q}))$.}
-
-aoeu
+}
 
 
 \section{Device Independent Weak Coin Flipping protocols | State Of The Art}
@@ -591,12 +590,11 @@ output.
 $a$. She chooses $r\in_{R}\{0,1\}$ to compute $s=a\oplus x.r$ and
 sends $s$ to Bob.
 \item Bob chooses $g\in_{R}\{0,1\}$ (for ``guess'') and sends it to Alice.
-\item Alice sends $x$ {[}EDIT: maybe not send $a${]} and $a$ to Bob.
-They both compute the output $x\oplus g$. 
+\item Alice sends $x$ to Bob. They both compute the output $x\oplus g$. 
 \item Test rounds:
 \begin{enumerate}
 \item If $x\oplus g=0$:\\
-{[}EDIT: Send $a${]}\\
+Alice sends $a$ to Bob.\\
 Bob tests if $s=a$ or $s=a\oplus x$. If the test fails, he aborts.
 Bob chooses $y,z\in_{R}\{0,1\}$ such that $x\oplus y\oplus z=1$
 and then performs a GHZ using $x,y,z$ as the inputs and $a,b,c$
@@ -674,7 +672,7 @@ The proof is again deferred; see \Subsecref{SDP-when-Bob}.
 In this section, we use the convention that $\mathcal{I},\mathcal{P}$
 and $\mathcal{Q}$ correspond to the protocols described in \Algref{SCForiginal},
 \Algref{AliceSelfTestsHerBoxes} and \Algref{BobSelfTests}, respectively.
-\branchcolor{purple}{Notice that $p_{A}^{*}(\mathcal{X})\ge p_{B}^{*}(\mathcal{X})$ where
+\branchcolor{purple}{Notice that $p_{A}^{*}(\mathcal{X})>p_{B}^{*}(\mathcal{X})$ where
 $\mathcal{X}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$. We call
 such protocols ``unbalanced''. In this section we start from unbalanced
 WCF protocols and compose them to construct balanced WCF protocols.
@@ -694,16 +692,15 @@ We refer to $\mathcal{R}_{X}$ as $\mathcal{R}$ polarised towards
 $X$.
 \end{defn}
 
-\branchcolor{purple}{TODO: It might help to explain ``roles of Alice and Bob'' are interchanged
-a little bit using the ``flip and declare'' protocol.
-
-TODO: Winner gets Polarity
+\branchcolor{purple}{
 
 We now describe how these protocols can be composed such that the
 ``winner gets polarity''. }
-\begin{lyxalgorithm}[$C(.,.)$ and $C(.)$]
- Given two unbalanced WCF protocols, $\mathcal{X}$ and $\mathcal{Y}$,
-let $\mathcal{X}_{A},\mathcal{X}_{B}$ and $\mathcal{Y}_{A},\mathcal{Y}_{B}$
+
+\subsection{Composition}
+\begin{defn}[$C(.,.)$ and $C(.)$]
+ \label{def:C}Given two unbalanced WCF protocols, $\mathcal{X}$
+and $\mathcal{Y}$, let $\mathcal{X}_{A},\mathcal{X}_{B}$ and $\mathcal{Y}_{A},\mathcal{Y}_{B}$
 be their polarisations (see \Defref{unbalanced-polarity}).  Define
 $C(\mathcal{X},\mathcal{Y})$ as follows:
 \begin{enumerate}
@@ -717,68 +714,123 @@ and finally if
 \item $X=\perp$, set $Y=\perp$.
 \end{enumerate}
 Output $Y$.
-
 \end{enumerate}
-Let $\mathcal{Z}^{i+1}:=C_{{\rm AAC}}(\mathcal{X},\mathcal{Z}^{i})$
-for $i\ge1$, and $\mathcal{Z}^{1}:=\mathcal{X}$. Then, formally,
-define $C(\mathcal{X}):=\lim_{i\to\infty}\mathcal{Z}^{i}$.\footnote{This is just to facilitate notation. This way the cheating probabilities
+Let $\mathcal{Z}^{i+1}:=C(\mathcal{X},\mathcal{Z}^{i})$ for $i\ge1$,
+and $\mathcal{Z}^{1}:=\mathcal{X}$. Then, formally, define $C(\mathcal{X}):=\lim_{i\to\infty}\mathcal{Z}^{i}$.\footnote{This is just to facilitate notation. This way the cheating probabilities
 $p_{A}^{*}$ and $p_{B}^{*}$ converge and numerically this only takes
 a few compositions to reach in our case.} 
-\end{lyxalgorithm}
+\end{defn}
 
-\begin{example}
-TODO: Perhaps show how $\mathcal{Z}_{B}$ is constructed from $\mathcal{Z}=C_{{\rm stand}}(\mathcal{X},\mathcal{Y})$.
-Perhaps have this in the appendix. 
-\end{example}
+\branchcolor{purple}{The study of such composed protocols is simplified by assuming that
+in an honest run, neither player outputs $\perp$ (abort), i.e. they
+either output $A$ or $B$. We take a moment to explain this.
 
-\branchcolor{purple}{In the following sections, we work out some examples and analyse their
-security and see where having a neat characterisation of cheat vectors
-helps.}
+Consider any protocol $\mathcal{R}$ where, when both players are
+honest, the probability of abort is zero. The protocols we have described
+so far, satisfy this property, so long as we assume that honest players
+can prepare perfect GHZ boxes. Such protocols are readily converted
+into protocols where an honest player never outputs abort. 
 
-\subsection{Standard Analysis}
+For instance, suppose that in the execution of the aforementioned
+protocol $\mathcal{R}$ (with no-honest-abort), Alice behaves honestly
+but Bob is malicious. Suppose after interacting with Bob, Alice reaches
+the conclusion that she must abort. Since she knows that if Bob was
+honest, the outcome abort could not have arisen, she concludes that
+Bob is cheating and declares herself the winner, i.e. she outputs
+$A$. Similarly, when Bob is honest and after the interaction, reaches
+the outcome abort, he knows Alice cheated and can therefore declare
+himself the winner, i.e. output $B$. 
 
-\branchcolor{purple}{In the standard analysis, we only use bounds on the cheating probabilities,
-$p_{A}^{*}$ and $p_{B}^{*}$, of the protocols being composed to
-obtain the corresponding bounds for the resultant protocol. Let us
-take an example. Consider protocol $\mathcal{P}$ (see \Algref{AliceSelfTestsHerBoxes})
+Whenever we modify a protocol so that an honest Alice (Bob) replaces
+the outcome abort with Alice (Bob) winning, we say Alice (Bob) is
+\emph{lenient}. This is motivated by the fact that when we compose
+protocols, if Alice can conclude that Bob is cheating, and she still
+outputs $A$ instead of aborting, she is giving Bob further opportunity
+to cheat---she is being lenient.}
+\begin{defn}[$\mathcal{R}$ with lenient players]
+\label{def:lenientR} Suppose $\mathcal{R}$ is a WCF protocol such
+that when both players are honest, the probability of outcome abort,
+$\perp$, is zero. Then by ``\emph{$\mathcal{R}$ with lenient Alice
+(Bob)}'', which we denote by $\mathcal{R}^{L\perp}$ ($\mathcal{R}^{\perp L}$),
+we mean that Alice (Bob) follows $\mathcal{R}$ except that the outcome
+$\perp$ replaced with $A$ ($B$). Finally, by ``\emph{lenient $\mathcal{R}$}'',
+which we denote by $\mathcal{R}^{LL}$, we mean $\mathcal{R}$ with
+lenient Alice and Bob. 
+\end{defn}
+
+\branchcolor{purple}{For clarity and conciseness, we define $C^{LL}$ to be compositions
+with lenient variants of the given protocols. We work out some examples
+of such protocols and analyse their security in the following section.
+These can be improved by considering $C^{L\perp}$ and $C^{\perp L}$---compositions
+where only one player is lenient. We discuss those afterwards.}
+\begin{defn}[$C^{LL}$, $C^{\perp L}$ and $C^{L\perp}$]
+ Suppose a WCF protocol $\mathcal{X}$ can be transformed into its
+\emph{lenient} variants (see \Defref{lenientR}). Then define 
+\begin{align*}
+C^{LL}(\mathcal{X},\mathcal{Y}) & :=C(\mathcal{X}^{LL},\mathcal{Y}),\\
+C^{\perp L}(\mathcal{X},\mathcal{Y}) & :=C(\mathcal{X}^{\perp L},\mathcal{Y}),\quad\text{and}\\
+C^{L\perp}(\mathcal{X},\mathcal{Y}) & :=C(\mathcal{X}^{L\perp},\mathcal{Y}).
+\end{align*}
+In words, $C^{LL}$ is referred to as a \emph{standard }composition,
+while $C^{\perp L}$ and $C^{L\perp}$ are referred to as \emph{abort-phobic}
+compositions. 
+\end{defn}
+
+
+\subsection{Standard Composition | $C^{LL}$}
+
+\branchcolor{purple}{We begin with the simplest case, standard composition, $C^{LL}$.
+Let us take an example. Consider protocol $\mathcal{P}$ (see \Algref{AliceSelfTestsHerBoxes})
 and recall (see \Lemref{AliceSelfTests})
 \begin{align*}
-p_{A}^{*}(\mathcal{P}_{A}) & \le\alpha\approx0.852\dots,\\
-p_{B}^{*}(\mathcal{P}_{A}) & \le\beta\approx0.667\dots.
+p_{A}^{*}(\mathcal{P}_{A}) & =:\alpha\approx0.852\dots,\\
+p_{B}^{*}(\mathcal{P}_{A}) & =:\beta\approx0.667\dots.
 \end{align*}
-Note that therefore $p_{A}^{*}(\mathcal{P}_{B})\le\beta$ and $p_{B}^{*}(\mathcal{P}_{B})\le\alpha$.
-Further, let $\mathcal{P}':=C_{{\rm }}(\mathcal{P},\mathcal{P})$,
-i.e. Alice and Bob first execute $\mathcal{P}_{A}$ and if the outcome
-is $A$, they execute $\mathcal{P}_{A}$, otherwise they execute $\mathcal{P}_{B}$
-(see \Figref{Standard-composition-technique}). Then, 
+Note that therefore $p_{A}^{*}(\mathcal{P}_{B})=\beta$ and $p_{B}^{*}(\mathcal{P}_{B})=\alpha$.
+Further, let $\mathcal{P}':=C^{LL}(\mathcal{P},\mathcal{P})$, i.e.
+Alice and Bob (who are both lenient) first execute $\mathcal{P}_{A}$
+and if the outcome is $A$, they execute $\mathcal{P}_{A}$, while
+if the outcome is $B$, they execute $\mathcal{P}_{B}$. This is illustrated
+in \Figref{Standard-composition-technique} where note that the event
+abort doesn't appear due to the leniency assumption. This allows us
+to evaluate the cheating probabilities for the resulting protocol
+as 
 \begin{align}
-p_{A}^{*}(\mathcal{P}'_{A}) & \le\alpha\alpha+(1-\alpha)\beta=:\alpha^{(1)},\label{eq:pStarAPprimeA}\\
-p_{B}^{*}(\mathcal{P}'_{B}) & \le\beta\alpha+(1-\beta)\beta=:\beta^{(1)}.\nonumber 
+p_{A}^{*}(\mathcal{P}') & =\alpha\alpha+(1-\alpha)\beta=:\alpha^{(1)},\quad\text{and}\label{eq:pStarAPprimeA}\\
+p_{B}^{*}(\mathcal{P}') & =\beta\alpha+(1-\beta)\beta=:\beta^{(1)}.\nonumber 
 \end{align}
-To see this, focus on \Eqref{pStarAPprimeA}. Alice knows that if
+To see this, consider \Eqref{pStarAPprimeA}. Alice knows that if
 she wins the first round, her probability of winning is $\alpha>\beta$.
 She knows that in the first round, she can force the outcome $A$
-with probability at most $\alpha$. Assuming that with all the remaining
-probability, the outcome is $B$ (which it is not because Bob will
-abort with some probability) gives us a bound on the best that Alice
-can do. Evidently, this bound may not be tight and we address that
-in the following subsection. 
+with probability $\alpha$. From leniency, she knows that Bob would
+output $B$ with the remaining probability.\footnote{Without leniency, this probability could have been shared between
+the outcomes $\perp$ (abort) and $B$. Consequently, only upper bounds
+could be obtained on $p_{A}^{*}(\mathcal{P}')$ and $p_{B}^{*}(\mathcal{P}')$
+using only $\alpha$ and $\beta$ as security guarantees for $\mathcal{P}_{A}$.
+Upper bounds, however, would not be enough to determine the polarity
+of $\mathcal{P}'$ and an stymie unambiguous repetition of the composition
+procedure (at least as it is defined). One could nevertheless compose
+by hoping that the upper bounds can be used to accurately represent
+the polarity. This would still yield a protocol and the same calculation
+would yield correct bounds but the composition itself might be sub-optimal.}
 
 A side remark: one consequence of this simplified analysis is that\footnote{$\alpha^{(1)}-\beta^{(1)}=(\alpha-\beta)\alpha-(\alpha-\beta)\beta=(\alpha-\beta)^{2}>0$}
-$\alpha^{(1)}>\beta^{(1)}$. Proceeding similarly, i.e. defining $\mathcal{\mathcal{P}}'':=C_{{\rm stand}}(\mathcal{P},\mathcal{P}')$,
-and repeating $k+1$ times overall, one obtains\footnote{Note that $\alpha^{(k+1)}-\beta^{(k+1)}=(\alpha^{(k)}-\beta^{(k)})(\alpha-\beta)>0$,
-which proves \Claimref{polarityPreserved}.} 
+$\alpha^{(1)}>\beta^{(1)}$. Intuitively, it means that plority is
+preserved by the composition procedure. Proceeding similarly, i.e.
+defining $\mathcal{\mathcal{P}}'':=C^{LL}(\mathcal{P},\mathcal{P}')$,
+and repeating $k+1$ times overall, one obtains\footnote{Again, note that $\alpha^{(k+1)}-\beta^{(k+1)}=(\alpha^{(k)}-\beta^{(k)})(\alpha-\beta)>0$.
+} 
 \begin{align*}
 \alpha^{(k+1)} & =\alpha\alpha^{(k)}+(1-\alpha)\beta^{(k)}\\
 \beta^{(k+1)} & =\beta\alpha^{(k)}+(1-\beta)\beta^{(k)}.
 \end{align*}
 In the limit of $k\to\infty$, one obtains 
 \[
-p_{A}^{*}(C_{{\rm stand}}(\mathcal{P}))=p_{B}^{*}(C_{{\rm stand}}(\mathcal{P}))\le\lim_{k\to\infty}\alpha^{(k)}=\lim_{k\to\infty}\beta^{(k)}\approx0.8199\dots.
+p_{A}^{*}(C^{LL}(\mathcal{P}))=p_{B}^{*}(C^{LL}(\mathcal{P}))=\lim_{k\to\infty}\alpha^{(k)}=\lim_{k\to\infty}\beta^{(k)}\approx0.8199\dots.
 \]
 Proceeding similarly, one obtains for $X\in\{A,B\}$ and $\mathcal{X}\in\{\mathcal{I},\mathcal{Q}\}$,
 \[
-p_{X}^{*}(C_{{\rm stand}}(\mathcal{X}))\apprle0.836\dots
+p_{X}^{*}(C^{LL}(\mathcal{X}))\approx0.836\dots
 \]
 We thus have the following.
 
@@ -786,104 +838,88 @@ We thus have the following.
 \begin{centering}
 \includegraphics[width=6cm]{figures/temp_standardComp}
 \par\end{centering}
-\caption{Standard analysis (TODO: improve the caption)\label{fig:Standard-composition-technique}}
+\caption{Standard analysis (TODO: remove the abort)\label{fig:Standard-composition-technique}}
 \end{figure}
 }
 \begin{thm}
 Let $X\in\{A,B\}$ and $\mathcal{X}\in\{\mathcal{I},\mathcal{Q}\}$.
-Then $p_{X}^{*}(C(\mathcal{P}))\apprle0.8199\dots$ and $p_{X}^{*}(C(\mathcal{X}))\apprle0.836\dots$.
-{[}TODO: remove approx eq{]}
+Then $p_{X}^{*}(C^{LL}(\mathcal{P}))\approx0.8199\dots$ and $p_{X}^{*}(C^{LL}(\mathcal{X}))\approx0.836\dots$. 
 \end{thm}
 
 
-\subsection{Cheat Vector Analysis}
-\begin{rem}
-Again, even though it seems that Alice might be favoured, $C$ may
-result in a protocol with the opposite polarity---let $\mathcal{Z}:=C(\mathcal{X},\mathcal{Y})$,
-then $\mathcal{Z}_{A}$ is not necessarily the same as $\mathcal{Z}$. 
-\end{rem}
+\subsection{Abort Phobic Compositions | $C^{L\perp},C^{\perp L}$}
 
-\branchcolor{purple}{As before, let us workout an example. Consider protocol $Q$ this
-time (see \Algref{BobSelfTests}) and let $(v_{A},v_{B},v_{\perp})\in\mathbb{C}_{A}(\mathcal{Q}_{A})$
-be a cheat vector for $\mathcal{Q}$. Further, recall that 
+\branchcolor{purple}{We now look at the case of abort phobic compositions, $C^{L\perp}$
+and $C^{\perp L}$. We work through essentially the same example as
+above and see what changes in this setting. Consider protocol $\mathcal{P}$
+(see ...) and recall that as before 
 \begin{align*}
-p_{A}^{*}(\mathcal{Q}_{A}) & \le\alpha=3/4=0.75\\
-p_{B}^{*}(\mathcal{Q}_{A}) & \le\beta=\cos^{2}(\pi/8)=0.8535\dots
+p_{A}^{*}(\mathcal{P}_{A}) & =:\alpha\approx0.852\dots,\\
+p_{B}^{*}(\mathcal{P}_{A}) & =:\beta\approx0.667\dots.
 \end{align*}
-and note that, therefore, $p_{A}^{*}(\mathcal{Q}_{B})\le\beta$ and
-$p_{B}^{*}(\mathcal{Q}_{B})\le\alpha$. Let $\mathcal{Q}':=C(\mathcal{Q},\mathcal{Q})$,
-i.e. Alice and Bob first execute $\mathcal{Q}_{A}$ and if the outcome
-is $A$, they execute $\mathcal{Q}_{A}$, otherwise they execute $\mathcal{Q}_{B}$
-(see \Figref{Abort-Augmented-Composition}). Our goal is again to
-obtain an upper bound on $p_{A}^{*}(\mathcal{Q}')$ and $p_{B}^{*}(\mathcal{Q}')$,
-but this time, using cheat vectors. We start from the bottom of \Figref{Abort-Augmented-Composition}. 
-
-Suppose Alice is malicious. Conditioned on the event that the protocol
-reaches the bottom left step, it is clear that Alice's highest probability
-of winning is $\alpha$. In this case, the abort probability doesn't
-play a role. Similarly, conditioned on the event that the protocol
-reaches the bottom right step, it is clear that Alice's highest probability
-of winning is $\beta$. At the first step then, it is clear that the
-highest probability of Alice winning is 
-\begin{align}
-p_{A}^{*}(\mathcal{Q}') & \le\max_{(v_{A},v_{B},v_{\perp})\in\mathbb{C}_{A}}\alpha v_{A}+\beta v_{B}\label{eq:maxExplain}\\
- & \le\alpha^{2}+\beta(1-\alpha).\label{eq:weakBound}
-\end{align}
-The first inequality is saturated if $\alpha$ and $\beta$ are tight
-bounds. The second inequality holds because $\alpha>\beta$ so one
-cannot do better than putting all the weight on $\alpha$ (i.e. $\alpha$)
-and the remaining on $\beta$ (i.e. $1-\alpha$), as we did earlier.
-{[}DISCUSS/TODO: Remove repetition; I already explained this.{]} Operationally,
-this means that Alice is forcing the outcome $A$ and treating the
-outcomes $B$ and $\perp$ as proceeding to the $\mathcal{Q}_{B}$
-step (i.e. the bottom right step). However, Bob only agrees to proceed
-to the bottom right step if the outcome is $B$ and hence the maximization,
-\Eqref{maxExplain}, potentially yields a better bound.
-
-The case for malicious Bob would have been similar if we had a good
-characterisation for $\mathbb{C}_{B}(\mathcal{Q})$. Since we don't,
-we content ourselves with a weaker bound, the one analogous to \Eqref{weakBound}:
+In addition, we know from \Lemref{AliceSelfTests} that cheat vectors
+for Bob, $(\alpha,\beta,\gamma)\in\mathbb{C}_{B}(\mathcal{P}_{A})$
+admit a nice characterisation courtesy of the self testing step. Let
+$\mathcal{P}':=C^{\perp L}(\mathcal{P},\mathcal{P})$, i.e. Alice
+and Bob execute $\mathcal{P}_{A}$ and if the outcome is $A$, they
+execute $\mathcal{P}_{A}$ while if the outcome is $B$, they execute
+$\mathcal{P}_{B}$. Bob is assumed to be lenient so an honest Bob
+never outputs abort, $\perp$. However, an honest Alice can output
+abort, $\perp$ so we keep that output in the illustration, \Lemref{AliceSelfTests}.
+Our goal is to find $p_{A}^{*}(\mathcal{P}')$ and $p_{B}^{*}(\mathcal{P}')$.
+The former is the same as before because Bob is lenient: 
 \[
-p_{B}^{*}(\mathcal{Q}')\le\beta\alpha+(1-\beta)\beta.
+p_{A}^{*}(\mathcal{P}')=\alpha\cdot\alpha+(1-\alpha)\cdot\beta.
 \]
-TODO: put the numbers (they seem to be off). 
+Clearly, $p_{B}^{*}(\mathcal{P}')\le\beta\alpha+(1-\beta)\beta$ but
+this bound may not be tight because $(1-\beta)$ is the combined probability
+of Alice aborting and Alice outputting $A$. However, we can use cheat
+vectors to obtain 
+\[
+p_{B}^{*}(\mathcal{P}')=\max_{(v_{A},v_{B},v_{\perp})\in\mathbb{C}_{B}}v_{B}\alpha+v_{A}\beta
+\]
+which is an SDP one can solve numerically. Unlike the previous case,
+the polarity of the resulting protocol, $\mathcal{P}'$, might have
+flipped (compared to the polarity of $\mathcal{P}$). 
 
-Thus to obtain $p_{A}^{*}(\mathcal{Q}')$, one solves an SDP (numerically)
-and $p_{B}^{*}(\mathcal{Q}')$ is obtained readily. Using this, one
-can consider $\mathcal{Q}'':=\mathbb{C}(\mathcal{Q},\mathcal{Q}')$
-and evaluate the cheating probabilities $p_{A}^{*}(\mathcal{Q}'')$
-again as an SDP and $p_{B}^{*}(\mathcal{Q}'')$ directly. This leads
-us to the following result. 
+Repeating this procedure, one can consider $\mathcal{P}'':=C^{\perp L}(\mathcal{P},\mathcal{P}')$
+and obtain $p_{A}^{*}(\mathcal{P}'')$ directly as illustrated above
+and numerically solve for $p_{B}^{*}(\mathcal{P}'')$ using the cheat
+vectors. Numerically, we found that ten-fifteen repetitions caused
+the cheating probabilities to converge to approximately $0.81459$.
+We saw that the abort probabilities associated with $\mathcal{P}$
+were quite small and therefore one could hope that $\mathcal{Q}$
+fares better. Proceed analogously for protocol and considering $\mathcal{Q}':=C^{L\perp}(\mathcal{Q},\mathcal{Q})$,
+$\mathcal{Q}'':=C^{L\perp}(\mathcal{Q},\mathcal{Q}')$, etc., the
+cheating probabilities converge to approximately $0.822655$. 
 
 \begin{figure}
 \begin{centering}
-\includegraphics[width=6cm]{figures/temp_AAC_Qs}
+\includegraphics[width=6cm]{figures/temp_AAC_Ps}
 \par\end{centering}
 \caption{Cheat vector analysis. (TODO: improve the caption)\protect \\
-$(v_{A},v_{B},v_{\perp})\in\mathbb{C}_{A}$; because we don't have
-a good characterisation of $\mathbb{C}_{B}$, we use (red) $1-\beta$
-and $\beta$ for obtaining a bound on $p_{B}^{*}(\mathcal{Q}')$.
-\label{fig:Abort-Augmented-Composition}}
+$(v_{A},v_{B},v_{\perp})\in\mathbb{C}_{B}$;  \label{fig:Abort-Augmented-Composition}}
 \end{figure}
 }
 \begin{thm}
 Let $X\in\{A,B\}$. Then 
 \[
-p_{X}^{*}(C(\mathcal{Q}))\apprle0.8175\dots
+p_{X}^{*}(C^{\perp L}(\mathcal{P}))\approx0.81459
 \]
 and 
 \[
-p_{X}^{*}(C(\mathcal{Q}))\apprle
+p_{X}^{*}(C^{L\perp}(\mathcal{Q}))\approx0.822655
 \]
-(TODO: calculate). 
+where the latter holds assuming Conjecture ?? is true. 
 \end{thm}
 
-\branchcolor{purple}{To suppress the bias further, we note that at the very last step,
-only the cheating probabilities $p_{A}^{*}(\mathcal{Q})\le\alpha$
-and $p_{B}^{*}(\mathcal{Q})\le\beta$ played a role (i.e. the fact
-that the cheating vectors $\mathbb{C}_{A}$ for $\mathcal{Q}$ had
-an SDP characterisation was not used). Further, we know that $p_{A}^{*}(\mathcal{P})=p_{A}^{*}(\mathcal{Q})$
-but $p_{B}^{*}(\mathcal{P})<p_{B}^{*}(\mathcal{Q})$, i.e. using $\mathcal{P}$
+\branchcolor{purple}{While by itself $\mathcal{Q}$ doesn't seem to help, one can suppress
+the bias further, by noting that at the very last step, only the cheating
+probabilities $p_{A}^{*}(\mathcal{Q})$ and $p_{B}^{*}(\mathcal{Q})$
+played a role (i.e. the fact that the cheating vectors $\mathbb{C}_{A}$
+for $\mathcal{Q}$ had an SDP characterisation was not used). Further,
+we know that $p_{A}^{*}(\mathcal{P})=p_{A}^{*}(\mathcal{Q})$ but
+$p_{B}^{*}(\mathcal{P})<p_{B}^{*}(\mathcal{Q})$, i.e. using $\mathcal{P}$
 at the very last step will result in a strictly better protocol. }
 \begin{thm}
 Let $X\in\{A,B\}$, 
@@ -893,18 +929,11 @@ Let $X\in\{A,B\}$,
 \end{align*}
 Then 
 \[
-\lim_{i\to\infty}p_{X}^{*}(\mathcal{Z}^{i})\apprle0.7908\dots
+\lim_{i\to\infty}p_{X}^{*}(\mathcal{Z}^{i})\approx0.791044\dots
 \]
+assuming Conjecture ?? holds. 
 \end{thm}
 
-\branchcolor{purple}{TODO: Argue why $C(\mathcal{P})$ was not such a great idea? I think
-this was because the cheat vector with the first component, e.g.,
-maxed out, the abort probaibility was tiny for $\mathcal{P}$. Perhaps
-do the simulation and add the results. }
-
-\section{Application: Strong Coin Flipping}
-
-Using ... 
 
 \section{Security Proof | Asymptotic}
 
@@ -983,7 +1012,7 @@ $\left|\Phi(x,a)\right\rangle _{IJ}$ are Bell states (see \Eqref{bellStates})
 and the registers $IJ$ are held by Bob. Alice's act of choosing $r$
 at random, computing $s=a\oplus x.r$ is modelled as 
 \begin{equation}
-\left|\Psi_{1}\right\rangle :=\frac{1}{2}\sum_{x,a,r\in\{0,1\}}\left|xa\right\rangle _{XA}\left|\Phi(x,a)\right\rangle _{IJ}\left|r\right\rangle _{R}\left|a\oplus x.r\right\rangle _{S}.\label{eq:Alice_Psi1}
+\left|\Psi_{1}\right\rangle :=\frac{1}{2\sqrt{2}}\sum_{x,a,r\in\{0,1\}}\left|xa\right\rangle _{XA}\left|\Phi(x,a)\right\rangle _{IJ}\left|r\right\rangle _{R}\left|a\oplus x.r\right\rangle _{S}.\label{eq:Alice_Psi1}
 \end{equation}
 Finally, Alice's act of sending $s$ is modelled as Alice starting
 with the state
@@ -1046,11 +1075,11 @@ $\rho_{3}\in XARGYD$ satisfying $\rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2}=\tr_{D}
 Alice now measures $\rho_{3}$ to determine $x\oplus g$ and if it
 is one, whether the GHZ test passed. Let 
 \begin{align}
-\Pi_{i} & :=\sum_{x,y\in\{0,1\}:x\oplus g=i}\left|xg\right\rangle \left\langle xg\right|_{XG}\otimes\mathbb{I}_{AIJRYD},\nonumber \\
+\Pi_{i} & :=\sum_{x,y\in\{0,1\}:x\oplus g=i}\left|xg\right\rangle \left\langle xg\right|_{XG}\otimes\mathbb{I}_{ARYD},\nonumber \\
 \Pi^{{\rm GHZ}} & :=\sum_{\substack{x,y\in\{0,1\},\\
 a,d\in\{0,1\}:a\oplus d\oplus1=xy\cdot(1\oplus x\oplus y)
 }
-}\left|xyad\right\rangle \left\langle xyad\right|_{XYAD}.\label{eq:AliceProjs}
+}\left|xyad\right\rangle \left\langle xyad\right|_{XYAD}\otimes\mathbb{I}_{RG}.\label{eq:AliceProjs}
 \end{align}
 Then, we can write the cheat vector for Alice, i.e. the tuple of probabilities
 that Alice outputs 0, 1 and abort (see \Defref{CheatVectors}), as
