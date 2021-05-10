@@ -3757,9 +3757,41 @@ The study of composed protocols is simplified by assuming that honest players
 \end_inset
 
  (abort).
- In our protocols, this implictly requires that honest players can construct
- perfect (i.e.
+ 
+\end_layout
+
+\begin_layout Standard
+Consider any protocol where, when both players are honest, the probability
+ of abort is zero.
+ The protocols we have, satisfy this property, so long as we assume that
+ honest players can prepare perfect GHZ boxes.
+ 
+\end_layout
+
+\begin_layout Standard
+For instance, suppose that in some arbitrary protocol 
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+, Alice 
+\end_layout
+
+\begin_layout Standard
+In our protocols, this implictly requires that when both players are honest,
+ the probability of abort is zero.
+ honest players can construct perfect (i.e.
  noiseless) devices.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Cheating players are anyway always assumed to have arbitrary control over
+ the devices and aren't affected by noise.
+ 
+\end_layout
+
+\end_inset
+
  
 \end_layout
 
