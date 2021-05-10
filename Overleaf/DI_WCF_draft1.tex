@@ -19,6 +19,9 @@
 \makeatletter
 
 %%%%%%%%%%% added by Tom
+% Sorry Tom, it wasn't compiling on my machine
+% I will try to improve the formatting tomorrow; yours looks nicer.
+
 %\usepackage{algorithm}
 %\floatname{algorithm}{Algorithm}
 %\usepackage{algcompatible}
@@ -27,6 +30,8 @@
 \usepackage{IEEEtrantools}
 
 %\newtheorem{prop}{Proposition}
+%%Added for Tom
+\usepackage{braket}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
 
@@ -71,6 +76,9 @@
 \newtheorem{rem}[thm]{\protect\remarkname}
 \theoremstyle{plain}
 \newtheorem{fact}[thm]{\protect\factname}
+\theoremstyle{plain}
+\newtheorem{prop}[thm]{\protect\propositionname}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage{color}
 \definecolor{purple}{RGB}{120,20,120}
@@ -111,6 +119,7 @@
 \providecommand{\remarkname}{Remark}
 \providecommand{\theoremname}{Theorem}
 \providecommand{\factname}{Fact}
+\providecommand{\propositionname}{Proposition}
 
 \begin{document}
 \title{Improving the security of device-independent weak coin flipping}
