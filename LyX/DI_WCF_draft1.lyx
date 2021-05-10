@@ -3743,7 +3743,35 @@ inverted 0
 status open
 
 \begin_layout Standard
-The study of composed protocols is simplified by assuming that 
+The study of composed protocols is simplified by assuming that honest players
+ output either 
+\begin_inset Formula $A$
+\end_inset
+
+ or 
+\begin_inset Formula $B$
+\end_inset
+
+ but never 
+\begin_inset Formula $\perp$
+\end_inset
+
+ (abort).
+ In our protocols, this implictly requires that honest players can construct
+ perfect (i.e.
+ noiseless) devices.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Cheating players are anyway always assumed to have arbitrary control over
+ the devices and aren't affected by noise.
+ 
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \end_inset

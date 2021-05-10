@@ -3743,7 +3743,24 @@ inverted 0
 status open
 
 \begin_layout Standard
-The study of composed protocols is simplified by 
+The study of composed protocols is simplified by assuming that honest players
+ output either 
+\begin_inset Formula $A$
+\end_inset
+
+ or 
+\begin_inset Formula $B$
+\end_inset
+
+ but never 
+\begin_inset Formula $\perp$
+\end_inset
+
+ (abort).
+ In our protocols, this implictly requires that honest players can construct
+ perfect (i.e.
+ noiseless) devices.
+ 
 \end_layout
 
 \end_inset
