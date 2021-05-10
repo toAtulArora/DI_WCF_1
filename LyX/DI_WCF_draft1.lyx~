@@ -3791,7 +3791,8 @@ For instance, suppose that in the execution of the aforementioned protocol
 
 .
  Similarly, when Bob is honest and after the interaction, reaches the outcome
- abort, he can declare himself the winner, i.e.
+ abort, he knows Alice cheated and can therefore declare himself the winner,
+ i.e.
  output 
 \begin_inset Formula $B$
 \end_inset
@@ -3801,27 +3802,30 @@ For instance, suppose that in the execution of the aforementioned protocol
 \end_layout
 
 \begin_layout Standard
-In our protocols, this implictly requires that when both players are honest,
- the probability of abort is zero.
- honest players can construct perfect (i.e.
- noiseless) devices.
-\begin_inset Foot
-status collapsed
+For reasons which shall become evident shortly, whenever we modify a protocol
+ so that an honest Alice (Bob) replaces the outcome abort with Alice (Bob)
+ winning, we say Alice (Bob) is lenient.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-Cheating players are anyway always assumed to have arbitrary control over
- the devices and aren't affected by noise.
- 
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+ with lenient players
 \end_layout
 
 \end_inset
 
  
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

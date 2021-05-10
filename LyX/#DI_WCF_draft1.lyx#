@@ -3782,27 +3782,29 @@ For instance, suppose that in the execution of the aforementioned protocol
  (with no-honest-abort), Alice behaves honestly but Bob is malicious.
  Suppose after interacting with Bob, Alice reaches the conclusion that she
  must abort.
- Since she knows that if Bob were honest, the probability of abort was zero.
+ Since she knows that if Bob were honest, the outcome abort could not have
+ arisen, she concludes that Bob is cheating and declares herself the winner,
+ i.e.
+ she outputs 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ Similarly, when Bob is honest and after the interaction, reaches the outcome
+ abort, he knows Alice cheated and can therefore declare himself the winner,
+ i.e.
+ output 
+\begin_inset Formula $B$
+\end_inset
+
+.
  
 \end_layout
 
 \begin_layout Standard
-In our protocols, this implictly requires that when both players are honest,
- the probability of abort is zero.
- honest players can construct perfect (i.e.
- noiseless) devices.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Cheating players are anyway always assumed to have arbitrary control over
- the devices and aren't affected by noise.
- 
-\end_layout
-
-\end_inset
-
- 
+For reasons which shall become evident shortly, whenever we modify a protocol
+ so that an honest Alice (Bob) replaces the outcome abort with Alice (Bob)
+ winning, we say Alice (is lenient.
 \end_layout
 
 \end_inset
