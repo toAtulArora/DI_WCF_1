@@ -3743,6 +3743,20 @@ inverted 0
 status open
 
 \begin_layout Standard
+The study of composed protocols is simplified by assuming that 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
 In the following sections, we work out some examples and analyse their security
  and see where having a neat characterisation of cheat vectors helps.
 \end_layout
