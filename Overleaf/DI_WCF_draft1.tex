@@ -25,6 +25,9 @@
 \newcommand{\PA}{P_A^*} %{\mathrm{P}_A^*} 
 \newcommand{\eps}{\varepsilon}
 \newcommand{\Jnote}[1]{\textcolor{blue}{ {\textbf{(Jamie: }#1\textbf{) }}}}
+%I put this for me and Tom
+\newcommand{\Tnote}[1]{\textcolor{green}{ {\textbf{(Tom: }#1\textbf{) }}}}
+\newcommand{\Anote}[1]{\textcolor{red}{ {\textbf{(Atul: }#1\textbf{) }}}}
 \newtheorem{protocol}{Protocol}
 %%%%%%%%%%%%%%%%
 
@@ -165,14 +168,14 @@ Since then, a sequence of works have studied point games and Reference~\cite{Moc
 In particular, the proof has been simplified~\cite{???} and made explicit~\cite{???}. 
 Interestingly, Miller~\cite{???} used Mochon's proof to show that protocols approaching the ideal limit must have an exponentially increasing number of messages. 
 We note that all of this work is in the \emph{device-dependent} setting where \emph{Alice and Bob trust their quantum devices}. 
-In this work, we \emph{revise} the security definitions such that when Alice or Bob cheat, they have control of each other's quantum devices, opening up a plethora of new cheating strategies that were not considered in the previously mentioned references. 
+In this work, we \emph{revise} the security definitions such that when Alice or Bob cheat, they have control of each other's quantum devices, opening up a plethora of new cheating strategies that were not considered in the previously mentioned references. \Anote{mention noise here, perhaps?}
 
-In this paper, we mostly consider \emph{weak} coin flipping (WCF) protocols. 
+In this paper, we mostly consider \emph{weak} coin flipping (WCF) protocols. \Anote{shouldn't this come before we cite Mochon and others?}
 The prefix \emph{weak} refers to the situation where Alice and Bob desire opposite outcomes of the coin. 
 When designing weak coin flipping protocols, the security goals are: 
 \begin{center} 
 \begin{tabularx}{\textwidth}{cX}
-\emph{Completeness for honest parties:} & If Alice and Bob are honest, then they share the same outcome of a protocol $c \in \{ 0, 1 \}$, and $c$ is generated uniformly at random by the protocol. \\ 
+\emph{Completeness for honest parties:} & If Alice and Bob are honest, then they share the same outcome of a protocol $c \in \{ 0, 1 \}$, and $c$ is generated uniformly at random by the protocol. \Anote{Umm, perhaps correctness is a better term?}\\ 
 \emph{Soundness against cheating Bob:} & If Alice is honest, then a dishonest (i.e., cheating) Bob cannot force the outcome $c = 1$. \\ 
 \emph{Soundness against cheating Alice:} & If Bob is honest, then a dishonest (i.e., cheating) Alice cannot force the outcome $c = 0$. 
 \end{tabularx} 
