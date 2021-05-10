@@ -112,7 +112,7 @@
 \providecommand{\factname}{Fact}
 
 \begin{document}
-\title{Improved Device Independent Weak Coin Flipping Protocols}
+\title{Improving the security of device-independent weak coin flipping}
 \maketitle
 \begin{abstract}
 {[}OUTDATED: Needs to be rewritten{]}\\
@@ -1225,16 +1225,16 @@ This is the correct form of the security statement. It is important to bound the
 \begin{proof}
 	For a given implementation of the boxes, let $p(x_1,\cdots x_n)$ denote the joint probability distribution of passing the GHZ games. Let $S = \{j|\ E[X_j|J=j, \Omega] < 1-\delta\} \subset [n]$ be the set of boxes that have an expectation value for GHZ (conditioned on passing in the other boxes) below our target threshold and let $m = |S|$ be the number of such boxes. The value of $m$ is unknown, so we will need to maximise over it in the end.
 	
-	Let $\alpha = \Pr(\{X_i\}_i = 1)$ and $\beta_i = \Pr(\{X_i\}_{i\neq j} = 1 \cap X_j = 0)$ be respectively the probabilities of the events where all the tests pass, or they all pass except for the $j$th test. This allows us to rewrite $E[X_j|J=j,\Omega] = \Pr(\{X_i\}=1)/\Pr(\{X_i\}_{i\neq j} = 1) = \alpha/(\alpha + \beta_j)$, and so, by definition of $S$, we have $ \alpha/(\alpha + \beta_j)<(1-\delta)$, for $j\in S$, which is equivalent to $\beta_j > \frac{\delta}{1-\delta} \alpha$. 
+	Let $\alpha = \Pr(\{X_i\}_i = 1)$ and $\beta_i = \Pr(\{X_i\}_{i\neq j} = 1 \cap X_j = 0)$ be respectively the probabilities of the events where all the tests pass, or they all pass except for the $j$th test. This allows us to rewrite $E[X_j|J=j,\Omega] = \Pr(\{X_i\}_i=1)/\Pr(\{X_i\}_{i\neq j} = 1) = \alpha/(\alpha + \beta_j)$, and so, by definition of $S$, we have $ \alpha/(\alpha + \beta_j)<(1-\delta)$, for $j\in S$, which is equivalent to $\beta_j > \frac{\delta}{1-\delta} \alpha$. 
 	
-	The aim of the proof is to bound the probability $\Pr[\Omega \cap \overline T]$, which we can rewrite as
+	The aim of the proof is to bound the probability $\Pr[\Omega \cap \overline T]$. If we condition and summed over the different values of $J$, we can rewrite it as
     \begin{IEEEeqnarray}{rL}
          \Pr(\Omega \cap \overline T) = \sum_j \frac{1}{n} \Pr(\Omega \cap \overline{T}| J = j) = \sum_{j\in S} \frac{1}{n} \Pr(\{X_i\}_{i\neq j} = 1) = \frac{1}{n} \sum_{j\in S} (\alpha + \beta_i)\,,
     \end{IEEEeqnarray}
-    where we have conditioned and summed over the different values of $J$ and kept the ones, conditioned on which $T$ is false. 
+    where we have kept the round $j\in S$ ones, conditioned on which $T$ is false. 
     We are thus left with the optimisation problem 
 	\begin{IEEEeqnarray}{L'L}
-		\max_{\alpha>0,(\beta_i)_i>0} 	
+		\max_{\alpha\geq 0,(\beta_i)_i\geq 0} 	
 		    &\frac{1}{n}\left( \sum_{j\in S} \alpha + \beta_j\right)\\
 		\mathrm{subject\ to}					
 		    &\alpha + \sum_{j\in S} \beta_j \leq 1\\
@@ -1242,7 +1242,7 @@ This is the correct form of the security statement. It is important to bound the
 	\end{IEEEeqnarray}	    
 	This is a linear problem. Simplifying it by defining $\Sigma = \sum_{j\in S} \beta_j$, gives
 	\begin{IEEEeqnarray}{L'L}
-		\max_{\alpha>0,\Sigma>0} 	&\frac{1}{n}( m\alpha + \Sigma)\\
+		\max_{\alpha\geq0,\Sigma\geq0} 	&\frac{1}{n}( m\alpha + \Sigma)\\
 		\mathrm{subject\ to}					
 		    &\alpha + \Sigma \leq 1\\
 			& \Sigma \geq m\frac{\delta}{1-\delta} \alpha			
