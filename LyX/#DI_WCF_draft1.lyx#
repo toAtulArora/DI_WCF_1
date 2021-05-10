@@ -3279,10 +3279,6 @@ noprefix "false"
 \end_layout
 
 \begin_layout Section
-Second Technique: 
-\end_layout
-
-\begin_layout Section
 Second Technique: Bias Suppression 
 \begin_inset CommandInset label
 LatexCommand label
@@ -3340,7 +3336,7 @@ status open
 
 \begin_layout Standard
 Notice that 
-\begin_inset Formula $p_{A}^{*}(\mathcal{X})\ge p_{B}^{*}(\mathcal{X})$
+\begin_inset Formula $p_{A}^{*}(\mathcal{X})>p_{B}^{*}(\mathcal{X})$
 \end_inset
 
  where 
@@ -3526,6 +3522,10 @@ winner gets polarity
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Composition
 \end_layout
 
 \begin_layout Algorithm
@@ -3734,6 +3734,10 @@ TODO: Perhaps show how
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Algorithm
 
 \end_layout
 
@@ -4537,7 +4541,7 @@ Thus to obtain
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
