@@ -3917,13 +3917,53 @@ inverted 0
 status open
 
 \begin_layout Standard
-In the following sections, we work out some examples and analyse their security
- and see where having a neat characterisation of cheat vectors helps.
+For clarity and conciseness, we define 
+\begin_inset Formula $C_{LL}$
+\end_inset
+
+ to be compositions with lenient protocols.
+ We work out some examples of such protocols and analyse their security
+ in the following section.
+ These can be improved by considering 
+\begin_inset Formula $C_{\perp L}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{L\perp}$
+\end_inset
+
+, compositions where only one player is lenient and we use the cheat vectors
+ for the other.
+ 
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $C_{LL}$
+\end_inset
+
+, 
+\begin_inset Formula $C_{\perp L}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{L\perp}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Subsection
