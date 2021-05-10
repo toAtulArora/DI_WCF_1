@@ -15,14 +15,15 @@
 \contentsline {subsection}{\numberline {4.1}Standard Analysis}{8}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Cheat Vector Analysis}{9}{subsection.4.2}%
 \contentsline {section}{\numberline {5}Application: Strong Coin Flipping}{11}{section.5}%
-\contentsline {section}{\numberline {6}Security Proofs }{11}{section.6}%
+\contentsline {section}{\numberline {6}Security Proof | Asymptotic}{11}{section.6}%
 \contentsline {subsection}{\numberline {6.1}Cheat vectors optimisation using Semi Definite Programming}{11}{subsection.6.1}%
 \contentsline {subsubsection}{\numberline {6.1.1}SDP when Alice self-tests}{11}{subsubsection.6.1.1}%
-\contentsline {subsubsection}{\numberline {6.1.2}SDP when Bob self-tests}{12}{subsubsection.6.1.2}%
-\contentsline {section}{\numberline {7}Self-testing: asymptotic case}{13}{section.7}%
-\contentsline {section}{\numberline {8}Self-testing: finite testing}{13}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Estimation of GHZ winning probability}{13}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}Robust self-testing and continuity of SDP}{15}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}The self-testing step {[}Discuss with Tom before writing{]} }{15}{subsection.8.3}%
-\contentsline {subsubsection}{\numberline {8.3.1}Notes on Martingales}{15}{subsubsection.8.3.1}%
-\contentsline {subsection}{\numberline {8.4}The continuity argument {[}Enter Jamie{]}}{16}{subsection.8.4}%
+\contentsline {subsubsection}{\numberline {6.1.2}SDP when Bob self-tests}{13}{subsubsection.6.1.2}%
+\contentsline {section}{\numberline {7}Self-testing: asymptotic case}{15}{section.7}%
+\contentsline {section}{\numberline {8}Self-testing: finite testing}{15}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Estimation of GHZ winning probability}{15}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Robust self-testing and continuity of SDP}{16}{subsection.8.2}%
+\contentsline {subsubsection}{\numberline {8.2.1}Bob dishonest}{16}{subsubsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.3}The self-testing step {[}Discuss with Tom before writing{]} }{16}{subsection.8.3}%
+\contentsline {subsubsection}{\numberline {8.3.1}Notes on Martingales}{17}{subsubsection.8.3.1}%
+\contentsline {subsection}{\numberline {8.4}The continuity argument {[}Enter Jamie{]}}{17}{subsection.8.4}%

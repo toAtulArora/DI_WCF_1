@@ -1195,24 +1195,44 @@ where $U$ is as defined in \Eqref{Bob-u} and the projectors as in
 We assume that the $3n$ boxes are described by some joint quantum state and local measurement operators. After playing the GHZ game with $3(n-1)$ of them, and verifying that they all pass, we want to make a statement about the remaining box, whose state $\tilde \rho$ is conditioned on the passing of all the other test. 
 
 \subsection{Estimation of GHZ winning probability}
-\begin{algorithm}[H]
-\label{alg:self-test}
-\caption{Estimation of the GHZ value}
-\begin{algorithmic}[1]
-    \STATEx 
-	\STATE Pick a box $J \in [ n ]$ uniformly at random.
-	\STATE For $i \in [n]\backslash J$, play the GHZ game with box $i$, denote outcome of game as $X_i\in \{0,1\}$ 
-	\STATE If 
-	\begin{IEEEeqnarray}{r'L}
-	     \Omega:& X_i = 1 \text{, for all } i\in [n] \backslash J
-	\end{IEEEeqnarray}
-	\STATE Then conclude that the remaining box satisfies
-	\begin{IEEEeqnarray}{r'L}
-	     T:& E[X_J|J,\Omega] \geq 1 - \delta 
-	\end{IEEEeqnarray}
-\end{algorithmic}
-\end{algorithm}
+% \begin{algorithm}[H]
+% \label{alg:self-test}
+% \caption{Estimation of the GHZ value}
+% \begin{algorithmic}[1]
+%     \STATEx 
+% 	\STATE Pick a box $J \in [ n ]$ uniformly at random.
+% 	\STATE For $i \in [n]\backslash J$, play the GHZ game with box $i$, denote outcome of game as $X_i\in \{0,1\}$ 
+% 	\STATE If 
+% 	\begin{IEEEeqnarray}{r'L}
+% 	     \Omega:& X_i = 1 \text{, for all } i\in [n] \backslash J
+% 	\end{IEEEeqnarray}
+% 	\STATE Then conclude that the remaining box satisfies
+% 	\begin{IEEEeqnarray}{r'L}
+% 	     T:& E[X_J|J,\Omega] \geq 1 - \delta 
+% 	\end{IEEEeqnarray}
+% \end{algorithmic}
+% \end{algorithm}
 
+\begin{lyxalgorithm}
+	\label{alg:self-test}
+	% \caption{Estimation of the GHZ value}
+	% \begin{algorithmic}[1]
+	%     \STATEx 
+	\begin{enumerate}
+		\item Pick a box $J \in [ n ]$ uniformly at random.
+		\item For $i \in [n]\backslash J$, play the GHZ game with box $i$, denote outcome of game as $X_i\in \{0,1\}$ 
+		\item If 
+		\begin{IEEEeqnarray}{r'L}
+		     \Omega:& X_i = 1 \text{, for all } i\in [n] \backslash J
+		\end{IEEEeqnarray}
+		\item Then conclude that the remaining box satisfies
+		\begin{IEEEeqnarray}{r'L}
+		     T:& E[X_J|J,\Omega] \geq 1 - \delta 
+		\end{IEEEeqnarray}
+	\end{enumerate}
+	% \end{algorithmic}
+\end{lyxalgorithm}
+	
 The expectation value of $E[X_J|J,\Omega]$ accurately describes the expected GHZ value associated to the state of the remaining boxes $J$, conditioned on having measuring some outcome sequence in the other boxes which passes all the GHZ tests. Note that the conditioning in $J$ is important because otherwise we would get a bound on the GHZ averaged over all boxes, but we are only interested in the remaining box.
 
 \begin{prop}[Security statement]

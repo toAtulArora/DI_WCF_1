@@ -14,7 +14,7 @@
 \BOOKMARK [2][-]{subsection.4.1}{Standard Analysis}{section.4}% 14
 \BOOKMARK [2][-]{subsection.4.2}{Cheat Vector Analysis}{section.4}% 15
 \BOOKMARK [1][-]{section.5}{Application: Strong Coin Flipping}{}% 16
-\BOOKMARK [1][-]{section.6}{Security Proofs }{}% 17
+\BOOKMARK [1][-]{section.6}{Security Proof | Asymptotic}{}% 17
 \BOOKMARK [2][-]{subsection.6.1}{Cheat vectors optimisation using Semi Definite Programming}{section.6}% 18
 \BOOKMARK [3][-]{subsubsection.6.1.1}{SDP when Alice self-tests}{subsection.6.1}% 19
 \BOOKMARK [3][-]{subsubsection.6.1.2}{SDP when Bob self-tests}{subsection.6.1}% 20
@@ -22,6 +22,7 @@
 \BOOKMARK [1][-]{section.8}{Self-testing: finite testing}{}% 22
 \BOOKMARK [2][-]{subsection.8.1}{Estimation of GHZ winning probability}{section.8}% 23
 \BOOKMARK [2][-]{subsection.8.2}{Robust self-testing and continuity of SDP}{section.8}% 24
-\BOOKMARK [2][-]{subsection.8.3}{The self-testing step [Discuss with Tom before writing] }{section.8}% 25
-\BOOKMARK [3][-]{subsubsection.8.3.1}{Notes on Martingales}{subsection.8.3}% 26
-\BOOKMARK [2][-]{subsection.8.4}{The continuity argument [Enter Jamie]}{section.8}% 27
+\BOOKMARK [3][-]{subsubsection.8.2.1}{Bob dishonest}{subsection.8.2}% 25
+\BOOKMARK [2][-]{subsection.8.3}{The self-testing step [Discuss with Tom before writing] }{section.8}% 26
+\BOOKMARK [3][-]{subsubsection.8.3.1}{Notes on Martingales}{subsection.8.3}% 27
+\BOOKMARK [2][-]{subsection.8.4}{The continuity argument [Enter Jamie]}{section.8}% 28
