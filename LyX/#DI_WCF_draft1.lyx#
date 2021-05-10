@@ -3774,17 +3774,15 @@ Consider any protocol
 \end_layout
 
 \begin_layout Standard
-For instance, suppose that in some arbitrary protocol 
+For instance, suppose that in the execution of protocol 
 \begin_inset Formula $\mathcal{R}$
 \end_inset
 
- with no-honest-abort as above, Alice behaves honestly and Bob is malicious.
- Alice follows protocol 
-\begin_inset Formula $\mathcal{R}$
-\end_inset
-
- to interact with Bob and reaches the conclusion that she must abort.
- Since she knows that if Bob were honest, 
+ (with no-honest-abort), Alice behaves honestly but Bob is malicious.
+ Suppose after interacting with Bob, Alice reaches the conclusion that she
+ must abort.
+ Since she knows that if Bob were honest, the probability of abort was zero.
+ 
 \end_layout
 
 \begin_layout Standard
