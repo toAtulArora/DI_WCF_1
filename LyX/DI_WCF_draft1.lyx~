@@ -3483,6 +3483,10 @@ inverted 0
 status open
 
 \begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 TODO: It might help to explain 
 \begin_inset Quotes eld
 \end_inset
@@ -3502,8 +3506,13 @@ flip and declare
  protocol.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 TODO: Winner gets Polarity
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3757,7 +3766,7 @@ The study of composed protocols is simplified by assuming that honest players
 \end_inset
 
  (abort).
- We mean the following.
+ We take a moment to explain this.
 \end_layout
 
 \begin_layout Standard
@@ -3809,7 +3818,7 @@ lenient
 \emph default
 .
  This is motivated by the fact that when we compose protocols, if Alice
- can conclude that Bob is cheating, and she outputs 
+ can conclude that Bob is cheating, and she still outputs 
 \begin_inset Formula $A$
 \end_inset
 
