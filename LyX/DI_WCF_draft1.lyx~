@@ -3537,7 +3537,7 @@ winner gets polarity
 Composition
 \end_layout
 
-\begin_layout Algorithm
+\begin_layout Definition
 \begin_inset Argument 1
 status open
 
@@ -3554,7 +3554,14 @@ status open
 
 \end_inset
 
- Given two unbalanced WCF protocols, 
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "def:C"
+
+\end_inset
+
+Given two unbalanced WCF protocols, 
 \begin_inset Formula $\mathcal{X}$
 \end_inset
 
@@ -3681,8 +3688,7 @@ Output
 \end_layout
 
 \end_deeper
-\end_deeper
-\begin_layout Algorithm
+\begin_layout Standard
 Let 
 \begin_inset Formula $\mathcal{Z}^{i+1}:=C(\mathcal{X},\mathcal{Z}^{i})$
 \end_inset
@@ -3723,6 +3729,7 @@ This is just to facilitate notation.
  
 \end_layout
 
+\end_deeper
 \begin_layout Algorithm
 \begin_inset Note Note
 status collapsed
@@ -3844,6 +3851,13 @@ status open
 
 \end_inset
 
+
+\begin_inset CommandInset label
+LatexCommand label
+name "def:lenientR"
+
+\end_inset
+
  Suppose 
 \begin_inset Formula $\mathcal{R}$
 \end_inset
@@ -3932,8 +3946,7 @@ For clarity and conciseness, we define
 \begin_inset Formula $C_{L\perp}$
 \end_inset
 
-, compositions where only one player is lenient and we use the cheat vectors
- for the other.
+, compositions where only one player is lenient.
  
 \end_layout
 
@@ -3963,7 +3976,51 @@ status open
 
 \end_inset
 
- 
+ Suppose WCF protocols 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{Y}$
+\end_inset
+
+ can be transformed into their 
+\emph on
+lenient
+\emph default
+ variants (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "def:lenientR"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+) and let 
+\begin_inset Formula $\mathcal{X}'$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{Y}'$
+\end_inset
+
+ be their 
+\emph on
+lenient
+\emph default
+ variants, respectively.
+ Then define 
+\begin_inset Formula 
+\begin{align*}
+C_{LL}(\mathcal{X},\mathcal{Y}) & :=C(\mathcal{X}',\mathcal{Y}')\\
+C_{\perp L}(\mathcal{X},\mathcal{Y}) & :=C(\mathcal{X},\mathcal{Y}')
+\end{align*}
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
