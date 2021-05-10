@@ -3757,7 +3757,7 @@ The study of composed protocols is simplified by assuming that honest players
 \end_inset
 
  (abort).
- 
+ We mean the following.
 \end_layout
 
 \begin_layout Standard
@@ -3766,15 +3766,16 @@ Consider any protocol
 \end_inset
 
  where, when both players are honest, the probability of abort is zero.
- The protocols we have, satisfy this property, so long as we assume that
- honest players can prepare perfect GHZ boxes.
+ The protocols we have described so far, satisfy this property, so long
+ as we assume that honest players can prepare perfect GHZ boxes.
  Such protocols are readily converted into protocols where an honest player
  never outputs abort.
  
 \end_layout
 
 \begin_layout Standard
-For instance, suppose that in the execution of protocol 
+For instance, suppose that in the execution of the aforementioned protocol
+ 
 \begin_inset Formula $\mathcal{R}$
 \end_inset
 

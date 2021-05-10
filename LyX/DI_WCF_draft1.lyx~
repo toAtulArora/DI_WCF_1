@@ -3757,23 +3757,47 @@ The study of composed protocols is simplified by assuming that honest players
 \end_inset
 
  (abort).
- 
+ We mean the following.
 \end_layout
 
 \begin_layout Standard
-Consider any protocol where, when both players are honest, the probability
- of abort is zero.
- The protocols we have, satisfy this property, so long as we assume that
- honest players can prepare perfect GHZ boxes.
- 
-\end_layout
-
-\begin_layout Standard
-For instance, suppose that in some arbitrary protocol 
+Consider any protocol 
 \begin_inset Formula $\mathcal{R}$
 \end_inset
 
-, Alice 
+ where, when both players are honest, the probability of abort is zero.
+ The protocols we have described so far, satisfy this property, so long
+ as we assume that honest players can prepare perfect GHZ boxes.
+ Such protocols are readily converted into protocols where an honest player
+ never outputs abort.
+ 
+\end_layout
+
+\begin_layout Standard
+For instance, suppose that in the execution of the aforementioned protocol
+ 
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+ (with no-honest-abort), Alice behaves honestly but Bob is malicious.
+ Suppose after interacting with Bob, Alice reaches the conclusion that she
+ must abort.
+ Since she knows that if Bob were honest, the outcome abort could not have
+ arisen, she concludes that Bob is cheating and declares herself the winner,
+ i.e.
+ she outputs 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ Similarly, when Bob is honest and after the interaction, reaches the outcome
+ abort, he can declare himself the winner, i.e.
+ output 
+\begin_inset Formula $B$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
