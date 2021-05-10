@@ -3802,9 +3802,19 @@ For instance, suppose that in the execution of the aforementioned protocol
 \end_layout
 
 \begin_layout Standard
-For reasons which shall become evident shortly, whenever we modify a protocol
- so that an honest Alice (Bob) replaces the outcome abort with Alice (Bob)
- winning, we say Alice (Bob) is lenient.
+Whenever we modify a protocol so that an honest Alice (Bob) replaces the
+ outcome abort with Alice (Bob) winning, we say Alice (Bob) is 
+\emph on
+lenient
+\emph default
+.
+ This is motivated by the fact that when we compose protocols, if Alice
+ can conclude that Bob is cheating, and she still outputs 
+\begin_inset Formula $A$
+\end_inset
+
+ instead of aborting, she is giving Bob further opportunity to cheat—she
+ is being lenient.
 \end_layout
 
 \end_inset
@@ -3835,7 +3845,61 @@ status open
 \end_inset
 
 , is zero.
- Then 
+ Then by 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+ with lenient Alice (Bob)
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ we mean that Alice (Bob) follows 
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+ except that the outcome 
+\begin_inset Formula $\perp$
+\end_inset
+
+ replaced with 
+\begin_inset Formula $A$
+\end_inset
+
+ (
+\begin_inset Formula $B$
+\end_inset
+
+).
+ Finally, by 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+lenient 
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ we mean 
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+ with lenient Alice and Bob.
+ 
 \end_layout
 
 \begin_layout Standard
