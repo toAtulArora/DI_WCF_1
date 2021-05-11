@@ -32,6 +32,10 @@ Atul~Singh Arora, J{\'{e}}r{\'{e}}mie Roland, and Stephan Weis, \emph{Quantum
 Manuel Blum, \emph{Coin flipping by telephone a protocol for solving impossible
   problems}, SIGACT News \textbf{15} (1983), no.~1, 23--27.
 
+\bibitem[Kit03]{Kitaev03}
+Alexei Kitaev, \emph{Quantum coin flipping}, Talk at the 6th workshop on
+  Quantum Information Processing, 2003.
+
 \bibitem[Mil20]{Miller2019}
 Carl~A. Miller, \emph{The impossibility of efficient quantum weak coin
   flipping}, Proceedings of the 52nd Annual ACM SIGACT Symposium on Theory of
