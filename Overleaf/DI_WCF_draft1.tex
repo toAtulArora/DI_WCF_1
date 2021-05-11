@@ -370,7 +370,7 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 
 	With this in mind, we can now define a simple composition. 
 
-	\begin{lyxalgorithm}[Winner-gets-polarity composition] \label{simple}  
+	\begin{lyxalgorithm}[Winner-gets-polarity composition] \label{alg:simple}  
 	Alice and Bob agree on a protocol $\mathcal{P}$. 
 	\begin{enumerate} 
 	\item Alice and Bob perform protocol $\mathcal{P}$. 
@@ -399,9 +399,9 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 	This is because Alice can declare herself the winner if she catches Bob cheating. 
 	Similarly, Bob can declare himself the winner if he catches Alice cheating. 
 	This is completely fine when we consider ``one-shot'' versions of these protocols, but we lose something when we compose them. 
-	For instance, in the simple composition~\ref{simple}, Bob should not really accept to continue onto the second protocol if he catches Alice cheating in the first. 
+	For instance, in the simple composition used in ~\Algref{simple}, Bob should not really accept to continue onto the second protocol if he catches Alice cheating in the first. 
 	That is, he knows Alice cheated, so he can declare himself the winner of the entire protocol! 
-	In other word, the equations~\ref{first} and \ref{second} may be able to get reduced even further. 
+	In other word, the Equations~\ref{first} and \ref{second} may \sout{be able to} get reduced even further. 
 	For purposes of this discussion, suppose Alice adopts a cheating strategy which has a probability $\alpha$ of her winning ($c = 0$), a probability $\beta$ of her losing ($c = 1$), and a probability $\gamma$ of Bob detecting Alice cheated. 
 	Then her cheating probability in the (abort-phobic) version of the simple composition is now 
 	\begin{equation} 
@@ -418,12 +418,13 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 
 	\begin{defn}[Alice and Bob's cheat vectors]  
 	Given a protocol, we say that $(\alpha, \beta, \gamma)$ is a cheat vector for (dishonest) Alice if there exists a cheating strategy where: 
-	\begin{center} 
+	% \begin{center} 
 	\begin{tabularx}{\textwidth}{cX}
 	$\alpha$ is the probability with which Bob accepts the outcome $c = 0$, \\ 
 	$\beta$ is the probability with which Bob accepts the outcome $c = 1$, \\ 
 	$\gamma$ is the probability with which Bob aborts. \\ \end{tabularx} 
-	\end{center}  
+	% \end{center}  
+	
 	\end{defn} 
 
 	We can now solve for the optimal bias using \emph{dynamic programming}.  
