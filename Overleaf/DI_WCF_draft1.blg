@@ -5,51 +5,50 @@ Reallocating 'name_of_file' (item size: 1) to 9 items.
 The style file: amsalpha.bst
 Reallocating 'name_of_file' (item size: 1) to 13 items.
 Database file #1: DI_WCF_ideas.bib
-Warning--I didn't find a database entry for "Blum"
 Warning--I didn't find a database entry for "Moc07"
 Warning--I didn't find a database entry for "???"
 Warning--I didn't find a database entry for "Kit02"
 Warning--I didn't find a database entry for "????"
 Warning--missing pages in Silman2011
-You've used 1 entry,
+You've used 2 entries,
             2624 wiz_defined-function locations,
-            574 strings with 4644 characters,
-and the built_in function-call counts, 503 in all, are:
-= -- 37
-> -- 40
-< -- 0
-+ -- 15
-- -- 15
-* -- 53
-:= -- 95
-add.period$ -- 1
-call.type$ -- 1
-change.case$ -- 10
-chr.to.int$ -- 1
-cite$ -- 2
-duplicate$ -- 14
-empty$ -- 24
-format.name$ -- 15
-if$ -- 86
+            582 strings with 4768 characters,
+and the built_in function-call counts, 836 in all, are:
+= -- 70
+> -- 48
+< -- 1
++ -- 17
+- -- 17
+* -- 83
+:= -- 147
+add.period$ -- 2
+call.type$ -- 2
+change.case$ -- 15
+chr.to.int$ -- 2
+cite$ -- 3
+duplicate$ -- 29
+empty$ -- 53
+format.name$ -- 19
+if$ -- 153
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 2
-newline$ -- 14
-num.names$ -- 3
-pop$ -- 10
+missing$ -- 4
+newline$ -- 17
+num.names$ -- 6
+pop$ -- 15
 preamble$ -- 1
-purify$ -- 11
+purify$ -- 17
 quote$ -- 0
-skip$ -- 9
+skip$ -- 18
 stack$ -- 0
-substring$ -- 7
-swap$ -- 2
-text.length$ -- 0
-text.prefix$ -- 0
+substring$ -- 33
+swap$ -- 3
+text.length$ -- 1
+text.prefix$ -- 1
 top$ -- 0
-type$ -- 8
+type$ -- 16
 warning$ -- 1
-while$ -- 3
-width$ -- 2
-write$ -- 20
-(There were 6 warnings)
+while$ -- 7
+width$ -- 3
+write$ -- 31
+(There were 5 warnings)

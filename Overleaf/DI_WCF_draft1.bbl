@@ -8,6 +8,10 @@
 \providecommand{\href}[2]{#2}
 \begin{thebibliography}{SCA{\etalchar{+}}11}
 
+\bibitem[Blu83]{Blum}
+Manuel Blum, \emph{Coin flipping by telephone a protocol for solving impossible
+  problems}, SIGACT News \textbf{15} (1983), no.~1, 23--27.
+
 \bibitem[SCA{\etalchar{+}}11]{Silman2011}
 J.~Silman, A.~Chailloux, N.~Aharon, I.~Kerenidis, S.~Pironio, and S.~Massar,
   \emph{Fully distrustful quantum bit commitment and coin flipping}, Physical
