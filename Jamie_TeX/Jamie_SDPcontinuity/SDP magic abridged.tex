@@ -1,0 +1,190 @@
+\documentclass[11pt]{article}
+
+\usepackage{palatino}
+\usepackage{mathpazo}
+\usepackage{braket}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{amsthm}
+\usepackage[usenames]{color}
+\usepackage{hyperref}
+
+\theoremstyle{definition}
+
+\special{papersize=8.5in,11in}
+\setlength{\topmargin}{-0.125in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\textheight}{9in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\hypersetup{pdfpagemode=UseNone}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{question}{Question}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{cor}[theorem]{Corollary}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{example}[theorem]{Example}
+
+\usepackage{color,graphicx}
+
+\newcommand{\complex}{\mathbb{C}} 
+\newcommand{\real}{\mathbb{R}} 
+%\newcommand{\natural}{\mathbb{N}} 
+\newcommand{\rational}{\mathbb{Q}} 
+
+\newcommand{\X}{\mathcal{X}} 
+\newcommand{\Y}{\mathcal{Y}} 
+\newcommand{\Herm}{\mathrm{Herm}} 
+
+\newcommand{\ip}[2]{\langle #1, #2 \rangle}
+\newcommand{\ketbra}[2]{\ket{#1}\bra{#2}} 
+\newcommand{\bracket}[2]{\langle #1 | #2 \rangle} 
+\newcommand{\kb}[1]{\ket{#1}\bra{#1}} 
+\newcommand{\Tr}{\mathrm{Tr}} 
+\newcommand{\tr}{\mathrm{Tr}} 
+
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\F}{\mathcal{F}} 
+\newcommand{\I}{\mathbb{1}}
+
+\newcommand{\snote}[1]{\textcolor{magenta}{\textbf{[Jamie: #1]}}}
+
+\begin{document}
+
+%-----------------------------------------------------------------------------%
+\title{\bf SDP analysis}
+%-----------------------------------------------------------------------------%
+
+\date{\today} 
+
+\author{The Batman, Atul, Tom with the cat} 
+
+\maketitle 
+
+\begin{abstract} 
+This note discusses SDP continuity bounds and how they can be used for our analysis. 
+\end{abstract}
+
+\tableofcontents 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
+
+\section{SDP-valued functions and their continuity} 
+
+A semidefinite program (SDP) is an optimization problem of the form 
+\begin{align} 
+f(A,B) = \text{maximize:} \quad & \ip{A}{X} \nonumber \\ 
+\text{subject to:} \quad 
+& \Phi(X) = B \label{SDP} \\ 
+& X \geq 0. \nonumber
+\end{align}  
+We call $f(A,B)$ the value of the semidefinite program which is the supremum of $\ip{A}{X}$ over all $X$ that are feasible ($X \succeq 0$ and $\Phi(X) = B$). 
+In this work we wish to view how the value of an SDP changes as you change $A$ and/or $B$. 
+%To this end, we define the concept of a support function. 
+Ultimately, we wish to know if the value of an SDP is continuous as a function of $A$ and $B$. 
+To this end, let us consider the function 
+\begin{align} 
+h(A) = \text{maximize:} \quad & \ip{A}{X} \\ 
+\text{subject to:} \quad 
+& X \in C  
+\end{align}   
+where $C$ is a nonempty, convex set. 
+This is a generalization of an SDP which is  convenient for the upcoming analysis.  
+Notice that when $C$ is unbounded, it may be the case that $f$ takes the value $+ \infty$. 
+Since we cannot count that high, we use the following definition. 
+
+\begin{definition} 
+We define the \emph{support} of the function $h$, denoted as $\supp(h)$, as 
+\begin{equation} 
+\supp(h) := \{ A : h(A) \textup{ is finite} \}.  
+\end{equation} 
+\end{definition} 
+
+We now show some elementary properties of this function. 
+
+\begin{lemma} 
+The support of $h$ is convex and $h$ is a convex function on its support. 
+\end{lemma} 
+
+\begin{proof} 
+%Since $C$ is convex, we have that $\lambda_1 A_1 + \lambda_2 A_2 \in C$ for all $A_1, A_2 \in C$ and $\lambda_1, \lambda_2 \geq 0$ satisfying $\lambda_1 + \lambda_2 = 1$. 
+For $A_1, A_2 \in \supp(h)$ and $\lambda_1, \lambda_2 \geq 0$ satisfying $\lambda_1 + \lambda_2 = 1$, we have  
+\begin{align}
+h(\lambda_1 A_1 + \lambda_2 A_2) 
+& \leq h(\lambda_1 A_1) + h(\lambda_2 A_2) \\ 
+& = \lambda_1 h(A_1) + \lambda_2 h(A_2) \\ 
+& < + \infty  
+\end{align} 
+where the last inequality follows from $A_1, A_2 \in \supp(h)$.  
+Thus, $\lambda_1 A_1 + \lambda_2 A_2 \in \supp(h)$, proving $\supp(h)$ is a convex set, and $h$ is convex from the above inequalities. 
+\end{proof} 
+
+The following corollary follows from the fact that $h$ is convex. 
+
+\begin{corollary} \label{contint}
+$h$ is continuous on the interior of its support. 
+\end{corollary} 
+
+Another well-known corollary is that $h$ is 
+continuous everywhere if $C$ is compact. 
+This follows from the above corollary since the support is the entire space. 
+
+\begin{corollary} \label{contint}
+If $C$ is compact, $h$ is continuous everywhere. 
+\end{corollary} 
+
+%\begin{lemma} \label{compact}
+%If $C$ is compact, then $h$ has full support and is continuous everywhere. 
+%\end{lemma} 
+
+%\begin{proof} 
+%If $C$ is compact, then $h(A) = \ip{A}{X}$ for some $X \in C$ (i.e., $X$ is an optimal solution). 
+%Thus, it follows $h$ has full support. 
+%Given $A_1, A_2 \in \Herm(\X)$, denote by $X_1, X_2 \in C$ the respective optimal solutions such that ${h(A_1) = \ip{A_1}{X_1}}$ and $h(A_2) = \ip{A_2}{X_2}$. 
+%By symmetry, suppose we have ${h(A_1) \geq h(A_2)}$. 
+%Therefore,  
+%\begin{align} 
+%| h(A_1) - h(A_2) | 
+%& = h(A_1) - h(A_2) \\ 
+%& = \ip{A_1}{X_1} - \ip{A_2}{X_2} \\ 
+%& \leq \ip{A_1}{X_1} - \ip{A_2}{X_1} \\ 
+%& = \ip{A_1 - A_2}{X_1} \\ 
+%& \leq \| A_1 - A_2 \|_2 \cdot \| X_1 \|_2   
+%\end{align} 
+%where we used the optimality of $X_1$ in the first inequality and Cauchy-Schwarz in the second. 
+%Since $X_2 \in C$, which is compact, we know there exists $R > 0$ such that $\| X_1 \|_2 \leq R$. 
+%Thus, ${h(A_1) \to h(A_2)}$ as $A_1 \to A_2$, proving $h$ is continuous.  
+%\end{proof} 
+
+This may look like it only applies to the case when you change the objective function of an SDP (i.e., the variable $A$), but it often applies to the case when you change the constant in the constraints as well (i.e., the variable $B$). 
+This is due to duality theory of semidefinite programming, which we now briefly discuss.   
+
+The dual to the SDP~\eqref{SDP} is given as 
+\begin{align} 
+g(A,B) = \text{minimize:} \quad & \ip{B}{Y} \\ 
+\text{subject to:} \quad 
+& \Phi^*(Y) \geq A. 
+\end{align}  
+
+The utility of this definition is illustrated in the following fact. 
+
+\begin{fact}[Strong duality] \label{SD}
+Under the assumption that $(A,B)$ satisfies $f(A,B) < + \infty$ and there exists $Y$ such that $\Phi^*(Y) > A$, then we have $f(A,B) = g(A,B)$.  
+\end{fact} 
+
+\begin{remark} 
+One can check that the above analysis for the continuity of the $h$ function is similar when we wish to minimize $\ip{A}{X}$ as well. 
+Note that $h$ would be \emph{concave} in this case, but the continuity claims are similar. 
+\end{remark}
+
+\end{document} 
