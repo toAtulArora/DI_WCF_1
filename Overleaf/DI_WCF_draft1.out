@@ -12,7 +12,7 @@
 \BOOKMARK [2][-]{subsection.3.1}{Cheat Vectors }{section.3}% 12
 \BOOKMARK [2][-]{subsection.3.2}{Alice self-tests | Protocol P}{section.3}% 13
 \BOOKMARK [2][-]{subsection.3.3}{Bob self-tests | Protocol Q}{section.3}% 14
-\BOOKMARK [1][-]{section.4}{Second Technique: Bias Suppression }{}% 15
+\BOOKMARK [1][-]{section.4}{Second Technique: Abort-phobic composition }{}% 15
 \BOOKMARK [2][-]{subsection.4.1}{Composition}{section.4}% 16
 \BOOKMARK [2][-]{subsection.4.2}{Standard Composition | CLL}{section.4}% 17
 \BOOKMARK [2][-]{subsection.4.3}{Abort Phobic Compositions | CL,CL}{section.4}% 18
