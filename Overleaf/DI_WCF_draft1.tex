@@ -1504,12 +1504,15 @@ where $U$ is as defined in \Eqref{Bob-u} and the projectors as in
 \end{proof}
 }
 
-\section{Self-testing: asymptotic case}
 
-\section{Self-testing: finite testing}
-We assume that the $3n$ boxes are described by some joint quantum state and local measurement operators. After playing the GHZ game with $3(n-1)$ of them, and verifying that they all pass, we want to make a statement about the remaining box, whose state $\tilde \rho$ is conditioned on the passing of all the other test. 
+
+\section{Security Proof | Finite $n$}
+
 
 \subsection{Estimation of GHZ winning probability}
+
+We assume that the $3n$ boxes are described by some joint quantum state and local measurement operators. After playing the GHZ game with $3(n-1)$ of them, and verifying that they all pass, we want to make a statement about the remaining box, whose state $\tilde \rho$ is conditioned on the passing of all the other test. 
+
 % \begin{algorithm}[H]
 % \label{alg:self-test}
 % \caption{Estimation of the GHZ value}
@@ -1592,101 +1595,13 @@ This is the correct form of the security statement. It is important to bound the
 
 
 \subsection{Robust self-testing and continuity of SDP}
-\subsubsection{Bob dishonest}
-
-Assume Alice's device Assume the devices are described by a state $\ket{\psi'}_{Q_A Q_B}$
 
 
-\subsection{The self-testing step {[}Discuss with Tom before writing{]} }
-\begin{thm}
-Let $\{X_{1},X_{2}\dots X_{n}\}$ be $n$ random variables which are
-possibly correlated and take values in $\{0,1\}$. Let $J\in\{1,2\dots n\}$
-be a random variable, sampled from a uniformly random distribution.
-Then 
-\[
-\Pr\left\{ \left|\frac{1}{n-1}\cdot\sum_{i\in\{1,2\dots n\}\backslash J}X_{i}-\mathbb{E}(X_{J}|J)\right|>r\right\} \le{\rm exp}(-cnr^{2})
-\]
- for some $c>0$. 
-\end{thm}
+\subsection{The continuity argument}
 
-\branchcolor{blue}{\begin{proof}
-Let 
-\[
-Z_{i}:=\mathbb{E}\left[\frac{1}{n-1}\left(\sum_{l\in[n]\backslash J}X_{l}\right)-X_{J}|F^{i}\right]
-\]
-for $i\in\{0,1,\dots n+1\}$ where $\{F^{i}\}$ is a filteration.
-From \Factref{simplestMartingale}, $Z_{0}\dots Z_{n}$ is a martingale.
-Let $F^{0}$ be the trivial sigma algebra. Suppose $F^{1}$ specifies
-$J$ and $F^{i+1}$ specifies $\{J,X_{1}\dots X_{i}\}$ for $i\in\{1,2\dots n-1\}$.
-Note that 
-\begin{align*}
-Z_{0} & =\frac{1}{n-1}\mathbb{E}\left(\sum_{l\in[n]\backslash J}X_{l}\right)-\frac{1}{n}\sum_{j\in[n]}\mathbb{E}(X_{j})\\
- & =\frac{1}{n-1}\frac{1}{n}\sum_{j\in[n]}\sum_{l\in[n]\backslash j}\mathbb{E}(X_{l})-\frac{1}{n}\sum_{j\in[n]}\mathbb{E}(X_{j})\\
- & =0.
-\end{align*}
-Also note that 
-\[
-Z_{n}=\frac{1}{n-1}\sum_{l\in[n]\backslash J}X_{i}-\mathbb{E}(X_{J}|J).
-\]
-Finally, since $\left|Z_{i}-Z_{i-1}\right|\le d/n$ for some fixed
-$d>0$ (the filteration only fixes one $X$ at a time so the differences
-can change by at most $1/n$; TODO argue for the $0$ case), we can
-apply \Thmref{Azuma-Hoeffding} to deduce 
-\[
-\mathbb{P}\left(\left|\frac{1}{n-1}\sum_{l\in[n]\backslash J}X_{i}-\mathbb{E}(X_{J}|J)\right|>r\right)\le e^{-cnr^{2}}
-\]
-where $c>0$ is some constant.
-\end{proof}
-}
 
-\subsubsection{Notes on Martingales}
-\begin{defn}[Martingale]
-Let $(\Omega,F,\mathbb{P})$ be a probability space. Consider random
-variables $X_{0},\dots X_{n}$ and a filteration $F_{0},F_{1}\dots F_{n}$
-i.e. sigma algebras satisfying $F_{0}\subseteq F_{1}\dots\subseteq F_{n}\subseteq F$.
-Then the sequence $(X_{i},F_{i})_{i=0}^{n}$ is a \emph{martingale}
-if
-\begin{enumerate}
-\item $X_{i}\in\mathbb{L}^{1}(\Omega,F_{i},\mathbb{P})$, i.e. $\mathbb{E}(\left|X_{i}\right|)<\infty$
-\item $X_{i-1}=\mathbb{E}(X_{i}|F_{i-1})$ (almost surely) for all $i\in\{1,2\dots n\}$.
-\end{enumerate}
-\end{defn}
-
-\begin{fact}
-\label{fact:simplestMartingale}Let $X\in\mathbb{L}^{1}(\Omega,F,\mathbb{P})$
-be a random variable and suppose $\{F^{i}\}_{i=1}^{n}$ is an arbitrary
-filteration. Define $Z_{i}:=\mathbb{E}(X|F^{i})$ for $i\in\{1,2\dots n\}$.
-Then $Z_{1},Z_{2}\dots Z_{n}$ forms a martingale with respect to
-the filteration. 
-\end{fact}
-
-\branchcolor{purple}{The main property we need is 
-\begin{align*}
-\mathbb{E}(Z_{i}|F_{i-1}) & =\mathbb{E}(\mathbb{E}(X|F_{i})|F_{i-1})\\
- & =\mathbb{E}(X|F_{i-1}) & \because F_{i-1}\subseteq F_{i}\\
- & =Z_{i-1}.
-\end{align*}
-In particular, when $F_{0}=\{\emptyset,\Omega\}$ and $F_{n}=F$ we
-have 
-\[
-Z_{0}=\mathbb{E}(X|F_{0})=\mathbb{E}(X),\quad Z_{n}=\mathbb{E}(X|F_{n})=X.
-\]
-}
-\begin{thm}[The Azuma-Hoeffding inequality]
- \label{thm:Azuma-Hoeffding}Let $(Z_{k},F_{k})_{k=0}^{n}$ be a
-real-valued martingale sequence. Suppose that there exist nonnegative
-reals $d_{1},\dots d_{n}$ such that $\left|Z_{k}-Z_{k-1}\right|\le d_{k}$
-(almost surely) for all $k\in\{1,\dots n\}$. Then, for every $r>0$,
-\[
-\mathbb{P}\left(\left|Z_{n}-Z_{0}\right|\ge r\right)\le2\exp\left(-\frac{r^{2}}{2\sum_{k=1}^{n}d_{k}^{2}}\right).
-\]
-\end{thm}
-
-\subsection{The continuity argument {[}Enter Jamie{]}}
 
 \bibliographystyle{amsalpha}
 \bibliography{DI_WCF_ideas}
-
-
 
 \end{document}

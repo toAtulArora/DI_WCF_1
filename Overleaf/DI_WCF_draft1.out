@@ -21,11 +21,7 @@
 \BOOKMARK [2][-]{subsection.5.1}{Cheat vectors optimisation using Semi Definite Programming}{section.5}% 21
 \BOOKMARK [3][-]{subsubsection.5.1.1}{SDP when Alice self-tests}{subsection.5.1}% 22
 \BOOKMARK [3][-]{subsubsection.5.1.2}{SDP when Bob self-tests}{subsection.5.1}% 23
-\BOOKMARK [1][-]{section.6}{Self-testing: asymptotic case}{}% 24
-\BOOKMARK [1][-]{section.7}{Self-testing: finite testing}{}% 25
-\BOOKMARK [2][-]{subsection.7.1}{Estimation of GHZ winning probability}{section.7}% 26
-\BOOKMARK [2][-]{subsection.7.2}{Robust self-testing and continuity of SDP}{section.7}% 27
-\BOOKMARK [3][-]{subsubsection.7.2.1}{Bob dishonest}{subsection.7.2}% 28
-\BOOKMARK [2][-]{subsection.7.3}{The self-testing step [Discuss with Tom before writing] }{section.7}% 29
-\BOOKMARK [3][-]{subsubsection.7.3.1}{Notes on Martingales}{subsection.7.3}% 30
-\BOOKMARK [2][-]{subsection.7.4}{The continuity argument [Enter Jamie]}{section.7}% 31
+\BOOKMARK [1][-]{section.6}{Security Proof | Finite n}{}% 24
+\BOOKMARK [2][-]{subsection.6.1}{Estimation of GHZ winning probability}{section.6}% 25
+\BOOKMARK [2][-]{subsection.6.2}{Robust self-testing and continuity of SDP}{section.6}% 26
+\BOOKMARK [2][-]{subsection.6.3}{The continuity argument}{section.6}% 27
