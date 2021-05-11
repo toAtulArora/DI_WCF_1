@@ -336,7 +336,7 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 	\paragraph{Rigidity of the GHZ game.} 
 	We prove that Alice self-tests Bob and passes all $n-1$ plays of the GHZ game, then the remaining triple of boxes has to be approximately performing the optimal GHZ strategy. 
 	The differences between this approximation and the optimal strategy disappear in the limit of large $n$. 
-	See Section~\ref{????} for details. 
+	See~\Subsecref{EstimateGHZ} for details. 
 
 	\paragraph{Continuity of semidefinite programs.} 
 	We compute the cheating probabilities using semidefinite programming in the limit of perfect self-testing, as mentioned above. 
@@ -1560,7 +1560,7 @@ We show this for the case where Alice self-tests. We expect an analogous result 
 
 
 \subsection{Estimation of GHZ winning probability}
-
+\label{subsec:EstimateGHZ}
 We assume that the $3n$ boxes are described by some joint quantum state and local measurement operators. After playing the GHZ game with $3(n-1)$ of them, and verifying that they all pass, we want to make a statement about the remaining box, whose state $\tilde \rho$ is conditioned on the passing of all the other test. 
 
 % \begin{algorithm}[H]

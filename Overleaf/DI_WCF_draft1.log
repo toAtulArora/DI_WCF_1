@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.18)  10 MAY 2021 22:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.18)  10 MAY 2021 22:36
 entering extended mode
 **c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft1.tex
 (c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft1.tex
@@ -886,9 +886,6 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 5.5pt on input line 330.
  [3]
 
-LaTeX Warning: Reference `????' on page 4 undefined on input line 339.
-
-
 LaTeX Warning: Reference `????' on page 4 undefined on input line 346.
 
 [4]
@@ -948,7 +945,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 1123.
 
 [12]
-<figures/temp_standardComp.png, id=372, 781.41937pt x 875.52094pt>
+<figures/temp_standardComp.png, id=373, 781.41937pt x 875.52094pt>
 File: figures/temp_standardComp.png Graphic file (type png)
 <use figures/temp_standardComp.png>
 Package pdftex.def Info: figures/temp_standardComp.png  used on input line 1186.
@@ -979,7 +976,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 1193.
 
 [13]
-<figures/temp_AAC_Ps.png, id=388, 978.65625pt x 851.43094pt>
+<figures/temp_AAC_Ps.png, id=389, 978.65625pt x 851.43094pt>
 File: figures/temp_AAC_Ps.png Graphic file (type png)
 <use figures/temp_AAC_Ps.png>
 Package pdftex.def Info: figures/temp_AAC_Ps.png  used on input line 1246.
@@ -1026,17 +1023,17 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 13192 strings out of 481225
- 193070 string characters out of 2915928
- 476172 words of memory out of 3000000
- 28206 multiletter control sequences out of 15000+200000
+ 13193 strings out of 481225
+ 193090 string characters out of 2915928
+ 476240 words of memory out of 3000000
+ 28207 multiletter control sequences out of 15000+200000
  733207 words of font info for 267 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  43i,13n,39p,1011b,590s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\atuls\AppData\Local\MiKTeX\fonts/pk/ljfour/public/wasy/dpi600\wasy10.pk>{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}<C:/Program Files/MiKTeX/fonts/type1/public/newtx/LibertineMathMI.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/LibertineMathMI5.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/LibertineMathMI7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/LibertineMathRM.pfb><C:/Program Files/MiKTeX/fonts/type1/public/libertine/LinLibertineT.pfb><C:/Program Files/MiKTeX/fonts/type1/public/libertine/LinLibertineTB.pfb><C:/Program Files/MiKTeX/fonts/type1/public/libertine/LinLibertineTBI.pfb><C:/Program Files/MiKTeX/fonts/type1/public/libertine/LinLibertineTI.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/NewTXMI.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/NewTXMI7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/txexs.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/txmiaX.pfb><C:/Program Files/MiKTeX/fonts/type1/public/txfonts/txsya.pfb><C:/Program Files/MiKTeX/fonts/type1/public/txfonts/txsyb.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/txsys.pfb>
-Output written on DI_WCF_draft1.pdf (22 pages, 772364 bytes).
+Output written on DI_WCF_draft1.pdf (22 pages, 772558 bytes).
 PDF statistics:
- 620 PDF objects out of 1000 (max. 8388607)
+ 621 PDF objects out of 1000 (max. 8388607)
  213 named destinations out of 1000 (max. 500000)
  219 words of extra memory for PDF output out of 10000 (max. 10000000)
 
