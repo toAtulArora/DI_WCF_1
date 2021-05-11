@@ -24,7 +24,7 @@
 %Sorry, changed this for consistency (doing it the other way would have taken longer)
 \newcommand{\PB}{p_B^*} %{\mathrm{P}_B^*} 
 \newcommand{\PA}{p_A^*} %{\mathrm{P}_A^*} 
-\newcommand{\eps}{\varepsilon}
+\newcommand{\eps}{\epsilon} %{\varepsilon}
 \newcommand{\Jnote}[1]{\textcolor{blue}{ {\textbf{(Jamie: }#1\textbf{) }}}}
 %I put this for me and Tom
 \newcommand{\Tnote}[1]{\textcolor{green}{ {\textbf{(Tom: }#1\textbf{) }}}}
@@ -168,11 +168,11 @@
 \begin{document}
 \title{Improving the security of device-independent weak coin flipping}
 \author[1]{Atul Singh Arora}
-\author[2]{Thomas Van Himbeak}
-\author[3]{Jamie Sikora}
+\author[2]{Jamie Sikora}
+\author[3]{Thomas Van Himbeak}
 \affil[1]{California Institute of Technology, USA}
-\affil[2]{University of Torronto, Canada}
-\affil[3]{Georgia Institute of Technology, USA}
+\affil[2]{Georgia Institute of Technology, USA}
+\affil[3]{University of Torronto, Canada}
 
 \date{11 May 2021}                     %% if you don't need date to appear
 \setcounter{Maxaffil}{0}
@@ -204,11 +204,11 @@ Prior to this work, the best device independent weak coin flipping protocol had 
 Coin-flipping is the two-party cryptographic primitive where two parties, henceforth called Alice and Bob, wish to generate a random coin-flip and, to make things interesting, they do not trust each other. 
 This primitive was introduced by Blum~\cite{Blum} who also introduced the first (classical) protocol.  
 Since then, a series of quantum protocols were introduced which kept improving the security. 
-Mochon finally settled the question about the limits of the security in the quantum regime by proving the existence protocols with security approaching the ideal limit~\cite{Moc07}. 
+Mochon finally settled the question about the limits of the security in the quantum regime by proving the existence protocols with security approaching the ideal limit~\cite{Mochon07}. 
 Mochon's work was based on the notion of point games, a concept introduced by Kitaev. 
 Since then, a sequence of works have studied point games and Reference~\cite{Moc07}. 
-In particular, the proof has been simplified~\cite{???} and made explicit~\cite{???}. 
-Interestingly, Miller~\cite{???} used Mochon's proof to show that protocols approaching the ideal limit must have an exponentially increasing number of messages. 
+In particular, the proof has been simplified~\cite{ACG+14} and made explicit~\cite{Arora2018,Arora2019,ARV21}. 
+Interestingly, Miller~\cite{Miller2019} used Mochon's proof to show that protocols approaching the ideal limit must have an exponentially increasing number of messages. 
 We note that all of this work is in the \emph{device-dependent} setting where \emph{Alice and Bob trust their quantum devices}. 
 In this work, we \emph{revise} the security definitions such that when Alice or Bob cheat, they have control of each other's quantum devices, opening up a plethora of new cheating strategies that were not considered in the previously mentioned references. \Anote{mention noise here, perhaps?}
 

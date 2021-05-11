@@ -6,11 +6,41 @@
   \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
 }
 \providecommand{\href}[2]{#2}
-\begin{thebibliography}{SCA{\etalchar{+}}11}
+\begin{thebibliography}{ACG{\etalchar{+}}14}
+
+\bibitem[ACG{\etalchar{+}}14]{ACG+14}
+Dorit Aharonov, Andr\'{e} Chailloux, Maor Ganz, Iordanis Kerenidis, and
+  Lo\"{\i}ck Magnin, \emph{{A simpler proof of existence of quantum weak coin
+  flipping with arbitrarily small bias}}, {SIAM} Journal on Computing
+  \textbf{45} (2014), no.~3, 633--679.
+
+\bibitem[ARV]{ARV21}
+Atul~Singh Arora, Jérémie Roland, and Chrysoula Vlachou, \emph{Analytic
+  quantum weak coin flipping protocols with arbitrarily small bias},
+  pp.~919--938.
+
+\bibitem[ARW]{Arora2018}
+Atul~Singh Arora, J{\'e}r{\'e}mie Roland, and Stephan Weis, \emph{Quantum weak
+  coin flipping}.
+
+\bibitem[ARW19]{Arora2019}
+Atul~Singh Arora, J{\'{e}}r{\'{e}}mie Roland, and Stephan Weis, \emph{Quantum
+  weak coin flipping}, Proceedings of the 51st Annual {ACM} {SIGACT} Symposium
+  on Theory of Computing - {STOC} 2019, {ACM} Press, 2019.
 
 \bibitem[Blu83]{Blum}
 Manuel Blum, \emph{Coin flipping by telephone a protocol for solving impossible
   problems}, SIGACT News \textbf{15} (1983), no.~1, 23--27.
+
+\bibitem[Mil20]{Miller2019}
+Carl~A. Miller, \emph{The impossibility of efficient quantum weak coin
+  flipping}, Proceedings of the 52nd Annual ACM SIGACT Symposium on Theory of
+  Computing (New York, NY, USA), STOC 2020, Association for Computing
+  Machinery, 2020, pp.~916--929.
+
+\bibitem[Moc07]{Mochon07}
+Carlos Mochon, \emph{{Quantum weak coin flipping with arbitrarily small bias}},
+  arXiv:0711.4114 (2007).
 
 \bibitem[SCA{\etalchar{+}}11]{Silman2011}
 J.~Silman, A.~Chailloux, N.~Aharon, I.~Kerenidis, S.~Pironio, and S.~Massar,
