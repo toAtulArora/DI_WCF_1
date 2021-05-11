@@ -557,15 +557,16 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 		%}
 
 		\subsubsection*{Protocols}
-
+    
+    \Tnote{WHY LL notation ?}
 		%\branchcolor{purple}{
-		We introduce two variants of protocol $\mathcal{I}$, which we call
+		We introduce two variants of protocol $\mathcal{I}$ (due to \cite{Silman2011}), which we call
 		$\mathcal{P}$ and $\mathcal{Q}$. 
 		\begin{itemize}
 		\item $\mathcal{P}$ is essentially the same as $\mathcal{I}$ except that
 		Alice self-tests her boxes before starting the protocol and performs
 		an additional test to ensure Bob doesn't cheat. We show that $p_{A}^{*}(\mathcal{P})\approx 0.853\dots$
-		and $p_{B}^{*}(\mathcal{P}) \approx 0.667\dots$. We also show that
+		and $p_{B}^{*}(\mathcal{P}) \approx 0.667\dots$. We also show that the set of cheat vectors
 		$\mathbb{C}_{B}(\mathcal{P})$ can be cast as an SDP.
 		\item $\mathcal{Q}$ is also essentially the same as $\mathcal{I}$ except
 		that Bob self-tests his boxes before starting the protocol. In this
@@ -594,7 +595,7 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 		Anticipating the notation used later, we denote by $C^{LL}(\mathcal{X})$, the repeated "standard composition" introduced above, of some protocol $\mathcal{X}$. Further, Let $\epsilon(\mathcal{X})$ denote the bias of $\mathcal{X}$. 
 
 		\begin{itemize}
-		\item The bias of protocol $\mathcal{I}$ (due to \cite{Silman2011})
+		\item The bias of protocol $\mathcal{I}$
 		under the standard composition is given by
 		\[
 		\epsilon(C^{LL}(\mathcal{I}))\approx 0.33664\dots
@@ -611,27 +612,28 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 		obtained using this improved ``abort phobic'' composition (of protocol
 		$\mathcal{X}$) by either $C_{\perp L}(\mathcal{X})$ or $C_{L\perp}(\mathcal{X})$. The notation is explained in later sections.
 		\begin{itemize}
-		\item Applying the technique to $\mathcal{P}$, the cheating probabilities
-		become 
+		\item Composing the protocol $\mathcal P$ with itself $n$ times, using the improved compositions gives a bias
 		\[
 		\epsilon(C^{\perp L}(\mathcal{P}))\approx 0.3148\dots
 		\]
 		which is a further improvement.
-		\item Using this technique on $\mathcal{Q}$, the cheating probabilities
-		become 
+		\item Composing the protocol $\mathcal Q$ with itself $n$ times, using the improved composition gives a bias 
 		\[
 		\epsilon(C^{L\perp}(\mathcal{Q}))\approx 0.3226\dots
 		\]
-		for all $X\in\{A,B\}$, which is worse than even \Eqref{SikoraP}. 
-		\item However, when we combine both these protocols to obtain (again, for
+		for all $X\in\{A,B\}$, which is worse than even \Eqref{SikoraP}. \Tnote{Where is X ?}
+		\item However, when we compose the protocol $Q$ $n$ times with itself followed by $P$%
+		\footnote{%
+		    $C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{Q})$
+		is strictly worse than considering $C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{P})$;
+		this should become evident later.%
+		}%
+		, we find (again, for
 		all $X\in\{A,B\}$)
 		\[
 		\epsilon(C^{L\perp}(\mathcal{Q},\mathcal{Q},\dots,\mathcal{Q},\mathcal{P}))\approx 0.29104\dots
 		\]
-		where we use the same composition technique except that at the last
-		``level'' we use\footnote{$C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{Q})$
-		is strictly worse than considering $C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{P})$;
-		this should become evident later.} $\mathcal{P}$ instead of $\mathcal{Q}$. 
+		
 		\end{itemize}
 		%}
 
@@ -657,15 +659,18 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 
 \section{Device Independent Weak Coin Flipping protocols | State Of The Art}
 
-\branchcolor{purple}{In the following, we first discuss how one can describe DI WCF protocols
+%\branchcolor{purple}{
+In the following, we first discuss how one can describe DI WCF protocols
 in terms of the players exchanging ``boxes''---devices which take
 classical inputs and give classical outputs. Subsequently we recall
 the GHZ test and finally we use these to delineate the DI-CF due to
-\cite{Silman2011}.}
+\cite{Silman2011}.
+%}
 
 \subsection{Device Independence and the Box Paradigm}
 
-\branchcolor{purple}{We describe device independent protocols as classical protocols with
+%\branchcolor{purple}{
+We describe device independent protocols as classical protocols with
 the one modification: we assume that the two parties can exchange
 boxes and that the parties can shield their boxes (from the other
 boxes i.e. the boxes can't communicate with each other once shielded).\footnote{TODO: Verify if this notion is in fact correct; I hope I'm not making
@@ -674,7 +679,8 @@ products right, because I can change them at will, independent of
 the others (and ensuring that there's no communication between them;
 could they be somehow entangled, i.e. could it be that somehow the
 measurement operators are themselves quantum correlated?); I would
-like to reach the conclusion starting from the locality assumption.}
+like to reach the conclusion starting from the locality assumption.
+%}
 
 }
 \begin{defn}[Box]
@@ -783,9 +789,11 @@ a measure and exchange protocol (\Defref{MEprotocol}).
 
 \subsection{The GHZ Test}
 
-\branchcolor{purple}{Before we define the current best DI CF protocol, we briefly remind
+%\branchcolor{purple}{
+Before we define the current best DI CF protocol, we briefly remind
 the reader of the GHZ test, upon which the aforementioned protocol
-depends, and set up some conventions.}
+depends, and set up some conventions.
+%}
 \begin{defn}
 \label{def:GHZ-box}Suppose we are given three boxes, $\Box^{A},\Box^{B}$
 and $\Box^{C}$, which accept binary inputs $a,b,c\in\{0,1\}$ and
@@ -804,18 +812,23 @@ and so on, where $\left|\pm\right\rangle =\frac{\left|0\right\rangle \pm\left|1\
 me to add what it means to have a classical box.}
 \end{claim}
 
-\branchcolor{purple}{The proof is easier to see in the case where the outcomes are $\pm1$;
+%\branchcolor{purple}{
+The proof is easier to see in the case where the outcomes are $\pm1$;
 it follows from the observations that $\sigma_{y}\otimes\sigma_{y}\otimes\sigma_{y}\left|\psi\right\rangle =-\left|\psi\right\rangle $,
 $\sigma_{x}\otimes\sigma_{x}\otimes\sigma_{x}\left|\psi\right\rangle =\left|\psi\right\rangle $
 and the anti-commutation of $\sigma_{x}$ and $\sigma_{y}$ matrices,
-i.e. $\sigma_{x}\sigma_{y}+\sigma_{y}\sigma_{x}=0$. }
+i.e. $\sigma_{x}\sigma_{y}+\sigma_{y}\sigma_{x}=0$. 
+%}
 
 \subsection{The Protocol}
 \label{subsec:SCForiginal}
 
-\branchcolor{purple}{The best DI CF protocol known is the one introduced in \cite{Silman2011}.
+\Tnote{Is this a repetition ?}
+%\branchcolor{purple}{
+The best DI CF protocol known is the one introduced in \cite{Silman2011}.
 While this is a protocol for SCF, and so also works as a WCF protocol,
-we do not know of any better protocol for the latter.}
+we do not know of any better protocol for the latter.
+%}
 \begin{lyxalgorithm}[SCF, original]
  \label{alg:SCForiginal}Alice has one box and Bob has two boxes
 (in the security analysis, we let the cheating player distribute the
@@ -912,7 +925,7 @@ semi definite programmes. }
 by $\mathbb{C}_{B}(\mathcal{I})$ the set of \emph{cheat vectors}
 for Bob, which is defined as follows :
 \[
-\mathbb{C}_{B}(\mathcal{I}):=\{(\alpha,\beta,\gamma):\exists\text{ a strategy of \ensuremath{B} s.t. an honest \ensuremath{A} outputs }\text{0,1, \text{ and }\ensuremath{\perp} with probabilities \ensuremath{\alpha,\beta} and \ensuremath{\gamma}}\}
+\mathbb{C}_{B}(\mathcal{I}):=\{(\alpha,\beta,\gamma):\exists\text{ a strategy of \ensuremath{B} s.t. an honest \ensuremath{A} outputs }\text{0, 1, and \ensuremath{\perp} with probabilities \ensuremath{\alpha,\beta} and \ensuremath{\gamma}}\}
 \]
 and analogously, denote by $\mathbb{C}_{A}(\mathcal{I})$ the set
 of cheat vectors for Alice. %(see \Eqref{cheatVectors}).
