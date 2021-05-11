@@ -341,10 +341,11 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 	\paragraph{Continuity of semidefinite programs.} 
 	We compute the cheating probabilities using semidefinite programming in the limit of perfect self-testing, as mentioned above. 
 	However, we cannot have a protocol with an infinite number of messages. 
-	Thus, we study a family of protocols where the cheating probabilities approach certain thresholds. 
+	\sout{Thus} Consequently, we study a family of protocols where the cheating probabilities approach certain thresholds. 
 	Thus, we need the semidefinite program values to capture the behaviour of the cheating probabilities as they approach the limit of large $n$.  
-	See Section~\ref{????} for details. 
+	See \Subsecref{SDPcontinuity} for details. 
 
+	\paragraph{}
 	Both of these technical steps may find use in independent applications. 
 
 
@@ -370,16 +371,16 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 	With this in mind, we can now define a simple composition. 
 
 	\begin{lyxalgorithm}[Winner-gets-polarity composition] \label{simple}  
+	Alice and Bob agree on a protocol $\mathcal{P}$. 
 	\begin{enumerate} 
-	Alice and Bob agree on a protocol $P$. 
-	\item Alice and Bob perform protocol $P$. 
-	\item If Alice won, she polarizes the second protocol towards herself. I.e., they now use the protocol $P_A$ to determine the outcome of the (entire) protocol. 
-	\item If Bob won, he polarizes the second protocol towards himself. I.e., they now use the protocol $P_B$ to determine the outcome of the (entire) protocol.   
+	\item Alice and Bob perform protocol $\mathcal{P}$. 
+	\item If Alice won, she polarizes the second protocol towards herself, i.e., they now use the protocol $\mathcal{P}_A$ to determine the outcome of the (entire) protocol. 
+	\item If Bob won, he polarizes the second protocol towards himself, i.e., they now use the protocol $\mathcal{P}_B$ to determine the outcome of the (entire) protocol.   
 	\end{enumerate} 
 	\end{lyxalgorithm}  
 
 	This is a good way to balance the cheating probabilities of a protocol. 
-	For instance, if $P$ has cheating probabilities $\PA$ and $\PB$ with $\PA > \PB$, then the composition gets to decide ``who gets to be Alice'' in the second run.  
+	For instance, if $\mathcal{P}$ has cheating probabilities $\PA$ and $\PB$ with $\PA > \PB$, then the composition gets to decide ``who gets to be Alice'' in the second run.  
 	We can easily compute Alice's cheating probability in the composition as 
 	\begin{equation} \label{first}
 	(\PA)^2 + (1-\PA) \PB < \PA 
@@ -1551,7 +1552,7 @@ where $U$ is as defined in \Eqref{Bob-u} and the projectors as in
 }
 
 \section{Security Proof | Finite $n$}
-
+\label{sec:SecurityFiniteN}
 TODO: Write the following properly
 
 In this section, we drop Assumption ??, and estimate the GHZ winning probability from Algorithm ??. We then use the robust variant of the self-testing result to conclude that the SDP of interest must be close to the SDP we considered (with some larger space tensored to it). Finally, we show the continuity of these SDPs and thereby conclude that we converge to the asymptotic result as $n$ is increased.
@@ -1670,6 +1671,7 @@ to $\sigma_{y}$ for $x=1$, as in \Claimref{Quantum-boxes-pass}.
 	
 
 \subsection{SDP-valued functions and their continuity}
+\label{subsec:SDPcontinuity}
 A semidefinite program (SDP) is an optimization problem of the form 
 \begin{align} 
 f(A,B) = \text{maximize:} \quad & \ip{A}{X} \nonumber \\ 
