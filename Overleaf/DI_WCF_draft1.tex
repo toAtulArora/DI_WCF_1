@@ -30,9 +30,11 @@
 \newcommand{\PA}{p_A^*} %{\mathrm{P}_A^*} 
 \newcommand{\eps}{\epsilon} %{\varepsilon}
 \newcommand{\Jnote}[1]{\textcolor{blue}{ {\textbf{(Jamie: }#1\textbf{) }}}}
+\usepackage[dvipsnames,table,xcdraw]{xcolor}
 %I put this for me and Tom
-\newcommand{\Tnote}[1]{\textcolor{green}{ {\textbf{(Tom: }#1\textbf{) }}}}
+\newcommand{\Tnote}[1]{\textcolor{ForestGreen}{ {\textbf{(Tom: }#1\textbf{) }}}}
 \newcommand{\Anote}[1]{\textcolor{red}{ {\textbf{(Atul: }#1\textbf{) }}}}
+\newcommand{\snote}[1]{\textcolor{magenta}{\textbf{[Jamie: #1]}}}
 \newtheorem{protocol}{Protocol}
 
 
@@ -58,7 +60,7 @@
 \newcommand{\F}{\mathcal{F}} 
 \newcommand{\I}{\mathbb{1}}
 
-\newcommand{\snote}[1]{\textcolor{magenta}{\textbf{[Jamie: #1]}}}
+
 
 %%%%%%%%%%%%%%%%
 
@@ -186,6 +188,9 @@
 \begin{abstract}
 Prior to this work, the best device independent weak coin flipping protocol had bias, $\epsilon \le 0.33664$, introduced a decade ago {[}10.1103/PhysRevLett.106.220501{]}. We report a protocol with bias, $\epsilon \approx 0.3148$. Under a plausible continuity conjecture, we are able to lower the bias to $\epsilon \approx 0.29104$. Our result uses the aforementioned protocol with a minor modification and owes its improved security to two techniques which we expect should work more generally: an added self-testing step and an improved method for composing protocols.
 
+\Tnote{I wouldn't mention the continuity conjecture in the abstract and directly treat it, as if it were true. There many paper in quantum cryptography that don't analysis finite size effects. But here it sound as if there is some big element missing from our analysis. I prefer the old abstract.}
+
+
 % We report a device independent weak coin flipping protocol\footnote{which are analysed }
 % with $P_{A}^{*}\le\cos^{2}(\pi/8)$ and $P_{B}^{*}\le0.667...$, by
 % making seemingly minor changes to the best known protocol due to SCAKPM'11
@@ -204,8 +209,9 @@ Prior to this work, the best device independent weak coin flipping protocol had 
 
 \tableofcontents{}
 
+\Tnote{change color of citations}
 \section{Introduction}  
-Coin-flipping is the two-party cryptographic primitive where two parties, henceforth called Alice and Bob, wish to generate a random coin-flip and, to make things interesting, they do not trust each other. \Anote{"generate a coin-flip" sounds a bit odd to my ears}
+Coin-flipping is the two-party cryptographic primitive where two parties, henceforth called Alice and Bob, wish to flip a coin, but, to make things interesting, they do not trust each other.
 This primitive was introduced by Blum~\cite{Blum} who also introduced the first (classical) protocol.  
 Since then, a series of quantum protocols were introduced which kept improving the security. 
 Mochon finally settled the question about the limits of the security in the quantum regime by proving the existence protocols with security approaching the ideal limit~\cite{Mochon07}. 
@@ -299,12 +305,12 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 	We now discuss how we develop such a protocol. 
 	This occurs using two main techniques, \emph{self-testing} and \emph{abort-phobic composition}. \Anote{Pedantic: maybe rephrase?}
 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
 
-	\subsection{Pre-processing step: Self-testing} 
+	\subsection{First improvement: Self-testing} 
+    \Tnote{I changed the name of the section so that the structure of the paper can be read from the titles}
 
-	In Protocol~\ref{alg:SCForiginalJ}, a cheating party may control what is in the boxes, both the state and also the \sout{mechanics} measurements with which the outputs are given. 
-	For instance, Bob could \Jnote{include details.} 
+	In Protocol~\ref{alg:SCForiginalJ}, a cheating party may control what measurement is performed in the boxes of other party and how the state of the boxes is correlated to its own quantum memory. This is more general then \textit{device-dependent} protocols, where for instance, the measurements are known by the honest player. 
 
 	We use the concept of self-testing to stop Bob from applying this strategy. 
 
@@ -330,10 +336,12 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 	\PA = \cos^2 (\pi/8) \approx 0.85355 \quad \text{ and } \quad \PB \approx 0.6667. 
 	\end{equation} 
 	\end{lem}  
-
+    \Tnote{remind the bias of the Inital protocol for easy comparison}
+    
 	To prove this lemma, we have to dive into two technical concepts, which we briefly discuss below. 
-
-	\paragraph{Rigidity of the GHZ game.} 
+    \Tnote{I think that the main idea that we use is the fact that for device-dependent protocols the maximum bias can be recast as an sdp. Me have not mentioned that up to now. Also it's not correct o say that we have prove rigidity}
+    
+	\paragraph{Rigidity of the GHZ game.}
 	We prove that Alice self-tests Bob and passes all $n-1$ plays of the GHZ game, then the remaining triple of boxes has to be approximately performing the optimal GHZ strategy. 
 	The differences between this approximation and the optimal strategy disappear in the limit of large $n$. 
 	See~\Subsecref{EstimateGHZ} for details. 
@@ -351,22 +359,13 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-	\subsection{Post-processing step: Abort-phobic composition} 
+	\subsection{Second improvement: abort-phobic composition} 
+	\Tnote{changed title of the subsection, the paragraph name and restructured the first two paragraphs.}
 
-	Composing WCF protocols is a means to try to balance $\PB$ and $\PA$ when there is a large difference between them. 
-	This effectively reduces the bias $\eps$ which may be favourable. 
-	To introduce composition, we introduce the notion of \emph{polarity}, which we now define. 
+    It can happen, that for a given WCF protocol, $\PB \neq \PA$, in which case we say the protocol is polarised. It is known from the works of \Tnote{Add reference} that compositing the protocol with itself or other protocols can then effectively reduces the bias $\eps$. Our second improvement is a better way of compositing protocols, when there is a probability that the honest player catches the cheating player. Let us start by recalling the standard way of composing protocols.
 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-	\paragraph{Protocol polarity.} 
-	For a protocol with cheating probabilities satisfying $\PA > \PB$, we say that it has polarity towards Alice. 
-	If the cheating probabilities satisfying $\PB > \PA$, we say that it has polarity towards Bob. 
-	In either case, we say the protocol is polarized. 
-
-	Given a polarized protocol $P$, we may also switch the roles of Alice and Bob since the definition of coin-flipping is symmetric. 
-	This switches the polarity of the protocol. 
-	It will also be convenient to define $P_A$ to be the version of the protocol with $\PA > \PB$ and $P_B$ to be the version with $\PB > \PA$. 
+	\paragraph{Standard composition} 
+	For a protocol with cheating probabilities, we say that it has polarity towards Alice when it satisfies $\PA > \PB$. Similarly, we say that it has polarity towards Bob when $\PB > \PA$. Given a polarized protocol $P$, we may switch the roles of Alice and Bob since the definition of coin-flipping is symmetric. To make the polarity explicit, we define $P_A$ to be the version of the protocol with $\PA > \PB$ and $P_B$ to be the version with $\PB > \PA$. 
 
 	With this in mind, we can now define a simple composition. 
 
@@ -440,8 +439,9 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 	+ & \gamma \cdot 0 
 	\end{array} \right\}  
 	\end{equation} 
-	where she may choose any strategy with cheat vector $(\alpha, \beta, \gamma)$ that she wishes for the current protocol. 
-
+	\Tnote{Shouldn't this be "Alice wins the second protocol, when biased toward her"} where she may choose any strategy with cheat vector $(\alpha, \beta, \gamma)$ that she wishes for the current protocol. 
+    
+    
 	Therefore, if we calculate the cheating probabilities from ``the bottom up'', then we can fix the two probabilities in the expression above and use semidefinite programming to optimize over the cheat vectors. 
 
 	By using self-testing and abort-phobic compositions, we are able to find protocols which converge onto a bias of $\eps \approx 0.3148$ proving the main result of this work. By composing protocols where Alice self-tests with ones where Bob self-tests, under a convergence assumption, we are able to reduce the bias further down to $\eps \approx 0.29104$, as also stated in the main result. \Anote{Added this last line.}
@@ -526,11 +526,11 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 	% 	protocols (i.e. ones in which the probability of maliciously winning
 	% 	for Alice and Bob are unequal) into balanced ones.}
 
-	\subsection{Summary of our results\label{subsec:Proof-Technique}}
+	\subsection{Results: application of improvements to Weak Coin Flipping \label{subsec:Proof-Technique}}
 
 		%\subsubsection*{Notation and Cheat Vectors}
 
-		\branchcolor{purple}{
+		%\branchcolor{purple}{
 		% We introduce some notation to facilitate the discussion here. Denote
 		% the DI CF protocol introduced in \cite{Silman2011} by $\mathcal{I}$
 		% and let $p_{A}^{*}(\mathcal{I})\approx0.853\dots$ denote the maximum
@@ -554,11 +554,12 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 		% malicious player further opportunity to cheat and so preventing it
 		% improves the security. 
 		Let $\mathcal{I}$ denote \Algref{SCForiginalJ} (the DI protocol introduced in \cite{Silman2011}). We use $p^*_A(\mathcal{I})$ and $p^*_B(\mathcal{I})$, for instance, to denote the cheating probabilities of Alice and Bob when they execute protocol $\mathcal{I}$. Similarly, we use $\mathbb{C}_A(\mathcal{I})$ and $\mathbb{C}_B(\mathcal{I})$, for instance, to denote the cheat vectors for Alice and Bob, respectively, when the execute $\mathcal{I}$.
-		}
+		%}
 
 		\subsubsection*{Protocols}
 
-		\branchcolor{purple}{We introduce two variants of protocol $\mathcal{I}$, which we call
+		%\branchcolor{purple}{
+		We introduce two variants of protocol $\mathcal{I}$, which we call
 		$\mathcal{P}$ and $\mathcal{Q}$. 
 		\begin{itemize}
 		\item $\mathcal{P}$ is essentially the same as $\mathcal{I}$ except that
@@ -573,11 +574,11 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 		can be cast as an SDP which, as we shall see, yields an advantage
 		when $\mathcal{Q}$ is composed. 
 		\end{itemize}
-		}
+		%}
 
 		\subsubsection*{Compositions}
 
-		\branchcolor{purple}{
+		%\branchcolor{purple}{
 		% 	As the protocols $\mathcal{X}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$
 		% all have skewed security---either $p_{A}^{*}(\mathcal{X})>p_{B}^{*}(\mathcal{X})$
 		% or the other way---and therefore the bias is determined by $p_{\max}^{*}(\mathcal{X}):=\max\{p_{A}^{*}(\mathcal{X}),p_{B}^{*}(\mathcal{X})\}$.
@@ -632,7 +633,7 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 		is strictly worse than considering $C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{P})$;
 		this should become evident later.} $\mathcal{P}$ instead of $\mathcal{Q}$. 
 		\end{itemize}
-		}
+		%}
 
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1288,7 +1289,7 @@ assuming Conjecture ?? holds.
 \end{thm}
 
 
-\section{Security Proof | Asymptotic}
+\section{Security Proof | Asymptotic limit}
 
 In this section, we prove the security under the following assumption:
 \begin{assumption}
