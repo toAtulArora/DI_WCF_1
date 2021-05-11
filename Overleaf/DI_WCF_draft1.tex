@@ -21,8 +21,8 @@
 %%%%%%%%%%% added for Jamie
 \usepackage{tabularx}
 %Sorry, changed this for consistency (doing it the other way would have taken longer)
-\newcommand{\PB}{P_B^*} %{\mathrm{P}_B^*} 
-\newcommand{\PA}{P_A^*} %{\mathrm{P}_A^*} 
+\newcommand{\PB}{p_B^*} %{\mathrm{P}_B^*} 
+\newcommand{\PA}{p_A^*} %{\mathrm{P}_A^*} 
 \newcommand{\eps}{\varepsilon}
 \newcommand{\Jnote}[1]{\textcolor{blue}{ {\textbf{(Jamie: }#1\textbf{) }}}}
 %I put this for me and Tom
@@ -1275,6 +1275,7 @@ boxes which win the GHZ game with certainty.
 winning probability is exactly one, the states and measurements are
 the same as the GHZ state and $\sigma_{x},\sigma_{y}$ measurements,
 up to local isometries and this allows us to use semi definite programming. }
+
 \begin{lem}
 \label{lem:self-testAsymptotic}Let $a,b,c,x,y,z\in\{0,1\}$. Consider
 a trio of quantum boxes, specified by projectors $\{M_{a|x}^{A},M_{b|y}^{B},M_{c|z}^{C}\}$
@@ -1538,6 +1539,7 @@ where $U$ is as defined in \Eqref{Bob-u} and the projectors as in
 \section{Security Proof | Finite $n$}
 
 TODO: Write the following properly
+
 In this section, we drop Assumption ??, and estimate the GHZ winning probability from Algorithm ??. We then use the robust variant of the self-testing result to conclude that the SDP of interest must be close to the SDP we considered (with some larger space tensored to it). Finally, we show the continuity of these SDPs and thereby conclude that we converge to the asymptotic result as $n$ is increased.
 
 We show this for the case where Alice self-tests. We expect an analogous result to hold when Bob self-tests.
@@ -1566,7 +1568,7 @@ We assume that the $3n$ boxes are described by some joint quantum state and loca
 % \end{algorithm}
 
 \begin{lyxalgorithm}
-	\label{alg:self-test}
+	\label{alg:self-test} Estimation of the GHZ value.
 	% \caption{Estimation of the GHZ value}
 	% \begin{algorithmic}[1]
 	%     \STATEx 
@@ -1629,7 +1631,29 @@ This is the correct form of the security statement. It is important to bound the
 
 
 \subsection{Robust self-testing}
-
+\begin{lem}
+Let $a,b,c,x,y,z\in\{0,1\}$. Consider a trio of quantum boxes, specified
+by projectors $\{M_{a|x}^{A},M_{b|y}^{B},M_{c|z}^{C}\}$ acting on
+finite dimensional Hilbert spaces $\mathcal{H}^{A},\mathcal{H}^{B}$
+and $\mathcal{H}^{C}$, and $\left|\psi\right\rangle \in\mathcal{H}^{A}\otimes\mathcal{H}^{B}\otimes\mathcal{H}^{C}=:\mathcal{H}^{ABC}$.
+If the trio pass the GHZ test with probability $1-\epsilon$ (for
+$1>\epsilon>0$), then there exists a local isometry, 
+\[
+\Phi=\Phi^{A}\otimes\Phi^{B}\otimes\Phi^{C}:\mathcal{H}^{ABC}\to\mathcal{H}^{ABC}\otimes\mathbb{C}^{2\times3}
+\]
+and a decreasing function of $\epsilon$, $f(\epsilon)$ such that
+\begin{align*}
+\left\Vert \Phi\left(\left|\psi\right\rangle \right)-\left|\chi\right\rangle \otimes\left|{\rm junk}\right\rangle \right\Vert  & \le f(\epsilon),\\
+\left\Vert \Phi\left(M_{d|t}^{D}\left|\psi\right\rangle \right)-\Pi_{d|t}^{D}\left|{\rm GHZ}\right\rangle \otimes\left|{\rm junk}\right\rangle \right\Vert  & \le f(\epsilon)\quad\forall D\in\{A,B,C\},\text{ and }d,t\in\{0,1\}
+\end{align*}
+where $\left|{\rm GHZ}\right\rangle =\frac{\left|000\right\rangle +\left|111\right\rangle }{\sqrt{2}}\in\mathbb{C}^{2\times3}$,
+$\left|{\rm junk}\right\rangle \in\mathcal{H}^{ABC}$ is some arbitrary
+state and $\{\Pi_{a|x}^{A},\Pi_{b|y}^{B},\Pi_{c|z}^{C}\}$ are projectors
+corresponding to $\sigma_{x}$ on the first, second and third qubit
+of $\left|{\rm GHZ}\right\rangle $ respectively, for $x=0$ and corresponding
+to $\sigma_{y}$ for $x=1$, as in \Claimref{Quantum-boxes-pass}.
+\end{lem}
+	
 
 \subsection{SDP-valued functions and their continuity}
 A semidefinite program (SDP) is an optimization problem of the form 
