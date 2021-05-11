@@ -149,6 +149,14 @@ End
 Improved Device Independent Weak Coin Flipping Protocols
 \end_layout
 
+\begin_layout Author
+Yada Yada
+\end_layout
+
+\begin_layout Address
+Yamadamadooo
+\end_layout
+
 \begin_layout Abstract
 [OUTDATED: Needs to be rewritten]
 \begin_inset Newline newline
@@ -8265,7 +8273,7 @@ Let
 \begin_inset Formula $1>\epsilon>0$
 \end_inset
 
-), then there exists a local isometry 
+), then there exists a local isometry, 
 \begin_inset Formula 
 \[
 \Phi=\Phi^{A}\otimes\Phi^{B}\otimes\Phi^{C}:\mathcal{H}^{ABC}\to\mathcal{H}^{ABC}\otimes\mathbb{C}^{2\times3}
@@ -8273,7 +8281,15 @@ Let
 
 \end_inset
 
-such that 
+and a decreasing function of 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+, 
+\begin_inset Formula $f(\epsilon)$
+\end_inset
+
+ such that 
 \begin_inset Formula 
 \begin{align*}
 \left\Vert \Phi\left(\left|\psi\right\rangle \right)-\left|\chi\right\rangle \otimes\left|{\rm junk}\right\rangle \right\Vert  & \le f(\epsilon),\\

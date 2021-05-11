@@ -2,6 +2,7 @@
 %% Do not edit unless you really know what you are doing.
 \documentclass[british]{article}
 \usepackage{amsmath}
+\usepackage{authblk}
 \usepackage{amsthm}
 \usepackage{libertineRoman}
 \usepackage{biolinum}
@@ -166,6 +167,17 @@
 
 \begin{document}
 \title{Improving the security of device-independent weak coin flipping}
+\author[1]{Atul Singh Arora}
+\author[2]{Thomas Van Himbeak}
+\author[3]{Jamie Sikora}
+\affil[1]{California Institute of Technology, USA}
+\affil[2]{University of Torronto, Canada}
+\affil[3]{Georgia Institute of Technology, USA}
+
+\date{11 May 2021}                     %% if you don't need date to appear
+\setcounter{Maxaffil}{0}
+\renewcommand\Affilfont{\itshape\small}
+
 \maketitle
 \begin{abstract}
 Prior to this work, the best device independent weak coin flipping protocol had bias, $\epsilon \approx 0.336$, introduced a decade ago {[}10.1103/PhysRevLett.106.220501{]}. We report a protocol with bias, $\epsilon \approx 0.3148$. Under a plausible continuity conjecture, we are able to lower the bias to $\epsilon \approx 0.29104$. Our result uses the aforementioned protocol with a minor modification and owes its improved security to two techniques which we expect should work more generally: an added self-testing step and an improved method for composing protocols.
