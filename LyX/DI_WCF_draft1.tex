@@ -56,8 +56,6 @@
 \newtheorem{lem}[thm]{\protect\lemmaname}
 \theoremstyle{plain}
 \newtheorem{prop}[thm]{\protect\propositionname}
-\theoremstyle{plain}
-\newtheorem{cor}[thm]{\protect\corollaryname}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage{color}
@@ -93,7 +91,6 @@
 \providecommand{\algorithmname}{Algorithm}
 \providecommand{\assumptionname}{Assumption}
 \providecommand{\claimname}{Claim}
-\providecommand{\corollaryname}{Corollary}
 \providecommand{\definitionname}{Definition}
 \providecommand{\lemmaname}{Lemma}
 \providecommand{\propositionname}{Proposition}
@@ -1220,10 +1217,32 @@ where the first upper-bound is tight.
 \end{prop}
 
 
+\subsection{Robust Self Testing}
+\begin{lem}
+Let $a,b,c,x,y,z\in\{0,1\}$. Consider a trio of quantum boxes, specified
+by projectors $\{M_{a|x}^{A},M_{b|y}^{B},M_{c|z}^{C}\}$ acting on
+finite dimensional Hilbert spaces $\mathcal{H}^{A},\mathcal{H}^{B}$
+and $\mathcal{H}^{C}$, and $\left|\psi\right\rangle \in\mathcal{H}^{A}\otimes\mathcal{H}^{B}\otimes\mathcal{H}^{C}=:\mathcal{H}^{ABC}$.
+If the trio pass the GHZ test with probability $1-\epsilon$ (for
+$1>\epsilon>0$), then there exists a local isometry, 
+\[
+\Phi=\Phi^{A}\otimes\Phi^{B}\otimes\Phi^{C}:\mathcal{H}^{ABC}\to\mathcal{H}^{ABC}\otimes\mathbb{C}^{2\times3}
+\]
+and a decreasing function of $\epsilon$, $f(\epsilon)$ such that
+\begin{align*}
+\left\Vert \Phi\left(\left|\psi\right\rangle \right)-\left|\chi\right\rangle \otimes\left|{\rm junk}\right\rangle \right\Vert  & \le f(\epsilon),\\
+\left\Vert \Phi\left(M_{d|t}^{D}\left|\psi\right\rangle \right)-\Pi_{d|t}^{D}\left|{\rm GHZ}\right\rangle \otimes\left|{\rm junk}\right\rangle \right\Vert  & \le f(\epsilon)\quad\forall D\in\{A,B,C\},\text{ and }d,t\in\{0,1\}
+\end{align*}
+where $\left|{\rm GHZ}\right\rangle =\frac{\left|000\right\rangle +\left|111\right\rangle }{\sqrt{2}}\in\mathbb{C}^{2\times3}$,
+$\left|{\rm junk}\right\rangle \in\mathcal{H}^{ABC}$ is some arbitrary
+state and $\{\Pi_{a|x}^{A},\Pi_{b|y}^{B},\Pi_{c|z}^{C}\}$ are projectors
+corresponding to $\sigma_{x}$ on the first, second and third qubit
+of $\left|{\rm GHZ}\right\rangle $ respectively, for $x=0$ and corresponding
+to $\sigma_{y}$ for $x=1$, as in \Claimref{Quantum-boxes-pass}.
+\end{lem}
+
+
 \subsection{The continuity argument {[}Enter Jamie{]}}
-\begin{cor}
-aoeu
-\end{cor}
 
 \bibliographystyle{amsalpha}
 \bibliography{DI_WCF_ideas}

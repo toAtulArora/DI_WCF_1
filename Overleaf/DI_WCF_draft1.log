@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.18)  10 MAY 2021 18:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.18)  10 MAY 2021 18:11
 entering extended mode
 **c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft1.tex
 (c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft1.tex
@@ -448,43 +448,7 @@ Package refstyle Info: \lemrangeref created on input line 97.
 Package refstyle Info: \Lemrangeref created on input line 97.
 Package refstyle Info: \lempageref created on input line 97.
 \c@thm=\count277
-
-
-c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft1.tex:122: LaTeX Error: Command \prop already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.122 \newtheorem{prop}
-                       [thm]{\protect\corollaryname}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft1.tex:122: LaTeX Error: Missing \begin{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.122 \newtheorem{prop}[
-                        thm]{\protect\corollaryname}
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft1.tex:122: Undefined control sequence.
-l.122 ...theorem{prop}[thm]{\protect\corollaryname
-                                                  }
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-("C:\Program Files\MiKTeX\tex/latex/hyperref\hyperref.sty"
+ ("C:\Program Files\MiKTeX\tex/latex/hyperref\hyperref.sty"
 Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
  ("C:\Program Files\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty"
 Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
@@ -707,13 +671,22 @@ Package babel Info: \l@newzealand = using hyphenrules for ukenglish
 File: l3backend-pdfmode.def 2020-06-29 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count290
 \l__pdf_internal_box=\box49
+) (DI_WCF_draft1.aux
+
+LaTeX Warning: Label `alg:SCForiginal' multiply defined.
+
+
+LaTeX Warning: Label `alg:self-test' multiply defined.
+
+
+LaTeX Warning: Label `contint' multiply defined.
+
 )
-No file DI_WCF_draft1.aux.
 \openout1 = `DI_WCF_draft1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/nxlmi/m/it on input line 167.
 LaTeX Font Info:    Trying to load font information for OML+nxlmi on input line 167.
-("C:\Program Files\MiKTeX\tex/latex/newtx\omlnxlmi.fd"
+ ("C:\Program Files\MiKTeX\tex/latex/newtx\omlnxlmi.fd"
 File: omlnxlmi.fd 2013/11/19 Fontinst v1.933 font definitions for OML/nxlmi.
 )
 LaTeX Font Info:    ... okay on input line 167.
@@ -819,12 +792,10 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 167.
 LaTeX Info: Redefining \pageref on input line 167.
 LaTeX Info: Redefining \nameref on input line 167.
+ (DI_WCF_draft1.out) (DI_WCF_draft1.out)
 \@outlinefile=\write3
 \openout3 = `DI_WCF_draft1.out'.
 
- [1
-
-{C:/Users/atuls/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 17.28pt on input line 170.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
@@ -882,11 +853,16 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 14.4pt on input line 188.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 14.4pt on input line 188.
+(DI_WCF_draft1.toc
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 10.0pt on input line 2.
+)
 \tf@toc=\write4
 \openout4 = `DI_WCF_draft1.toc'.
 
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 10.0pt on input line 192.
+ [1
+
+{C:/Users/atuls/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
 
 LaTeX Warning: Citation `???' on page 2 undefined on input line 192.
 
@@ -907,58 +883,40 @@ LaTeX Warning: Citation `???' on page 2 undefined on input line 198.
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 10.0pt on input line 199.
+
+LaTeX Warning: Citation `Kit02' on page 2 undefined on input line 232.
+
+
+LaTeX Warning: Citation `????' on page 2 undefined on input line 234.
+
+
+LaTeX Warning: Citation `????' on page 2 undefined on input line 236.
+
+
+LaTeX Warning: Citation `????' on page 2 undefined on input line 237.
+
+
+LaTeX Warning: Citation `????' on page 2 undefined on input line 240.
+
 [2]
-
-LaTeX Warning: Citation `Kit02' on page 3 undefined on input line 232.
-
-
-LaTeX Warning: Citation `????' on page 3 undefined on input line 234.
-
-
-LaTeX Warning: Citation `????' on page 3 undefined on input line 236.
-
-
-LaTeX Warning: Citation `????' on page 3 undefined on input line 237.
-
-
-LaTeX Warning: Citation `????' on page 3 undefined on input line 240.
-
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 12.0pt on input line 274.
 
-LaTeX Warning: Reference `alg:SCForiginal' on page 3 undefined on input line 289.
 
-[3]
-
-LaTeX Warning: Reference `alg:SCForiginal' on page 4 undefined on input line 303.
-
-
-LaTeX Warning: Reference `???' on page 4 undefined on input line 310.
-
-
-LaTeX Warning: Reference `alg:self-test' on page 4 undefined on input line 311.
+LaTeX Warning: Reference `???' on page 3 undefined on input line 310.
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 7.3pt on input line 313.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 5.5pt on input line 313.
 
-LaTeX Warning: Reference `????' on page 4 undefined on input line 322.
+LaTeX Warning: Reference `????' on page 3 undefined on input line 322.
 
+[3]
 
 LaTeX Warning: Reference `????' on page 4 undefined on input line 329.
 
 [4]
-
-LaTeX Warning: Reference `simple' on page 5 undefined on input line 384.
-
-
-LaTeX Warning: Reference `first' on page 5 undefined on input line 386.
-
-
-LaTeX Warning: Reference `second' on page 5 undefined on input line 386.
-
-
 Underfull \hbox (badness 10000) in alignment at lines 407--407
 [][]
  []
@@ -966,69 +924,13 @@ Underfull \hbox (badness 10000) in alignment at lines 407--407
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 5.5pt on input line 418.
 [5]
-
-LaTeX Warning: Reference `alg:SCForiginal' on page 6 undefined on input line 437.
-
-
-LaTeX Warning: Citation `Silman2011' on page 6 undefined on input line 524.
-
-
-LaTeX Warning: Citation `Silman2011' on page 6 undefined on input line 551.
-
 LaTeX Font Info:    Trying to load font information for TS1+LinuxLibertineT-TLF on input line 570.
-("C:\Program Files\MiKTeX\tex/latex/libertine\ts1linuxlibertinet-tlf.fd"
+ ("C:\Program Files\MiKTeX\tex/latex/libertine\ts1linuxlibertinet-tlf.fd"
 File: TS1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for TS1/LinuxLibertineT-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 10.0pt on input line 570.
- [6]
-
-LaTeX Warning: Reference `eq:SikoraP' on page 7 undefined on input line 627.
-
-
-LaTeX Warning: Citation `Silman2011' on page 7 undefined on input line 636.
-
-[7] [8]
-
-LaTeX Warning: Reference `def:BoxProtocol' on page 9 undefined on input line 752.
-
-
-LaTeX Warning: Reference `def:box' on page 9 undefined on input line 753.
-
-
-LaTeX Warning: Reference `def:MEprotocol' on page 9 undefined on input line 754.
-
-
-LaTeX Warning: Citation `Silman2011' on page 9 undefined on input line 789.
-
-
-LaTeX Warning: Reference `claim:Quantum-boxes-pass' on page 9 undefined on input line 810.
-
-
-LaTeX Warning: Reference `alg:SCForiginal' on page 9 undefined on input line 811.
-
-
-LaTeX Warning: Reference `def:GHZ-box' on page 9 undefined on input line 811.
-
-
-LaTeX Warning: Citation `Silman2011' on page 9 undefined on input line 815.
-
-
-LaTeX Warning: Reference `alg:SCForiginal' on page 9 undefined on input line 816.
-
-[9]
-
-LaTeX Warning: Reference `alg:SCForiginal' on page 10 undefined on input line 870.
-
-
-LaTeX Warning: Reference `subsec:Proof-Technique' on page 10 undefined on input line 880.
-
-
-LaTeX Warning: Reference `sec:Second-Technique' on page 10 undefined on input line 880.
-
-
-LaTeX Warning: Reference `eq:cheatVectors' on page 10 undefined on input line 889.
-
+ [6] [7] [8] [9]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 893.
@@ -1036,60 +938,17 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 893.
-
-
-LaTeX Warning: Reference `claim:Quantum-boxes-pass' on page 10 undefined on input line 897.
 
 [10]
 
-LaTeX Warning: Reference `alg:AliceSelfTestsHerBoxes' on page 11 undefined on input line 942.
-
-
-LaTeX Warning: Reference `subsubsec:SDP-when-Alice' on page 11 undefined on input line 952.
-
-
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 956.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 956.
-
-
-LaTeX Warning: Reference `alg:AliceSelfTestsHerBoxes' on page 11 undefined on input line 962.
-
-
-LaTeX Warning: Reference `alg:AliceSelfTestsHerBoxes' on page 11 undefined on input line 974.
-
-
-LaTeX Warning: Reference `subsec:Proof-Technique' on page 11 undefined on input line 980.
-
-
-LaTeX Warning: Reference `alg:BobSelfTests' on page 11 undefined on input line 983.
-
-
-LaTeX Warning: Reference `lem:SCFstandard' on page 11 undefined on input line 985.
-
-
-LaTeX Warning: Reference `subsec:SDP-when-Bob' on page 11 undefined on input line 993.
-
-
-LaTeX Warning: Reference `alg:SCForiginal' on page 11 undefined on input line 998.
-
-
-LaTeX Warning: Reference `alg:AliceSelfTestsHerBoxes' on page 11 undefined on input line 999.
-
-
-LaTeX Warning: Reference `alg:BobSelfTests' on page 11 undefined on input line 999.
 
 [11]
-
-LaTeX Warning: Reference `def:unbalanced-polarity' on page 12 undefined on input line 1029.
-
-
-LaTeX Warning: Reference `def:lenientR' on page 12 undefined on input line 1093.
-
-[12]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 1105.
@@ -1102,23 +961,13 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 1105.
 
-
-LaTeX Warning: Reference `alg:AliceSelfTestsHerBoxes' on page 13 undefined on input line 1168.
-
-
-LaTeX Warning: Reference `lem:AliceSelfTests' on page 13 undefined on input line 1168.
-
-
-LaTeX Warning: Reference `fig:Standard-composition-technique' on page 13 undefined on input line 1168.
-
-
-LaTeX Warning: Reference `eq:pStarAPprimeA' on page 13 undefined on input line 1168.
-
-<figures/temp_standardComp.png, id=194, 781.41937pt x 875.52094pt>
+[12]
+<figures/temp_standardComp.png, id=357, 781.41937pt x 875.52094pt>
 File: figures/temp_standardComp.png Graphic file (type png)
 <use figures/temp_standardComp.png>
 Package pdftex.def Info: figures/temp_standardComp.png  used on input line 1168.
 (pdftex.def)             Requested size: 170.71652pt x 191.2659pt.
+
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 1175.
@@ -1144,81 +993,19 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 1175.
 
 [13]
-
-LaTeX Warning: Reference `lem:AliceSelfTests' on page 14 undefined on input line 1228.
-
-
-LaTeX Warning: Reference `lem:AliceSelfTests' on page 14 undefined on input line 1228.
-
-<figures/temp_AAC_Ps.png, id=209, 978.65625pt x 851.43094pt>
+<figures/temp_AAC_Ps.png, id=373, 978.65625pt x 851.43094pt>
 File: figures/temp_AAC_Ps.png Graphic file (type png)
 <use figures/temp_AAC_Ps.png>
 Package pdftex.def Info: figures/temp_AAC_Ps.png  used on input line 1228.
 (pdftex.def)             Requested size: 170.71652pt x 148.52194pt.
-[14 <./figures/temp_standardComp.png>]
-
-LaTeX Warning: Reference `claim:Quantum-boxes-pass' on page 15 undefined on input line 1297.
-
-
-LaTeX Warning: Reference `lem:AliceSelfTests' on page 15 undefined on input line 1428.
-
-[15 <./figures/temp_AAC_Ps.png>]
-
-LaTeX Warning: Reference `lem:AliceSelfTests' on page 16 undefined on input line 1428.
-
-
-LaTeX Warning: Reference `assu:asymptotic' on page 16 undefined on input line 1428.
-
-
-LaTeX Warning: Reference `eq:bellStates' on page 16 undefined on input line 1428.
-
-
-LaTeX Warning: Reference `lem:self-testAsymptotic' on page 16 undefined on input line 1428.
-
-[16]
-
-LaTeX Warning: Reference `def:CheatVectors' on page 17 undefined on input line 1428.
-
-
-LaTeX Warning: Reference `eq:Alice_Psi1' on page 17 undefined on input line 1428.
-
-
-LaTeX Warning: Reference `eq:AliceProjs' on page 17 undefined on input line 1428.
-
-
-LaTeX Warning: Reference `alg:BobSelfTests' on page 17 undefined on input line 1534.
-
-
-LaTeX Warning: Reference `alg:SCForiginal' on page 17 undefined on input line 1534.
-
-
-LaTeX Warning: Reference `lem:SCFstandard' on page 17 undefined on input line 1534.
-
-
-LaTeX Warning: Reference `assu:asymptotic' on page 17 undefined on input line 1534.
-
-
-LaTeX Warning: Reference `lem:self-testAsymptotic' on page 17 undefined on input line 1534.
-
-[17]
-
-LaTeX Warning: Reference `def:CheatVectors' on page 18 undefined on input line 1534.
-
-
-LaTeX Warning: Reference `eq:Bob_initState' on page 18 undefined on input line 1534.
-
-
-LaTeX Warning: Reference `eq:Bob-u' on page 18 undefined on input line 1534.
-
-
-LaTeX Warning: Reference `eq:BobProjs' on page 18 undefined on input line 1534.
-
+ [14 <./figures/temp_standardComp.png> <./figures/temp_AAC_Ps.png>] [15] [16] [17]
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 14.4pt on input line 1538.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 10.5pt on input line 1538.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 7.9pt on input line 1538.
+
 
 LaTeX Font Warning: Font shape `U/wasy/m/n' in size <10.5> not available
 (Font)              size <10.95> substituted on input line 1538.
@@ -1231,75 +1018,16 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 1538.
 
-[18] [19] [20]
-
-c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft1.tex:1685: LaTeX Error: Environment corollary undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1685 \begin{corollary}
-                         \label{contint}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft1.tex:1687: LaTeX Error: \begin{document} ended by \end{corollary}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1687 \end{corollary}
-                      
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft1.tex:1693: LaTeX Error: Environment corollary undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1693 \begin{corollary}
-                         \label{contint}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft1.tex:1695: LaTeX Error: \begin{document} ended by \end{corollary}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1695 \end{corollary}
-                      
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-No file DI_WCF_draft1.bbl.
+[18] [19] [20] (DI_WCF_draft1.bbl)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1702.
-[21]
+ [21]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 1702.
  (DI_WCF_draft1.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1702.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1702.
+Package rerunfilecheck Info: File `DI_WCF_draft1.out' has not changed.
+(rerunfilecheck)             Checksum: FF5A050EA08708A19F423965BC7858B9;2056.
 
-
-Package rerunfilecheck Warning: File `DI_WCF_draft1.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `DI_WCF_draft1.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  FF5A050EA08708A19F423965BC7858B9;2056.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.97499pt have occurred.
@@ -1308,21 +1036,23 @@ LaTeX Font Warning: Size substitutions with differences
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 12971 strings out of 481225
- 190218 string characters out of 2915928
- 471952 words of memory out of 3000000
- 28018 multiletter control sequences out of 15000+200000
+ 13021 strings out of 481225
+ 191168 string characters out of 2915928
+ 473906 words of memory out of 3000000
+ 28053 multiletter control sequences out of 15000+200000
  712792 words of font info for 262 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,13n,39p,1011b,596s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 43i,13n,39p,1011b,576s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{thm.6.27} has been referenced but does not exist, replaced by a fixed one
+
  <C:\Users\atuls\AppData\Local\MiKTeX\fonts/pk/ljfour/public/wasy/dpi600\wasy10.pk>{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}<C:/Program Files/MiKTeX/fonts/type1/public/newtx/LibertineMathMI.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/LibertineMathMI5.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/LibertineMathMI7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/LibertineMathRM.pfb><C:/Program Files/MiKTeX/fonts/type1/public/libertine/LinLibertineT.pfb><C:/Program Files/MiKTeX/fonts/type1/public/libertine/LinLibertineTB.pfb><C:/Program Files/MiKTeX/fonts/type1/public/libertine/LinLibertineTI.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/NewTXMI.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/NewTXMI7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/txexs.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/txmiaX.pfb><C:/Program Files/MiKTeX/fonts/type1/public/txfonts/txsya.pfb><C:/Program Files/MiKTeX/fonts/type1/public/txfonts/txsyb.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/txsys.pfb>
-Output written on DI_WCF_draft1.pdf (21 pages, 702061 bytes).
+Output written on DI_WCF_draft1.pdf (21 pages, 728641 bytes).
 PDF statistics:
- 416 PDF objects out of 1000 (max. 8388607)
- 200 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 593 PDF objects out of 1000 (max. 8388607)
+ 205 named destinations out of 1000 (max. 500000)
+ 227 words of extra memory for PDF output out of 10000 (max. 10000000)
 

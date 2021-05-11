@@ -8231,11 +8231,112 @@ we obtain the result.
 \end_layout
 
 \begin_layout Subsection
-The continuity argument [Enter Jamie]
+Robust Self Testing
 \end_layout
 
-\begin_layout Corollary
-aoeu
+\begin_layout Lemma
+Let 
+\begin_inset Formula $a,b,c,x,y,z\in\{0,1\}$
+\end_inset
+
+.
+ Consider a trio of quantum boxes, specified by projectors 
+\begin_inset Formula $\{M_{a|x}^{A},M_{b|y}^{B},M_{c|z}^{C}\}$
+\end_inset
+
+ acting on finite dimensional Hilbert spaces 
+\begin_inset Formula $\mathcal{H}^{A},\mathcal{H}^{B}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{H}^{C}$
+\end_inset
+
+, and 
+\begin_inset Formula $\left|\psi\right\rangle \in\mathcal{H}^{A}\otimes\mathcal{H}^{B}\otimes\mathcal{H}^{C}=:\mathcal{H}^{ABC}$
+\end_inset
+
+.
+ If the trio pass the GHZ test with probability 
+\begin_inset Formula $1-\epsilon$
+\end_inset
+
+ (for 
+\begin_inset Formula $1>\epsilon>0$
+\end_inset
+
+), then there exists a local isometry, 
+\begin_inset Formula 
+\[
+\Phi=\Phi^{A}\otimes\Phi^{B}\otimes\Phi^{C}:\mathcal{H}^{ABC}\to\mathcal{H}^{ABC}\otimes\mathbb{C}^{2\times3}
+\]
+
+\end_inset
+
+and a decreasing function of 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+, 
+\begin_inset Formula $f(\epsilon)$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\begin{align*}
+\left\Vert \Phi\left(\left|\psi\right\rangle \right)-\left|\chi\right\rangle \otimes\left|{\rm junk}\right\rangle \right\Vert  & \le f(\epsilon),\\
+\left\Vert \Phi\left(M_{d|t}^{D}\left|\psi\right\rangle \right)-\Pi_{d|t}^{D}\left|{\rm GHZ}\right\rangle \otimes\left|{\rm junk}\right\rangle \right\Vert  & \le f(\epsilon)\quad\forall D\in\{A,B,C\},\text{ and }d,t\in\{0,1\}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\left|{\rm GHZ}\right\rangle =\frac{\left|000\right\rangle +\left|111\right\rangle }{\sqrt{2}}\in\mathbb{C}^{2\times3}$
+\end_inset
+
+, 
+\begin_inset Formula $\left|{\rm junk}\right\rangle \in\mathcal{H}^{ABC}$
+\end_inset
+
+ is some arbitrary state and 
+\begin_inset Formula $\{\Pi_{a|x}^{A},\Pi_{b|y}^{B},\Pi_{c|z}^{C}\}$
+\end_inset
+
+ are projectors corresponding to 
+\begin_inset Formula $\sigma_{x}$
+\end_inset
+
+ on the first, second and third qubit of 
+\begin_inset Formula $\left|{\rm GHZ}\right\rangle $
+\end_inset
+
+ respectively, for 
+\begin_inset Formula $x=0$
+\end_inset
+
+ and corresponding to 
+\begin_inset Formula $\sigma_{y}$
+\end_inset
+
+ for 
+\begin_inset Formula $x=1$
+\end_inset
+
+, as in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "claim:Quantum-boxes-pass"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+The continuity argument [Enter Jamie]
 \end_layout
 
 \begin_layout Standard
