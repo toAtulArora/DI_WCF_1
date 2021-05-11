@@ -336,8 +336,8 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 	\PA = \cos^2 (\pi/8) \approx 0.85355 \quad \text{ and } \quad \PB \approx 0.6667. 
 	\end{equation} 
 	\end{lem}  
-    \Tnote{remind the bias of the Inital protocol for easy comparison}
     
+	Recall that for \Algref{SCForiginalJ} \cite{Silman2011}, $\PA=\cos^2(\pi/8)$ and $\PB=3/4$. %\Tnote{remind the bias of the Inital protocol for easy comparison}
 	To prove this lemma, we have to dive into two technical concepts, which we briefly discuss below. 
     \Tnote{I think that the main idea that we use is the fact that for device-dependent protocols the maximum bias can be recast as an sdp. Me have not mentioned that up to now. Also it's not correct o say that we have prove rigidity}
     
@@ -362,10 +362,10 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 	\subsection{Second improvement: abort-phobic composition} 
 	\Tnote{changed title of the subsection, the paragraph name and restructured the first two paragraphs.}
 
-    It can happen, that for a given WCF protocol, $\PB \neq \PA$, in which case we say the protocol is polarised. It is known from the works of \Tnote{Add reference} that compositing the protocol with itself or other protocols can then effectively reduces the bias $\eps$. Our second improvement is a better way of compositing protocols, when there is a probability that the honest player catches the cheating player. Let us start by recalling the standard way of composing protocols.
+    It can happen, that for a given WCF protocol, $\PB \neq \PA$, in which case we say the protocol is polarised. It is known (e.g. \cite{Silman2011}) \sout{from the works of \Tnote{Add reference}} that compositing the protocol with itself or other protocols can then effectively reduces the bias $\eps$. Our second improvement is a better way of compositing protocols, when there is a probability that the honest player catches the cheating player. Let us start by recalling the standard way of composing protocols.
 
-	\paragraph{Standard composition} 
-	For a protocol with cheating probabilities, we say that it has polarity towards Alice when it satisfies $\PA > \PB$. Similarly, we say that it has polarity towards Bob when $\PB > \PA$. Given a polarized protocol $P$, we may switch the roles of Alice and Bob since the definition of coin-flipping is symmetric. To make the polarity explicit, we define $P_A$ to be the version of the protocol with $\PA > \PB$ and $P_B$ to be the version with $\PB > \PA$. 
+	\paragraph{Standard composition.} 
+	For a protocol with cheating probabilities, we say that it has polarity towards Alice when it satisfies $\PA > \PB$. Similarly, we say that it has polarity towards Bob when $\PB > \PA$. Given a polarized protocol $\mathcal{P}$, we may switch the roles of Alice and Bob since the definition of coin-flipping is symmetric. To make the polarity explicit, we define $\mathcal{P}_A$ to be the version of the protocol with $\PA > \PB$ and $\mathcal{P}_B$ to be the version with $\PB > \PA$. 
 
 	With this in mind, we can now define a simple composition. 
 
@@ -650,7 +650,7 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 	\begin{thm} 
 	There exists DI strong coin-flipping protocols where no party can cheat with probability greater than $?????$.  
 	\end{thm} 
-
+\Anote{Using winner-gets-polarity, $\epsilon \le 0.334904$, combining abort phobic, $\epsilon \le 0.33439$, and combining Alice and Bob self testing (under a convergence assumption), $\epsilon \le 0.33192$. To contrast, for \cite{Silman2011}, $\epsilon \le 0.336637$.}
 	There are likely more examples of protocols which can be balanced in a DI way using this idea. 
 		
 %%%%%%%%%%%%%%%%%%%%%%%%%
@@ -662,6 +662,7 @@ in terms of the players exchanging ``boxes''---devices which take
 classical inputs and give classical outputs. Subsequently we recall
 the GHZ test and finally we use these to delineate the DI-CF due to
 \cite{Silman2011}.}
+
 
 \subsection{Device Independence and the Box Paradigm}
 
