@@ -444,7 +444,7 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 
 	Therefore, if we calculate the cheating probabilities from ``the bottom up'', then we can fix the two probabilities in the expression above and use semidefinite programming to optimize over the cheat vectors. 
 
-	By using self-testing and abort-phobic compositions, we are able to find protocols which converge onto a bias of $\eps \approx 0.3148$ proving the main result of this work. 
+	By using self-testing and abort-phobic compositions, we are able to find protocols which converge onto a bias of $\eps \approx 0.3148$ proving the main result of this work. By composing protocols where Alice self-tests with ones where Bob self-tests, under a continuity assumption, we are able to reduce the bias further down to $\eps \approx 0.29104$, as also stated in the main result. \Anote{Added this last line.}
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -522,129 +522,129 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 	% 	devices nor the communication channel (TODO: is the classical communication
 	% 	channel trusted?). }
 
-	\subsection{(in progress) Contributions}
+	% \subsection{(in progress) Contributions}
 
-		\branchcolor{purple}{{[}TODO: fix it---this is outdated{]} In this work, we start with
-		a device independent (DI) coin flipping (CF) protocol introduced\footnote{In fact, they introduced a device independent bit commitment protocol
-		which they in turn use to construct a strong coin flipping protocol
-		with the same cheating probabilities for Alice and Bob, $\approx0.854$
-		and $0.75$ respectively.} in \cite{Silman2011} which has $P_{A}^{*}=\cos^{2}(\pi/8)\approx0.854$
-		and $P_{B}^{*}=3/4=0.75$. They then compose these protocols to give
-		a balanced protocol, i.e. with $P_{A}^{*}=P_{B}^{*}\approx\frac{1}{2}+0.33664$.
-		To the best of our knowledge, this DI CF protocol has the best security
-		guarantee. While Kitaev's bound for CF rules out perfect DI CF, no
-		lower bounds on the bias are known for DI WCF. In this work, however,
-		we focus on improving the upper bound on the bias, viz. we give DI
-		WCF protocols with biases $\approx0.319$.
+	% 	\branchcolor{purple}{{[}TODO: fix it---this is outdated{]} In this work, we start with
+	% 	a device independent (DI) coin flipping (CF) protocol introduced\footnote{In fact, they introduced a device independent bit commitment protocol
+	% 	which they in turn use to construct a strong coin flipping protocol
+	% 	with the same cheating probabilities for Alice and Bob, $\approx0.854$
+	% 	and $0.75$ respectively.} in \cite{Silman2011} which has $P_{A}^{*}=\cos^{2}(\pi/8)\approx0.854$
+	% 	and $P_{B}^{*}=3/4=0.75$. They then compose these protocols to give
+	% 	a balanced protocol, i.e. with $P_{A}^{*}=P_{B}^{*}\approx\frac{1}{2}+0.33664$.
+	% 	To the best of our knowledge, this DI CF protocol has the best security
+	% 	guarantee. While Kitaev's bound for CF rules out perfect DI CF, no
+	% 	lower bounds on the bias are known for DI WCF. In this work, however,
+	% 	we focus on improving the upper bound on the bias, viz. we give DI
+	% 	WCF protocols with biases $\approx0.319$.
 
-		We introduce two key new ideas which result in better protocols. The
-		first, is the use of self-testing by one party before initiating the
-		protocol and the second, is a more general technique to convert unbalanced
-		protocols (i.e. ones in which the probability of maliciously winning
-		for Alice and Bob are unequal) into balanced ones.}
+	% 	We introduce two key new ideas which result in better protocols. The
+	% 	first, is the use of self-testing by one party before initiating the
+	% 	protocol and the second, is a more general technique to convert unbalanced
+	% 	protocols (i.e. ones in which the probability of maliciously winning
+	% 	for Alice and Bob are unequal) into balanced ones.}
 
-		\subsection{Proof Technique\label{subsec:Proof-Technique}}
+	\subsection{Proof Technique\label{subsec:Proof-Technique}}
 
-			\subsubsection*{Notation and Cheat Vectors}
+		\subsubsection*{Notation and Cheat Vectors}
 
-			\branchcolor{purple}{We introduce some notation to facilitate the discussion here. Denote
-			the DI CF protocol introduced in \cite{Silman2011} by $\mathcal{I}$
-			and let $p_{A}^{*}(\mathcal{I})\approx0.853\dots$ denote the maximum
-			probability with which a malicious Alice can win against honest Bob
-			who is following the protocol $\mathcal{I}$ and similarly, let $p_{B}^{*}(\mathcal{I})\approx0.75$
-			denote the maximum probability with which a malicious Bob can win
-			against an honest Alice who is following the protocol $\mathcal{I}$. 
+		\branchcolor{purple}{We introduce some notation to facilitate the discussion here. Denote
+		the DI CF protocol introduced in \cite{Silman2011} by $\mathcal{I}$
+		and let $p_{A}^{*}(\mathcal{I})\approx0.853\dots$ denote the maximum
+		probability with which a malicious Alice can win against honest Bob
+		who is following the protocol $\mathcal{I}$ and similarly, let $p_{B}^{*}(\mathcal{I})\approx0.75$
+		denote the maximum probability with which a malicious Bob can win
+		against an honest Alice who is following the protocol $\mathcal{I}$. 
 
-			One of the key observations we make in this work is the use of what
-			we call ``cheat vectors''---it is any tuple of probabilities which
-			can arise in a CF protocol when one player is honest. More precisely,
-			suppose Alice is (possibly) malicious and Bob follows the protocol
-			$\mathcal{I}$. Then, the cheat vectors for Alice constitute the set
-			\begin{equation}
-			\mathbb{C}{}_{A}(\mathcal{I}):=\{(\alpha,\beta,\gamma):\exists\text{ a strategy for }A\text{ s.t. an honest }B\text{ outputs }\text{0,1, \text{ and }\ensuremath{\perp} with probabilities \ensuremath{\alpha,\beta} and \ensuremath{\gamma}}\}.\label{eq:cheatVectors}
-			\end{equation}
-			We analogously define $\mathbb{C}_{B}(\mathcal{I})$. Cheat vectors
-			become useful when we try to compose protocols. The observation then,
-			is that the abort event can be taken to abort the full protocol instead
-			of being treated as the honest player winning. The latter gives the
-			malicious player further opportunity to cheat and so preventing it
-			improves the security. }
+		One of the key observations we make in this work is the use of what
+		we call ``cheat vectors''---it is any tuple of probabilities which
+		can arise in a CF protocol when one player is honest. More precisely,
+		suppose Alice is (possibly) malicious and Bob follows the protocol
+		$\mathcal{I}$. Then, the cheat vectors for Alice constitute the set
+		\begin{equation}
+		\mathbb{C}{}_{A}(\mathcal{I}):=\{(\alpha,\beta,\gamma):\exists\text{ a strategy for }A\text{ s.t. an honest }B\text{ outputs }\text{0,1, \text{ and }\ensuremath{\perp} with probabilities \ensuremath{\alpha,\beta} and \ensuremath{\gamma}}\}.\label{eq:cheatVectors}
+		\end{equation}
+		We analogously define $\mathbb{C}_{B}(\mathcal{I})$. Cheat vectors
+		become useful when we try to compose protocols. The observation then,
+		is that the abort event can be taken to abort the full protocol instead
+		of being treated as the honest player winning. The latter gives the
+		malicious player further opportunity to cheat and so preventing it
+		improves the security. }
 
-			\subsubsection*{Protocols}
+		\subsubsection*{Protocols}
 
-			\branchcolor{purple}{We introduce two variants of protocol $\mathcal{I}$, which we call
-			$\mathcal{P}$ and $\mathcal{Q}$. 
-			\begin{itemize}
-			\item $\mathcal{P}$ is essentially the same as $\mathcal{I}$ except that
-			Alice self-tests her boxes before starting the protocol and performs
-			an additional test to ensure Bob doesn't cheat. We show that $p_{A}^{*}(\mathcal{P})\apprle0.853\dots$
-			and $p_{B}^{*}(\mathcal{P})\apprle0.667\dots$. We also show that
-			$\mathbb{C}_{B}(\mathcal{P})$ can be cast as an SDP.
-			\item $\mathcal{Q}$ is also essentially the same as $\mathcal{I}$ except
-			that Bob self-tests his boxes before starting the protocol. In this
-			case, $p_{X}^{*}(\mathcal{Q})=p_{X}^{*}(\mathcal{I})$ for both values
-			of $X\in\{A,B\}$ so the advantage isn't manifest. However, now $\mathbb{C}_{A}(\mathcal{Q})$
-			can be cast as an SDP which, as we shall see, yields an advantage
-			when $\mathcal{Q}$ is composed. 
-			\end{itemize}
-			}
+		\branchcolor{purple}{We introduce two variants of protocol $\mathcal{I}$, which we call
+		$\mathcal{P}$ and $\mathcal{Q}$. 
+		\begin{itemize}
+		\item $\mathcal{P}$ is essentially the same as $\mathcal{I}$ except that
+		Alice self-tests her boxes before starting the protocol and performs
+		an additional test to ensure Bob doesn't cheat. We show that $p_{A}^{*}(\mathcal{P})\apprle0.853\dots$
+		and $p_{B}^{*}(\mathcal{P})\apprle0.667\dots$. We also show that
+		$\mathbb{C}_{B}(\mathcal{P})$ can be cast as an SDP.
+		\item $\mathcal{Q}$ is also essentially the same as $\mathcal{I}$ except
+		that Bob self-tests his boxes before starting the protocol. In this
+		case, $p_{X}^{*}(\mathcal{Q})=p_{X}^{*}(\mathcal{I})$ for both values
+		of $X\in\{A,B\}$ so the advantage isn't manifest. However, now $\mathbb{C}_{A}(\mathcal{Q})$
+		can be cast as an SDP which, as we shall see, yields an advantage
+		when $\mathcal{Q}$ is composed. 
+		\end{itemize}
+		}
 
-			\subsubsection*{Compositions}
+		\subsubsection*{Compositions}
 
-			\branchcolor{purple}{As the protocols $\mathcal{X}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$
-			all have skewed security---either $p_{A}^{*}(\mathcal{X})>p_{B}^{*}(\mathcal{X})$
-			or the other way---and therefore the bias is determined by $p_{\max}^{*}(\mathcal{X}):=\max\{p_{A}^{*}(\mathcal{X}),p_{B}^{*}(\mathcal{X})\}$.
-			Note that, $p_{\max}^{*}(\mathcal{X})=p_{\max}^{*}(\mathcal{Y})$
-			for all $\mathcal{X},\mathcal{Y}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$,
-			which means that we don't immediately obtain an advantage. However,
-			the most obvious method of composing these protocols to obtain a new
-			protocol, which we describe later, ``balances'' the advantage. After
-			this composition procedure is applied to some protocol $\mathcal{X}$,
-			we denote the resulting protocol by $C_{LL}(\mathcal{X})$. Applying
-			this technique to $\mathcal{P}$, we already obtain a more secure
-			protocol.
-			\begin{itemize}
-			\item For all $X\in\{A,B\}$ the cheating probabilities for protocol $\mathcal{I}$
-			under the standard composition is given by
-			\[
-			p_{X}^{*}(C^{LL}(\mathcal{I}))\approx\frac{1}{2}+0.33664\dots
-			\]
-			while for the improved protocol $\mathcal{P}$, these are given by
-			\begin{equation}
-			p_{X}^{*}(C^{LL}(\mathcal{P}))\approx\frac{1}{2}+0.3199\dots.\label{eq:SikoraP}
-			\end{equation}
-			\end{itemize}
-			The standard composition technique doesn't yield any improvement for
-			$\mathcal{Q}$ because the cheating probabilities are identical to
-			those of $\mathcal{I}$. We can extract an advantage by using a composition
-			technique that uses ``cheat vectors'' and the abort event. We describe
-			it in detail later but for now, we simply denote the new protocol
-			obtained using this improved ``abort phobic'' composition (of protocol
-			$\mathcal{X}$) by $C_{\perp L}(\mathcal{X})$ or $C_{L\perp}(\mathcal{X})$. 
-			\begin{itemize}
-			\item Applying the technique to $\mathcal{P}$, the cheating probabilities
-			become 
-			\[
-			p_{X}^{*}(C^{\perp L}(\mathcal{P}))\approx\frac{1}{2}+0.3148\dots
-			\]
-			which is a further improvement.
-			\item Using this technique on $\mathcal{Q}$, the cheating probabilities
-			become 
-			\[
-			p_{X}^{*}(C^{L\perp}(\mathcal{Q}))\approx\frac{1}{2}+0.3226\dots
-			\]
-			for all $X\in\{A,B\}$, which is worse than even \Eqref{SikoraP}. 
-			\item However, when we combine both these protocols to obtain (again, for
-			all $X\in\{A,B\}$)
-			\[
-			p_{X}^{*}(C^{L\perp}(\mathcal{Q},\mathcal{Q},\dots,\mathcal{Q},\mathcal{P}))\approx\frac{1}{2}+0.29104\dots
-			\]
-			where we use the same composition technique except that at the last
-			``level'' we use\footnote{$C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{Q})$
-			is strictly worse than considering $C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{P})$;
-			this should become evident later.} $\mathcal{P}$ instead of $\mathcal{Q}$. 
-			\end{itemize}
-			}
+		\branchcolor{purple}{As the protocols $\mathcal{X}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$
+		all have skewed security---either $p_{A}^{*}(\mathcal{X})>p_{B}^{*}(\mathcal{X})$
+		or the other way---and therefore the bias is determined by $p_{\max}^{*}(\mathcal{X}):=\max\{p_{A}^{*}(\mathcal{X}),p_{B}^{*}(\mathcal{X})\}$.
+		Note that, $p_{\max}^{*}(\mathcal{X})=p_{\max}^{*}(\mathcal{Y})$
+		for all $\mathcal{X},\mathcal{Y}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$,
+		which means that we don't immediately obtain an advantage. However,
+		the most obvious method of composing these protocols to obtain a new
+		protocol, which we describe later, ``balances'' the advantage. After
+		this composition procedure is applied to some protocol $\mathcal{X}$,
+		we denote the resulting protocol by $C_{LL}(\mathcal{X})$. Applying
+		this technique to $\mathcal{P}$, we already obtain a more secure
+		protocol.
+		\begin{itemize}
+		\item For all $X\in\{A,B\}$ the cheating probabilities for protocol $\mathcal{I}$
+		under the standard composition is given by
+		\[
+		p_{X}^{*}(C^{LL}(\mathcal{I}))\approx\frac{1}{2}+0.33664\dots
+		\]
+		while for the improved protocol $\mathcal{P}$, these are given by
+		\begin{equation}
+		p_{X}^{*}(C^{LL}(\mathcal{P}))\approx\frac{1}{2}+0.3199\dots.\label{eq:SikoraP}
+		\end{equation}
+		\end{itemize}
+		The standard composition technique doesn't yield any improvement for
+		$\mathcal{Q}$ because the cheating probabilities are identical to
+		those of $\mathcal{I}$. We can extract an advantage by using a composition
+		technique that uses ``cheat vectors'' and the abort event. We describe
+		it in detail later but for now, we simply denote the new protocol
+		obtained using this improved ``abort phobic'' composition (of protocol
+		$\mathcal{X}$) by $C_{\perp L}(\mathcal{X})$ or $C_{L\perp}(\mathcal{X})$. 
+		\begin{itemize}
+		\item Applying the technique to $\mathcal{P}$, the cheating probabilities
+		become 
+		\[
+		p_{X}^{*}(C^{\perp L}(\mathcal{P}))\approx\frac{1}{2}+0.3148\dots
+		\]
+		which is a further improvement.
+		\item Using this technique on $\mathcal{Q}$, the cheating probabilities
+		become 
+		\[
+		p_{X}^{*}(C^{L\perp}(\mathcal{Q}))\approx\frac{1}{2}+0.3226\dots
+		\]
+		for all $X\in\{A,B\}$, which is worse than even \Eqref{SikoraP}. 
+		\item However, when we combine both these protocols to obtain (again, for
+		all $X\in\{A,B\}$)
+		\[
+		p_{X}^{*}(C^{L\perp}(\mathcal{Q},\mathcal{Q},\dots,\mathcal{Q},\mathcal{P}))\approx\frac{1}{2}+0.29104\dots
+		\]
+		where we use the same composition technique except that at the last
+		``level'' we use\footnote{$C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{Q})$
+		is strictly worse than considering $C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{P})$;
+		this should become evident later.} $\mathcal{P}$ instead of $\mathcal{Q}$. 
+		\end{itemize}
+		}
 
 
 \section{Device Independent Weak Coin Flipping protocols | State Of The Art}
