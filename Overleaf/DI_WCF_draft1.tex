@@ -577,53 +577,55 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 
 		\subsubsection*{Compositions}
 
-		\branchcolor{purple}{As the protocols $\mathcal{X}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$
-		all have skewed security---either $p_{A}^{*}(\mathcal{X})>p_{B}^{*}(\mathcal{X})$
-		or the other way---and therefore the bias is determined by $p_{\max}^{*}(\mathcal{X}):=\max\{p_{A}^{*}(\mathcal{X}),p_{B}^{*}(\mathcal{X})\}$.
-		Note that, $p_{\max}^{*}(\mathcal{X})=p_{\max}^{*}(\mathcal{Y})$
-		for all $\mathcal{X},\mathcal{Y}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$,
-		which means that we don't immediately obtain an advantage. However,
-		the most obvious method of composing these protocols to obtain a new
-		protocol, which we describe later, ``balances'' the advantage. After
-		this composition procedure is applied to some protocol $\mathcal{X}$,
-		we denote the resulting protocol by $C_{LL}(\mathcal{X})$. Applying
-		this technique to $\mathcal{P}$, we already obtain a more secure
-		protocol.
+		\branchcolor{purple}{
+		% 	As the protocols $\mathcal{X}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$
+		% all have skewed security---either $p_{A}^{*}(\mathcal{X})>p_{B}^{*}(\mathcal{X})$
+		% or the other way---and therefore the bias is determined by $p_{\max}^{*}(\mathcal{X}):=\max\{p_{A}^{*}(\mathcal{X}),p_{B}^{*}(\mathcal{X})\}$.
+		% Note that, $p_{\max}^{*}(\mathcal{X})=p_{\max}^{*}(\mathcal{Y})$
+		% for all $\mathcal{X},\mathcal{Y}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$,
+		% which means that we don't immediately obtain an advantage. However,
+		% the most obvious method of composing these protocols to obtain a new
+		% protocol, which we describe later, ``balances'' the advantage. After
+		% this composition procedure is applied to some protocol $\mathcal{X}$,
+		% we denote the resulting protocol by $C_{LL}(\mathcal{X})$. Applying
+		% this technique to $\mathcal{P}$, we already obtain a more secure
+		% protocol.
+		Anticipating the notation used later, we denote by $C^{LL}(\mathcal{X})$, the repeated "standard composition" introduced above, of some protocol $\mathcal{X}$. Further, Let $\epsilon(\mathcal{X})$ denote the bias of $\mathcal{X}$. 
+
 		\begin{itemize}
-		\item For all $X\in\{A,B\}$ the cheating probabilities for protocol $\mathcal{I}$
+		\item The bias of protocol $\mathcal{I}$ (due to \cite{Silman2011})
 		under the standard composition is given by
 		\[
-		p_{X}^{*}(C^{LL}(\mathcal{I}))\approx\frac{1}{2}+0.33664\dots
+		\epsilon(C^{LL}(\mathcal{I}))\approx 0.33664\dots
 		\]
-		while for the improved protocol $\mathcal{P}$, these are given by
+		while for our improved protocol $\mathcal{P}$, it is given by
 		\begin{equation}
-		p_{X}^{*}(C^{LL}(\mathcal{P}))\approx\frac{1}{2}+0.3199\dots.\label{eq:SikoraP}
+		\epsilon(C^{LL}(\mathcal{P}))\approx 0.3199\dots.\label{eq:SikoraP}
 		\end{equation}
 		\end{itemize}
 		The standard composition technique doesn't yield any improvement for
 		$\mathcal{Q}$ because the cheating probabilities are identical to
 		those of $\mathcal{I}$. We can extract an advantage by using a composition
-		technique that uses ``cheat vectors'' and the abort event. We describe
-		it in detail later but for now, we simply denote the new protocol
+		technique that uses ``cheat vectors'' and the abort event as explained. Denote the new protocol
 		obtained using this improved ``abort phobic'' composition (of protocol
 		$\mathcal{X}$) by $C_{\perp L}(\mathcal{X})$ or $C_{L\perp}(\mathcal{X})$. 
 		\begin{itemize}
 		\item Applying the technique to $\mathcal{P}$, the cheating probabilities
 		become 
 		\[
-		p_{X}^{*}(C^{\perp L}(\mathcal{P}))\approx\frac{1}{2}+0.3148\dots
+		\epsilon(C^{\perp L}(\mathcal{P}))\approx 0.3148\dots
 		\]
 		which is a further improvement.
 		\item Using this technique on $\mathcal{Q}$, the cheating probabilities
 		become 
 		\[
-		p_{X}^{*}(C^{L\perp}(\mathcal{Q}))\approx\frac{1}{2}+0.3226\dots
+		\epsilon(C^{L\perp}(\mathcal{Q}))\approx 0.3226\dots
 		\]
 		for all $X\in\{A,B\}$, which is worse than even \Eqref{SikoraP}. 
 		\item However, when we combine both these protocols to obtain (again, for
 		all $X\in\{A,B\}$)
 		\[
-		p_{X}^{*}(C^{L\perp}(\mathcal{Q},\mathcal{Q},\dots,\mathcal{Q},\mathcal{P}))\approx\frac{1}{2}+0.29104\dots
+		\epsilon(C^{L\perp}(\mathcal{Q},\mathcal{Q},\dots,\mathcal{Q},\mathcal{P}))\approx 0.29104\dots
 		\]
 		where we use the same composition technique except that at the last
 		``level'' we use\footnote{$C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{Q})$

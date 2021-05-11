@@ -9,23 +9,23 @@
 \contentsline {paragraph}{Protocol polarity.}{4}{section*.5}%
 \contentsline {paragraph}{Abort-phobic composition.}{5}{section*.6}%
 \contentsline {subsection}{\numberline {1.4}Summary of our results}{5}{subsection.1.4}%
-\contentsline {subsection}{\numberline {1.5}Applications}{7}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.5}Applications}{6}{subsection.1.5}%
 \contentsline {section}{\numberline {2}Device Independent Weak Coin Flipping protocols | State Of The Art}{7}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Device Independence and the Box Paradigm}{7}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}The GHZ Test}{8}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}The Protocol}{9}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.3}The Protocol}{8}{subsection.2.3}%
 \contentsline {section}{\numberline {3}First Technique: Self-testing (single shot, unbalanced)}{9}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Cheat Vectors }{10}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.1}Cheat Vectors }{9}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Alice self-tests | Protocol $\mathcal {P}$}{10}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}Bob self-tests | Protocol $\mathcal {Q}$}{11}{subsection.3.3}%
 \contentsline {section}{\numberline {4}Second Technique: Bias Suppression }{11}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Composition}{12}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Standard Composition | $C^{LL}$}{13}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.1}Composition}{11}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Standard Composition | $C^{LL}$}{12}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Abort Phobic Compositions | $C^{L\perp },C^{\perp L}$}{13}{subsection.4.3}%
 \contentsline {section}{\numberline {5}Security Proof | Asymptotic}{15}{section.5}%
 \contentsline {subsection}{\numberline {5.1}SDP when Alice self-tests}{15}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}SDP when Bob self-tests}{17}{subsection.5.2}%
-\contentsline {section}{\numberline {6}Security Proof | Finite $n$}{19}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Estimation of GHZ winning probability}{19}{subsection.6.1}%
+\contentsline {section}{\numberline {6}Security Proof | Finite $n$}{18}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Estimation of GHZ winning probability}{18}{subsection.6.1}%
 \contentsline {subsection}{\numberline {6.2}Robust self-testing}{20}{subsection.6.2}%
 \contentsline {subsection}{\numberline {6.3}SDP-valued functions and their continuity}{20}{subsection.6.3}%
