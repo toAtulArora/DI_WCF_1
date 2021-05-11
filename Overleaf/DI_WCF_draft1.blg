@@ -5,7 +5,6 @@ Reallocating 'name_of_file' (item size: 1) to 9 items.
 The style file: amsalpha.bst
 Reallocating 'name_of_file' (item size: 1) to 13 items.
 Database file #1: DI_WCF_ideas.bib
-Warning--I didn't find a database entry for "Moc07"
 Warning--I didn't find a database entry for "Kit02"
 Warning--I didn't find a database entry for "????"
 Warning--missing publisher in ARV21
@@ -17,7 +16,7 @@ Warning--missing pages in Mochon07
 Warning--missing pages in Silman2011
 You've used 8 entries,
             2624 wiz_defined-function locations,
-            622 strings with 5930 characters,
+            620 strings with 5920 characters,
 and the built_in function-call counts, 3363 in all, are:
 = -- 296
 > -- 174
@@ -56,4 +55,4 @@ warning$ -- 7
 while$ -- 29
 width$ -- 10
 write$ -- 92
-(There were 10 warnings)
+(There were 9 warnings)

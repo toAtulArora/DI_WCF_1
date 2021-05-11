@@ -19,6 +19,10 @@
 
 \makeatletter
 
+%%%%%%%%%%%Atul added
+\usepackage{ulem}
+%%%%%
+
 %%%%%%%%%%% added for Jamie
 \usepackage{tabularx}
 %Sorry, changed this for consistency (doing it the other way would have taken longer)
@@ -201,12 +205,12 @@ Prior to this work, the best device independent weak coin flipping protocol had 
 \tableofcontents{}
 
 \section{Introduction}  
-Coin-flipping is the two-party cryptographic primitive where two parties, henceforth called Alice and Bob, wish to generate a random coin-flip and, to make things interesting, they do not trust each other. \Anote{"generate a coin-flip sounds a bit odd"}
+Coin-flipping is the two-party cryptographic primitive where two parties, henceforth called Alice and Bob, wish to generate a random coin-flip and, to make things interesting, they do not trust each other. \Anote{"generate a coin-flip" sounds a bit odd to my ears}
 This primitive was introduced by Blum~\cite{Blum} who also introduced the first (classical) protocol.  
 Since then, a series of quantum protocols were introduced which kept improving the security. 
 Mochon finally settled the question about the limits of the security in the quantum regime by proving the existence protocols with security approaching the ideal limit~\cite{Mochon07}. 
 Mochon's work was based on the notion of point games, a concept introduced by Kitaev. 
-Since then, a sequence of works have studied point games and Reference~\cite{Moc07}. 
+Since then, a sequence of works have studied point games. 
 In particular, the proof has been simplified~\cite{ACG+14} and made explicit~\cite{Arora2018,Arora2019,ARV21}. 
 Interestingly, Miller~\cite{Miller2019} used Mochon's proof to show that protocols approaching the ideal limit must have an exponentially increasing number of messages. \Anote{Maybe add applications of coin flipping to bit commitment etc}
 We note that all of this work is in the \emph{device-dependent} setting where \emph{Alice and Bob trust their quantum devices}. 
@@ -225,7 +229,7 @@ When designing weak coin flipping protocols, the security goals are:
 
 The commonly adopted goal of two-party protocol design is to assume perfect completeness and then minimize the effects of a cheating party, i.e., to make it as sounds as possible. 
 This way, if no parties cheat, then the protocol at least does what it is meant to still. 
-With this in mind, we need a means to measure of the effects of a cheating party. 
+With this in mind, we need a means to measure \sout{of} the effects of a cheating party. 
 It is often convenient to have a single measure to determine if one protocol is better than another. 
 For these, we use \emph{cheating probabilities} (denoted $\PB$ and $\PA$) and \emph{bias} (denoted $\eps$), defined as 
 \begin{center} 
