@@ -20,4 +20,5 @@
 \contentsline {subsubsection}{\numberline {5.1.1}SDP when Alice self-tests}{12}{subsubsection.5.1.1}%
 \contentsline {subsubsection}{\numberline {5.1.2}SDP when Bob self-tests}{14}{subsubsection.5.1.2}%
 \contentsline {subsection}{\numberline {5.2}The self-testing step {[}Discuss with Tom before writing{]} }{16}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}The continuity argument {[}Enter Jamie{]}}{16}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.3}Robust Self Testing}{16}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}The continuity argument {[}Enter Jamie{]}}{16}{subsection.5.4}%

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.18)  10 MAY 2021 11:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.18)  10 MAY 2021 21:48
 entering extended mode
 **c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/LyX/DI_WCF_draft1.tex
 (c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/LyX/DI_WCF_draft1.tex
@@ -833,7 +833,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 780.
 
 [9]
-<figures/temp_standardComp.png, id=290, 781.41937pt x 875.52094pt>
+<figures/temp_standardComp.png, id=295, 781.41937pt x 875.52094pt>
 File: figures/temp_standardComp.png Graphic file (type png)
 <use figures/temp_standardComp.png>
 Package pdftex.def Info: figures/temp_standardComp.png  used on input line 843.
@@ -864,7 +864,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 850.
 
 [10]
-<figures/temp_AAC_Ps.png, id=305, 978.65625pt x 851.43094pt>
+<figures/temp_AAC_Ps.png, id=310, 978.65625pt x 851.43094pt>
 File: figures/temp_AAC_Ps.png Graphic file (type png)
 <use figures/temp_AAC_Ps.png>
 Package pdftex.def Info: figures/temp_AAC_Ps.png  used on input line 903.
@@ -874,15 +874,15 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 7.3pt on input line 967.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 5.5pt on input line 967.
- [12] [13] [14] (DI_WCF_draft1.bbl [15])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1226.
+ [12] [13] [14] [15] (DI_WCF_draft1.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1251.
  [16]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1226.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1251.
  (DI_WCF_draft1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1226.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1226.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1251.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1251.
 Package rerunfilecheck Info: File `DI_WCF_draft1.out' has not changed.
-(rerunfilecheck)             Checksum: CB4375FFBD29ADAA9588097A7272BCC0;1693.
+(rerunfilecheck)             Checksum: C53FC38DF389A9E722D99C4B358123C2;1762.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -890,17 +890,17 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 12239 strings out of 481225
- 178155 string characters out of 2915928
+ 12242 strings out of 481225
+ 178193 string characters out of 2915928
  457159 words of memory out of 3000000
- 27347 multiletter control sequences out of 15000+200000
+ 27348 multiletter control sequences out of 15000+200000
  703339 words of font info for 235 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  43i,13n,39p,854b,576s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\atuls\AppData\Local\MiKTeX\fonts/pk/ljfour/public/wasy/dpi600\wasy10.pk>{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}<C:/Program Files/MiKTeX/fonts/type1/public/newtx/LibertineMathMI.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/LibertineMathMI5.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/LibertineMathMI7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/LibertineMathRM.pfb><C:/Program Files/MiKTeX/fonts/type1/public/libertine/LinLibertineT.pfb><C:/Program Files/MiKTeX/fonts/type1/public/libertine/LinLibertineTB.pfb><C:/Program Files/MiKTeX/fonts/type1/public/libertine/LinLibertineTI.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/NewTXMI.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/NewTXMI7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/txexs.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/txmiaX.pfb><C:/Program Files/MiKTeX/fonts/type1/public/txfonts/txsya.pfb><C:/Program Files/MiKTeX/fonts/type1/public/txfonts/txsyb.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/txsys.pfb>
-Output written on DI_WCF_draft1.pdf (16 pages, 690814 bytes).
+Output written on DI_WCF_draft1.pdf (16 pages, 693807 bytes).
 PDF statistics:
- 481 PDF objects out of 1000 (max. 8388607)
- 145 named destinations out of 1000 (max. 500000)
- 187 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 488 PDF objects out of 1000 (max. 8388607)
+ 147 named destinations out of 1000 (max. 500000)
+ 195 words of extra memory for PDF output out of 10000 (max. 10000000)
 
