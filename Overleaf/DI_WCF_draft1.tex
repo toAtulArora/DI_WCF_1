@@ -201,14 +201,14 @@ Prior to this work, the best device independent weak coin flipping protocol had 
 \tableofcontents{}
 
 \section{Introduction}  
-Coin-flipping is the two-party cryptographic primitive where two parties, henceforth called Alice and Bob, wish to generate a random coin-flip and, to make things interesting, they do not trust each other. 
+Coin-flipping is the two-party cryptographic primitive where two parties, henceforth called Alice and Bob, wish to generate a random coin-flip and, to make things interesting, they do not trust each other. \Anote{"generate a coin-flip sounds a bit odd"}
 This primitive was introduced by Blum~\cite{Blum} who also introduced the first (classical) protocol.  
 Since then, a series of quantum protocols were introduced which kept improving the security. 
 Mochon finally settled the question about the limits of the security in the quantum regime by proving the existence protocols with security approaching the ideal limit~\cite{Mochon07}. 
 Mochon's work was based on the notion of point games, a concept introduced by Kitaev. 
 Since then, a sequence of works have studied point games and Reference~\cite{Moc07}. 
 In particular, the proof has been simplified~\cite{ACG+14} and made explicit~\cite{Arora2018,Arora2019,ARV21}. 
-Interestingly, Miller~\cite{Miller2019} used Mochon's proof to show that protocols approaching the ideal limit must have an exponentially increasing number of messages. 
+Interestingly, Miller~\cite{Miller2019} used Mochon's proof to show that protocols approaching the ideal limit must have an exponentially increasing number of messages. \Anote{Maybe add applications of coin flipping to bit commitment etc}
 We note that all of this work is in the \emph{device-dependent} setting where \emph{Alice and Bob trust their quantum devices}. 
 In this work, we \emph{revise} the security definitions such that when Alice or Bob cheat, they have control of each other's quantum devices, opening up a plethora of new cheating strategies that were not considered in the previously mentioned references. \Anote{mention noise here, perhaps?}
 
