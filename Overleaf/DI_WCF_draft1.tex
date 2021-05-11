@@ -418,18 +418,19 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 
 	\begin{defn}[Alice and Bob's cheat vectors]  
 	Given a protocol, we say that $(\alpha, \beta, \gamma)$ is a cheat vector for (dishonest) Alice if there exists a cheating strategy where: 
-	% \begin{center} 
-	\begin{tabularx}{\textwidth}{cX}
-	$\alpha$ is the probability with which Bob accepts the outcome $c = 0$, \\ 
-	$\beta$ is the probability with which Bob accepts the outcome $c = 1$, \\ 
-	$\gamma$ is the probability with which Bob aborts. \\ \end{tabularx} 
-	% \end{center}  
-	
+	\begin{center} 
+	\begin{tabularx}{\textwidth}{lX}
+		$\alpha$ is the probability with which Bob accepts the outcome $c = 0$, \\ 
+		$\beta$ is the probability with which Bob accepts the outcome $c = 1$, \\ 
+		$\gamma$ is the probability with which Bob aborts. \\ 
+	\end{tabularx} 
+	\end{center}  
+	Cheat vectors for (dishonest) Bob are analogously defined.
 	\end{defn} 
 
 	We can now solve for the optimal bias using \emph{dynamic programming}.  
 	Dynamic programming is an optimization tool which provides a mean to solve large optimization problems in smaller steps. 
-	For instance, suppose Alice and Bob are now using a protocol midway through the protocol. 
+	For instance, suppose Alice and Bob are now using a protocol midway through the protocol. \Anote{Umm, the word protocol appears twice; maybe rephrase?}
 	What Alice must do to optimize her probability of winning \emph{the entire protocol} is to solve the optimization problem 
 	\begin{equation} 
 	\sup_{(\alpha, \beta, \gamma)} 
@@ -443,7 +444,7 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 
 	Therefore, if we calculate the cheating probabilities from ``the bottom up'', then we can fix the two probabilities in the expression above and use semidefinite programming to optimize over the cheat vectors. 
 
-	By using self-testing and abort-phobic compositions, we are able to find protocols which converge onto a bias of $\eps = ????$ proving the main result of this work. 
+	By using self-testing and abort-phobic compositions, we are able to find protocols which converge onto a bias of $\eps \approx 0.3148$ proving the main result of this work. 
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
