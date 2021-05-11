@@ -254,7 +254,7 @@ In this work, we provide two techniques which can be applied to a wide range of 
 To illustrate our ideas, we now present the protocol in~\cite{Silman2011} 
 
 
-\begin{lyxalgorithm}[DI-WCF protocol with $\PA = \cos^2{\pi/8}$ and $\PB = 3/4$~\cite{Silman2011}; see \Subsecref{SCForiginal}] \label{alg:SCForiginal}  
+\begin{lyxalgorithm}[DI-WCF protocol with $\PA = \cos^2{\pi/8}$ and $\PB = 3/4$~\cite{Silman2011}; see \Subsecref{SCForiginal}] \label{alg:SCForiginalJ}  
 
 Alice has one box and Bob has two boxes. 
 Each box takes one binary input and gives one binary output and are designed to play the optimal GHZ game strategy. 
@@ -293,17 +293,17 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 	We now state the main result of our work. 
 
 	\begin{thm} 
-	There exists device-independent weak coin flipping protocols with bias approaching $\eps \approx 0.3148$. \Anote{Under a convergence assumption, the bias can be lowered to $\eps \approx 0.29104$.}
+	There exists device-independent weak coin flipping protocols with bias approaching $\eps \approx 0.3148$. Under a convergence assumption, the bias can be lowered to $\eps \approx 0.29104$. \Anote{I added this last line!}
 	\end{thm} 
 
 	We now discuss how we develop such a protocol. 
-	This occurs using two main techniques, \emph{self-testing} and \emph{abort-phobic composition}. 
+	This occurs using two main techniques, \emph{self-testing} and \emph{abort-phobic composition}. \Anote{Pedantic: maybe rephrase?}
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 	\subsection{Pre-processing step: Self-testing} 
 
-	In Protocol~\ref{alg:SCForiginal}, a cheating party may control what is in the boxes, both the state and also the mechanics with which the outputs are given. 
+	In Protocol~\ref{alg:SCForiginalJ}, a cheating party may control what is in the boxes, both the state and also the \sout{mechanics} measurements with which the outputs are given. 
 	For instance, Bob could \Jnote{include details.} 
 
 	We use the concept of self-testing to stop Bob from applying this strategy. 
@@ -317,7 +317,7 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 	\item Alice selects a uniformly random index $i \in \{ 1, \ldots, n \}$ and asks Bob to send her all the boxes \emph{except} those indexed by $2_i$ and $3_i$. 
 	\item Alice plays $n-1$ GHZ games using the $n-1$ triples of boxes she has, making sure she has a space-like separation between the boxes. (She has long arms.) 
 	\item Alice aborts if \emph{any} of the GHZ games fail. 
-	Otherwise, she announces to Bob that they can use the remaining boxes for Protocol~\ref{alg:SCForiginal}.   
+	Otherwise, she announces to Bob that they can use the remaining boxes for Protocol~\ref{alg:SCForiginalJ}.   
 	\end{enumerate} 
 	\end{lyxalgorithm}  
 

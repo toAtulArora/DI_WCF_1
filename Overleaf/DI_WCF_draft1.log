@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.18)  10 MAY 2021 22:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.18)  10 MAY 2021 22:19
 entering extended mode
 **c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft1.tex
 (c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft1.tex
@@ -691,9 +691,6 @@ File: l3backend-pdfmode.def 2020-06-29 L3 backend support: PDF mode
 \l__pdf_internal_box=\box52
 ) (DI_WCF_draft1.aux
 
-LaTeX Warning: Label `alg:SCForiginal' multiply defined.
-
-
 LaTeX Warning: Label `alg:self-test' multiply defined.
 
 
@@ -1033,15 +1030,15 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 13192 strings out of 481225
- 193057 string characters out of 2915928
- 476070 words of memory out of 3000000
- 28206 multiletter control sequences out of 15000+200000
+ 13193 strings out of 481225
+ 193075 string characters out of 2915928
+ 476172 words of memory out of 3000000
+ 28207 multiletter control sequences out of 15000+200000
  733207 words of font info for 267 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  43i,13n,39p,1011b,576s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\atuls\AppData\Local\MiKTeX\fonts/pk/ljfour/public/wasy/dpi600\wasy10.pk>{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}<C:/Program Files/MiKTeX/fonts/type1/public/newtx/LibertineMathMI.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/LibertineMathMI5.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/LibertineMathMI7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/LibertineMathRM.pfb><C:/Program Files/MiKTeX/fonts/type1/public/libertine/LinLibertineT.pfb><C:/Program Files/MiKTeX/fonts/type1/public/libertine/LinLibertineTB.pfb><C:/Program Files/MiKTeX/fonts/type1/public/libertine/LinLibertineTBI.pfb><C:/Program Files/MiKTeX/fonts/type1/public/libertine/LinLibertineTI.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/NewTXMI.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/NewTXMI7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/txexs.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/txmiaX.pfb><C:/Program Files/MiKTeX/fonts/type1/public/txfonts/txsya.pfb><C:/Program Files/MiKTeX/fonts/type1/public/txfonts/txsyb.pfb><C:/Program Files/MiKTeX/fonts/type1/public/newtx/txsys.pfb>
-Output written on DI_WCF_draft1.pdf (22 pages, 772067 bytes).
+Output written on DI_WCF_draft1.pdf (22 pages, 772535 bytes).
 PDF statistics:
  619 PDF objects out of 1000 (max. 8388607)
  213 named destinations out of 1000 (max. 500000)
