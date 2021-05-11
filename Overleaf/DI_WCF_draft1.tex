@@ -29,6 +29,32 @@
 \newcommand{\Tnote}[1]{\textcolor{green}{ {\textbf{(Tom: }#1\textbf{) }}}}
 \newcommand{\Anote}[1]{\textcolor{red}{ {\textbf{(Atul: }#1\textbf{) }}}}
 \newtheorem{protocol}{Protocol}
+
+
+
+
+\newcommand{\complex}{\mathbb{C}} 
+\newcommand{\real}{\mathbb{R}} 
+%\newcommand{\natural}{\mathbb{N}} 
+\newcommand{\rational}{\mathbb{Q}} 
+
+\newcommand{\X}{\mathcal{X}} 
+\newcommand{\Y}{\mathcal{Y}} 
+\newcommand{\Herm}{\mathrm{Herm}} 
+
+\newcommand{\ip}[2]{\langle #1, #2 \rangle}
+\newcommand{\ketbra}[2]{\ket{#1}\bra{#2}} 
+\newcommand{\bracket}[2]{\langle #1 | #2 \rangle} 
+\newcommand{\kb}[1]{\ket{#1}\bra{#1}} 
+\newcommand{\Tr}{\mathrm{Tr}} 
+\newcommand{\tr}{\mathrm{Tr}} 
+
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\F}{\mathcal{F}} 
+\newcommand{\I}{\mathbb{1}}
+
+\newcommand{\snote}[1]{\textcolor{magenta}{\textbf{[Jamie: #1]}}}
+
 %%%%%%%%%%%%%%%%
 
 
@@ -92,6 +118,8 @@
 \newtheorem{fact}[thm]{\protect\factname}
 \theoremstyle{plain}
 \newtheorem{prop}[thm]{\protect\propositionname}
+\theoremstyle{plain}
+\newtheorem{prop}[thm]{\protect\corollaryname}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage{color}
@@ -108,7 +136,7 @@
 \newref{thm}{name=theorem~,Name=Theorem~,names=theorems~,Names=Theorems~}
 \newref{def}{name=definition~,Name=Definition~,names=definitions~,Names=Definitions~}
 \newref{alg}{name=algorithm~,Name=Algorithm~,names=algorithms~,Names=Algorithms~}
-%\newref{cor}{name=corollary~,Name=Corollary~,names=corollaries~,Names=Corollaries~}
+\newref{cor}{name=corollary~,Name=Corollary~,names=corollaries~,Names=Corollaries~}
 \newref{lem}{name=lemma~,Name=Lemma~,names=lemmas~,Names=Lemmas~}
 \newref{claim}{name=claim~,Name=Claim~,names=claims~,Names=Claims~}
 \newref{sec}{name=section~,Name=Section~,names=sections~,Names=Sections~}
@@ -134,6 +162,7 @@
 \providecommand{\theoremname}{Theorem}
 \providecommand{\factname}{Fact}
 \providecommand{\propositionname}{Proposition}
+\providecommand{\corollaryname}{Corollary}
 
 \begin{document}
 \title{Improving the security of device-independent weak coin flipping}
@@ -1509,7 +1538,10 @@ where $U$ is as defined in \Eqref{Bob-u} and the projectors as in
 \section{Security Proof | Finite $n$}
 
 TODO: Write the following properly
-We first try to 
+In this section, we drop Assumption ??, and estimate the GHZ winning probability from Algorithm ??. We then use the robust variant of the self-testing result to conclude that the SDP of interest must be close to the SDP we considered (with some larger space tensored to it). Finally, we show the continuity of these SDPs and thereby conclude that we converge to the asymptotic result as $n$ is increased.
+
+We show this for the case where Alice self-tests. We expect an analogous result to hold when Bob self-tests.
+
 
 \subsection{Estimation of GHZ winning probability}
 
@@ -1596,10 +1628,71 @@ This is the correct form of the security statement. It is important to bound the
 \end{proof}
 
 
-\subsection{Robust self-testing and continuity of SDP}
+\subsection{Robust self-testing}
 
 
-\subsection{The continuity argument}
+\subsection{SDP-valued functions and their continuity}
+A semidefinite program (SDP) is an optimization problem of the form 
+\begin{align} 
+f(A,B) = \text{maximize:} \quad & \ip{A}{X} \nonumber \\ 
+\text{subject to:} \quad 
+& \Phi(X) = B \label{SDP} \\ 
+& X \geq 0. \nonumber
+\end{align}  
+We call $f(A,B)$ the value of the semidefinite program which is the supremum of $\ip{A}{X}$ over all $X$ that are feasible ($X \succeq 0$ and $\Phi(X) = B$). 
+In this work we wish to view how the value of an SDP changes as you change $A$ and/or $B$. 
+%To this end, we define the concept of a support function. 
+Ultimately, we wish to know if the value of an SDP is continuous as a function of $A$ and $B$. 
+To this end, let us consider the function 
+\begin{align} 
+h(A) = \text{maximize:} \quad & \ip{A}{X} \\ 
+\text{subject to:} \quad 
+& X \in C  
+\end{align}   
+where $C$ is a nonempty, convex set. 
+This is a generalization of an SDP which is  convenient for the upcoming analysis.  
+Notice that when $C$ is unbounded, it may be the case that $f$ takes the value $+ \infty$. 
+Since we cannot count that high, we use the following definition. 
+
+\begin{defn} 
+We define the \emph{support} of the function $h$, denoted as $\supp(h)$, as 
+\begin{equation} 
+\supp(h) := \{ A : h(A) \textup{ is finite} \}.  
+\end{equation} 
+\end{defn} 
+
+We now show some elementary properties of this function. 
+
+\begin{lem} 
+The support of $h$ is convex and $h$ is a convex function on its support. 
+\end{lem} 
+
+\begin{proof} 
+%Since $C$ is convex, we have that $\lambda_1 A_1 + \lambda_2 A_2 \in C$ for all $A_1, A_2 \in C$ and $\lambda_1, \lambda_2 \geq 0$ satisfying $\lambda_1 + \lambda_2 = 1$. 
+For $A_1, A_2 \in \supp(h)$ and $\lambda_1, \lambda_2 \geq 0$ satisfying $\lambda_1 + \lambda_2 = 1$, we have  
+\begin{align}
+h(\lambda_1 A_1 + \lambda_2 A_2) 
+& \leq h(\lambda_1 A_1) + h(\lambda_2 A_2) \\ 
+& = \lambda_1 h(A_1) + \lambda_2 h(A_2) \\ 
+& < + \infty  
+\end{align} 
+where the last inequality follows from $A_1, A_2 \in \supp(h)$.  
+Thus, $\lambda_1 A_1 + \lambda_2 A_2 \in \supp(h)$, proving $\supp(h)$ is a convex set, and $h$ is convex from the above inequalities. 
+\end{proof} 
+
+The following corollary follows from the fact that $h$ is convex. 
+
+\begin{corollary} \label{contint}
+$h$ is continuous on the interior of its support. 
+\end{corollary} 
+
+Another well-known corollary is that $h$ is 
+continuous everywhere if $C$ is compact. 
+This follows from the above corollary since the support is the entire space. 
+
+\begin{corollary} \label{contint}
+If $C$ is compact, $h$ is continuous everywhere. 
+\end{corollary} 
 
 
 

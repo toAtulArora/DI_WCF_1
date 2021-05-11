@@ -5568,7 +5568,7 @@ name "subsubsec:SDP-when-Alice"
 \begin_layout Standard
 \begin_inset Branch proof
 inverted 0
-status open
+status collapsed
 
 \begin_layout Proof
 \begin_inset Argument 1
@@ -6580,7 +6580,7 @@ name "subsec:SDP-when-Bob"
 \begin_layout Standard
 \begin_inset Branch proof
 inverted 0
-status open
+status collapsed
 
 \begin_layout Proof
 \begin_inset Argument 1
@@ -8232,6 +8232,10 @@ we obtain the result.
 
 \begin_layout Subsection
 The continuity argument [Enter Jamie]
+\end_layout
+
+\begin_layout Corollary
+aoeu
 \end_layout
 
 \begin_layout Standard
