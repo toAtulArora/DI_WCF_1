@@ -528,31 +528,33 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 
 	\subsection{Summary of our results\label{subsec:Proof-Technique}}
 
-		\subsubsection*{Notation and Cheat Vectors}
+		%\subsubsection*{Notation and Cheat Vectors}
 
 		\branchcolor{purple}{
-		We introduce some notation to facilitate the discussion here. Denote
-		the DI CF protocol introduced in \cite{Silman2011} by $\mathcal{I}$
-		and let $p_{A}^{*}(\mathcal{I})\approx0.853\dots$ denote the maximum
-		probability with which a malicious Alice can win against honest Bob
-		who is following the protocol $\mathcal{I}$ and similarly, let $p_{B}^{*}(\mathcal{I})\approx0.75$
-		denote the maximum probability with which a malicious Bob can win
-		against an honest Alice who is following the protocol $\mathcal{I}$. 
+		% We introduce some notation to facilitate the discussion here. Denote
+		% the DI CF protocol introduced in \cite{Silman2011} by $\mathcal{I}$
+		% and let $p_{A}^{*}(\mathcal{I})\approx0.853\dots$ denote the maximum
+		% probability with which a malicious Alice can win against honest Bob
+		% who is following the protocol $\mathcal{I}$ and similarly, let $p_{B}^{*}(\mathcal{I})\approx0.75$
+		% denote the maximum probability with which a malicious Bob can win
+		% against an honest Alice who is following the protocol $\mathcal{I}$. 
 
-		One of the key observations we make in this work is the use of what
-		we call ``cheat vectors''---it is any tuple of probabilities which
-		can arise in a CF protocol when one player is honest. More precisely,
-		suppose Alice is (possibly) malicious and Bob follows the protocol
-		$\mathcal{I}$. Then, the cheat vectors for Alice constitute the set
-		\begin{equation}
-		\mathbb{C}{}_{A}(\mathcal{I}):=\{(\alpha,\beta,\gamma):\exists\text{ a strategy for }A\text{ s.t. an honest }B\text{ outputs }\text{0,1, \text{ and }\ensuremath{\perp} with probabilities \ensuremath{\alpha,\beta} and \ensuremath{\gamma}}\}.\label{eq:cheatVectors}
-		\end{equation}
-		We analogously define $\mathbb{C}_{B}(\mathcal{I})$. Cheat vectors
-		become useful when we try to compose protocols. The observation then,
-		is that the abort event can be taken to abort the full protocol instead
-		of being treated as the honest player winning. The latter gives the
-		malicious player further opportunity to cheat and so preventing it
-		improves the security. }
+		% One of the key observations we make in this work is the use of what
+		% we call ``cheat vectors''---it is any tuple of probabilities which
+		% can arise in a CF protocol when one player is honest. More precisely,
+		% suppose Alice is (possibly) malicious and Bob follows the protocol
+		% $\mathcal{I}$. Then, the cheat vectors for Alice constitute the set
+		% \begin{equation}
+		% \mathbb{C}{}_{A}(\mathcal{I}):=\{(\alpha,\beta,\gamma):\exists\text{ a strategy for }A\text{ s.t. an honest }B\text{ outputs }\text{0,1, \text{ and }\ensuremath{\perp} with probabilities \ensuremath{\alpha,\beta} and \ensuremath{\gamma}}\}.\label{eq:cheatVectors}
+		% \end{equation}
+		% We analogously define $\mathbb{C}_{B}(\mathcal{I})$. Cheat vectors
+		% become useful when we try to compose protocols. The observation then,
+		% is that the abort event can be taken to abort the full protocol instead
+		% of being treated as the honest player winning. The latter gives the
+		% malicious player further opportunity to cheat and so preventing it
+		% improves the security. 
+		Let $\mathcal{I}$ denote \Algref{SCForiginalJ} (the DI protocol introduced in \cite{Silman2011}). We use $p^*_A(\mathcal{I})$ and $p^*_B(\mathcal{I})$, for instance, to denote the cheating probabilities of Alice and Bob when they execute protocol $\mathcal{I}$. Similarly, we use $\mathbb{C}_A(\mathcal{I})$ and $\mathbb{C}_B(\mathcal{I})$, for instance, to denote the cheat vectors for Alice and Bob, respectively, when the execute $\mathcal{I}$.
+		}
 
 		\subsubsection*{Protocols}
 
@@ -561,8 +563,8 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 		\begin{itemize}
 		\item $\mathcal{P}$ is essentially the same as $\mathcal{I}$ except that
 		Alice self-tests her boxes before starting the protocol and performs
-		an additional test to ensure Bob doesn't cheat. We show that $p_{A}^{*}(\mathcal{P})\apprle0.853\dots$
-		and $p_{B}^{*}(\mathcal{P})\apprle0.667\dots$. We also show that
+		an additional test to ensure Bob doesn't cheat. We show that $p_{A}^{*}(\mathcal{P})\approx 0.853\dots$
+		and $p_{B}^{*}(\mathcal{P}) \approx 0.667\dots$. We also show that
 		$\mathbb{C}_{B}(\mathcal{P})$ can be cast as an SDP.
 		\item $\mathcal{Q}$ is also essentially the same as $\mathcal{I}$ except
 		that Bob self-tests his boxes before starting the protocol. In this
