@@ -20,7 +20,7 @@
 \makeatletter
 
 %%%%%%%%%%%Atul added
-\usepackage{ulem}
+\usepackage[normalem]{ulem} %for strikethrough; sout{haha}
 %%%%%
 
 %%%%%%%%%%% added for Jamie
@@ -231,7 +231,7 @@ The commonly adopted goal of two-party protocol design is to assume perfect comp
 This way, if no parties cheat, then the protocol at least does what it is meant to still. 
 With this in mind, we need a means to measure \sout{of} the effects of a cheating party. 
 It is often convenient to have a single measure to determine if one protocol is better than another. 
-For these, we use \emph{cheating probabilities} (denoted $\PB$ and $\PA$) and \emph{bias} (denoted $\eps$), defined as 
+For these, we use \emph{cheating probabilities} (denoted $\PB$ and $\PA$) and \emph{bias} (denoted $\eps$), defined as \Anote{Pedantic: Is there a reason why $\PB$ comes first?}
 \begin{center} 
 \begin{tabularx}{\textwidth}{cX}
 $\PB$: & The maximum probability with which a dishonest Bob can force an honest Alice to accept the outcome $c = 1$. \\ 
@@ -240,12 +240,12 @@ $\eps$: & The maximum amount with which a dishonest party can bias the probabili
 \end{tabularx} 
 \end{center}  
 
-These definitions are not complete in the sense that we have not yet specified how Alice and Bob are capable of. 
+These definitions are not complete in the sense that we have not yet specified how Alice and Bob are capable of. \Anote{Pedantic: shouldn't it either be "what Alice and Bob are capable of" or "how capable Alice and Bob are"?} 
 In this work, we study \emph{information theoretic security} meaning that Alice and Bob are only bounded by the laws of quantum mechanics. 
 For example, they are not bounded by polynomial-time quantum computations. 
 In addition to this, we study the security in the \emph{device-independent} regime where we assume Alice and Bob have complete control over the quantum devices when they decide to ``cheat''. 
 
-When studying device-independent (DI) protocols, once should first consider whether or not there are decent classical protocols (since these are not affected by the DI assumption. 
+When studying device-independent (DI) protocols, \sout{once} one should first consider whether or not there are decent classical protocols (since these are not affected by the DI assumption). 
 Indeed, Kitaev~\cite{Kit02} proved that any classical WCF protocol has bias $\eps = 1/2$, which is the worst possible value. 
 Thus, it makes sense to study quantum WCF protocols in the DI setting, especially if one with bias $\eps < 1/2$ can be found. 
 Indeed, \Jnote{author names} presented a protocol in~\cite{????} which has bias $\eps = ????$. 
