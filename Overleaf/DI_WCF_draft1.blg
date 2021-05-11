@@ -7,7 +7,6 @@ Reallocating 'name_of_file' (item size: 1) to 13 items.
 Database file #1: DI_WCF_ideas.bib
 Warning--string name "url" is undefined
 --line 1467 of file DI_WCF_ideas.bib
-Warning--I didn't find a database entry for "????"
 Warning--missing publisher in ARV21
 Warning--missing year in ARV21
 Warning--missing journal name in Arora2018
@@ -17,7 +16,7 @@ Warning--missing pages in Mochon07
 Warning--missing pages in Silman2011
 You've used 9 entries,
             2624 wiz_defined-function locations,
-            624 strings with 6022 characters,
+            623 strings with 6018 characters,
 and the built_in function-call counts, 3603 in all, are:
 = -- 319
 > -- 182
@@ -56,4 +55,4 @@ warning$ -- 7
 while$ -- 31
 width$ -- 11
 write$ -- 102
-(There were 9 warnings)
+(There were 8 warnings)
