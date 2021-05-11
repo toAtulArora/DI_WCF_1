@@ -140,7 +140,7 @@
 
 \newref{thm}{name=theorem~,Name=Theorem~,names=theorems~,Names=Theorems~}
 \newref{def}{name=definition~,Name=Definition~,names=definitions~,Names=Definitions~}
-\newref{alg}{name=algorithm~,Name=Algorithm~,names=algorithms~,Names=Algorithms~}
+\newref{alg}{name=protocol~,Name=Protocol~,names=protocols~,Names=Protocols~}
 \newref{cor}{name=corollary~,Name=Corollary~,names=corollaries~,Names=Corollaries~}
 \newref{lem}{name=lemma~,Name=Lemma~,names=lemmas~,Names=Lemmas~}
 \newref{claim}{name=claim~,Name=Claim~,names=claims~,Names=Claims~}
@@ -157,7 +157,7 @@
 \makeatother
 
 \usepackage{babel}
-\providecommand{\algorithmname}{Algorithm}
+\providecommand{\algorithmname}{Protocol}
 \providecommand{\assumptionname}{Assumption}
 \providecommand{\claimname}{Claim}
 \providecommand{\definitionname}{Definition}
@@ -254,7 +254,7 @@ In this work, we provide two techniques which can be applied to a wide range of 
 To illustrate our ideas, we now present the protocol in~\cite{Silman2011} 
 
 
-\begin{protocol}[DI-WCF protocol with $\PA = \cos^2{\pi/8}$ and $\PB = 3/4$~\cite{Silman2011}; see \Subsecref{SCForiginal}] \label{alg:SCForiginal}  
+\begin{lyxalgorithm}[DI-WCF protocol with $\PA = \cos^2{\pi/8}$ and $\PB = 3/4$~\cite{Silman2011}; see \Subsecref{SCForiginal}] \label{alg:SCForiginal}  
 
 Alice has one box and Bob has two boxes. 
 Each box takes one binary input and gives one binary output and are designed to play the optimal GHZ game strategy. 
@@ -282,7 +282,7 @@ He inputs $y$ and $z$ into his two boxes and obtains respective outcomes $b$ and
 He aborts if $(a,b,c,x,y,z)$ does not satisfy the winning conditions of the GHZ game. 
 \end{enumerate} 
 \end{enumerate} 
-\end{protocol} 
+\end{lyxalgorithm} 
 	
 To obtain a bias $\eps = ????$ protocol from the above, they compose the protocol many times \Jnote{Did they discuss how?}. 
 
@@ -308,7 +308,7 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 
 	We use the concept of self-testing to stop Bob from applying this strategy. 
 
-	\begin{protocol}[Protocol with Alice self-testing] \label{alg:self-test}  
+	\begin{lyxalgorithm}[Protocol with Alice self-testing] \label{alg:self-test}  
 
 	Alice starts with $n$ boxes, indexed from $1_1$ to $1_n$. 
 	Bob starts with $2n$ boxes, the first half indexed by $2_1$ to $2_n$ and the last half indexed by $3_1$ to $3_n$. 
@@ -319,7 +319,7 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 	\item Alice aborts if \emph{any} of the GHZ games fail. 
 	Otherwise, she announces to Bob that they can use the remaining boxes for Protocol~\ref{alg:SCForiginal}.   
 	\end{enumerate} 
-	\end{protocol}  
+	\end{lyxalgorithm}  
 
 	The idea is that if $n$ is chosen large enough, then this forces a dishonest Bob to not tamper with the boxes too much. 
 	Indeed, this step already allows us to reduce the cheating probabilities. 
@@ -369,14 +369,14 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 
 	With this in mind, we can now define a simple composition. 
 
-	\begin{protocol}[Winner-gets-polarity composition] \label{simple}  
+	\begin{lyxalgorithm}[Winner-gets-polarity composition] \label{simple}  
 	\begin{enumerate} 
 	Alice and Bob agree on a protocol $P$. 
 	\item Alice and Bob perform protocol $P$. 
 	\item If Alice won, she polarizes the second protocol towards herself. I.e., they now use the protocol $P_A$ to determine the outcome of the (entire) protocol. 
 	\item If Bob won, he polarizes the second protocol towards himself. I.e., they now use the protocol $P_B$ to determine the outcome of the (entire) protocol.   
 	\end{enumerate} 
-	\end{protocol}  
+	\end{lyxalgorithm}  
 
 	This is a good way to balance the cheating probabilities of a protocol. 
 	For instance, if $P$ has cheating probabilities $\PA$ and $\PB$ with $\PA > \PB$, then the composition gets to decide ``who gets to be Alice'' in the second run.  
