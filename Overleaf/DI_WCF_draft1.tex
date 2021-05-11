@@ -184,14 +184,14 @@
 
 \maketitle
 \begin{abstract}
-Prior to this work, the best device independent weak coin flipping protocol had bias, $\epsilon \approx 0.336$, introduced a decade ago {[}10.1103/PhysRevLett.106.220501{]}. We report a protocol with bias, $\epsilon \approx 0.3148$. Under a plausible continuity conjecture, we are able to lower the bias to $\epsilon \approx 0.29104$. Our result uses the aforementioned protocol with a minor modification and owes its improved security to two techniques which we expect should work more generally: an added self-testing step and an improved method for composing protocols.
+Prior to this work, the best device independent weak coin flipping protocol had bias, $\epsilon \approx 0.33663$, introduced a decade ago {[}10.1103/PhysRevLett.106.220501{]}. We report a protocol with bias, $\epsilon \approx 0.3148$. Under a plausible continuity conjecture, we are able to lower the bias to $\epsilon \approx 0.29104$. Our result uses the aforementioned protocol with a minor modification and owes its improved security to two techniques which we expect should work more generally: an added self-testing step and an improved method for composing protocols.
 
 % We report a device independent weak coin flipping protocol\footnote{which are analysed }
 % with $P_{A}^{*}\le\cos^{2}(\pi/8)$ and $P_{B}^{*}\le0.667...$, by
 % making seemingly minor changes to the best known protocol due to SCAKPM'11
 % {[}10.1103/PhysRevLett.106.220501{]}, with $P_{A}^{*}\le\cos^{2}(\pi/8)\approx0.85$
 % and $P_{B}^{*}\le3/4=0.75$. In terms of bias, we improve the SCAKPM'11
-% result from $\approx0.336$ to $\approx0.3199$. This improvement
+% result from $\approx0.33663$ to $\approx0.3199$. This improvement
 % is due to two ingredients: a self-testing (of GHZ) step and an extra
 % cheat detection step for Bob. We also introduce a new bias suppression
 % technique that ekes out further security from the abort probability
@@ -248,7 +248,7 @@ In addition to this, we study the security in the \emph{device-independent} regi
 When studying device-independent (DI) protocols, \sout{once} one should first consider whether or not there are decent classical protocols (since these are not affected by the DI assumption). 
 Indeed, Kitaev~\cite{Kitaev03} proved that any classical WCF protocol has bias $\eps = 1/2$, which is the worst possible value. 
 Thus, it makes sense to study quantum WCF protocols in the DI setting, especially if one with bias $\eps < 1/2$ can be found. 
-Indeed, Silman, Chailloux, Aharon, Kerenidis, Pironio and Massar \sout{\Jnote{author names}} presented a protocol in~\cite{Silman2011} which has bias $\eps \approx 0.336$. 
+Indeed, Silman, Chailloux, Aharon, Kerenidis, Pironio and Massar \sout{\Jnote{author names}} presented a protocol in~\cite{Silman2011} which has bias $\eps \approx 0.33663$. 
 
 In this work, we provide two techniques which can be applied to a wide range of protocols (including~\cite{Silman2011} mentioned above) which can improve the bias. 
 To illustrate our ideas, we now present the protocol in~\cite{Silman2011} 
@@ -284,7 +284,7 @@ He aborts if $(a,b,c,x,y,z)$ does not satisfy the winning conditions of the GHZ 
 \end{enumerate} 
 \end{lyxalgorithm} 
 	
-To obtain a bias $\eps \approx 0.336 $ protocol from the above, they compose the protocol many times \Jnote{Did they discuss how?}. 
+To obtain a bias $\eps \approx 0.33663 $ protocol from the above, they compose the protocol many times \Jnote{Did they discuss how?} \Anote{Not really; }. 
 
 In this work, we build on this protocol using novel pre- and post-processing steps, which we discuss in the next subsection. 
 
@@ -293,7 +293,7 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 	We now state the main result of our work. 
 
 	\begin{thm} 
-	There exists device-independent weak coin flipping protocols with bias approaching $\eps = ????$. 
+	There exists device-independent weak coin flipping protocols with bias approaching $\eps \approx $. 
 	\end{thm} 
 
 	We now discuss how we develop such a protocol. 
@@ -527,7 +527,7 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 		with the same cheating probabilities for Alice and Bob, $\approx0.854$
 		and $0.75$ respectively.} in \cite{Silman2011} which has $P_{A}^{*}=\cos^{2}(\pi/8)\approx0.854$
 		and $P_{B}^{*}=3/4=0.75$. They then compose these protocols to give
-		a balanced protocol, i.e. with $P_{A}^{*}=P_{B}^{*}\approx\frac{1}{2}+0.336$.
+		a balanced protocol, i.e. with $P_{A}^{*}=P_{B}^{*}\approx\frac{1}{2}+0.33663$.
 		To the best of our knowledge, this DI CF protocol has the best security
 		guarantee. While Kitaev's bound for CF rules out perfect DI CF, no
 		lower bounds on the bias are known for DI WCF. In this work, however,
@@ -604,7 +604,7 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 			\item For all $X\in\{A,B\}$ the cheating probabilities for protocol $\mathcal{I}$
 			under the standard composition is given by
 			\[
-			p_{X}^{*}(C^{LL}(\mathcal{I}))\approx\frac{1}{2}+0.336\dots
+			p_{X}^{*}(C^{LL}(\mathcal{I}))\approx\frac{1}{2}+0.33663\dots
 			\]
 			while for the improved protocol $\mathcal{P}$, these are given by
 			\begin{equation}
