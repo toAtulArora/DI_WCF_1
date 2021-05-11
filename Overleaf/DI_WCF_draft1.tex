@@ -444,25 +444,8 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 
 	Therefore, if we calculate the cheating probabilities from ``the bottom up'', then we can fix the two probabilities in the expression above and use semidefinite programming to optimize over the cheat vectors. 
 
-	By using self-testing and abort-phobic compositions, we are able to find protocols which converge onto a bias of $\eps \approx 0.3148$ proving the main result of this work. By composing protocols where Alice self-tests with ones where Bob self-tests, under a continuity assumption, we are able to reduce the bias further down to $\eps \approx 0.29104$, as also stated in the main result. \Anote{Added this last line.}
+	By using self-testing and abort-phobic compositions, we are able to find protocols which converge onto a bias of $\eps \approx 0.3148$ proving the main result of this work. By composing protocols where Alice self-tests with ones where Bob self-tests, under a convergence assumption, we are able to reduce the bias further down to $\eps \approx 0.29104$, as also stated in the main result. \Anote{Added this last line.}
 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-	\subsection{Applications} 
-
-	The concept of polarity extends well beyond finding WCF protocols and, as such, the ``winner-gets-polarity'' concept allows for WCF to be used in many other compositions. 
-	Indeed, we can use it to balance the cheating probabilities in  \emph{any} polarized protocol for any symmetric two-party cryptographic task for which such notions can be properly defined. 
-	
-	For instance, many \emph{strong} coin-flipping protocols can be thought of as polarized. 
-	For an example, the protocol~\ref{alg:SCForiginal} is indeed a strong coin-flipping protocol. 
-	Thus, by balancing the cheating probabilities of that protocol using our DI WCF protocol and a winner-gets-polarity composition (not even an abort-phobic one!), we get the following theorem. 
-
-	\begin{thm} 
-	There exists DI strong coin-flipping protocols where no party can cheat with probability greater than $?????$.  
-	\end{thm} 
-
-	There are likely more examples of protocols which can be balanced in a DI way using this idea. 
-		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % \section{Introduction}
@@ -646,6 +629,25 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 		\end{itemize}
 		}
 
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	\subsection{Applications} 
+
+	The concept of polarity extends well beyond finding WCF protocols and, as such, the ``winner-gets-polarity'' concept allows for WCF to be used in many other compositions. 
+	Indeed, we can use it to balance the cheating probabilities in  \emph{any} polarized protocol for any symmetric two-party cryptographic task for which such notions can be properly defined. 
+	
+	For instance, many \emph{strong} coin-flipping protocols can be thought of as polarized. 
+	For an example, the protocol~\ref{alg:SCForiginal} is indeed a strong coin-flipping protocol. 
+	Thus, by balancing the cheating probabilities of that protocol using our DI WCF protocol and a winner-gets-polarity composition (not even an abort-phobic one!), we get the following theorem. 
+
+	\begin{thm} 
+	There exists DI strong coin-flipping protocols where no party can cheat with probability greater than $?????$.  
+	\end{thm} 
+
+	There are likely more examples of protocols which can be balanced in a DI way using this idea. 
+		
+%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Device Independent Weak Coin Flipping protocols | State Of The Art}
 
