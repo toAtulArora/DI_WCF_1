@@ -553,7 +553,7 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 		% of being treated as the honest player winning. The latter gives the
 		% malicious player further opportunity to cheat and so preventing it
 		% improves the security. 
-		Let $\mathcal{I}$ denote \Algref{SCForiginalJ} (the DI protocol introduced in \cite{Silman2011}). We use $p^*_A(\mathcal{I})$ and $p^*_B(\mathcal{I})$, for instance, to denote the cheating probabilities of Alice and Bob when they execute protocol $\mathcal{I}$. Similarly, we use $\mathbb{C}_A(\mathcal{I})$ and $\mathbb{C}_B(\mathcal{I})$, for instance, to denote the cheat vectors for Alice and Bob, respectively, when the execute $\mathcal{I}$.
+		Let $\mathcal{I}$ denote \Algref{SCForiginalJ} (the DI protocol introduced in \cite{Silman2011}). We use $p^*_A(\mathcal{I})$ and $p^*_B(\mathcal{I})$, for instance, to denote the cheating probabilities of Alice and Bob when they execute protocol $\mathcal{I}$. Similarly, we use $\mathbb{C}_A(\mathcal{I})$ and $\mathbb{C}_B(\mathcal{I})$, for instance, to denote the cheat vectors for Alice and Bob, respectively, when they execute $\mathcal{I}$.
 		%}
 
 		\subsubsection*{Protocols}
@@ -660,24 +660,24 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 \branchcolor{purple}{In the following, we first discuss how one can describe DI WCF protocols
 in terms of the players exchanging ``boxes''---devices which take
 classical inputs and give classical outputs. Subsequently we recall
-the GHZ test and finally we use these to delineate the DI-CF due to
-\cite{Silman2011}.}
+the GHZ test and finally we formally state the security of \Algref{SCForiginalJ} \cite{Silman2011}. %we use these to delineate the DI-CF due to
+}
 
 
 \subsection{Device Independence and the Box Paradigm}
 
-\branchcolor{purple}{We describe device independent protocols as classical protocols with
-the one modification: we assume that the two parties can exchange
+\branchcolor{purple}{We describe device independent protocols as classical protocols with one modification: we assume that the two parties can exchange
 boxes and that the parties can shield their boxes (from the other
-boxes i.e. the boxes can't communicate with each other once shielded).\footnote{TODO: Verify if this notion is in fact correct; I hope I'm not making
-a major mistake somehow. I should be able to take the POVMs as tensor
-products right, because I can change them at will, independent of
-the others (and ensuring that there's no communication between them;
-could they be somehow entangled, i.e. could it be that somehow the
-measurement operators are themselves quantum correlated?); I would
-like to reach the conclusion starting from the locality assumption.}
-
+boxes i.e. the boxes can't communicate with each other once shielded).
+% \footnote{TODO: Verify if this notion is in fact correct; I hope I'm not making
+% a major mistake somehow. I should be able to take the POVMs as tensor
+% products right, because I can change them at will, independent of
+% the others (and ensuring that there's no communication between them;
+% could they be somehow entangled, i.e. could it be that somehow the
+% measurement operators are themselves quantum correlated?); I would
+% like to reach the conclusion starting from the locality assumption.}
 }
+
 \begin{defn}[Box]
  \label{def:box}A \emph{box} is a device that takes an input $x\in\mathcal{X}$
 and yields an outputs $a\in\mathcal{A}$ where $\mathcal{X}$ and
