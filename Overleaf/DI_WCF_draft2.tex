@@ -187,13 +187,14 @@
 
 \maketitle
 \begin{abstract}
-Weak coin flipping is the cryptographic task where Alice and Bob remotely flip a coin but want different outcomes. 
-This work studies this task in the device-independent regime where Alice and Bob do not trust each other, nor their quantum devices. 
-The best protocol was devised ten years ago by Silman, Chailloux, Aharon, Kerenidis, Pironio, and Massar with bias $\eps = ????$, where the bias is a commonly adopted security measure for coin flippign protocols. 
+Weak coin flipping is the cryptographic task where Alice and Bob remotely flip a coin but want opposite outcomes. 
+This work studies this task in the device-independent regime where Alice and Bob neither trust each other, nor their quantum devices. 
+The best protocol was devised ten years ago by Silman, Chailloux, Aharon, Kerenidis, Pironio, and Massar with bias $\eps \le 0.33664$, where the bias is a commonly adopted security measure for coin flipping protocols. 
 %Prior to this work, the best device independent weak coin flipping protocol had bias, $\epsilon \le 0.33664$, introduced a decade ago {[}10.1103/PhysRevLett.106.220501{]}. 
 This work presents some techniques to lower the bias of device-independent weak coin flipping protocols, namely self-testing and abort-phobic compositions. 
-By applying these techniques to the AHGDOIENERm protocol above, we are able to lower the bias to $\eps = ????$. 
-In our analysis, we examine rigidity bounds for the GHZ game and the continuity of semidefinite programs, which may be of independent interest.  
+By applying these techniques to the SCAKPM '11 protocol above, we are able to lower the bias to $\eps \approx 0.3148$. Under a continuity assumption, we can lower it still to $\eps \approx 0.29104$.
+In our analysis, we study the estimation of expectation value of a single GHZ game from known statistics to apply self-testing results in our case. We also study the continuity of semidefinite programs. These may be of independent interest.  
+%In our analysis, we examine rigidity bounds for the GHZ game and the continuity of semidefinite programs, which may be of independent interest.  
 
 %We report a protocol with bias, $\epsilon \approx 0.3148$. Under a plausible continuity conjecture, we are able to lower the bias to $\epsilon \approx 0.29104$. Our result uses the aforementioned protocol with a minor modification and owes its improved security to two techniques which we expect should work more generally: an added self-testing step and an improved method for composing protocols.
 
@@ -228,30 +229,30 @@ Since then, a series of quantum protocols were introduced which kept improving t
 Mochon finally settled the question about the limits of the security in the quantum regime by proving the existence of quantum protocols with security approaching the ideal limit~\cite{Mochon07}. 
 Mochon's work was based on the notion of point games, a concept introduced by Kitaev. 
 Since then, a sequence of works have continued the study of point games. 
-In particular, the proof has been simplified~\cite{ACG+14} and made explicit~\cite{Arora2018,Arora2019,ARV21} \Jnote{missing the date on last ref}. 
+In particular, the proof has been simplified~\cite{ACG+14} and made explicit~\cite{Arora2018,Arora2019,ARV21} %\Jnote{missing the date on last ref}. 
 Interestingly, Miller~\cite{Miller2019} used Mochon's proof to show that protocols approaching the ideal limit must have an exponentially increasing number of messages. 
-\Anote{Maybe add applications of coin flipping to bit commitment etc}
+%\Anote{Maybe add applications of coin flipping to bit commitment etc}
 We note that all of this work is in the \emph{device-dependent} setting where \emph{Alice and Bob trust their quantum devices}. 
-In this work, we \emph{revise} the security definitions such that when Alice or Bob cheat, they have control of each other's quantum devices, opening up a plethora of new cheating strategies that were not considered in the previously mentioned references. \Anote{mention noise here, perhaps?}
-\Jnote{I don't see why. That's seems like a completely different thing.}
+In this work, we \emph{revise} the security definitions such that when Alice or Bob cheat, they have control of each other's quantum devices, opening up a plethora of new cheating strategies that were not considered in the previously mentioned references. 
+%\Anote{mention noise here, perhaps?}\Jnote{I don't see why. That's seems like a completely different thing.}
 
 %In this paper, we concentrate on \emph{weak} coin flipping (WCF) protocols. 
 The prefix \emph{weak} in weak coin flipping refers to the situation where Alice and Bob desire opposite outcomes of the coin. (We have occasion to discuss \emph{strong} coin flipping protocols, where Alice or Bob could try to bias the coin towards either outcome, but it is not the focus of this work.) 
 When designing weak coin flipping protocols, the security goals are as follows. 
 \begin{center} 
 \begin{tabularx}{\textwidth}{cX}
-\emph{Completeness for honest parties:} & If Alice and Bob are honest, then they share the same outcome of a protocol $c \in \{ 0, 1 \}$, and $c$ is generated uniformly at random by the protocol. \Anote{Umm, perhaps correctness is a better term?} \Jnote{I like completeness, since it goes with soundess better :) But, it's not a strong preference}\\ 
+\emph{Correctness for honest parties:} & If Alice and Bob are honest, then they share the same outcome of a protocol $c \in \{ 0, 1 \}$, and $c$ is generated uniformly at random by the protocol. \\
+%\Anote{Umm, perhaps correctness is a better term?} \Jnote{I like completeness, since it goes with soundess better :) But, it's not a strong preference}
 \emph{Soundness against cheating Bob:} & If Alice is honest, then a dishonest (i.e., cheating) Bob cannot force the outcome $c = 1$. \\ 
 \emph{Soundness against cheating Alice:} & If Bob is honest, then a dishonest (i.e., cheating) Alice cannot force the outcome $c = 0$. 
 \end{tabularx} 
 \end{center}  
 
-The commonly adopted goal of two-party protocol design is to assume perfect completeness and then minimize the effects of a cheating party, i.e., to make it as sound as possible. 
+The commonly adopted goal of two-party protocol design is to assume perfect correctness and then minimize the effects of a cheating party, i.e., to make it as sound as possible. 
 This way, if no parties cheats, then the protocol at least does what it is meant to still. 
 With this in mind, we need a means to quantify the effects of a cheating party. 
 It is often convenient to have a single measure to determine if one protocol is better than another. 
-For this purpose, we use \emph{cheating probabilities} (denoted $\PB$ and $\PA$) and \emph{bias} (denoted $\eps$), defined as follows. \Anote{Pedantic: Is there a reason why $\PB$ comes first?} 
-\Jnote{I have always put Bob first. Not sure why. Feel free to change if you want!}
+For this purpose, we use \emph{cheating probabilities} (denoted $\PB$ and $\PA$) and \emph{bias} (denoted $\eps$), defined as follows. %\Anote{Pedantic: Is there a reason why $\PB$ comes first?} \Jnote{I have always put Bob first. Not sure why. Feel free to change if you want!}
 \begin{center} 
 \begin{tabularx}{\textwidth}{cX}
 $\PB$: & The maximum probability with which a dishonest Bob can force an honest Alice to accept the outcome $c = 1$. \\ 
@@ -273,7 +274,7 @@ Indeed, Silman, Chailloux, Aharon, Kerenidis, Pironio, and Massar presented a pr
 In this work, we provide two techniques which can be applied to a wide range of protocols (including~\cite{Silman2011}, mentioned above) which can improve the bias. 
 To illustrate our ideas, we now present the protocol in~\cite{Silman2011}.  
 
-\begin{lyxalgorithm}[DI-WCF protocol with $\PA = \cos^2{\pi/8}$ and $\PB = 3/4$~\cite{Silman2011}; see also \Subsecref{SCForiginal}] \label{alg:SCForiginalJ}  
+\begin{lyxalgorithm}[Protocol $\mathcal{I}$; a DI-WCF protocol with $\PA = \cos^2{\pi/8}$ and $\PB = 3/4$~\cite{Silman2011}; see also \Subsecref{SCForiginal}] \label{alg:SCForiginalJ}  
 
 Alice has one box and Bob has two boxes. 
 Each box takes one binary input and gives one binary output and are designed to play the optimal GHZ game strategy. 
@@ -289,7 +290,7 @@ Bob chooses a uniformly random bit $g \in \{ 0, 1 \}$ and sends it to Alice.
 \item 
 Alice sends $x$ and $a$ to Bob. 
 They both compute the output $c = x \oplus g$. 
-This is the outcome of the protocol assuming neither Alice nor Bob abort. \Jnote{I guess only Bob may abort?}
+This is the outcome of the protocol assuming neither Alice nor Bob abort. %\Jnote{I guess only Bob may abort?}
 \item 
 Bob now tests to see if Alice was honest using the following two tests. 
 \begin{enumerate} 
@@ -309,7 +310,8 @@ To obtain a bias $\eps \le 0.33664$ using the protocol above, they compose the p
 \paragraph{Remark.} 
 Note that the above protocol is actually a strong coin-flipping protocol, but as such, we can always treat it as a WCF protocol. \\ 
 
-In this work, we build on this protocol using novel pre- and post-processing steps, which we discuss next. 
+%novel pre- and post-processing steps
+In this work, we build on this protocol using two techniques, which we discuss next. 
 
 	\subsection{Our main result}  
 
@@ -319,7 +321,7 @@ In this work, we build on this protocol using novel pre- and post-processing ste
 	There exists device-independent weak coin flipping protocols with bias approaching $\eps \approx 0.3148$. Under a convergence assumption, the bias can be lowered to $\eps \approx 0.29104$.
 	\end{thm} 
 	
-	\paragraph{\textit{Author's note:}} \textit{We believe the convergence assumption above to be true, we just did not have enough time to rigourously \Jnote{American or British English?} prove it before the QCRYPT submission deadline. Hence, we state it as an assumption. However, it does lead to a better bias, and thus we have decided to state it here.} \\ 
+	\paragraph{\textit{Author's note:}} \textit{We believe the convergence assumption above to be true, we just did not have enough time to rigourously prove it before the QCRYPT submission deadline. Hence, we state it as an assumption. However, it does lead to a better bias, and thus we have decided to state it here.} \\ 
 
 	%We now discuss how we develop such a protocol. 
 	%This occurs using two main techniques, \emph{self-testing} and \emph{abort-phobic composition}. \Anote{Pedantic: maybe rephrase?}
@@ -343,34 +345,46 @@ She sends $s$ to Bob.
 Bob chooses a uniformly random bit $g \in \{ 0, 1 \}$ and sends it to Alice. 
 (We may think of $g$ as Bob's ``guess'' for the value of $x$.) 
 \item 
-Alice sends $x$ and $a$ to Bob. 
+Alice sends $x$ to Bob. 
 They both compute the output $c = x \oplus g$. 
 This is the outcome of the protocol assuming neither Alice nor Bob abort. 
 
-\item \Jnote{Add Alice test.} 
+\item Test rounds:
+\begin{enumerate}
+\item If $x\oplus g=0$:\\
+Alice sends $a$ to Bob.\\
+Bob tests if $s=a$ or $s=a\oplus x$. If the test fails, he aborts.
+Bob chooses $y,z\in_{R}\{0,1\}$ such that $x\oplus y\oplus z=1$
+and then performs a GHZ using $x,y,z$ as the inputs and $a,b,c$
+as the output from the three boxes. He aborts if this test fails.
+\item Else, if $x\oplus g=1$:
+\begin{enumerate}
+\item Alice chooses $y,z\in_{R}\{0,1\}$ s.t. $x\oplus y\oplus z=1$ and
+sends them to Bob.
+\item Bob inputs $y,z$ into his boxes, obtains and sends $b,c$ to Alice.
+\end{enumerate}
+Alice tests if $x,y,z$ as inputs and $a,b,c$ as outputs, satisfy
+the GHZ test. She aborts if this test fails.
+\end{enumerate}
 
-\item \Jnote{Add Bob test.} 
 
 \item If Alice and Bob do not abort, they both accept the value of $c$ as the outcome of the protocol.  
 
 \end{enumerate} 
 \end{lyxalgorithm} 
 
-We now append to this protocol with a pre-processing step which \emph{self-tests} the boxes Alice and Bob share. 
-This concept is not new, but it applies well to this setting.
+We now add a pre-processing step to this protocol which \emph{self-tests} the boxes Alice and Bob share. This concept is not new, but it applies well to this setting.
 
 We also use the revised protocol in a new way of composing protocols which we subbed an \emph{abort-phobic} composition. 
 	
 
 	\subsection{First technique: Self-testing} 
-    \Tnote{I changed the name of the section so that the structure of the paper can be read from the titles} 
-    \Jnote{Noice.}
 
-	In Protocols~\ref{alg:SCForiginalJ} and~\ref{alg:WCForiginalJ}, a cheating party may control what measurement is performed in the boxes of other party and how the state of the boxes is correlated to its own quantum memory. This is more general then \textit{device-dependent} protocols, where for instance, the measurements are known by the honest player. 
-	However, we employ the concept of self-testing to stop Bob \NEW{or Alice} from applying such a strategy. 
+	In Protocols~\ref{alg:SCForiginalJ} and~\ref{alg:WCForiginalJ}, a cheating party may control what measurement is performed in the boxes of other party and how the state of the boxes is correlated to its own quantum memory. This is more general than \textit{device-dependent} protocols, where for instance, the measurements are known to the honest player. 
+	However, we employ the concept of self-testing to stop Bob (or Alice) from applying such a strategy. 
 	The case where Alice self-tests Bob is illustrated below. 
 
-	\begin{lyxalgorithm}[Protocol with Alice self-testing] \label{alg:self-test}  
+	\begin{lyxalgorithm}[Protocol $\mathcal{P}$, where Alice self-tests] \label{alg:AliceSelfTestsHerBoxes}  
 
 	Alice starts with $n$ boxes, indexed from $1_1$ to $1_n$. 
 	Bob starts with $2n$ boxes, the first half indexed by $2_1$ to $2_n$ and the last half indexed by $3_1$ to $3_n$. 
@@ -379,7 +393,7 @@ We also use the revised protocol in a new way of composing protocols which we su
 	\item Alice selects a uniformly random index $i \in \{ 1, \ldots, n \}$ and asks Bob to send her all the boxes \emph{except} those indexed by $2_i$ and $3_i$. 
 	\item Alice plays $n-1$ GHZ games using the $n-1$ triples of boxes she has, making sure she has a space-like separation between the boxes. (She has long arms.) 
 	\item Alice aborts if \emph{any} of the GHZ games lose. 
-	Otherwise, she announces to Bob that they can use the remaining boxes for Protocol~\ref{alg:WCForiginalJ}.  \Jnote{I am referring to Protocol 3 now, as we don't use the SCF protocol (protocol 1).}  
+	Otherwise, she announces to Bob that they can use the remaining boxes for Protocol~\ref{alg:WCForiginalJ}.  
 	\end{enumerate} 
 	\end{lyxalgorithm}  
 
@@ -387,7 +401,8 @@ We also use the revised protocol in a new way of composing protocols which we su
 	Indeed, this step already allows us to reduce the cheating probabilities. 
 
 	\begin{lem} [Informal. See~\Lemref{AliceSelfTests} for a formal statement] 
-	When Alice self-tests Bob, the cheating probabilities of Protocol~\ref{alg:self-test} \Jnote{Protocol~\ref{alg:WCForiginalJ}???} in the limit of large $n$ are  
+	For protocol $\mathcal{P}$ where Alice self tests Bob (i.e. \Algref{AliceSelfTestsHerBoxes} above), the cheating probabilities, in the limit of large $n$, are
+		% When Alice self-tests Bob, the cheating probabilities of protocol $\mathcal{P}$ (i.e. Protocol~\ref{alg:WCForiginalJ}) in the limit of large $n$ are  
 	\begin{equation} 
 	\PA = \cos^2 (\pi/8) \approx 0.85355 \quad \text{ and } \quad \PB \approx 0.6667. 
 	\end{equation} 
@@ -395,16 +410,16 @@ We also use the revised protocol in a new way of composing protocols which we su
     
 	Recall that for \Algref{SCForiginalJ} \cite{Silman2011}, $\PA=\cos^2(\pi/8)$ and $\PB=3/4$. %\Tnote{remind the bias of the Inital protocol for easy comparison}
 	To prove this lemma, we have to dive into two technical concepts, which we briefly discuss below. 
-	Note that for device-dependent protocols, where Alice and Bob trust their devices, cheating probabilities can be cast as semidefinite programs (see~\cite{Kitaev03} for details.
+	Note that for device-dependent protocols, where Alice and Bob trust their devices, cheating probabilities can be cast as semidefinite programs ~\cite{Kitaev03,Mochon07}.
 	In the DI regime, we cannot even bound the dimension of the state within the boxes, making it much harder to analyze and bound Alice and Bob's cheating probabilities. 
 	
 	
-    \Tnote{I think that the main idea that we use is the fact that for device-dependent protocols the maximum bias can be recast as an sdp. Me have not mentioned that up to now. Also it's not correct o say that we have prove rigidity}
-    \Jnote{Tom, why is it that we can't say we haven't proved rigidity? In any case, happy to have the continuity stuff reworded...}
+    % \Tnote{I think that the main idea that we use is the fact that for device-dependent protocols the maximum bias can be recast as an sdp. Me have not mentioned that up to now. Also it's not correct o say that we have prove rigidity}
+    % \Jnote{Tom, why is it that we can't say we haven't proved rigidity? In any case, happy to have the continuity stuff reworded...}
     
 	\paragraph{Self-testing the GHZ game.} 
 	
-	We prove that Alice self-tests Bob and passes all $n-1$ plays of the GHZ game, then the remaining triple of boxes has to be approximately performing the optimal GHZ strategy. 
+	We build on known self-testing results to prove that when Alice self-tests Bob and all $n-1$ rounds of GHZ tests succeed, then the remaining triple of boxes has to be approximately performing the optimal GHZ strategy. 
 	The differences between this approximation and the optimal strategy disappear in the limit of large $n$. 
 	See~\Subsecref{EstimateGHZ} for details. 
 
@@ -425,28 +440,28 @@ We also use the revised protocol in a new way of composing protocols which we su
 	\subsection{Second technique: abort-phobic composition} 
 	%\Tnote{changed title of the subsection, the paragraph name and restructured the first two paragraphs.} 
 
-    It can happen, that for a given WCF protocol, $\PB \neq \PA$, in which case we say the protocol is polarised \Jnote{American or British English?}. 
-    It is known (e.g. \cite{Silman2011}) that composing a polarized protocol with itself (or other protocols) can effectively reduce the bias. Our second improvement is a modified way of composing protocols, when there is a positive probability that the honest player catches the cheating player. 
+    It can happen, that for a given WCF protocol, $\PB \neq \PA$, in which case we say the protocol is polarised. %\Jnote{American or British English?}. 
+    It is known (e.g. \cite{Silman2011}) that composing a polarised protocol with itself (or other protocols) can effectively reduce the bias. Our second improvement is a modified way of composing protocols, when there is a positive probability that the honest player catches the cheating player. 
     Let us start by recalling the standard way of composing protocols.
 
 	\paragraph{Standard composition.} 
 	For a protocol with cheating probabilities $\PB$ and $\PA$, we say that it has polarity towards Alice when it satisfies $\PA > \PB$. 
 	Similarly, we say that it has polarity towards Bob when $\PB > \PA$. 
-	Given a polarized protocol $\mathcal{P}$, we may switch the roles of Alice and Bob since the definition of coin-flipping is symmetric. 
-	To make the polarity explicit, we define $\mathcal{P}_A$ to be the version of the protocol with $\PA > \PB$ and $\mathcal{P}_B$ to be the version with $\PB > \PA$. 
+	Given a polarized protocol $\mathcal{R}$, we may switch the roles of Alice and Bob since the definition of coin-flipping is symmetric. 
+	To make the polarity explicit, we define $\mathcal{R}_A$ to be the version of the protocol with $\PA > \PB$ and $\mathcal{R}_B$ to be the version with $\PB > \PA$. 
     With this in mind, we can now define a simple composition. 
 	
 	\begin{lyxalgorithm}[Winner-gets-polarity composition] \label{alg:simple}  
-	Alice and Bob agree on a protocol $\mathcal{P}$. 
+	Alice and Bob agree on a protocol $\mathcal{R}$. 
 	\begin{enumerate} 
-	\item Alice and Bob perform protocol $\mathcal{P}$. 
-	\item If Alice wins, she polarizes the second protocol towards herself, i.e., they now use the protocol $\mathcal{P}_A$ to determine the outcome of the (entire) protocol. 
-	\item If Bob wins, he polarizes the second protocol towards himself, i.e., they now use the protocol $\mathcal{P}_B$ to determine the outcome of the (entire) protocol.   
+	\item Alice and Bob perform protocol $\mathcal{R}$. 
+	\item If Alice wins, she polarizes the second protocol towards herself, i.e., they now use the protocol $\mathcal{R}_A$ to determine the outcome of the (entire) protocol. 
+	\item If Bob wins, he polarizes the second protocol towards himself, i.e., they now use the protocol $\mathcal{R}_B$ to determine the outcome of the (entire) protocol.   
 	\end{enumerate} 
 	\end{lyxalgorithm}  
 
 	The standard composition above is a decent way to balance the cheating probabilities of a protocol. 
-	For instance, if $\mathcal{P}$ has cheating probabilities $\PA$ and $\PB$ with $\PA > \PB$, then the composition gets to decide ``who gets to be Alice'' in the second run.  
+	For instance, if $\mathcal{R}$ has cheating probabilities $\PA$ and $\PB$ with $\PA > \PB$, then the composition gets to decide ``who gets to be Alice'' in the second run.  
 	We can easily compute Alice's cheating probability in the composition as 
 	\begin{equation} \label{first}
 	(\PA)^2 + (1-\PA) \PB < \PA 
@@ -471,9 +486,9 @@ We also use the revised protocol in a new way of composing protocols which we su
 	For purposes of this discussion, suppose Bob adopts a cheating strategy which has a probability $v_B$ of him winning ($c = 1$), a probability $v_A$ of him losing ($c = 0$), and a probability $v_{\perp}$ of Alice catching him  cheating. 
 	Then his cheating probability in the (abort-phobic) version of the simple composition is now 
 	\begin{equation} 
-	v_B \cdot \PA \, + \, v_A \cdot \PB \, + \, \gamma \cdot 0. 
+	v_B \cdot \PA \, + \, v_A \cdot \PB \, + \, v_{\perp} \cdot 0. 
 	\end{equation} 
-	This quantity may be a strict improvement if $\gamma > 0$ when $v_B = \PB$.  
+	This quantity may be a strict improvement if $v_{\perp} > 0$ when $v_B = \PB$.  
 
 	The concept of abort-phobic composition is simple. 
 	Alice and Bob keep using WCF protocols and the winner (at that round) gets to choose the polarity of the subsequent protocol. 
@@ -482,8 +497,8 @@ We also use the revised protocol in a new way of composing protocols which we su
 	One may think it is tricky to analyze abort-phobic compositions, but we may do this one step at time. 
 	To this end, we introduce the concept of \emph{cheat vectors}. 
 
-	\begin{defn}[Alice and Bob's cheat vectors]  
-	Given a protocol $\mathcal{I}$, we say that $(v_A, v_B, v_{\perp})$ is a cheat vector for (dishonest) Bob if there exists a cheating strategy where: 
+	\begin{defn}[$\mathbb{C}_A,\mathbb{C}_B$; Alice and Bob's cheat vectors]  
+	Given a protocol $\mathcal{R}$, we say that $(v_A, v_B, v_{\perp})$ is a cheat vector for (dishonest) Bob if there exists a cheating strategy where: 
 	\begin{center} 
 	\begin{tabularx}{\textwidth}{lX}
 		$v_B$ \, is the probability with which Alice accepts the outcome $c = 1$, \\ 
@@ -491,10 +506,10 @@ We also use the revised protocol in a new way of composing protocols which we su
 		$v_{\perp}$ \, is the probability with which Alice aborts. \\ 
 	\end{tabularx} 
 	\end{center}  
-	We denote the set of cheat vectors for (dishonest) Bob by $\mathbb{C}_B({\mathcal{I})}$. Cheat vectors for (dishonest) Alice and $\mathbb{C}_A({\mathcal{I})}$ are analogously defined keeping the notation  $v_A$ for her winning, $v_B$ for her losing, and $v_{\perp}$ for Bob aborting. 
+	We denote the set of cheat vectors for (dishonest) Bob by $\mathbb{C}_B({\mathcal{R})}$. Cheat vectors for (dishonest) Alice and $\mathbb{C}_A({\mathcal{R})}$ are analogously defined keeping the notation  $v_A$ for her winning, $v_B$ for her losing, and $v_{\perp}$ for Bob aborting. 
 	\end{defn} 
 	
-	\Jnote{rewrote what is below to make T-note happier.}
+	%\Jnote{rewrote what is below to make T-note happier.}
 	
 	In this work, we show how to capture cheat vectors as the feasible region of a semidefinite program, from which we can optimize 
 	\begin{equation} 
@@ -506,7 +521,7 @@ We also use the revised protocol in a new way of composing protocols which we su
 	Therefore, we calculate the cheating probabilities from the \emph{bottom-up}. 
 
 	By using protocols where Alice self-tests and abort-phobic compositions, we are able to find protocols which converge onto a bias of $\eps \approx 0.3148$ proving the main result of this work. We give more details below.
-% 	By composing protocols where Alice self-tests with ones where Bob self-tests, we are able to reduce the bias further\footnote{Under our convergence assumption.} to $\eps \approx 0.29104$, as also stated in our main theorem.
+ 	By composing protocols where Alice self-tests with ones where Bob self-tests, we are able to reduce the bias further\footnote{Under our convergence assumption.} to $\eps \approx 0.29104$, as also stated in our main theorem.
 % \Jnote{Does this sentence seem redundant now that we have the section below?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -589,61 +604,59 @@ We also use the revised protocol in a new way of composing protocols which we su
 	% 	protocols (i.e. ones in which the probability of maliciously winning
 	% 	for Alice and Bob are unequal) into balanced ones.}
 
-	\subsection{Putting all the pieces together to improve the bias of weak coin flipping \label{subsec:Proof-Technique}} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-		%\subsubsection*{Notation and Cheat Vectors}
+	\subsection{Applications} 
 
-		%\branchcolor{purple}{
-		% We introduce some notation to facilitate the discussion here. Denote
-		% the DI CF protocol introduced in \cite{Silman2011} by $\mathcal{I}$
-		% and let $p_{A}^{*}(\mathcal{I})\approx0.853\dots$ denote the maximum
-		% probability with which a malicious Alice can win against honest Bob
-		% who is following the protocol $\mathcal{I}$ and similarly, let $p_{B}^{*}(\mathcal{I})\approx0.75$
-		% denote the maximum probability with which a malicious Bob can win
-		% against an honest Alice who is following the protocol $\mathcal{I}$. 
+	The concept of polarity extends beyond finding WCF protocols and, as such, the ``winner-gets-polarity'' concept allows for WCF to be used in other compositions. 
+	Indeed, we can use it to balance the cheating probabilities in  \emph{any} polarized protocol for any symmetric two-party cryptographic task for which such notions can be properly defined. 
+	
+	For instance, many \emph{strong} coin-flipping protocols can be thought of as polarized. 
+	For an example, the protocol~\ref{alg:SCForiginal} is indeed a polarized strong coin-flipping protocol. 
+	Thus, by balancing the cheating probabilities of that protocol using our DI WCF protocol, % and a winner-gets-polarity composition (not even an abort-phobic one!), 
+	we get the following theorem. 
 
-		% One of the key observations we make in this work is the use of what
-		% we call ``cheat vectors''---it is any tuple of probabilities which
-		% can arise in a CF protocol when one player is honest. More precisely,
-		% suppose Alice is (possibly) malicious and Bob follows the protocol
-		% $\mathcal{I}$. Then, the cheat vectors for Alice constitute the set
-		% \begin{equation}
-		% \mathbb{C}{}_{A}(\mathcal{I}):=\{(\alpha,\beta,\gamma):\exists\text{ a strategy for }A\text{ s.t. an honest }B\text{ outputs }\text{0,1, \text{ and }\ensuremath{\perp} with probabilities \ensuremath{\alpha,\beta} and \ensuremath{\gamma}}\}.\label{eq:cheatVectors}
-		% \end{equation}
-		% We analogously define $\mathbb{C}_{B}(\mathcal{I})$. Cheat vectors
-		% become useful when we try to compose protocols. The observation then,
-		% is that the abort event can be taken to abort the full protocol instead
-		% of being treated as the honest player winning. The latter gives the
-		% malicious player further opportunity to cheat and so preventing it
-		% improves the security. 
-		Let $\mathcal{I}$ denote \Algref{SCForiginalJ} \Jnote{we now also have protocol 3. Which one are you using?} (the DI protocol introduced in \cite{Silman2011}). We use $p^*_A(\mathcal{I})$ and $p^*_B(\mathcal{I})$, to denote the cheating probabilities of Alice and Bob when they execute protocol $\mathcal{I}$. Similarly, we use $\mathbb{C}_A(\mathcal{I})$ and $\mathbb{C}_B(\mathcal{I})$ to denote the cheat vectors for Alice and Bob, respectively, when they execute $\mathcal{I}$.
+	\begin{thm} 
+	There exists DI strong coin-flipping protocols where no party can cheat with probability greater than $0.33439$. Under a continuity assumption, the bound can be lowered to $0.33192$.  
+	\end{thm} 
+%\Anote{Using winner-gets-polarity, $\epsilon \le 0.334904$, combining abort phobic, $\epsilon \le 0.33439$, and combining Alice and Bob self testing (under a convergence assumption), $\epsilon \le 0.33192$. To contrast, for \cite{Silman2011}, $\epsilon \le 0.336637$.}
+To contrast, for \cite{Silman2011}, the bound on cheating probabilities was $0.336637$. There are likely more examples of protocols which can be balanced in a DI way using this idea. 
+%\Jnote{Are the above numerics for the original SCF protocol or the WCF variant?}
+		
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	\subsection{Paper Organisation \label{subsec:Proof-Technique}} 
+		We begin with clarifying the connection between the language of "boxes" and physical implementation of protocols described using them and state known relevant results (Section 2??). In Section 3??, we define and state the security of protocols $\mathcal{P}$ (where Alice self-tests; \Algref{AliceSelfTestsHerBoxes}) and $\mathcal{Q}$ (where Bob self-tests; ????). In Section 4??, we formally define standard compositions, $C^{LL}$ and abort-phobic compositions, $C^{\perp L}$ and $C^{L\perp}$. For instance, given a protocol $\mathcal{R}$, $C^{LL}(\mathcal{R})$ means one applies standard composition multiple times on $\mathcal{R}$. The meaning of $L$ and $\perp$ is also clarified there. Using these, below we summarise the build-up to our main results. In Section 5??, we give the security proofs in the asymptotic limit and in Section 6??? we argue why we expect the appropriate notion of continuity to hold.
+
+		% Let $\mathcal{I}$ denote \Algref{SCForiginalJ} (the DI protocol introduced in \cite{Silman2011}). 	In Section 3?? we show (see \Lemref{AliceSelfTestsHerBoxes}; informally stated above) that $p_{A}^{*}(\mathcal{P})\approx 0.853$ and $p_{B}^{*}(\mathcal{P}) \approx 0.667$. We also show that the set of cheat vectors $\mathbb{C}_{B}(\mathcal{P})$ can be cast as an SDP.
+
 		%}
 
-		\subsubsection*{Protocols}
+		\subsubsection*{Section 3 | Protocols}
 
-		\Tnote{WHY LL notation ?}
+		% \Tnote{WHY LL notation ?}
 		%\branchcolor{purple}{
-			We introduce two variants of protocol $\mathcal{I}$, which we call
-		$\mathcal{P}$ and $\mathcal{Q}$. 
+		% 	We introduce two variants of protocol $\mathcal{I}$, which we call
+		% $\mathcal{P}$ and $\mathcal{Q}$. 
 		\begin{itemize}
-		\item $\mathcal{P}$ is essentially the same as $\mathcal{I}$ except that
-		Alice self-tests her boxes before starting the protocol and performs
-		an additional test to ensure Bob does not cheat \Jnote{refer to protocol 3 now}. We show that $p_{A}^{*}(\mathcal{P})\approx 0.853\dots$
-		and $p_{B}^{*}(\mathcal{P}) \approx 0.667\dots$ \Jnote{Is this not a previous lemma in this intro?}. We also show that the set of cheat vectors
-		$\mathbb{C}_{B}(\mathcal{P})$ can be cast as an SDP.
-		\item $\mathcal{Q}$ is also essentially the same as $\mathcal{I}$ except
-		that Bob self-tests his boxes before starting the protocol. In this
-		case, $p_{A}^{*}(\mathcal{Q})=p_{A}^{*}(\mathcal{I})$ 
-		and 
-		$p_{B}^{*}(\mathcal{Q})=p_{B}^{*}(\mathcal{I})$
-		so the advantage is not immediate. However, now $\mathbb{C}_{A}(\mathcal{Q})$
-		can be cast as a semidefinite program which, as we shall see, yields an advantage
-		when $\mathcal{Q}$ is composed. 
-		\NEW{In other words, Alice's cheat vectors make it so that the protocols compose nicely.} \Jnote{Atul, what do you think? Is this ok?}
+			\item %$\mathcal{P}$ is essentially the same as $\mathcal{I}$ except that Alice self-tests her boxes before starting the protocol and performs an additional test to ensure Bob does not cheat \Jnote{refer to protocol 3 now}. 
+			We show that $p_{A}^{*}(\mathcal{P})\approx 0.853\dots$
+			and $p_{B}^{*}(\mathcal{P}) \approx 0.667\dots$ (see \Lemref{AliceSelfTestsHerBoxes}; informally stated above). %\Jnote{Is this not a previous lemma in this intro?}. 
+			We also show that the set of cheat vectors
+			$\mathbb{C}_{B}(\mathcal{P})$ can be cast as an SDP.
+		
+			\item %$\mathcal{Q}$ is also essentially the same as $\mathcal{I}$ except that Bob self-tests his boxes before starting the protocol. 
+			Next, we show, $p_{A}^{*}(\mathcal{Q})=p_{A}^{*}(\mathcal{I})$ 
+			and 
+			$p_{B}^{*}(\mathcal{Q})=p_{B}^{*}(\mathcal{I})$
+			so the advantage is not immediate. However, now $\mathbb{C}_{A}(\mathcal{Q})$
+			can be cast as a semidefinite program which, as we shall see, yields an advantage
+			when $\mathcal{Q}$ is composed. 
+			%In other words, Alice's cheat vectors make it so that the protocols compose nicely. %} \Jnote{Atul, what do you think? Is this ok?}
 		\end{itemize}
 		%}
 
-		\subsubsection*{Compositions}
+		\subsubsection*{Section 4 | Compositions}
 
 		%\branchcolor{purple}{
 		% 	As the protocols $\mathcal{X}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$
@@ -658,7 +671,8 @@ We also use the revised protocol in a new way of composing protocols which we su
 		% we denote the resulting protocol by $C_{LL}(\mathcal{X})$. Applying
 		% this technique to $\mathcal{P}$, we already obtain a more secure
 		% protocol.
-		Anticipating the notation used later, we denote by $C^{LL}(\mathcal{X})$, the repeated "standard composition" introduced above, of some protocol $\mathcal{X}$. Further, Let $\epsilon(\mathcal{X})$ denote the bias of $\mathcal{X}$. 
+		%Anticipating the notation used later, we denote by $C^{LL}(\mathcal{X})$, the repeated "standard composition" introduced above, of some protocol $\mathcal{X}$. Further, 
+		Let $\epsilon(\mathcal{R})$ denote the bias of protocol $\mathcal{R}$. 
 
 		\begin{itemize}
 		\item The bias of protocol $\mathcal{I}$ 
@@ -673,10 +687,10 @@ We also use the revised protocol in a new way of composing protocols which we su
 		\end{itemize}
 		The standard composition does not yield any improvement for
 		$\mathcal{Q}$ because the cheating probabilities are identical to
-		those of $\mathcal{I}$. We can extract an advantage by using a composition
-		technique that uses the cheat vectors, i.e., the abort-phobic composition. 
-		We denote the abort phobic composition (of protocol $\mathcal{X}$) by either $C^{\perp L}(\mathcal{X})$ or $C^{L\perp}(\mathcal{X})$. 
-		The notation is explained in later sections when the choice of superscripts is made clear.  
+		those of $\mathcal{I}$. We can extract an advantage by using abort-phobic compositions. %a composition
+		%technique that uses the cheat vectors, i.e., the abort-phobic composition. 
+		%We denote the abort phobic composition (of protocol $\mathcal{X}$) by either $C^{\perp L}(\mathcal{X})$ or $C^{L\perp}(\mathcal{X})$. 
+		%The notation is explained in later sections when the choice of superscripts is made clear.  
 		\begin{itemize}
 			\item Composing the protocol $\mathcal P$ with itself many times, using the abort-phobic compositions gives a bias
 			\[
@@ -687,9 +701,8 @@ We also use the revised protocol in a new way of composing protocols which we su
 			\[
 			\epsilon(C^{L\perp}(\mathcal{Q}))\approx 0.3226
 			\] 
-		\end{itemize}
-		which is worse than \Eqref{SikoraP} \Jnote{This seems like it shouldn't be true...}. 
-			\item However, when we compose the protocol $Q$ \Jnote{Replace $n$ with ``many''?} $n$ times with itself, followed by protocol $P$, we find
+		which is worse than \Eqref{SikoraP}. %\Jnote{This seems like it shouldn't be true...}. 
+			\item However, when we compose the protocol $\mathcal{Q}$ many times with itself, followed by protocol $\mathcal{P}$, we find
 			\[
 			\epsilon(C^{L\perp}(\mathcal{Q},\mathcal{Q},\dots,\mathcal{Q},\mathcal{P}))\approx 0.29104\dots
 			\]
@@ -697,29 +710,11 @@ We also use the revised protocol in a new way of composing protocols which we su
 		``level'' we use\footnote{$C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{Q})$
 		is strictly worse than considering $C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{P})$;
 		this should become evident later.} $\mathcal{P}$ instead of $\mathcal{Q}$. 
-
+		\end{itemize}
 \Jnote{this notation needs to be explained since it's not clear what is above and what is in the footnote.}
-\Jnote{Also, I am not sure why we mention the rest explicitly. Is it for build-up or knowledge? Is there a reason we just don't say the protocol composition that works best?}
+%\Jnote{Also, I am not sure why we mention the rest explicitly. Is it for build-up or knowledge? Is there a reason we just don't say the protocol composition that works best?}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-	\subsection{Applications} 
-
-	The concept of polarity extends beyond finding WCF protocols and, as such, the ``winner-gets-polarity'' concept allows for WCF to be used in other compositions. 
-	Indeed, we can use it to balance the cheating probabilities in  \emph{any} polarized protocol for any symmetric two-party cryptographic task for which such notions can be properly defined. 
-	
-	For instance, many \emph{strong} coin-flipping protocols can be thought of as polarized. 
-	For an example, the protocol~\ref{alg:SCForiginal} is indeed a polarized strong coin-flipping protocol. 
-	Thus, by balancing the cheating probabilities of that protocol using our DI WCF protocol and a winner-gets-polarity composition (not even an abort-phobic one!), we get the following theorem. 
-
-	\begin{thm} 
-	There exists DI strong coin-flipping protocols where no party can cheat with probability greater than $?????$.  
-	\end{thm} 
-\Anote{Using winner-gets-polarity, $\epsilon \le 0.334904$, combining abort phobic, $\epsilon \le 0.33439$, and combining Alice and Bob self testing (under a convergence assumption), $\epsilon \le 0.33192$. To contrast, for \cite{Silman2011}, $\epsilon \le 0.336637$.}
-	There are likely more examples of protocols which can be balanced in a DI way using this idea. 
-\Jnote{Are the above numerics for the original SCF protocol or the WCF variant?}
-		
-%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Device Independent Weak Coin Flipping protocols | State Of The Art}
 
@@ -1033,49 +1028,52 @@ following are characterised by the GHZ setup (see \Claimref{Quantum-boxes-pass})
 \Anote{I was also convinced that's a good idea but now that there are bits and pieces of different protocols in the introduction, I think it'll be much easier to read if in the main sections, we restate things (we should obviously say, "restated" or something)}
 \Tnote{Could we have separate number of protocols, theorems etc ?}
 
+
 \Jnote{I think it's a good idea to put the protocol together here. Protocol 3 and the self-testing part. Both of these were in the intro, separately, but it's good to combine, like below. Perhaps use cut and paste though, they should be as similar as possible. Protocol 3 still needs to have details added in the intro though.}
 
-\begin{lyxalgorithm}[Alice self-tests her boxes]
-\label{alg:AliceSelfTestsHerBoxes}There are $N$ trios of boxes;
-Alice has the first part and Bob has the remaining two parts, of each
-trio. 
-\begin{enumerate}
-\item Alice selects a number $i\in_{R}\{1,2\dots N\}$ and sends it to Bob.
-\item Bob sends his part of the trio of boxes corresponding to $\{1,2\dots N\}\backslash i$,
-i.e. he sends all the boxes, except the ones corresponding to the
-trio $i$.
-\item Alice performs a GHZ test on all the trios labelled $\left\{ 1,2\dots N\right\} \backslash i$,
-i.e. all the trios except the $i$th.
-\end{enumerate}
-We restrict ourselves to the $i$th trio. Alice has one box and Bob
-has two boxes. Each box takes one binary input and gives one binary
-output. 
-\begin{enumerate}
-\item Alice chooses $x\in_{R}\{0,1\}$ and inputs it into her box to obtain
-$a$. She chooses $r\in_{R}\{0,1\}$ to compute $s=a\oplus x.r$ and
-sends $s$ to Bob.
-\item Bob chooses $g\in_{R}\{0,1\}$ (for ``guess'') and sends it to Alice.
-\item Alice sends $x$ to Bob. They both compute the output $x\oplus g$. 
-\item Test rounds:
-\begin{enumerate}
-\item If $x\oplus g=0$:\\
-Alice sends $a$ to Bob.\\
-Bob tests if $s=a$ or $s=a\oplus x$. If the test fails, he aborts.
-Bob chooses $y,z\in_{R}\{0,1\}$ such that $x\oplus y\oplus z=1$
-and then performs a GHZ using $x,y,z$ as the inputs and $a,b,c$
-as the output from the three boxes. He aborts if this test fails.
-\item Else, if $x\oplus g=1$:
-\begin{enumerate}
-\item Alice chooses $y,z\in_{R}\{0,1\}$ s.t. $x\oplus y\oplus z=1$ and
-sends them to Bob.
-\item Bob inputs $y,z$ into his boxes, obtains and sends $b,c$ to Alice.
-\end{enumerate}
-Alice tests if $x,y,z$ as inputs and $a,b,c$ as outputs, satisfy
-the GHZ test. She aborts if this test fails.
 
-\end{enumerate}
-\end{enumerate}
-\end{lyxalgorithm}
+% \begin{lyxalgorithm}[Alice self-tests her boxes]
+% \label{alg:AliceSelfTestsHerBoxes}There are $N$ trios of boxes;
+% Alice has the first part and Bob has the remaining two parts, of each
+% trio. 
+% \begin{enumerate}
+% \item Alice selects a number $i\in_{R}\{1,2\dots N\}$ and sends it to Bob.
+% \item Bob sends his part of the trio of boxes corresponding to $\{1,2\dots N\}\backslash i$,
+% i.e. he sends all the boxes, except the ones corresponding to the
+% trio $i$.
+% \item Alice performs a GHZ test on all the trios labelled $\left\{ 1,2\dots N\right\} \backslash i$,
+% i.e. all the trios except the $i$th.
+% \end{enumerate}
+% We restrict ourselves to the $i$th trio. Alice has one box and Bob
+% has two boxes. Each box takes one binary input and gives one binary
+% output. 
+% \begin{enumerate}
+% \item Alice chooses $x\in_{R}\{0,1\}$ and inputs it into her box to obtain
+% $a$. She chooses $r\in_{R}\{0,1\}$ to compute $s=a\oplus x.r$ and
+% sends $s$ to Bob.
+% \item Bob chooses $g\in_{R}\{0,1\}$ (for ``guess'') and sends it to Alice.
+% \item Alice sends $x$ to Bob. They both compute the output $x\oplus g$. 
+% \item Test rounds:
+% \begin{enumerate}
+% \item If $x\oplus g=0$:\\
+% Alice sends $a$ to Bob.\\
+% Bob tests if $s=a$ or $s=a\oplus x$. If the test fails, he aborts.
+% Bob chooses $y,z\in_{R}\{0,1\}$ such that $x\oplus y\oplus z=1$
+% and then performs a GHZ using $x,y,z$ as the inputs and $a,b,c$
+% as the output from the three boxes. He aborts if this test fails.
+% \item Else, if $x\oplus g=1$:
+% \begin{enumerate}
+% \item Alice chooses $y,z\in_{R}\{0,1\}$ s.t. $x\oplus y\oplus z=1$ and
+% sends them to Bob.
+% \item Bob inputs $y,z$ into his boxes, obtains and sends $b,c$ to Alice.
+% \end{enumerate}
+% Alice tests if $x,y,z$ as inputs and $a,b,c$ as outputs, satisfy
+% the GHZ test. She aborts if this test fails.
+
+
+% \end{enumerate}
+% \end{enumerate}
+% \end{lyxalgorithm}
 
 \Tnote{something about assuming perfect self-testing}
 \begin{lem}
@@ -1310,7 +1308,7 @@ We thus have the following.
 
 \begin{figure}
 \begin{centering}
-\includegraphics[scale = 1]{Overleaf/figures/composition_1.pdf}
+\includegraphics[scale = 1]{figures/composition_1.pdf}
 \par\end{centering}
 \caption{Standard composition of Coin flipping protocols. Subprotocols only have two outcomes depending on the coin flip. Labels indicate probabilities of outcomes for cheating Alice (blue) and cheating Bob (red)} 
 \end{figure}

@@ -1,28 +1,29 @@
 \babel@toc {british}{}
 \contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {paragraph}{Remark.}{3}{section*.2}%
 \contentsline {subsection}{\numberline {1.1}Our main result}{3}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}First improvement: Self-testing}{3}{subsection.1.2}%
-\contentsline {paragraph}{Rigidity of the GHZ game.}{4}{section*.2}%
-\contentsline {paragraph}{Continuity of semidefinite programs.}{4}{section*.3}%
-\contentsline {paragraph}{}{4}{section*.4}%
-\contentsline {subsection}{\numberline {1.3}Second improvement: abort-phobic composition}{4}{subsection.1.3}%
-\contentsline {paragraph}{Standard composition.}{4}{section*.5}%
-\contentsline {paragraph}{Abort-phobic composition.}{5}{section*.6}%
-\contentsline {subsection}{\numberline {1.4}Results: application of improvements to Weak Coin Flipping }{5}{subsection.1.4}%
-\contentsline {subsection}{\numberline {1.5}Applications}{6}{subsection.1.5}%
+\contentsline {paragraph}{\textit {Author's note:}}{3}{section*.3}%
+\contentsline {subsection}{\numberline {1.2}First technique: Self-testing}{4}{subsection.1.2}%
+\contentsline {paragraph}{Self-testing the GHZ game.}{5}{section*.4}%
+\contentsline {paragraph}{Continuity of semidefinite programs.}{5}{section*.5}%
+\contentsline {paragraph}{Remark.}{5}{section*.6}%
+\contentsline {subsection}{\numberline {1.3}Second technique: abort-phobic composition}{5}{subsection.1.3}%
+\contentsline {paragraph}{Standard composition.}{5}{section*.7}%
+\contentsline {paragraph}{Abort-phobic composition.}{6}{section*.8}%
+\contentsline {subsection}{\numberline {1.4}Applications}{6}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Paper Organisation }{7}{subsection.1.5}%
 \contentsline {section}{\numberline {2}Device Independent Weak Coin Flipping protocols | State Of The Art}{7}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Device Independence and the Box Paradigm}{7}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}The GHZ Test}{8}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}The Protocol}{9}{subsection.2.3}%
-\contentsline {section}{\numberline {3}First Technique: Self-testing (single shot, unbalanced)}{9}{section.3}%
+\contentsline {subsection}{\numberline {2.1}Device Independence and the Box Paradigm}{8}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Security of \Algref {SCForiginalJ}}{9}{subsection.2.2}%
+\contentsline {section}{\numberline {3}First Technique: Self-testing (single shot, unbalanced)}{10}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Cheat Vectors }{10}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Alice self-tests | Protocol $\mathcal {P}$}{10}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Bob self-tests | Protocol $\mathcal {Q}$}{11}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.3}Bob self-tests | Protocol $\mathcal {Q}$}{10}{subsection.3.3}%
 \contentsline {section}{\numberline {4}Second Technique: Abort-phobic composition }{11}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Composition}{11}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Standard Composition | $C^{LL}$}{12}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Abort Phobic Compositions | $C^{L\perp },C^{\perp L}$}{13}{subsection.4.3}%
-\contentsline {section}{\numberline {5}Security Proof | Asymptotic limit}{15}{section.5}%
+\contentsline {section}{\numberline {5}Security Proof | Asymptotic limit}{14}{section.5}%
 \contentsline {subsection}{\numberline {5.1}SDP when Alice self-tests}{15}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}SDP when Bob self-tests}{17}{subsection.5.2}%
 \contentsline {section}{\numberline {6}Security Proof | Finite $n$}{18}{section.6}%
