@@ -36,6 +36,12 @@ Manuel Blum, \emph{Coin flipping by telephone a protocol for solving impossible
 Alexei Kitaev, \emph{Quantum coin flipping}, Talk at the 6th workshop on
   Quantum Information Processing, 2003.
 
+\bibitem[McK14]{McKague}
+Matthew McKague, \emph{Self-testing graph states}, Theory of Quantum
+  Computation, Communication, and Cryptography (Berlin, Heidelberg) (Dave
+  Bacon, Miguel Martin-Delgado, and Martin Roetteler, eds.), Springer Berlin
+  Heidelberg, 2014, pp.~104--120.
+
 \bibitem[Mil20]{Miller2019}
 Carl~A. Miller, \emph{The impossibility of efficient quantum weak coin
   flipping}, Proceedings of the 52nd Annual ACM SIGACT Symposium on Theory of
@@ -45,6 +51,14 @@ Carl~A. Miller, \emph{The impossibility of efficient quantum weak coin
 \bibitem[Moc07]{Mochon07}
 Carlos Mochon, \emph{{Quantum weak coin flipping with arbitrarily small bias}},
   arXiv:0711.4114 (2007).
+
+\bibitem[MS13]{MillerShi}
+Carl~A. Miller and Yaoyun Shi, \emph{{Optimal Robust Self-Testing by Binary
+  Nonlocal XOR Games}}, 8th Conference on the Theory of Quantum Computation,
+  Communication and Cryptography (TQC 2013) (Dagstuhl, Germany) (Simone
+  Severini and Fernando Brandao, eds.), Leibniz International Proceedings in
+  Informatics (LIPIcs), vol.~22, Schloss Dagstuhl--Leibniz-Zentrum fuer
+  Informatik, 2013, pp.~254--262.
 
 \bibitem[SCA{\etalchar{+}}11]{Silman2011}
 J.~Silman, A.~Chailloux, N.~Aharon, I.~Kerenidis, S.~Pironio, and S.~Massar,
