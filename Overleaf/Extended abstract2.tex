@@ -242,23 +242,24 @@ There exists a DI-WCF protocol with $\PA = \cos^2{\pi/8}$ and $\PB = 3/4$.
 Composing this protocol with itself yields a protocol with bias $\eps \le 0.33664$. 
 \end{fact} 
 
-\paragraph{Remark.} 
-Note that the above protocol is actually a strong coin-flipping protocol, but as such, we can always treat it as a WCF protocol. \\ 
+\section{Contributions}
 
-In this work, we build on this protocol using novel pre- and post-processing steps, which we discuss next. 
+In this work, we modify the above protocol to decrease its bias. 
+We do this is three steps that we discuss below.  
 
-	\begin{thm} 
-	There exists device-independent weak coin flipping protocols with bias approaching $\eps \approx 0.3148$. Under a convergence assumption (explained in the manuscript), the bias can be lowered to $\eps \approx 0.29104$.
-	\end{thm} 
-	
-We now briefly discuss the proof of our main theorem, above. 
-Basically we modify the protocol mentioned in Fact\ref{fact} using two techniques. 
+    \subsection{Changing the protocol in \cite{Silman2011} to weak coin-flipping} 
 
-	\paragraph{First technique: Self-testing.} 
+    Technically, the protocol in \cite{Silman2011} is for strong coin flipping. 
+    As such, Bob is the only one who tests for cheating. That is, he always tests if Alice is cheating. 
+    Since weak coin flipping has the concept of a ``winner'', one can easily modify it such that only the winner gets tested. (This is a typical change to create a weak coin flipping protocol from a strong one.) 
+    
+	\subsection{Pre-processing step: Self-testing} 
 
 	A cheating party may control what measurement is performed in the boxes of other party and how the state of the boxes is correlated to its own quantum memory. This is more general then \textit{device-dependent} protocols, where for instance, the measurements are known by the honest player. 
 	However, we employ the concept of self-testing to stop Bob \NEW{or Alice} from applying such a strategy. 
-	The case where Alice self-tests Bob is illustrated below. 
+	
+	In the {Silman2011} protocol, Alice and Bob are \emph{supposed} to start with three boxes that implement the optimal GHZ strategy. 
+	We now illustrate the self-testing pre-processing step where Alice self-tests Bob. 
 
 	\begin{lyxalgorithm}[Protocol with Alice self-testing] \label{alg:self-test}  
 
@@ -275,26 +276,20 @@ Basically we modify the protocol mentioned in Fact\ref{fact} using two technique
 
 	The idea is that if $n$ is chosen large enough, then this forces a dishonest Bob to not tamper with the boxes too much. 
 	Indeed, this step already allows us to reduce the cheating probabilities. 
-
-
-    
-	Recall that for the protocol in Fact~\ref{fact}, we have $\PA=\cos^2(\pi/8)$ and $\PB=3/4$. %\Tnote{remind the bias of the Inital protocol for easy comparison}
-	  
-	\subsection{Second technique: abort-phobic composition} 
-	%\Tnote{changed title of the subsection, the paragraph name and restructured the first two paragraphs.} 
-
-    It can happen, that for a given WCF protocol, $\PB \neq \PA$, in which case we say the protocol is polarized.  
-    It is known (e.g. \cite{Silman2011}) that composing a polarized protocol with itself (or other protocols) can effectively reduce the bias. Our second improvement is a modified way of composing protocols, when there is a positive probability that the honest player catches the cheating player. 
-    For instance, in the simple composition used in ~\Algref{simple}, Bob should not really accept to continue onto the second protocol if he catches Alice cheating in the first. 
-	That is, if he knows Alice cheated, he can declare himself the winner of the entire protocol!  
-	In other words, the cheating probabilities~(\ref{first}) and (\ref{second}) may get reduced even further.  
-	For purposes of this discussion, suppose Bob adopts a cheating strategy which has a probability $v_B$ of him winning ($c = 1$), a probability $v_A$ of him losing ($c = 0$), and a probability $v_{\perp}$ of Alice catching him  cheating. 
-	Then his cheating probability in the (abort-phobic) version of the simple composition is now 
+	
+	\begin{lem} [Informal. See the submitted manuscript for a formal statement] 
+	When Alice self-tests Bob, the cheating probabilities are 
 	\begin{equation} 
-	v_B \cdot \PA \, + \, v_A \cdot \PB \, + \, \gamma \cdot 0. 
+	\PA = \cos^2 (\pi/8) \approx 0.85355 \quad \text{ and } \quad \PB \approx 0.6667. 
 	\end{equation} 
-	This quantity may be a strict improvement if $\gamma > 0$ when $v_B = \PB$.  
-
+	\end{lem} 
+	  
+	\subsection{Post-processing step:  Abort-phobic composition} 
+	It can happen, that for a given WCF protocol, $\PB \neq \PA$, in which case we say the protocol is polarized.  
+    It is relatively easy to see that composing a polarized coin-flipping protocol with itself (or other protocols) can effectively reduce the bias. 
+    Our second improvement is a modified way of composing protocols, when there is a positive probability that the honest player catches the cheating player. 
+    For instance, in a simple composition, Bob should not really accept to continue onto another subroutine if he catches Alice cheating in the first. 
+	That is, if he knows Alice cheated, he can declare himself the winner of the entire protocol!  
 	The concept of abort-phobic composition is simple. 
 	Alice and Bob keep using WCF protocols and the winner (at that round) gets to choose the polarity of the subsequent protocol. 
 	However, if either party \emph{ever aborts}, then it is game over and the cheating player loses \emph{the entire composition protocol}. 
@@ -303,7 +298,7 @@ Basically we modify the protocol mentioned in Fact\ref{fact} using two technique
 	To this end, we introduce the concept of \emph{cheat vectors}. 
 
 	\begin{defn}[Alice and Bob's cheat vectors]  
-	Given a protocol $\mathcal{I}$, we say that $(v_A, v_B, v_{\perp})$ is a cheat vector for (dishonest) Bob if there exists a cheating strategy where: 
+	Given a protocol, we say that $(v_A, v_B, v_{\perp})$ is a cheat vector for (dishonest) Bob if there exists a cheating strategy where: 
 	\begin{center} 
 	\begin{tabularx}{\textwidth}{lX}
 		$v_B$ \, is the probability with which Alice accepts the outcome $c = 1$, \\ 
@@ -311,12 +306,10 @@ Basically we modify the protocol mentioned in Fact\ref{fact} using two technique
 		$v_{\perp}$ \, is the probability with which Alice aborts. \\ 
 	\end{tabularx} 
 	\end{center}  
-	We denote the set of cheat vectors for (dishonest) Bob by $\mathbb{C}_B({\mathcal{I})}$. Cheat vectors for (dishonest) Alice and $\mathbb{C}_A({\mathcal{I})}$ are analogously defined keeping the notation  $v_A$ for her winning, $v_B$ for her losing, and $v_{\perp}$ for Bob aborting. 
+	Cheat vectors for (dishonest) Alice and $\mathbb{C}_A({\mathcal{I})}$ are analogously defined. 
 	\end{defn} 
 	
-	\Jnote{rewrote what is below to make T-note happier.}
-	
-	In this work, we show how to capture cheat vectors as the feasible region of a semidefinite program, from which we can optimize 
+	In this manuscript, we show how to capture cheat vectors as the feasible region of a semidefinite program, from which we can optimize 
 	\begin{equation} 
 	v_B \cdot \PA \, + \, v_A \cdot \PB \, + \, v_{\perp} \cdot 0. 
 	\end{equation}
@@ -326,6 +319,12 @@ Basically we modify the protocol mentioned in Fact\ref{fact} using two technique
 	Therefore, we calculate the cheating probabilities from the \emph{bottom-up}. 
 
 	By using protocols where Alice self-tests and abort-phobic compositions, we are able to find protocols which converge onto a bias of $\eps \approx 0.3148$ proving the main result of this work. 
+
+\subsection{Main result}
+
+\begin{thm} 
+	There exists device-independent weak coin flipping protocols with bias approaching $\eps \approx 0.3148$. Under a convergence assumption (explained in the manuscript), the bias can be lowered to $\eps \approx 0.29104$.
+	\end{thm} 
 	
 \clearpage
 \bibliographystyle{amsalpha}

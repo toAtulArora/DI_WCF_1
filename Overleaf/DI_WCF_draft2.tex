@@ -953,11 +953,12 @@ player. }
 
 \section{First Technique: Self-testing (single shot, unbalanced)}
 
+\Jnote{I don't think this section is needed any more. We do need somewhere to write down explicitly what the $P$ and $Q$ protocol are. Perhaps rephrase the title and this section to write down explicitly what the protocols are? Not sure if the explicit protocol descriptions are really needed in any case. the lemmas here can be stated after we solve the SDPs. Probably.}
 
 \branchcolor{purple}{
 
-While we already motivated the idea in the introduction, we state it with some more detail. We make two observations. 
-
+While we already motivated our self-testing idea in the introduction, we discuss it here with more detail. 
+We make two observations. 
 First, in \Algref{SCForiginalJ} only Bob performs the test round.
 In WCF, there is a notion of Alice winning and Bob winning. Thus,
 if $x\oplus g=0$, i.e. the outcome corresponding to ``Alice wins'',
@@ -969,7 +970,9 @@ turns out that this does not lower $p_{B}^{*}$. Interestingly, the
 best cheating strategy deviates from the GHZ state and measurements
 for the honest player. We omit the details here but mention it anyway to motivate the following. 
 
-Second, Alice (say) can harness the self-testing property of GHZ states
+\Jnote{These details are now in the introduction. IN any case, these are independent of self-testing, and should not be in this section. I think they should go into the introduction...}
+
+Second, Alice (say) can harness the self-testing property \Jnote{cite} of GHZ states
 and measurements to ensure that Bob has not tampered with her boxes.
 % One way of proceeding is that $N$ copies of the supposedly correct
 % boxes are distributed. Alice now picks one out of these $N$ boxes
@@ -988,27 +991,36 @@ case. Kitaev \cite{Kitaev03} showed that for any SCF protocol, $\epsilon\ge\frac
 
 Combining these two observations, results in an improvement in the
 security for Alice. We obtain a protocol with $P_{A}^{*}=3/4$,
-which is the same as before, but $P_{B}^{*} \approx 0.6667$ which is lower than $0.75$, that of \algref{SCForiginalJ}.}
+which is the same as before, but $P_{B}^{*} \approx 0.6667$ which is lower than $0.75$, that of \algref{SCForiginalJ}.} 
 
-\subsection{Cheat Vectors }
+\Jnote{This is way too fast. Good, but fast. It deserves a lot more explanation. We should have an appendix for it, perhaps.} 
 
-\branchcolor{purple}{As alluded to in \Subsecref{Proof-Technique}, using cheat vectors,
-it is sometimes possible to compose protocols and obtain a lower bias
-compared to protocols which are composed without using cheat vectors.
-We describe such procedures in the next section, \Secref{Second-Technique}.
-Here, we simply define cheat vectors and show that self-testing allows
-one to express relevant optimisation problems over cheat vectors as
-semi definite programmes. }
-\begin{defn}[$\mathbb{C}_A,\mathbb{C}_B$]
+%\subsection{Cheat Vectors }
+
+
+%\branchcolor{purple}{As alluded to in %\Subsecref{Proof-Technique}, using cheat vectors,
+%it is sometimes possible to compose protocols and obtain a lower bias
+%compared to protocols which are composed without using cheat vectors.
+%We describe such procedures in the next section, \Secref{Second-Technique}.
+%Here, we simply define cheat vectors and show that self-testing allows
+%one to express relevant optimisation problems over cheat vectors as
+%semi definite programmes. } 
+
+We start by defining cheat vectors. 
+
+\begin{defn}[Cheat vectors%$\mathbb{C}_A,\mathbb{C}_B$
+]
  \label{def:CheatVectors}Given a protocol $\mathcal{I}$, denote
-by $\mathbb{C}_{B}(\mathcal{I})$ the set of \emph{cheat vectors}
+by $\mathbb{C}_{B}(\mathcal{I}) \subset [0,1]^3$ the set of \emph{cheat vectors}
 for Bob, which is defined as follows :
 \[
 \mathbb{C}_{B}(\mathcal{I}):=\{(v_A,v_B,v_{\perp}):\exists\text{ a strategy of \ensuremath{B} s.t. an honest \ensuremath{A} outputs }\text{0, 1, and \ensuremath{\perp} with probabilities \ensuremath{v_A,v_B} and \ensuremath{v_{\perp}}}\}
 \]
 and analogously, denote by $\mathbb{C}_{A}(\mathcal{I})$ the set
 of cheat vectors for Alice. %(see \Eqref{cheatVectors}).
-\end{defn}
+\end{defn} 
+
+\Jnote{As tom said, we need to be excplicit in how we define it for Alice, above.}
 
 
 \subsection{Alice self-tests | Protocol $\mathcal{P}$}
@@ -1020,6 +1032,8 @@ following are characterised by the GHZ setup (see \Claimref{Quantum-boxes-pass})
 \Tnote{I'm going to remove the repetition of Protocol 1}
 \Anote{I was also convinced that's a good idea but now that there are bits and pieces of different protocols in the introduction, I think it'll be much easier to read if in the main sections, we restate things (we should obviously say, "restated" or something)}
 \Tnote{Could we have separate number of protocols, theorems etc ?}
+
+\Jnote{I think it's a good idea to put the protocol together here. Protocol 3 and the self-testing part. Both of these were in the intro, separately, but it's good to combine, like below. Perhaps use cut and paste though, they should be as similar as possible. Protocol 3 still needs to have details added in the intro though.}
 
 \begin{lyxalgorithm}[Alice self-tests her boxes]
 \label{alg:AliceSelfTestsHerBoxes}There are $N$ trios of boxes;
@@ -1069,10 +1083,12 @@ the GHZ test. She aborts if this test fails.
 corresponding to \Algref{AliceSelfTestsHerBoxes}. Then Alice's cheating
 probability $p_{A}^{*}(\mathcal{P})\le\cos^{2}(\pi/8)\approx0.852$.
 Further, let $c_{0},c_{1},c_{\perp}\in\mathbb{R}$, and $\mathbb{C}_{B}(\mathcal{P})$
-be the set of cheat vectors for Bob. Then, as $N\to\infty$, the solution
-to the optimisation problem $\max(c_{0}\alpha+c_{1}\beta+c_{\perp}\gamma)$
-over $\mathbb{C}_{B}(\mathcal{Q})$ approaches that of a semi definite
-programme. In particular, i.e. for $c_{0}=c_{\perp}=0$ and $c_{1}=1$,
+be the set of cheat vectors for Bob. 
+%Then, as $N\to\infty$, the solution
+%to the optimisation problem $\max(c_{0}\alpha+c_{1}\beta+c_{\perp}\gamma)$
+%over $\mathbb{C}_{B}(\mathcal{Q})$ approaches that of a semi definite
+%programme. 
+In particular, i.e. for $c_{0}=c_{\perp}=0$ and $c_{1}=1$,
 $p_{B}^{*}(\mathcal{P}) \approx 0.667...$ (in the limit). 
 \end{lem}
 
@@ -1102,20 +1118,23 @@ Henceforth, proceed as in \Algref{AliceSelfTestsHerBoxes} after the
 self-testing step.
 \end{lyxalgorithm}
 
-\branchcolor{purple}{As already indicated in \Subsecref{Proof-Technique}, we don't expect
+\branchcolor{purple}{As already indicated in \Subsecref{Proof-Technique}, we do not expect
 the cheating probabilities to improve but we do expect an SDP characterisation
 of Alice's cheat vectors.}
 \begin{lem}
 \label{lem:Bob-self-tests}Let $\mathcal{Q}$ denote the protocol
 corresponding to \Algref{BobSelfTests}. Then, Alice's cheating probability,
 $p_{A}^{*}(\mathcal{Q})\le3/4$ and Bob's cheating probability, $p_{B}^{*}(\mathcal{Q})\le\cos^{2}(\pi/8)$
-(which are the same as those in \Lemref{SCFstandard}). Further, let
-$c_{0},c_{1},c_{\perp}\in\mathbb{R}$, and $\mathbb{C}_{A}(\mathcal{Q})$
-be the set of cheat vectors for Alice. Then, as $N\to\infty$, the
-solution to the optimisation problem $\max(c_{0}\alpha+c_{1}\beta+c_{\perp}\gamma)$
-over $(\alpha,\beta,\gamma)\in\mathbb{C}_{A}(\mathcal{Q})$ approaches
-that of a semi definite programme. 
+(which are the same as those in \Lemref{SCFstandard}). 
+%Further, let
+%$c_{0},c_{1},c_{\perp}\in\mathbb{R}$, and $\mathbb{C}_{A}(\mathcal{Q})$
+%be the set of cheat vectors for Alice. Then, as $N\to\infty$, the
+%solution to the optimisation problem $\max(c_{0}\alpha+c_{1}\beta+c_{\perp}\gamma)$
+%over $(\alpha,\beta,\gamma)\in\mathbb{C}_{A}(\mathcal{Q})$ approaches
+%that of a semi definite programme. 
 \end{lem}
+
+\Jnote{I commented out the SDP cheat vector business. Not sure if it's needed here.}
 
 The proof is again deferred; see \Subsecref{SDP-when-Bob}.
 
@@ -1293,7 +1312,7 @@ We thus have the following.
 \begin{centering}
 \includegraphics[scale = 1]{Overleaf/figures/composition_1.pdf}
 \par\end{centering}
-\caption{Standard composition of Coin flipping protocols. Subprotocols only have two outcomes depending on the coin flip. Labels indicate probabilities of outcomes for cheating Alice (blue) and cheating Bob (red)}
+\caption{Standard composition of Coin flipping protocols. Subprotocols only have two outcomes depending on the coin flip. Labels indicate probabilities of outcomes for cheating Alice (blue) and cheating Bob (red)} 
 \end{figure}
 }
 \begin{thm}
@@ -1854,6 +1873,19 @@ This follows from the above corollary since the support is the entire space.
 \begin{cor} \label{contint}
 If $C$ is compact, $h$ is continuous everywhere. 
 \end{cor} 
+
+\subsubsection{SDP approximation and finite statistics} 
+
+\Jnote{Continue here.} 
+
+
+
+
+
+
+
+
+\Jnote{references are incomplete. SCA+11 is missing first names. ARV missing year and journal and year. ARW is missing everything. Kit03 should probably have a link to the website. STOC references inconsistent. TQC refs inconsistent. Are ARW and ARW 19 the same?}
 
 
 \clearpage
