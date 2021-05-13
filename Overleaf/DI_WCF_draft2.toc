@@ -16,9 +16,8 @@
 \contentsline {subsection}{\numberline {2.1}Device Independence and the Box Paradigm}{8}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Security of \Algref {SCForiginalJ}}{9}{subsection.2.2}%
 \contentsline {section}{\numberline {3}First Technique: Self-testing (single shot, unbalanced)}{10}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Cheat Vectors }{10}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Alice self-tests | Protocol $\mathcal {P}$}{10}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Bob self-tests | Protocol $\mathcal {Q}$}{10}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.1}Alice self-tests | Protocol $\mathcal {P}$}{10}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Bob self-tests | Protocol $\mathcal {Q}$}{11}{subsection.3.2}%
 \contentsline {section}{\numberline {4}Second Technique: Abort-phobic composition }{11}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Composition}{11}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Standard Composition | $C^{LL}$}{12}{subsection.4.2}%
@@ -30,3 +29,4 @@
 \contentsline {subsection}{\numberline {6.1}Estimation of GHZ winning probability}{18}{subsection.6.1}%
 \contentsline {subsection}{\numberline {6.2}Robust self-testing}{20}{subsection.6.2}%
 \contentsline {subsection}{\numberline {6.3}SDP-valued functions and their continuity}{20}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}SDP approximation and finite statistics}{21}{subsubsection.6.3.1}%

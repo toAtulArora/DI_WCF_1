@@ -8,17 +8,17 @@
 \BOOKMARK [2][-]{subsection.2.1}{Device Independence and the Box Paradigm}{section.2}% 8
 \BOOKMARK [2][-]{subsection.2.2}{Security of SCForiginalJ}{section.2}% 9
 \BOOKMARK [1][-]{section.3}{First Technique: Self-testing \(single shot, unbalanced\)}{}% 10
-\BOOKMARK [2][-]{subsection.3.1}{Cheat Vectors }{section.3}% 11
-\BOOKMARK [2][-]{subsection.3.2}{Alice self-tests | Protocol P}{section.3}% 12
-\BOOKMARK [2][-]{subsection.3.3}{Bob self-tests | Protocol Q}{section.3}% 13
-\BOOKMARK [1][-]{section.4}{Second Technique: Abort-phobic composition }{}% 14
-\BOOKMARK [2][-]{subsection.4.1}{Composition}{section.4}% 15
-\BOOKMARK [2][-]{subsection.4.2}{Standard Composition | CLL}{section.4}% 16
-\BOOKMARK [2][-]{subsection.4.3}{Abort Phobic Compositions | CL,CL}{section.4}% 17
-\BOOKMARK [1][-]{section.5}{Security Proof | Asymptotic limit}{}% 18
-\BOOKMARK [2][-]{subsection.5.1}{SDP when Alice self-tests}{section.5}% 19
-\BOOKMARK [2][-]{subsection.5.2}{SDP when Bob self-tests}{section.5}% 20
-\BOOKMARK [1][-]{section.6}{Security Proof | Finite n}{}% 21
-\BOOKMARK [2][-]{subsection.6.1}{Estimation of GHZ winning probability}{section.6}% 22
-\BOOKMARK [2][-]{subsection.6.2}{Robust self-testing}{section.6}% 23
-\BOOKMARK [2][-]{subsection.6.3}{SDP-valued functions and their continuity}{section.6}% 24
+\BOOKMARK [2][-]{subsection.3.1}{Alice self-tests | Protocol P}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.2}{Bob self-tests | Protocol Q}{section.3}% 12
+\BOOKMARK [1][-]{section.4}{Second Technique: Abort-phobic composition }{}% 13
+\BOOKMARK [2][-]{subsection.4.1}{Composition}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.2}{Standard Composition | CLL}{section.4}% 15
+\BOOKMARK [2][-]{subsection.4.3}{Abort Phobic Compositions | CL,CL}{section.4}% 16
+\BOOKMARK [1][-]{section.5}{Security Proof | Asymptotic limit}{}% 17
+\BOOKMARK [2][-]{subsection.5.1}{SDP when Alice self-tests}{section.5}% 18
+\BOOKMARK [2][-]{subsection.5.2}{SDP when Bob self-tests}{section.5}% 19
+\BOOKMARK [1][-]{section.6}{Security Proof | Finite n}{}% 20
+\BOOKMARK [2][-]{subsection.6.1}{Estimation of GHZ winning probability}{section.6}% 21
+\BOOKMARK [2][-]{subsection.6.2}{Robust self-testing}{section.6}% 22
+\BOOKMARK [2][-]{subsection.6.3}{SDP-valued functions and their continuity}{section.6}% 23
+\BOOKMARK [3][-]{subsubsection.6.3.1}{SDP approximation and finite statistics}{subsection.6.3}% 24
