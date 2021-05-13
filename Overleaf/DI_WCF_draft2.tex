@@ -35,13 +35,14 @@ Rationale: It appears that Jamie's idea is to have a long rather detailed introd
 I have two issue: 
 
 Issue 1:
-While I like the idea, I think it is neither long enough to be fully clear (which means it causes redundancy later), nor short enough to be a quick preview of what's to come. 
-But I feel its easy to fix by by removing the explicit protocols because we anyway don't use their details; our ideas are quite general. This would let us state the protocols clearly in one place (and exactly once), avoiding redundancy without any significant loss to the introduction's quality.
+While I like the idea, I think it is neither long enough to be fully clear (which means it causes redundancy later), nor short enough to be a quick preview of what's to come. But I feel its easy to fix—we remove the explicit protocols because we anyway don't use their details; our ideas are quite general. This would let us state the protocols clearly in one place (and exactly once), avoiding redundancy without any significant loss to the introduction's quality.
 
 Issue 2:
 I think it is worthwhile splitting the analysis into asymptotic analysis and finite n analysis. This is because if I, as a reader, get interested in the article then after reading the introduction, I want to be able to see concretely how something close to the final statement can be proved first, if it is easier. The details about finite size effects I may even decide to skip until I actually need it somewhere. Conversely, I may be only interested in seeing how finite sized effects are handled and then too it helps to have them separated. (Been there!)
 I think one way of achieving such a structure is to introduce the protocols formally (see below) in a separate section, and state their security guarantees. Then formally introduce the compositions (with the relevant notation), make the final result appear plaussible and state it. With these in place, give the asymptotic proof for the assertions and then fill in the remaining steps for the full proof.
 
+General remark:
+Tom: Earlier, since we were not sure about Bob self-testing, I had changed the protocol I use for illustrating abort phobic compositions—I started using P. We can now directly use Q but this would mean you'll have to modify the figure. Sorry about that.
 
 1. Introduction 
 	n-1. Significance, future work, applications. 
@@ -51,14 +52,14 @@ I think one way of achieving such a structure is to introduce the protocols form
 	* Essentially unchanged except that the explicit protocols I and P are only referenced; they appear later
 	* The details about intermediate steps appear only as a floating table later and are only referenced in the introduction; the notation for composition only appears there with some explanation in the caption
 	* Cheat vectors are defined properly here.
-2. Protocols
+2. Protocols (First technique)
 	[remark] This is where all the protocols 
 	a. Original with formal security statement
 		[remark: This will contain an informal description of how boxes can be transmitted over quantum channels; the details go in the appendix]
 	b. Alice self tests with security statement
 	c. Bob self tests with security statement
 		[remark: Since cheat vectors are already defined and motivated, I would mention that they can be optimized over as SDPs]
-3. Compositions
+3. Compositions (Second technique)
 	a. Standard
 		[remark: I wouldn't remove these because it really helps seeing what is happening]
 	b. Abort phobic
