@@ -120,7 +120,7 @@ All: proofread the paper in detail by some deadline, so that we are all ok with 
 \usepackage{refstyle}
 \usepackage{graphicx}
 \usepackage{wasysym}
-
+\usepackage{booktabs}
 \makeatletter
 
 %%%%%%%%%%%Atul added
@@ -172,8 +172,26 @@ All: proofread the paper in detail by some deadline, so that we are all ok with 
 %%%%%%%%%%% added by Tom
 % Sorry Tom, it wasn't compiling on my machine
 % I will try to improve the formatting tomorrow; yours looks nicer.
+% \floatname{algorithm}{Protocol}
 
-%\usepackage{algorithm}
+
+\usepackage{algorithmic}
+% \usepackage{algorithmicx}
+
+\usepackage{algorithm}
+% \usepackage{algpseudocode}
+
+\newenvironment{varalgorithm}[1]
+  {\algorithm[h] %[t]
+  	\renewcommand{\thealgorithm}{\mbox{#1}}
+	%\renewcommand{\caption[1]}{\caption{\quad #1}}
+	}
+  {\endalgorithm}
+
+% \newcommand{gla}{$\mathcal{I}$}
+% \newcommand{\gla}{$\mathcal{I}$}
+
+\floatname{algorithm}{Protocol}
 %\floatname{algorithm}{Algorithm}
 %\usepackage{algcompatible}
 %\newcomhttps://www.overleaf.com/project/607e36cf16fc680c8be3f0a2mand{\aspace}{\hspace{\algorithmicindent}}
@@ -197,6 +215,7 @@ All: proofread the paper in detail by some deadline, so that we are all ok with 
 \AtBeginDocument{\providecommand\Figref[1]{\ref{Fig:#1}}}
 \AtBeginDocument{\providecommand\Thmref[1]{\ref{Thm:#1}}}
 \AtBeginDocument{\providecommand\Factref[1]{\ref{Fact:#1}}}
+\providecommand{\tabularnewline}{\\}
 \RS@ifundefined{subsecref}
   {\newref{subsec}{name = \RSsectxt}}
   {}
@@ -241,8 +260,6 @@ All: proofread the paper in detail by some deadline, so that we are all ok with 
 \usepackage{hyperref}
 
 \hypersetup{colorlinks=true,urlcolor=blue}
-
-
 
 \newref{thm}{name=theorem~,Name=Theorem~,names=theorems~,Names=Theorems~}
 \newref{def}{name=definition~,Name=Definition~,names=definitions~,Names=Definitions~}
@@ -296,9 +313,12 @@ This work studies this task in the device-independent regime where Alice and Bob
 The best protocol was devised ten years ago by Silman, Chailloux, Aharon, Kerenidis, Pironio, and Massar with bias $\eps \le 0.33664$, where the bias is a commonly adopted security measure for coin flipping protocols. 
 %Prior to this work, the best device independent weak coin flipping protocol had bias, $\epsilon \le 0.33664$, introduced a decade ago {[}10.1103/PhysRevLett.106.220501{]}. 
 This work presents some techniques to lower the bias of device-independent weak coin flipping protocols, namely self-testing and abort-phobic compositions. 
-By applying these techniques to the SCAKPM '11 protocol above, we are able to lower the bias to $\eps \approx 0.3148$. Under a continuity assumption, we can lower it still to $\eps \approx 0.29104$.
-In our analysis, we study the estimation of expectation value of a single GHZ game from known statistics to apply self-testing results in our case. We also study the continuity of semidefinite programs. These may be of independent interest.  
-%In our analysis, we examine rigidity bounds for the GHZ game and the continuity of semidefinite programs, which may be of independent interest.  
+By applying these techniques to the SCAKPM '11 protocol above, we are able to lower the bias to $\eps \approx 0.29104$. 
+%Under a continuity assumption, we can lower it still to $\eps \approx 0.29104$.
+%In our analysis, we study the estimation of expectation value of a single GHZ game from known statistics to apply self-testing results in our case. We also study the continuity of semidefinite programs. These may be of independent interest.  
+% In our analysis, we examine rigidity bounds for the GHZ game and the continuity of semidefinite programs, which may be of independent interest.  
+In our analysis, we examine rigidity bounds for the GHZ game for our setting and the continuity of semidefinite programs, which may be of independent interest.  
+
 
 %We report a protocol with bias, $\epsilon \approx 0.3148$. Under a plausible continuity conjecture, we are able to lower the bias to $\epsilon \approx 0.29104$. Our result uses the aforementioned protocol with a minor modification and owes its improved security to two techniques which we expect should work more generally: an added self-testing step and an improved method for composing protocols.
 
@@ -371,151 +391,140 @@ For example, they are not bounded by polynomial-time quantum computations.
 In addition to this, we study the security in the \emph{device-independent} regime where we assume Alice and Bob have complete control over the quantum devices when they decide to ``cheat''. 
 
 When studying device-independent (DI) protocols, one should first consider whether or not there are decent classical protocols (since these are not affected by the DI assumption). 
-Indeed, Kitaev~\cite{Kitaev03} proved that any classical WCF protocol has bias $\eps = 1/2$, which is the worst possible value. 
-Thus, it makes sense to study quantum WCF protocols in the DI setting, especially if one with bias $\eps < 1/2$ can be found. 
-Indeed, Silman, Chailloux, Aharon, Kerenidis, Pironio, and Massar presented a protocol in~\cite{Silman2011} which has bias $\eps \approx 0.33664$. 
+It was proved that every classical WCF protocol\footnote{also holds for strong coin flipping} has bias $\eps = 1/2$, which is the worst possible value (see~\cite{Kitaev03,HW11}). 
+Thus, it makes sense to study quantum WCF protocols in the DI setting, especially if one with bias $\eps < 1/2$ can be found. Indeed, Silman, Chailloux, Aharon, Kerenidis, Pironio, and Massar presented a protocol (see \Algref{SCF}) in~\cite{Silman2011} with $p^*_A=\cos^2(\pi/8)\approx 0.853$ and $p^*_B=3/4$. We defer the details and simply note here that their protocol beigns with Alice possesing two devices or \emph{boxes} and Bob possesing one box which are together supposed to contain GHZ states and measurements.\footnote{A GHZ state is a non-local quantum state; we review later.} As the protocol proceeds, they, in addition to exchanging classical information, operate these boxes and exchange them.\footnote{any protocol described using boxes is readily converted into one where Alice and Bob communicate over an insecure quantum channel; see ?? for details}
+As is, \Algref{SCF} has bias $\eps \approx 0.353$ but in \cite{Silman2011}, \Algref{SCF} is composed many times to obtain bias $\eps \le 0.33664$. 
+%has bias $\eps \le 0.33664$. To obtain a bias $\eps \le 0.33664$ using the protocol above, they compose the protocol many times. 
 
-In this work, we provide two techniques which can be applied to a wide range of protocols (including~\cite{Silman2011}, mentioned above) which can improve the bias. 
-To illustrate our ideas, we now present the protocol in~\cite{Silman2011}.  
+In this work, we provide two techniques which can be applied to a wide range of protocols (including \Algref{SCF}, mentioned above) that can improve the bias. %To illustrate our ideas, we recall their protocol (see \Algref{SCF}).  
+%To illustrate our ideas, we now present the protocol in~\cite{Silman2011}.  
+%To illustrate our ideas, we now present the protocol in~\cite{Silman2011}.  
 
-\begin{lyxalgorithm}[Protocol $\mathcal{I}$; a DI-WCF protocol with $\PA = \cos^2{\pi/8}$ and $\PB = 3/4$~\cite{Silman2011}; see also \Subsecref{SCForiginal}] \label{alg:SCForiginalJ}  
 
-Alice has one box and Bob has two boxes. 
-Each box takes one binary input and gives one binary output and are designed to play the optimal GHZ game strategy. 
-(Who creates and distributes the boxes is not important in the DI setting.) 
-\begin{enumerate}
-\item 
-Alice chooses a uniformly random input to her box $x \in \{ 0, 1 \}$ and obtains the outcome $a$. 
-She chooses another uniformly random bit $r \in \{ 0, 1 \}$ and computes $s = a \oplus (x \cdot r)$. 
-She sends $s$ to Bob. 
-\item 
-Bob chooses a uniformly random bit $g \in \{ 0, 1 \}$ and sends it to Alice. 
-(We may think of $g$ as Bob's ``guess'' for the value of $x$.) 
-\item 
-Alice sends $x$ and $a$ to Bob. 
-They both compute the output $c = x \oplus g$. 
-This is the outcome of the protocol assuming neither Alice nor Bob abort. %\Jnote{I guess only Bob may abort?}
-\item 
-Bob now tests to see if Alice was honest using the following two tests. 
-\begin{enumerate} 
-\item[\textup{Test 1}:] Bob sees if $s = a$ or $s = a \oplus x$. 
-If this is not the case, he knows Alice cheated and aborts. 
-\item[\textup{Test 2}:] Bob chooses a uniformly random bit 
-$y \in \{ 0, 1 \}$ and computes $z =  x \oplus y \oplus 1$. 
-He inputs $y$ and $z$ into his two boxes and obtains respective outcomes $b$ and $c$. 
-He aborts if $(a,b,c,x,y,z)$ does not satisfy the winning conditions of the GHZ game. 
-\end{enumerate} 
-\item If Bob does not abort, they both accept the value of $c$ as the outcome of the protocol. 
-\end{enumerate} 
-\end{lyxalgorithm} 
 
-To obtain a bias $\eps \le 0.33664$ using the protocol above, they compose the protocol many times. 
 
-\paragraph{Remark.} 
-Note that the above protocol is actually a strong coin-flipping protocol, but as such, we can always treat it as a WCF protocol. \\ 
+%\gla
+
+%Testing: \nameref{alg:SCF}
+%Testing: \Algref{SCF}
+
+
+
+% \paragraph{Remark.} 
+% Note that the above protocol is actually a strong coin-flipping protocol, but as such, we can always treat it as a WCF protocol. \\ 
 
 %novel pre- and post-processing steps
-In this work, we build on this protocol using two techniques, which we discuss next. 
+%In this work, we build on this protocol using two techniques, which we discuss next. 
 
 	\subsection{Our main result}  
 
-	We now state the main result of our work. 
+	%Our main result is as follows. %
+	We state the main result of our work. 
 
 	\begin{thm} 
-	There exists device-independent weak coin flipping protocols with bias approaching $\eps \approx 0.3148$. Under a convergence assumption, the bias can be lowered to $\eps \approx 0.29104$.
+	There exist device-independent weak coin flipping protocols with bias approaching $\eps \approx 0.29104$. %Under a convergence assumption, the bias can be lowered to $\eps \approx 0.29104$.
 	\end{thm} 
 	
-	\paragraph{\textit{Author's note:}} \textit{We believe the convergence assumption above to be true, we just did not have enough time to rigourously prove it before the QCRYPT submission deadline. Hence, we state it as an assumption. However, it does lead to a better bias, and thus we have decided to state it here.} \\ 
+	%\paragraph{\textit{Author's note:}} \textit{We believe the convergence assumption above to be true, we just did not have enough time to rigourously prove it before the QCRYPT submission deadline. Hence, we state it as an assumption. However, it does lead to a better bias, and thus we have decided to state it here.} \\ 
 
 	%We now discuss how we develop such a protocol. 
 	%This occurs using two main techniques, \emph{self-testing} and \emph{abort-phobic composition}. \Anote{Pedantic: maybe rephrase?}
 
-We now discuss the proof of our main theorem, above. 
-The first step is that we turn the strong coin flipping protocol into a weak coin flipping protocol in a routine manner. Basically, since weak coin flipping has the notion of a ``winner'' (if $c=0$ Alice wins and if $c=1$ Bob wins) we have the person who does not win do the testing. 
-We illustrate this new protocol, below. 
+	We now discuss the key ideas that go into the proof of our main theorem, above. We begin with turning the strong coin flipping protocol---\Algref{SCF}---into a weak coin flipping protocol---\Algref{WCF}---in a routine manner. Again, we defer the explicit description of the protocol and informally describe the basic idea: since weak coin flipping has the notion of a ``winner'' (if $c=0$ Alice wins and if $c=1$ Bob wins) we have the party who does not win, conduct a test.
+	
+	% We now discuss the proof of our main theorem, above. 
+	% The first step is that we turn the strong coin flipping protocol into a weak coin flipping protocol in a routine manner (see \Algref{WCF} in the main text). Basically, since weak coin flipping has the notion of a ``winner'' (if $c=0$ Alice wins and if $c=1$ Bob wins) we have the person who does not win do the testing.
+	%We illustrate this new protocol, below. 
 
-\newpage 
-\begin{lyxalgorithm}[Weak version of Protocol~\ref{alg:SCForiginalJ}] \label{alg:WCForiginalJ} 
+% %\newpage 
+% \begin{varalgorithm}{$E$} %{Protocol $\mathcal{I}$}
+% 	\caption{\quad Weak version of \Algref{SCF}} \label{alg:WCF} 
+% %$\mathcal{J\ref{alg:SCF}}$
+% %\begin{lyxalgorithm}[Weak version of Protocol~\ref{alg:SCF}] \label{alg:WCF} 
 
-Alice has one box and Bob has two boxes. 
-Each box takes one binary input and gives one binary output and are designed to play the optimal GHZ game strategy. 
-(Who creates and distributes the boxes is not important in the DI setting.) 
-\begin{enumerate}
-\item 
-Alice chooses a uniformly random input to her box $x \in \{ 0, 1 \}$ and obtains the outcome $a$. 
-She chooses another uniformly random bit $r \in \{ 0, 1 \}$ and computes $s = a \oplus (x \cdot r)$. 
-She sends $s$ to Bob. 
-\item 
-Bob chooses a uniformly random bit $g \in \{ 0, 1 \}$ and sends it to Alice. 
-(We may think of $g$ as Bob's ``guess'' for the value of $x$.) 
-\item 
-Alice sends $x$ to Bob. 
-They both compute the output $c = x \oplus g$. 
-This is the outcome of the protocol assuming neither Alice nor Bob abort. 
+% Alice has one box and Bob has two boxes. 
+% Each box takes one binary input and gives one binary output and are designed to play the optimal GHZ game strategy. 
+% (Who creates and distributes the boxes is not important in the DI setting.) 
+% \begin{enumerate}
+% \item 
+% Alice chooses a uniformly random input to her box $x \in \{ 0, 1 \}$ and obtains the outcome $a$. 
+% She chooses another uniformly random bit $r \in \{ 0, 1 \}$ and computes $s = a \oplus (x \cdot r)$. 
+% She sends $s$ to Bob. 
+% \item 
+% Bob chooses a uniformly random bit $g \in \{ 0, 1 \}$ and sends it to Alice. 
+% (We may think of $g$ as Bob's ``guess'' for the value of $x$.) 
+% \item 
+% Alice sends $x$ to Bob. 
+% They both compute the output $c = x \oplus g$. 
+% This is the outcome of the protocol assuming neither Alice nor Bob abort. 
 
-\item Test rounds:
-\begin{enumerate}
-\item If $x\oplus g=0$:\\
-Alice sends $a$ to Bob.\\
-Bob tests if $s=a$ or $s=a\oplus x$. If the test fails, he aborts.
-Bob chooses $y,z\in_{R}\{0,1\}$ such that $x\oplus y\oplus z=1$
-and then performs a GHZ using $x,y,z$ as the inputs and $a,b,c$
-as the output from the three boxes. He aborts if this test fails.
-\item Else, if $x\oplus g=1$:
-\begin{enumerate}
-\item Alice chooses $y,z\in_{R}\{0,1\}$ s.t. $x\oplus y\oplus z=1$ and
-sends them to Bob.
-\item Bob inputs $y,z$ into his boxes, obtains and sends $b,c$ to Alice.
-\end{enumerate}
-Alice tests if $x,y,z$ as inputs and $a,b,c$ as outputs, satisfy
-the GHZ test. She aborts if this test fails.
-\end{enumerate}
+% \item Test rounds:
+% \begin{enumerate}
+% \item If $x\oplus g=0$:\\
+% Alice sends $a$ to Bob.\\
+% Bob tests if $s=a$ or $s=a\oplus x$. If the test fails, he aborts.
+% Bob chooses $y,z\in_{R}\{0,1\}$ such that $x\oplus y\oplus z=1$
+% and then performs a GHZ using $x,y,z$ as the inputs and $a,b,c$
+% as the output from the three boxes. He aborts if this test fails.
+% \item Else, if $x\oplus g=1$:
+% \begin{enumerate}
+% \item Alice chooses $y,z\in_{R}\{0,1\}$ s.t. $x\oplus y\oplus z=1$ and
+% sends them to Bob.
+% \item Bob inputs $y,z$ into his boxes, obtains and sends $b,c$ to Alice.
+% \end{enumerate}
+% Alice tests if $x,y,z$ as inputs and $a,b,c$ as outputs, satisfy
+% the GHZ test. She aborts if this test fails.
+% \end{enumerate}
 
 
-\item If Alice and Bob do not abort, they both accept the value of $c$ as the outcome of the protocol.  
+% \item If Alice and Bob do not abort, they both accept the value of $c$ as the outcome of the protocol.  
 
-\end{enumerate} 
-\end{lyxalgorithm} 
+% \end{enumerate} 
+% \end{varalgorithm} 
 
-We now add a pre-processing step to this protocol which \emph{self-tests} the boxes Alice and Bob share. This concept is not new, but it applies well to this setting.
-
-We also use the revised protocol in a new way of composing protocols which we subbed an \emph{abort-phobic} composition. 
+Our first technique is to add a pre-processing step to \Algref{WCF} which \emph{self-tests} the boxes Alice and Bob share. This concept is not new, but it applies well to this setting.
+%We now add a pre-processing step to this protocol which \emph{self-tests} the boxes Alice and Bob share. This concept is not new, but it applies well to this setting.
+Our second technique is to compose and analyse the resulting protocols in a new way,\footnote{The composition in \cite{Silman2011} may also be seen as "abort-phobic" but their analsysis doesn't rely on the "abort" probability; their bound essentially neglects the abort event.} which we call \emph{abort-phobic} composition.
+%We also use the revised protocol in a new way of composing protocols which we subbed an \emph{abort-phobic} composition. 
 	
 
 	\subsection{First technique: Self-testing} 
 
-	In Protocols~\ref{alg:SCForiginalJ} and~\ref{alg:WCForiginalJ}, a cheating party may control what measurement is performed in the boxes of other party and how the state of the boxes is correlated to its own quantum memory. This is more general than \textit{device-dependent} protocols, where for instance, the measurements are known to the honest player. 
-	However, we employ the concept of self-testing to stop Bob (or Alice) from applying such a strategy. 
-	The case where Alice self-tests Bob is illustrated below. 
+	In Protocols~\ref{alg:SCF} and~\ref{alg:WCF}, a cheating party may control what measurement is performed in the boxes of other party and how the state of the boxes is correlated to its own quantum memory. This is more general than \textit{device-dependent} protocols, where for instance, the measurements are known to the honest player. 
+	However, we employ the concept of self-testing to stop Bob (or Alice) from applying such a strategy. Intuitively, self testing is a powerful property which allows one to, just from certain input output behaviours of some device, conclude uniquely which quantum states and measurements constitute the device (up to relabelling). The GHZ state which was used in \Algref{SCF,WCF} can be self-tested. Clearly, this property has the potential to improve their security.
+	
+	We define \Algref{AliceSelfTests}, where Alice self-tests Bob and in \Algref{BobSelfTests}, where Bob self-tests Alice. Skipping the details, the basic construction is almost trivial. Alice and Bob start with $n$ triples of boxes and, for instance when Alice self-tests, Alice asks Bob to send all but one randomly selected triple and tests if the GHZ test passes for these. If so, the remaining triple is used for the actual protocol. If $n$ is chosen large enough, then this forces a dishonest Bob to not tamper with the boxes too much, as suggested above. Indeed, this step already allows us to reduce the cheating probabilities. 
+	%The case where Alice self-tests Bob is described in \Algref{AliceSelfTests}.%illustrated below. 
 
-	\begin{lyxalgorithm}[Protocol $\mathcal{P}$, where Alice self-tests] \label{alg:AliceSelfTestsHerBoxes}  
+	% \begin{lyxalgorithm}[Protocol $\mathcal{P}$, where Alice self-tests] \label{alg:AliceSelfTests}  
 
-	Alice starts with $n$ boxes, indexed from $1_1$ to $1_n$. 
-	Bob starts with $2n$ boxes, the first half indexed by $2_1$ to $2_n$ and the last half indexed by $3_1$ to $3_n$. 
-	The triple of boxes $(1_i, 2_i, 3_i)$ is meant to play the optimal GHZ game strategy.   
-	\begin{enumerate}    
-	\item Alice selects a uniformly random index $i \in \{ 1, \ldots, n \}$ and asks Bob to send her all the boxes \emph{except} those indexed by $2_i$ and $3_i$. 
-	\item Alice plays $n-1$ GHZ games using the $n-1$ triples of boxes she has, making sure she has a space-like separation between the boxes. (She has long arms.) 
-	\item Alice aborts if \emph{any} of the GHZ games lose. 
-	Otherwise, she announces to Bob that they can use the remaining boxes for Protocol~\ref{alg:WCForiginalJ}.  
-	\end{enumerate} 
-	\end{lyxalgorithm}  
+	% Alice starts with $n$ boxes, indexed from $1_1$ to $1_n$. 
+	% Bob starts with $2n$ boxes, the first half indexed by $2_1$ to $2_n$ and the last half indexed by $3_1$ to $3_n$. 
+	% The triple of boxes $(1_i, 2_i, 3_i)$ is meant to play the optimal GHZ game strategy.   
+	% \begin{enumerate}    
+	% \item Alice selects a uniformly random index $i \in \{ 1, \ldots, n \}$ and asks Bob to send her all the boxes \emph{except} those indexed by $2_i$ and $3_i$. 
+	% \item Alice plays $n-1$ GHZ games using the $n-1$ triples of boxes she has, making sure she has a space-like separation between the boxes. (She has long arms.) 
+	% \item Alice aborts if \emph{any} of the GHZ games lose. 
+	% Otherwise, she announces to Bob that they can use the remaining boxes for Protocol~\ref{alg:WCF}.  
+	% \end{enumerate} 
+	% \end{lyxalgorithm}  
 
-	The idea is that if $n$ is chosen large enough, then this forces a dishonest Bob to not tamper with the boxes too much. 
-	Indeed, this step already allows us to reduce the cheating probabilities. 
+
+	%The idea is that if $n$ is chosen large enough, then this forces a dishonest Bob to not tamper with the boxes too much. Indeed, this step already allows us to reduce the cheating probabilities. 
 
 	\begin{lem} [Informal. See~\Lemref{AliceSelfTests} for a formal statement] 
-	For protocol $\mathcal{P}$ where Alice self tests Bob (i.e. \Algref{AliceSelfTestsHerBoxes} above), the cheating probabilities, in the limit of large $n$, are
-		% When Alice self-tests Bob, the cheating probabilities of protocol $\mathcal{P}$ (i.e. Protocol~\ref{alg:WCForiginalJ}) in the limit of large $n$ are  
+	For \Algref{AliceSelfTests}, i.e. where Alice self tests Bob, the cheating probabilities, in the limit of large $n$, are
+	% For protocol $\mathcal{P}$ where Alice self tests Bob (i.e. \Algref{AliceSelfTests} above), the cheating probabilities, in the limit of large $n$, are
+		% When Alice self-tests Bob, the cheating probabilities of protocol $\mathcal{P}$ (i.e. Protocol~\ref{alg:WCF}) in the limit of large $n$ are  
 	\begin{equation} 
 	\PA = \cos^2 (\pi/8) \approx 0.85355 \quad \text{ and } \quad \PB \approx 0.6667. 
 	\end{equation} 
 	\end{lem}  
     
-	Recall that for \Algref{SCForiginalJ} \cite{Silman2011}, $\PA=\cos^2(\pi/8)$ and $\PB=3/4$. %\Tnote{remind the bias of the Inital protocol for easy comparison}
+	Recall that for \Algref{SCF}, $\PA=\cos^2(\pi/8)$ and $\PB=3/4$. %\Tnote{remind the bias of the Inital protocol for easy comparison}
 	To prove this lemma, we have to dive into two technical concepts, which we briefly discuss below. 
 	Note that for device-dependent protocols, where Alice and Bob trust their devices, cheating probabilities can be cast as semidefinite programs ~\cite{Kitaev03,Mochon07}.
-	In the DI regime, we cannot even bound the dimension of the state within the boxes, making it much harder to analyze and bound Alice and Bob's cheating probabilities. 
+	In the DI regime, we cannot even bound the dimension of the state within the boxes, making it much harder to analyse and bound Alice and Bob's cheating probabilities. 
 	
 	
     % \Tnote{I think that the main idea that we use is the fact that for device-dependent protocols the maximum bias can be recast as an sdp. Me have not mentioned that up to now. Also it's not correct o say that we have prove rigidity}
@@ -545,7 +554,7 @@ We also use the revised protocol in a new way of composing protocols which we su
 	%\Tnote{changed title of the subsection, the paragraph name and restructured the first two paragraphs.} 
 
     It can happen, that for a given WCF protocol, $\PB \neq \PA$, in which case we say the protocol is polarised. %\Jnote{American or British English?}. 
-    It is known (e.g. \cite{Silman2011}) that composing a polarised protocol with itself (or other protocols) can effectively reduce the bias. Our second improvement is a modified way of composing protocols, when there is a positive probability that the honest player catches the cheating player. 
+    As we saw earlier, it is known (e.g. \cite{Silman2011}) that composing a polarised protocol with itself (or other protocols) can effectively reduce the bias. Our second improvement is a modified way of composing protocols, when there is a positive probability that the honest player catches the cheating player. 
     Let us start by recalling the standard way of composing protocols.
 
 	\paragraph{Standard composition.} 
@@ -582,7 +591,7 @@ We also use the revised protocol in a new way of composing protocols which we su
 	\paragraph{Abort-phobic composition.} 
 	The ``traditional'' way of considering WCF protocols is to view them as only having two outcomes ``Alice wins'' (when $c = 0$) or ``Bob wins'' ($c = 1$). 
 	This is because Alice can declare herself the winner if she catches Bob cheating. 
-	Similarly, Bob can declare himself the winner if he catches Alice cheating. 
+	Similarly, Bob can declare himself the winner if he catches Alice cheating.\footnote{In doing so, we implicitly assume that the protocol has perfect correctness---when both players are honest, the probability of abort is zero.} 
 	This is completely fine when we consider ``one-shot'' versions of these protocols, but we lose something when we compose them. 
 	For instance, in the simple composition used in ~\Algref{simple}, Bob should not really accept to continue onto the second protocol if he catches Alice cheating in the first. 
 	That is, if he knows Alice cheated, he can declare himself the winner of the entire protocol!  
@@ -596,7 +605,7 @@ We also use the revised protocol in a new way of composing protocols which we su
 
 	The concept of abort-phobic composition is simple. 
 	Alice and Bob keep using WCF protocols and the winner (at that round) gets to choose the polarity of the subsequent protocol. 
-	However, if either party \emph{ever aborts}, then it is game over and the cheating player loses \emph{the entire composition protocol}. 
+	However, if either party \emph{ever aborts}, then it is game over and the cheating player loses \emph{the entire composite protocol}. 
 
 	One may think it is tricky to analyze abort-phobic compositions, but we may do this one step at time. 
 	To this end, we introduce the concept of \emph{cheat vectors}. 
@@ -620,12 +629,12 @@ We also use the revised protocol in a new way of composing protocols which we su
 	v_B \cdot \PA \, + \, v_A \cdot \PB \, + \, v_{\perp} \cdot 0. 
 	\end{equation}
 	For this to work, we assume we have $\PA$ and $\PB$ for the protocol that comes in the second round. 
-	The neat thing is that once we solve for the optimal cheating probabilities in the abort-phobic composition in this way, we can then fix those probabilities and compose again! 
-	In other words, we are recursively composing the abort-phobic composition. 
-	Therefore, we calculate the cheating probabilities from the \emph{bottom-up}. 
+	%The neat thing is
+	A simplifying observation is that once we solve for the optimal cheating probabilities in the abort-phobic composition in this way, we can then fix those probabilities and compose again.	In other words, we are recursively composing the abort-phobic composition, from the \emph{bottom-up}. %Therefore, we calculate the cheating probabilities from the \emph{bottom-up}. 
 
-	By using protocols where Alice self-tests and abort-phobic compositions, we are able to find protocols which converge onto a bias of $\eps \approx 0.3148$ proving the main result of this work. We give more details below.
- 	By composing protocols where Alice self-tests with ones where Bob self-tests, we are able to reduce the bias further\footnote{Under our convergence assumption.} to $\eps \approx 0.29104$, as also stated in our main theorem.
+	By using abort-phobic compositions with \Algref{AliceSelfTests} (where Alice self-tests) at the bottom, and \Algref{BobSelfTests} (where Bob self-tests) on higher layers, we obtain composite protocls which converge onto a bias of $\eps \approx 0.29104$ proving the main result of this work.
+	%By using protocols where Alice self-tests and abort-phobic compositions, we are able to find protocols which converge onto a bias of $\eps \approx 0.3148$ proving the main result of this work. We give more details below.
+ 	%By composing protocols where Alice self-tests with ones where Bob self-tests, we are able to reduce the bias further\footnote{Under our convergence assumption.} to $\eps \approx 0.29104$, as also stated in our main theorem.
 % \Jnote{Does this sentence seem redundant now that we have the section below?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -716,12 +725,12 @@ We also use the revised protocol in a new way of composing protocols which we su
 	Indeed, we can use it to balance the cheating probabilities in  \emph{any} polarized protocol for any symmetric two-party cryptographic task for which such notions can be properly defined. 
 	
 	For instance, many \emph{strong} coin-flipping protocols can be thought of as polarized. 
-	For an example, the protocol~\ref{alg:SCForiginal} is indeed a polarized strong coin-flipping protocol. 
+	For an example, ~\Algref{alg:SCF} is indeed a polarized strong coin-flipping protocol. 
 	Thus, by balancing the cheating probabilities of that protocol using our DI WCF protocol, % and a winner-gets-polarity composition (not even an abort-phobic one!), 
 	we get the following theorem. 
 
 	\begin{thm} 
-	There exists DI strong coin-flipping protocols where no party can cheat with probability greater than $0.33439$. Under a continuity assumption, the bound can be lowered to $0.33192$.  
+	There exist DI strong coin-flipping protocols where no party can cheat with probability greater than $0.33192$. %Under a continuity assumption, the bound can be lowered to $0.33192$.  
 	\end{thm} 
 %\Anote{Using winner-gets-polarity, $\epsilon \le 0.334904$, combining abort phobic, $\epsilon \le 0.33439$, and combining Alice and Bob self testing (under a convergence assumption), $\epsilon \le 0.33192$. To contrast, for \cite{Silman2011}, $\epsilon \le 0.336637$.}
 To contrast, for \cite{Silman2011}, the bound on cheating probabilities was $0.336637$. There are likely more examples of protocols which can be balanced in a DI way using this idea. 
@@ -730,241 +739,116 @@ To contrast, for \cite{Silman2011}, the bound on cheating probabilities was $0.3
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
 	\subsection{Paper Organisation \label{subsec:Proof-Technique}} 
-		We begin with clarifying the connection between the language of "boxes" and physical implementation of protocols described using them and state known relevant results (Section 2??). In Section 3??, we define and state the security of protocols $\mathcal{P}$ (where Alice self-tests; \Algref{AliceSelfTestsHerBoxes}) and $\mathcal{Q}$ (where Bob self-tests; ????). In Section 4??, we formally define standard compositions, $C^{LL}$ and abort-phobic compositions, $C^{\perp L}$ and $C^{L\perp}$. For instance, given a protocol $\mathcal{R}$, $C^{LL}(\mathcal{R})$ means one applies standard composition multiple times on $\mathcal{R}$. The meaning of $L$ and $\perp$ is also clarified there. Using these, below we summarise the build-up to our main results. In Section 5??, we give the security proofs in the asymptotic limit and in Section 6??? we argue why we expect the appropriate notion of continuity to hold.
+		TODO: complete this after everything is finalised. 
+		% We begin with clarifying the connection between the language of "boxes" and physical implementation of protocols described using them and state known relevant results (Section 2??). In Section 3??, we define and state the security of protocols $\mathcal{P}$ (where Alice self-tests; \Algref{AliceSelfTests}) and $\mathcal{Q}$ (where Bob self-tests; ????). In Section 4??, we formally define standard compositions, $C^{LL}$ and abort-phobic compositions, $C^{\perp L}$ and $C^{L\perp}$. For instance, given a protocol $\mathcal{R}$, $C^{LL}(\mathcal{R})$ means one applies standard composition multiple times on $\mathcal{R}$. The meaning of $L$ and $\perp$ is also clarified there. Using these, below we summarise the build-up to our main results. In Section 5??, we give the security proofs in the asymptotic limit and in Section 6??? we argue why we expect the appropriate notion of continuity to hold.
 
-		% Let $\mathcal{I}$ denote \Algref{SCForiginalJ} (the DI protocol introduced in \cite{Silman2011}). 	In Section 3?? we show (see \Lemref{AliceSelfTestsHerBoxes}; informally stated above) that $p_{A}^{*}(\mathcal{P})\approx 0.853$ and $p_{B}^{*}(\mathcal{P}) \approx 0.667$. We also show that the set of cheat vectors $\mathbb{C}_{B}(\mathcal{P})$ can be cast as an SDP.
+		% Let $\mathcal{I}$ denote \Algref{SCF} (the DI protocol introduced in \cite{Silman2011}). 	In Section 3?? we show (see \Lemref{AliceSelfTests}; informally stated above) that $p_{A}^{*}(\mathcal{P})\approx 0.853$ and $p_{B}^{*}(\mathcal{P}) \approx 0.667$. We also show that the set of cheat vectors $\mathbb{C}_{B}(\mathcal{P})$ can be cast as an SDP.
 
 		%}
 
-		\subsubsection*{Section 3 | Protocols}
+% 		\subsubsection*{Section 3 | Protocols}
 
-		% \Tnote{WHY LL notation ?}
-		%\branchcolor{purple}{
-		% 	We introduce two variants of protocol $\mathcal{I}$, which we call
-		% $\mathcal{P}$ and $\mathcal{Q}$. 
-		\begin{itemize}
-			\item %$\mathcal{P}$ is essentially the same as $\mathcal{I}$ except that Alice self-tests her boxes before starting the protocol and performs an additional test to ensure Bob does not cheat \Jnote{refer to protocol 3 now}. 
-			We show that $p_{A}^{*}(\mathcal{P})\approx 0.853\dots$
-			and $p_{B}^{*}(\mathcal{P}) \approx 0.667\dots$ (see \Lemref{AliceSelfTestsHerBoxes}; informally stated above). %\Jnote{Is this not a previous lemma in this intro?}. 
-			We also show that the set of cheat vectors
-			$\mathbb{C}_{B}(\mathcal{P})$ can be cast as an SDP.
+% 		% \Tnote{WHY LL notation ?}
+% 		%\branchcolor{purple}{
+% 		% 	We introduce two variants of protocol $\mathcal{I}$, which we call
+% 		% $\mathcal{P}$ and $\mathcal{Q}$. 
+% 		\begin{itemize}
+% 			\item %$\mathcal{P}$ is essentially the same as $\mathcal{I}$ except that Alice self-tests her boxes before starting the protocol and performs an additional test to ensure Bob does not cheat \Jnote{refer to protocol 3 now}. 
+% 			We show that $p_{A}^{*}(\mathcal{P})\approx 0.853\dots$
+% 			and $p_{B}^{*}(\mathcal{P}) \approx 0.667\dots$ (see \Lemref{AliceSelfTests}; informally stated above). %\Jnote{Is this not a previous lemma in this intro?}. 
+% 			We also show that the set of cheat vectors
+% 			$\mathbb{C}_{B}(\mathcal{P})$ can be cast as an SDP.
 		
-			\item %$\mathcal{Q}$ is also essentially the same as $\mathcal{I}$ except that Bob self-tests his boxes before starting the protocol. 
-			Next, we show, $p_{A}^{*}(\mathcal{Q})=p_{A}^{*}(\mathcal{I})$ 
-			and 
-			$p_{B}^{*}(\mathcal{Q})=p_{B}^{*}(\mathcal{I})$
-			so the advantage is not immediate. However, now $\mathbb{C}_{A}(\mathcal{Q})$
-			can be cast as a semidefinite program which, as we shall see, yields an advantage
-			when $\mathcal{Q}$ is composed. 
-			%In other words, Alice's cheat vectors make it so that the protocols compose nicely. %} \Jnote{Atul, what do you think? Is this ok?}
-		\end{itemize}
-		%}
+% 			\item %$\mathcal{Q}$ is also essentially the same as $\mathcal{I}$ except that Bob self-tests his boxes before starting the protocol. 
+% 			Next, we show, $p_{A}^{*}(\mathcal{Q})=p_{A}^{*}(\mathcal{I})$ 
+% 			and 
+% 			$p_{B}^{*}(\mathcal{Q})=p_{B}^{*}(\mathcal{I})$
+% 			so the advantage is not immediate. However, now $\mathbb{C}_{A}(\mathcal{Q})$
+% 			can be cast as a semidefinite program which, as we shall see, yields an advantage
+% 			when $\mathcal{Q}$ is composed. 
+% 			%In other words, Alice's cheat vectors make it so that the protocols compose nicely. %} \Jnote{Atul, what do you think? Is this ok?}
+% 		\end{itemize}
+% 		%}
 
-		\subsubsection*{Section 4 | Compositions}
+% 		\subsubsection*{Section 4 | Compositions}
 
-		%\branchcolor{purple}{
-		% 	As the protocols $\mathcal{X}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$
-		% all have skewed security---either $p_{A}^{*}(\mathcal{X})>p_{B}^{*}(\mathcal{X})$
-		% or the other way---and therefore the bias is determined by $p_{\max}^{*}(\mathcal{X}):=\max\{p_{A}^{*}(\mathcal{X}),p_{B}^{*}(\mathcal{X})\}$.
-		% Note that, $p_{\max}^{*}(\mathcal{X})=p_{\max}^{*}(\mathcal{Y})$
-		% for all $\mathcal{X},\mathcal{Y}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$,
-		% which means that we don't immediately obtain an advantage. However,
-		% the most obvious method of composing these protocols to obtain a new
-		% protocol, which we describe later, ``balances'' the advantage. After
-		% this composition procedure is applied to some protocol $\mathcal{X}$,
-		% we denote the resulting protocol by $C_{LL}(\mathcal{X})$. Applying
-		% this technique to $\mathcal{P}$, we already obtain a more secure
-		% protocol.
-		%Anticipating the notation used later, we denote by $C^{LL}(\mathcal{X})$, the repeated "standard composition" introduced above, of some protocol $\mathcal{X}$. Further, 
-		Let $\epsilon(\mathcal{R})$ denote the bias of protocol $\mathcal{R}$. 
+% 		%\branchcolor{purple}{
+% 		% 	As the protocols $\mathcal{X}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$
+% 		% all have skewed security---either $p_{A}^{*}(\mathcal{X})>p_{B}^{*}(\mathcal{X})$
+% 		% or the other way---and therefore the bias is determined by $p_{\max}^{*}(\mathcal{X}):=\max\{p_{A}^{*}(\mathcal{X}),p_{B}^{*}(\mathcal{X})\}$.
+% 		% Note that, $p_{\max}^{*}(\mathcal{X})=p_{\max}^{*}(\mathcal{Y})$
+% 		% for all $\mathcal{X},\mathcal{Y}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$,
+% 		% which means that we don't immediately obtain an advantage. However,
+% 		% the most obvious method of composing these protocols to obtain a new
+% 		% protocol, which we describe later, ``balances'' the advantage. After
+% 		% this composition procedure is applied to some protocol $\mathcal{X}$,
+% 		% we denote the resulting protocol by $C_{LL}(\mathcal{X})$. Applying
+% 		% this technique to $\mathcal{P}$, we already obtain a more secure
+% 		% protocol.
+% 		%Anticipating the notation used later, we denote by $C^{LL}(\mathcal{X})$, the repeated "standard composition" introduced above, of some protocol $\mathcal{X}$. Further, 
+% 		Let $\epsilon(\mathcal{R})$ denote the bias of protocol $\mathcal{R}$. 
 
-		\begin{itemize}
-		\item The bias of protocol $\mathcal{I}$ 
-		under the standard composition is given by
-		\[
-		\epsilon(C^{LL}(\mathcal{I}))\approx 0.33664
-		\]
-		while for our improved protocol $\mathcal{P}$, it is given by
-		\begin{equation}
-		\epsilon(C^{LL}(\mathcal{P}))\approx 0.3199.\label{eq:SikoraP}
-		\end{equation}
-		\end{itemize}
-		The standard composition does not yield any improvement for
-		$\mathcal{Q}$ because the cheating probabilities are identical to
-		those of $\mathcal{I}$. We can extract an advantage by using abort-phobic compositions. %a composition
-		%technique that uses the cheat vectors, i.e., the abort-phobic composition. 
-		%We denote the abort phobic composition (of protocol $\mathcal{X}$) by either $C^{\perp L}(\mathcal{X})$ or $C^{L\perp}(\mathcal{X})$. 
-		%The notation is explained in later sections when the choice of superscripts is made clear.  
-		\begin{itemize}
-			\item Composing the protocol $\mathcal P$ with itself many times, using the abort-phobic compositions gives a bias
-			\[
-			\epsilon(C^{\perp L}(\mathcal{P}))\approx 0.3148
-			\]
-			which is a further improvement.
-			\item Composing the protocol $\mathcal Q$ with itself many times, using the abort-phobic composition gives a bias 
-			\[
-			\epsilon(C^{L\perp}(\mathcal{Q}))\approx 0.3226
-			\] 
-		which is worse than \Eqref{SikoraP}. %\Jnote{This seems like it shouldn't be true...}. 
-			\item However, when we compose the protocol $\mathcal{Q}$ many times with itself, followed by protocol $\mathcal{P}$, we find
-			\[
-			\epsilon(C^{L\perp}(\mathcal{Q},\mathcal{Q},\dots,\mathcal{Q},\mathcal{P}))\approx 0.29104\dots
-			\]
-		where we use the same composition technique except that at the last
-		``level'' we use\footnote{$C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{Q})$
-		is strictly worse than considering $C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{P})$;
-		this should become evident later.} $\mathcal{P}$ instead of $\mathcal{Q}$. 
-		\end{itemize}
-\Jnote{this notation needs to be explained since it's not clear what is above and what is in the footnote.}
+% 		\begin{itemize}
+% 		\item The bias of protocol $\mathcal{I}$ 
+% 		under the standard composition is given by
+% 		\[
+% 		\epsilon(C^{LL}(\mathcal{I}))\approx 0.33664
+% 		\]
+% 		while for our improved protocol $\mathcal{P}$, it is given by
+% 		\begin{equation}
+% 		\epsilon(C^{LL}(\mathcal{P}))\approx 0.3199.\label{eq:SikoraP}
+% 		\end{equation}
+% 		\end{itemize}
+% 		The standard composition does not yield any improvement for
+% 		$\mathcal{Q}$ because the cheating probabilities are identical to
+% 		those of $\mathcal{I}$. We can extract an advantage by using abort-phobic compositions. %a composition
+% 		%technique that uses the cheat vectors, i.e., the abort-phobic composition. 
+% 		%We denote the abort phobic composition (of protocol $\mathcal{X}$) by either $C^{\perp L}(\mathcal{X})$ or $C^{L\perp}(\mathcal{X})$. 
+% 		%The notation is explained in later sections when the choice of superscripts is made clear.  
+% 		\begin{itemize}
+% 			\item Composing the protocol $\mathcal P$ with itself many times, using the abort-phobic compositions gives a bias
+% 			\[
+% 			\epsilon(C^{\perp L}(\mathcal{P}))\approx 0.3148
+% 			\]
+% 			which is a further improvement.
+% 			\item Composing the protocol $\mathcal Q$ with itself many times, using the abort-phobic composition gives a bias 
+% 			\[
+% 			\epsilon(C^{L\perp}(\mathcal{Q}))\approx 0.3226
+% 			\] 
+% 		which is worse than \Eqref{SikoraP}. %\Jnote{This seems like it shouldn't be true...}. 
+% 			\item However, when we compose the protocol $\mathcal{Q}$ many times with itself, followed by protocol $\mathcal{P}$, we find
+% 			\[
+% 			\epsilon(C^{L\perp}(\mathcal{Q},\mathcal{Q},\dots,\mathcal{Q},\mathcal{P}))\approx 0.29104\dots
+% 			\]
+% 		where we use the same composition technique except that at the last
+% 		``level'' we use\footnote{$C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{Q})$
+% 		is strictly worse than considering $C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{P})$;
+% 		this should become evident later.} $\mathcal{P}$ instead of $\mathcal{Q}$. 
+% 		\end{itemize}
+% \Jnote{this notation needs to be explained since it's not clear what is above and what is in the footnote.}
 %\Jnote{Also, I am not sure why we mention the rest explicitly. Is it for build-up or knowledge? Is there a reason we just don't say the protocol composition that works best?}
 
 
 
-\section{Device Independent Weak Coin Flipping protocols | State Of The Art}
+% \section{Device Independent Weak Coin Flipping protocols | State Of The Art}
 
 %\branchcolor{purple}{
-In the following, we first discuss how one can describe DI WCF protocols
-in terms of the players exchanging ``boxes''---devices which take
-classical inputs and give classical outputs. This discussion mostly formalises rather obvious notions in the interest of clarity and parts of it may be appropriately skipped. Subsequently we give some details about \Algref{SCForiginalJ} \cite{Silman2011} upon which we build our results.  %we use these to delineate the DI-CF due to
+% In the following, we first discuss how one can describe DI WCF protocols
+% in terms of the players exchanging ``boxes''---devices which take
+% classical inputs and give classical outputs. This discussion mostly formalises rather obvious notions in the interest of clarity and parts of it may be appropriately skipped. Subsequently we give some details about \Algref{SCF} \cite{Silman2011} upon which we build our results.  %we use these to delineate the DI-CF due to
 %}
 
 
-\subsection{Device Independence and the Box Paradigm}
+\section{Protocols | First Technique}
+% In the following, we first discuss how one can describe DI WCF protocols
+% in terms of the players exchanging ``boxes''---devices which take
+% classical inputs and give classical outputs. This discussion mostly formalises rather obvious notions in the interest of clarity and parts of it may be appropriately skipped. Subsequently we give some details about \Algref{SCF} \cite{Silman2011} upon which we build our results.  %we use these to delineate the DI-CF due to
+In the following subsection, we primarily define the DI strong coin flipping introduced in \cite{Silman2011}, \Algref{SCF}, and the ``obvious'' weak variant \Algref{WCF}. We then describe \Algref{AliceSelfTests,BobSelfTests}, where Alice and Bob respectively perform the self-testing step. We also give more formal security guarantees associated with these. Their proofs constitute \Secref{securityAsymptotic,SecurityFiniteN}.
 
-\branchcolor{purple}{We describe device independent protocols as classical protocols with one modification: we assume that the two parties can exchange
-boxes and that the parties can shield their boxes (from the other
-boxes i.e. the boxes can't communicate with each other once shielded).
-% \footnote{TODO: Verify if this notion is in fact correct; I hope I'm not making
-% a major mistake somehow. I should be able to take the POVMs as tensor
-% products right, because I can change them at will, independent of
-% the others (and ensuring that there's no communication between them;
-% could they be somehow entangled, i.e. could it be that somehow the
-% measurement operators are themselves quantum correlated?); I would
-% like to reach the conclusion starting from the locality assumption.}
-}
+\paragraph{Notation} For notational clarity, we often use single calligraphic symbols $\mathcal S, \mathcal W, \mathcal P$ and $\mathcal Q$ to refer to these protocols. When we say, for instance, consider three boxes $\Box^A,\Box^B,\Box^C$, we mean that there is a tripartite quantum state and local measurements associated with these boxes. The input to the box selects the measurement setting and the output is the measurement outcome as governed by quantum theory (see \Defref{box}). When we speak of Alice and Bob exchanging boxes, we understand that the description of these states and measurement settings are sent over a (possibly insecure) quantum communication channel (see \Defref{BoxProtocol,MEprotocol} in \Secref{BoxParadigm}).
 
-\begin{defn}[Box]
- \label{def:box}A \emph{box} is a device that takes an input $x\in\mathcal{X}$
-and yields an outputs $a\in\mathcal{A}$ where $\mathcal{X}$ and
-$\mathcal{A}$ are finite sets. Typically, a set of $n$ boxes, taking
-inputs $x_{1},x_{2},\dots x_{n}$ and yielding outputs $a_{1},a_{2}\dots a_{n}$
-are \emph{characterised} by a joint conditional probability distribution,
-denoted by 
-\[
-p(a_{1},a_{2}\dots a_{n}|x_{1},x_{2}\dots x_{n}).
-\]
-Further, if $p(a_{1},a_{2}\dots a_{n}|x_{1},x_{2}\dots x_{n})=\tr\left[M_{a_{1}|x_{1}}^{1}\otimes M_{a_{2}|x_{2}}^{2}\dots\otimes M_{a_{n}|x_{n}}^{n}\rho\right]$
-then we call the set of boxes, \emph{quantum boxes}, where $\{M_{a'|x'}^{i}\}_{a'\in\mathcal{A}_{i}}$constitute
-a POVM for a fixed $i$ and $x'$, $\rho$ is a density matrix and
-their dimensions are mutually consistent.
-\end{defn}
 
-Henceforth, we restrict ourselves to quantum boxes. 
-\begin{defn}[Protocol in the box formalism]
- \label{def:BoxProtocol}A generic two-party protocol in the box
-formalism has the following form:
-\begin{enumerate}
-\item Inputs:
-\begin{enumerate}
-\item Alice is given boxes $\Box_{1}^{A},\Box_{2}^{A}\dots\Box_{p}^{A}$
-and Bob is given boxes $\Box_{1}^{B},\Box_{2}^{B},\dots\Box_{q}^{B}$. 
-\item Alice is given a random string $r^{A}$ and Bob is given a random
-string $r^{B}$ (of arbitrary but finite length).
-\end{enumerate}
-\item Structure: At each round of the protocol, the following is allowed.
-\begin{enumerate}
-\item Alice and Bob can locally perform arbitrary but finite time computations
-on a Turing Machine. 
-\item They can exchange classical strings/messages and boxes.
-\end{enumerate}
-\end{enumerate}
-\branchcolor{purple}{A protocol in the box formalism is readily expressed as a protocol
-which uses a (trusted) classical channel (i.e. they trust their classical
-devices to reliably send/receive messages), untrusted quantum devices
-and an untrusted quantum channel (i.e. a channel that can carry quantum
-states but may be controlled by the adversary).}
-\end{defn}
-
-\begin{assumption}[Setup of Device Independent Two-Party Protocols]
- Alice and Bob 
-\begin{enumerate}
-\item both have private sources of randomness,
-\item can send and receive classical messages over a (trusted) classical
-channel,
-\item can prevent parts of their untrusted quantum devices from communicating
-with each other, and
-\item have access to an untrusted quantum channel.
-\end{enumerate}
-\end{assumption}
-
-\branchcolor{purple}{We restrict ourselves to a ``measure and exchange'' class of protocols---protocols
-where Alice and Bob start with some pre-prepared states and subsequently,
-only perform classical computation and quantum measurements locally
-in conjunction with exchanging classical and quantum messages. More
-precisely, we consider the following (likely restricted) class of
-device independent protocols.}
-\begin{defn}[Measure and Exchange (Device Independent Two-Party) Protocols]
-\label{def:MEprotocol} A \emph{measure and exchange (device independent
-two-party) protocol} has the following form:
-\begin{enumerate}
-\item Inputs:
-\begin{enumerate}
-\item Alice is given quantum registers $A_{1},A_{2},\dots A_{p}$ together
-with POVMs\footnote{For concreteness, take the case of binary measurements. By $\{M_{a|x}^{A_{1}}\}_{a}$,
-for instance, we mean $\{M_{0|x}^{A_{1}},M_{1|x}^{A_{1}}\}$ is a
-POVM for $x\in\{0,1\}$. } 
-\[
-\{M_{a|x}^{A_{1}}\}_{a},\{M_{a|x}^{A_{2}}\}_{a},\dots\{M_{a|x}^{A_{p}}\}_{a}
-\]
-which act on them and Bob is, analogously, given quantum registers
-$B_{1},B_{2},\dots B_{q}$ together with POVMs 
-\[
-\{M_{b|y}^{B_{1}}\}_{b},\{M_{b|y}^{B_{2}}\}_{b},\dots,\{M_{b|y}^{B_{q}}\}_{b}.
-\]
-Alice shields $A_{1},A_{2},\dots A_{p}$ (and the POVMs) from each
-other and from Bob's lab. Bob similarly shields $B_{1},B_{2}\dots B_{q}$
-(and the POVMs) from each other and from Alice's lab.
-\item Alice is given a random string $r^{A}$ and Bob is given a random
-string $r^{B}$ (of arbitrary but finite length).
-\end{enumerate}
-\item Structure: At each round of the protocol, the following is allowed.
-\begin{enumerate}
-\item Alice and Bob can locally perform arbitrary but finite time computations
-on a Turing Machine.
-\item They can exchange classical strings/messages.
-\item Alice (for instance) can 
-\begin{enumerate}
-\item send a register $A_{l}$ and the encoding of her POVMs $\{M_{i}^{A_{l}}\}_{i}$
-to Bob, or
-\item receive a register $B_{m}$ and the encoding of the POVMs $\{M_{i}^{B_{m}}\}_{i}$. 
-\end{enumerate}
-Analogously for Bob. 
-\end{enumerate}
-\end{enumerate}
-\end{defn}
-
-It is clear that a protocol in the box formalism (\Defref{BoxProtocol})
-which uses only quantum boxes (\Defref{box}) can be implemented as
-a measure and exchange protocol (\Defref{MEprotocol}).
-
-\subsection{Security of \Algref{SCForiginalJ}}
-\label{subsec:SCForiginal}
-
-%\branchcolor{purple}{
-We defined \Algref{SCForiginalJ} in the introduction and it referred to a GHZ test informally. We briefly remind the reader of this test and setup some notation we intend to use.
-%of the GHZ test, upon which the aforementioned protocol
-%depends, and set up some conventions.
-%This is spooky! Oh, fun. Noooooooo.... Oh, Jamie, I was just going to excuse myself and disappear; I have to get a covid test done... Institute requirements for using the office space...
-%Haha...
-%Wait, you mean let's scare Tom? :p
-% I know, I figured eventually!
-% I am slow. As always.
-% Yes... Let's do that.
-
-%} 
-% - Hi there Atul !!
-% -Boooooooh 
-% - I'm verifying if you are productive. let's scare Jamie. Click on the icon at the top of the page to go to Jamies position. I'm Tom. Wait, what ??? Let's scare Jamie. 3 - 2 - 1 go
+We recall the GHZ test before starting our main discussion as this is at the heart of these protocols.
 
 \begin{defn}
 \label{def:GHZ-box}Suppose we are given three boxes, $\Box^{A},\Box^{B}$
@@ -975,7 +859,7 @@ satisfy $x\oplus y\oplus z=1$.
 \end{defn}
 
 It is known that no classical triple of boxes can pass the GHZ test with certainty but quantum boxes can.
-\Tnote{Add self-testing}
+%\Tnote{Add self-testing}
 
 \begin{claim}
 \label{claim:Quantum-boxes-pass}Quantum boxes pass the GHZ test with
@@ -995,44 +879,121 @@ i.e. $\sigma_{x}\sigma_{y}+\sigma_{y}\sigma_{x}=0$.
 %\branchcolor{purple}{
 %}
 
-While \cite{Silman2011} do not rely on the self-testing property of the GHZ test for their analysis of \Algref{SCForiginalJ}, our work does. We discuss self-testing in \Secref{securityAsymptotic} and \Secref{SecurityFiniteN}. 
+As alluded to, while \cite{Silman2011} does not rely on the self-testing property of the GHZ test for the analysis of \Algref{SCF}, our work does. We discuss self-testing later, together with the security proofs (\Secref{securityAsymptotic,SecurityFiniteN}).
 
 
-%\subsection{The Protocol}
-%\label{subsec:SCForiginal}
+\subsection{Prior Art}
+\label{subsec:SCForiginal}
 
-%\Tnote{Is this a repetition ?}
+\Algref{SCF} is defined as follows. 
+
+\begin{varalgorithm}{S} %{Protocol $\mathcal{I}$}
+	\caption{\quad A DI-SCF protocol with $\PA = \cos^2{\pi/8}$ and $\PB = 3/4$~\cite{Silman2011}; see also \Subsecref{SCForiginal}} \label{alg:SCF}  
+
+Alice has one box and Bob has two boxes. 
+Each box takes one binary input and gives one binary output and are designed to play the optimal GHZ game strategy. 
+(Who creates and distributes the boxes is not important in the DI setting.) 
+\begin{enumerate}
+\item 
+Alice chooses a uniformly random input to her box $x \in \{ 0, 1 \}$ and obtains the outcome $a$. 
+She chooses another uniformly random bit $r \in \{ 0, 1 \}$ and computes $s = a \oplus (x \cdot r)$. 
+She sends $s$ to Bob. 
+\item 
+Bob chooses a uniformly random bit $g \in \{ 0, 1 \}$ and sends it to Alice. 
+(We may think of $g$ as Bob's ``guess'' for the value of $x$.) 
+\item 
+Alice sends $x$ and $a$ to Bob. 
+They both compute the output $c = x \oplus g$. 
+This is the outcome of the protocol assuming neither Alice nor Bob abort. %\Jnote{I guess only Bob may abort?}
+\item 
+Bob now tests to see if Alice was honest using the following two tests. 
+\begin{enumerate} 
+\item[\textup{Test 1}:] Bob sees if $s = a$ or $s = a \oplus x$. 
+If this is not the case, he knows Alice cheated and aborts. 
+\item[\textup{Test 2}:] Bob chooses a uniformly random bit 
+$y \in \{ 0, 1 \}$ and computes $z =  x \oplus y \oplus 1$. 
+He inputs $y$ and $z$ into his two boxes and obtains respective outcomes $b$ and $c$. 
+He aborts if $(a,b,c,x,y,z)$ does not satisfy the winning conditions of the GHZ game. 
+\end{enumerate} 
+\item If Bob does not abort, they both accept the value of $c$ as the outcome of the protocol. 
+\end{enumerate} 
+\end{varalgorithm} 
+
+
+\begin{varalgorithm}{W} %
+	%{Protocol $\mathcal{I}$} 
+	\caption{\quad Weak version of \Algref{SCF}} \label{alg:WCF} 
+	%$\mathcal{J\ref{alg:SCF}}$ 
+	%\begin{lyxalgorithm}[Weak version of Protocol~\ref{alg:SCF}] \label{alg:WCF} 
+	Alice has one box and Bob has two boxes. 
+	Each box takes one binary input and gives one binary output and are designed to play the optimal GHZ game strategy. 
+	(Who creates and distributes the boxes is not important in the DI setting.) 
+	\begin{enumerate}
+	\item 
+	Alice chooses a uniformly random input to her box $x \in \{ 0, 1 \}$ and obtains the outcome $a$. 
+	She chooses another uniformly random bit $r \in \{ 0, 1 \}$ and computes $s = a \oplus (x \cdot r)$. 
+	She sends $s$ to Bob. 
+	\item 
+	Bob chooses a uniformly random bit $g \in \{ 0, 1 \}$ and sends it to Alice. 
+	(We may think of $g$ as Bob's ``guess'' for the value of $x$.) 
+	\item 
+	Alice sends $x$ to Bob. 
+	They both compute the output $c = x \oplus g$. 
+	This is the outcome of the protocol assuming neither Alice nor Bob abort. 
+
+	\item Test rounds:
+	\begin{enumerate}
+	\item If $x\oplus g=0$:\\
+	Alice sends $a$ to Bob.\\
+	Bob tests if $s=a$ or $s=a\oplus x$. If the test fails, he aborts.
+	Bob chooses $y,z\in_{R}\{0,1\}$ such that $x\oplus y\oplus z=1$
+	and then performs a GHZ using $x,y,z$ as the inputs and $a,b,c$
+	as the output from the three boxes. He aborts if this test fails.
+	\item Else, if $x\oplus g=1$:
+	\begin{enumerate}
+	\item Alice chooses $y,z\in_{R}\{0,1\}$ s.t. $x\oplus y\oplus z=1$ and
+	sends them to Bob.
+	\item Bob inputs $y,z$ into his boxes, obtains and sends $b,c$ to Alice.
+	\end{enumerate}
+	Alice tests if $x,y,z$ as inputs and $a,b,c$ as outputs, satisfy
+	the GHZ test. She aborts if this test fails.
+	\end{enumerate}
+
+	\item If Alice and Bob do not abort, they both accept the value of $c$ as the outcome of the protocol.  
+
+	\end{enumerate} 
+\end{varalgorithm} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{Security of \Algref{SCF}}
+% \label{subsec:SCForiginal}
+
 %\branchcolor{purple}{
-% The best DI CF protocol known is the one introduced in \cite{Silman2011}.
-% While this is a protocol for SCF, and so also works as a WCF protocol,
-% we do not know of any better protocol for the latter.
-% %}
-% \begin{lyxalgorithm}[SCF, original]
-%  \label{alg:SCForiginal}Alice has one box and Bob has two boxes
-% (in the security analysis, we let the cheating player distribute the
-% boxes). Each box takes one binary input and gives one binary output. 
-% \begin{enumerate}
-% \item Alice chooses $x\in_{R}\{0,1\}$ and inputs it into her box to obtain
-% $a$. She chooses $r\in_{R}\{0,1\}$ to compute $s=a\oplus x.r$ and
-% sends $s$ to Bob.
-% \item Bob chooses $g\in_{R}\{0,1\}$ (for ``guess'') and sends it to Alice.
-% \item Alice sends $x$ and $a$ to Bob. They both compute the output $x\oplus g$. 
-% \item Test round
-% \begin{enumerate}
-% \item Bob tests if $s=a$ or $s=a\oplus x$. If the test fails, he aborts.
-% Bob chooses $b,c\in_{R}\{0,1\}$ such that $a\oplus b\oplus c=1$
-% and then performs a GHZ using $a,b,c$ as the inputs and $x,y,z$
-% as the output from the three boxes. He aborts if this test fails.
-% \end{enumerate}
-% \end{enumerate}
-% \end{lyxalgorithm}
+%of the GHZ test, upon which the aforementioned protocol
+%depends, and set up some conventions.
+%This is spooky! Oh, fun. Noooooooo.... Oh, Jamie, I was just going to excuse myself and disappear; I have to get a covid test done... Institute requirements for using the office space...
+%Haha...
+%Wait, you mean let's scare Tom? :p
+% I know, I figured eventually!
+% I am slow. As always.
+% Yes... Let's do that.
 
-We now discuss the correctness and soundness of \Algref{SCForiginalJ}. From \Claimref{Quantum-boxes-pass}, it is clear that when both players
+%} 
+% - Hi there Atul !!
+% -Boooooooh 
+% - I'm verifying if you are productive. let's scare Jamie. Click on the icon at the top of the page to go to Jamies position. I'm Tom. Wait, what ??? Let's scare Jamie. 3 - 2 - 1 go
+
+
+
+
+
+We now discuss the correctness and soundness of \Algref{SCF}. From \Claimref{Quantum-boxes-pass}, it is clear that when both players
 follow the protocol using GHZ boxes (\Defref{GHZ-box}),
 Bob never aborts and they win with equal probabilities. As for the security, \cite{Silman2011} proved the following.
 \begin{lem}[Security of SCF]
  \cite{Silman2011} Let $\mathcal{I}$ denote the protocol corresponding
-to \Algref{SCForiginalJ}. Then, the success probability of cheating
+to \Algref{SCF}. Then, the success probability of cheating
 Bob, $p_{B}^{*}(\mathcal{I})\le\frac{3}{4}$ and that of cheating
 Alice, $p_{A}^{*}(\mathcal{I})\le\cos^{2}(\pi/8)$. Further, both
 bounds are saturated by a quantum strategy which uses a GHZ state
@@ -1043,22 +1004,25 @@ while cheating Bob measures his first box along $\sigma_{x}$ and
 second along $\sigma_{y}$. \label{lem:SCFstandard}
 \end{lem}
 
-\branchcolor{purple}{Note that both players can cheat maximally assuming they share a GHZ
+%\branchcolor{purple}
+{Note that both players can cheat maximally assuming they share a GHZ
 state and the honest player measures along the associated basis. This
 entails that even though the cheating player could potentially tamper
 with the boxes before handing them to the honest player, surprisingly,
 exploiting this freedom does not offer any advantage to the cheating
 player. }
 
-\section{First Technique: Self-testing (single shot, unbalanced)}
 
-\Jnote{I don't think this section is needed any more. We do need somewhere to write down explicitly what the $P$ and $Q$ protocol are. Perhaps rephrase the title and this section to write down explicitly what the protocols are? Not sure if the explicit protocol descriptions are really needed in any case. the lemmas here can be stated after we solve the SDPs. Probably.}
+%%%%%%%%%%%%%%%%%%%%%%
 
-\branchcolor{purple}{
+%\Jnote{I don't think this section is needed any more. We do need somewhere to write down explicitly what the $P$ and $Q$ protocol are. Perhaps rephrase the title and this section to write down explicitly what the protocols are? Not sure if the explicit protocol descriptions are really needed in any case. the lemmas here can be stated after we solve the SDPs. Probably.}
+
+%\branchcolor{purple}
+{
 
 While we already motivated our self-testing idea in the introduction, we discuss it here with more detail. 
 We make two observations. 
-First, in \Algref{SCForiginalJ} only Bob performs the test round.
+First, in \Algref{SCF} only Bob performs the test round.
 In WCF, there is a notion of Alice winning and Bob winning. Thus,
 if $x\oplus g=0$, i.e. the outcome corresponding to ``Alice wins'',
 we can imagine that Bob continues to perform the test to ensure (at
@@ -1090,7 +1054,7 @@ case. Kitaev \cite{Kitaev03} showed that for any SCF protocol, $\epsilon\ge\frac
 
 Combining these two observations, results in an improvement in the
 security for Alice. We obtain a protocol with $P_{A}^{*}=3/4$,
-which is the same as before, but $P_{B}^{*} \approx 0.6667$ which is lower than $0.75$, that of \algref{SCForiginalJ}.} 
+which is the same as before, but $P_{B}^{*} \approx 0.6667$ which is lower than $0.75$, that of \algref{SCF}.} 
 
 \Jnote{This is way too fast. Good, but fast. It deserves a lot more explanation. We should have an appendix for it, perhaps.} 
 
@@ -1124,6 +1088,22 @@ of cheat vectors for Alice. %(see \Eqref{cheatVectors}).
 
 \subsection{Alice self-tests | Protocol $\mathcal{P}$}
 
+
+\begin{varalgorithm}{P}
+	\caption{\quad Alice self-tests} \label{alg:AliceSelfTests}  
+
+	Alice starts with $n$ boxes, indexed from $1_1$ to $1_n$. 
+	Bob starts with $2n$ boxes, the first half indexed by $2_1$ to $2_n$ and the last half indexed by $3_1$ to $3_n$. 
+	The triple of boxes $(1_i, 2_i, 3_i)$ is meant to play the optimal GHZ game strategy.   
+	\begin{enumerate}    
+	\item Alice selects a uniformly random index $i \in \{ 1, \ldots, n \}$ and asks Bob to send her all the boxes \emph{except} those indexed by $2_i$ and $3_i$. 
+	\item Alice performs $n-1$ GHZ tests using the $n-1$ triples of boxes she has, making sure there is no communication between any of them.\footnote{This can be done by shielding for example. We cannot require space-like separations because in the relativistic setting, coin flipping is possible.}%she has a space-like separation between the boxes. (She has long arms.) 
+	\item Alice aborts if \emph{any} of the GHZ tests fail. 
+	Otherwise, she announces to Bob that they can use the remaining boxes for Protocol~\ref{alg:WCF}.  
+	\end{enumerate} 
+\end{varalgorithm}  
+
+
 \branchcolor{purple}{We begin with the case where Alice self-tests.}
 In the honest implementation, the \emph{trio} of boxes used in the
 following are characterised by the GHZ setup (see \Claimref{Quantum-boxes-pass}). 
@@ -1137,7 +1117,7 @@ following are characterised by the GHZ setup (see \Claimref{Quantum-boxes-pass})
 
 
 % \begin{lyxalgorithm}[Alice self-tests her boxes]
-% \label{alg:AliceSelfTestsHerBoxes}There are $N$ trios of boxes;
+% \label{alg:AliceSelfTests}There are $N$ trios of boxes;
 % Alice has the first part and Bob has the remaining two parts, of each
 % trio. 
 % \begin{enumerate}
@@ -1182,7 +1162,7 @@ following are characterised by the GHZ setup (see \Claimref{Quantum-boxes-pass})
 \Tnote{something about assuming perfect self-testing}
 \begin{lem}
 \label{lem:AliceSelfTests}Let $\mathcal{P}$ denote the protocol
-corresponding to \Algref{AliceSelfTestsHerBoxes}. Then Alice's cheating
+corresponding to \Algref{AliceSelfTests}. Then Alice's cheating
 probability $p_{A}^{*}(\mathcal{P})\le\cos^{2}(\pi/8)\approx0.852$.
 Further, let $c_{0},c_{1},c_{\perp}\in\mathbb{R}$, and $\mathbb{C}_{B}(\mathcal{P})$
 be the set of cheat vectors for Bob. 
@@ -1203,22 +1183,37 @@ for cheating Alice is the same as that of the original protocol. }
 \branchcolor{purple}{What if we modified the protocol and had Bob self-test his boxes?
 Does that yield a better protocol? We address the first question now
 and the second in the subsequent section.}
-\begin{lyxalgorithm}[Bob self-tests his boxes]
-\label{alg:BobSelfTests}Proceed exactly as in \Algref{AliceSelfTestsHerBoxes},
-except for the self-testing where the rolls of Alice and Bob are reversed.
-More explicitly, suppose there are $N$ trios of boxes; Alice has
-the first part and Bob has the remaining two parts, of each trio. 
-\begin{enumerate}
-\item Bob selects a number $i\in_{R}\{1,2\dots N\}$ and sends it to Alice.
-\item Alice sends her part of the trio of boxes corresponding to $\{1,2\dots N\}\backslash i$,
-i.e. she sends all the boxes, except the ones corresponding to the
-trio $i$.
-\item Bob performs a GHZ test on all the trios labelled $\left\{ 1,2\dots N\right\} \backslash i$,
-i.e. all the trios except the $i$th.
-\end{enumerate}
-Henceforth, proceed as in \Algref{AliceSelfTestsHerBoxes} after the
-self-testing step.
-\end{lyxalgorithm}
+
+
+\begin{varalgorithm}{Q}
+	\caption{\quad Bob self-tests}
+\label{alg:BobSelfTests}
+% Proceed exactly as in \Algref{AliceSelfTests},
+% except for the self-testing where the rolls of Alice and Bob are reversed.
+% More explicitly, suppose there are $N$ trios of boxes; Alice has
+% the first part and Bob has the remaining two parts, of each trio. 
+% \begin{enumerate}
+% \item Bob selects a number $i\in_{R}\{1,2\dots N\}$ and sends it to Alice.
+% \item Alice sends her part of the trio of boxes corresponding to $\{1,2\dots N\}\backslash i$,
+% i.e. she sends all the boxes, except the ones corresponding to the
+% trio $i$.
+% \item Bob performs a GHZ test on all the trios labelled $\left\{ 1,2\dots N\right\} \backslash i$,
+% i.e. all the trios except the $i$th.
+% \end{enumerate}
+% Henceforth, proceed as in \Algref{AliceSelfTests} after the
+% self-testing step.
+	Alice starts with $n$ boxes, indexed from $1_1$ to $1_n$. 
+	Bob starts with $2n$ boxes, the first half indexed by $2_1$ to $2_n$ and the last half indexed by $3_1$ to $3_n$. 
+	The triple of boxes $(1_i, 2_i, 3_i)$ is meant to play the optimal GHZ game strategy.   
+	\begin{enumerate}    
+	\item Bob selects a uniformly random index $i \in \{ 1, \ldots, n \}$ and asks Alice to send him all the boxes \emph{except} those indexed by $1_i$. 
+	\item Bob performs $n-1$ GHZ tests using the $n-1$ triples of boxes he has, making sure there is no communication between any of them.%she has a space-like separation between the boxes. (She has long arms.) 
+	\item Bob aborts if \emph{any} of the GHZ tests fail. 
+	Otherwise, he announces to Alice that they can use the remaining boxes for Protocol~\ref{alg:WCF}.  
+	\end{enumerate} 
+
+\end{varalgorithm}
+
 
 \branchcolor{purple}{As already indicated in \Subsecref{Proof-Technique}, we do not expect
 the cheating probabilities to improve but we do expect an SDP characterisation
@@ -1240,11 +1235,35 @@ $p_{A}^{*}(\mathcal{Q})\le3/4$ and Bob's cheating probability, $p_{B}^{*}(\mathc
 
 The proof is again deferred; see \Subsecref{SDP-when-Bob}.
 
-\section{Second Technique: Abort-phobic composition \label{sec:Second-Technique}}
+\section{Compositions | Second Technique\label{sec:Second-Technique}}
+
+\begin{table}
+	\begin{centering}
+	\begin{tabular}{cc}
+	\toprule 
+	Protocol & Bias\tabularnewline
+	\midrule
+	%\midrule 
+	$C^{LL}(\mathcal{W},\dots,\mathcal{W})$ & $0.336\dots$\tabularnewline
+	\midrule 
+	$C^{LL}(\mathcal{P},\dots,\mathcal{P})$ & $0.3199\dots$\tabularnewline
+	\midrule 
+	$C^{\perp L}(\mathcal{P},\dots,\mathcal{P})$ & $0.3148\dots$ \tabularnewline
+	\midrule 
+	$C^{L\perp}(\mathcal{Q},\dots,\mathcal{Q})$ & $0.3226\dots$\tabularnewline
+	\midrule 
+	$C^{L\perp}(\mathcal{Q},\dots,\mathcal{Q},\mathcal{P})$ & $0.29104\dots$\tabularnewline
+	\bottomrule
+	\end{tabular}
+	\par\end{centering}
+	\caption{Let $\mathcal{W},\mathcal{P},$ and $\mathcal{Q}$ denote \Algref{WCF,AliceSelfTests,BobSelfTests} respectively. Let $C^{LL}$ be lenient ...}
+	
+\end{table}
+	
 
 In this section, we use the convention that $\mathcal{I},\mathcal{P}$
 and $\mathcal{Q}$ correspond to the protocols described in \Algref{SCForiginal},
-\Algref{AliceSelfTestsHerBoxes} and \Algref{BobSelfTests}, respectively.
+\Algref{AliceSelfTests} and \Algref{BobSelfTests}, respectively.
 \branchcolor{purple}{Notice that $p_{A}^{*}(\mathcal{X})>p_{B}^{*}(\mathcal{X})$ where
 $\mathcal{X}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$. We call
 such protocols ``unbalanced''. In this section we start from unbalanced
@@ -1356,7 +1375,7 @@ compositions.
 \subsection{Standard Composition | $C^{LL}$}
 
 \branchcolor{purple}{We begin with the simplest case, standard composition, $C^{LL}$.
-Let us take an example. Consider protocol $\mathcal{P}$ (see \Algref{AliceSelfTestsHerBoxes})
+Let us take an example. Consider protocol $\mathcal{P}$ (see \Algref{AliceSelfTests})
 and recall (see \Lemref{AliceSelfTests})
 \begin{align*}
 p_{A}^{*}(\mathcal{P}_{A}) & =:\alpha\approx0.852\dots,\\
@@ -1803,30 +1822,12 @@ We show this for the case where Alice self-tests. We expect an analogous result 
 \label{subsec:EstimateGHZ}
 We assume that the $3n$ boxes are described by some joint quantum state and local measurement operators. After playing the GHZ game with $3(n-1)$ of them, and verifying that they all pass, we want to make a statement about the remaining box, whose state $\tilde \rho$ is conditioned on the passing of all the other test. 
 
-% \begin{algorithm}[H]
-% \label{alg:self-test}
-% \caption{Estimation of the GHZ value}
-% \begin{algorithmic}[1]
-%     \STATEx 
-% 	\STATE Pick a box $J \in [ n ]$ uniformly at random.
-% 	\STATE For $i \in [n]\backslash J$, play the GHZ game with box $i$, denote outcome of game as $X_i\in \{0,1\}$ 
-% 	\STATE If 
-% 	\begin{IEEEeqnarray}{r'L}
-% 	     \Omega:& X_i = 1 \text{, for all } i\in [n] \backslash J
-% 	\end{IEEEeqnarray}
-% 	\STATE Then conclude that the remaining box satisfies
-% 	\begin{IEEEeqnarray}{r'L}
-% 	     T:& E[X_J|J,\Omega] \geq 1 - \delta 
-% 	\end{IEEEeqnarray}
-% \end{algorithmic}
-% \end{algorithm}
+% \floatname{algorithm}{Procedure}
 
-\begin{lyxalgorithm}
-	\label{alg:self-test} Estimation of the GHZ value.
-	% \caption{Estimation of the GHZ value}
-	% \begin{algorithmic}[1]
-	%     \STATEx 
-	\begin{enumerate}
+\begin{algorithm}[t]
+ \label{alg:self-test}
+ \caption{Estimation of the GHZ value}
+ 	\begin{enumerate}
 		\item Pick a box $J \in [ n ]$ uniformly at random.
 		\item For $i \in [n]\backslash J$, play the GHZ game with box $i$, denote outcome of game as $X_i\in \{0,1\}$ 
 		\item If 
@@ -1838,12 +1839,65 @@ We assume that the $3n$ boxes are described by some joint quantum state and loca
 		     T:& E[X_J|J,\Omega] \geq 1 - \delta 
 		\end{IEEEeqnarray}
 	\end{enumerate}
-	% \end{algorithmic}
-\end{lyxalgorithm}
+
+% \begin{algorithmicx}[1] %The [1] part numbers the steps
+%     %\STATEx 
+% 	\STATE Pick a box $J \in [ n ]$ uniformly at random.
+% 	\STATE For $i \in [n]\backslash J$, play the GHZ game with box $i$, denote outcome of game as $X_i\in \{0,1\}$ 		
+% 	\IF
+% 	{\begin{IEEEeqnarray}{r'L}
+% 	     \Omega:& X_i = 1 \text{, for all } i\in [n] \backslash J
+% 	\end{IEEEeqnarray}}
+% 		\STATE conclude that the remaining box satisfies
+% 		\begin{IEEEeqnarray}{r'L}
+% 			T:& E[X_J|J,\Omega] \geq 1 - \delta
+% 		\end{IEEEeqnarray}
+% 	\ENDIF
+% \end{algorithmicx}
+\end{algorithm}
+
+% \begin{algorithm}[H]
+% 	\label{alg:self-test}
+% 	\caption{Estimation of the GHZ value}
+%    \begin{algorithmic}[1] %The [1] part numbers the steps
+% 	   %\STATEx 
+% 	   \STATE Pick a box $J \in [ n ]$ uniformly at random.
+% 	   \STATE For $i \in [n]\backslash J$, play the GHZ game with box $i$, denote outcome of game as $X_i\in \{0,1\}$ 
+% 	   \STATE If 
+% 	   \begin{IEEEeqnarray}{r'L}
+% 			\Omega:& X_i = 1 \text{, for all } i\in [n] \backslash J
+% 	   \end{IEEEeqnarray}
+% 	   \STATE Then conclude that the remaining box satisfies
+% 	   \begin{IEEEeqnarray}{r'L}
+% 			T:& E[X_J|J,\Omega] \geq 1 - \delta 
+% 	   \end{IEEEeqnarray}
+%    \end{algorithmic}
+%    \end{algorithm}
+   
+
+% \begin{lyxalgorithm}
+% 	\label{alg:self-test} Estimation of the GHZ value.
+% 	% \caption{Estimation of the GHZ value}
+% 	% \begin{algorithmic}[1]
+% 	%     \STATEx 
+% 	\begin{enumerate}
+% 		\item Pick a box $J \in [ n ]$ uniformly at random.
+% 		\item For $i \in [n]\backslash J$, play the GHZ game with box $i$, denote outcome of game as $X_i\in \{0,1\}$ 
+% 		\item If 
+% 		\begin{IEEEeqnarray}{r'L}
+% 		     \Omega:& X_i = 1 \text{, for all } i\in [n] \backslash J
+% 		\end{IEEEeqnarray}
+% 		\item Then conclude that the remaining box satisfies
+% 		\begin{IEEEeqnarray}{r'L}
+% 		     T:& E[X_J|J,\Omega] \geq 1 - \delta 
+% 		\end{IEEEeqnarray}
+% 	\end{enumerate}
+% 	% \end{algorithmic}
+% \end{lyxalgorithm}
 	
 The expectation value of $E[X_J|J,\Omega]$ accurately describes the expected GHZ value associated to the state of the remaining boxes $J$, conditioned on having measuring some outcome sequence in the other boxes which passes all the GHZ tests. Note that the conditioning in $J$ is important because otherwise we would get a bound on the GHZ averaged over all boxes, but we are only interested in the remaining box.
 
-\begin{prop}[Security of \Algref{self-test}]
+\begin{prop}[Security of \ref{alg:self-test}]
 	\label{prop:security}
 	For any implementation of the boxes and choice of $\delta>0$ the joint probability that that the test $\Omega$ passes and that the conclusion $T$ is false is small $\Pr[ \Omega \cap \bar T] \leq \frac{1}{1-\delta + n\delta} \leq \frac{1}{n\delta}$, where the first upper-bound is tight.
 \end{prop}
@@ -1993,5 +2047,129 @@ If $C$ is compact, $h$ is continuous everywhere.
 \clearpage
 \bibliographystyle{amsalpha}
 \bibliography{DI_WCF_ideas}
+
+\section{Acknowledgements}
+
+\appendix
+
+\section{Device Independence and the Box Paradigm}
+\label{sec:BoxParadigm}
+\branchcolor{purple}{We describe device independent protocols as classical protocols with one modification: we assume that the two parties can exchange
+boxes and that the parties can shield their boxes (from the other
+boxes i.e. the boxes can't communicate with each other once shielded).
+% \footnote{TODO: Verify if this notion is in fact correct; I hope I'm not making
+% a major mistake somehow. I should be able to take the POVMs as tensor
+% products right, because I can change them at will, independent of
+% the others (and ensuring that there's no communication between them;
+% could they be somehow entangled, i.e. could it be that somehow the
+% measurement operators are themselves quantum correlated?); I would
+% like to reach the conclusion starting from the locality assumption.}
+}
+
+\begin{defn}[Box]
+ \label{def:box}A \emph{box} is a device that takes an input $x\in\mathcal{X}$
+and yields an outputs $a\in\mathcal{A}$ where $\mathcal{X}$ and
+$\mathcal{A}$ are finite sets. Typically, a set of $n$ boxes, taking
+inputs $x_{1},x_{2},\dots x_{n}$ and yielding outputs $a_{1},a_{2}\dots a_{n}$
+are \emph{characterised} by a joint conditional probability distribution,
+denoted by 
+\[
+p(a_{1},a_{2}\dots a_{n}|x_{1},x_{2}\dots x_{n}).
+\]
+Further, if $p(a_{1},a_{2}\dots a_{n}|x_{1},x_{2}\dots x_{n})=\tr\left[M_{a_{1}|x_{1}}^{1}\otimes M_{a_{2}|x_{2}}^{2}\dots\otimes M_{a_{n}|x_{n}}^{n}\rho\right]$
+then we call the set of boxes, \emph{quantum boxes}, where $\{M_{a'|x'}^{i}\}_{a'\in\mathcal{A}_{i}}$constitute
+a POVM for a fixed $i$ and $x'$, $\rho$ is a density matrix and
+their dimensions are mutually consistent.
+\end{defn}
+
+Henceforth, we restrict ourselves to quantum boxes. 
+\begin{defn}[Protocol in the box formalism]
+ \label{def:BoxProtocol}A generic two-party protocol in the box
+formalism has the following form:
+\begin{enumerate}
+\item Inputs:
+\begin{enumerate}
+\item Alice is given boxes $\Box_{1}^{A},\Box_{2}^{A}\dots\Box_{p}^{A}$
+and Bob is given boxes $\Box_{1}^{B},\Box_{2}^{B},\dots\Box_{q}^{B}$. 
+\item Alice is given a random string $r^{A}$ and Bob is given a random
+string $r^{B}$ (of arbitrary but finite length).
+\end{enumerate}
+\item Structure: At each round of the protocol, the following is allowed.
+\begin{enumerate}
+\item Alice and Bob can locally perform arbitrary but finite time computations
+on a Turing Machine. 
+\item They can exchange classical strings/messages and boxes.
+\end{enumerate}
+\end{enumerate}
+\branchcolor{purple}{A protocol in the box formalism is readily expressed as a protocol
+which uses a (trusted) classical channel (i.e. they trust their classical
+devices to reliably send/receive messages), untrusted quantum devices
+and an untrusted quantum channel (i.e. a channel that can carry quantum
+states but may be controlled by the adversary).}
+\end{defn}
+
+\begin{assumption}[Setup of Device Independent Two-Party Protocols]
+ Alice and Bob 
+\begin{enumerate}
+\item both have private sources of randomness,
+\item can send and receive classical messages over a (trusted) classical
+channel,
+\item can prevent parts of their untrusted quantum devices from communicating
+with each other, and
+\item have access to an untrusted quantum channel.
+\end{enumerate}
+\end{assumption}
+
+\branchcolor{purple}{We restrict ourselves to a ``measure and exchange'' class of protocols---protocols
+where Alice and Bob start with some pre-prepared states and subsequently,
+only perform classical computation and quantum measurements locally
+in conjunction with exchanging classical and quantum messages. More
+precisely, we consider the following (likely restricted) class of
+device independent protocols.}
+\begin{defn}[Measure and Exchange (Device Independent Two-Party) Protocols]
+\label{def:MEprotocol} A \emph{measure and exchange (device independent
+two-party) protocol} has the following form:
+\begin{enumerate}
+\item Inputs:
+\begin{enumerate}
+\item Alice is given quantum registers $A_{1},A_{2},\dots A_{p}$ together
+with POVMs\footnote{For concreteness, take the case of binary measurements. By $\{M_{a|x}^{A_{1}}\}_{a}$,
+for instance, we mean $\{M_{0|x}^{A_{1}},M_{1|x}^{A_{1}}\}$ is a
+POVM for $x\in\{0,1\}$. } 
+\[
+\{M_{a|x}^{A_{1}}\}_{a},\{M_{a|x}^{A_{2}}\}_{a},\dots\{M_{a|x}^{A_{p}}\}_{a}
+\]
+which act on them and Bob is, analogously, given quantum registers
+$B_{1},B_{2},\dots B_{q}$ together with POVMs 
+\[
+\{M_{b|y}^{B_{1}}\}_{b},\{M_{b|y}^{B_{2}}\}_{b},\dots,\{M_{b|y}^{B_{q}}\}_{b}.
+\]
+Alice shields $A_{1},A_{2},\dots A_{p}$ (and the POVMs) from each
+other and from Bob's lab. Bob similarly shields $B_{1},B_{2}\dots B_{q}$
+(and the POVMs) from each other and from Alice's lab.
+\item Alice is given a random string $r^{A}$ and Bob is given a random
+string $r^{B}$ (of arbitrary but finite length).
+\end{enumerate}
+\item Structure: At each round of the protocol, the following is allowed.
+\begin{enumerate}
+\item Alice and Bob can locally perform arbitrary but finite time computations
+on a Turing Machine.
+\item They can exchange classical strings/messages.
+\item Alice (for instance) can 
+\begin{enumerate}
+\item send a register $A_{l}$ and the encoding of her POVMs $\{M_{i}^{A_{l}}\}_{i}$
+to Bob, or
+\item receive a register $B_{m}$ and the encoding of the POVMs $\{M_{i}^{B_{m}}\}_{i}$. 
+\end{enumerate}
+Analogously for Bob. 
+\end{enumerate}
+\end{enumerate}
+\end{defn}
+
+It is clear that a protocol in the box formalism (\Defref{BoxProtocol})
+which uses only quantum boxes (\Defref{box}) can be implemented as
+a measure and exchange protocol (\Defref{MEprotocol}).
+
+
 
 \end{document}

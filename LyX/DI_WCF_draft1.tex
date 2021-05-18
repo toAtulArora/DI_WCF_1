@@ -13,6 +13,7 @@
 \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in,headheight=1in,headsep=1in,footskip=0.7in}
 \usepackage{color}
 \usepackage{refstyle}
+\usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{wasysym}
 
@@ -30,6 +31,8 @@
 \AtBeginDocument{\providecommand\Lemref[1]{\ref{Lem:#1}}}
 \AtBeginDocument{\providecommand\Figref[1]{\ref{Fig:#1}}}
 \AtBeginDocument{\providecommand\Assuref[1]{\ref{Assu:#1}}}
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
 \RS@ifundefined{subsecref}
   {\newref{subsec}{name = \RSsectxt}}
   {}
@@ -298,6 +301,29 @@ where we use the same composition technique except that at the last
 is strictly worse than considering $C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{P})$;
 this should become evident later.} $\mathcal{P}$ instead of $\mathcal{Q}$. 
 \end{itemize}
+\begin{table}
+\begin{centering}
+\begin{tabular}{cc}
+\toprule 
+Protocol & Bias\tabularnewline
+\midrule
+\midrule 
+$C^{LL}(\mathcal{W},\dots,\mathcal{W})$ & $0.336\dots$\tabularnewline
+\midrule 
+$C^{LL}(\mathcal{P},\dots,\mathcal{P})$ & $0.3199\dots$\tabularnewline
+\midrule 
+$C^{\perp L}(\mathcal{P},\dots,\mathcal{P})$ & $0.3148\dots$ \tabularnewline
+\midrule 
+$C^{L\perp}(\mathcal{Q},\dots,\mathcal{Q})$ & $0.3226\dots$\tabularnewline
+\midrule 
+$C^{L\perp}(\mathcal{Q},\dots,\mathcal{Q},\mathcal{P})$ & $0.29104\dots$\tabularnewline
+\bottomrule
+\end{tabular}
+\par\end{centering}
+\caption{}
+
+\end{table}
+
 }
 
 
@@ -624,7 +650,7 @@ programme. In particular, i.e. for $c_{0}=c_{\perp}=0$ and $c_{1}=1$,
 $p_{B}^{*}(\mathcal{P})\apprle0.667...$ (in the limit). 
 \end{lem}
 
-We defer the proof to \Subsecref{SDP-when-Alice}. \branchcolor{purple}{The value for $p_{B}^{*}(\mathcal{P})$ was obtained by numerically
+We defer the proof to \Subsubsecref{SDP-when-Alice}. \branchcolor{purple}{The value for $p_{B}^{*}(\mathcal{P})$ was obtained by numerically
 solving the corresponding semi definite programme while the analysis
 for cheating Alice is the same as that of the original protocol. } 
 
@@ -978,8 +1004,9 @@ to $\sigma_{y}$ for $x=1$, as in \Claimref{Quantum-boxes-pass}.
 of vectors). Therefore the isometry can't get rid of the $\left|{\rm junk}\right\rangle $
 part. }
 
+\subsection{Cheat vectors optimisation using Semi Definite Programming}
 
-\subsection{SDP when Alice self-tests\label{subsec:SDP-when-Alice}}
+\subsubsection{SDP when Alice self-tests\label{subsubsec:SDP-when-Alice}}
 
 \branchcolor{blue}{\begin{proof}[Asymptotic proof of \Lemref{AliceSelfTests}]
 We prove \Lemref{AliceSelfTests} under \Assuref{asymptotic}. We
@@ -1102,7 +1129,7 @@ where the projectors are defined in \Eqref{AliceProjs}.
 }
 
 
-\subsection{SDP when Bob self-tests\label{subsec:SDP-when-Bob}}
+\subsubsection{SDP when Bob self-tests\label{subsec:SDP-when-Bob}}
 
 \branchcolor{blue}{\begin{proof}[Proof of \Algref{BobSelfTests}]
 Denote by $\mathcal{I}$ the protocol corresponding to \Algref{SCForiginal}. 

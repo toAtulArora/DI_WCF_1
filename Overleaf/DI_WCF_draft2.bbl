@@ -32,6 +32,11 @@ Atul~Singh Arora, J{\'{e}}r{\'{e}}mie Roland, and Stephan Weis, \emph{Quantum
 Manuel Blum, \emph{Coin flipping by telephone a protocol for solving impossible
   problems}, SIGACT News \textbf{15} (1983), no.~1, 23--27.
 
+\bibitem[HW11]{HW11}
+Esther H{\"a}nggi and J{\"u}rg Wullschleger, \emph{Tight bounds for classical
+  and quantum coin flipping}, Theory of Cryptography (Berlin, Heidelberg)
+  (Yuval Ishai, ed.), Springer Berlin Heidelberg, 2011, pp.~468--485.
+
 \bibitem[Kit03]{Kitaev03}
 Alexei Kitaev, \emph{Quantum coin flipping}, Talk at the 6th workshop on
   Quantum Information Processing, 2003.

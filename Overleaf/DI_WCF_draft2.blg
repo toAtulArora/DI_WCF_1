@@ -6,7 +6,7 @@ The style file: amsalpha.bst
 Reallocating 'name_of_file' (item size: 1) to 13 items.
 Database file #1: DI_WCF_ideas.bib
 Warning--string name "url" is undefined
---line 1503 of file DI_WCF_ideas.bib
+--line 1520 of file DI_WCF_ideas.bib
 Warning--missing publisher in ARV21
 Warning--missing year in ARV21
 Warning--missing journal name in Arora2018
@@ -14,45 +14,45 @@ Warning--missing journal, volume, and year in Arora2018
 Warning--missing pages in Arora2018
 Warning--missing pages in Mochon07
 Warning--missing pages in Silman2011
-You've used 11 entries,
+You've used 12 entries,
             2624 wiz_defined-function locations,
-            643 strings with 6623 characters,
-and the built_in function-call counts, 4712 in all, are:
-= -- 428
-> -- 228
+            650 strings with 6770 characters,
+and the built_in function-call counts, 5265 in all, are:
+= -- 484
+> -- 251
 < -- 6
-+ -- 77
-- -- 76
-* -- 398
-:= -- 745
-add.period$ -- 11
-call.type$ -- 11
-change.case$ -- 71
-chr.to.int$ -- 11
-cite$ -- 18
-duplicate$ -- 209
-empty$ -- 349
-format.name$ -- 90
-if$ -- 966
++ -- 84
+- -- 83
+* -- 440
+:= -- 825
+add.period$ -- 12
+call.type$ -- 12
+change.case$ -- 77
+chr.to.int$ -- 12
+cite$ -- 19
+duplicate$ -- 236
+empty$ -- 393
+format.name$ -- 98
+if$ -- 1089
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 22
-newline$ -- 44
-num.names$ -- 37
-pop$ -- 92
+missing$ -- 24
+newline$ -- 47
+num.names$ -- 42
+pop$ -- 99
 preamble$ -- 1
-purify$ -- 82
+purify$ -- 89
 quote$ -- 0
-skip$ -- 159
+skip$ -- 185
 stack$ -- 0
-substring$ -- 242
-swap$ -- 52
+substring$ -- 281
+swap$ -- 61
 text.length$ -- 6
 text.prefix$ -- 5
 top$ -- 0
-type$ -- 84
+type$ -- 92
 warning$ -- 7
-while$ -- 44
-width$ -- 13
-write$ -- 127
+while$ -- 51
+width$ -- 14
+write$ -- 139
 (There were 8 warnings)
