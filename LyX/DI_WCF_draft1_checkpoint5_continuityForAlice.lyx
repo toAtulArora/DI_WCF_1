@@ -29,7 +29,7 @@
 %\newref{prop}{name=proposition~,Name=Proposition~,names=propositions~,Names=Propositions~}
 %\newref{conj}{name=conjecture~,Name=Conjecture~,names=conjectures~,Names=Conjectures~}
 \newref{assu}{name=assumption~,Name=Assumption~,names=assumptions~,Names=Assumptions~}
-\newref{rem}{name=remark~,Name=Remark~,names=remarks~,Names=Remarks~}
+%\newref{rem}{name=remark~,Name=Remark~,names=remarks~,Names=Remarks~}
 %\newref{alg}{name=algorithm~,Name=Algorithm~,names=algorithms~,Names=Algorithms~}
 \newref{fact}{name=fact~,Name=Fact~,names=facts~,Names=Facts~}
 \end_preamble
@@ -7409,11 +7409,6 @@ The basic idea here is to treat the state and measurements inside the boxes
 aoeu
 \end_layout
 
-\begin_layout Standard
-\begin_inset Branch proof
-inverted 0
-status open
-
 \begin_layout Proof
 We first write exactly what is going on physically, except that we take
  the liberty of 
@@ -7436,6 +7431,10 @@ renaming
 
  as variables.
  
+\end_layout
+
+\begin_layout Proof
+aoeu
 \end_layout
 
 \begin_deeper
@@ -7496,15 +7495,15 @@ rename
 
  (without changing the value of the SDP), we have 
 \begin_inset Formula 
-\begin{equation}
-\left|\Psi_{2}'\right\rangle =\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}\Phi_{PQR}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}.\label{eq:PsiZeroBasically}
-\end{equation}
+\[
+\left|\Psi_{2}'\right\rangle =\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}\Phi_{PQR}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}.
+\]
 
 \end_inset
 
 At this point, in the asymptotic case, we could directly apply the self-testing
  result and replace 
-\begin_inset Formula $\Phi_{PQR'}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}$
+\begin_inset Formula $\Phi_{PQR'}M_{a|x}^{P}\left|\psi\right\rangle _{PQR}$
 \end_inset
 
  with 
@@ -7512,10 +7511,18 @@ At this point, in the asymptotic case, we could directly apply the self-testing
 \end_inset
 
 .
- Now, instead, we require 
+ Now, instead, we simply define 
 \begin_inset Formula 
 \[
-\left\Vert \Phi_{PQR'}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}-\Pi_{x|a}^{H}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR'}\right\Vert \le\epsilon\quad\forall a,x\in\{0,1\}
+\left|\Xi\right\rangle :=\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}\Pi_{x|a}^{H}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR'}
+\]
+
+\end_inset
+
+and impose 
+\begin_inset Formula 
+\[
+\left\Vert \left|\Psi_{2}'\right\rangle \left\langle \Psi_{2}'\right|-\left|\Xi\right\rangle \left\langle \Xi\right|\right\Vert \le\epsilon'
 \]
 
 \end_inset
@@ -7530,7 +7537,7 @@ We could have used other norms but they would be a relaxation of the constraints
 
 \end_inset
 
- here is the trace norm 
+ we use here is the trace norm 
 \begin_inset Formula $\left\Vert .\right\Vert $
 \end_inset
 
@@ -7556,11 +7563,7 @@ noprefix "false"
 \begin_inset Formula $\epsilon$
 \end_inset
 
- vanishes (
-\begin_inset Formula $\epsilon$
-\end_inset
-
- comes from the self testing step).
+ vanishes.
  One could, henceforth, continue as in the asymptotic case.
  More precisely, one could start with 
 \begin_inset Formula $\left|\Psi_{0}\right\rangle :=\left|\Psi_{2}'\right\rangle $
@@ -7607,58 +7610,7 @@ The remaining steps are unchanged except that Alice additionally, always
 
 \begin_layout Standard
 The final optimisation problem is defined on the variables 
-\begin_inset Formula $\left|\psi\right\rangle \in PQR'$
-\end_inset
-
-, 
-\begin_inset Formula $M_{a|x}^{P}$
-\end_inset
-
- projectors (or POVMs) acting on 
-\begin_inset Formula $PQR$
-\end_inset
-
-, 
-\begin_inset Formula $\Phi_{PQR'}$
-\end_inset
-
- a local isometry
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-by local we mean it has the form 
-\begin_inset Formula $\Phi_{P}\otimes\Phi_{Q}\otimes\Phi_{R}$
-\end_inset
-
- where, for instance, 
-\begin_inset Formula $\Phi_{P}:P\to HP$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- from 
-\begin_inset Formula $PQR'\to HIJPQR'$
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
 \begin_inset Formula $\left|\Psi_{0}\right\rangle \in XAHIJPQR$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Formula $\left|{\rm junk}\right\rangle \in PQR'$
 \end_inset
 
 , 
@@ -7681,34 +7633,15 @@ status collapsed
 subject to 
 \begin_inset Formula 
 \begin{align}
-\left\Vert \Phi_{PQR'}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}-\Pi_{x|a}^{H}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR'}\right\Vert  & \le\epsilon\quad\forall a,x\in\{0,1\}\label{eq:NormNotSDP}\\
-\left|\Psi_{1}\right\rangle  & :=U_{{\rm comp}}\left|\Psi_{0}\right\rangle \left|00\right\rangle _{RS}\nonumber \\
+\left\Vert \left|\Psi_{0}\right\rangle \left\langle \Psi_{0}\right|-\left|\Xi\right\rangle \left\langle \Xi\right|\right\Vert  & \le\epsilon'\label{eq:NormNotSDP}\\
+\left|\Psi_{1}\right\rangle  & =U_{{\rm comp}}\left|\Psi_{0}\right\rangle \left|00\right\rangle _{RS}\nonumber \\
 \tr_{IJSPQR'}\left[\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|\right] & =\tr_{G}(\rho_{2})\nonumber \\
-\rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2} & =\tr_{D}(\rho_{3})\nonumber 
+\rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2} & =\tr_{D}(\rho_{3}).\nonumber 
 \end{align}
 
 \end_inset
 
-where 
-\begin_inset Formula $\left|\Psi_{0}\right\rangle $
-\end_inset
-
- is as defined above (see 
-\begin_inset CommandInset ref
-LatexCommand formatted
-reference "eq:PsiZeroBasically"
-plural "false"
-caps "true"
-noprefix "false"
-
-\end_inset
-
- and recall that 
-\begin_inset Formula $\left|\Psi_{0}\right\rangle =\left|\Psi_{2}'\right\rangle $
-\end_inset
-
-).
- This, as it is stated, is not an SDP.
+This, as it is stated, is not an SDP.
  However, it is clear that when 
 \begin_inset Formula $\epsilon=0$
 \end_inset
@@ -7794,180 +7727,11 @@ noprefix "false"
 \end_inset
 
 .
- This is straightforward.
- Second, we remove the variables 
-\begin_inset Formula $\left|\psi\right\rangle ,M_{a|x}^{P}$
-\end_inset
-
- and 
-\begin_inset Formula $\Phi_{PQR'}$
-\end_inset
-
- and instead introduce variables 
-\begin_inset Formula $\left|\xi^{a,x}\right\rangle \in HIJPQR'$
-\end_inset
-
- for 
-\begin_inset Formula $a,x\in\{0,1\}$
-\end_inset
-
-.
- We substitute
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-we can drop the pure state requirement; we use it for notational simplicity
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Formula $\left|\psi\right\rangle $
-\end_inset
-
- with 
-\begin_inset Formula $\left|\xi\right\rangle $
-\end_inset
-
- and 
-\begin_inset Formula $M_{a|x}^{P}\left|\psi\right\rangle $
-\end_inset
-
- with 
-\begin_inset Formula $\left|\xi^{a,x}\right\rangle $
-\end_inset
-
- in the definition of 
-\begin_inset Formula $\left|\Psi_{0}\right\rangle $
-\end_inset
-
- and in the constraint 
-\begin_inset CommandInset ref
-LatexCommand formatted
-reference "eq:NormNotSDP"
-plural "false"
-caps "true"
-noprefix "false"
-
-\end_inset
-
-.
- This is evidently a relaxation (because one can represent any choice of
- 
-\begin_inset Formula $\left|\psi\right\rangle ,M_{a|x}^{P}$
-\end_inset
-
- and 
-\begin_inset Formula $\Phi_{PQR'}$
-\end_inset
-
- using 
-\begin_inset Formula $\left|\xi\right\rangle $
-\end_inset
-
- and 
-\begin_inset Formula $\left|\xi_{a,x}\right\rangle $
-\end_inset
-
- in the optimisation problem).
- Relaxing further to mixed states, the SDP is then defined on 
-\begin_inset Formula $\xi^{aa',xx'}\in{\rm PSD}(HIJPQR')$
-\end_inset
-
- for 
-\begin_inset Formula $a,a',x,x'\in\{0,1\}$
-\end_inset
-
-, 
-\begin_inset Formula $\rho_{{\rm junk}}\in{\rm PSD}(PQR')$
-\end_inset
-
-, 
-\begin_inset Formula $\rho_{2}\in{\rm PSD}(XARGH)$
-\end_inset
-
- and 
-\begin_inset Formula $\rho_{3}\in{\rm PSD}(XARGYDH)$
-\end_inset
-
- as 
-\begin_inset Formula 
-\[
-\max\quad\tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{3})
-\]
-
-\end_inset
-
-subject to 
-\begin_inset Formula 
-\begin{align*}
-\left\Vert \xi^{aa',xx'}-\Pi_{a|x}^{H}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi_{a'|x'}^{H}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon''\quad\forall a,a',x,x'\in\{0,1\}\\
-\bar{\Psi}_{1} & :=U_{{\rm comp}}\bar{\Psi}_{0}\otimes\left|00\right\rangle \left\langle 00\right|_{RS}U_{{\rm comp}}^{\dagger}\\
-\tr_{IJSPQR'}\left[\bar{\Psi}_{1}\right] & =\tr_{G}(\rho_{2})\\
-\rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2} & =\tr_{D}(\rho_{3})
-\end{align*}
-
-\end_inset
-
-where 
-\begin_inset Formula 
-\[
-\bar{\Psi}_{0}:=\frac{1}{4}\sum_{x,x',a,a'\in\{0,1\}}\left|xa\right\rangle \left\langle x'a'\right|_{XA}\xi_{HIJPQR'}^{aa',xx'}
-\]
-
-\end_inset
-
-and 
-\begin_inset Formula $\epsilon''$
-\end_inset
-
- is a function of 
-\begin_inset Formula $\epsilon$
-\end_inset
-
- which vanishes as 
-\begin_inset Formula $\epsilon$
-\end_inset
-
- vanishes.
- Clearly, when 
-\begin_inset Formula $\epsilon=0$
-\end_inset
-
-, we recover the asymptotic SDP and by construction, the SDP is a relaxation
- of the optimisation problem we started with.
- Recall that 
-\begin_inset Formula $v'(\epsilon,d)$
-\end_inset
-
- is the value of this SDP.
- It is easy [for JAMIE! please help] that 
-\begin_inset Formula $v'(\epsilon,d)$
-\end_inset
-
- is continuous as a function of 
-\begin_inset Formula $\epsilon$
-\end_inset
-
- (at least for small 
-\begin_inset Formula $\epsilon$
-\end_inset
-
-?); my guess would be that we are slowly enlarging the feasible region so
- won't expect any jumps.
+ This is well known.
+ Second, we relax the 
 \end_layout
 
 \end_deeper
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-aoeu
-\end_layout
-
 \begin_layout Remark
 \begin_inset CommandInset label
 LatexCommand label
@@ -7985,6 +7749,10 @@ It is straightforward to show that
 
 .
  
+\end_layout
+
+\begin_layout Standard
+aoeu
 \end_layout
 
 \begin_layout Remark

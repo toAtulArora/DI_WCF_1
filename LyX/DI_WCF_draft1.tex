@@ -31,6 +31,7 @@
 \AtBeginDocument{\providecommand\Lemref[1]{\ref{Lem:#1}}}
 \AtBeginDocument{\providecommand\Figref[1]{\ref{Fig:#1}}}
 \AtBeginDocument{\providecommand\Assuref[1]{\ref{Assu:#1}}}
+\AtBeginDocument{\providecommand\Remref[1]{\ref{Rem:#1}}}
 %% Because html converters don't know tabularnewline
 \providecommand{\tabularnewline}{\\}
 \RS@ifundefined{subsecref}
@@ -57,6 +58,8 @@
 \newtheorem{lyxalgorithm}[thm]{\protect\algorithmname}
 \theoremstyle{plain}
 \newtheorem{lem}[thm]{\protect\lemmaname}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{\protect\remarkname}
 \theoremstyle{plain}
 \newtheorem{prop}[thm]{\protect\propositionname}
 
@@ -84,7 +87,7 @@
 %\newref{prop}{name=proposition~,Name=Proposition~,names=propositions~,Names=Propositions~}
 %\newref{conj}{name=conjecture~,Name=Conjecture~,names=conjectures~,Names=Conjectures~}
 \newref{assu}{name=assumption~,Name=Assumption~,names=assumptions~,Names=Assumptions~}
-%\newref{rem}{name=remark~,Name=Remark~,names=remarks~,Names=Remarks~}
+\newref{rem}{name=remark~,Name=Remark~,names=remarks~,Names=Remarks~}
 %\newref{alg}{name=algorithm~,Name=Algorithm~,names=algorithms~,Names=Algorithms~}
 \newref{fact}{name=fact~,Name=Fact~,names=facts~,Names=Facts~}
 
@@ -97,6 +100,7 @@
 \providecommand{\definitionname}{Definition}
 \providecommand{\lemmaname}{Lemma}
 \providecommand{\propositionname}{Proposition}
+\providecommand{\remarkname}{Remark}
 \providecommand{\theoremname}{Theorem}
 
 \begin{document}
@@ -1233,6 +1237,160 @@ where $U$ is as defined in \Eqref{Bob-u} and the projectors as in
 
 \end{proof}
 }
+
+\section{Security Analysis | Finite n}
+
+\branchcolor{purple}{The basic idea here is to treat the state and measurements inside
+the boxes as variables which are optimised over, subject to the constraint
+that they are $\epsilon$-close to the ideal GHZ state and measurements.
+This ceases to be an SDP so we relax the constraint that the post
+measurement states must arise from measuring some fixed state and
+let them be arbitrary states. The requirement that these are close
+to the ideal GHZ state and post measured states is still enforced.
+When $\epsilon=0$, we recover the asymptotic SDP (and that is no
+longer a relaxation). Since we only change the constant $\epsilon$,
+convergence of the objective value of these SDPs is easy to show {[}JAMIE{]}.}
+
+aoeu
+
+\branchcolor{blue}{\begin{proof}
+We first write exactly what is going on physically, except that we
+take the liberty of ``renaming'', i.e. applying global isometries.
+We treat the state $\left|\psi\right\rangle _{PQR}$ and the measurements
+$\{M_{a|x}^{P}\}$ as variables. 
+\begin{enumerate}
+\item We begin as before with $\left|\Psi'_{0}\right\rangle $, 
+\[
+\left|\Psi_{0}'\right\rangle :=\left|+\right\rangle _{X}\left|0\right\rangle _{A}\left|\psi\right\rangle _{PQR'}
+\]
+and\footnote{(we put $R'$ because we already used $R$ for the random register)}
+obtain the ``post measurement state'' as 
+\[
+\left|\Psi_{1}'\right\rangle =\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}.
+\]
+Since we are allowed to ``rename'' (without changing the value of
+the SDP), we have 
+\begin{equation}
+\left|\Psi_{2}'\right\rangle =\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}\Phi_{PQR}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}.\label{eq:PsiZeroBasically}
+\end{equation}
+At this point, in the asymptotic case, we could directly apply the
+self-testing result and replace $\Phi_{PQR'}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}$
+with $\Pi_{x|a}^{H}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR'}$.
+Now, instead, we require 
+\[
+\left\Vert \Phi_{PQR'}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}-\Pi_{x|a}^{H}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR'}\right\Vert \le\epsilon\quad\forall a,x\in\{0,1\}
+\]
+where the norm\footnote{We could have used other norms but they would be a relaxation of the
+constraints.} here is the trace norm $\left\Vert .\right\Vert $ (see \Remref{diffToNorm})
+and $\epsilon'$ is a function $\epsilon$ which vanishes as $\epsilon$
+vanishes ($\epsilon$ comes from the self testing step). One could,
+henceforth, continue as in the asymptotic case. More precisely, one
+could start with $\left|\Psi_{0}\right\rangle :=\left|\Psi_{2}'\right\rangle $,
+model the classical computation step as 
+\begin{align*}
+\left|\Psi_{1}\right\rangle  & =U_{{\rm comp}}\left|\Psi_{0}\right\rangle \left|00\right\rangle _{RS}\\
+ & =\frac{1}{2\sqrt{2}}\sum_{x,a,r\in\{0,1\}}\left|xa\right\rangle _{XA}\left|r\right\rangle _{R}\left|a\oplus x.r\right\rangle _{S}\Phi_{PQR}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}
+\end{align*}
+where $U_{{\rm comp}}$ is implicitly defined to yield the stated
+state. Then, the act of sending $s$ (which is the first communication
+step) is modelled as 
+\[
+\tr_{IJSPQR'}(\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|)\in XARH.
+\]
+\item The remaining steps are unchanged except that Alice additionally,
+always holds the register $H$ now. 
+\end{enumerate}
+The final optimisation problem is defined on the variables $\left|\psi\right\rangle \in PQR'$,
+$M_{a|x}^{P}$ projectors (or POVMs) acting on $PQR$, $\Phi_{PQR'}$
+a local isometry\footnote{by local we mean it has the form $\Phi_{P}\otimes\Phi_{Q}\otimes\Phi_{R}$
+where, for instance, $\Phi_{P}:P\to HP$.} from $PQR'\to HIJPQR'$, $\left|{\rm junk}\right\rangle \in PQR'$,
+$\rho_{2}\in XARGH$ and $\rho_{3}\in XARGYDH$. The problem is:
+\[
+\max\quad\tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{3})
+\]
+subject to 
+\begin{align}
+\left\Vert \Phi_{PQR'}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}-\Pi_{x|a}^{H}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR'}\right\Vert  & \le\epsilon\quad\forall a,x\in\{0,1\}\label{eq:NormNotSDP}\\
+\left|\Psi_{1}\right\rangle  & :=U_{{\rm comp}}\left|\Psi_{0}\right\rangle \left|00\right\rangle _{RS}\nonumber \\
+\tr_{IJSPQR'}\left[\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|\right] & =\tr_{G}(\rho_{2})\nonumber \\
+\rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2} & =\tr_{D}(\rho_{3})\nonumber 
+\end{align}
+where $\left|\Psi_{0}\right\rangle $ is as defined above (see \Eqref{PsiZeroBasically}
+and recall that $\left|\Psi_{0}\right\rangle =\left|\Psi_{2}'\right\rangle $).
+This, as it is stated, is not an SDP. However, it is clear that when
+$\epsilon=0$, we recover the asymptotic case (many variables can
+be dropped because they either are fixed (and no longer variable,
+e.g. $\left|\Psi_{0}\right\rangle $) or become redundant, e.g. register
+$H$). Let $v(\epsilon,d)$ be the value of the optimization program
+above where $d$ encodes the dimension of systems $PQR$. We now relax
+the constraints to obtain an SDP. Let $v'(\epsilon,d)$ be its value.
+We want the relaxation to be such that $v'(0,d)=v(0,d)$. Additionally,
+because it is a relaxation, we know $v(\epsilon,d)\le v'(\epsilon,d)$.
+It then suffices to show the continuity of the relaxation (the SDP),
+to establish the convergence of $v(\epsilon,d)$ to $v(0,d)$ as $\epsilon\to0$
+{[}JAMIE double-check!{]}. 
+
+There are two steps to the relaxation. First, we relax the \Eqref{NormNotSDP}
+as in \Remref{TraceNormAsSDP}. This is straightforward. Second, we
+remove the variables $\left|\psi\right\rangle ,M_{a|x}^{P}$ and $\Phi_{PQR'}$
+and instead introduce variables $\left|\xi^{a,x}\right\rangle \in HIJPQR'$
+for $a,x\in\{0,1\}$. We substitute\footnote{we can drop the pure state requirement; we use it for notational simplicity}
+$\left|\psi\right\rangle $ with $\left|\xi\right\rangle $ and $M_{a|x}^{P}\left|\psi\right\rangle $
+with $\left|\xi^{a,x}\right\rangle $ in the definition of $\left|\Psi_{0}\right\rangle $
+and in the constraint \Eqref{NormNotSDP}. This is evidently a relaxation
+(because one can represent any choice of $\left|\psi\right\rangle ,M_{a|x}^{P}$
+and $\Phi_{PQR'}$ using $\left|\xi\right\rangle $ and $\left|\xi_{a,x}\right\rangle $
+in the optimisation problem). Relaxing further to mixed states, the
+SDP is then defined on $\xi^{aa',xx'}\in{\rm PSD}(HIJPQR')$ for $a,a',x,x'\in\{0,1\}$,
+$\rho_{{\rm junk}}\in{\rm PSD}(PQR')$, $\rho_{2}\in{\rm PSD}(XARGH)$
+and $\rho_{3}\in{\rm PSD}(XARGYDH)$ as 
+\[
+\max\quad\tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{3})
+\]
+subject to 
+\begin{align*}
+\left\Vert \xi^{aa',xx'}-\Pi_{a|x}^{H}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi_{a'|x'}^{H}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon''\quad\forall a,a',x,x'\in\{0,1\}\\
+\bar{\Psi}_{1} & :=U_{{\rm comp}}\bar{\Psi}_{0}\otimes\left|00\right\rangle \left\langle 00\right|_{RS}U_{{\rm comp}}^{\dagger}\\
+\tr_{IJSPQR'}\left[\bar{\Psi}_{1}\right] & =\tr_{G}(\rho_{2})\\
+\rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2} & =\tr_{D}(\rho_{3})
+\end{align*}
+where 
+\[
+\bar{\Psi}_{0}:=\frac{1}{4}\sum_{x,x',a,a'\in\{0,1\}}\left|xa\right\rangle \left\langle x'a'\right|_{XA}\xi_{HIJPQR'}^{aa',xx'}
+\]
+and $\epsilon''$ is a function of $\epsilon$ which vanishes as $\epsilon$
+vanishes. Clearly, when $\epsilon=0$, we recover the asymptotic SDP
+and by construction, the SDP is a relaxation of the optimisation problem
+we started with. Recall that $v'(\epsilon,d)$ is the value of this
+SDP. It is easy {[}for JAMIE! please help{]} that $v'(\epsilon,d)$
+is continuous as a function of $\epsilon$ (at least for small $\epsilon$?);
+my guess would be that we are slowly enlarging the feasible region
+so won't expect any jumps.
+\end{proof}
+}
+
+aoeu
+\begin{rem}
+\label{rem:diffToNorm}It is straightforward to show that $\left\Vert \left|\rho\right\rangle -\left|\sigma\right\rangle \right\Vert \le\epsilon\implies\tr\left|\rho-\sigma\right|\le\epsilon'$
+where $\epsilon'=2\sqrt{1-(1-\epsilon)}$. 
+
+\label{rem:TraceNormAsSDP}For many norms (including the trace norm),
+we have $\left\Vert X\right\Vert \le\epsilon\implies\left|\lambda_{\max}(X)\right|\le\epsilon'$
+where $\epsilon'$ vanishes as $\epsilon$ vanishes. It is easy to
+bound $\lambda_{\max}(X)\le\epsilon$ as 
+\[
+\left(\begin{array}{cc}
+X-\epsilon\mathbb{I} & 0\\
+0 & \epsilon\mathbb{I}-X
+\end{array}\right)\ge0.
+\]
+This is an SDP constraint because we can define some $\left(\begin{array}{cc}
+Y_{11} & Y_{12}\\
+Y_{21} & Y_{22}
+\end{array}\right)\ge0$ and then set the linear constraint $Y_{11}=X-\epsilon\mathbb{I}$
+and $Y_{22}=\epsilon\mathbb{I}-X$. 
+\end{rem}
+
 
 \subsection{The self-testing step {[}Discuss with Tom before writing{]} }
 \begin{prop}

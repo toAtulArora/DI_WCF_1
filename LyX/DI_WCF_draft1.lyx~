@@ -29,7 +29,7 @@
 %\newref{prop}{name=proposition~,Name=Proposition~,names=propositions~,Names=Propositions~}
 %\newref{conj}{name=conjecture~,Name=Conjecture~,names=conjectures~,Names=Conjectures~}
 \newref{assu}{name=assumption~,Name=Assumption~,names=assumptions~,Names=Assumptions~}
-%\newref{rem}{name=remark~,Name=Remark~,names=remarks~,Names=Remarks~}
+\newref{rem}{name=remark~,Name=Remark~,names=remarks~,Names=Remarks~}
 %\newref{alg}{name=algorithm~,Name=Algorithm~,names=algorithms~,Names=Algorithms~}
 \newref{fact}{name=fact~,Name=Fact~,names=facts~,Names=Facts~}
 \end_preamble
@@ -890,13 +890,13 @@ status collapsed
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -5759,7 +5759,7 @@ name "subsubsec:SDP-when-Alice"
 \begin_layout Standard
 \begin_inset Branch proof
 inverted 0
-status collapsed
+status open
 
 \begin_layout Proof
 \begin_inset Argument 1
@@ -6771,7 +6771,7 @@ name "subsec:SDP-when-Bob"
 \begin_layout Standard
 \begin_inset Branch proof
 inverted 0
-status collapsed
+status open
 
 \begin_layout Proof
 \begin_inset Argument 1
@@ -7364,6 +7364,681 @@ where
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Security Analysis | Finite n
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch commentary
+inverted 0
+status collapsed
+
+\begin_layout Standard
+The basic idea here is to treat the state and measurements inside the boxes
+ as variables which are optimised over, subject to the constraint that they
+ are 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+-close to the ideal GHZ state and measurements.
+ This ceases to be an SDP so we relax the constraint that the post measurement
+ states must arise from measuring some fixed state and let them be arbitrary
+ states.
+ The requirement that these are close to the ideal GHZ state and post measured
+ states is still enforced.
+ When 
+\begin_inset Formula $\epsilon=0$
+\end_inset
+
+, we recover the asymptotic SDP (and that is no longer a relaxation).
+ Since we only change the constant 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+, convergence of the objective value of these SDPs is easy to show [JAMIE].
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+aoeu
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch proof
+inverted 0
+status open
+
+\begin_layout Proof
+We first write exactly what is going on physically, except that we take
+ the liberty of 
+\begin_inset Quotes eld
+\end_inset
+
+renaming
+\begin_inset Quotes erd
+\end_inset
+
+, i.e.
+ applying global isometries.
+ We treat the state 
+\begin_inset Formula $\left|\psi\right\rangle _{PQR}$
+\end_inset
+
+ and the measurements 
+\begin_inset Formula $\{M_{a|x}^{P}\}$
+\end_inset
+
+ as variables.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+We begin as before with 
+\begin_inset Formula $\left|\Psi'_{0}\right\rangle $
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+\left|\Psi_{0}'\right\rangle :=\left|+\right\rangle _{X}\left|0\right\rangle _{A}\left|\psi\right\rangle _{PQR'}
+\]
+
+\end_inset
+
+and
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+(we put 
+\begin_inset Formula $R'$
+\end_inset
+
+ because we already used 
+\begin_inset Formula $R$
+\end_inset
+
+ for the random register)
+\end_layout
+
+\end_inset
+
+ obtain the 
+\begin_inset Quotes eld
+\end_inset
+
+post measurement state
+\begin_inset Quotes erd
+\end_inset
+
+ as 
+\begin_inset Formula 
+\[
+\left|\Psi_{1}'\right\rangle =\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}.
+\]
+
+\end_inset
+
+Since we are allowed to 
+\begin_inset Quotes eld
+\end_inset
+
+rename
+\begin_inset Quotes erd
+\end_inset
+
+ (without changing the value of the SDP), we have 
+\begin_inset Formula 
+\begin{equation}
+\left|\Psi_{2}'\right\rangle =\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}\Phi_{PQR}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}.\label{eq:PsiZeroBasically}
+\end{equation}
+
+\end_inset
+
+At this point, in the asymptotic case, we could directly apply the self-testing
+ result and replace 
+\begin_inset Formula $\Phi_{PQR'}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}$
+\end_inset
+
+ with 
+\begin_inset Formula $\Pi_{x|a}^{H}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR'}$
+\end_inset
+
+.
+ Now, instead, we require 
+\begin_inset Formula 
+\[
+\left\Vert \Phi_{PQR'}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}-\Pi_{x|a}^{H}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR'}\right\Vert \le\epsilon\quad\forall a,x\in\{0,1\}
+\]
+
+\end_inset
+
+where the norm
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+We could have used other norms but they would be a relaxation of the constraints.
+\end_layout
+
+\end_inset
+
+ here is the trace norm 
+\begin_inset Formula $\left\Vert .\right\Vert $
+\end_inset
+
+ (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "rem:diffToNorm"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+) and 
+\begin_inset Formula $\epsilon'$
+\end_inset
+
+ is a function 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ which vanishes as 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ vanishes (
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ comes from the self testing step).
+ One could, henceforth, continue as in the asymptotic case.
+ More precisely, one could start with 
+\begin_inset Formula $\left|\Psi_{0}\right\rangle :=\left|\Psi_{2}'\right\rangle $
+\end_inset
+
+, model the classical computation step as 
+\begin_inset Formula 
+\begin{align*}
+\left|\Psi_{1}\right\rangle  & =U_{{\rm comp}}\left|\Psi_{0}\right\rangle \left|00\right\rangle _{RS}\\
+ & =\frac{1}{2\sqrt{2}}\sum_{x,a,r\in\{0,1\}}\left|xa\right\rangle _{XA}\left|r\right\rangle _{R}\left|a\oplus x.r\right\rangle _{S}\Phi_{PQR}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $U_{{\rm comp}}$
+\end_inset
+
+ is implicitly defined to yield the stated state.
+ Then, the act of sending 
+\begin_inset Formula $s$
+\end_inset
+
+ (which is the first communication step) is modelled as 
+\begin_inset Formula 
+\[
+\tr_{IJSPQR'}(\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|)\in XARH.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The remaining steps are unchanged except that Alice additionally, always
+ holds the register 
+\begin_inset Formula $H$
+\end_inset
+
+ now.
+ 
+\end_layout
+
+\begin_layout Standard
+The final optimisation problem is defined on the variables 
+\begin_inset Formula $\left|\psi\right\rangle \in PQR'$
+\end_inset
+
+, 
+\begin_inset Formula $M_{a|x}^{P}$
+\end_inset
+
+ projectors (or POVMs) acting on 
+\begin_inset Formula $PQR$
+\end_inset
+
+, 
+\begin_inset Formula $\Phi_{PQR'}$
+\end_inset
+
+ a local isometry
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+by local we mean it has the form 
+\begin_inset Formula $\Phi_{P}\otimes\Phi_{Q}\otimes\Phi_{R}$
+\end_inset
+
+ where, for instance, 
+\begin_inset Formula $\Phi_{P}:P\to HP$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ from 
+\begin_inset Formula $PQR'\to HIJPQR'$
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left|\Psi_{0}\right\rangle \in XAHIJPQR$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Formula $\left|{\rm junk}\right\rangle \in PQR'$
+\end_inset
+
+, 
+\begin_inset Formula $\rho_{2}\in XARGH$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho_{3}\in XARGYDH$
+\end_inset
+
+.
+ The problem is:
+\begin_inset Formula 
+\[
+\max\quad\tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{3})
+\]
+
+\end_inset
+
+subject to 
+\begin_inset Formula 
+\begin{align}
+\left\Vert \Phi_{PQR'}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}-\Pi_{x|a}^{H}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR'}\right\Vert  & \le\epsilon\quad\forall a,x\in\{0,1\}\label{eq:NormNotSDP}\\
+\left|\Psi_{1}\right\rangle  & :=U_{{\rm comp}}\left|\Psi_{0}\right\rangle \left|00\right\rangle _{RS}\nonumber \\
+\tr_{IJSPQR'}\left[\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|\right] & =\tr_{G}(\rho_{2})\nonumber \\
+\rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2} & =\tr_{D}(\rho_{3})\nonumber 
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $\left|\Psi_{0}\right\rangle $
+\end_inset
+
+ is as defined above (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:PsiZeroBasically"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+ and recall that 
+\begin_inset Formula $\left|\Psi_{0}\right\rangle =\left|\Psi_{2}'\right\rangle $
+\end_inset
+
+).
+ This, as it is stated, is not an SDP.
+ However, it is clear that when 
+\begin_inset Formula $\epsilon=0$
+\end_inset
+
+, we recover the asymptotic case (many variables can be dropped because
+ they either are fixed (and no longer variable, e.g.
+ 
+\begin_inset Formula $\left|\Psi_{0}\right\rangle $
+\end_inset
+
+) or become redundant, e.g.
+ register 
+\begin_inset Formula $H$
+\end_inset
+
+).
+ Let 
+\begin_inset Formula $v(\epsilon,d)$
+\end_inset
+
+ be the value of the optimization program above where 
+\begin_inset Formula $d$
+\end_inset
+
+ encodes the dimension of systems 
+\begin_inset Formula $PQR$
+\end_inset
+
+.
+ We now relax the constraints to obtain an SDP.
+ Let 
+\begin_inset Formula $v'(\epsilon,d)$
+\end_inset
+
+ be its value.
+ We want the relaxation to be such that 
+\begin_inset Formula $v'(0,d)=v(0,d)$
+\end_inset
+
+.
+ Additionally, because it is a relaxation, we know 
+\begin_inset Formula $v(\epsilon,d)\le v'(\epsilon,d)$
+\end_inset
+
+.
+ It then suffices to show the continuity of the relaxation (the SDP), to
+ establish the convergence of 
+\begin_inset Formula $v(\epsilon,d)$
+\end_inset
+
+ to 
+\begin_inset Formula $v(0,d)$
+\end_inset
+
+ as 
+\begin_inset Formula $\epsilon\to0$
+\end_inset
+
+ [JAMIE double-check!].
+ 
+\end_layout
+
+\begin_layout Standard
+There are two steps to the relaxation.
+ First, we relax the 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:NormNotSDP"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+ as in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "rem:TraceNormAsSDP"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ This is straightforward.
+ Second, we remove the variables 
+\begin_inset Formula $\left|\psi\right\rangle ,M_{a|x}^{P}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Phi_{PQR'}$
+\end_inset
+
+ and instead introduce variables 
+\begin_inset Formula $\left|\xi^{a,x}\right\rangle \in HIJPQR'$
+\end_inset
+
+ for 
+\begin_inset Formula $a,x\in\{0,1\}$
+\end_inset
+
+.
+ We substitute
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+we can drop the pure state requirement; we use it for notational simplicity
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\left|\psi\right\rangle $
+\end_inset
+
+ with 
+\begin_inset Formula $\left|\xi\right\rangle $
+\end_inset
+
+ and 
+\begin_inset Formula $M_{a|x}^{P}\left|\psi\right\rangle $
+\end_inset
+
+ with 
+\begin_inset Formula $\left|\xi^{a,x}\right\rangle $
+\end_inset
+
+ in the definition of 
+\begin_inset Formula $\left|\Psi_{0}\right\rangle $
+\end_inset
+
+ and in the constraint 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:NormNotSDP"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ This is evidently a relaxation (because one can represent any choice of
+ 
+\begin_inset Formula $\left|\psi\right\rangle ,M_{a|x}^{P}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Phi_{PQR'}$
+\end_inset
+
+ using 
+\begin_inset Formula $\left|\xi\right\rangle $
+\end_inset
+
+ and 
+\begin_inset Formula $\left|\xi_{a,x}\right\rangle $
+\end_inset
+
+ in the optimisation problem).
+ Relaxing further to mixed states, the SDP is then defined on 
+\begin_inset Formula $\xi^{aa',xx'}\in\mathcal{D}(HIJPQR')$
+\end_inset
+
+ for 
+\begin_inset Formula $a,a',x,x'\in\{0,1\}$
+\end_inset
+
+, 
+\begin_inset Formula $\rho_{{\rm junk}}\in\mathcal{D}(PQR')$
+\end_inset
+
+, 
+\begin_inset Formula $\rho_{2}\in XARGH$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho_{3}\in\mathcal{D}(XARGYDH)$
+\end_inset
+
+ as 
+\begin_inset Formula 
+\[
+\max\quad\tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{3})
+\]
+
+\end_inset
+
+subject to 
+\begin_inset Formula 
+\begin{align*}
+\left\Vert \xi^{aa',xx'}-\Pi_{a|x}^{H}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi_{a'|x'}^{H}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon''\quad\forall a,a',x,x'\in\{0,1\}\\
+\bar{\Psi}_{1} & :=U_{{\rm comp}}\bar{\Psi}_{0}\otimes\left|00\right\rangle \left\langle 00\right|_{RS}U_{{\rm comp}}^{\dagger}\\
+\tr_{IJSPQR'}\left[\bar{\Psi}_{1}\right] & =\tr_{G}(\rho_{2})\\
+\rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2} & =\tr_{D}(\rho_{3})
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+\bar{\Psi}_{0}:=\frac{1}{4}\sum_{x,x',a,a'\in\{0,1\}}\left|xa\right\rangle \left\langle x'a'\right|_{XA}\xi_{HIJPQR'}^{aa',xx'}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula $\epsilon''$
+\end_inset
+
+ is a function of 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ which vanishes as 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ vanishes.
+ Clearly, when 
+\begin_inset Formula $\epsilon=0$
+\end_inset
+
+, we recover the asymptotic SDP and by construction, the SDP is a relaxation
+ of the optimisation problem we started with.
+ Recall that 
+\begin_inset Formula $v'(\epsilon,d)$
+\end_inset
+
+ is the value of this SDP.
+ It is easy [for JAMIE! please help] that 
+\begin_inset Formula $v'(\epsilon,d)$
+\end_inset
+
+ is continuous as a function of 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ (at least for small 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+?); my guess would be that we are slowly enlarging the feasible region so
+ won't expect any jumps.
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+aoeu
+\end_layout
+
+\begin_layout Remark
+\begin_inset CommandInset label
+LatexCommand label
+name "rem:diffToNorm"
+
+\end_inset
+
+It is straightforward to show that 
+\begin_inset Formula $\left\Vert \left|\rho\right\rangle -\left|\sigma\right\rangle \right\Vert \le\epsilon\implies\tr\left|\rho-\sigma\right|\le\epsilon'$
+\end_inset
+
+ where 
+\begin_inset Formula $\epsilon'=2\sqrt{1-(1-\epsilon)}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Remark
+\begin_inset CommandInset label
+LatexCommand label
+name "rem:TraceNormAsSDP"
+
+\end_inset
+
+For many norms (including the trace norm), we have 
+\begin_inset Formula $\left\Vert X\right\Vert \le\epsilon\implies\left|\lambda_{\max}(X)\right|\le\epsilon'$
+\end_inset
+
+ where 
+\begin_inset Formula $\epsilon'$
+\end_inset
+
+ vanishes as 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ vanishes.
+ It is easy to bound 
+\begin_inset Formula $\lambda_{\max}(X)\le\epsilon$
+\end_inset
+
+ as 
+\begin_inset Formula 
+\[
+\left(\begin{array}{cc}
+X-\epsilon\mathbb{I} & 0\\
+0 & \epsilon\mathbb{I}-X
+\end{array}\right)\ge0.
+\]
+
+\end_inset
+
+This is an SDP constraint because we can define some 
+\begin_inset Formula $\left(\begin{array}{cc}
+Y_{11} & Y_{12}\\
+Y_{21} & Y_{22}
+\end{array}\right)\ge0$
+\end_inset
+
+ and then set the linear constraint 
+\begin_inset Formula $Y_{11}=X-\epsilon\mathbb{I}$
+\end_inset
+
+ and 
+\begin_inset Formula $Y_{22}=\epsilon\mathbb{I}-X$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Subsection
