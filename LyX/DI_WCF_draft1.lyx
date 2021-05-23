@@ -6954,10 +6954,20 @@ noprefix "false"
 
  Bob's act of measurement, in the new labelling, corresponds to simply measuring
  the GHZ state in the appropriate Pauli basis.
- (TODO: in the approximate case, the initial state will be close to the
- one mentioned and the post-measured state will similarly only be close
- to the one post projectors; There should be some way of showing that this
- can be absorbed into the initial state).
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+(TODO: in the approximate case, the initial state will be close to the one
+ mentioned and the post-measured state will similarly only be close to the
+ one post projectors; There should be some way of showing that this can
+ be absorbed into the initial state).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -7067,7 +7077,7 @@ To model the GHZ test, introduce a register
  to hold the measurement results, define 
 \begin_inset Formula 
 \begin{equation}
-U:=\sum_{y,x\in\{0,1\}}\left|y\right\rangle \left\langle y\right|_{Y}\left|x\right\rangle \left\langle x\right|_{X}\otimes(\mathbb{I}_{B}\otimes\Pi_{0|y}^{I}+X_{B}\otimes\Pi_{1|y}^{I})\otimes(\mathbb{I}_{C}\otimes\Pi_{0|(1\oplus y\oplus x)}^{J}+X_{C}\otimes\Pi_{1|(1\oplus y\oplus x)}^{J})\otimes\mathbb{I}_{ASG}.\label{eq:Bob-u}
+U:=\sum_{y,x\in\{0,1\}}\left|yx\right\rangle \left\langle yx\right|_{YX}\otimes(\mathbb{I}_{B}\otimes\Pi_{0|y}^{I}+X_{B}\otimes\Pi_{1|y}^{I})\otimes(\mathbb{I}_{C}\otimes\Pi_{0|(1\oplus y\oplus x)}^{J}+X_{C}\otimes\Pi_{1|(1\oplus y\oplus x)}^{J})\otimes\mathbb{I}_{ASG}.\label{eq:Bob-u}
 \end{equation}
 
 \end_inset
@@ -7368,6 +7378,10 @@ where
 
 \begin_layout Section
 Security Analysis | Finite n
+\end_layout
+
+\begin_layout Subsection
+Alice self tests
 \end_layout
 
 \begin_layout Standard
@@ -8039,6 +8053,564 @@ Y_{21} & Y_{22}
 
 .
  
+\end_layout
+
+\begin_layout Subsection
+Bob self tests
+\end_layout
+
+\begin_layout Standard
+For Bob's case, we work out an example which is essentially the same as
+ what we want to prove.
+ In this case, we are unable to find a simple SDP relaxation as above and
+ instead rely on the NPA hierarchy for the continuity result.
+\end_layout
+
+\begin_layout Example
+We consider three optimisation problems.
+ The first is supposed to be the 
+\begin_inset Quotes eld
+\end_inset
+
+asymptotic version
+\begin_inset Quotes erd
+\end_inset
+
+, the second is supposed to by a toy model of what happens in the lab with
+ 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ as a parameter, and finally the third is an SDP relaxation of the second,
+ obtained using the NPA hierarchy.
+ 
+\end_layout
+
+\begin_layout Example
+First: Let 
+\begin_inset Formula $\rho_{0}:=\tr_{HI}\left[\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|\right]_{HIJ}$
+\end_inset
+
+.
+ The variable is 
+\begin_inset Formula $\rho_{1}\in ZJ$
+\end_inset
+
+.
+ The SDP program is 
+\begin_inset Formula 
+\[
+\max\quad\tr(\Pi_{{\rm obj}}\rho_{2}\Pi_{{\rm obj}})
+\]
+
+\end_inset
+
+subject to 
+\begin_inset Formula 
+\begin{align*}
+\tr_{Z}(\rho_{1}) & =\rho_{0}\\
+\rho_{2} & =\sum_{\substack{z,z'\\
+c,c'
+}
+}\left|c\right\rangle \left\langle c'\right|_{C}\quad\otimes\quad\Pi_{c|z}^{J}\otimes\Pi_{z}^{Z}\quad\rho_{1}\quad\Pi_{c'|z'}^{J}\otimes\Pi_{z'}^{Z}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\Pi_{{\rm obj}}$
+\end_inset
+
+ is an arbitrary but fixed projector which acts non-trivially on registers
+ 
+\begin_inset Formula $CZ$
+\end_inset
+
+ and 
+\begin_inset Formula $\{\Pi_{c|z}^{J}\}$
+\end_inset
+
+ constitute two sets of projective measurements, the setting indexed by
+ 
+\begin_inset Formula $z$
+\end_inset
+
+ and outcome by 
+\begin_inset Formula $c$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+The main simplifications we make, compared to Bob's asymptotic SDP, are:
+ 
+\begin_inset Newline newline
+\end_inset
+
+(1) we keep only the 
+\begin_inset Formula $J$
+\end_inset
+
+ register from the 
+\begin_inset Formula $HIJ$
+\end_inset
+
+ registers used in the GHZ test, 
+\begin_inset Newline newline
+\end_inset
+
+(2) we skipped the part where Alice first sends 
+\begin_inset Formula $s$
+\end_inset
+
+, then Bob sends 
+\begin_inset Formula $g$
+\end_inset
+
+ and in turn Alice sends 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $a$
+\end_inset
+
+ which are finally used to do the test; we simply have her send 
+\begin_inset Formula $z$
+\end_inset
+
+, the basis in which to measure, 
+\begin_inset Newline newline
+\end_inset
+
+(3) the action of the (appropriately adapted) unitary 
+\begin_inset Formula $U$
+\end_inset
+
+ is captured directly by defining 
+\begin_inset Formula $\rho_{3}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+(4) the final measurement operator is left arbitrary so long as it acts
+ on 
+\begin_inset Quotes eld
+\end_inset
+
+classical registers
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Formula $CZS$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+These simplifications can be undone with the main idea unchanged.
+ We now proceed with defining the second variant which has the 
+\begin_inset Formula $PQR$
+\end_inset
+
+ registers as well.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Second: The variables are 
+\begin_inset Formula $\rho_{0}\in JR$
+\end_inset
+
+, 
+\begin_inset Formula $\rho_{1}\in ZJR$
+\end_inset
+
+, 
+\begin_inset Formula $\rho_{{\rm junk}}\in R$
+\end_inset
+
+ and 
+\begin_inset Formula $\{M_{0|z},M_{1|z}\}$
+\end_inset
+
+ are projectors acting on 
+\begin_inset Formula $JR$
+\end_inset
+
+, for 
+\begin_inset Formula $z\in\{0,1\}$
+\end_inset
+
+.
+ The optimisation problem is 
+\begin_inset Formula 
+\[
+\max\quad\tr(\Pi_{{\rm obj}}\rho_{2}\Pi_{{\rm obj}})
+\]
+
+\end_inset
+
+subject to 
+\begin_inset Formula 
+\begin{align}
+\left\Vert \rho_{0}-\tr_{HI}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon_{0}\label{eq:statePart}\\
+\tr_{Z}(\rho_{1}) & =\rho_{0}\nonumber \\
+\rho_{2} & =\sum_{\substack{z,z'\\
+c,c'
+}
+}\left|c\right\rangle \left\langle c'\right|_{C}\quad\otimes\quad M_{c|z}\otimes\Pi_{z}^{Z}\quad\rho_{1}\quad M_{c'|z'}\otimes\Pi_{z'}^{Z}\nonumber \\
+\left\Vert M_{c|z}\tr_{Z}(\rho_{1})M_{c'|z'}-\Pi_{c|z}^{J}\tr_{HI}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi_{c'|z'}^{J}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon_{1}\quad\forall\quad c,c',z,z'\in\{0,1\}.\label{eq:MrhoM}
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $\epsilon_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\epsilon_{1}$
+\end_inset
+
+ are functions of 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ which vanish as 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ vanishes.
+\end_layout
+
+\begin_layout Example
+\begin_inset Branch commentary
+inverted 0
+status open
+
+\begin_layout Standard
+We briefly justify why this optimization problem correctly captures the
+ physical situation, modulo the simplifications listed above (which again,
+ don't change the argument here).
+ Let 
+\begin_inset Formula $\rho_{0}=\tr_{HIPQ}\left|\psi\right\rangle \left\langle \psi\right|$
+\end_inset
+
+, where 
+\begin_inset Formula $\left|\psi\right\rangle \in HIJPQR$
+\end_inset
+
+ was the state in the box and 
+\begin_inset Formula $M_{c|z}$
+\end_inset
+
+ the measurement operators for the last register.
+ Since we're allowing Bob to optimise over 
+\begin_inset Formula $\left|\psi\right\rangle $
+\end_inset
+
+ and 
+\begin_inset Formula $M_{c|z}$
+\end_inset
+
+ we don't quite need to worry about the isometry in the self-testing step.
+ We suppress the 
+\begin_inset Formula $c$
+\end_inset
+
+'s and 
+\begin_inset Formula $z$
+\end_inset
+
+'s for the moment.
+ The self-testing statement says that 
+\begin_inset Formula $\left\Vert \left|\psi\right\rangle -\left|{\rm GHZ}\right\rangle \otimes\left|{\rm junk}\right\rangle \right\Vert \le\epsilon$
+\end_inset
+
+ which entails 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:statePart"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ The self-testing statement also says that 
+\begin_inset Formula $\left\Vert M\left|\psi\right\rangle -\Pi\left|{\rm GHZ}\right\rangle \otimes\left|{\rm junk}\right\rangle \right\Vert \le\epsilon$
+\end_inset
+
+.
+ This entails 
+\begin_inset Formula $\left\Vert M\left|\psi\right\rangle \left\langle \psi\right|M'-\Pi\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|\Pi'\otimes\rho_{{\rm junk}}\right\Vert \le\epsilon'$
+\end_inset
+
+ (
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ with primes disappear as 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ vanishes).
+ That in turn implies 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:MrhoM"
+plural "false"
+caps "true"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+It is immediate that for 
+\begin_inset Formula $\epsilon=0$
+\end_inset
+
+, this optimization problem reduces to the first one because for 
+\begin_inset Formula $\epsilon=0$
+\end_inset
+
+, 
+\begin_inset Formula $M\tr_{Z}(\rho_{1})M'=\Pi\tr_{HI}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi'\otimes\rho_{{\rm junk}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tr_{Z}(\rho_{1})=\tr_{HI}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|\otimes\rho_{{\rm junk}}$
+\end_inset
+
+.
+ Note that 
+\begin_inset Formula $\rho_{2}$
+\end_inset
+
+ appears in the objective and in 
+\begin_inset Formula $\rho_{2}$
+\end_inset
+
+, 
+\begin_inset Formula $M$
+\end_inset
+
+ and 
+\begin_inset Formula $M'$
+\end_inset
+
+ act on 
+\begin_inset Formula $\rho_{1}$
+\end_inset
+
+ (and not 
+\begin_inset Formula $\tr_{Z}(\rho_{1})$
+\end_inset
+
+).
+ One can still trivially conclude that 
+\begin_inset Formula $M,M'$
+\end_inset
+
+ can be replaced with 
+\begin_inset Formula $\Pi,\Pi'$
+\end_inset
+
+ (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "exa:replaceM"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Third: Denote the value of the second program by 
+\begin_inset Formula $v(\epsilon,d)$
+\end_inset
+
+.
+ Clearly, 
+\begin_inset Formula $v(0,d)$
+\end_inset
+
+ is the value of the first program for all 
+\begin_inset Formula $d$
+\end_inset
+
+ (finite 
+\begin_inset Formula $d$
+\end_inset
+
+).
+ Let 
+\begin_inset Formula $w(\epsilon,d,k)$
+\end_inset
+
+ denote the value of the NPA relaxation of the second program, to level
+ 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ The NPA hierarchy is well known and for our purposes here, it suffices
+ to note two facts.
+ First, the NPA relaxation is always an SDP and second, the NPA relaxation
+ converges to, in this case, the second program as 
+\begin_inset Formula $k$
+\end_inset
+
+ tends to infinity.
+ Since 
+\begin_inset Formula $v(\epsilon,d)\le w(\epsilon,d,k)$
+\end_inset
+
+ for all 
+\begin_inset Formula $k$
+\end_inset
+
+ and 
+\begin_inset Formula $d$
+\end_inset
+
+, the continuity result follows [JAMIE: complete the argument?].
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:replaceM"
+
+\end_inset
+
+Let 
+\begin_inset Formula $\rho$
+\end_inset
+
+ be a state in 
+\begin_inset Formula $QR$
+\end_inset
+
+ and suppose 
+\begin_inset Formula $M$
+\end_inset
+
+ and 
+\begin_inset Formula $\Pi$
+\end_inset
+
+ are two projectors acting on system 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $M\tr_{R}(\rho)M=\Pi\tr_{R}(\rho)\Pi$
+\end_inset
+
+ then 
+\begin_inset Formula $(M\otimes\mathbb{I}_{R})\rho(M\otimes\mathbb{I}_{R})=(\Pi\otimes\mathbb{I}_{R})\rho(\Pi\otimes\mathbb{I}_{R})$
+\end_inset
+
+.
+ This is trivially true because if the conclusion was false, then a partial
+ trace would imply the premise is false (contrapositive).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+We simply replace 
+\begin_inset Formula $M_{c|z}\rho_{1}M_{c'|z'}$
+\end_inset
+
+ with a new variable 
+\begin_inset Formula $\rho_{1}^{cc'|zz'}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Third: 
+\begin_inset Formula 
+\[
+\max\quad\tr(\Pi_{{\rm obj}}\rho_{2}\Pi_{{\rm obj}})
+\]
+
+\end_inset
+
+subject to 
+\begin_inset Formula 
+\begin{align*}
+\left\Vert \rho_{0}-\tr_{HI}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon\\
+\tr_{Z}(\rho_{1}) & =\rho_{0},\\
+\\
+\tr_{HR}\rho_{1}^{cc'|zz'} & =\tr_{HR}\rho_{1}\quad\forall\quad c,c',z,z'\in\{0,1\}\\
+\left\Vert \tr_{Z}(\rho_{1}^{cc'|zz'})-\Pi_{c|z}^{J}\tr_{HI}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi_{c'|z'}^{J}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon\quad\forall\quad c,c',z,z'\in\{0,1\},\\
+\\
+\rho_{2} & =\sum_{\substack{z,z'\\
+c,c'
+}
+}\left|c\right\rangle \left\langle c'\right|_{C}\otimes\rho_{1}^{cc'|zz'}
+\end{align*}
+
+\end_inset
+
+TODO: show that for 
+\begin_inset Formula $\epsilon=0$
+\end_inset
+
+, we again get the asymptotic case—the first program.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
