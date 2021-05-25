@@ -6954,10 +6954,20 @@ noprefix "false"
 
  Bob's act of measurement, in the new labelling, corresponds to simply measuring
  the GHZ state in the appropriate Pauli basis.
- (TODO: in the approximate case, the initial state will be close to the
- one mentioned and the post-measured state will similarly only be close
- to the one post projectors; There should be some way of showing that this
- can be absorbed into the initial state).
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+(TODO: in the approximate case, the initial state will be close to the one
+ mentioned and the post-measured state will similarly only be close to the
+ one post projectors; There should be some way of showing that this can
+ be absorbed into the initial state).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -7524,7 +7534,9 @@ At this point, in the asymptotic case, we could directly apply the self-testing
 
 \end_inset
 
-where the norm
+[EDIT: here the norm is just the vector norm but we can impose it as density
+ matrices; there we use the trace norm; the remark shows how to convert
+ that into an SDP]where the norm
 \begin_inset Foot
 status collapsed
 
@@ -7876,7 +7888,7 @@ noprefix "false"
 
  in the optimisation problem).
  Relaxing further to mixed states, the SDP is then defined on 
-\begin_inset Formula $\xi^{aa',xx'}\in{\rm PSD}(HIJPQR')$
+\begin_inset Formula $\xi^{aa',xx'}\in{\rm L}(HIJPQR')$
 \end_inset
 
  for 
@@ -8045,14 +8057,49 @@ Y_{21} & Y_{22}
  
 \end_layout
 
+\begin_layout Remark
+[EDIT When 
+\begin_inset Formula $X$
+\end_inset
+
+ is not Hermitian, we can relax it using Schur's complement as 
+\begin_inset Formula 
+\[
+\left(\begin{array}{cc}
+\mathbb{I} & X\\
+X^{T} & \epsilon''\mathbb{I}
+\end{array}\right)\ge0\iff\epsilon''\mathbb{I}\ge X^{T}X
+\]
+
+\end_inset
+
+and if 
+\begin_inset Formula $\left\Vert X\right\Vert \le\epsilon$
+\end_inset
+
+, then there should be some function 
+\begin_inset Formula $\epsilon''$
+\end_inset
+
+ of 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ that satisfies the above (with possibly a multiplicative factor of 
+\begin_inset Formula $\dim(X)$
+\end_inset
+
+).
+ ]
+\end_layout
+
 \begin_layout Subsection
 Bob self tests
 \end_layout
 
 \begin_layout Standard
-For Bob's case, perhaps it is best to work out an example which is essentially
- the same as what we want to prove but with fewer indices to simplify the
- presentation.
+For Bob's case, we work out an example which is essentially the same as
+ what we want to prove.
  In this case, we are unable to find a simple SDP relaxation as above and
  instead rely on the NPA hierarchy for the continuity result.
 \end_layout
@@ -8072,7 +8119,7 @@ asymptotic version
 \begin_inset Formula $\epsilon$
 \end_inset
 
- as a parameter, and finally the third is the SDP relaxation of the second,
+ as a parameter, and finally the third is an SDP relaxation of the second,
  obtained using the NPA hierarchy.
  
 \end_layout
@@ -8225,7 +8272,7 @@ These simplifications can be undone with the main idea unchanged.
 
 \begin_layout Example
 Second: The variables are 
-\begin_inset Formula $\rho_{0}\in JR$
+\begin_inset Formula $\rho_{0}\in HIJPQR$
 \end_inset
 
 , 
@@ -8260,13 +8307,13 @@ Second: The variables are
 subject to 
 \begin_inset Formula 
 \begin{align}
-\left\Vert \rho_{0}-\tr_{HI}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon_{0}\label{eq:statePart}\\
-\tr_{Z}(\rho_{1}) & =\rho_{0}\nonumber \\
+\left\Vert \rho_{0}-\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon_{0}\label{eq:statePart}\\
+\left\Vert M_{c|z}\rho_{0}M_{c'|z'}-\Pi_{c|z}^{J}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|\Pi_{c'|z'}^{J}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon_{1}\quad\forall\quad c,c',z,z'\in\{0,1\}.\label{eq:MrhoM}\\
+\tr_{Z}(\rho_{1}) & =\tr_{HIPQ}\rho_{0}\nonumber \\
 \rho_{2} & =\sum_{\substack{z,z'\\
 c,c'
 }
-}\left|c\right\rangle \left\langle c'\right|_{C}\quad\otimes\quad M_{c|z}\otimes\Pi_{z}^{Z}\quad\rho_{1}\quad M_{c'|z'}\otimes\Pi_{z'}^{Z}\nonumber \\
-\left\Vert M_{c|z}\tr_{Z}(\rho_{1})M_{c'|z'}-\Pi_{c|z}^{J}\tr_{HI}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi_{c'|z'}^{J}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon_{1}\quad\forall\quad c,c',z,z'\in\{0,1\}.\label{eq:MrhoM}
+}\left|c\right\rangle \left\langle c'\right|_{C}\quad\otimes\quad M_{c|z}\otimes\Pi_{z}^{Z}\quad\rho_{1}\quad M_{c'|z'}\otimes\Pi_{z'}^{Z}\nonumber 
 \end{align}
 
 \end_inset
@@ -8279,11 +8326,18 @@ where
 \begin_inset Formula $\epsilon_{1}$
 \end_inset
 
- vanish as 
+ are functions of 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ which vanish as 
 \begin_inset Formula $\epsilon$
 \end_inset
 
  vanishes.
+\end_layout
+
+\begin_layout Example
 \begin_inset Branch commentary
 inverted 0
 status open
@@ -8413,7 +8467,7 @@ It is immediate that for
 \end_inset
 
 ).
- One can still conclude that 
+ One can still trivially conclude that 
 \begin_inset Formula $M,M'$
 \end_inset
 
@@ -8421,7 +8475,17 @@ It is immediate that for
 \begin_inset Formula $\Pi,\Pi'$
 \end_inset
 
- (see ).
+ (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "exa:replaceM"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
  
 \end_layout
 
@@ -8431,7 +8495,55 @@ It is immediate that for
 \end_layout
 
 \begin_layout Example
-Third: We do not discuss the NPA relaxation explicitly.
+Third: Denote the value of the second program by 
+\begin_inset Formula $v(\epsilon,d)$
+\end_inset
+
+.
+ Clearly, 
+\begin_inset Formula $v(0,d)$
+\end_inset
+
+ is the value of the first program for all 
+\begin_inset Formula $d$
+\end_inset
+
+ (finite 
+\begin_inset Formula $d$
+\end_inset
+
+).
+ Let 
+\begin_inset Formula $w(\epsilon,d,k)$
+\end_inset
+
+ denote the value of the NPA relaxation of the second program, to level
+ 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ The NPA hierarchy is well known and for our purposes here, it suffices
+ to note two facts.
+ First, the NPA relaxation is always an SDP and second, the NPA relaxation
+ converges to, in this case, the second program as 
+\begin_inset Formula $k$
+\end_inset
+
+ tends to infinity.
+ Since 
+\begin_inset Formula $v(\epsilon,d)\le w(\epsilon,d,k)$
+\end_inset
+
+ for all 
+\begin_inset Formula $k$
+\end_inset
+
+ and 
+\begin_inset Formula $d$
+\end_inset
+
+, the continuity result follows [JAMIE: complete the argument?].
  
 \end_layout
 
@@ -8443,6 +8555,12 @@ Third: We do not discuss the NPA relaxation explicitly.
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:replaceM"
+
+\end_inset
+
 Let 
 \begin_inset Formula $\rho$
 \end_inset
@@ -8469,10 +8587,13 @@ Let
 \end_inset
 
  then 
-\begin_inset Formula $M\otimes\mathbb{I}_{R}\rho M\otimes\mathbb{I}_{R}=\Pi\otimes\mathbb{I}\rho\Pi\otimes\mathbb{I}$
+\begin_inset Formula $(M\otimes\mathbb{I}_{R})\rho(M\otimes\mathbb{I}_{R})=(\Pi\otimes\mathbb{I}_{R})\rho(\Pi\otimes\mathbb{I}_{R})$
 \end_inset
 
-
+.
+ This is trivially true because if the conclusion was false, then a partial
+ trace would imply the premise is false (contrapositive).
+ 
 \end_layout
 
 \begin_layout Standard

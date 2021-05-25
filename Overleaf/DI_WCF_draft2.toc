@@ -26,7 +26,7 @@
 \contentsline {subsection}{\numberline {5.1}Estimation of GHZ winning probability}{17}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Robust self-testing}{18}{subsection.5.2}%
 \contentsline {subsection}{\numberline {5.3}Alice self-tests}{18}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Bob self-tests}{20}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.4}Bob self tests}{21}{subsection.5.4}%
 \contentsline {subsection}{\numberline {5.5}SDP-valued functions and their continuity}{22}{subsection.5.5}%
 \contentsline {subsubsection}{\numberline {5.5.1}SDP approximation and finite statistics}{22}{subsubsection.5.5.1}%
 \contentsline {section}{\numberline {6}Acknowledgements}{23}{section.6}%

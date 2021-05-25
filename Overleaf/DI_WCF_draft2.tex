@@ -380,7 +380,7 @@ Since then, a series of quantum protocols were introduced which kept improving t
 Mochon finally settled the question about the limits of the security in the quantum regime by proving the existence of quantum protocols with security approaching the ideal limit~\cite{Mochon07}. 
 Mochon's work was based on the notion of point games, a concept introduced by Kitaev. 
 Since then, a sequence of works have continued the study of point games. 
-In particular, the proof has been simplified~\cite{ACG+14} and made explicit~\cite{Arora2018,Arora2019,ARV21} %\Jnote{missing the date on last ref}. 
+In particular, the proof has been simplified~\cite{ACG+14} and made explicit~\cite{Arora2018,Arora2019,ARV21}. %\Jnote{missing the date on last ref}. 
 Interestingly, Miller~\cite{Miller2019} used Mochon's proof to show that protocols approaching the ideal limit must have an exponentially increasing number of messages. 
 %\Anote{Maybe add applications of coin flipping to bit commitment etc}
 We note that all of this work is in the \emph{device-dependent} setting where \emph{Alice and Bob trust their quantum devices}. 
@@ -419,7 +419,7 @@ In addition to this, we study the security in the \emph{device-independent} regi
 
 When studying device-independent (DI) protocols, one should first consider whether or not there are decent classical protocols (since these are not affected by the DI assumption). 
 It was proved that every classical WCF protocol\footnote{also holds for strong coin flipping} has bias $\eps = 1/2$, which is the worst possible value (see~\cite{Kitaev03,HW11}). 
-Thus, it makes sense to study quantum WCF protocols in the DI setting, especially if one with bias $\eps < 1/2$ can be found. Indeed, Silman, Chailloux, Aharon, Kerenidis, Pironio, and Massar presented a protocol (see \Algref{SCF}) in~\cite{Silman2011} with $p^*_A=\cos^2(\pi/8)\approx 0.853$ and $p^*_B=3/4$. We defer the details and simply note here that their protocol beigns with Alice possesing two devices or \emph{boxes} and Bob possesing one box which are together supposed to contain GHZ states and measurements.\footnote{A GHZ state is a non-local quantum state; we review later.} As the protocol proceeds, they, in addition to exchanging classical information, operate these boxes and exchange them.\footnote{any protocol described using boxes is readily converted into one where Alice and Bob communicate over an insecure quantum channel; see ?? for details}
+Thus, it makes sense to study quantum WCF protocols in the DI setting, especially if one with bias $\eps < 1/2$ can be found. Indeed, Silman, Chailloux, Aharon, Kerenidis, Pironio, and Massar presented a protocol (see \Algref{SCF}) in~\cite{Silman2011} with $p^*_A=\cos^2(\pi/8)\approx 0.853$ and $p^*_B=3/4$. We briefly discuss this protocol because we build on this result but defer the details. Their protocol beigns with Alice possesing two \emph{boxes}---physical devices that accept classical inputs and yield classical outputs---and Bob possesing one box which are together supposed to contain the GHZ state and measurements.\footnote{A GHZ state is a non-local quantum state; we review this in Section ??.TODO} As the protocol proceeds, they, in addition to exchanging classical information, operate these boxes and exchange them.\footnote{any protocol described using boxes is readily converted into one where Alice and Bob communicate over an insecure quantum channel; see ?? for details}
 As is, \Algref{SCF} has bias $\eps \approx 0.353$ but in \cite{Silman2011}, \Algref{SCF} is composed many times to obtain bias $\eps \le 0.33664$. 
 %has bias $\eps \le 0.33664$. To obtain a bias $\eps \le 0.33664$ using the protocol above, they compose the protocol many times. 
 
@@ -457,7 +457,9 @@ In this work, we provide two techniques which can be applied to a wide range of 
 	%We now discuss how we develop such a protocol. 
 	%This occurs using two main techniques, \emph{self-testing} and \emph{abort-phobic composition}. \Anote{Pedantic: maybe rephrase?}
 
-	We now discuss the key ideas that go into the proof of our main theorem, above. We begin with turning the strong coin flipping protocol---\Algref{SCF}---into a weak coin flipping protocol---\Algref{WCF}---in a routine manner. Again, we defer the explicit description of the protocol and informally describe the basic idea: since weak coin flipping has the notion of a ``winner'' (if $c=0$ Alice wins and if $c=1$ Bob wins) we have the party who does not win, conduct a test.
+	We now discuss the key ideas that go into the proof of our main theorem, above. \Algref{SCF} was, in fact, a strong coin flipping protocol and we begin by turning it into a weak coin flipping protocol---\Algref{WCF}---in a routine manner. 
+	%with turning the strong coin flipping protocol---\Algref{SCF}---into a weak coin flipping protocol---\Algref{WCF}---in a routine manner. 
+	Again, we defer the explicit description of the protocol and informally describe the basic idea: since weak coin flipping has the notion of a ``winner'' (if $c=0$ Alice wins and if $c=1$ Bob wins) we have the party who does not win, conduct a test.
 	
 	% We now discuss the proof of our main theorem, above. 
 	% The first step is that we turn the strong coin flipping protocol into a weak coin flipping protocol in a routine manner (see \Algref{WCF} in the main text). Basically, since weak coin flipping has the notion of a ``winner'' (if $c=0$ Alice wins and if $c=1$ Bob wins) we have the person who does not win do the testing.
@@ -509,7 +511,7 @@ In this work, we provide two techniques which can be applied to a wide range of 
 % \end{enumerate} 
 % \end{varalgorithm} 
 
-Our first technique is to add a pre-processing step to \Algref{WCF} which \emph{self-tests} the boxes Alice and Bob share. This concept is not new, but it applies well to this setting.
+Our first technique is to add a pre-processing step to \Algref{WCF} which \emph{self-tests} the boxes Alice and Bob share. While the concept is well known, by itself, it does not improve \Algref{SCF}. %This concept is not new, but it applies well to this setting.
 %We now add a pre-processing step to this protocol which \emph{self-tests} the boxes Alice and Bob share. This concept is not new, but it applies well to this setting.
 Our second technique is to compose and analyse the resulting protocols in a new way,\footnote{The composition in \cite{Silman2011} may also be seen as "abort-phobic" but their analsysis doesn't rely on the "abort" probability; their bound essentially neglects the abort event.} which we call \emph{abort-phobic} composition.
 %We also use the revised protocol in a new way of composing protocols which we subbed an \emph{abort-phobic} composition. 
@@ -517,10 +519,10 @@ Our second technique is to compose and analyse the resulting protocols in a new 
 
 	\subsection{First technique: Self-testing} 
 
-	In Protocols~\ref{alg:SCF} and~\ref{alg:WCF}, a cheating party may control what measurement is performed in the boxes of other party and how the state of the boxes is correlated to its own quantum memory. This is more general than \textit{device-dependent} protocols, where for instance, the measurements are known to the honest player. 
-	However, we employ the concept of self-testing to stop Bob (or Alice) from applying such a strategy. Intuitively, self testing is a powerful property which allows one to, just from certain input output behaviours of some device, conclude uniquely which quantum states and measurements constitute the device (up to relabelling). The GHZ state which was used in \Algref{SCF,WCF} can be self-tested. Clearly, this property has the potential to improve their security.\footnote{In \cite{Silman2011}, it was noted that self-testing doesn't help improve the security of \Algref{SCF}. Alternatively stated, \Algref{SCF} has the curious property that its device dependent variant has the same security as it (the device dependent variant).}
+	In Protocols~\ref{alg:SCF} and~\ref{alg:WCF}, a cheating party may control what measurement is performed in the boxes of the other party and how the state of the boxes is correlated to its own quantum memory. This is more general than \textit{device-dependent} protocols, where for instance, the measurements are known to the honest player. 
+	However, we employ the concept of self-testing to stop Bob (or Alice) from applying such a strategy.\footnote{The authors of \cite{Silman2011} noted that for \Algref{SCF}, the optimal cheating strategy can be implemented using the ``honest'' devices and thus self-testing does not make the protocol more secure.} Intuitively, self testing is a powerful property which allows one to, just from certain input-output behaviours of given devices (satisfying minimal assumptions), conclude uniquely which quantum states and measurements constitute the devices (up to relabelling). The GHZ state which was used in \Algref{SCF,WCF} can be self-tested. Clearly, this property has the potential to improve their security.\footnote{In \cite{Silman2011}, it was noted that self-testing doesn't help improve the security of \Algref{SCF}. Alternatively stated, \Algref{SCF} has the curious property that its device dependent variant has the same security as it (the device dependent variant).}
 	
-	We define \Algref{AliceSelfTests}, where Alice self-tests Bob and in \Algref{BobSelfTests}, where Bob self-tests Alice, before executing \Algref{WCF}. Skipping the details, the basic construction is almost trivial. Alice and Bob start with $n$ triples of boxes and, for instance when Alice self-tests, Alice asks Bob to send all but one randomly selected triple and tests if the GHZ test passes for these. If so, the remaining triple is used for the actual protocol. If $n$ is chosen large enough, then this forces a dishonest Bob to not tamper with the boxes too much, as suggested above. Indeed, this step already allows us to reduce the cheating probabilities. 
+	We define two variants of \Algref{WCF}---\Algref{AliceSelfTests}, where Alice self-tests Bob and \Algref{BobSelfTests}, where Bob self-tests Alice, before executing \Algref{WCF}. Skipping the details, the basic construction is almost trivial. Alice and Bob start with $n$ triples of boxes and, for instance when Alice self-tests, Alice asks Bob to send all but one randomly selected triple and tests if the GHZ test passes for these. If so, the remaining triple is used for the actual protocol. If $n$ is chosen large enough, then this forces a dishonest Bob to not tamper with the boxes too much, as suggested above. Indeed, this step already allows us to reduce the cheating probabilities. 
 	%The case where Alice self-tests Bob is described in \Algref{AliceSelfTests}.%illustrated below. 
 
 	% \begin{lyxalgorithm}[Protocol $\mathcal{P}$, where Alice self-tests] \label{alg:AliceSelfTests}  
@@ -548,7 +550,7 @@ Our second technique is to compose and analyse the resulting protocols in a new 
 	\end{equation} 
 	\end{lem}  
     
-	Recall that for \Algref{SCF}, $\PA=\cos^2(\pi/8)$ and $\PB=3/4$. %\Tnote{remind the bias of the Inital protocol for easy comparison}
+	For comparison, recall that for \Algref{SCF}, $\PA=\cos^2(\pi/8)$ and $\PB=3/4$. %\Tnote{remind the bias of the Inital protocol for easy comparison}
 	To prove this lemma, we have to dive into two technical concepts, which we briefly discuss below. 
 	Note that for device-dependent protocols, where Alice and Bob trust their devices, cheating probabilities can be cast as semidefinite programs ~\cite{Kitaev03,Mochon07}.
 	In the DI regime, we cannot even bound the dimension of the state within the boxes, making it much harder to analyse and bound Alice and Bob's cheating probabilities. 
@@ -1994,7 +1996,6 @@ to $\sigma_{y}$ for $x=1$, as in \Claimref{Quantum-boxes-pass}.
 \end{proof}
 
 \subsection{Alice self-tests}
-
 \branchcolor{purple}{The basic idea here is to treat the state and measurements inside
 the boxes as variables which are optimised over, subject to the constraint
 that they are $\epsilon$-close to the ideal GHZ state and measurements.
@@ -2035,7 +2036,9 @@ Now, instead, we require
 \[
 \left\Vert \Phi_{PQR'}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}-\Pi_{x|a}^{H}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR'}\right\Vert \le\epsilon\quad\forall a,x\in\{0,1\}
 \]
-where the norm\footnote{We could have used other norms but they would be a relaxation of the
+{[}EDIT: here the norm is just the vector norm but we can impose it
+as density matrices; there we use the trace norm; the remark shows
+how to convert that into an SDP{]}where the norm\footnote{We could have used other norms but they would be a relaxation of the
 constraints.} here is the trace norm $\left\Vert .\right\Vert $ (see \Remref{diffToNorm})
 and $\epsilon'$ is a function $\epsilon$ which vanishes as $\epsilon$
 vanishes ($\epsilon$ comes from the self testing step). One could,
@@ -2096,7 +2099,7 @@ and in the constraint \Eqref{NormNotSDP}. This is evidently a relaxation
 (because one can represent any choice of $\left|\psi\right\rangle ,M_{a|x}^{P}$
 and $\Phi_{PQR'}$ using $\left|\xi\right\rangle $ and $\left|\xi_{a,x}\right\rangle $
 in the optimisation problem). Relaxing further to mixed states, the
-SDP is then defined on $\xi^{aa',xx'}\in{\rm PSD}(HIJPQR')$ for $a,a',x,x'\in\{0,1\}$,
+SDP is then defined on $\xi^{aa',xx'}\in{\rm L}(HIJPQR')$ for $a,a',x,x'\in\{0,1\}$,
 $\rho_{{\rm junk}}\in{\rm PSD}(PQR')$, $\rho_{2}\in{\rm PSD}(XARGH)$
 and $\rho_{3}\in{\rm PSD}(XARGYDH)$ as 
 \[
@@ -2144,9 +2147,23 @@ Y_{11} & Y_{12}\\
 Y_{21} & Y_{22}
 \end{array}\right)\ge0$ and then set the linear constraint $Y_{11}=X-\epsilon\mathbb{I}$
 and $Y_{22}=\epsilon\mathbb{I}-X$. 
+
+{[}EDIT When $X$ is not Hermitian, we can relax it using Schur's
+complement as 
+\[
+\left(\begin{array}{cc}
+\mathbb{I} & X\\
+X^{T} & \epsilon''\mathbb{I}
+\end{array}\right)\ge0\iff\epsilon''\mathbb{I}\ge X^{T}X
+\]
+and if $\left\Vert X\right\Vert \le\epsilon$, then there should be
+some function $\epsilon''$ of $\epsilon$ that satisfies the above
+(with possibly a multiplicative factor of $\dim(X)$). {]}
 \end{rem}
 
-\subsection{Bob self-tests}
+
+\subsection{Bob self tests}
+
 For Bob's case, we work out an example which is essentially the same
 as what we want to prove. In this case, we are unable to find a simple
 SDP relaxation as above and instead rely on the NPA hierarchy for
@@ -2193,28 +2210,28 @@ These simplifications can be undone with the main idea unchanged.
 We now proceed with defining the second variant which has the $PQR$
 registers as well.}
 
-Second: The variables are $\rho_{0}\in JR$, $\rho_{1}\in ZJR$, $\rho_{{\rm junk}}\in R$
-and $\{M_{0|z},M_{1|z}\}$ are projectors acting on $JR$, for $z\in\{0,1\}$.
-The optimisation problem is 
+Second: The variables are $\rho_{0}\in HIJPQR$, $\rho_{1}\in ZJR$,
+$\rho_{{\rm junk}}\in R$ and $\{M_{0|z},M_{1|z}\}$ are projectors
+acting on $JR$, for $z\in\{0,1\}$. The optimisation problem is 
 \[
 \max\quad\tr(\Pi_{{\rm obj}}\rho_{2}\Pi_{{\rm obj}})
 \]
 subject to 
 \begin{align}
-\left\Vert \rho_{0}-\tr_{HI}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon_{0}\label{eq:statePart}\\
-\tr_{Z}(\rho_{1}) & =\rho_{0}\nonumber \\
+\left\Vert \rho_{0}-\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon_{0}\label{eq:statePart}\\
+\left\Vert M_{c|z}\rho_{0}M_{c'|z'}-\Pi_{c|z}^{J}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|\Pi_{c'|z'}^{J}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon_{1}\quad\forall\quad c,c',z,z'\in\{0,1\}.\label{eq:MrhoM}\\
+\tr_{Z}(\rho_{1}) & =\tr_{HIPQ}\rho_{0}\nonumber \\
 \rho_{2} & =\sum_{\substack{z,z'\\
 c,c'
 }
-}\left|c\right\rangle \left\langle c'\right|_{C}\quad\otimes\quad M_{c|z}\otimes\Pi_{z}^{Z}\quad\rho_{1}\quad M_{c'|z'}\otimes\Pi_{z'}^{Z}\nonumber \\
-\left\Vert M_{c|z}\tr_{Z}(\rho_{1})M_{c'|z'}-\Pi_{c|z}^{J}\tr_{HI}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi_{c'|z'}^{J}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon_{1}\quad\forall\quad c,c',z,z'\in\{0,1\}.\label{eq:MrhoM}
+}\left|c\right\rangle \left\langle c'\right|_{C}\quad\otimes\quad M_{c|z}\otimes\Pi_{z}^{Z}\quad\rho_{1}\quad M_{c'|z'}\otimes\Pi_{z'}^{Z}\nonumber 
 \end{align}
 where $\epsilon_{0}$ and $\epsilon_{1}$ are functions of $\epsilon$
 which vanish as $\epsilon$ vanishes.
 
 \branchcolor{purple}{We briefly justify why this optimization problem correctly captures
 the physical situation, modulo the simplifications listed above (which
-again, don't change the argument here). Let $\rho_{0}=\tr_{HIPQ}\left|\psi\right\rangle \left\langle \psi\right|$,
+again, don't change the argument here). [EDIT: the definiton of $\rho_0$ here is outdated] Let $\rho_{0}=\tr_{HIPQ}\left|\psi\right\rangle \left\langle \psi\right|$,
 where $\left|\psi\right\rangle \in HIJPQR$ was the state in the box
 and $M_{c|z}$ the measurement operators for the last register. Since
 we're allowing Bob to optimise over $\left|\psi\right\rangle $ and
@@ -2227,23 +2244,23 @@ This entails $\left\Vert M\left|\psi\right\rangle \left\langle \psi\right|M'-\Pi
 ($\epsilon$ with primes disappear as $\epsilon$ vanishes). That
 in turn implies \Eqref{MrhoM}. 
 
-It is immediate that for $\epsilon=0$, this optimization problem
-reduces to the first one because for $\epsilon=0$, $M\tr_{Z}(\rho_{1})M'=\Pi\tr_{HI}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi'\otimes\rho_{{\rm junk}}$
-and $\tr_{Z}(\rho_{1})=\tr_{HI}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|\otimes\rho_{{\rm junk}}$.
-Note that $\rho_{2}$ appears in the objective and in $\rho_{2}$,
-$M$ and $M'$ act on $\rho_{1}$ (and not $\tr_{Z}(\rho_{1})$).
-One can still trivially conclude that $M,M'$ can be replaced with
-$\Pi,\Pi'$ (see \exaref{replaceM}). }
+{[}EDIT: I still need to show that for $\epsilon=0$, the optimization
+problem reduces to the first one; in particular, I must justify why
+I can replace $M_{c|z}$ with $\Pi_{c|z}$ in the objective; it seems
+intuitive but need to check it carefully{]}
+
+}
 
 Third: Denote the value of the second program by $v(\epsilon,d)$.
 Clearly, $v(0,d)$ is the value of the first program for all $d$
-(finite $d$). Let $w(\epsilon,d,k)$ denote the value of the NPA
-relaxation of the second program, to level $k$. The NPA hierarchy
-is well known and for our purposes here, it suffices to note two facts.
-First, the NPA relaxation is always an SDP and second, the NPA relaxation
-converges to, in this case, the second program as $k$ tends to infinity.
-Since $v(\epsilon,d)\le w(\epsilon,d,k)$ for all $k$ and $d$, the
-continuity result follows {[}JAMIE: complete the argument?{]}. 
+(finite $d$). {[}EDIT: I realised even an NPA relaxation is not simple/obvious
+here{]} Let $w(\epsilon,d,k)$ denote the value of the NPA relaxation
+of the second program, to level $k$. The NPA hierarchy is well known
+and for our purposes here, it suffices to note two facts. First, the
+NPA relaxation is always an SDP and second, the NPA relaxation converges
+to, in this case, the second program as $k$ tends to infinity. Since
+$v(\epsilon,d)\le w(\epsilon,d,k)$ for all $k$ and $d$, the continuity
+result follows {[}JAMIE: complete the argument?{]}. 
 \end{example}
 
 \begin{example}
@@ -2253,6 +2270,7 @@ then $(M\otimes\mathbb{I}_{R})\rho(M\otimes\mathbb{I}_{R})=(\Pi\otimes\mathbb{I}
 This is trivially true because if the conclusion was false, then a
 partial trace would imply the premise is false (contrapositive). 
 \end{example}
+
 
 
 \subsection{SDP-valued functions and their continuity}

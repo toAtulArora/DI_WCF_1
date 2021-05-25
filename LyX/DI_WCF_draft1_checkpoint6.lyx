@@ -7534,9 +7534,7 @@ At this point, in the asymptotic case, we could directly apply the self-testing
 
 \end_inset
 
-[EDIT: here the norm is just the vector norm but we can impose it as density
- matrices; there we use the trace norm; the remark shows how to convert
- that into an SDP]where the norm
+where the norm
 \begin_inset Foot
 status collapsed
 
@@ -7888,7 +7886,7 @@ noprefix "false"
 
  in the optimisation problem).
  Relaxing further to mixed states, the SDP is then defined on 
-\begin_inset Formula $\xi^{aa',xx'}\in{\rm L}(HIJPQR')$
+\begin_inset Formula $\xi^{aa',xx'}\in{\rm PSD}(HIJPQR')$
 \end_inset
 
  for 
@@ -8055,42 +8053,6 @@ Y_{21} & Y_{22}
 
 .
  
-\end_layout
-
-\begin_layout Remark
-[EDIT When 
-\begin_inset Formula $X$
-\end_inset
-
- is not Hermitian, we can relax it using Schur's complement as 
-\begin_inset Formula 
-\[
-\left(\begin{array}{cc}
-\mathbb{I} & X\\
-X^{T} & \epsilon''\mathbb{I}
-\end{array}\right)\ge0\iff\epsilon''\mathbb{I}\ge X^{T}X
-\]
-
-\end_inset
-
-and if 
-\begin_inset Formula $\left\Vert X\right\Vert \le\epsilon$
-\end_inset
-
-, then there should be some function 
-\begin_inset Formula $\epsilon''$
-\end_inset
-
- of 
-\begin_inset Formula $\epsilon$
-\end_inset
-
- that satisfies the above (with possibly a multiplicative factor of 
-\begin_inset Formula $\dim(X)$
-\end_inset
-
-).
- ]
 \end_layout
 
 \begin_layout Subsection
@@ -8272,7 +8234,7 @@ These simplifications can be undone with the main idea unchanged.
 
 \begin_layout Example
 Second: The variables are 
-\begin_inset Formula $\rho_{0}\in HIJPQR$
+\begin_inset Formula $\rho_{0}\in JR$
 \end_inset
 
 , 
@@ -8307,13 +8269,13 @@ Second: The variables are
 subject to 
 \begin_inset Formula 
 \begin{align}
-\left\Vert \rho_{0}-\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon_{0}\label{eq:statePart}\\
-\left\Vert M_{c|z}\rho_{0}M_{c'|z'}-\Pi_{c|z}^{J}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|\Pi_{c'|z'}^{J}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon_{1}\quad\forall\quad c,c',z,z'\in\{0,1\}.\label{eq:MrhoM}\\
-\tr_{Z}(\rho_{1}) & =\tr_{HIPQ}\rho_{0}\nonumber \\
+\left\Vert \rho_{0}-\tr_{HI}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon_{0}\label{eq:statePart}\\
+\tr_{Z}(\rho_{1}) & =\rho_{0}\nonumber \\
 \rho_{2} & =\sum_{\substack{z,z'\\
 c,c'
 }
-}\left|c\right\rangle \left\langle c'\right|_{C}\quad\otimes\quad M_{c|z}\otimes\Pi_{z}^{Z}\quad\rho_{1}\quad M_{c'|z'}\otimes\Pi_{z'}^{Z}\nonumber 
+}\left|c\right\rangle \left\langle c'\right|_{C}\quad\otimes\quad M_{c|z}\otimes\Pi_{z}^{Z}\quad\rho_{1}\quad M_{c'|z'}\otimes\Pi_{z'}^{Z}\nonumber \\
+\left\Vert M_{c|z}\tr_{Z}(\rho_{1})M_{c'|z'}-\Pi_{c|z}^{J}\tr_{HI}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi_{c'|z'}^{J}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon_{1}\quad\forall\quad c,c',z,z'\in\{0,1\}.\label{eq:MrhoM}
 \end{align}
 
 \end_inset
@@ -8425,27 +8387,6 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-[EDIT: I still need to show that for 
-\begin_inset Formula $\epsilon=0$
-\end_inset
-
-, the optimization problem reduces to the first one; in particular, I must
- justify why I can replace 
-\begin_inset Formula $M_{c|z}$
-\end_inset
-
- with 
-\begin_inset Formula $\Pi_{c|z}$
-\end_inset
-
- in the objective; it seems intuitive but need to check it carefully]
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
 It is immediate that for 
 \begin_inset Formula $\epsilon=0$
 \end_inset
@@ -8515,11 +8456,6 @@ noprefix "false"
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
 \begin_layout Example
 Third: Denote the value of the second program by 
 \begin_inset Formula $v(\epsilon,d)$
@@ -8539,8 +8475,7 @@ Third: Denote the value of the second program by
 \end_inset
 
 ).
- [EDIT: I realised even an NPA relaxation is not simple/obvious here] Let
- 
+ Let 
 \begin_inset Formula $w(\epsilon,d,k)$
 \end_inset
 

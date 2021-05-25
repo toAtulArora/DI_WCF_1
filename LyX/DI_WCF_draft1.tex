@@ -32,7 +32,6 @@
 \AtBeginDocument{\providecommand\Figref[1]{\ref{Fig:#1}}}
 \AtBeginDocument{\providecommand\Assuref[1]{\ref{Assu:#1}}}
 \AtBeginDocument{\providecommand\Remref[1]{\ref{Rem:#1}}}
-\AtBeginDocument{\providecommand\exaref[1]{\ref{exa:#1}}}
 %% Because html converters don't know tabularnewline
 \providecommand{\tabularnewline}{\\}
 \RS@ifundefined{subsecref}
@@ -1282,7 +1281,9 @@ Now, instead, we require
 \[
 \left\Vert \Phi_{PQR'}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}-\Pi_{x|a}^{H}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR'}\right\Vert \le\epsilon\quad\forall a,x\in\{0,1\}
 \]
-where the norm\footnote{We could have used other norms but they would be a relaxation of the
+{[}EDIT: here the norm is just the vector norm but we can impose it
+as density matrices; there we use the trace norm; the remark shows
+how to convert that into an SDP{]}where the norm\footnote{We could have used other norms but they would be a relaxation of the
 constraints.} here is the trace norm $\left\Vert .\right\Vert $ (see \Remref{diffToNorm})
 and $\epsilon'$ is a function $\epsilon$ which vanishes as $\epsilon$
 vanishes ($\epsilon$ comes from the self testing step). One could,
@@ -1343,7 +1344,7 @@ and in the constraint \Eqref{NormNotSDP}. This is evidently a relaxation
 (because one can represent any choice of $\left|\psi\right\rangle ,M_{a|x}^{P}$
 and $\Phi_{PQR'}$ using $\left|\xi\right\rangle $ and $\left|\xi_{a,x}\right\rangle $
 in the optimisation problem). Relaxing further to mixed states, the
-SDP is then defined on $\xi^{aa',xx'}\in{\rm PSD}(HIJPQR')$ for $a,a',x,x'\in\{0,1\}$,
+SDP is then defined on $\xi^{aa',xx'}\in{\rm L}(HIJPQR')$ for $a,a',x,x'\in\{0,1\}$,
 $\rho_{{\rm junk}}\in{\rm PSD}(PQR')$, $\rho_{2}\in{\rm PSD}(XARGH)$
 and $\rho_{3}\in{\rm PSD}(XARGYDH)$ as 
 \[
@@ -1391,6 +1392,18 @@ Y_{11} & Y_{12}\\
 Y_{21} & Y_{22}
 \end{array}\right)\ge0$ and then set the linear constraint $Y_{11}=X-\epsilon\mathbb{I}$
 and $Y_{22}=\epsilon\mathbb{I}-X$. 
+
+{[}EDIT When $X$ is not Hermitian, we can relax it using Schur's
+complement as 
+\[
+\left(\begin{array}{cc}
+\mathbb{I} & X\\
+X^{T} & \epsilon''\mathbb{I}
+\end{array}\right)\ge0\iff\epsilon''\mathbb{I}\ge X^{T}X
+\]
+and if $\left\Vert X\right\Vert \le\epsilon$, then there should be
+some function $\epsilon''$ of $\epsilon$ that satisfies the above
+(with possibly a multiplicative factor of $\dim(X)$). {]}
 \end{rem}
 
 
@@ -1442,21 +1455,21 @@ These simplifications can be undone with the main idea unchanged.
 We now proceed with defining the second variant which has the $PQR$
 registers as well.}
 
-Second: The variables are $\rho_{0}\in JR$, $\rho_{1}\in ZJR$, $\rho_{{\rm junk}}\in R$
-and $\{M_{0|z},M_{1|z}\}$ are projectors acting on $JR$, for $z\in\{0,1\}$.
-The optimisation problem is 
+Second: The variables are $\rho_{0}\in HIJPQR$, $\rho_{1}\in ZJR$,
+$\rho_{{\rm junk}}\in R$ and $\{M_{0|z},M_{1|z}\}$ are projectors
+acting on $JR$, for $z\in\{0,1\}$. The optimisation problem is 
 \[
 \max\quad\tr(\Pi_{{\rm obj}}\rho_{2}\Pi_{{\rm obj}})
 \]
 subject to 
 \begin{align}
-\left\Vert \rho_{0}-\tr_{HI}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon_{0}\label{eq:statePart}\\
-\tr_{Z}(\rho_{1}) & =\rho_{0}\nonumber \\
+\left\Vert \rho_{0}-\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon_{0}\label{eq:statePart}\\
+\left\Vert M_{c|z}\rho_{0}M_{c'|z'}-\Pi_{c|z}^{J}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|\Pi_{c'|z'}^{J}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon_{1}\quad\forall\quad c,c',z,z'\in\{0,1\}.\label{eq:MrhoM}\\
+\tr_{Z}(\rho_{1}) & =\tr_{HIPQ}\rho_{0}\nonumber \\
 \rho_{2} & =\sum_{\substack{z,z'\\
 c,c'
 }
-}\left|c\right\rangle \left\langle c'\right|_{C}\quad\otimes\quad M_{c|z}\otimes\Pi_{z}^{Z}\quad\rho_{1}\quad M_{c'|z'}\otimes\Pi_{z'}^{Z}\nonumber \\
-\left\Vert M_{c|z}\tr_{Z}(\rho_{1})M_{c'|z'}-\Pi_{c|z}^{J}\tr_{HI}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi_{c'|z'}^{J}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon_{1}\quad\forall\quad c,c',z,z'\in\{0,1\}.\label{eq:MrhoM}
+}\left|c\right\rangle \left\langle c'\right|_{C}\quad\otimes\quad M_{c|z}\otimes\Pi_{z}^{Z}\quad\rho_{1}\quad M_{c'|z'}\otimes\Pi_{z'}^{Z}\nonumber 
 \end{align}
 where $\epsilon_{0}$ and $\epsilon_{1}$ are functions of $\epsilon$
 which vanish as $\epsilon$ vanishes.
@@ -1476,23 +1489,23 @@ This entails $\left\Vert M\left|\psi\right\rangle \left\langle \psi\right|M'-\Pi
 ($\epsilon$ with primes disappear as $\epsilon$ vanishes). That
 in turn implies \Eqref{MrhoM}. 
 
-It is immediate that for $\epsilon=0$, this optimization problem
-reduces to the first one because for $\epsilon=0$, $M\tr_{Z}(\rho_{1})M'=\Pi\tr_{HI}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi'\otimes\rho_{{\rm junk}}$
-and $\tr_{Z}(\rho_{1})=\tr_{HI}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|\otimes\rho_{{\rm junk}}$.
-Note that $\rho_{2}$ appears in the objective and in $\rho_{2}$,
-$M$ and $M'$ act on $\rho_{1}$ (and not $\tr_{Z}(\rho_{1})$).
-One can still trivially conclude that $M,M'$ can be replaced with
-$\Pi,\Pi'$ (see \exaref{replaceM}). }
+{[}EDIT: I still need to show that for $\epsilon=0$, the optimization
+problem reduces to the first one; in particular, I must justify why
+I can replace $M_{c|z}$ with $\Pi_{c|z}$ in the objective; it seems
+intuitive but need to check it carefully{]}
+
+}
 
 Third: Denote the value of the second program by $v(\epsilon,d)$.
 Clearly, $v(0,d)$ is the value of the first program for all $d$
-(finite $d$). Let $w(\epsilon,d,k)$ denote the value of the NPA
-relaxation of the second program, to level $k$. The NPA hierarchy
-is well known and for our purposes here, it suffices to note two facts.
-First, the NPA relaxation is always an SDP and second, the NPA relaxation
-converges to, in this case, the second program as $k$ tends to infinity.
-Since $v(\epsilon,d)\le w(\epsilon,d,k)$ for all $k$ and $d$, the
-continuity result follows {[}JAMIE: complete the argument?{]}. 
+(finite $d$). {[}EDIT: I realised even an NPA relaxation is not simple/obvious
+here{]} Let $w(\epsilon,d,k)$ denote the value of the NPA relaxation
+of the second program, to level $k$. The NPA hierarchy is well known
+and for our purposes here, it suffices to note two facts. First, the
+NPA relaxation is always an SDP and second, the NPA relaxation converges
+to, in this case, the second program as $k$ tends to infinity. Since
+$v(\epsilon,d)\le w(\epsilon,d,k)$ for all $k$ and $d$, the continuity
+result follows {[}JAMIE: complete the argument?{]}. 
 \end{example}
 
 \begin{example}

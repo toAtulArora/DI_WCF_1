@@ -18,6 +18,9 @@
 \BOOKMARK [2][-]{subsection.5.1}{Cheat vectors optimisation using Semi Definite Programming}{section.5}% 18
 \BOOKMARK [3][-]{subsubsection.5.1.1}{SDP when Alice self-tests}{subsection.5.1}% 19
 \BOOKMARK [3][-]{subsubsection.5.1.2}{SDP when Bob self-tests}{subsection.5.1}% 20
-\BOOKMARK [2][-]{subsection.5.2}{The self-testing step [Discuss with Tom before writing] }{section.5}% 21
-\BOOKMARK [2][-]{subsection.5.3}{Robust Self Testing}{section.5}% 22
-\BOOKMARK [2][-]{subsection.5.4}{The continuity argument [Enter Jamie]}{section.5}% 23
+\BOOKMARK [1][-]{section.6}{Security Analysis | Finite n}{}% 21
+\BOOKMARK [2][-]{subsection.6.1}{Alice self tests}{section.6}% 22
+\BOOKMARK [2][-]{subsection.6.2}{Bob self tests}{section.6}% 23
+\BOOKMARK [2][-]{subsection.6.3}{The self-testing step [Discuss with Tom before writing] }{section.6}% 24
+\BOOKMARK [2][-]{subsection.6.4}{Robust Self Testing}{section.6}% 25
+\BOOKMARK [2][-]{subsection.6.5}{The continuity argument [Enter Jamie]}{section.6}% 26

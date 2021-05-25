@@ -5,20 +5,23 @@
 \contentsline {subsection}{\numberline {1.3}Proof Technique}{2}{subsection.1.3}%
 \contentsline {section}{\numberline {2}Device Independent Weak Coin Flipping protocols | State Of The Art}{4}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Device Independence and the Box Paradigm}{4}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}The GHZ Test}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.2}The GHZ Test}{6}{subsection.2.2}%
 \contentsline {subsection}{\numberline {2.3}The Protocol}{6}{subsection.2.3}%
-\contentsline {section}{\numberline {3}First Technique: Self-testing (single shot, unbalanced)}{6}{section.3}%
+\contentsline {section}{\numberline {3}First Technique: Self-testing (single shot, unbalanced)}{7}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Cheat Vectors }{7}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Alice self-tests | Protocol $\mathcal {P}$}{7}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}Bob self-tests | Protocol $\mathcal {Q}$}{8}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Second Technique: Bias Suppression }{8}{section.4}%
+\contentsline {section}{\numberline {4}Second Technique: Bias Suppression }{9}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Composition}{9}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Standard Composition | $C^{LL}$}{10}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Abort Phobic Compositions | $C^{L\perp },C^{\perp L}$}{10}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.3}Abort Phobic Compositions | $C^{L\perp },C^{\perp L}$}{11}{subsection.4.3}%
 \contentsline {section}{\numberline {5}Security Proof | Asymptotic}{12}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Cheat vectors optimisation using Semi Definite Programming}{12}{subsection.5.1}%
-\contentsline {subsubsection}{\numberline {5.1.1}SDP when Alice self-tests}{12}{subsubsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1}Cheat vectors optimisation using Semi Definite Programming}{13}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}SDP when Alice self-tests}{13}{subsubsection.5.1.1}%
 \contentsline {subsubsection}{\numberline {5.1.2}SDP when Bob self-tests}{14}{subsubsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.2}The self-testing step {[}Discuss with Tom before writing{]} }{16}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Robust Self Testing}{16}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}The continuity argument {[}Enter Jamie{]}}{16}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Security Analysis | Finite n}{16}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Alice self tests}{16}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Bob self tests}{18}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}The self-testing step {[}Discuss with Tom before writing{]} }{19}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Robust Self Testing}{19}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}The continuity argument {[}Enter Jamie{]}}{19}{subsection.6.5}%
