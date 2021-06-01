@@ -8346,15 +8346,23 @@ status open
 We briefly justify why this optimization problem correctly captures the
  physical situation, modulo the simplifications listed above (which again,
  don't change the argument here).
- Let 
+ [TODO: fix the argument here; 
+\begin_inset Formula $\rho_{0}$
+\end_inset
+
+ is old] Let 
+\begin_inset Formula $\rho_{0}=\tr_{HIPQ}\left|\psi\right\rangle \left\langle \psi\right|$
+\end_inset
+
+, where 
 \begin_inset Formula $\left|\psi\right\rangle \in HIJPQR$
 \end_inset
 
- be the state in the box and 
+ was the state in the box and 
 \begin_inset Formula $M_{c|z}$
 \end_inset
 
- the measurement operators for the last box.
+ the measurement operators for the last register.
  Since we're allowing Bob to optimise over 
 \begin_inset Formula $\left|\psi\right\rangle $
 \end_inset
@@ -8392,7 +8400,21 @@ noprefix "false"
 \begin_inset Formula $\left\Vert M\left|\psi\right\rangle -\Pi\left|{\rm GHZ}\right\rangle \otimes\left|{\rm junk}\right\rangle \right\Vert \le\epsilon$
 \end_inset
 
- which implies 
+.
+ This entails 
+\begin_inset Formula $\left\Vert M\left|\psi\right\rangle \left\langle \psi\right|M'-\Pi\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|\Pi'\otimes\rho_{{\rm junk}}\right\Vert \le\epsilon'$
+\end_inset
+
+ (
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ with primes disappear as 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ vanishes).
+ That in turn implies 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "eq:MrhoM"
@@ -8407,16 +8429,12 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-It is straightforward to see that for 
+[EDIT: I still need to show that for 
 \begin_inset Formula $\epsilon=0$
 \end_inset
 
-, this optimization problem reduces to the first one.
- The 
-\begin_inset Formula $\rho_{0}$
-\end_inset
-
- part is trivial and replacement of 
+, the optimization problem reduces to the first one; in particular, I must
+ justify why I can replace 
 \begin_inset Formula $M_{c|z}$
 \end_inset
 
@@ -8424,21 +8442,7 @@ It is straightforward to see that for
 \begin_inset Formula $\Pi_{c|z}$
 \end_inset
 
- in 
-\begin_inset Formula $\rho_{2}$
-\end_inset
-
- can be made as in illustrated 
-\begin_inset CommandInset ref
-LatexCommand formatted
-reference "exa:replaceM"
-plural "false"
-caps "true"
-noprefix "false"
-
-\end_inset
-
- below.
+ in the objective; it seems intuitive but need to check it carefully]
 \end_layout
 
 \begin_layout Standard
@@ -8604,71 +8608,17 @@ Let
 \begin_inset Formula $M^{B},M^{\prime B}$
 \end_inset
 
- be measurement (Kraus) operators on 
+ be measurement operators on 
 \begin_inset Formula $B$
 \end_inset
 
-.
  Suppose 
 \begin_inset Formula $M^{B}\rho_{AB}M^{\prime B}=\Pi^{B}\rho_{AB}\Pi^{\prime B}$
 \end_inset
 
-.
- Suppose 
-\begin_inset Formula 
-\begin{equation}
-M^{B}\rho_{AB}M^{\prime B}=\Pi^{B}\rho_{Ab}\Pi^{\prime B}.\label{eq:measureMeasure}
-\end{equation}
 
-\end_inset
-
-If 
-\begin_inset Formula $\sigma_{AB}$
-\end_inset
-
- is another density matrix such that 
-\begin_inset Formula $\tr_{A}(\sigma_{AB})=\tr_{B}(\rho_{AB})$
-\end_inset
-
-, then 
-\begin_inset Formula 
-\begin{equation}
-M^{B}\sigma_{AB}M^{\prime B}=\Pi^{B}\sigma_{AB}\Pi^{\prime B}.\label{eq:replaceMeasurement}
-\end{equation}
-
-\end_inset
-
- This follows from Uhlman's theorem which guarantees that there exists a
- 
-\begin_inset Formula $U$
-\end_inset
-
- acting on system 
-\begin_inset Formula $A$
-\end_inset
-
- such that 
-\begin_inset Formula $\left(U\otimes\mathbb{I}_{B}\right)\sigma_{AB}\left(U^{\dagger}\otimes\mathbb{I}_{B}\right)=\rho_{AB}$
-\end_inset
-
-.
- Thus, conjugating 
-\begin_inset CommandInset ref
-LatexCommand formatted
-reference "eq:measureMeasure"
-plural "false"
-caps "true"
-noprefix "false"
-
-\end_inset
-
- with 
-\begin_inset Formula $U\otimes\mathbb{I}_{B}$
-\end_inset
-
-, we obtain .
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 [EDIT: the reasoning is wrong; the claim might also be] Let 

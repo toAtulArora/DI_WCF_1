@@ -1,26 +1,26 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [2][-]{subsection.1.1}{Our main result}{section.1}% 2
-\BOOKMARK [2][-]{subsection.1.2}{First technique: Self-testing}{section.1}% 3
-\BOOKMARK [2][-]{subsection.1.3}{Second technique: abort-phobic composition}{section.1}% 4
-\BOOKMARK [2][-]{subsection.1.4}{Applications}{section.1}% 5
-\BOOKMARK [2][-]{subsection.1.5}{Paper Organisation }{section.1}% 6
-\BOOKMARK [1][-]{section.2}{Protocols | First Technique}{}% 7
-\BOOKMARK [2][-]{subsection.2.1}{Prior Art}{section.2}% 8
-\BOOKMARK [2][-]{subsection.2.2}{Alice self-tests | Protocol P}{section.2}% 9
-\BOOKMARK [2][-]{subsection.2.3}{Bob self-tests | Protocol Q}{section.2}% 10
-\BOOKMARK [1][-]{section.3}{Compositions | Second Technique}{}% 11
-\BOOKMARK [2][-]{subsection.3.1}{Composition}{section.3}% 12
-\BOOKMARK [2][-]{subsection.3.2}{Standard Composition | CLL}{section.3}% 13
-\BOOKMARK [2][-]{subsection.3.3}{Abort Phobic Compositions | CL,CL}{section.3}% 14
-\BOOKMARK [1][-]{section.4}{Security Proof | Asymptotic limit}{}% 15
-\BOOKMARK [2][-]{subsection.4.1}{SDP when Alice self-tests}{section.4}% 16
-\BOOKMARK [2][-]{subsection.4.2}{SDP when Bob self-tests}{section.4}% 17
-\BOOKMARK [1][-]{section.5}{Security Proof | Finite n}{}% 18
-\BOOKMARK [2][-]{subsection.5.1}{Estimation of GHZ winning probability}{section.5}% 19
-\BOOKMARK [2][-]{subsection.5.2}{Robust self-testing}{section.5}% 20
-\BOOKMARK [2][-]{subsection.5.3}{Alice self-tests}{section.5}% 21
-\BOOKMARK [2][-]{subsection.5.4}{Bob self tests}{section.5}% 22
-\BOOKMARK [2][-]{subsection.5.5}{SDP-valued functions and their continuity}{section.5}% 23
-\BOOKMARK [3][-]{subsubsection.5.5.1}{SDP approximation and finite statistics}{subsection.5.5}% 24
-\BOOKMARK [1][-]{section.6}{Acknowledgements}{}% 25
+\BOOKMARK [1][-]{section.2}{Results}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{First technique: Self-testing}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Second technique: abort-phobic composition}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Applications}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Paper Organisation }{section.2}% 6
+\BOOKMARK [1][-]{section.3}{New protocols using self-testing | First Technique}{}% 7
+\BOOKMARK [2][-]{subsection.3.1}{Original protocols}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.2}{Alice self-tests | Protocol P}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.3}{Bob self-tests | Protocol Q}{section.3}% 10
+\BOOKMARK [1][-]{section.4}{Compositions | Second Technique}{}% 11
+\BOOKMARK [2][-]{subsection.4.1}{Composition}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.2}{Standard Composition | CLL}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.3}{Abort Phobic Compositions | CL,CL}{section.4}% 14
+\BOOKMARK [1][-]{section.5}{Security Proof | Asymptotic limit}{}% 15
+\BOOKMARK [2][-]{subsection.5.1}{SDP when Alice self-tests}{section.5}% 16
+\BOOKMARK [2][-]{subsection.5.2}{SDP when Bob self-tests}{section.5}% 17
+\BOOKMARK [1][-]{section.6}{Security Proof | Finite n}{}% 18
+\BOOKMARK [2][-]{subsection.6.1}{Estimation of GHZ winning probability}{section.6}% 19
+\BOOKMARK [2][-]{subsection.6.2}{Robust self-testing}{section.6}% 20
+\BOOKMARK [2][-]{subsection.6.3}{Alice self-tests}{section.6}% 21
+\BOOKMARK [2][-]{subsection.6.4}{Bob self tests}{section.6}% 22
+\BOOKMARK [2][-]{subsection.6.5}{SDP-valued functions and their continuity}{section.6}% 23
+\BOOKMARK [3][-]{subsubsection.6.5.1}{SDP approximation and finite statistics}{subsection.6.5}% 24
+\BOOKMARK [1][-]{section.7}{Acknowledgements}{}% 25
 \BOOKMARK [1][-]{appendix.A}{Device Independence and the Box Paradigm}{}% 26

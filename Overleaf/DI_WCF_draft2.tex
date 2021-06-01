@@ -562,6 +562,8 @@ Our second technique is to compose and analyse the resulting protocols in a new 
     % \Tnote{I think that the main idea that we use is the fact that for device-dependent protocols the maximum bias can be recast as an sdp. Me have not mentioned that up to now. Also it's not correct o say that we have prove rigidity}
     % \Jnote{Tom, why is it that we can't say we haven't proved rigidity? In any case, happy to have the continuity stuff reworded...}
     
+\Anote{Thanks. Yes, I am aware of this. I was planning to fix these three parts once the continuity results are sorted.}
+
 	\paragraph{Self-testing the GHZ game.} 
 	\Tnote{ Repetition, we mentioned this already in the previous paragraph}
 	We build on known self-testing results to prove that when Alice self-tests Bob and all $n-1$ rounds of GHZ tests succeed, then the remaining triple of boxes has to be approximately performing the optimal GHZ strategy. 
@@ -870,7 +872,7 @@ To contrast, for \cite{Silman2011}, the bound on cheating probabilities was $0.3
 % classical inputs and give classical outputs. This discussion mostly formalises rather obvious notions in the interest of clarity and parts of it may be appropriately skipped. Subsequently we give some details about \Algref{SCF} \cite{Silman2011} upon which we build our results.  %we use these to delineate the DI-CF due to
 %}
 
-\section{New protocols using self-testing}
+\section{New protocols using self-testing | First Technique}
 %\section{First Technique | Self-testing}
 % In the following, we first discuss how one can describe DI WCF protocols
 % in terms of the players exchanging ``boxes''---devices which take
@@ -990,7 +992,7 @@ As alluded to, while \cite{Silman2011} does not rely on the self-testing propert
         
 	    \item If Alice and Bob do not abort, they both accept the value of $c$ as the outcome of the protocol.
 	    
-	    \\ \Tnote{Protocol W now has the same structure as S and italics indicate additions}
+	    \Tnote{Protocol W now has the same structure as S and italics indicate additions}
     \end{enumerate} 
 \end{varalgorithm} 
 
@@ -1023,6 +1025,7 @@ follow the protocol using GHZ boxes (\Defref{GHZ-box}),
 Bob never aborts and they win with equal probabilities. As for the security, \cite{Silman2011} proved the following.
 
 \Tnote{How do we define the cheating probabilities $P^\star_A$ for SCF ?}
+\Anote{Thanks! It's a known issue; I was going to add this. I was thinking $P*_B$ = max(prob(Bob can force Alice to output 1),prob(Bob can force Alice to output 0)); will check to be sure and update}
 \begin{lem}[Security of SCF]
  \cite{Silman2011} Let $\mathcal{S}$ denote the protocol corresponding
 to \Algref{SCF}. Then, the success probability of cheating
@@ -1192,15 +1195,15 @@ corresponding to \Algref{AliceSelfTests}. Then Alice's cheating
 probability $p_{A}^{*}(\mathcal{P})\le\cos^{2}(\pi/8)\approx0.852$.
 Further, let $c_{0},c_{1},c_{\perp}\in\mathbb{R}$, and $\mathbb{C}_{B}(\mathcal{P})$
 be the set of cheat vectors for Bob. 
-%Then, as $N\to\infty$, the solution
-%to the optimisation problem $\max(c_{0}\alpha+c_{1}\beta+c_{\perp}\gamma)$
-%over $\mathbb{C}_{B}(\mathcal{Q})$ approaches that of a semi definite
-%programme. 
+Then, as $N\to\infty$, the solution
+to the optimisation problem $\max(c_{0}\alpha+c_{1}\beta+c_{\perp}\gamma)$
+over $\mathbb{C}_{B}(\mathcal{Q})$ approaches that of a semi definite
+programme. 
 In particular, i.e. for $c_{0}=c_{\perp}=0$ and $c_{1}=1$,
 $p_{B}^{*}(\mathcal{P}) \approx 0.667...$ (in the limit). 
 \end{lem}
 
-\Tnote{What is exactly the statement of the Lemma ?}
+\Tnote{What is exactly the statement of the Lemma ?}\Anote{Jamie commented out the main statement when we were restructuring things. I restored it for the moment; we might need to rephrase/remove things later}
 
 We defer the proof to \Subsubsecref{SDP-when-Alice}. \branchcolor{purple}{The value for $p_{B}^{*}(\mathcal{P})$ was obtained by numerically
 solving the corresponding semi definite programme while the analysis
@@ -1299,6 +1302,7 @@ WCF protocols and compose them to construct balanced WCF protocols.
 To this end, we introduce some notation and the term ``polarity'',
 to capture which among $A$ and $B$ is favoured. }
 \Tnote{Definition is a repetition, so I will reference to the introduction instead}
+\Anote{You're right. Thanks. Yes, these later sections I haven't made consistent with the introduction yet.}
 
 \begin{defn}[Unbalanced protocols, Polarity]
  \label{def:unbalanced-polarity}Given a WCF protocol $\mathcal{X}$,
@@ -1315,7 +1319,7 @@ $X$.
 \end{defn}
 
 \branchcolor{purple}{We now describe how these protocols can be composed such that the
-``winner gets polarity''. } \Tnote{We should call this : Winner gets advantage}
+``winner gets polarity''. } \Tnote{We should call this : Winner gets advantage} \Anote{Hmm...perhaps...but we introduced polarity to be a bit more precise. Let's discuss.}
 
 \subsection{Composition}
 \begin{defn}[$C(\cdot,\cdot)$ and $C(\cdot)$]
@@ -2054,7 +2058,7 @@ When $\epsilon=0$, we recover the asymptotic SDP (and that is no
 longer a relaxation). Since we only change the constant $\epsilon$,
 convergence of the objective value of these SDPs is easy to show {[}JAMIE{]}.}
 
-aoeu
+
 
 \branchcolor{blue}{\begin{proof}
 We first write exactly what is going on physically, except that we
@@ -2174,7 +2178,7 @@ so won't expect any jumps.
 \end{proof}
 }
 
-aoeu
+
 \begin{rem}
 \label{rem:diffToNorm}It is straightforward to show that $\left\Vert \left|\rho\right\rangle -\left|\sigma\right\rangle \right\Vert \le\epsilon\implies\tr\left|\rho-\sigma\right|\le\epsilon'$
 where $\epsilon'=2\sqrt{1-(1-\epsilon)}$. 
@@ -2278,28 +2282,36 @@ which vanish as $\epsilon$ vanishes.
 
 \branchcolor{purple}{We briefly justify why this optimization problem correctly captures
 the physical situation, modulo the simplifications listed above (which
-again, don't change the argument here). [EDIT: the definiton of $\rho_0$ here is outdated] Let $\rho_{0}=\tr_{HIPQ}\left|\psi\right\rangle \left\langle \psi\right|$,
-where $\left|\psi\right\rangle \in HIJPQR$ was the state in the box
-and $M_{c|z}$ the measurement operators for the last register. Since
+again, don't change the argument here). Let 
+%$\rho_{0}=\tr_{HIPQ}\left|\psi\right\rangle \left\langle \psi\right|$, where
+ $\left|\psi\right\rangle \in HIJPQR$ be the state in the box
+and $M_{c|z}$ be the measurement operators for the last box. Since
 we're allowing Bob to optimise over $\left|\psi\right\rangle $ and
 $M_{c|z}$ we don't quite need to worry about the isometry in the
 self-testing step. We suppress the $c$'s and $z$'s for the moment.
 The self-testing statement says that $\left\Vert \left|\psi\right\rangle -\left|{\rm GHZ}\right\rangle \otimes\left|{\rm junk}\right\rangle \right\Vert \le\epsilon$
 which entails \Eqref{statePart}. The self-testing statement also
 says that $\left\Vert M\left|\psi\right\rangle -\Pi\left|{\rm GHZ}\right\rangle \otimes\left|{\rm junk}\right\rangle \right\Vert \le\epsilon$.
-This entails $\left\Vert M\left|\psi\right\rangle \left\langle \psi\right|M'-\Pi\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|\Pi'\otimes\rho_{{\rm junk}}\right\Vert \le\epsilon'$
-($\epsilon$ with primes disappear as $\epsilon$ vanishes). That
-in turn implies \Eqref{MrhoM}. 
+%This entails $\left\Vert M\left|\psi\right\rangle \left\langle \psi\right|M'-\Pi\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|\Pi'\otimes\rho_{{\rm junk}}\right\Vert \le\epsilon'$
+%($\epsilon$ with primes disappear as $\epsilon$ vanishes). %That
+which implies \Eqref{MrhoM}. 
 
-{[}EDIT: I still need to show that for $\epsilon=0$, the optimization
-problem reduces to the first one; in particular, I must justify why
-I can replace $M_{c|z}$ with $\Pi_{c|z}$ in the objective; it seems
-intuitive but need to check it carefully{]}
+It is straightforward to see that for $\epsilon=0$, this optimization
+problem reduces to the first one. The $\rho_{0}$ part is trivial
+and replacement of $M_{c|z}$ with $\Pi_{c|z}$ in $\rho_{2}$ can
+be made as in illustrated \Exaref{replaceM} below.
+
+
+
+% {[}EDIT: I still need to show that for $\epsilon=0$, the optimization
+% problem reduces to the first one; in particular, I must justify why
+% I can replace $M_{c|z}$ with $\Pi_{c|z}$ in the objective; it seems
+% intuitive but need to check it carefully{]}
 
 }
 
 Third: Denote the value of the second program by $v(\epsilon,d)$.
-Clearly, $v(0,d)$ is the value of the first program for all $d$
+As argued, $v(0,d)$ is the value of the first program for all $d$
 (finite $d$). {[}EDIT: I realised even an NPA relaxation is not simple/obvious
 here{]} Let $w(\epsilon,d,k)$ denote the value of the NPA relaxation
 of the second program, to level $k$. The NPA hierarchy is well known
@@ -2311,12 +2323,34 @@ result follows {[}JAMIE: complete the argument?{]}.
 \end{example}
 
 \begin{example}
-\label{exa:replaceM}Let $\rho$ be a state in $QR$ and suppose $M$
-and $\Pi$ are two projectors acting on system $Q$. If $M\tr_{R}(\rho)M=\Pi\tr_{R}(\rho)\Pi$
-then $(M\otimes\mathbb{I}_{R})\rho(M\otimes\mathbb{I}_{R})=(\Pi\otimes\mathbb{I}_{R})\rho(\Pi\otimes\mathbb{I}_{R})$.
-This is trivially true because if the conclusion was false, then a
-partial trace would imply the premise is false (contrapositive). 
+	\label{exa:replaceM}Let $\rho_{AB}$ be a density matrix, $\Pi^{B},\Pi^{\prime B}$
+	be projectors on $B$ and $M^{B},M^{\prime B}$ be measurement (Kraus)
+	operators on $B$. Suppose $M^{B}\rho_{AB}M^{\prime B}=\Pi^{B}\rho_{AB}\Pi^{\prime B}$.
+	Suppose 
+	\begin{equation}
+	M^{B}\rho_{AB}M^{\prime B}=\Pi^{B}\rho_{Ab}\Pi^{\prime B}.\label{eq:measureMeasure}
+	\end{equation}
+	If $\sigma_{AB}$ is another density matrix such that $\tr_{A}(\sigma_{AB})=\tr_{B}(\rho_{AB})$,
+	then 
+	\begin{equation}
+	M^{B}\sigma_{AB}M^{\prime B}=\Pi^{B}\sigma_{AB}\Pi^{\prime B}.\label{eq:replaceMeasurement}
+	\end{equation}
+	 This follows from Uhlman's theorem which guarantees that there exists
+	a $U$ acting on system $A$ such that 
+	\begin{equation*}
+		\left(U\otimes\mathbb{I}_{B}\right)\sigma_{AB}\left(U^{\dagger}\otimes\mathbb{I}_{B}\right)=\rho_{AB}.
+	\end{equation*}
+	Thus, conjugating \Eqref{measureMeasure} with $U\otimes\mathbb{I}_{B}$,
+	we obtain \Eqref{replaceMeasurement}. (NB: We didn't need the fact that $\Pi,\Pi'$ are projectors and $M,M'$ are measurement operators)
 \end{example}
+	
+% \begin{example}
+% \label{exa:replaceM}Let $\rho$ be a state in $QR$ and suppose $M$
+% and $\Pi$ are two projectors acting on system $Q$. If $M\tr_{R}(\rho)M=\Pi\tr_{R}(\rho)\Pi$
+% then $(M\otimes\mathbb{I}_{R})\rho(M\otimes\mathbb{I}_{R})=(\Pi\otimes\mathbb{I}_{R})\rho(\Pi\otimes\mathbb{I}_{R})$.
+% This is trivially true because if the conclusion was false, then a
+% partial trace would imply the premise is false (contrapositive). 
+% \end{example}
 
 
 
