@@ -8346,7 +8346,11 @@ status open
 We briefly justify why this optimization problem correctly captures the
  physical situation, modulo the simplifications listed above (which again,
  don't change the argument here).
- Let 
+ [TODO: fix the argument here; 
+\begin_inset Formula $\rho_{0}$
+\end_inset
+
+ is old] Let 
 \begin_inset Formula $\rho_{0}=\tr_{HIPQ}\left|\psi\right\rangle \left\langle \psi\right|$
 \end_inset
 
