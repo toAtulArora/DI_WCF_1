@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex DI_WCF_draft3"] 1628040295 "DI_WCF_draft3.aux" "DI_WCF_draft3.bbl" "DI_WCF_draft3" 1628040298
+["bibtex DI_WCF_draft3"] 1628042646 "DI_WCF_draft3.aux" "DI_WCF_draft3.bbl" "DI_WCF_draft3" 1628043018
   "C:/Users/atuls/AppData/Local/Programs/MiKTeX/bibtex/bst/amscls/amsalpha.bst" 1591023610 28675 71ba1b1ee8387ac88670b0ea0eb2399a ""
-  "DI_WCF_draft3.aux" 1628040297 12324 036a8333c0e4ff614205a5845d4f4500 "pdflatex"
+  "DI_WCF_draft3.aux" 1628043017 12346 aea49896a83a9935df3894e0d69e3326 "pdflatex"
   "DI_WCF_ideas.bib" 1621280630 116323 720cfa3ca7445815f4d937fb5881c9a0 ""
   (generated)
   "DI_WCF_draft3.bbl"
   "DI_WCF_draft3.blg"
-["pdflatex"] 1628040295 "c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft3.tex" "DI_WCF_draft3.pdf" "DI_WCF_draft3" 1628040298
+["pdflatex"] 1628043015 "c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft3.tex" "DI_WCF_draft3.pdf" "DI_WCF_draft3" 1628043018
   "C:/Users/atuls/AppData/Local/MiKTeX/fonts/pk/ljfour/public/wasy/dpi600/wasy10.pk" 1627952336 15116 cdd0f1ece83ab0af826b42c988bf15cd ""
   "C:/Users/atuls/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1627886682 9728722 98c14f26ecd4efa31ff5723e122310c4 ""
   "C:/Users/atuls/AppData/Local/MiKTeX/pdftex/config/pdftex.map" 1627952331 1656692 5891e9bcd8deba8bc88872b01c74f308 ""
@@ -187,17 +187,17 @@
   "C:/Users/atuls/AppData/Local/Programs/MiKTeX/tex/latex/wasysym/wasysym.sty" 1579696602 11252 7fbfbe7bbcbe1f73acbe32ae2f10c666 ""
   "C:/Users/atuls/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1623005660 55589 34128738f682d033422ca125f82e5d62 ""
   "C:/Users/atuls/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1623005690 4902 efb3d66683a2da2a232f71e3a571a899 ""
-  "DI_WCF_draft3.aux" 1628040297 12324 036a8333c0e4ff614205a5845d4f4500 "pdflatex"
-  "DI_WCF_draft3.bbl" 1628040295 3258 77e619165b2936ed1b3c43fe9f8ef0e3 "bibtex DI_WCF_draft3"
-  "DI_WCF_draft3.out" 1628040297 4969 6acd602c708f5b446d255c9eecb1a1f9 "pdflatex"
-  "DI_WCF_draft3.tex" 1628040288 156742 3ed02613792016dce74e9faae134464c ""
-  "DI_WCF_draft3.toc" 1628040297 2805 56a3f8202e989a06edd8c0bd52eed2e3 "pdflatex"
-  "c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft3.tex" 1628040288 156742 3ed02613792016dce74e9faae134464c ""
+  "DI_WCF_draft3.aux" 1628043017 12346 aea49896a83a9935df3894e0d69e3326 "pdflatex"
+  "DI_WCF_draft3.bbl" 1628042646 3258 77e619165b2936ed1b3c43fe9f8ef0e3 "bibtex DI_WCF_draft3"
+  "DI_WCF_draft3.out" 1628043017 4969 6acd602c708f5b446d255c9eecb1a1f9 "pdflatex"
+  "DI_WCF_draft3.tex" 1628043013 157420 7547ef5cc0b6aff1a594314bd28c2aea ""
+  "DI_WCF_draft3.toc" 1628043017 2805 56a3f8202e989a06edd8c0bd52eed2e3 "pdflatex"
+  "c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft3.tex" 1628043013 157420 7547ef5cc0b6aff1a594314bd28c2aea ""
   "figures/composition_1.pdf" 1620783060 10192 094ceb948478f8c0a9eba8ece81f7a41 ""
   "figures/composition_2.pdf" 1620783060 11045 284338c8714b53a0ea11b0c381ba5a50 ""
   (generated)
+  "DI_WCF_draft3.pdf"
   "DI_WCF_draft3.out"
   "DI_WCF_draft3.log"
-  "DI_WCF_draft3.toc"
-  "DI_WCF_draft3.pdf"
   "DI_WCF_draft3.aux"
+  "DI_WCF_draft3.toc"

@@ -43,6 +43,7 @@
 \@writefile{toc}{\contentsline {paragraph}{Continuity argument.}{4}{section*.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Remark.}{4}{section*.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Second technique: abort-phobic composition}{4}{subsection.2.2}\protected@file@percent }
+\newlabel{subsec:IntroSecondTechnique}{{2.2}{4}{Second technique: abort-phobic composition}{subsection.2.2}{}}
 \@writefile{toc}{\contentsline {paragraph}{Standard composition.}{4}{section*.5}\protected@file@percent }
 \newlabel{alg:simple}{{3}{4}{Winner-gets-polarity composition}{thm.2.3}{}}
 \newlabel{first}{{2}{5}{Second technique: abort-phobic composition}{equation.2.2}{}}
@@ -81,19 +82,18 @@
 \newlabel{lem:Bob-self-tests}{{11}{9}{}{thm.3.11}{}}
 \newlabel{sec:Second-Technique}{{4}{10}{Compositions | Second Technique}{section.4}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Compositions | Second Technique}{10}{section.4}\protected@file@percent }
-\newlabel{def:unbalanced-polarity}{{12}{10}{Unbalanced protocols, Polarity}{thm.4.12}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Composition}{10}{subsection.4.1}\protected@file@percent }
-\newlabel{def:C}{{13}{10}{$C(\cdot ,\cdot )$ and $C(\cdot )$}{thm.4.13}{}}
-\newlabel{def:lenientR}{{14}{10}{$\mathcal {R}$ with lenient players}{thm.4.14}{}}
+\newlabel{def:C}{{12}{10}{$C(\cdot ,\cdot )$ and $C(\cdot )$}{thm.4.12}{}}
+\newlabel{def:lenientR}{{13}{10}{$\mathcal {R}$ with lenient players}{thm.4.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Standard composition of Coin flipping protocols. Subprotocols only have two outcomes depending on the coin flip. Labels indicate probabilities of outcomes for cheating Alice (blue) and cheating Bob (red)}}{11}{figure.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Standard Composition | $C^{LL}$}{11}{subsection.4.2}\protected@file@percent }
 \newlabel{eq:pStarAPprimeA}{{6}{11}{Standard Composition | $C^{LL}$}{equation.4.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Standard composition of Coin flipping protocols. Subprotocols only have two outcomes depending on the coin flip. Labels indicate probabilities of outcomes for cheating Alice (blue) and cheating Bob (red)}}{12}{figure.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Abort phobic compositing for Coin flipping protocols. Subprotocols have three possible outcomes including an abort symbol. Aborting in any subprotocol directly leads to aborting the whole protocol. Labels indicate probabilities of outcomes for cheating Alice (blue) and cheating Bob (red). In the security analysis of cheating Bob, we need to optimise over the cheat vectors $(v_{A},v_{B},v_{\perp })\in \mathbb  {C}_{B}$. }}{12}{figure.2}\protected@file@percent }
+\newlabel{fig:Abort-Augmented-Composition}{{2}{12}{Abort phobic compositing for Coin flipping protocols. Subprotocols have three possible outcomes including an abort symbol. Aborting in any subprotocol directly leads to aborting the whole protocol. Labels indicate probabilities of outcomes for cheating Alice (blue) and cheating Bob (red). In the security analysis of cheating Bob, we need to optimise over the cheat vectors $(v_{A},v_{B},v_{\perp })\in \mathbb {C}_{B}$}{figure.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Abort Phobic Compositions | $C^{L\perp },C^{\perp L}$}{12}{subsection.4.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Abort phobic compositing for Coin flipping protocols. Subprotocols have three possible outcomes including an abort symbol. Aborting in any subprotocol directly leads to aborting the whole protocol. Labels indicate probabilities of outcomes for cheating Alice (blue) and cheating Bob (red). In the security analysis of cheating Bob, we need to optimise over the cheat vectors $(v_{A},v_{B},v_{\perp })\in \mathbb  {C}_{B}$. }}{13}{figure.2}\protected@file@percent }
-\newlabel{fig:Abort-Augmented-Composition}{{2}{13}{Abort phobic compositing for Coin flipping protocols. Subprotocols have three possible outcomes including an abort symbol. Aborting in any subprotocol directly leads to aborting the whole protocol. Labels indicate probabilities of outcomes for cheating Alice (blue) and cheating Bob (red). In the security analysis of cheating Bob, we need to optimise over the cheat vectors $(v_{A},v_{B},v_{\perp })\in \mathbb {C}_{B}$}{figure.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Security Proof | Asymptotic limit}{13}{section.5}\protected@file@percent }
 \newlabel{sec:securityAsymptotic}{{5}{13}{Security Proof | Asymptotic limit}{section.5}{}}
-\newlabel{assu:asymptotic}{{19}{13}{}{thm.5.19}{}}
+\newlabel{assu:asymptotic}{{18}{13}{}{thm.5.18}{}}
 \newlabel{subsec:SDP-when-Alice}{{5.1}{13}{SDP when Alice self-tests}{subsection.5.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}SDP when Alice self-tests}{13}{subsection.5.1}\protected@file@percent }
 \newlabel{eq:Alice_Psi1}{{8}{13}{SDP when Alice self-tests}{equation.5.8}{}}
@@ -110,7 +110,7 @@
 \newlabel{subsec:EstimateGHZ}{{6.1}{16}{Estimation of GHZ winning probability}{subsection.6.1}{}}
 \newlabel{alg:self-test}{{6.1}{17}{Estimation of GHZ winning probability}{subsection.6.1}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {5}{\ignorespaces Estimation of the GHZ value}}{17}{algorithm.5}\protected@file@percent }
-\newlabel{prop:security}{{20}{17}{Security of \ref {alg:self-test}}{thm.6.20}{}}
+\newlabel{prop:security}{{19}{17}{Security of \ref {alg:self-test}}{thm.6.19}{}}
 \citation{MillerShi}
 \citation{McKague}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Robust self-testing}{18}{subsection.6.2}\protected@file@percent }
@@ -118,19 +118,19 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Alice self-tests}{18}{subsection.6.3}\protected@file@percent }
 \newlabel{eq:PsiZeroBasically}{{27}{19}{Alice self-tests}{equation.6.27}{}}
 \newlabel{eq:NormNotSDP}{{28}{19}{Alice self-tests}{equation.6.28}{}}
-\newlabel{rem:diffToNorm}{{22}{20}{}{thm.6.22}{}}
-\newlabel{rem:TraceNormAsSDP}{{22}{20}{}{thm.6.22}{}}
+\newlabel{rem:diffToNorm}{{21}{20}{}{thm.6.21}{}}
+\newlabel{rem:TraceNormAsSDP}{{21}{20}{}{thm.6.21}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Bob self tests}{20}{subsection.6.4}\protected@file@percent }
 \newlabel{eq:statePart}{{29}{21}{}{equation.6.29}{}}
 \newlabel{eq:MrhoM}{{30}{21}{}{equation.6.30}{}}
-\newlabel{exa:replaceM}{{24}{21}{}{thm.6.24}{}}
+\newlabel{exa:replaceM}{{23}{21}{}{thm.6.23}{}}
 \newlabel{eq:measureMeasure}{{31}{21}{}{equation.6.31}{}}
 \newlabel{eq:replaceMeasurement}{{32}{21}{}{equation.6.32}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.5}SDP-valued functions and their continuity}{22}{subsection.6.5}\protected@file@percent }
 \newlabel{subsec:SDPcontinuity}{{6.5}{22}{SDP-valued functions and their continuity}{subsection.6.5}{}}
 \newlabel{SDP}{{33}{22}{SDP-valued functions and their continuity}{equation.6.33}{}}
+\newlabel{contint}{{26}{22}{}{thm.6.26}{}}
 \newlabel{contint}{{27}{22}{}{thm.6.27}{}}
-\newlabel{contint}{{28}{22}{}{thm.6.28}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.1}SDP approximation and finite statistics}{22}{subsubsection.6.5.1}\protected@file@percent }
 \bibstyle{amsalpha}
 \bibdata{DI_WCF_ideas}
@@ -149,7 +149,7 @@
 \@writefile{toc}{\contentsline {section}{\numberline {7}Acknowledgements}{23}{section.7}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {A}Device Independence and the Box Paradigm}{23}{appendix.A}\protected@file@percent }
 \newlabel{sec:BoxParadigm}{{A}{23}{Device Independence and the Box Paradigm}{appendix.A}{}}
-\newlabel{def:box}{{29}{23}{Box}{thm.A.29}{}}
-\newlabel{def:BoxProtocol}{{30}{24}{Protocol in the box formalism}{thm.A.30}{}}
-\newlabel{def:MEprotocol}{{32}{24}{Measure and Exchange (Device Independent Two-Party) Protocols}{thm.A.32}{}}
+\newlabel{def:box}{{28}{23}{Box}{thm.A.28}{}}
+\newlabel{def:BoxProtocol}{{29}{24}{Protocol in the box formalism}{thm.A.29}{}}
+\newlabel{def:MEprotocol}{{31}{24}{Measure and Exchange (Device Independent Two-Party) Protocols}{thm.A.31}{}}
 \gdef \@abspage@last{24}

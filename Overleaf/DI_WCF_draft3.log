@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.7) (preloaded format=pdflatex 2021.8.1)  3 AUG 2021 18:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.7) (preloaded format=pdflatex 2021.8.1)  3 AUG 2021 19:10
 entering extended mode
 **c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft3.tex
 (c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft3.tex
@@ -1030,86 +1030,87 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 1176.
 
-[9] [10]
+[9]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 5.5pt on input line 1361.
+(Font)              scaled to size 5.5pt on input line 1363.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1368.
+(hyperref)                removing `math shift' on input line 1370.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 1368.
+(hyperref)                removing `superscript' on input line 1370.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1368.
+(hyperref)                removing `math shift' on input line 1370.
 
+[10]
 
-LaTeX Warning: Reference `fig:Standard-composition-technique' on page 11 undefined on input line 1431.
+LaTeX Warning: Reference `fig:Standard-composition-technique' on page 11 undefined on input line 1433.
 
-<figures/composition_1.pdf, id=403, 201.75375pt x 102.3825pt>
+<figures/composition_1.pdf, id=402, 201.75375pt x 102.3825pt>
 File: figures/composition_1.pdf Graphic file (type pdf)
 <use figures/composition_1.pdf>
-Package pdftex.def Info: figures/composition_1.pdf  used on input line 1431.
+Package pdftex.def Info: figures/composition_1.pdf  used on input line 1433.
 (pdftex.def)             Requested size: 201.75325pt x 102.38225pt.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1438.
+(hyperref)                removing `math shift' on input line 1440.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 1438.
+(hyperref)                removing `superscript' on input line 1440.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\perp' on input line 1438.
+(hyperref)                removing `\perp' on input line 1440.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 1438.
+(hyperref)                removing `superscript' on input line 1440.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\perp' on input line 1438.
+(hyperref)                removing `\perp' on input line 1440.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1438.
+(hyperref)                removing `math shift' on input line 1440.
 
-[11]
-<figures/composition_2.pdf, id=417, 190.7125pt x 102.3825pt>
+[11 <./figures/composition_1.pdf>]
+<figures/composition_2.pdf, id=418, 190.7125pt x 102.3825pt>
 File: figures/composition_2.pdf Graphic file (type pdf)
 <use figures/composition_2.pdf>
-Package pdftex.def Info: figures/composition_2.pdf  used on input line 1491.
+Package pdftex.def Info: figures/composition_2.pdf  used on input line 1493.
 (pdftex.def)             Requested size: 190.71202pt x 102.38225pt.
- [12 <./figures/composition_1.pdf>] [13 <./figures/composition_2.pdf>] [14]
+ [12 <./figures/composition_2.pdf>] [13] [14]
 
-LaTeX Warning: Reference `alg:SCForiginal' on page 15 undefined on input line 1832.
+LaTeX Warning: Reference `alg:SCForiginal' on page 15 undefined on input line 1834.
 
 [15]
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 1834.
+(Font)              scaled to size 14.4pt on input line 1836.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.5pt on input line 1834.
+(Font)              scaled to size 10.5pt on input line 1836.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.9pt on input line 1834.
+(Font)              scaled to size 7.9pt on input line 1836.
 
 
 LaTeX Font Warning: Font shape `U/wasy/m/n' in size <10.5> not available
-(Font)              size <10.95> substituted on input line 1834.
+(Font)              size <10.95> substituted on input line 1836.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1834.
+(hyperref)                removing `math shift' on input line 1836.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1834.
+(hyperref)                removing `math shift' on input line 1836.
 
 [16] [17]
-Overfull \hbox (5.74733pt too wide) in paragraph at lines 2121--2121
+Overfull \hbox (5.74733pt too wide) in paragraph at lines 2123--2123
 \T1/LinuxLibertineT-TLF/m/n/10 At this point, in the asymp-totic case, we could dir-ectly ap-ply the self-testing res-ult and re-place $\U/ntxmia/m/it/10 []\OML/nxlmi/m/it/10 M[] [][]$
  []
 
@@ -1134,19 +1135,19 @@ Package rerunfilecheck Info: File `DI_WCF_draft3.out' has not changed.
 ### simple group (level 1) entered at line 1059 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 17523 strings out of 478870
- 259344 string characters out of 2848837
- 591066 words of memory out of 3000000
+ 17522 strings out of 478870
+ 259340 string characters out of 2848837
+ 591084 words of memory out of 3000000
  34829 multiletter control sequences out of 15000+600000
  578165 words of font info for 229 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,14n,66p,1234b,590s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,14n,66p,1234b,607s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.12} has been referenced but does not exist, replaced by a fixed one
 
  <C:\Users\atuls\AppData\Local\MiKTeX\fonts/pk/ljfour/public/wasy/dpi600\wasy10.pk>{C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}<C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/LibertineMathMI.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/LibertineMathMI5.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/LibertineMathMI7.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/LibertineMathRM.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineT.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTB.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTI.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/NewTXMI.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/NewTXMI7.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txexs.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txmiaX.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/txsya.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/txsyb.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txsys.pfb>
-Output written on DI_WCF_draft3.pdf (24 pages, 570660 bytes).
+Output written on DI_WCF_draft3.pdf (24 pages, 569056 bytes).
 PDF statistics:
- 726 PDF objects out of 1000 (max. 8388607)
- 231 named destinations out of 1000 (max. 500000)
+ 724 PDF objects out of 1000 (max. 8388607)
+ 230 named destinations out of 1000 (max. 500000)
  219 words of extra memory for PDF output out of 10000 (max. 10000000)
 

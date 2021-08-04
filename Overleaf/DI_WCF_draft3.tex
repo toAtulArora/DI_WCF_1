@@ -565,7 +565,7 @@ Our second technique is to compose and analyse the resulting protocols in a new 
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 	  
-	\subsection{Second technique: abort-phobic composition} 
+	\subsection{Second technique: abort-phobic composition}\label{subsec:IntroSecondTechnique}
 	%\Tnote{changed title of the subsection, the paragraph name and restructured the first two paragraphs.} 
 	%\Anote{Introduce percieved polarity at some point}
     It can happen, that for a given WCF protocol, $\PB \neq \PA$, in which case we say the protocol is \emph{polarised}. %\Jnote{American or British English?}. 
@@ -1254,52 +1254,54 @@ The proof is again deferred; see \Subsecref{SDP-when-Bob}.
 	
 % \end{table}
 	
+Central to the discussion in this section, will be the notion of \emph{polarity} introduced in \Subsecref{IntroSecondTechnique} and our results will apply to polarised protocols. Note that $\mathcal{W},\mathcal{P},$ and $\mathcal{Q}$ are all polarised. We begin by recalling that in \Subsecref{IntroSecondTechnique}, again, we had introduced a ``standard composition''---the simplest implementation of the ``winner gets polarity'' idea. Here, we restate this composition with more precision and introduce the notation we use for the more involved cases.
 
-In this section, we use the convention that $\mathcal{W},\mathcal{P}$
-and $\mathcal{Q}$ correspond to the protocols described in \Algref{WCF},
-\Algref{AliceSelfTests} and \Algref{BobSelfTests}, respectively.
-\branchcolor{purple}{Notice that $p_{A}^{*}(\mathcal{X})>p_{B}^{*}(\mathcal{X})$ where
-$\mathcal{X}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$. We call
-such protocols ``unbalanced''. In this section we start from unbalanced
-WCF protocols and compose them to construct balanced WCF protocols.
-To this end, we introduce some notation and the term ``polarity'',
-to capture which among $A$ and $B$ is favoured. }
-\Tnote{Definition is a repetition, so I will reference to the introduction instead}
-\Anote{You're right. Thanks. Yes, these later sections I haven't made consistent with the introduction yet.}
+% In this section, we use the convention that $\mathcal{W},\mathcal{P}$
+% and $\mathcal{Q}$ correspond to the protocols described in \Algref{WCF},
+% \Algref{AliceSelfTests} and \Algref{BobSelfTests}, respectively.
+% \branchcolor{purple}{Notice that $p_{A}^{*}(\mathcal{X})>p_{B}^{*}(\mathcal{X})$ where
+% $\mathcal{X}\in\{\mathcal{I},\mathcal{P},\mathcal{Q}\}$. We call
+% such protocols ``unbalanced''. In this section we start from unbalanced
+% WCF protocols and compose them to construct balanced WCF protocols.
+% To this end, we introduce some notation and the term ``polarity'',
+% to capture which among $A$ and $B$ is favoured. }
+% \Tnote{Definition is a repetition, so I will reference to the introduction instead}
+% \Anote{You're right. Thanks. Yes, these later sections I haven't made consistent with the introduction yet.}
 
-\begin{defn}[Unbalanced protocols, Polarity]
- \label{def:unbalanced-polarity}Given a WCF protocol $\mathcal{X}$,
-we say that it is unbalanced if $p_{A}^{*}(\mathcal{X})\neq p_{B}^{*}(\mathcal{X})$.
-We say that $\mathcal{X}$ has polarity $A$ if $p_{A}^{*}(\mathcal{X})>p_{B}^{*}(\mathcal{X})$
-and polarity $B$ if $p_{A}^{*}(\mathcal{X})<p_{B}^{*}(\mathcal{X})$. 
+% \begin{defn}[Unbalanced protocols, Polarity]
+%  \label{def:unbalanced-polarity}Given a WCF protocol $\mathcal{X}$,
+% we say that it is unbalanced if $p_{A}^{*}(\mathcal{X})\neq p_{B}^{*}(\mathcal{X})$.
+% We say that $\mathcal{X}$ has polarity $A$ if $p_{A}^{*}(\mathcal{X})>p_{B}^{*}(\mathcal{X})$
+% and polarity $B$ if $p_{A}^{*}(\mathcal{X})<p_{B}^{*}(\mathcal{X})$. 
 
-Finally, let $X,Y\in\{A,B\}$ be distinct and suppose that $\mathcal{R}$
-is an unbalanced protocol. Then, we define $\mathcal{\mathcal{R}}_{X}$
-to be protocol $\mathcal{R}$ where Alice's and Bob's roles are possibly
-interchanged so that $\mathcal{R}_{X}$ has polarity $X$, i.e. $p_{X}^{*}(\mathcal{\mathcal{R}}_{X})>p_{Y}^{*}(\mathcal{R}_{X})$.
-We refer to $\mathcal{R}_{X}$ as $\mathcal{R}$ polarised towards
-$X$.
-\end{defn}
+% Finally, let $X,Y\in\{A,B\}$ be distinct and suppose that $\mathcal{R}$
+% is an unbalanced protocol. Then, we define $\mathcal{\mathcal{R}}_{X}$
+% to be protocol $\mathcal{R}$ where Alice's and Bob's roles are possibly
+% interchanged so that $\mathcal{R}_{X}$ has polarity $X$, i.e. $p_{X}^{*}(\mathcal{\mathcal{R}}_{X})>p_{Y}^{*}(\mathcal{R}_{X})$.
+% We refer to $\mathcal{R}_{X}$ as $\mathcal{R}$ polarised towards
+% $X$.
+% \end{defn}
 
-\branchcolor{purple}{We now describe how these protocols can be composed such that the
-``winner gets polarity''. } \Tnote{We should call this : Winner gets advantage} \Anote{Hmm...perhaps...but we introduced polarity to be a bit more precise. Let's discuss.}
+% \branchcolor{purple}{We now describe how these protocols can be composed such that the
+% ``winner gets polarity''. } \Tnote{We should call this : Winner gets advantage} \Anote{Hmm...perhaps...but we introduced polarity to be a bit more precise. Let's discuss.}
 
 \subsection{Composition}
 \begin{defn}[$C(\cdot,\cdot)$ and $C(\cdot)$]
 \label{def:C}
-Given two unbalanced WCF protocols, $\mathcal{X}$
+Given two polarised WCF protocols, $\mathcal{X}$
 and $\mathcal{Y}$, let $\mathcal{X}_{A},\mathcal{X}_{B}$ and $\mathcal{Y}_{A},\mathcal{Y}_{B}$
-be their polarisations (see \Defref{unbalanced-polarity}).  Define
+be their polarisations (see \Subsecref{IntroSecondTechnique}). %\Defref{unbalanced-polarity}).  
+Define
 $C(\mathcal{X},\mathcal{Y})$ as follows:
 \begin{enumerate}
 \item Alice and Bob execute $\mathcal{X}_{A}$ and obtain outcome $X\in\{A,B,\perp\}$. 
-\item If
+\item 
 \begin{enumerate}
-\item $X=A$, execute $\mathcal{Y}_{A}$ and obtain outcome $Y\in\{A,B,\perp\}$,
-else if
-\item $X=B$, execute $\mathcal{Y}_{B}$ and obtain outcome $Y\in\{A,B,\perp\}$,
-and finally if
-\item $X=\perp$, set $Y=\perp$.
+\item If $X=A$, execute $\mathcal{Y}_{A}$ and obtain outcome $Y\in\{A,B,\perp\}$,
+else 
+\item if $X=B$, execute $\mathcal{Y}_{B}$ and obtain outcome $Y\in\{A,B,\perp\}$,
+and finally
+\item if $X=\perp$, set $Y=\perp$.
 \end{enumerate}
 Output $Y$.
 \end{enumerate}
