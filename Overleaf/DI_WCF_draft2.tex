@@ -39,7 +39,7 @@ While I like the idea, I think it is neither long enough to be fully clear (whic
 
 Issue 2:
 I think it is worthwhile splitting the analysis into asymptotic analysis and finite n analysis. This is because if I, as a reader, get interested in the article then after reading the introduction, I want to be able to see concretely how something close to the final statement can be proved first, if it is easier. The details about finite size effects I may even decide to skip until I actually need it somewhere. Conversely, I may be only interested in seeing how finite sized effects are handled and then too it helps to have them separated. (Been there!)
-I think one way of achieving such a structure is to introduce the protocols formally (see below) in a separate section, and state their security guarantees. Then formally introduce the compositions (with the relevant notation), make the final result appear plaussible and state it. With these in place, give the asymptotic proof for the assertions and then fill in the remaining steps for the full proof.
+I think one way of achieving such a structure is to introduce the protocols formally (see below) in a separate section, and state their security guarantees. Then formally introduce the compositions (with the relevant notation), make the final result appear plausible and state it. With these in place, give the asymptotic proof for the assertions and then fill in the remaining steps for the full proof.
 
 General remark:
 Tom: Earlier, since we were not sure about Bob self-testing, I had changed the protocol I use for illustrating abort phobic compositions—I started using P. We can now directly use Q but this would mean you'll have to modify the figure. Sorry about that.
@@ -1604,6 +1604,226 @@ to $\sigma_{y}$ for $x=1$, as in \Claimref{Quantum-boxes-pass}.
 of vectors). Therefore the isometry can't get rid of the $\left|{\rm junk}\right\rangle $
 part. }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\newpage  
+\subsection{NEW SECTION: JAMIE STUFF} 
+ 
+%\snote{Atul, in your arguments, you trace out Alice's junk. This may reveal info to Bob. Not sure. I think this is because the unitary acts on Alice's whole space, including the junk. But maybe I am mixed up.}
+
+%\snote{Does the self-testing result imply Alice's measurement must act like that? It seem to imply something on all three boxes, but we only use it for Alice's. I think so, so perhaps this is a note to myself to think about it more :)}
+
+%\begin{lem} 
+%If $\| x - y \|_2 \leq \gamma$ then $\| xx^* - yy^* \|_2 \leq 2\gamma$. 
+%\end{lem} 
+
+%\begin{proof} 
+%Easy. Will do it later if this is kept. 
+%\end{proof} 
+
+%\begin{lem} 
+%For any choice of quantum states $\rho$ and $\sigma$, we have 
+%\begin{equation} 
+%\| \rho - \sigma \|_{tr} \leq \| \tr_B(\rho) - %\tr_B(\sigma) \|_{tr}. 
+%\end{equation} 
+%\end{lem} 
+
+%\begin{proof} 
+%This is in Mike and Ike. 
+%\end{proof} 
+
+%\snote{We might be able to combine both of the above using something in Mike and Ike.}
+
+\begin{lem} 
+UPPER BOUND:  \snote{We need to multiply by some bound on the probability that Alice does not catch Bob cheating in the self-test stage. That probability needs to be incorporated somewhere. It shouldn't affect the results though.}
+\begin{align} 
+\eta_{\epsilon} := \textup{maximize: } & \tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{3}) \\ 
+\textup{subject to: } 
+&     
+\| y_{a,x} - \Pi^H_{a|x} \ket{GHZ}_{HIJ} \otimes \ket{junk}_{H'I'J'} \|_{tr} \leq \epsilon \\ 
+& \ket{\phi} = \frac{1}{2}\sum_{a,x,r} \ket{x,a,r} \ket{a \oplus x.r} \otimes y_{a,x} \\ 
+& \rho_1 = \kb{\phi} \\
+& \tr_{S, I, I', J, J'}(\rho_1) = \tr_{G}(\rho_{2})\\
+&     \rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2}  =\tr_{D}(\rho_{3}) \\ 
+& \| y_{a,x} \|_2 \leq 1. 
+\end{align} 
+%where 
+%\begin{equation} 
+%\ket{\pi} := \frac{1}{\sqrt 2} \sum_{x,a} \ket{x} %\ket{a} \otimes \Pi_{a|x} \ket{GHZ}_{IJK}.
+%\end{equation}
+%\begin{align} 
+%\eta_{\epsilon} := \textup{maximize: } & %\tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm %GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{2}) \\ 
+%\textup{subject to: } 
+%&     
+%\| \rho_0 - \tr_{JK} \kb{\pi} \|_{tr} \leq \epsilon %\\ 
+%& \rho_1 = ???? \,  \rho_0 \, ????? \\
+%& \tr_{S}(\rho_1) = \tr_{G}(\rho_{2})\\
+%&     \rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2}  %=\tr_{D}(\rho_{3}) 
+%\end{align} 
+%where 
+%\begin{equation} 
+%\ket{\pi} := \frac{1}{\sqrt 2} \sum_{x,a} \ket{x} %\ket{a} \otimes \Pi_{a|x} \ket{GHZ}_{IJK}.
+%\end{equation}
+\end{lem} 
+
+%\snote{Note that in the self-testing statement, we can assume there is no junk state and the isometries are applied to the 'honest state'. Please verify. Otherwise, we are left with a weird dimension in this SDP, which is bad. Perhaps there is a way to remove it though...} 
+
+\snote{How does $\epsilon$ compare to $n$ (the number of states to be self-tested)?} 
+
+\snote{Indicate spaces of the above variables.}
+
+\begin{proof} 
+%Define 
+%\begin{equation} 
+%\ket{\tau} := \frac{1}{\sqrt 2} \sum_{x,a} \ket{x} \ket{a} \otimes M_{a|x} \ket{\psi}_{PQR}, 
+%\end{equation} 
+%where $\ket{\psi}$ and $M_{a|x}$ are the states and measurements actually used in the protocol. 
+%Thus, we have 
+%\begin{equation} 
+%\rho_0 = \tr_{QR} ( \kb{\tau} )
+%\end{equation}  
+%is the state Alice has at the beginning of the protocol. 
+The state at the beginning of the protocol can be written as 
+\begin{equation} 
+\ket{\phi_0} = \frac{1}{\sqrt 2} \sum_{x} \ket{x} \ket{\psi}. 
+\end{equation} 
+When Alice measures, she creates the state 
+\begin{equation} 
+\ket{\phi_1} = \frac{1}{\sqrt 2} \sum_{x,a} \ket{x,a} M_{a|x} \ket{\psi}. 
+\end{equation} 
+\snote{Add in the r,s stuff around here.}
+Then we have  
+\begin{equation} 
+\Phi \left( \ket{\phi} \right) 
+= \Phi \left( \frac{1}{2} \sum_{x,a,r} \ket{x,a,r} \ket{a \oplus x.r} \otimes M_{a|x} \ket{\psi} \right) 
+= \frac{1}{2} \sum_{x,a,r} \ket{x,a,r} \ket{a \oplus x.r} \otimes \Phi(M_{a|x} \ket{\psi}). 
+\end{equation} 
+From self-testing, we know that 
+\begin{equation} 
+\| \Phi(M_{a|x} \ket{\psi}) - \Pi^H_{a|x} \ket{GHZ}_{HIJ} \otimes \ket{junk}_{H'I'J'} \|_{tr} \leq \epsilon. 
+\end{equation} 
+Since $M_{a|x}$ and $\ket{\psi}$ is under Bob's control, we can relax the problem to allowing Bob to control \emph{the entire vector} $\Phi(M_{a|x} \ket{\psi})$, and we just call this vector $y_{a,x}$ (which is subnormalized). 
+We now have the optimization problem 
+\begin{align}
+\textup{maximize: } & \tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{3}) \\ 
+\textup{subject to: } 
+&     
+\| y_{a,x} - \Pi^H_{a|x} \ket{GHZ}_{HIJ} \otimes \ket{junk}_{H'I'J'} \|_{tr} \leq \epsilon \\ 
+& \Phi(\ket{\phi}) = \frac{1}{2}\sum_{a,x,r} \ket{x,a,r} \ket{a \oplus x.r} \otimes y_{a,x} \\ 
+& \rho_1 = \kb{\phi} \\ 
+& \tr_{S, I, I', J, J'}(\rho_1) = \tr_{G}(\rho_{2})\\
+&     \rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2}  =\tr_{D}(\rho_{3}) \\ 
+& \| y_{a,x} \|_2 \leq 1. 
+\end{align} 
+Now, by multiplying each of the constraints involving $\rho_1$, $\rho_2$, and $\rho_3$ on each side by $\Phi$, we preserve feasibility. 
+This proves the result. 
+\snote{I had my doubts that this worked... but it seems OK! Will come back and have another look!}
+%We have that there exists a local isometry $\Phi = V_{I} \otimes V_{J} \otimes V_{K}$ such that 
+%\begin{equation} 
+%\ket{\tau} \approx \Phi(\ket{\pi}).  
+%\end{equation} 
+%By the above two lemmas, we have that 
+%\begin{equation} 
+%\rho_0 \approx V_I [ \tr_{JK}(\kb{\pi}) ] %V_I^{\dagger}.  
+%\end{equation} 
+%Note that Bob \emph{has the freedom} to choose %whatever $V_{I}$ he wants. 
+%Suppose we have a feasible solution $(V, \rho_0, %\rho_1, \rho_2, \rho_3)$. Then 
+%$(I, 
+%V_{I}^{\dagger} \rho_0 V_{I}, 
+%V_{I}^{\dagger}\rho_1 V_{I}, 
+%V_{I}^{\dagger}\rho_2 V_{I}, 
+%V_{I}^{\dagger}\rho_3 V_{I})$ 
+%is another feasible solution with the same %objective function value \snote{check! Small issue %here, will have to check!}.  
+%In other words, the optimal value does not depend %on the isometry Bob chooses, and thus we may assume %it is equal to $I$.  \snote{Need to relabel the %spaces, and likely the variables.}
+\end{proof} 
+
+\begin{lem}[Continuity]  
+We have $\lim_{\epsilon \downarrow 0} \eta_{\epsilon} = \eta$, where $\eta$ is defined as the following SDP: 
+\begin{align}
+\textup{maximize: } & \tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{3}) \\ 
+\textup{subject to: } 
+& \rho_1 = \kb{\phi} \\ 
+& \tr_{S, I, I', J, J'}(\rho_1) = \tr_{G}(\rho_{2})\\
+& \rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2}  =\tr_{D}(\rho_{3}),  
+\end{align}  
+where $\ket{\phi} = \frac{1}{2}\sum_{a,x,r} \ket{x,a,r} \ket{a \oplus x.r} \otimes \Pi^H_{a|x} \ket{GHZ}_{HIJ} \otimes \ket{junk}_{H'I'J'}$. 
+%\begin{align} 
+%\textup{maximize: } & \tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{2}) \\ 
+%\textup{subject to: } 
+%&     
+%\rho_0 = \tr_{JK} \kb{\pi} \\  
+%& \rho_1 = ???? \,  \rho_0 \, ????? \\
+%& \tr_{S}(\rho_1) = \tr_{G}(\rho_{2})\\
+%&     \rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2}  %=\tr_{D}(\rho_{3}) 
+%\end{align} 
+%where 
+%\begin{equation} 
+%\ket{\pi} := \frac{1}{\sqrt 2} \sum_{x,a} \ket{x} %\ket{a} \otimes \Pi_{a|x} \ket{GHZ}_{IJK}.
+%\end{equation}
+\end{lem} 
+
+\begin{proof} 
+First, note that $\lim_{\epsilon \downarrow 0} \eta_{\epsilon}$ exists since $\eta_{\epsilon} \leq \eta_{\epsilon'}$ when $\epsilon' \geq \epsilon$ and the entire sequence is bounded between $0$ and $c_0 + c_1 + c_{\perp}$. \snote{Need those $c$ values to be nonnegative. Mention this somewhere.} 
+Let 
+\begin{equation}
+X^{\epsilon} := (\rho^{\epsilon}_1, \rho^{\epsilon}_2, \rho^{\epsilon}_3, y_{a,x}^{\epsilon}) 
+\end{equation}
+ be an optimal solution to the $\eta_{^\epsilon}$  SDP (which exists by compactness) \snote{check!}. Then, again by compactness, the sequence $\{ (X^{1/t}) : t \in \mathbb{N} \}$ has an accumulation point (a limit of a convergent subsequence). Let $X' = (\rho'_1, \rho'_2, \rho'_3, y_{a,x}')$ be this accumulation point. 
+%Let $\rho^{\epsilon} := (\rho^{\epsilon}_0, \rho^{\epsilon}_1, \rho^{\epsilon}_2, \rho^{\epsilon}_3)$ be an optimal solution to the $\eta_{^\epsilon}$ SDP (which exists by compactness). Then, again by compactness, the sequence $\{ (\rho^{1/t}) : t \in \mathbb{N} \}$ has an accumulation point (a limit of a convergent subsequence). Let $\rho' = (\rho_0', \rho_1', \rho_2', \rho_3')$ be this accumulation point. 
+%This accumulation point satisfies the constraints in the above SDP since each constraint is continuous in $\rho$. 
+Since the objective function is also continuous in $X$, we have that $\eta \geq \lim_{\epsilon \downarrow 0}$ \eta_{\espilon}$. 
+On the other hand, let $X = (\rho_1, \rho_2, \rho_3, y_{a,x})$ be an optimal solution of the above SDP. This is feasible in any of the $\eta_{\eps}$ SDPs. Thus, $\eta_{\epsilon} \geq \eta$ for all $\epsilon$. This, we have our result. \snote{I need to double check this, but it should be fine.} 
+\end{proof} 
+
+\begin{lem}[Tidying it up]  
+\begin{align}
+\eta = \textup{maximize: } & \tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{3}) \\ 
+\textup{subject to: } 
+& \rho_1 = \kb{\phi'} \\ 
+& \tr_{S, I, J}(\rho_1) = \tr_{G}(\rho_{2})\\
+& \rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2}  =\tr_{D}(\rho_{3}),  
+\end{align}  
+where $\ket{\phi'} = \frac{1}{2 \sqrt 2} \sum_{a,x,r} \ket{x,a,r} \ket{a \oplus x.r} \otimes \ket{\psi_{a,x}}_{IJ}$ 
+where $\ket{\psi_{a,x}}_{IJ}$ is the post-measured state on Bob's side conditioned on Alice obtaining outcome $a$ using measurement $x$.  
+%\begin{align} 
+%\textup{maximize: } & \tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{2}) \\ 
+%\textup{subject to: } 
+%&     
+%\rho_0 = \tr_{JK} \kb{\pi} \\  
+%& \rho_1 = ???? \,  \rho_0 \, ????? \\
+%& \tr_{S}(\rho_1) = \tr_{G}(\rho_{2})\\
+%&     \rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2}  %=\tr_{D}(\rho_{3}) 
+%\end{align} 
+%where 
+%\begin{equation} 
+%\ket{\pi} := \frac{1}{\sqrt 2} \sum_{x,a} \ket{x} %\ket{a} \otimes \Pi_{a|x} \ket{GHZ}_{IJK}.
+%\end{equation}
+\end{lem} 
+
+\begin{proof} 
+It is easy to see that any feasible $\rho_1$ must be of the form $\rho_1' \otimes \kb{junk}$. Similarly, any feasible $\rho_2$ must be of the form $\rho_2' \otimes \tr_{II'JJ'}(\kb{junk})$. 
+Similarly, any feasible $\rho_3$ must be of the form $\rho_3' \otimes \tr_{II'JJ'}(\kb{junk})$. 
+Thus, we can reduce these variables. 
+We now remove the $HH'$ spaces. 
+Note that we have 
+\begin{equation} 
+\Pi_{a|x} \ket{GHZ} = \sqrt[4]{\text{prob}(a|x)} \ket{\psi'_{x,a}}_H \ket{\psi_{x,a}}_{IJ}, 
+\end{equation}  
+where the states above are the post-measured state for both Alice and Bob, respectively. 
+\snote{Not sure of that normalization there.}
+Now, Alice can apply the following controlled unitary 
+\begin{equation} 
+U_{XAH} = \sum_{x,a} \kb{x, a} \otimes U_{x,a}  
+\end{equation}  
+where $U_{x,a}$ maps $\ket{\psi'_{x,a}}$ to $\ket{0}$. 
+Since applying this unitary on both sides of each constraint does does not affect feasibility, and it does not change the objective function value, we can redefine the variables to apply this unitary. 
+\snote{Check!} 
+The idea is that the $H$ space is not utilized by Alice again throughout the protocol (and so she can ``clean it up'' and discard it). 
+\end{proof} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage 
 
 \subsection{SDP when Alice self-tests\label{subsec:SDP-when-Alice}}
 \begin{prop}
