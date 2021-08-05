@@ -517,7 +517,7 @@ Our second technique is to compose and analyse the resulting protocols in a new 
 	% Note that for device-dependent protocols, where Alice and Bob trust their devices, cheating probabilities can be cast as semidefinite programs ~\cite{Kitaev03,Mochon07}.
 	% In the DI regime, we cannot even bound the dimension of the state within the boxes, making it much harder to analyse and bound Alice and Bob's cheating probabilities. 
 
-
+	\Anote{Rewrite this after all the proofs are in place.}
 	For comparison, recall that for \Algref{SCF} (it turns out, also for \Algref{WCF}), $\PA=\cos^2(\pi/8)$ and $\PB=3/4$. We prove this lemma in two stages. In the \emph{first} stage (see \Secref{securityAsymptotic}), we assume perfect self-testing---the self-testing step results in exactly specifying (up to a relabelling) the state and measurements governing Alice's boxes. This may be seen as taking $n \to \infty$ in the self-testing step. It is known that for device-dependent protocols, where Alice and Bob trust their devices, the cheating probabilities can be cast as values of semidefinite programs (SDPs) ~\cite{Kitaev03,Mochon07}. Perfect self-testing allows us to, therefore, express Bob's cheating probabilities as an SDP. Its numerical evaluation yields the quoted value. Analysis for Alice's cheating probability is unchanged from \Algref{WCF}. In the \emph{second} stage (see \Secref{SecurityFiniteN}), we take $n$ to be finite and show that for large $n$, the analysis converges to that of the first stage. This step is more technical but we outline the key challenges before proceeding to the second technique.
 	
 	\paragraph{Self-testing in a cryptographic setting.} Self-testing results can be made \emph{robust}, i.e. in particular, if the success probability in a GHZ test is close to unity, then the states and measurements can be shown to be close to GHZ states and measurements (up to a relabelling), in say trace distance. Robust self-testing results are, however, usually stated in terms of expected success probabilities in tests. This implicitly assumes that multiple identical boxes are available.\footnote{When this iid assumption is dropped, it is usually in the context of extracting randomness or key from the observed statistics, i.e. all the devices are used/measured. In our setting, we need to leave one device unused in the pre-processing step.} In our cryptographic setting, such an assumption is unwarranted. Hence, we estimate this expected success probability, by measuring $n-1$ boxes. This estimate requires, to the best of our knowledge, a novel analysis which we discuss in \Subsecref{EstimateGHZ}. 
@@ -1134,7 +1134,7 @@ A remark about the limitation of self-testing in this setting. We note that no s
 
 
 \subsection{Alice self-tests | Protocol $\mathcal{P}$}
-
+%Jamie: Possible improve the title: Alice self-testes before starting W
 We begin with explicitly stating \Algref{AliceSelfTests}---where Alice self-tests her boxes before initiating \Algref{WCF}. In the honest implementation, the triple of boxes used in \Algref{AliceSelfTests} are characterised by the GHZ setup (see \Claimref{Quantum-boxes-pass}). 
 
 
@@ -1155,8 +1155,7 @@ We begin with explicitly stating \Algref{AliceSelfTests}---where Alice self-test
 To state the associated security condition, we need the definition of cheat vectors from the introduction (see \Defref{CheatVectors}).
 
 \begin{lem}
-\label{lem:AliceSelfTests}Let $\mathcal{P}$ denote the protocol
-corresponding to \Algref{AliceSelfTests}. Then Alice's cheating
+\label{lem:AliceSelfTests}Let $\mathcal{P}$ denote \Algref{AliceSelfTests}. Then Alice's cheating
 probability $p_{A}^{*}(\mathcal{P})\le\cos^{2}(\pi/8)\approx0.852$.
 Further, let $c_{0},c_{1},c_{\perp}\in\mathbb{R}$, and $\mathbb{C}_{B}(\mathcal{P})$
 be the set of cheat vectors for Bob. 
@@ -1213,8 +1212,7 @@ Consider \Algref{WCF} and \Algref{SCF}. Suppose Bob is honest while Alice is mal
 %\branchcolor{purple}{As already indicated in \Subsecref{Proof-Technique}, we do not expect the cheating probabilities to improve but we do expect an SDP characterisation of Alice's cheat vectors.}
 
 \begin{lem}
-\label{lem:Bob-self-tests}Let $\mathcal{Q}$ denote the protocol
-corresponding to \Algref{BobSelfTests}. Then, Alice's cheating probability,
+\label{lem:Bob-self-tests}Let $\mathcal{Q}$ denote \Algref{BobSelfTests}. Then, Alice's cheating probability,
 $p_{A}^{*}(\mathcal{Q})\le3/4$ and Bob's cheating probability, $p_{B}^{*}(\mathcal{Q})\le\cos^{2}(\pi/8)$
 (which are the same as those in \Lemref{SCFstandard}). 
 Further, let
