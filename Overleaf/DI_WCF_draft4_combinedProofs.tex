@@ -898,22 +898,24 @@ i.e. $\sigma_{x}\sigma_{y}+\sigma_{y}\sigma_{x}=0$.
 
 \Anote{If we're combining the full proofs, perhaps it is better to put the $\epsilon$ version here.}
 In fact a stronger property holds. If a triple of boxes passes the GHZ test with certainty, it can be shown that up to a local isometry, the state and measurements are as in \Claimref{Quantum-boxes-pass} above. While this is, manifestly, a highly idealised setting and we later, in \Secref{SecurityFiniteN}, see how it works in practice.
+\Anote{end}
 
-\begin{lem}[TODO: cite]
-	\label{lem:self-testAsymptotic}Let $a,b,c,x,y,z\in\{0,1\}$. Consider
-	a trio of quantum boxes, specified by projectors $\{M_{a|x}^{A},M_{b|y}^{B},M_{c|z}^{C}\}$
-	acting on finite dimensional Hilbert spaces $\mathcal{H}^{A},\mathcal{H}^{B}$
+\begin{lem}
+	Let $a,b,c,x,y,z\in\{0,1\}$. Consider a trio of quantum boxes, specified
+	by projectors $\{M_{a|x}^{A},M_{b|y}^{B},M_{c|z}^{C}\}$ acting on
+	finite dimensional Hilbert spaces $\mathcal{H}^{A},\mathcal{H}^{B}$
 	and $\mathcal{H}^{C}$, and $\left|\psi\right\rangle \in\mathcal{H}^{A}\otimes\mathcal{H}^{B}\otimes\mathcal{H}^{C}=:\mathcal{H}^{ABC}$.
-	If the trio pass the GHZ test with certainty, then there exists a
-	local isometry 
+	If the trio pass the GHZ test with probability $1-\epsilon$ (for
+	$1>\epsilon>0$), then there exists a local isometry, 
 	\[
 	\Phi=\Phi^{A}\otimes\Phi^{B}\otimes\Phi^{C}:\mathcal{H}^{ABC}\to\mathcal{H}^{ABC}\otimes\mathbb{C}^{2\times3}
 	\]
-	such that 
-	\begin{align*}
-	\Phi\left(\left|\psi\right\rangle \right) & =\left|\chi\right\rangle \otimes\left|{\rm junk}\right\rangle ,\\
-	\Phi\left(M_{d|t}^{D}\left|\psi\right\rangle \right) & =\Pi_{d|t}^{D}\left|{\rm GHZ}\right\rangle \otimes\left|{\rm junk}\right\rangle \quad\forall D\in\{A,B,C\},\text{ and }d,t\in\{0,1\}
-	\end{align*}
+	and a decreasing function of $\epsilon$, $f(\epsilon)$ such that
+	\begin{align}
+		\label{eq:continuity_GHZ}
+	\left\Vert \Phi\left(\left|\psi\right\rangle \right)-\left|\chi\right\rangle \otimes\left|{\rm junk}\right\rangle \right\Vert  & \le f(\epsilon),\\
+	\left\Vert \Phi\left(M_{d|t}^{D}\left|\psi\right\rangle \right)-\Pi_{d|t}^{D}\left|{\rm GHZ}\right\rangle \otimes\left|{\rm junk}\right\rangle \right\Vert  & \le f(\epsilon)\quad\forall D\in\{A,B,C\},\text{ and }d,t\in\{0,1\}
+	\end{align}
 	where $\left|{\rm GHZ}\right\rangle =\frac{\left|000\right\rangle +\left|111\right\rangle }{\sqrt{2}}\in\mathbb{C}^{2\times3}$,
 	$\left|{\rm junk}\right\rangle \in\mathcal{H}^{ABC}$ is some arbitrary
 	state and $\{\Pi_{a|x}^{A},\Pi_{b|y}^{B},\Pi_{c|z}^{C}\}$ are projectors
@@ -921,7 +923,34 @@ In fact a stronger property holds. If a triple of boxes passes the GHZ test with
 	of $\left|{\rm GHZ}\right\rangle $ respectively, for $x=0$ and corresponding
 	to $\sigma_{y}$ for $x=1$, as in \Claimref{Quantum-boxes-pass}.
 \end{lem}
-\Anote{end}
+\begin{proof}
+	Proofs of robust self-testing for GHZ can be found in \cite{MillerShi} and \cite{McKague}.
+\end{proof}
+
+	
+% \begin{lem}[TODO: cite]
+% 	\label{lem:self-testAsymptotic}Let $a,b,c,x,y,z\in\{0,1\}$. Consider
+% 	a trio of quantum boxes, specified by projectors $\{M_{a|x}^{A},M_{b|y}^{B},M_{c|z}^{C}\}$
+% 	acting on finite dimensional Hilbert spaces $\mathcal{H}^{A},\mathcal{H}^{B}$
+% 	and $\mathcal{H}^{C}$, and $\left|\psi\right\rangle \in\mathcal{H}^{A}\otimes\mathcal{H}^{B}\otimes\mathcal{H}^{C}=:\mathcal{H}^{ABC}$.
+% 	If the trio pass the GHZ test with certainty, then there exists a
+% 	local isometry 
+% 	\[
+% 	\Phi=\Phi^{A}\otimes\Phi^{B}\otimes\Phi^{C}:\mathcal{H}^{ABC}\to\mathcal{H}^{ABC}\otimes\mathbb{C}^{2\times3}
+% 	\]
+% 	such that 
+% 	\begin{align*}
+% 	\Phi\left(\left|\psi\right\rangle \right) & =\left|\chi\right\rangle \otimes\left|{\rm junk}\right\rangle ,\\
+% 	\Phi\left(M_{d|t}^{D}\left|\psi\right\rangle \right) & =\Pi_{d|t}^{D}\left|{\rm GHZ}\right\rangle \otimes\left|{\rm junk}\right\rangle \quad\forall D\in\{A,B,C\},\text{ and }d,t\in\{0,1\}
+% 	\end{align*}
+% 	where $\left|{\rm GHZ}\right\rangle =\frac{\left|000\right\rangle +\left|111\right\rangle }{\sqrt{2}}\in\mathbb{C}^{2\times3}$,
+% 	$\left|{\rm junk}\right\rangle \in\mathcal{H}^{ABC}$ is some arbitrary
+% 	state and $\{\Pi_{a|x}^{A},\Pi_{b|y}^{B},\Pi_{c|z}^{C}\}$ are projectors
+% 	corresponding to $\sigma_{x}$ on the first, second and third qubit
+% 	of $\left|{\rm GHZ}\right\rangle $ respectively, for $x=0$ and corresponding
+% 	to $\sigma_{y}$ for $x=1$, as in \Claimref{Quantum-boxes-pass}.
+% \end{lem}
+% \Anote{end}
 %\branchcolor{purple}{
 %}
 
@@ -1525,206 +1554,246 @@ Then
 \end{thm}
 
 
+\section{Security Proofs}
 
-\section{Security Proof | Asymptotic limit}
-\label{sec:securityAsymptotic}
-
-In this section, we prove the security under the following assumption:
-\begin{assumption}
-\label{assu:asymptotic}In protocol $\mathcal{P}$ ($\mathcal{Q}$),
-Alice (Bob) does not perform the box verification step and instead
-it is assumed that her box is (his boxes are) taken from a trio of
-boxes which win the GHZ game with certainty. 
-\end{assumption}
-
-\branchcolor{purple}{Later, we drop the assumption and use the box verification step (see
-..) to estimate the probability of winning the GHZ game. When the
-winning probability is exactly one, the states and measurements are
-the same as the GHZ state and $\sigma_{x},\sigma_{y}$ measurements,
-up to local isometries and this allows us to use semi definite programming. }
-\Anote{I removed the lemma from here}
-
-\branchcolor{purple}{INTERNAL; (TODO: remove): Isometries can only increase dimensions
-(they must be injective; that is to ensure they preserve inner products
-of vectors). Therefore the isometry can't get rid of the $\left|{\rm junk}\right\rangle $
-part. }
-
-\subsection{SDP when Alice self-tests\label{subsec:SDP-when-Alice}}
-% \begin{prop}
-%     Assuming perfect self-testing, $(v_A,v_B,v_\perp)$ is a cheating vectors for $\mathcal P$ and (honest) Alice if an only there exists states $\rho_2,\rho_3$ such that $(v_A,v_B,v_\perp) = (\Tr[\Pi_0 \rho_3], \Tr[\Pi_1\Pi_{\rm GHZ} \rho_3],  \Tr[\Pi_1\overline \Pi_{\rm GHZ}\rho_3])$ and satisfying  
-%     \begin{IEEEeqnarray}{rL}
-%         \rho_1 & =\tr_{G}(\rho_{2})\\
-%         \rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2} & =\tr_{D}(\rho_{3})
-%     \end{IEEEeqnarray}
-%     with $\rho_1 = \tr_{IJS}\left[\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|\right]$, $\Pi_0 = \Pi(x\oplus g = 0)$ and $\Pi_{\rm GHZ} = \Pi( a\oplus d = xyz \oplus 1)$
-% \end{prop}
-% Note that when $S$ is some equation, we used the notation that $\Pi(S)$ is the projections on the set of all vectors in the computational basis satisfying equation $S$.
-
-
-% \begin{proof}
-%     Note that from the point of view of this proof, Bob holds the purification of the initial state of Alice's box and he is not required to satisfying the no-signalling between his boxes.
-    
-%     Let $\ket{\psi_0}_{Q_AQ_B}$ be the initial joint state of Alice's device and Bob quantum memory and let $M_{a|x}$ be the projective measurement on $Q_A$ used by Alice. We consider the moment when Alice has chosen her input $x\sim p(x)$ and measured the output bit $a$. We represent this instant with the state
-%     \begin{equation}
-%         \ket{\psi_1} = \sum_{ax} \sqrt{p(x)} \ket{ax}_{AX}\ket{\psi_{ax}}_{Q_AQ_B}
-%     \end{equation}
-%     where $\ket{\psi_{ax}} = (M_{a|x} \otimes \mathbb{I}_{Q_B}) \ket{\psi_0}$. We note that after tracing over $Q_A$ and measuring $AX$ in the computational basis we recover the classical-quantum state $\sum_{ax} p(x) \ketbra{ax}{ax} \otimes \rho_{ax}$ with $\rho_{ax} = \Tr_{Q_A}[ M_{a|x} \ketbra{\psi_0}{\psi_0}]$ as expected. We thus define $\rho_1 = \Tr_{Q_B}[\ketbra{\psi_1}{\psi_1}]$ as the state of Alice's registers at this point. 
-    
-%     Generating a random bit $r$ and preparing the message $s = a\oplus r.x$ is modeled as the isometry $U_{RSAX\leftarrow AX} = \sum_r \frac{1}{\sqrt{2}} \ket{r}_R \ket{a\oplus rx}_S \ketbra{ax}{ax}_{AX}$. Bob then sends his guess $g$ to Alice. Denoting by $\rho_2\in \mathcal S(AXQ_ARG)$ be the state of Alice's registers at this point, we find that 
-%     \begin{equation}
-%         \Tr_G[\rho_2] = \Tr_S[ U \rho_1 U^\dagger]
-%     \end{equation}
-    
-%     [.. continue here ...]
-%     \end{proof}
-    
-%     \begin{prop}
-%         In the case of imperfect self-testing, the first equality in the sdp characterisation of the cheating vectors must be replaced with $||\tr_G[\rho_2] - \rho_1|| \leq 2\epsilon$.
-%     \end{prop}   
-    
-    
-%     \begin{proof}
-%     Now, we consider the case where we have imperfect self-testing. In this case, the initial state $\rho_0$, which used to be defined with the GHZ state $\ket{\psi_0}$ and the measurements $M_{a|x}$, is instead generated by a state $\ket{\overline \psi_0}$ and measurements $\overline M_{a|x}$ such that there exists a local isometry $\Phi$ such that
-%     \begin{equation}
-%         ||\Phi( \overline M_{a|x} \otimes \mathbb{I}\ket{\overline \psi_0})  - M_{a|x}\otimes \mathbb{I}\ket{\psi_0} \otimes \ket{junk}||\leq \epsilon
-%     \end{equation}
-    
-    
-    
-% \end{proof}
-
-
-\branchcolor{blue}{\begin{proof}[Asymptotic proof of \Lemref{AliceSelfTests}]
-We prove \Lemref{AliceSelfTests} under \Assuref{asymptotic}. We
-begin by making two observations. 
-
-First, note that in the protocol, if Alice applies an isometry on
-her box \emph{after} she has inputted $x$, obtained the outcome $a$
-(and has noted it somewhere), the security of the resulting protocol
-is unchanged because the rest of the protocol only depends on $x$
-and $a$, and Alice's isometry only amounts to relabelling of the
-post measurement state. This freedom allows us to simplify the analysis.
-
-Second, in the analysis, we cannot model Alice's random choice, say
-for $x$, as a mixed state because Bob can always hold a purification
-and thus know $x$. Therefore, we model the randomness using pure
-states and measure them in the end.
-
-Notation: Other than $PQR$, all other registers store qubits.
-
-We proceed step by step. 
-\begin{enumerate}
-\item We can model (justified below) Alice's act of inputting a random $x$
-and obtaining an outcome $a$ from her box through the state 
-\begin{equation}
-\left| \Psi_{0} \right\rangle :=\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|xa\right\rangle _{XA}\left|\Phi(x,a)\right\rangle _{IJ}
-\end{equation}
-where $X$ represents the random input and $A$ the output. Here,
-$\left|\Phi(x,a)\right\rangle _{IJ}$ are Bell states (see \Eqref{bellStates})
-and the registers $IJ$ are held by Bob. Alice's act of choosing $r$
-at random, computing $s=a\oplus x.r$ is modelled as 
-\begin{equation}
-\left|\Psi_{1}\right\rangle :=\frac{1}{2\sqrt{2}}\sum_{x,a,r\in\{0,1\}}\left|xa\right\rangle _{XA}\left|\Phi(x,a)\right\rangle _{IJ}\left|r\right\rangle _{R}\left|a\oplus x.r\right\rangle _{S}.\label{eq:Alice_Psi1}
-\end{equation}
-Finally, Alice's act of sending $s$ is modelled as Alice starting
-with the state
-\[
-\tr_{IJS}\left[\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|\right]\in XAR.
-\]
-\Tnote{Can we call this state $\rho_1$ ?}
-
-
-\branchcolor{blue}{\textbf{Justification for starting with $\left|\Psi_{0}\right\rangle $.}\\
-To see why we start with the state $\left|\Psi_{0}\right\rangle $,
-model Alice's choice of $x$ as $\left|+\right\rangle _{X}$, suppose
-her measurement result is stored in $\left|0\right\rangle _{A}$,
-the state of the boxes before measurement is $\left|\psi\right\rangle _{PQR}$
-and Alice holds $P$, i.e. 
-\[
-\left|\Psi_{0}'\right\rangle :=\left|+\right\rangle _{X}\left|0\right\rangle _{A}\left|\psi\right\rangle _{PQR}.
-\]
-Let $\{M_{a|x}^{P}\}$ be the measurement operators corresponding
-to Alice's box. The measurement process is unitarily modelled as 
-\[
-\left|\Psi_{1}'\right\rangle :=U_{{\rm measure}}\left|\Psi_{0}'\right\rangle =\frac{1}{\sqrt{2}}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}M_{a|x}^{P}\left|\psi\right\rangle _{PQR}
-\]
-where
-\[
-U_{{\rm measure}}=\sum_{x\in\{0,1\}}\left|x\right\rangle \left\langle x\right|_{X}\otimes\left[\mathbb{I}_{A}\otimes M_{0|x}^{P}+X_{X}\otimes M_{1|x}^{P}\right]\otimes\mathbb{I}_{QR}.
-\]
-Now we harness the freedom of applying an isometry to the post measured
-state (as observed above). We choose the local isometry in \Lemref{self-testAsymptotic}.
-Without loss of generality, we can assume that Bob had already applied
-his part of the isometry before sending the boxes (because he can
-always reverse it when it is his turn). We thus have, 
-\begin{align*}
-\left|\Psi_{2}'\right\rangle :=\Phi_{PQR}\left|\Psi_{1}'\right\rangle  & =\frac{1}{\sqrt{2}}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}\Pi_{x|a}^{H}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR}\\
- & =\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}U^{H}(x,a)\left|0\right\rangle _{H}\left|\Phi(x,a)\right\rangle _{IJ}\otimes\left|{\rm junk}\right\rangle _{PQR}
-\end{align*}
-where 
-\begin{equation}
-\left|\Phi(x,a)\right\rangle _{IJ}=\frac{\left|00\right\rangle +(-1)^{a}(i)^{x}\left|11\right\rangle }{\sqrt{2}}\label{eq:bellStates}
-\end{equation}
- and $U^{H}(x,a)\left|0\right\rangle _{H}$ is $\frac{\left|0\right\rangle +(-1)^{a}(i)^{x}\left|1\right\rangle }{\sqrt{2}}$.
-Since the state of register $H$ is completely determined by registers
-$X$ and $A$, we can drop it from the analysis without loss of generality.
-Finally, since $\left|{\rm junk}\right\rangle _{PQR}$ is completely
-tensored out, we can drop it too without affecting the security. Formally,
-we can assume that Alice gives Bob the register $P$ at this point.
-}
-
-\item Bob sending $g$ is modelled by introducing $\rho_{2}\in XARG$ satisfying
-$\tr_{IJS}\left[\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|\right]=\tr_{G}(\rho_{2})$. 
-
-\item At this point, either $x\oplus g$ is zero, in which case Alice's
-output is fixed or $x\oplus g$ is one, and in that case Bob will
-already know $x$ because he knows $g$ (he sent it) and Alice will
-proceed to testing Bob. Formally, therefore, we needn't do anything
-at this step.
-
-\item Assuming $x\oplus g=1$, Alice sends $y,z$ to Bob such that $x\oplus y\oplus z=1$.
-However, since Bob already knows $x$, he can deduce $z$ from $y$.
-We thus only need to model Alice sending $y$ and Bob responding with
-$d=b\oplus c$ (because Alice will only use $b\oplus c$ to test the
-GHZ game, so it suffices for Bob to send $d$). This amounts to introducing
-$\rho_{3}\in XARGYD$ satisfying $\rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2}=\tr_{D}(\rho_{3})$.
-
-\item Since we postponed the measurements to the end, we add this last step.
-Alice now measures $\rho_{3}$ to determine $x\oplus g$ and if it
-is one, whether the GHZ test passed. Let 
-\begin{align}
-    \Pi_{i} & :=\sum_{x,y\in\{0,1\}:x\oplus g=i}\left|xg\right\rangle \left\langle xg\right|_{XG}\otimes\mathbb{I}_{ARYD}, \\
-    \Pi^{{\rm GHZ}} & :=\sum_{\substack{
-            x,y\in\{0,1\},\\a,d\in\{0,1\}:a\oplus d\oplus1=xy\cdot(1\oplus x\oplus y)}
-        }
-        \left|xyad\right\rangle \left\langle xyad\right|_{XYAD}\otimes\mathbb{I}_{RG}.
-    \label{eq:AliceProjs}
-\end{align}
-Then, we can write the cheat vector for Alice, i.e. the tuple of probabilities
-that Alice outputs 0, 1 and abort (see \Defref{CheatVectors}), as
-\[
-    (\alpha,\beta,\gamma)=(\tr(\Pi_{0}\rho_{3}),\tr(\Pi_{1}\Pi^{{\rm GHZ}}\rho_{3}),\tr(\Pi_{1}\bar{\Pi}^{{\rm GHZ}}\rho_{3}))
-\]
- where $\bar{\Pi}:=\mathbb{I}-\Pi$.
-\end{enumerate}
-To summarise, the final SDP is as follows: let $\left|\Psi_{1}\right\rangle \in XAIJRS$
-be as given in \Eqref{Alice_Psi1}, $\rho_{2}\in XARG$ and $\rho_{3}\in XARGYD$
-\[
-    \max\quad\tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{3})
-\]
-subject to 
-\begin{align*}
-    \tr_{IJS}\left[\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|\right] & =\tr_{G}(\rho_{2})\\
-    \rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2} & =\tr_{D}(\rho_{3})
-\end{align*}
-where the projectors are defined in \Eqref{AliceProjs}.
-\end{proof}
+\Anote{
+	\begin{itemize}
+		\item Say we begin with assuming that the self testing step guarantees, up to isometries, the state and measurements are $\epsilon$ close where $\epsilon$ is a function of $n$ and vanishes with large $n$.		
+		\item 
+	\end{itemize}
 }
 
 
-\subsection{SDP when Bob self-tests\label{subsec:SDP-when-Bob}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%% ALICE
 
-\Tnote{What is the argument to say that we do not have to consider the test by Alice when analysing cheating Alice from the point of view of Bob ?}
+\subsection{Analysis when Alice self-tests | $\mathcal{P}$}
+\label{subsec:SDP-when-Alice}
+
+%\snote{Atul, in your arguments, you trace out Alice's junk. This may reveal info to Bob. Not sure. I think this is because the unitary acts on Alice's whole space, including the junk. But maybe I am mixed up.}
+
+%\snote{Does the self-testing result imply Alice's measurement must act like that? It seem to imply something on all three boxes, but we only use it for Alice's. I think so, so perhaps this is a note to myself to think about it more :)}
+
+%\begin{lem} 
+%If $\| x - y \|_2 \leq \gamma$ then $\| xx^* - yy^* \|_2 \leq 2\gamma$. 
+%\end{lem} 
+
+%\begin{proof} 
+%Easy. Will do it later if this is kept. 
+%\end{proof} 
+
+%\begin{lem} 
+%For any choice of quantum states $\rho$ and $\sigma$, we have 
+%\begin{equation} 
+%\| \rho - \sigma \|_{tr} \leq \| \tr_B(\rho) - %\tr_B(\sigma) \|_{tr}. 
+%\end{equation} 
+%\end{lem} 
+
+%\begin{proof} 
+%This is in Mike and Ike. 
+%\end{proof} 
+
+%\snote{We might be able to combine both of the above using something in Mike and Ike.}
+
+\begin{lem} 
+	UPPER BOUND:  \snote{We need to multiply by some bound on the probability that Alice does not catch Bob cheating in the self-test stage. That probability needs to be incorporated somewhere. It shouldn't affect the results though.}
+	\begin{align} 
+	\eta_{\epsilon} := \textup{maximize: } & \tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{3}) \\ 
+	\textup{subject to: } 
+	&     
+	\| y_{a,x} - \Pi^H_{a|x} \ket{GHZ}_{HIJ} \otimes \ket{junk}_{H'I'J'} \|_{tr} \leq \epsilon \\ 
+	& \ket{\phi} = \frac{1}{2}\sum_{a,x,r} \ket{x,a,r} \ket{a \oplus x.r} \otimes y_{a,x} \\ 
+	& \rho_1 = \kb{\phi} \\
+	& \tr_{S, I, I', J, J'}(\rho_1) = \tr_{G}(\rho_{2})\\
+	&     \rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2}  =\tr_{D}(\rho_{3}) \\ 
+	& \| y_{a,x} \|_2 \leq 1. 
+	\end{align} 
+	%where 
+	%\begin{equation} 
+	%\ket{\pi} := \frac{1}{\sqrt 2} \sum_{x,a} \ket{x} %\ket{a} \otimes \Pi_{a|x} \ket{GHZ}_{IJK}.
+	%\end{equation}
+	%\begin{align} 
+	%\eta_{\epsilon} := \textup{maximize: } & %\tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm %GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{2}) \\ 
+	%\textup{subject to: } 
+	%&     
+	%\| \rho_0 - \tr_{JK} \kb{\pi} \|_{tr} \leq \epsilon %\\ 
+	%& \rho_1 = ???? \,  \rho_0 \, ????? \\
+	%& \tr_{S}(\rho_1) = \tr_{G}(\rho_{2})\\
+	%&     \rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2}  %=\tr_{D}(\rho_{3}) 
+	%\end{align} 
+	%where 
+	%\begin{equation} 
+	%\ket{\pi} := \frac{1}{\sqrt 2} \sum_{x,a} \ket{x} %\ket{a} \otimes \Pi_{a|x} \ket{GHZ}_{IJK}.
+	%\end{equation}
+	\end{lem} 
+	
+	%\snote{Note that in the self-testing statement, we can assume there is no junk state and the isometries are applied to the 'honest state'. Please verify. Otherwise, we are left with a weird dimension in this SDP, which is bad. Perhaps there is a way to remove it though...} 
+	
+	\snote{How does $\epsilon$ compare to $n$ (the number of states to be self-tested)?} 
+	
+	\snote{Indicate spaces of the above variables.}
+	
+	\begin{proof} 
+	%Define 
+	%\begin{equation} 
+	%\ket{\tau} := \frac{1}{\sqrt 2} \sum_{x,a} \ket{x} \ket{a} \otimes M_{a|x} \ket{\psi}_{PQR}, 
+	%\end{equation} 
+	%where $\ket{\psi}$ and $M_{a|x}$ are the states and measurements actually used in the protocol. 
+	%Thus, we have 
+	%\begin{equation} 
+	%\rho_0 = \tr_{QR} ( \kb{\tau} )
+	%\end{equation}  
+	%is the state Alice has at the beginning of the protocol. 
+	The state at the beginning of the protocol can be written as 
+	\begin{equation} 
+	\ket{\phi_0} = \frac{1}{\sqrt 2} \sum_{x} \ket{x} \ket{\psi}. 
+	\end{equation} 
+	When Alice measures, she creates the state 
+	\begin{equation} 
+	\ket{\phi_1} = \frac{1}{\sqrt 2} \sum_{x,a} \ket{x,a} M_{a|x} \ket{\psi}. 
+	\end{equation} 
+	\snote{Add in the r,s stuff around here.}
+	Then we have  
+	\begin{equation} 
+	\Phi \left( \ket{\phi} \right) 
+	= \Phi \left( \frac{1}{2} \sum_{x,a,r} \ket{x,a,r} \ket{a \oplus x.r} \otimes M_{a|x} \ket{\psi} \right) 
+	= \frac{1}{2} \sum_{x,a,r} \ket{x,a,r} \ket{a \oplus x.r} \otimes \Phi(M_{a|x} \ket{\psi}). 
+	\end{equation} 
+	From self-testing, we know that 
+	\begin{equation} 
+	\| \Phi(M_{a|x} \ket{\psi}) - \Pi^H_{a|x} \ket{GHZ}_{HIJ} \otimes \ket{junk}_{H'I'J'} \|_{tr} \leq \epsilon. 
+	\end{equation} 
+	Since $M_{a|x}$ and $\ket{\psi}$ is under Bob's control, we can relax the problem to allowing Bob to control \emph{the entire vector} $\Phi(M_{a|x} \ket{\psi})$, and we just call this vector $y_{a,x}$ (which is subnormalized). 
+	We now have the optimization problem 
+	\begin{align}
+	\textup{maximize: } & \tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{3}) \\ 
+	\textup{subject to: } 
+	&     
+	\| y_{a,x} - \Pi^H_{a|x} \ket{GHZ}_{HIJ} \otimes \ket{junk}_{H'I'J'} \|_{tr} \leq \epsilon \\ 
+	& \Phi(\ket{\phi}) = \frac{1}{2}\sum_{a,x,r} \ket{x,a,r} \ket{a \oplus x.r} \otimes y_{a,x} \\ 
+	& \rho_1 = \kb{\phi} \\ 
+	& \tr_{S, I, I', J, J'}(\rho_1) = \tr_{G}(\rho_{2})\\
+	&     \rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2}  =\tr_{D}(\rho_{3}) \\ 
+	& \| y_{a,x} \|_2 \leq 1. 
+	\end{align} 
+	Now, by multiplying each of the constraints involving $\rho_1$, $\rho_2$, and $\rho_3$ on each side by $\Phi$, we preserve feasibility. 
+	This proves the result. 
+	\snote{I had my doubts that this worked... but it seems OK! Will come back and have another look!}
+	%We have that there exists a local isometry $\Phi = V_{I} \otimes V_{J} \otimes V_{K}$ such that 
+	%\begin{equation} 
+	%\ket{\tau} \approx \Phi(\ket{\pi}).  
+	%\end{equation} 
+	%By the above two lemmas, we have that 
+	%\begin{equation} 
+	%\rho_0 \approx V_I [ \tr_{JK}(\kb{\pi}) ] %V_I^{\dagger}.  
+	%\end{equation} 
+	%Note that Bob \emph{has the freedom} to choose %whatever $V_{I}$ he wants. 
+	%Suppose we have a feasible solution $(V, \rho_0, %\rho_1, \rho_2, \rho_3)$. Then 
+	%$(I, 
+	%V_{I}^{\dagger} \rho_0 V_{I}, 
+	%V_{I}^{\dagger}\rho_1 V_{I}, 
+	%V_{I}^{\dagger}\rho_2 V_{I}, 
+	%V_{I}^{\dagger}\rho_3 V_{I})$ 
+	%is another feasible solution with the same %objective function value \snote{check! Small issue %here, will have to check!}.  
+	%In other words, the optimal value does not depend %on the isometry Bob chooses, and thus we may assume %it is equal to $I$.  \snote{Need to relabel the %spaces, and likely the variables.}
+	\end{proof} 
+	
+	\begin{lem}[Continuity]  
+	We have $\lim_{\epsilon \downarrow 0} \eta_{\epsilon} = \eta$, where $\eta$ is defined as the following SDP: 
+	\begin{align}
+	\textup{maximize: } & \tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{3}) \\ 
+	\textup{subject to: } 
+	& \rho_1 = \kb{\phi} \\ 
+	& \tr_{S, I, I', J, J'}(\rho_1) = \tr_{G}(\rho_{2})\\
+	& \rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2}  =\tr_{D}(\rho_{3}),  
+	\end{align}  
+	where $\ket{\phi} = \frac{1}{2}\sum_{a,x,r} \ket{x,a,r} \ket{a \oplus x.r} \otimes \Pi^H_{a|x} \ket{GHZ}_{HIJ} \otimes \ket{junk}_{H'I'J'}$. 
+	%\begin{align} 
+	%\textup{maximize: } & \tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{2}) \\ 
+	%\textup{subject to: } 
+	%&     
+	%\rho_0 = \tr_{JK} \kb{\pi} \\  
+	%& \rho_1 = ???? \,  \rho_0 \, ????? \\
+	%& \tr_{S}(\rho_1) = \tr_{G}(\rho_{2})\\
+	%&     \rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2}  %=\tr_{D}(\rho_{3}) 
+	%\end{align} 
+	%where 
+	%\begin{equation} 
+	%\ket{\pi} := \frac{1}{\sqrt 2} \sum_{x,a} \ket{x} %\ket{a} \otimes \Pi_{a|x} \ket{GHZ}_{IJK}.
+	%\end{equation}
+	\end{lem} 
+	
+	\begin{proof} 
+	First, note that $\lim_{\epsilon \downarrow 0} \eta_{\epsilon}$ exists since $\eta_{\epsilon} \leq \eta_{\epsilon'}$ when $\epsilon' \geq \epsilon$ and the entire sequence is bounded between $0$ and $c_0 + c_1 + c_{\perp}$. \snote{Need those $c$ values to be nonnegative. Mention this somewhere.} 
+	Let 
+	\begin{equation}
+	X^{\epsilon} := (\rho^{\epsilon}_1, \rho^{\epsilon}_2, \rho^{\epsilon}_3, y_{a,x}^{\epsilon}) 
+	\end{equation}
+	 be an optimal solution to the $\eta_{^\epsilon}$  SDP (which exists by compactness) \snote{check!}. Then, again by compactness, the sequence $\{ (X^{1/t}) : t \in \mathbb{N} \}$ has an accumulation point (a limit of a convergent subsequence). Let $X' = (\rho'_1, \rho'_2, \rho'_3, y_{a,x}')$ be this accumulation point. 
+	%Let $\rho^{\epsilon} := (\rho^{\epsilon}_0, \rho^{\epsilon}_1, \rho^{\epsilon}_2, \rho^{\epsilon}_3)$ be an optimal solution to the $\eta_{^\epsilon}$ SDP (which exists by compactness). Then, again by compactness, the sequence $\{ (\rho^{1/t}) : t \in \mathbb{N} \}$ has an accumulation point (a limit of a convergent subsequence). Let $\rho' = (\rho_0', \rho_1', \rho_2', \rho_3')$ be this accumulation point. 
+	%This accumulation point satisfies the constraints in the above SDP since each constraint is continuous in $\rho$. 
+	Since the objective function is also continuous in $X$, we have that $\eta \geq \lim_{\epsilon \downarrow 0} \eta_{\epsilon}$. 
+	On the other hand, let $X = (\rho_1, \rho_2, \rho_3, y_{a,x})$ be an optimal solution of the above SDP. This is feasible in any of the $\eta_{\eps}$ SDPs. Thus, $\eta_{\epsilon} \geq \eta$ for all $\epsilon$. This, we have our result. \snote{I need to double check this, but it should be fine.} 
+	\end{proof} 
+	
+	\begin{lem}[Tidying it up]  
+	\begin{align}
+	\eta = \textup{maximize: } & \tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{3}) \\ 
+	\textup{subject to: } 
+	& \rho_1 = \kb{\phi'} \\ 
+	& \tr_{S, I, J}(\rho_1) = \tr_{G}(\rho_{2})\\
+	& \rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2}  =\tr_{D}(\rho_{3}),  
+	\end{align}  
+	where $\ket{\phi'} = \frac{1}{2 \sqrt 2} \sum_{a,x,r} \ket{x,a,r} \ket{a \oplus x.r} \otimes \ket{\psi_{a,x}}_{IJ}$ 
+	where $\ket{\psi_{a,x}}_{IJ}$ is the post-measured state on Bob's side conditioned on Alice obtaining outcome $a$ using measurement $x$.  
+	%\begin{align} 
+	%\textup{maximize: } & \tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{2}) \\ 
+	%\textup{subject to: } 
+	%&     
+	%\rho_0 = \tr_{JK} \kb{\pi} \\  
+	%& \rho_1 = ???? \,  \rho_0 \, ????? \\
+	%& \tr_{S}(\rho_1) = \tr_{G}(\rho_{2})\\
+	%&     \rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2}  %=\tr_{D}(\rho_{3}) 
+	%\end{align} 
+	%where 
+	%\begin{equation} 
+	%\ket{\pi} := \frac{1}{\sqrt 2} \sum_{x,a} \ket{x} %\ket{a} \otimes \Pi_{a|x} \ket{GHZ}_{IJK}.
+	%\end{equation}
+	\end{lem} 
+	
+	\begin{proof} 
+	It is easy to see that any feasible $\rho_1$ must be of the form $\rho_1' \otimes \kb{junk}$. Similarly, any feasible $\rho_2$ must be of the form $\rho_2' \otimes \tr_{II'JJ'}(\kb{junk})$. 
+	Similarly, any feasible $\rho_3$ must be of the form $\rho_3' \otimes \tr_{II'JJ'}(\kb{junk})$. 
+	Thus, we can reduce these variables. 
+	We now remove the $HH'$ spaces. 
+	Note that we have 
+	\begin{equation} 
+	\Pi_{a|x} \ket{GHZ} = \sqrt[4]{\text{prob}(a|x)} \ket{\psi'_{x,a}}_H \ket{\psi_{x,a}}_{IJ}, 
+	\end{equation}  
+	where the states above are the post-measured state for both Alice and Bob, respectively. 
+	\snote{Not sure of that normalization there.}
+	Now, Alice can apply the following controlled unitary 
+	\begin{equation} 
+	U_{XAH} = \sum_{x,a} \kb{x, a} \otimes U_{x,a}  
+	\end{equation}  
+	where $U_{x,a}$ maps $\ket{\psi'_{x,a}}$ to $\ket{0}$. 
+	Since applying this unitary on both sides of each constraint does does not affect feasibility, and it does not change the objective function value, we can redefine the variables to apply this unitary. 
+	\snote{Check!} 
+	The idea is that the $H$ space is not utilized by Alice again throughout the protocol (and so she can ``clean it up'' and discard it). 
+	\end{proof} 
+	
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BOB
+
+
+\subsection{Analysis when Bob self-tests\label{subsec:SDP-when-Bob}}
+
+\Anote{JAMIE: Feel free to replace this. The blue part is the old asymptotic version. After, I have added the idea for the full version. One step, still needs some work.}
+
+%\Tnote{What is the argument to say that we do not have to consider the test by Alice when analysing cheating Alice from the point of view of Bob ?}
+% Oh, that's usually under the assumption that if Bob deduces he wins, when he is honest, then he knows Alice will accept so he needn't worry; 
+% if Beb deduces Alice wins or catches her cheating, then Alice doesn't do a test anyway.
+
+
 
 \branchcolor{blue}{\begin{proof}[Proof of \Lemref{Bob-self-tests}]
 Denote by $\mathcal{I}$ the protocol corresponding to \Algref{SCForiginal}. 
@@ -1830,20 +1899,495 @@ where $U$ is as defined in \Eqref{Bob-u} and the projectors as in
 \Eqref{BobProjs}.
 
 
+\end{proof} }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Consider the following scenario:
+\begin{itemize}
+\item Bob has one box from a triple of GHZ boxes (assume he knows this box
+is $\epsilon$ close to a GHZ box, up to some local isomorphism $\Phi$)
+\item He receives a bit $z$ from Alice
+\item He inputs the bit $z$ into the box, obtains an outcome $c$.
+\item Alice wants some function of $z,c$ maximized. Call this \emph{value}
+$\eta_{\epsilon}^{{\rm lab}}$
+\end{itemize}
+Our objective is to show that as $\epsilon\to0$, $\eta_{\epsilon}^{{\rm lab}}=\eta$
+where $\eta$ is the value of an SDP where Bob's box is replaced with
+the GHZ state and measurement. We do this in three steps.
+\begin{itemize}
+\item We show $\eta_{\epsilon}^{{\rm lab}}\le\eta_{\epsilon}$ where $\eta_{\epsilon}$
+does not depend explicitly depend on the isomorphism $\Phi$.
+\item Then, we show that $\eta_{\epsilon}\le\eta_{\epsilon}^{{\rm Tr}}$
+where $\eta_{\epsilon}^{{\rm Tr}}$ does not involve the ``junk''
+space. 
+\begin{itemize}
+\item This also means $\eta_{\epsilon}^{{\rm Tr}}$ is continuous as a function
+of $\epsilon$. 
+\end{itemize}
+\item And finally, we show $\eta_{0}^{{\rm Tr}}=\eta$ (where $\eta$ is
+as defined above). 
+\end{itemize}
+In what follows, $PQR$ are arbitrary fixed dimensional spaces while
+the remaining spaces denote qubits.
+\begin{defn}[$\eta_{\epsilon}^{{\rm lab}}$]
+ Let $\rho_{0}\in D(PQR),\rho_{1}\in D(ZR),\rho_{{\rm junk}}\in D(PQR)$
+be density matrices, $M_{c|z}\in{\rm Proj}(R)$ for $c,z\in\{0,1\}$
+and $\Pi_{{\rm obj}}\in{\rm Proj}(CZ)$ be projectors and finally,
+let $\Phi:PQR\to HIJPQR$ be a local isometry and let $U\otimes V\otimes W$
+denote its action, where $U^{\dagger}U=\mathbb{I}_{P}$ and so on.
+Then, define \label{def:etaLab}
+
+\[
+\eta_{\epsilon}^{{\rm lab}}:=\max\tr(\Pi_{{\rm obj}}\otimes\mathbb{I}_{R}\cdot\rho_{2})
+\]
+s.t. 
+\begin{align*}
+\left\Vert \Phi(\rho_{0})-\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon\\
+\left\Vert \Phi(M_{cz}\rho_{0}M_{c'z'})-\Pi_{cz}^{J}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi_{c'z'}^{J}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon & \forall c,c',z,z'\in\{0,1\}\\
+\tr_{Z}(\rho_{1}) & =\tr_{PQ}(\rho_{0})\\
+\rho_{2} & =\sum_{z,z',c,c'}\left|c\right\rangle \left\langle c'\right|_{C}\otimes\left(M_{cz}\otimes\Pi_{z}^{Z}\cdot\rho_{1}\cdot M_{c'z'}\otimes\Pi_{z'}^{Z}\right)
+\end{align*}
+
+\end{defn}
+
+\begin{defn}[$\eta_{\epsilon}$]
+ Let $\sigma_{0}\in D(HIJPQR),\sigma_{1}\in D(ZJR),\sigma_{{\rm junk}}\in D(PQR)$
+be density matrices and $N_{c|z}\in{\rm Proj}(JR)$. Let $\Pi_{{\rm obj}}$,
+$\Phi$, $U,V,W$ be as in \Defref{etaLab}. Then, define 
+\[
+\eta_{\epsilon}:=\max\tr(\Pi_{{\rm obj}}\otimes\mathbb{I}_{JR}\cdot\sigma_{2})
+\]
+s.t.
+\begin{align*}
+\left\Vert \sigma_{0}-\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\otimes\sigma_{{\rm junk}}\right\Vert  & \le\epsilon\\
+\left\Vert \sigma_{0}-\Pi_{cz}^{J}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi_{c'z'}^{J}\otimes\sigma_{{\rm junk}}\right\Vert  & \le\epsilon & \forall c,c',z,z'\in\{0,1\}\\
+\tr_{Z}(\sigma_{1}) & =\tr_{PQIJ}(\sigma_{0})\\
+\sigma_{2} & =\sum_{z,z',c,c'}\left|c\right\rangle \left\langle c'\right|_{C}\otimes\left(N_{cz}\otimes\Pi_{z}^{Z}\cdot\sigma_{1}\cdot N_{c'z'}\otimes\Pi_{z'}^{Z}\right).
+\end{align*}
+\end{defn}
+
+\begin{lem}
+One has $\eta_{\epsilon}^{{\rm lab}}\le\eta_{\epsilon}$.
+\end{lem}
+
+\begin{proof}
+{[}TODO: add details{]} Suppose $\rho_{0},\rho_{1},\rho_{2}$ and
+$M_{cz}$ achive the maximum for $\eta_{\epsilon}^{{\rm lab}}$. Then
+$\sigma_{0}=V\rho_{0}V^{\dagger}$, $\sigma_{1}=V\rho_{1}V^{\dagger}$,
+$\sigma_{2}=V\rho_{2}V^{\dagger}$ and $N_{cz}=VM_{cz}V^{\dagger}$,
+observe that the constraints of $\eta_{\epsilon}$ are satisfied.
+Further, observe that $\tr(\Pi_{{\rm obj}}\otimes\mathbb{I}_{IR}\sigma_{2})=\tr(\Pi_{{\rm obj}}\otimes\mathbb{I}_{R}\rho_{2})$.
+Hence, $\eta_{\epsilon}$ is at least as large as $\eta_{\epsilon}^{{\rm lab}}$. 
 \end{proof}
-}
+\begin{lem}
+JAMIE: $\eta_{\epsilon}$ is continuous as a function of $\epsilon$
+as $\epsilon\to0$.
+\end{lem}
 
-\section{Security Proof | Finite $n$}
-\label{sec:SecurityFiniteN}
-TODO: Write the following properly
+\begin{defn}[$\eta_{\epsilon}^{{\rm Tr}}$]
+ Let $\tau_{0}\in D(HIJ),\tau_{1}\in D(ZJ)$ be density matrices
+and $P_{c|z}\in{\rm Proj}(J)$ {[}EDIT: or perhaps POVMs{]}. Let $\Pi_{{\rm obj}}$
+be as in \Defref{etaLab}. Then, define 
+\[
+\eta_{\epsilon}^{{\rm Tr}}:=\max\tr(\Pi_{{\rm obj}}\otimes\mathbb{I}_{J}\cdot\tau_{2})
+\]
+s.t.
+\begin{align*}
+\left\Vert \tau_{0}-\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\right\Vert  & \le\epsilon\\
+\left\Vert P_{cz}\tau_{0}P_{c'z'}-\Pi_{cz}^{J}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi_{c'z'}^{J}\right\Vert  & \le\epsilon & \forall c,c',z,z'\in\{0,1\}\\
+\tr_{Z}(\tau_{1}) & =\tr_{IJ}(\tau_{0})\\
+\tau_{2} & =\sum_{z,z',c,c'}\left|c\right\rangle \left\langle c'\right|_{C}\otimes\left(P_{cz}\otimes\Pi_{z}^{Z}\cdot\tau_{1}\cdot P_{c'z'}\otimes\Pi_{z'}^{Z}\right).
+\end{align*}
+\end{defn}
 
-In this section, we drop Assumption ??, and estimate the GHZ winning probability from Algorithm ??. We then use the robust variant of the self-testing result to conclude that the SDP of interest must be close to the SDP we considered (with some larger space tensored to it). Finally, we show the continuity of these SDPs and thereby conclude that we converge to the asymptotic result as $n$ is increased.
+\begin{lem}
+{[}may break{]} One has $\eta_{\epsilon}\le\eta_{\epsilon}^{{\rm Tr}}$. 
+\end{lem}
 
-We show this for the case where Alice self-tests. We expect an analogous result to hold when Bob self-tests.
+\begin{proof}
+Suppose $\sigma_{0},\sigma_{1},\sigma_{2}$ and $N_{cz}$ achive the
+maximum for $\eta_{\epsilon}^{{\rm lab}}$. Let, $\tau_{0}=\tr_{PQR}(\sigma_{0})$,
+$\tau_{1}=\tr_{R}(\sigma_{1})$, $\tau_{2}=\tr_{R}(\sigma_{2})$ and
+$P_{cz}=?$ {[}TODO: figure out what happens to the measurements;
+perhaps I must relax them to POVM!{]}. Then, the inequality constraints
+of $\eta_{\epsilon}$ imply the inequality constraints of $\eta_{\epsilon}^{{\rm Tr}}$
+by the monotonicity of trace distance. The equality constraints of
+$\eta_{\epsilon}$ directly imply the equality constraints of $\eta_{\epsilon}^{{\rm Tr}}$
+as partial traces are a special case. Finally, ...{[}TODO: the measurement
+part{]}
+\end{proof}
+\begin{defn}[$\eta$]
+ Let $\rho_{0}=\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}$,
+$\rho_{1}\in D(ZJ)$ be density matrices and $\Pi_{cz}^{J}\in{\rm Proj}(J)$
+be GHZ scenario projectors (Pauli $x$ and Pauli $y$ projectors).
+Let $\Pi_{{\rm obj}}$ be as in \Defref{etaLab}. Define 
+\[
+\eta:=\max\tr(\Pi_{{\rm obj}}\otimes\mathbb{I}_{J}\cdot\rho_{2})
+\]
+s.t. 
+\begin{align*}
+\tr_{Z}(\rho_{1}) & =\tr_{IJ}(\rho_{0})\\
+\rho_{2} & =\sum_{z,z',c,c'}\left|c\right\rangle \left\langle c'\right|_{C}\otimes(\Pi_{cz}^{J}\otimes\Pi_{z}^{Z}\cdot\rho_{1}\cdot\Pi_{c'z'}^{J}\otimes\Pi_{z'}^{Z}).
+\end{align*}
+\end{defn}
+
+\begin{lem}
+One has for $\epsilon=0$, $\eta_{\epsilon}=\eta$. 
+\end{lem}
+
+\begin{proof}
+Follows directly from setting $\epsilon=0$ and using \Exaref{replaceM-1}
+below to argue (in $\eta_{\epsilon}$) that $P_{cz}$ can be replaced
+with $\Pi_{cz}$ when they act on $\tau_{1}$ even though $\epsilon=0$
+only yields this result for $\tau_{0}$.
+\end{proof}
+\begin{example}
+\label{exa:replaceM-1}Let $\rho_{AB}$ be a density matrix, $\Pi^{B},\Pi^{\prime B}$
+be projectors on $B$ and $M^{B},M^{\prime B}$ be measurement (Kraus)
+operators on $B$. Suppose $M^{B}\rho_{AB}M^{\prime B}=\Pi^{B}\rho_{AB}\Pi^{\prime B}$.
+Suppose 
+\begin{equation}
+M^{B}\rho_{AB}M^{\prime B}=\Pi^{B}\rho_{Ab}\Pi^{\prime B}.\label{eq:measureMeasure-1}
+\end{equation}
+If $\sigma_{AB}$ is another density matrix such that $\tr_{A}(\sigma_{AB})=\tr_{B}(\rho_{AB})$,
+then 
+\begin{equation}
+M^{B}\sigma_{AB}M^{\prime B}=\Pi^{B}\sigma_{AB}\Pi^{\prime B}.\label{eq:replaceMeasurement-1}
+\end{equation}
+ This follows from Uhlman's theorem which guarantees that there exists
+a $U$ acting on system $A$ such that $\left(U\otimes\mathbb{I}_{B}\right)\sigma_{AB}\left(U^{\dagger}\otimes\mathbb{I}_{B}\right)=\rho_{AB}$.
+Thus, conjugating \Eqref{measureMeasure-1} with $U\otimes\mathbb{I}_{B}$,
+we obtain .
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \section{Security Proof | Asymptotic limit}
+% \label{sec:securityAsymptotic}
+
+% In this section, we prove the security under the following assumption:
+% \begin{assumption}
+% \label{assu:asymptotic}In protocol $\mathcal{P}$ ($\mathcal{Q}$),
+% Alice (Bob) does not perform the box verification step and instead
+% it is assumed that her box is (his boxes are) taken from a trio of
+% boxes which win the GHZ game with certainty. 
+% \end{assumption}
+
+% \branchcolor{purple}{Later, we drop the assumption and use the box verification step (see
+% ..) to estimate the probability of winning the GHZ game. When the
+% winning probability is exactly one, the states and measurements are
+% the same as the GHZ state and $\sigma_{x},\sigma_{y}$ measurements,
+% up to local isometries and this allows us to use semi definite programming. }
+% \Anote{I removed the lemma from here}
+
+% \branchcolor{purple}{INTERNAL; (TODO: remove): Isometries can only increase dimensions
+% (they must be injective; that is to ensure they preserve inner products
+% of vectors). Therefore the isometry can't get rid of the $\left|{\rm junk}\right\rangle $
+% part. }
+
+
+% \subsection{SDP when Alice self-tests}
+% % \begin{prop}
+% %     Assuming perfect self-testing, $(v_A,v_B,v_\perp)$ is a cheating vectors for $\mathcal P$ and (honest) Alice if an only there exists states $\rho_2,\rho_3$ such that $(v_A,v_B,v_\perp) = (\Tr[\Pi_0 \rho_3], \Tr[\Pi_1\Pi_{\rm GHZ} \rho_3],  \Tr[\Pi_1\overline \Pi_{\rm GHZ}\rho_3])$ and satisfying  
+% %     \begin{IEEEeqnarray}{rL}
+% %         \rho_1 & =\tr_{G}(\rho_{2})\\
+% %         \rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2} & =\tr_{D}(\rho_{3})
+% %     \end{IEEEeqnarray}
+% %     with $\rho_1 = \tr_{IJS}\left[\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|\right]$, $\Pi_0 = \Pi(x\oplus g = 0)$ and $\Pi_{\rm GHZ} = \Pi( a\oplus d = xyz \oplus 1)$
+% % \end{prop}
+% % Note that when $S$ is some equation, we used the notation that $\Pi(S)$ is the projections on the set of all vectors in the computational basis satisfying equation $S$.
+
+
+% % \begin{proof}
+% %     Note that from the point of view of this proof, Bob holds the purification of the initial state of Alice's box and he is not required to satisfying the no-signalling between his boxes.
+    
+% %     Let $\ket{\psi_0}_{Q_AQ_B}$ be the initial joint state of Alice's device and Bob quantum memory and let $M_{a|x}$ be the projective measurement on $Q_A$ used by Alice. We consider the moment when Alice has chosen her input $x\sim p(x)$ and measured the output bit $a$. We represent this instant with the state
+% %     \begin{equation}
+% %         \ket{\psi_1} = \sum_{ax} \sqrt{p(x)} \ket{ax}_{AX}\ket{\psi_{ax}}_{Q_AQ_B}
+% %     \end{equation}
+% %     where $\ket{\psi_{ax}} = (M_{a|x} \otimes \mathbb{I}_{Q_B}) \ket{\psi_0}$. We note that after tracing over $Q_A$ and measuring $AX$ in the computational basis we recover the classical-quantum state $\sum_{ax} p(x) \ketbra{ax}{ax} \otimes \rho_{ax}$ with $\rho_{ax} = \Tr_{Q_A}[ M_{a|x} \ketbra{\psi_0}{\psi_0}]$ as expected. We thus define $\rho_1 = \Tr_{Q_B}[\ketbra{\psi_1}{\psi_1}]$ as the state of Alice's registers at this point. 
+    
+% %     Generating a random bit $r$ and preparing the message $s = a\oplus r.x$ is modeled as the isometry $U_{RSAX\leftarrow AX} = \sum_r \frac{1}{\sqrt{2}} \ket{r}_R \ket{a\oplus rx}_S \ketbra{ax}{ax}_{AX}$. Bob then sends his guess $g$ to Alice. Denoting by $\rho_2\in \mathcal S(AXQ_ARG)$ be the state of Alice's registers at this point, we find that 
+% %     \begin{equation}
+% %         \Tr_G[\rho_2] = \Tr_S[ U \rho_1 U^\dagger]
+% %     \end{equation}
+    
+% %     [.. continue here ...]
+% %     \end{proof}
+    
+% %     \begin{prop}
+% %         In the case of imperfect self-testing, the first equality in the sdp characterisation of the cheating vectors must be replaced with $||\tr_G[\rho_2] - \rho_1|| \leq 2\epsilon$.
+% %     \end{prop}   
+    
+    
+% %     \begin{proof}
+% %     Now, we consider the case where we have imperfect self-testing. In this case, the initial state $\rho_0$, which used to be defined with the GHZ state $\ket{\psi_0}$ and the measurements $M_{a|x}$, is instead generated by a state $\ket{\overline \psi_0}$ and measurements $\overline M_{a|x}$ such that there exists a local isometry $\Phi$ such that
+% %     \begin{equation}
+% %         ||\Phi( \overline M_{a|x} \otimes \mathbb{I}\ket{\overline \psi_0})  - M_{a|x}\otimes \mathbb{I}\ket{\psi_0} \otimes \ket{junk}||\leq \epsilon
+% %     \end{equation}
+    
+    
+    
+% % \end{proof}
+
+
+% \branchcolor{blue}{\begin{proof}[Asymptotic proof of \Lemref{AliceSelfTests}]
+% We prove \Lemref{AliceSelfTests} under \Assuref{asymptotic}. We
+% begin by making two observations. 
+
+% First, note that in the protocol, if Alice applies an isometry on
+% her box \emph{after} she has inputted $x$, obtained the outcome $a$
+% (and has noted it somewhere), the security of the resulting protocol
+% is unchanged because the rest of the protocol only depends on $x$
+% and $a$, and Alice's isometry only amounts to relabelling of the
+% post measurement state. This freedom allows us to simplify the analysis.
+
+% Second, in the analysis, we cannot model Alice's random choice, say
+% for $x$, as a mixed state because Bob can always hold a purification
+% and thus know $x$. Therefore, we model the randomness using pure
+% states and measure them in the end.
+
+% Notation: Other than $PQR$, all other registers store qubits.
+
+% We proceed step by step. 
+% \begin{enumerate}
+% \item We can model (justified below) Alice's act of inputting a random $x$
+% and obtaining an outcome $a$ from her box through the state 
+% \begin{equation}
+% \left| \Psi_{0} \right\rangle :=\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|xa\right\rangle _{XA}\left|\Phi(x,a)\right\rangle _{IJ}
+% \end{equation}
+% where $X$ represents the random input and $A$ the output. Here,
+% $\left|\Phi(x,a)\right\rangle _{IJ}$ are Bell states (see \Eqref{bellStates})
+% and the registers $IJ$ are held by Bob. Alice's act of choosing $r$
+% at random, computing $s=a\oplus x.r$ is modelled as 
+% \begin{equation}
+% \left|\Psi_{1}\right\rangle :=\frac{1}{2\sqrt{2}}\sum_{x,a,r\in\{0,1\}}\left|xa\right\rangle _{XA}\left|\Phi(x,a)\right\rangle _{IJ}\left|r\right\rangle _{R}\left|a\oplus x.r\right\rangle _{S}.\label{eq:Alice_Psi1}
+% \end{equation}
+% Finally, Alice's act of sending $s$ is modelled as Alice starting
+% with the state
+% \[
+% \tr_{IJS}\left[\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|\right]\in XAR.
+% \]
+% \Tnote{Can we call this state $\rho_1$ ?}
+
+
+% \branchcolor{blue}{\textbf{Justification for starting with $\left|\Psi_{0}\right\rangle $.}\\
+% To see why we start with the state $\left|\Psi_{0}\right\rangle $,
+% model Alice's choice of $x$ as $\left|+\right\rangle _{X}$, suppose
+% her measurement result is stored in $\left|0\right\rangle _{A}$,
+% the state of the boxes before measurement is $\left|\psi\right\rangle _{PQR}$
+% and Alice holds $P$, i.e. 
+% \[
+% \left|\Psi_{0}'\right\rangle :=\left|+\right\rangle _{X}\left|0\right\rangle _{A}\left|\psi\right\rangle _{PQR}.
+% \]
+% Let $\{M_{a|x}^{P}\}$ be the measurement operators corresponding
+% to Alice's box. The measurement process is unitarily modelled as 
+% \[
+% \left|\Psi_{1}'\right\rangle :=U_{{\rm measure}}\left|\Psi_{0}'\right\rangle =\frac{1}{\sqrt{2}}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}M_{a|x}^{P}\left|\psi\right\rangle _{PQR}
+% \]
+% where
+% \[
+% U_{{\rm measure}}=\sum_{x\in\{0,1\}}\left|x\right\rangle \left\langle x\right|_{X}\otimes\left[\mathbb{I}_{A}\otimes M_{0|x}^{P}+X_{X}\otimes M_{1|x}^{P}\right]\otimes\mathbb{I}_{QR}.
+% \]
+% Now we harness the freedom of applying an isometry to the post measured
+% state (as observed above). We choose the local isometry in \Lemref{self-testAsymptotic}.
+% Without loss of generality, we can assume that Bob had already applied
+% his part of the isometry before sending the boxes (because he can
+% always reverse it when it is his turn). We thus have, 
+% \begin{align*}
+% \left|\Psi_{2}'\right\rangle :=\Phi_{PQR}\left|\Psi_{1}'\right\rangle  & =\frac{1}{\sqrt{2}}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}\Pi_{x|a}^{H}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR}\\
+%  & =\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}U^{H}(x,a)\left|0\right\rangle _{H}\left|\Phi(x,a)\right\rangle _{IJ}\otimes\left|{\rm junk}\right\rangle _{PQR}
+% \end{align*}
+% where 
+% \begin{equation}
+% \left|\Phi(x,a)\right\rangle _{IJ}=\frac{\left|00\right\rangle +(-1)^{a}(i)^{x}\left|11\right\rangle }{\sqrt{2}}\label{eq:bellStates}
+% \end{equation}
+%  and $U^{H}(x,a)\left|0\right\rangle _{H}$ is $\frac{\left|0\right\rangle +(-1)^{a}(i)^{x}\left|1\right\rangle }{\sqrt{2}}$.
+% Since the state of register $H$ is completely determined by registers
+% $X$ and $A$, we can drop it from the analysis without loss of generality.
+% Finally, since $\left|{\rm junk}\right\rangle _{PQR}$ is completely
+% tensored out, we can drop it too without affecting the security. Formally,
+% we can assume that Alice gives Bob the register $P$ at this point.
+% }
+
+% \item Bob sending $g$ is modelled by introducing $\rho_{2}\in XARG$ satisfying
+% $\tr_{IJS}\left[\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|\right]=\tr_{G}(\rho_{2})$. 
+
+% \item At this point, either $x\oplus g$ is zero, in which case Alice's
+% output is fixed or $x\oplus g$ is one, and in that case Bob will
+% already know $x$ because he knows $g$ (he sent it) and Alice will
+% proceed to testing Bob. Formally, therefore, we needn't do anything
+% at this step.
+
+% \item Assuming $x\oplus g=1$, Alice sends $y,z$ to Bob such that $x\oplus y\oplus z=1$.
+% However, since Bob already knows $x$, he can deduce $z$ from $y$.
+% We thus only need to model Alice sending $y$ and Bob responding with
+% $d=b\oplus c$ (because Alice will only use $b\oplus c$ to test the
+% GHZ game, so it suffices for Bob to send $d$). This amounts to introducing
+% $\rho_{3}\in XARGYD$ satisfying $\rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2}=\tr_{D}(\rho_{3})$.
+
+% \item Since we postponed the measurements to the end, we add this last step.
+% Alice now measures $\rho_{3}$ to determine $x\oplus g$ and if it
+% is one, whether the GHZ test passed. Let 
+% \begin{align}
+%     \Pi_{i} & :=\sum_{x,y\in\{0,1\}:x\oplus g=i}\left|xg\right\rangle \left\langle xg\right|_{XG}\otimes\mathbb{I}_{ARYD}, \\
+%     \Pi^{{\rm GHZ}} & :=\sum_{\substack{
+%             x,y\in\{0,1\},\\a,d\in\{0,1\}:a\oplus d\oplus1=xy\cdot(1\oplus x\oplus y)}
+%         }
+%         \left|xyad\right\rangle \left\langle xyad\right|_{XYAD}\otimes\mathbb{I}_{RG}.
+%     \label{eq:AliceProjs}
+% \end{align}
+% Then, we can write the cheat vector for Alice, i.e. the tuple of probabilities
+% that Alice outputs 0, 1 and abort (see \Defref{CheatVectors}), as
+% \[
+%     (\alpha,\beta,\gamma)=(\tr(\Pi_{0}\rho_{3}),\tr(\Pi_{1}\Pi^{{\rm GHZ}}\rho_{3}),\tr(\Pi_{1}\bar{\Pi}^{{\rm GHZ}}\rho_{3}))
+% \]
+%  where $\bar{\Pi}:=\mathbb{I}-\Pi$.
+% \end{enumerate}
+% To summarise, the final SDP is as follows: let $\left|\Psi_{1}\right\rangle \in XAIJRS$
+% be as given in \Eqref{Alice_Psi1}, $\rho_{2}\in XARG$ and $\rho_{3}\in XARGYD$
+% \[
+%     \max\quad\tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{3})
+% \]
+% subject to 
+% \begin{align*}
+%     \tr_{IJS}\left[\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|\right] & =\tr_{G}(\rho_{2})\\
+%     \rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2} & =\tr_{D}(\rho_{3})
+% \end{align*}
+% where the projectors are defined in \Eqref{AliceProjs}.
+% \end{proof}
+% }
+
+
+% \subsection{SDP when Bob self-tests} %\label{subsec:SDP-when-Bob}}
+
+% \Tnote{What is the argument to say that we do not have to consider the test by Alice when analysing cheating Alice from the point of view of Bob ?}
+
+% \branchcolor{blue}{\begin{proof}[Proof of \Lemref{Bob-self-tests}]
+% Denote by $\mathcal{I}$ the protocol corresponding to \Algref{SCForiginal}. 
+
+% It is evident that $p_{B}^{*}(\mathcal{Q})\le p_{B}^{*}(\mathcal{I})$
+% because compared to $\mathcal{I}$, in $\mathcal{Q}$ Alice performs
+% an extra test. However, it is not hard to see that the inequality
+% is saturated, i.e. $p_{B}^{*}(\mathcal{Q})=p_{B}^{*}(\mathcal{I})$.
+% Consider ... (TODO: recall/re-construct the cheating strategy for
+% Bob that lets him win with the same $3/4$ probability). 
+
+% From \Lemref{SCFstandard}, it is also clear that $p_{A}^{*}(\mathcal{Q})=p_{A}^{*}(\mathcal{I})$
+% because the only difference between Bob's actions in $\mathcal{Q}$
+% and $\mathcal{I}$ is that Bob self-tests to ensure his boxes are
+% indeed GHZ. However, the optimal cheating strategy for $\mathcal{I}$
+% can be implemented using GHZ boxes. 
+
+% This establishes the first part of the lemma. For the second part,
+% i.e. establishing that optimising $c_{0}\alpha+c_{1}\beta+c_{\perp}\gamma$
+% over $(\alpha,\beta,\gamma)\in\mathbb{C}_{A}$ is an SDP, we proceed
+% as follows. Suppose \Assuref{asymptotic} holds. Then we can assume
+% that Bob starts with the state 
+% \begin{equation}
+% \rho_{0}:=\tr_{H}(\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ})\label{eq:Bob_initState}
+% \end{equation}
+%  and the effect of measuring the two boxes can be represented by the
+% application of projectors of pauli operators $X$ and $Z$.
+
+% The justification is similar to that given in the former proof. Suppose
+% Bob holds registers $QR$ of $\left|\psi\right\rangle _{PQR}$ which
+% is the combined state of the three boxes. Suppose his measurement
+% operators are $\{M_{b|y}^{Q},M_{c|z}^{R}\}$. Then using the isometry
+% in \Lemref{self-testAsymptotic}, Bob can relabel his state (and without
+% loss of generality, we can suppose Alice also relabels according to
+% the aforementioned isometry) to get $\Phi_{PQR}\left|\psi\right\rangle _{PQR}=\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR}$.
+% Further, since $\Phi_{PQR}(M_{b|y}^{Q}\otimes M_{c|z}^{R}\left|\psi\right\rangle _{PQR})=\Pi_{b|y}^{I}\Pi_{c|z}^{J}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR}$
+% Bob's act of measurement, in the new labelling, corresponds to simply
+% measuring the GHZ state in the appropriate Pauli basis. (TODO: in
+% the approximate case, the initial state will be close to the one mentioned
+% and the post-measured state will similarly only be close to the one
+% post projectors; There should be some way of showing that this can
+% be absorbed into the initial state).
+% \Tnote{There is still a TODO here}
+% \begin{enumerate}
+% \item Bob receiving $s$ from Alice is modelled by introducing $\rho_{1}\in SIJ$
+% satisfying $\tr_{S}(\rho_{1})=\rho_{0}$. 
+% \item Bob sending $g\in_{R}\{0,1\}$ can be seen as appending a mixed state:
+% $\rho_{1}\otimes\frac{1}{2}\mathbb{I}_{G}$.
+% \item Alice sending $x$ (and $a$) can be modelled as introducing $\rho_{2}\in AXSIJG$
+% satisfying $\tr_{A}(\rho_{2})=\rho_{1}\otimes\frac{\mathbb{I}_{G}}{2}$.
+% \item To model the GHZ test, introduce a register $Y$ in the state $\frac{\left|0\right\rangle _{Y}+\left|1\right\rangle _{Y}}{\sqrt{2}}$.
+% Recall that to perform the GHZ test, we need $x\oplus y\oplus z=1$
+% i.e. $z=1\oplus y\oplus x$. Further introduce registers $B$ and
+% $C$ to hold the measurement results, define 
+% \begin{equation}
+% U:=\sum_{y,x\in\{0,1\}}\left|y\right\rangle \left\langle y\right|_{Y}\left|x\right\rangle \left\langle x\right|_{X}\otimes(\mathbb{I}_{B}\otimes\Pi_{0|y}^{I}+X_{B}\otimes\Pi_{1|y}^{I})\otimes(\mathbb{I}_{C}\otimes\Pi_{0|(1\oplus y\oplus x)}^{J}+X_{C}\otimes\Pi_{1|(1\oplus y\oplus x)}^{J})\otimes\mathbb{I}_{ASG}.\label{eq:Bob-u}
+% \end{equation}
+% By construction, $\rho_{3}:=U\left(\left|+\right\rangle \left\langle +\right|_{Y}\otimes\left|00\right\rangle \left\langle 00\right|_{BC}\otimes\rho_{2}\right)U^{\dagger}\in YBCAXSIJG$
+% models the measurement process. (TODO: this equality would become
+% approximately true...but perhaps the noise can be absorbed in $\rho_{0}$
+% with some argument)
+% \item Since we postponed the measurements to the end, we add this step.
+% Define 
+% \[
+% \Pi_{i}:=\sum_{x,g\in\{0,1\}:x\oplus g=i}\left|xg\right\rangle \left\langle xg\right|_{XG}\otimes\mathbb{I}_{YABSIJ}
+% \]
+% to determine who won. Define 
+% \[
+% \Pi^{{\rm sTest}}:=\sum_{s,a,x\in\{0,1\}:s=a\lor s=a\oplus x}\left|sax\right\rangle \left\langle sax\right|_{SAX}\otimes\mathbb{I}_{GYBCIJ}
+% \]
+%  to model the first test, i.e. $s$ should either be $a$ or $a\oplus x$.
+% Define 
+% \[
+% \Pi^{{\rm GHZ}}:=\sum_{\substack{x,y\in\{0,1\},\\
+% a,b,c\in\{0,1\}:a\oplus b\oplus c\oplus1=xy\cdot(1\oplus x\oplus y)
+% }
+% }\left|xyabc\right\rangle \left\langle xyabc\right|_{XYABC}\otimes\mathbb{I}_{GSIJ}
+% \]
+% to model the GHZ test. Let 
+% \begin{equation}
+% \Pi^{{\rm Test}}:=\Pi^{{\rm GHZ}}\Pi^{{\rm sTest}},\quad\bar{\Pi}^{{\rm Test}}:=\mathbb{I}-\Pi^{{\rm Test}}.\label{eq:BobProjs}
+% \end{equation}
+% One can then write the cheat vector for Bob, i.e. the tuple of probabilities
+% that Bob outputs $0,1$ and abort (see \Defref{CheatVectors}), as
+% \[
+% (\alpha,\beta,\gamma)=(\tr(\Pi_{0}\Pi^{{\rm Test}}\rho_{3}),\tr(\Pi_{1}\rho_{3}),\tr(\Pi_{0}\bar{\Pi}^{{\rm Test}}\rho_{3})).
+% \]
+% \end{enumerate}
+
+% \Tnote{NB: Still old notation for the cheat vectors}
+% To summarise, the final SDP is as follows: let $\rho_{0}\in IJ$ be
+% as defined in \Eqref{Bob_initState}, $\rho_{1}\in SIJ$ and $\rho_{2}\in AXSIJG$.
+% Then, 
+% \[
+% \max\quad\tr\left([\Pi_{0}(c_{0}\Pi^{{\rm Test}}+c_{\perp}\bar{\Pi}^{{\rm Test}})+c_{1}\Pi_{1}]U\left(\left|+00\right\rangle \left\langle +00\right|_{YBC}\otimes\rho_{2}\right)U^{\dagger}\right)
+% \]
+% subject to 
+% \begin{align*}
+% \tr_{S}(\rho_{1}) & =\rho_{0}\\
+% \tr_{A}(\rho_{2}) & =\frac{1}{2}\rho_{1}\otimes\mathbb{I}_{G}
+% \end{align*}
+% where $U$ is as defined in \Eqref{Bob-u} and the projectors as in
+% \Eqref{BobProjs}.
+
+
+% \end{proof}
+% }
+
+% \section{Security Proof | Finite $n$}
+% \label{sec:SecurityFiniteN}
+% TODO: Write the following properly
+
+% In this section, we drop Assumption ??, and estimate the GHZ winning probability from Algorithm ??. We then use the robust variant of the self-testing result to conclude that the SDP of interest must be close to the SDP we considered (with some larger space tensored to it). Finally, we show the continuity of these SDPs and thereby conclude that we converge to the asymptotic result as $n$ is increased.
+
+% We show this for the case where Alice self-tests. We expect an analogous result to hold when Bob self-tests.
 
 
 \subsection{Estimation of GHZ winning probability}
 \label{subsec:EstimateGHZ}
+\Anote{Make the narartive coherent with the previous section.}
+
 We assume that the $3n$ boxes are described by some joint quantum state and local measurement operators. After playing the GHZ game with $3(n-1)$ of them, and verifying that they all pass, we want to make a statement about the remaining box, whose state $\tilde \rho$ is conditioned on the passing of all the other test. 
 
 % \floatname{algorithm}{Procedure}
@@ -1962,409 +2506,382 @@ This is the correct form of the security statement. It is important to bound the
 \end{proof}
 
 
-\subsection{Robust self-testing}
-\begin{lem}
-Let $a,b,c,x,y,z\in\{0,1\}$. Consider a trio of quantum boxes, specified
-by projectors $\{M_{a|x}^{A},M_{b|y}^{B},M_{c|z}^{C}\}$ acting on
-finite dimensional Hilbert spaces $\mathcal{H}^{A},\mathcal{H}^{B}$
-and $\mathcal{H}^{C}$, and $\left|\psi\right\rangle \in\mathcal{H}^{A}\otimes\mathcal{H}^{B}\otimes\mathcal{H}^{C}=:\mathcal{H}^{ABC}$.
-If the trio pass the GHZ test with probability $1-\epsilon$ (for
-$1>\epsilon>0$), then there exists a local isometry, 
-\[
-\Phi=\Phi^{A}\otimes\Phi^{B}\otimes\Phi^{C}:\mathcal{H}^{ABC}\to\mathcal{H}^{ABC}\otimes\mathbb{C}^{2\times3}
-\]
-and a decreasing function of $\epsilon$, $f(\epsilon)$ such that
-\begin{align}
-    \label{eq:continuity_GHZ}
-\left\Vert \Phi\left(\left|\psi\right\rangle \right)-\left|\chi\right\rangle \otimes\left|{\rm junk}\right\rangle \right\Vert  & \le f(\epsilon),\\
-\left\Vert \Phi\left(M_{d|t}^{D}\left|\psi\right\rangle \right)-\Pi_{d|t}^{D}\left|{\rm GHZ}\right\rangle \otimes\left|{\rm junk}\right\rangle \right\Vert  & \le f(\epsilon)\quad\forall D\in\{A,B,C\},\text{ and }d,t\in\{0,1\}
-\end{align}
-where $\left|{\rm GHZ}\right\rangle =\frac{\left|000\right\rangle +\left|111\right\rangle }{\sqrt{2}}\in\mathbb{C}^{2\times3}$,
-$\left|{\rm junk}\right\rangle \in\mathcal{H}^{ABC}$ is some arbitrary
-state and $\{\Pi_{a|x}^{A},\Pi_{b|y}^{B},\Pi_{c|z}^{C}\}$ are projectors
-corresponding to $\sigma_{x}$ on the first, second and third qubit
-of $\left|{\rm GHZ}\right\rangle $ respectively, for $x=0$ and corresponding
-to $\sigma_{y}$ for $x=1$, as in \Claimref{Quantum-boxes-pass}.
-\end{lem}
-\begin{proof}
-    A proofs of robust self-testing for GHZ can be found in \cite{MillerShi} and \cite{McKague}.
-\end{proof}
 
-\subsection{Alice self-tests}
-\branchcolor{purple}{The basic idea here is to treat the state and measurements inside
-the boxes as variables which are optimised over, subject to the constraint
-that they are $\epsilon$-close to the ideal GHZ state and measurements.
-This ceases to be an SDP so we relax the constraint that the post
-measurement states must arise from measuring some fixed state and
-let them be arbitrary states. The requirement that these are close
-to the ideal GHZ state and post measured states is still enforced.
-When $\epsilon=0$, we recover the asymptotic SDP (and that is no
-longer a relaxation). Since we only change the constant $\epsilon$,
-convergence of the objective value of these SDPs is easy to show {[}JAMIE{]}.}
+% \subsection{Alice self-tests}
+% \branchcolor{purple}{The basic idea here is to treat the state and measurements inside
+% the boxes as variables which are optimised over, subject to the constraint
+% that they are $\epsilon$-close to the ideal GHZ state and measurements.
+% This ceases to be an SDP so we relax the constraint that the post
+% measurement states must arise from measuring some fixed state and
+% let them be arbitrary states. The requirement that these are close
+% to the ideal GHZ state and post measured states is still enforced.
+% When $\epsilon=0$, we recover the asymptotic SDP (and that is no
+% longer a relaxation). Since we only change the constant $\epsilon$,
+% convergence of the objective value of these SDPs is easy to show {[}JAMIE{]}.}
 
 
 
-\branchcolor{blue}{\begin{proof}
-We first write exactly what is going on physically, except that we
-take the liberty of ``renaming'', i.e. applying global isometries.
-We treat the state $\left|\psi\right\rangle _{PQR}$ and the measurements
-$\{M_{a|x}^{P}\}$ as variables. 
-\begin{enumerate}
-\item We begin as before with $\left|\Psi'_{0}\right\rangle $, 
-\[
-\left|\Psi_{0}'\right\rangle :=\left|+\right\rangle _{X}\left|0\right\rangle _{A}\left|\psi\right\rangle _{PQR'}
-\]
-and\footnote{(we put $R'$ because we already used $R$ for the random register)}
-obtain the ``post measurement state'' as 
-\[
-\left|\Psi_{1}'\right\rangle =\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}.
-\]
-Since we are allowed to ``rename'' (without changing the value of
-the SDP), we have 
-\begin{equation}
-\left|\Psi_{2}'\right\rangle =\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}\Phi_{PQR}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}.\label{eq:PsiZeroBasically}
-\end{equation}
-At this point, in the asymptotic case, we could directly apply the
-self-testing result and replace $\Phi_{PQR'}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}$
-with $\Pi_{x|a}^{H}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR'}$.
-Now, instead, we require 
-\[
-\left\Vert \Phi_{PQR'}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}-\Pi_{x|a}^{H}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR'}\right\Vert \le\epsilon\quad\forall a,x\in\{0,1\}
-\]
-{[}EDIT: here the norm is just the vector norm but we can impose it
-as density matrices; there we use the trace norm; the remark shows
-how to convert that into an SDP{]}where the norm\footnote{We could have used other norms but they would be a relaxation of the
-constraints.} here is the trace norm $\left\Vert .\right\Vert $ (see \Remref{diffToNorm})
-and $\epsilon'$ is a function $\epsilon$ which vanishes as $\epsilon$
-vanishes ($\epsilon$ comes from the self testing step). One could,
-henceforth, continue as in the asymptotic case. More precisely, one
-could start with $\left|\Psi_{0}\right\rangle :=\left|\Psi_{2}'\right\rangle $,
-model the classical computation step as 
-\begin{align*}
-\left|\Psi_{1}\right\rangle  & =U_{{\rm comp}}\left|\Psi_{0}\right\rangle \left|00\right\rangle _{RS}\\
- & =\frac{1}{2\sqrt{2}}\sum_{x,a,r\in\{0,1\}}\left|xa\right\rangle _{XA}\left|r\right\rangle _{R}\left|a\oplus x.r\right\rangle _{S}\Phi_{PQR}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}
-\end{align*}
-where $U_{{\rm comp}}$ is implicitly defined to yield the stated
-state. Then, the act of sending $s$ (which is the first communication
-step) is modelled as 
-\[
-\tr_{IJSPQR'}(\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|)\in XARH.
-\]
-\item The remaining steps are unchanged except that Alice additionally,
-always holds the register $H$ now. 
-\end{enumerate}
-The final optimisation problem is defined on the variables $\left|\psi\right\rangle \in PQR'$,
-$M_{a|x}^{P}$ projectors (or POVMs) acting on $PQR$, $\Phi_{PQR'}$
-a local isometry\footnote{by local we mean it has the form $\Phi_{P}\otimes\Phi_{Q}\otimes\Phi_{R}$
-where, for instance, $\Phi_{P}:P\to HP$.} from $PQR'\to HIJPQR'$, $\left|{\rm junk}\right\rangle \in PQR'$,
-$\rho_{2}\in XARGH$ and $\rho_{3}\in XARGYDH$. The problem is:
-\[
-\max\quad\tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{3})
-\]
-subject to 
-\begin{align}
-\left\Vert \Phi_{PQR'}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}-\Pi_{x|a}^{H}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR'}\right\Vert  & \le\epsilon\quad\forall a,x\in\{0,1\}\label{eq:NormNotSDP}\\
-\left|\Psi_{1}\right\rangle  & :=U_{{\rm comp}}\left|\Psi_{0}\right\rangle \left|00\right\rangle _{RS}\nonumber \\
-\tr_{IJSPQR'}\left[\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|\right] & =\tr_{G}(\rho_{2})\nonumber \\
-\rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2} & =\tr_{D}(\rho_{3})\nonumber 
-\end{align}
-where $\left|\Psi_{0}\right\rangle $ is as defined above (see \Eqref{PsiZeroBasically}
-and recall that $\left|\Psi_{0}\right\rangle =\left|\Psi_{2}'\right\rangle $).
-This, as it is stated, is not an SDP. However, it is clear that when
-$\epsilon=0$, we recover the asymptotic case (many variables can
-be dropped because they either are fixed (and no longer variable,
-e.g. $\left|\Psi_{0}\right\rangle $) or become redundant, e.g. register
-$H$). Let $v(\epsilon,d)$ be the value of the optimization program
-above where $d$ encodes the dimension of systems $PQR$. We now relax
-the constraints to obtain an SDP. Let $v'(\epsilon,d)$ be its value.
-We want the relaxation to be such that $v'(0,d)=v(0,d)$. Additionally,
-because it is a relaxation, we know $v(\epsilon,d)\le v'(\epsilon,d)$.
-It then suffices to show the continuity of the relaxation (the SDP),
-to establish the convergence of $v(\epsilon,d)$ to $v(0,d)$ as $\epsilon\to0$
-{[}JAMIE double-check!{]}. 
+% \branchcolor{blue}{\begin{proof}
+% We first write exactly what is going on physically, except that we
+% take the liberty of ``renaming'', i.e. applying global isometries.
+% We treat the state $\left|\psi\right\rangle _{PQR}$ and the measurements
+% $\{M_{a|x}^{P}\}$ as variables. 
+% \begin{enumerate}
+% \item We begin as before with $\left|\Psi'_{0}\right\rangle $, 
+% \[
+% \left|\Psi_{0}'\right\rangle :=\left|+\right\rangle _{X}\left|0\right\rangle _{A}\left|\psi\right\rangle _{PQR'}
+% \]
+% and\footnote{(we put $R'$ because we already used $R$ for the random register)}
+% obtain the ``post measurement state'' as 
+% \[
+% \left|\Psi_{1}'\right\rangle =\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}.
+% \]
+% Since we are allowed to ``rename'' (without changing the value of
+% the SDP), we have 
+% \begin{equation}
+% \left|\Psi_{2}'\right\rangle =\frac{1}{2}\sum_{x,a\in\{0,1\}}\left|x\right\rangle _{X}\left|a\right\rangle _{A}\Phi_{PQR}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}.\label{eq:PsiZeroBasically}
+% \end{equation}
+% At this point, in the asymptotic case, we could directly apply the
+% self-testing result and replace $\Phi_{PQR'}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}$
+% with $\Pi_{x|a}^{H}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR'}$.
+% Now, instead, we require 
+% \[
+% \left\Vert \Phi_{PQR'}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}-\Pi_{x|a}^{H}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR'}\right\Vert \le\epsilon\quad\forall a,x\in\{0,1\}
+% \]
+% {[}EDIT: here the norm is just the vector norm but we can impose it
+% as density matrices; there we use the trace norm; the remark shows
+% how to convert that into an SDP{]}where the norm\footnote{We could have used other norms but they would be a relaxation of the
+% constraints.} here is the trace norm $\left\Vert .\right\Vert $ (see \Remref{diffToNorm})
+% and $\epsilon'$ is a function $\epsilon$ which vanishes as $\epsilon$
+% vanishes ($\epsilon$ comes from the self testing step). One could,
+% henceforth, continue as in the asymptotic case. More precisely, one
+% could start with $\left|\Psi_{0}\right\rangle :=\left|\Psi_{2}'\right\rangle $,
+% model the classical computation step as 
+% \begin{align*}
+% \left|\Psi_{1}\right\rangle  & =U_{{\rm comp}}\left|\Psi_{0}\right\rangle \left|00\right\rangle _{RS}\\
+%  & =\frac{1}{2\sqrt{2}}\sum_{x,a,r\in\{0,1\}}\left|xa\right\rangle _{XA}\left|r\right\rangle _{R}\left|a\oplus x.r\right\rangle _{S}\Phi_{PQR}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}
+% \end{align*}
+% where $U_{{\rm comp}}$ is implicitly defined to yield the stated
+% state. Then, the act of sending $s$ (which is the first communication
+% step) is modelled as 
+% \[
+% \tr_{IJSPQR'}(\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|)\in XARH.
+% \]
+% \item The remaining steps are unchanged except that Alice additionally,
+% always holds the register $H$ now. 
+% \end{enumerate}
+% The final optimisation problem is defined on the variables $\left|\psi\right\rangle \in PQR'$,
+% $M_{a|x}^{P}$ projectors (or POVMs) acting on $PQR$, $\Phi_{PQR'}$
+% a local isometry\footnote{by local we mean it has the form $\Phi_{P}\otimes\Phi_{Q}\otimes\Phi_{R}$
+% where, for instance, $\Phi_{P}:P\to HP$.} from $PQR'\to HIJPQR'$, $\left|{\rm junk}\right\rangle \in PQR'$,
+% $\rho_{2}\in XARGH$ and $\rho_{3}\in XARGYDH$. The problem is:
+% \[
+% \max\quad\tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{3})
+% \]
+% subject to 
+% \begin{align}
+% \left\Vert \Phi_{PQR'}M_{a|x}^{P}\left|\psi\right\rangle _{PQR'}-\Pi_{x|a}^{H}\left|{\rm GHZ}\right\rangle _{HIJ}\otimes\left|{\rm junk}\right\rangle _{PQR'}\right\Vert  & \le\epsilon\quad\forall a,x\in\{0,1\}\label{eq:NormNotSDP}\\
+% \left|\Psi_{1}\right\rangle  & :=U_{{\rm comp}}\left|\Psi_{0}\right\rangle \left|00\right\rangle _{RS}\nonumber \\
+% \tr_{IJSPQR'}\left[\left|\Psi_{1}\right\rangle \left\langle \Psi_{1}\right|\right] & =\tr_{G}(\rho_{2})\nonumber \\
+% \rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2} & =\tr_{D}(\rho_{3})\nonumber 
+% \end{align}
+% where $\left|\Psi_{0}\right\rangle $ is as defined above (see \Eqref{PsiZeroBasically}
+% and recall that $\left|\Psi_{0}\right\rangle =\left|\Psi_{2}'\right\rangle $).
+% This, as it is stated, is not an SDP. However, it is clear that when
+% $\epsilon=0$, we recover the asymptotic case (many variables can
+% be dropped because they either are fixed (and no longer variable,
+% e.g. $\left|\Psi_{0}\right\rangle $) or become redundant, e.g. register
+% $H$). Let $v(\epsilon,d)$ be the value of the optimization program
+% above where $d$ encodes the dimension of systems $PQR$. We now relax
+% the constraints to obtain an SDP. Let $v'(\epsilon,d)$ be its value.
+% We want the relaxation to be such that $v'(0,d)=v(0,d)$. Additionally,
+% because it is a relaxation, we know $v(\epsilon,d)\le v'(\epsilon,d)$.
+% It then suffices to show the continuity of the relaxation (the SDP),
+% to establish the convergence of $v(\epsilon,d)$ to $v(0,d)$ as $\epsilon\to0$
+% {[}JAMIE double-check!{]}. 
 
-There are two steps to the relaxation. First, we relax the \Eqref{NormNotSDP}
-as in \Remref{TraceNormAsSDP}. This is straightforward. Second, we
-remove the variables $\left|\psi\right\rangle ,M_{a|x}^{P}$ and $\Phi_{PQR'}$
-and instead introduce variables $\left|\xi^{a,x}\right\rangle \in HIJPQR'$
-for $a,x\in\{0,1\}$. We substitute\footnote{we can drop the pure state requirement; we use it for notational simplicity}
-$\left|\psi\right\rangle $ with $\left|\xi\right\rangle $ and $M_{a|x}^{P}\left|\psi\right\rangle $
-with $\left|\xi^{a,x}\right\rangle $ in the definition of $\left|\Psi_{0}\right\rangle $
-and in the constraint \Eqref{NormNotSDP}. This is evidently a relaxation
-(because one can represent any choice of $\left|\psi\right\rangle ,M_{a|x}^{P}$
-and $\Phi_{PQR'}$ using $\left|\xi\right\rangle $ and $\left|\xi_{a,x}\right\rangle $
-in the optimisation problem). Relaxing further to mixed states, the
-SDP is then defined on $\xi^{aa',xx'}\in{\rm L}(HIJPQR')$ for $a,a',x,x'\in\{0,1\}$,
-$\rho_{{\rm junk}}\in{\rm PSD}(PQR')$, $\rho_{2}\in{\rm PSD}(XARGH)$
-and $\rho_{3}\in{\rm PSD}(XARGYDH)$ as 
-\[
-\max\quad\tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{3})
-\]
-subject to 
-\begin{align*}
-\left\Vert \xi^{aa',xx'}-\Pi_{a|x}^{H}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi_{a'|x'}^{H}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon''\quad\forall a,a',x,x'\in\{0,1\}\\
-\bar{\Psi}_{1} & :=U_{{\rm comp}}\bar{\Psi}_{0}\otimes\left|00\right\rangle \left\langle 00\right|_{RS}U_{{\rm comp}}^{\dagger}\\
-\tr_{IJSPQR'}\left[\bar{\Psi}_{1}\right] & =\tr_{G}(\rho_{2})\\
-\rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2} & =\tr_{D}(\rho_{3})
-\end{align*}
-where 
-\[
-\bar{\Psi}_{0}:=\frac{1}{4}\sum_{x,x',a,a'\in\{0,1\}}\left|xa\right\rangle \left\langle x'a'\right|_{XA}\xi_{HIJPQR'}^{aa',xx'}
-\]
-and $\epsilon''$ is a function of $\epsilon$ which vanishes as $\epsilon$
-vanishes. Clearly, when $\epsilon=0$, we recover the asymptotic SDP
-and by construction, the SDP is a relaxation of the optimisation problem
-we started with. Recall that $v'(\epsilon,d)$ is the value of this
-SDP. It is easy {[}for JAMIE! please help{]} that $v'(\epsilon,d)$
-is continuous as a function of $\epsilon$ (at least for small $\epsilon$?);
-my guess would be that we are slowly enlarging the feasible region
-so won't expect any jumps.
-\end{proof}
-}
-
-
-\begin{rem}
-\label{rem:diffToNorm}It is straightforward to show that $\left\Vert \left|\rho\right\rangle -\left|\sigma\right\rangle \right\Vert \le\epsilon\implies\tr\left|\rho-\sigma\right|\le\epsilon'$
-where $\epsilon'=2\sqrt{1-(1-\epsilon)}$. 
-
-\label{rem:TraceNormAsSDP}For many norms (including the trace norm),
-we have $\left\Vert X\right\Vert \le\epsilon\implies\left|\lambda_{\max}(X)\right|\le\epsilon'$
-where $\epsilon'$ vanishes as $\epsilon$ vanishes. It is easy to
-bound $\lambda_{\max}(X)\le\epsilon$ as 
-\[
-\left(\begin{array}{cc}
-X-\epsilon\mathbb{I} & 0\\
-0 & \epsilon\mathbb{I}-X
-\end{array}\right)\ge0.
-\]
-This is an SDP constraint because we can define some $\left(\begin{array}{cc}
-Y_{11} & Y_{12}\\
-Y_{21} & Y_{22}
-\end{array}\right)\ge0$ and then set the linear constraint $Y_{11}=X-\epsilon\mathbb{I}$
-and $Y_{22}=\epsilon\mathbb{I}-X$. 
-
-{[}EDIT When $X$ is not Hermitian, we can relax it using Schur's
-complement as 
-\[
-\left(\begin{array}{cc}
-\mathbb{I} & X\\
-X^{T} & \epsilon''\mathbb{I}
-\end{array}\right)\ge0\iff\epsilon''\mathbb{I}\ge X^{T}X
-\]
-and if $\left\Vert X\right\Vert \le\epsilon$, then there should be
-some function $\epsilon''$ of $\epsilon$ that satisfies the above
-(with possibly a multiplicative factor of $\dim(X)$). {]}
-\end{rem}
+% There are two steps to the relaxation. First, we relax the \Eqref{NormNotSDP}
+% as in \Remref{TraceNormAsSDP}. This is straightforward. Second, we
+% remove the variables $\left|\psi\right\rangle ,M_{a|x}^{P}$ and $\Phi_{PQR'}$
+% and instead introduce variables $\left|\xi^{a,x}\right\rangle \in HIJPQR'$
+% for $a,x\in\{0,1\}$. We substitute\footnote{we can drop the pure state requirement; we use it for notational simplicity}
+% $\left|\psi\right\rangle $ with $\left|\xi\right\rangle $ and $M_{a|x}^{P}\left|\psi\right\rangle $
+% with $\left|\xi^{a,x}\right\rangle $ in the definition of $\left|\Psi_{0}\right\rangle $
+% and in the constraint \Eqref{NormNotSDP}. This is evidently a relaxation
+% (because one can represent any choice of $\left|\psi\right\rangle ,M_{a|x}^{P}$
+% and $\Phi_{PQR'}$ using $\left|\xi\right\rangle $ and $\left|\xi_{a,x}\right\rangle $
+% in the optimisation problem). Relaxing further to mixed states, the
+% SDP is then defined on $\xi^{aa',xx'}\in{\rm L}(HIJPQR')$ for $a,a',x,x'\in\{0,1\}$,
+% $\rho_{{\rm junk}}\in{\rm PSD}(PQR')$, $\rho_{2}\in{\rm PSD}(XARGH)$
+% and $\rho_{3}\in{\rm PSD}(XARGYDH)$ as 
+% \[
+% \max\quad\tr([c_{0}\Pi_{0}+\Pi_{1}(c_{1}\Pi^{{\rm GHZ}}+c_{\perp}\bar{\Pi}^{{\rm GHZ}})]\rho_{3})
+% \]
+% subject to 
+% \begin{align*}
+% \left\Vert \xi^{aa',xx'}-\Pi_{a|x}^{H}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi_{a'|x'}^{H}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon''\quad\forall a,a',x,x'\in\{0,1\}\\
+% \bar{\Psi}_{1} & :=U_{{\rm comp}}\bar{\Psi}_{0}\otimes\left|00\right\rangle \left\langle 00\right|_{RS}U_{{\rm comp}}^{\dagger}\\
+% \tr_{IJSPQR'}\left[\bar{\Psi}_{1}\right] & =\tr_{G}(\rho_{2})\\
+% \rho_{2}\otimes\frac{\mathbb{I}_{Y}}{2} & =\tr_{D}(\rho_{3})
+% \end{align*}
+% where 
+% \[
+% \bar{\Psi}_{0}:=\frac{1}{4}\sum_{x,x',a,a'\in\{0,1\}}\left|xa\right\rangle \left\langle x'a'\right|_{XA}\xi_{HIJPQR'}^{aa',xx'}
+% \]
+% and $\epsilon''$ is a function of $\epsilon$ which vanishes as $\epsilon$
+% vanishes. Clearly, when $\epsilon=0$, we recover the asymptotic SDP
+% and by construction, the SDP is a relaxation of the optimisation problem
+% we started with. Recall that $v'(\epsilon,d)$ is the value of this
+% SDP. It is easy {[}for JAMIE! please help{]} that $v'(\epsilon,d)$
+% is continuous as a function of $\epsilon$ (at least for small $\epsilon$?);
+% my guess would be that we are slowly enlarging the feasible region
+% so won't expect any jumps.
+% \end{proof}
+% }
 
 
-\subsection{Bob self tests}
+% \begin{rem}
+% \label{rem:diffToNorm}It is straightforward to show that $\left\Vert \left|\rho\right\rangle -\left|\sigma\right\rangle \right\Vert \le\epsilon\implies\tr\left|\rho-\sigma\right|\le\epsilon'$
+% where $\epsilon'=2\sqrt{1-(1-\epsilon)}$. 
 
-For Bob's case, we work out an example which is essentially the same
-as what we want to prove. In this case, we are unable to find a simple
-SDP relaxation as above and instead rely on the NPA hierarchy for
-the continuity result.
-\begin{example}
-We consider three optimisation problems. The first is supposed to
-be the ``asymptotic version'', the second is supposed to by a toy
-model of what happens in the lab with $\epsilon$ as a parameter,
-and finally the third is an SDP relaxation of the second, obtained
-using the NPA hierarchy. 
+% \label{rem:TraceNormAsSDP}For many norms (including the trace norm),
+% we have $\left\Vert X\right\Vert \le\epsilon\implies\left|\lambda_{\max}(X)\right|\le\epsilon'$
+% where $\epsilon'$ vanishes as $\epsilon$ vanishes. It is easy to
+% bound $\lambda_{\max}(X)\le\epsilon$ as 
+% \[
+% \left(\begin{array}{cc}
+% X-\epsilon\mathbb{I} & 0\\
+% 0 & \epsilon\mathbb{I}-X
+% \end{array}\right)\ge0.
+% \]
+% This is an SDP constraint because we can define some $\left(\begin{array}{cc}
+% Y_{11} & Y_{12}\\
+% Y_{21} & Y_{22}
+% \end{array}\right)\ge0$ and then set the linear constraint $Y_{11}=X-\epsilon\mathbb{I}$
+% and $Y_{22}=\epsilon\mathbb{I}-X$. 
 
-First: Let $\rho_{0}:=\tr_{HI}\left[\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|\right]_{HIJ}$.
-The variable is $\rho_{1}\in ZJ$. The SDP program is 
-\[
-\max\quad\tr(\Pi_{{\rm obj}}\rho_{2}\Pi_{{\rm obj}})
-\]
-subject to 
-\begin{align*}
-\tr_{Z}(\rho_{1}) & =\rho_{0}\\
-\rho_{2} & =\sum_{\substack{z,z'\\
-c,c'
-}
-}\left|c\right\rangle \left\langle c'\right|_{C}\quad\otimes\quad\Pi_{c|z}^{J}\otimes\Pi_{z}^{Z}\quad\rho_{1}\quad\Pi_{c'|z'}^{J}\otimes\Pi_{z'}^{Z}
-\end{align*}
-where $\Pi_{{\rm obj}}$ is an arbitrary but fixed projector which
-acts non-trivially on registers $CZ$ and $\{\Pi_{c|z}^{J}\}$ constitute
-two sets of projective measurements, the setting indexed by $z$ and
-outcome by $c$.
-
-\branchcolor{purple}{The main simplifications we make, compared to Bob's asymptotic SDP,
-are: \\
-(1) we keep only the $J$ register from the $HIJ$ registers used
-in the GHZ test, \\
-(2) we skipped the part where Alice first sends $s$, then Bob sends
-$g$ and in turn Alice sends $x$ and $a$ which are finally used
-to do the test; we simply have her send $z$, the basis in which to
-measure, \\
-(3) the action of the (appropriately adapted) unitary $U$ is captured
-directly by defining $\rho_{3}$\\
-(4) the final measurement operator is left arbitrary so long as it
-acts on ``classical registers'', $CZS$. 
-
-These simplifications can be undone with the main idea unchanged.
-We now proceed with defining the second variant which has the $PQR$
-registers as well.}
-
-Second: The variables are $\rho_{0}\in HIJPQR$, $\rho_{1}\in ZJR$,
-$\rho_{{\rm junk}}\in R$ and $\{M_{0|z},M_{1|z}\}$ are projectors
-acting on $JR$, for $z\in\{0,1\}$. The optimisation problem is 
-\[
-\max\quad\tr(\Pi_{{\rm obj}}\rho_{2}\Pi_{{\rm obj}})
-\]
-subject to 
-\begin{align}
-\left\Vert \rho_{0}-\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon_{0}\label{eq:statePart}\\
-\left\Vert M_{c|z}\rho_{0}M_{c'|z'}-\Pi_{c|z}^{J}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|\Pi_{c'|z'}^{J}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon_{1}\quad\forall\quad c,c',z,z'\in\{0,1\}.\label{eq:MrhoM}\\
-\tr_{Z}(\rho_{1}) & =\tr_{HIPQ}\rho_{0}\nonumber \\
-\rho_{2} & =\sum_{\substack{z,z'\\
-c,c'
-}
-}\left|c\right\rangle \left\langle c'\right|_{C}\quad\otimes\quad M_{c|z}\otimes\Pi_{z}^{Z}\quad\rho_{1}\quad M_{c'|z'}\otimes\Pi_{z'}^{Z}\nonumber 
-\end{align}
-where $\epsilon_{0}$ and $\epsilon_{1}$ are functions of $\epsilon$
-which vanish as $\epsilon$ vanishes.
-
-\branchcolor{purple}{We briefly justify why this optimization problem correctly captures
-the physical situation, modulo the simplifications listed above (which
-again, don't change the argument here). Let 
-%$\rho_{0}=\tr_{HIPQ}\left|\psi\right\rangle \left\langle \psi\right|$, where
- $\left|\psi\right\rangle \in HIJPQR$ be the state in the box
-and $M_{c|z}$ be the measurement operators for the last box. Since
-we're allowing Bob to optimise over $\left|\psi\right\rangle $ and
-$M_{c|z}$ we don't quite need to worry about the isometry in the
-self-testing step. We suppress the $c$'s and $z$'s for the moment.
-The self-testing statement says that $\left\Vert \left|\psi\right\rangle -\left|{\rm GHZ}\right\rangle \otimes\left|{\rm junk}\right\rangle \right\Vert \le\epsilon$
-which entails \Eqref{statePart}. The self-testing statement also
-says that $\left\Vert M\left|\psi\right\rangle -\Pi\left|{\rm GHZ}\right\rangle \otimes\left|{\rm junk}\right\rangle \right\Vert \le\epsilon$.
-%This entails $\left\Vert M\left|\psi\right\rangle \left\langle \psi\right|M'-\Pi\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|\Pi'\otimes\rho_{{\rm junk}}\right\Vert \le\epsilon'$
-%($\epsilon$ with primes disappear as $\epsilon$ vanishes). %That
-which implies \Eqref{MrhoM}. 
-
-It is straightforward to see that for $\epsilon=0$, this optimization
-problem reduces to the first one. The $\rho_{0}$ part is trivial
-and replacement of $M_{c|z}$ with $\Pi_{c|z}$ in $\rho_{2}$ can
-be made as in illustrated \Exaref{replaceM} below.
+% {[}EDIT When $X$ is not Hermitian, we can relax it using Schur's
+% complement as 
+% \[
+% \left(\begin{array}{cc}
+% \mathbb{I} & X\\
+% X^{T} & \epsilon''\mathbb{I}
+% \end{array}\right)\ge0\iff\epsilon''\mathbb{I}\ge X^{T}X
+% \]
+% and if $\left\Vert X\right\Vert \le\epsilon$, then there should be
+% some function $\epsilon''$ of $\epsilon$ that satisfies the above
+% (with possibly a multiplicative factor of $\dim(X)$). {]}
+% \end{rem}
 
 
+% \subsection{Bob self tests}
 
-% {[}EDIT: I still need to show that for $\epsilon=0$, the optimization
-% problem reduces to the first one; in particular, I must justify why
-% I can replace $M_{c|z}$ with $\Pi_{c|z}$ in the objective; it seems
-% intuitive but need to check it carefully{]}
-
-}
-
-Third: Denote the value of the second program by $v(\epsilon,d)$.
-As argued, $v(0,d)$ is the value of the first program for all $d$
-(finite $d$). {[}EDIT: I realised even an NPA relaxation is not simple/obvious
-here{]} Let $w(\epsilon,d,k)$ denote the value of the NPA relaxation
-of the second program, to level $k$. The NPA hierarchy is well known
-and for our purposes here, it suffices to note two facts. First, the
-NPA relaxation is always an SDP and second, the NPA relaxation converges
-to, in this case, the second program as $k$ tends to infinity. Since
-$v(\epsilon,d)\le w(\epsilon,d,k)$ for all $k$ and $d$, the continuity
-result follows {[}JAMIE: complete the argument?{]}. 
-\end{example}
-
-\begin{example}
-	\label{exa:replaceM}Let $\rho_{AB}$ be a density matrix, $\Pi^{B},\Pi^{\prime B}$
-	be projectors on $B$ and $M^{B},M^{\prime B}$ be measurement (Kraus)
-	operators on $B$. Suppose $M^{B}\rho_{AB}M^{\prime B}=\Pi^{B}\rho_{AB}\Pi^{\prime B}$.
-	Suppose 
-	\begin{equation}
-	M^{B}\rho_{AB}M^{\prime B}=\Pi^{B}\rho_{Ab}\Pi^{\prime B}.\label{eq:measureMeasure}
-	\end{equation}
-	If $\sigma_{AB}$ is another density matrix such that $\tr_{A}(\sigma_{AB})=\tr_{B}(\rho_{AB})$,
-	then 
-	\begin{equation}
-	M^{B}\sigma_{AB}M^{\prime B}=\Pi^{B}\sigma_{AB}\Pi^{\prime B}.\label{eq:replaceMeasurement}
-	\end{equation}
-	 This follows from Uhlman's theorem which guarantees that there exists
-	a $U$ acting on system $A$ such that 
-	\begin{equation*}
-		\left(U\otimes\mathbb{I}_{B}\right)\sigma_{AB}\left(U^{\dagger}\otimes\mathbb{I}_{B}\right)=\rho_{AB}.
-	\end{equation*}
-	Thus, conjugating \Eqref{measureMeasure} with $U\otimes\mathbb{I}_{B}$,
-	we obtain \Eqref{replaceMeasurement}. (NB: We didn't need the fact that $\Pi,\Pi'$ are projectors and $M,M'$ are measurement operators)
-\end{example}
-	
+% For Bob's case, we work out an example which is essentially the same
+% as what we want to prove. In this case, we are unable to find a simple
+% SDP relaxation as above and instead rely on the NPA hierarchy for
+% the continuity result.
 % \begin{example}
-% \label{exa:replaceM}Let $\rho$ be a state in $QR$ and suppose $M$
-% and $\Pi$ are two projectors acting on system $Q$. If $M\tr_{R}(\rho)M=\Pi\tr_{R}(\rho)\Pi$
-% then $(M\otimes\mathbb{I}_{R})\rho(M\otimes\mathbb{I}_{R})=(\Pi\otimes\mathbb{I}_{R})\rho(\Pi\otimes\mathbb{I}_{R})$.
-% This is trivially true because if the conclusion was false, then a
-% partial trace would imply the premise is false (contrapositive). 
+% We consider three optimisation problems. The first is supposed to
+% be the ``asymptotic version'', the second is supposed to by a toy
+% model of what happens in the lab with $\epsilon$ as a parameter,
+% and finally the third is an SDP relaxation of the second, obtained
+% using the NPA hierarchy. 
+
+% First: Let $\rho_{0}:=\tr_{HI}\left[\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|\right]_{HIJ}$.
+% The variable is $\rho_{1}\in ZJ$. The SDP program is 
+% \[
+% \max\quad\tr(\Pi_{{\rm obj}}\rho_{2}\Pi_{{\rm obj}})
+% \]
+% subject to 
+% \begin{align*}
+% \tr_{Z}(\rho_{1}) & =\rho_{0}\\
+% \rho_{2} & =\sum_{\substack{z,z'\\
+% c,c'
+% }
+% }\left|c\right\rangle \left\langle c'\right|_{C}\quad\otimes\quad\Pi_{c|z}^{J}\otimes\Pi_{z}^{Z}\quad\rho_{1}\quad\Pi_{c'|z'}^{J}\otimes\Pi_{z'}^{Z}
+% \end{align*}
+% where $\Pi_{{\rm obj}}$ is an arbitrary but fixed projector which
+% acts non-trivially on registers $CZ$ and $\{\Pi_{c|z}^{J}\}$ constitute
+% two sets of projective measurements, the setting indexed by $z$ and
+% outcome by $c$.
+
+% \branchcolor{purple}{The main simplifications we make, compared to Bob's asymptotic SDP,
+% are: \\
+% (1) we keep only the $J$ register from the $HIJ$ registers used
+% in the GHZ test, \\
+% (2) we skipped the part where Alice first sends $s$, then Bob sends
+% $g$ and in turn Alice sends $x$ and $a$ which are finally used
+% to do the test; we simply have her send $z$, the basis in which to
+% measure, \\
+% (3) the action of the (appropriately adapted) unitary $U$ is captured
+% directly by defining $\rho_{3}$\\
+% (4) the final measurement operator is left arbitrary so long as it
+% acts on ``classical registers'', $CZS$. 
+
+% These simplifications can be undone with the main idea unchanged.
+% We now proceed with defining the second variant which has the $PQR$
+% registers as well.}
+
+% Second: The variables are $\rho_{0}\in HIJPQR$, $\rho_{1}\in ZJR$,
+% $\rho_{{\rm junk}}\in R$ and $\{M_{0|z},M_{1|z}\}$ are projectors
+% acting on $JR$, for $z\in\{0,1\}$. The optimisation problem is 
+% \[
+% \max\quad\tr(\Pi_{{\rm obj}}\rho_{2}\Pi_{{\rm obj}})
+% \]
+% subject to 
+% \begin{align}
+% \left\Vert \rho_{0}-\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon_{0}\label{eq:statePart}\\
+% \left\Vert M_{c|z}\rho_{0}M_{c'|z'}-\Pi_{c|z}^{J}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|\Pi_{c'|z'}^{J}\otimes\rho_{{\rm junk}}\right\Vert  & \le\epsilon_{1}\quad\forall\quad c,c',z,z'\in\{0,1\}.\label{eq:MrhoM}\\
+% \tr_{Z}(\rho_{1}) & =\tr_{HIPQ}\rho_{0}\nonumber \\
+% \rho_{2} & =\sum_{\substack{z,z'\\
+% c,c'
+% }
+% }\left|c\right\rangle \left\langle c'\right|_{C}\quad\otimes\quad M_{c|z}\otimes\Pi_{z}^{Z}\quad\rho_{1}\quad M_{c'|z'}\otimes\Pi_{z'}^{Z}\nonumber 
+% \end{align}
+% where $\epsilon_{0}$ and $\epsilon_{1}$ are functions of $\epsilon$
+% which vanish as $\epsilon$ vanishes.
+
+% \branchcolor{purple}{We briefly justify why this optimization problem correctly captures
+% the physical situation, modulo the simplifications listed above (which
+% again, don't change the argument here). Let 
+% %$\rho_{0}=\tr_{HIPQ}\left|\psi\right\rangle \left\langle \psi\right|$, where
+%  $\left|\psi\right\rangle \in HIJPQR$ be the state in the box
+% and $M_{c|z}$ be the measurement operators for the last box. Since
+% we're allowing Bob to optimise over $\left|\psi\right\rangle $ and
+% $M_{c|z}$ we don't quite need to worry about the isometry in the
+% self-testing step. We suppress the $c$'s and $z$'s for the moment.
+% The self-testing statement says that $\left\Vert \left|\psi\right\rangle -\left|{\rm GHZ}\right\rangle \otimes\left|{\rm junk}\right\rangle \right\Vert \le\epsilon$
+% which entails \Eqref{statePart}. The self-testing statement also
+% says that $\left\Vert M\left|\psi\right\rangle -\Pi\left|{\rm GHZ}\right\rangle \otimes\left|{\rm junk}\right\rangle \right\Vert \le\epsilon$.
+% %This entails $\left\Vert M\left|\psi\right\rangle \left\langle \psi\right|M'-\Pi\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|\Pi'\otimes\rho_{{\rm junk}}\right\Vert \le\epsilon'$
+% %($\epsilon$ with primes disappear as $\epsilon$ vanishes). %That
+% which implies \Eqref{MrhoM}. 
+
+% It is straightforward to see that for $\epsilon=0$, this optimization
+% problem reduces to the first one. The $\rho_{0}$ part is trivial
+% and replacement of $M_{c|z}$ with $\Pi_{c|z}$ in $\rho_{2}$ can
+% be made as in illustrated \Exaref{replaceM} below.
+
+
+
+% % {[}EDIT: I still need to show that for $\epsilon=0$, the optimization
+% % problem reduces to the first one; in particular, I must justify why
+% % I can replace $M_{c|z}$ with $\Pi_{c|z}$ in the objective; it seems
+% % intuitive but need to check it carefully{]}
+
+% }
+
+% Third: Denote the value of the second program by $v(\epsilon,d)$.
+% As argued, $v(0,d)$ is the value of the first program for all $d$
+% (finite $d$). {[}EDIT: I realised even an NPA relaxation is not simple/obvious
+% here{]} Let $w(\epsilon,d,k)$ denote the value of the NPA relaxation
+% of the second program, to level $k$. The NPA hierarchy is well known
+% and for our purposes here, it suffices to note two facts. First, the
+% NPA relaxation is always an SDP and second, the NPA relaxation converges
+% to, in this case, the second program as $k$ tends to infinity. Since
+% $v(\epsilon,d)\le w(\epsilon,d,k)$ for all $k$ and $d$, the continuity
+% result follows {[}JAMIE: complete the argument?{]}. 
 % \end{example}
 
+% \begin{example}
+% 	\label{exa:replaceM}Let $\rho_{AB}$ be a density matrix, $\Pi^{B},\Pi^{\prime B}$
+% 	be projectors on $B$ and $M^{B},M^{\prime B}$ be measurement (Kraus)
+% 	operators on $B$. Suppose $M^{B}\rho_{AB}M^{\prime B}=\Pi^{B}\rho_{AB}\Pi^{\prime B}$.
+% 	Suppose 
+% 	\begin{equation}
+% 	M^{B}\rho_{AB}M^{\prime B}=\Pi^{B}\rho_{Ab}\Pi^{\prime B}.\label{eq:measureMeasure}
+% 	\end{equation}
+% 	If $\sigma_{AB}$ is another density matrix such that $\tr_{A}(\sigma_{AB})=\tr_{B}(\rho_{AB})$,
+% 	then 
+% 	\begin{equation}
+% 	M^{B}\sigma_{AB}M^{\prime B}=\Pi^{B}\sigma_{AB}\Pi^{\prime B}.\label{eq:replaceMeasurement}
+% 	\end{equation}
+% 	 This follows from Uhlman's theorem which guarantees that there exists
+% 	a $U$ acting on system $A$ such that 
+% 	\begin{equation*}
+% 		\left(U\otimes\mathbb{I}_{B}\right)\sigma_{AB}\left(U^{\dagger}\otimes\mathbb{I}_{B}\right)=\rho_{AB}.
+% 	\end{equation*}
+% 	Thus, conjugating \Eqref{measureMeasure} with $U\otimes\mathbb{I}_{B}$,
+% 	we obtain \Eqref{replaceMeasurement}. (NB: We didn't need the fact that $\Pi,\Pi'$ are projectors and $M,M'$ are measurement operators)
+% \end{example}
+	
+% % \begin{example}
+% % \label{exa:replaceM}Let $\rho$ be a state in $QR$ and suppose $M$
+% % and $\Pi$ are two projectors acting on system $Q$. If $M\tr_{R}(\rho)M=\Pi\tr_{R}(\rho)\Pi$
+% % then $(M\otimes\mathbb{I}_{R})\rho(M\otimes\mathbb{I}_{R})=(\Pi\otimes\mathbb{I}_{R})\rho(\Pi\otimes\mathbb{I}_{R})$.
+% % This is trivially true because if the conclusion was false, then a
+% % partial trace would imply the premise is false (contrapositive). 
+% % \end{example}
 
 
-\subsection{SDP-valued functions and their continuity}
-\label{subsec:SDPcontinuity}
-A semidefinite program (SDP) is an optimization problem of the form 
-\begin{align} 
-f(A,B) = \text{maximize:} \quad & \ip{A}{X} \nonumber \\ 
-\text{subject to:} \quad 
-& \Phi(X) = B \label{SDP} \\ 
-& X \geq 0. \nonumber
-\end{align}  
-We call $f(A,B)$ the value of the semidefinite program which is the supremum of $\ip{A}{X}$ over all $X$ that are feasible ($X \succeq 0$ and $\Phi(X) = B$). 
-In this work we wish to view how the value of an SDP changes as you change $A$ and/or $B$. 
-%To this end, we define the concept of a support function. 
-Ultimately, we wish to know if the value of an SDP is continuous as a function of $A$ and $B$. 
-To this end, let us consider the function 
-\begin{align} 
-h(A) = \text{maximize:} \quad & \ip{A}{X} \\ 
-\text{subject to:} \quad 
-& X \in C  
-\end{align}   
-where $C$ is a nonempty, convex set. 
-This is a generalization of an SDP which is  convenient for the upcoming analysis.  
-Notice that when $C$ is unbounded, it may be the case that $f$ takes the value $+ \infty$. 
-Since we cannot count that high, we use the following definition. 
 
-\begin{defn} 
-We define the \emph{support} of the function $h$, denoted as $\supp(h)$, as 
-\begin{equation} 
-\supp(h) := \{ A : h(A) \textup{ is finite} \}.  
-\end{equation} 
-\end{defn} 
+% \subsection{SDP-valued functions and their continuity}
+% \label{subsec:SDPcontinuity}
+% A semidefinite program (SDP) is an optimization problem of the form 
+% \begin{align} 
+% f(A,B) = \text{maximize:} \quad & \ip{A}{X} \nonumber \\ 
+% \text{subject to:} \quad 
+% & \Phi(X) = B \label{SDP} \\ 
+% & X \geq 0. \nonumber
+% \end{align}  
+% We call $f(A,B)$ the value of the semidefinite program which is the supremum of $\ip{A}{X}$ over all $X$ that are feasible ($X \succeq 0$ and $\Phi(X) = B$). 
+% In this work we wish to view how the value of an SDP changes as you change $A$ and/or $B$. 
+% %To this end, we define the concept of a support function. 
+% Ultimately, we wish to know if the value of an SDP is continuous as a function of $A$ and $B$. 
+% To this end, let us consider the function 
+% \begin{align} 
+% h(A) = \text{maximize:} \quad & \ip{A}{X} \\ 
+% \text{subject to:} \quad 
+% & X \in C  
+% \end{align}   
+% where $C$ is a nonempty, convex set. 
+% This is a generalization of an SDP which is  convenient for the upcoming analysis.  
+% Notice that when $C$ is unbounded, it may be the case that $f$ takes the value $+ \infty$. 
+% Since we cannot count that high, we use the following definition. 
 
-We now show some elementary properties of this function. 
+% \begin{defn} 
+% We define the \emph{support} of the function $h$, denoted as $\supp(h)$, as 
+% \begin{equation} 
+% \supp(h) := \{ A : h(A) \textup{ is finite} \}.  
+% \end{equation} 
+% \end{defn} 
 
-\begin{lem} 
-The support of $h$ is convex and $h$ is a convex function on its support. 
-\end{lem} 
+% We now show some elementary properties of this function. 
 
-\begin{proof} 
-%Since $C$ is convex, we have that $\lambda_1 A_1 + \lambda_2 A_2 \in C$ for all $A_1, A_2 \in C$ and $\lambda_1, \lambda_2 \geq 0$ satisfying $\lambda_1 + \lambda_2 = 1$. 
-For $A_1, A_2 \in \supp(h)$ and $\lambda_1, \lambda_2 \geq 0$ satisfying $\lambda_1 + \lambda_2 = 1$, we have  
-\begin{align}
-h(\lambda_1 A_1 + \lambda_2 A_2) 
-& \leq h(\lambda_1 A_1) + h(\lambda_2 A_2) \\ 
-& = \lambda_1 h(A_1) + \lambda_2 h(A_2) \\ 
-& < + \infty  
-\end{align} 
-where the last inequality follows from $A_1, A_2 \in \supp(h)$.  
-Thus, $\lambda_1 A_1 + \lambda_2 A_2 \in \supp(h)$, proving $\supp(h)$ is a convex set, and $h$ is convex from the above inequalities. 
-\end{proof} 
+% \begin{lem} 
+% The support of $h$ is convex and $h$ is a convex function on its support. 
+% \end{lem} 
 
-The following corollary follows from the fact that $h$ is convex. 
+% \begin{proof} 
+% %Since $C$ is convex, we have that $\lambda_1 A_1 + \lambda_2 A_2 \in C$ for all $A_1, A_2 \in C$ and $\lambda_1, \lambda_2 \geq 0$ satisfying $\lambda_1 + \lambda_2 = 1$. 
+% For $A_1, A_2 \in \supp(h)$ and $\lambda_1, \lambda_2 \geq 0$ satisfying $\lambda_1 + \lambda_2 = 1$, we have  
+% \begin{align}
+% h(\lambda_1 A_1 + \lambda_2 A_2) 
+% & \leq h(\lambda_1 A_1) + h(\lambda_2 A_2) \\ 
+% & = \lambda_1 h(A_1) + \lambda_2 h(A_2) \\ 
+% & < + \infty  
+% \end{align} 
+% where the last inequality follows from $A_1, A_2 \in \supp(h)$.  
+% Thus, $\lambda_1 A_1 + \lambda_2 A_2 \in \supp(h)$, proving $\supp(h)$ is a convex set, and $h$ is convex from the above inequalities. 
+% \end{proof} 
 
-\begin{cor} \label{contint}
-$h$ is continuous on the interior of its support. 
-\end{cor} 
+% The following corollary follows from the fact that $h$ is convex. 
 
-Another well-known corollary is that $h$ is 
-continuous everywhere if $C$ is compact. 
-This follows from the above corollary since the support is the entire space. 
+% \begin{cor} \label{contint}
+% $h$ is continuous on the interior of its support. 
+% \end{cor} 
 
-\begin{cor} \label{contint}
-If $C$ is compact, $h$ is continuous everywhere. 
-\end{cor} 
+% Another well-known corollary is that $h$ is 
+% continuous everywhere if $C$ is compact. 
+% This follows from the above corollary since the support is the entire space. 
 
-\subsubsection{SDP approximation and finite statistics} 
+% \begin{cor} \label{contint}
+% If $C$ is compact, $h$ is continuous everywhere. 
+% \end{cor} 
 
-\Jnote{Continue here.} 
+% \subsubsection{SDP approximation and finite statistics} 
+
+% \Jnote{Continue here.} 
 
 
 

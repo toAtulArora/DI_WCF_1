@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.7) (preloaded format=pdflatex 2021.8.1)  5 AUG 2021 11:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.7) (preloaded format=pdflatex 2021.8.1)  6 AUG 2021 11:08
 entering extended mode
-**c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft3.tex
-(c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft3.tex
+**c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft4_combinedProofs.tex
+(c:/Users/atuls/Documents/SparkleShare/DI_WCF_1/Overleaf/DI_WCF_draft4_combinedProofs.tex
 LaTeX2e <2021-06-01> patch level 1
 L3 programming layer <2021-07-12> (C:\Users\atuls\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
 Document Class: article 2021/02/12 v1.4n Standard LaTeX document class
@@ -791,12 +791,8 @@ Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
 File: l3backend-pdftex.def 2021-07-12 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count313
 \l__pdf_internal_box=\box59
-) (DI_WCF_draft3.aux
-
-LaTeX Warning: Label `contint' multiply defined.
-
-)
-\openout1 = `DI_WCF_draft3.aux'.
+) (DI_WCF_draft4_combinedProofs.aux)
+\openout1 = `DI_WCF_draft4_combinedProofs.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/nxlmi/m/it on input line 321.
 LaTeX Font Info:    Trying to load font information for OML+nxlmi on input line 321.
@@ -909,9 +905,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 321.
 LaTeX Info: Redefining \pageref on input line 321.
 LaTeX Info: Redefining \nameref on input line 321.
- (DI_WCF_draft3.out) (DI_WCF_draft3.out)
+ (DI_WCF_draft4_combinedProofs.out) (DI_WCF_draft4_combinedProofs.out)
 \@outlinefile=\write3
-\openout3 = `DI_WCF_draft3.out'.
+\openout3 = `DI_WCF_draft4_combinedProofs.out'.
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 17.28pt on input line 336.
@@ -968,17 +964,18 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 14.4pt on input line 371.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 14.4pt on input line 371.
-(DI_WCF_draft3.toc
+(DI_WCF_draft4_combinedProofs.toc
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 10.0pt on input line 2.
- [1
-
-{C:/Users/atuls/AppData/Local/MiKTeX/pdftex/config/pdftex.map}])
+)
 \tf@toc=\write4
-\openout4 = `DI_WCF_draft3.toc'.
+\openout4 = `DI_WCF_draft4_combinedProofs.toc'.
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 10.0pt on input line 378.
+ [1
+
+{C:/Users/atuls/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 8.0pt on input line 425.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
@@ -992,126 +989,156 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 12.0pt on input line 481.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 5.5pt on input line 510.
- [3] [4]
-Underfull \hbox (badness 10000) in alignment at lines 636--636
+
+
+LaTeX Warning: Reference `sec:securityAsymptotic' on page 3 undefined on input line 521.
+
+
+LaTeX Warning: Reference `sec:SecurityFiniteN' on page 3 undefined on input line 521.
+
+[3]
+
+LaTeX Warning: Reference `subsec:SDPcontinuity' on page 4 undefined on input line 525.
+
+[4]
+Underfull \hbox (badness 10000) in alignment at lines 638--638
 [][]
  []
 
 [5]
-Overfull \hbox (20.6417pt too wide) in paragraph at lines 900--906
-[][]\T1/LinuxLibertineT-TLF/b/n/10 Lemma 8 \T1/LinuxLibertineT-TLF/m/n/10 (TODO: cite)\T1/LinuxLibertineT-TLF/b/n/10 . []\T1/LinuxLibertineT-TLF/m/it/10 Let $\OML/nxlmi/m/it/10 a; b; c; x; y; z \LMS/ntxsy/m/n/10 2 f\OT1/LinuxLibertineT-TLF/m/n/10 0\OML/nxlmi/m/it/10 ; \OT1/LinuxLibertineT-TLF/m/n/10 1\LMS/ntxsy/m/n/10 g$\T1/LinuxLibertineT-TLF/m/it/10 . Con-sider a trio of quantum boxes, spe-cified by pro-ject-ors $\LMS/ntxsy/m/n/10 f\OML/nxlmi/m/it/10 M[]; M[]; M[]\LMS/ntxsy/m/n/10 g$
- []
+
+LaTeX Warning: Reference `sec:securityAsymptotic' on page 6 undefined on input line 865.
+
+
+LaTeX Warning: Reference `sec:SecurityFiniteN' on page 6 undefined on input line 865.
+
+
+LaTeX Warning: Reference `sec:SecurityFiniteN' on page 6 undefined on input line 900.
 
 [6]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 935.
- [7]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1136.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1136.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 967.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[7]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1168.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1168.
+
 [8]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1175.
+(hyperref)                removing `math shift' on input line 1207.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1175.
+(hyperref)                removing `math shift' on input line 1207.
 
 [9]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 5.5pt on input line 1361.
+(Font)              scaled to size 5.5pt on input line 1393.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1368.
+(hyperref)                removing `math shift' on input line 1400.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 1368.
+(hyperref)                removing `superscript' on input line 1400.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1368.
+(hyperref)                removing `math shift' on input line 1400.
 
 [10]
-
-LaTeX Warning: Reference `fig:Standard-composition-technique' on page 11 undefined on input line 1431.
-
-<figures/composition_1.pdf, id=402, 201.75375pt x 102.3825pt>
+<figures/composition_1.pdf, id=374, 201.75375pt x 102.3825pt>
 File: figures/composition_1.pdf Graphic file (type pdf)
 <use figures/composition_1.pdf>
-Package pdftex.def Info: figures/composition_1.pdf  used on input line 1431.
+Package pdftex.def Info: figures/composition_1.pdf  used on input line 1464.
 (pdftex.def)             Requested size: 201.75325pt x 102.38225pt.
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1438.
-
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 1438.
+(hyperref)                removing `math shift' on input line 1471.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\perp' on input line 1438.
+(hyperref)                removing `superscript' on input line 1471.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 1438.
+(hyperref)                removing `\perp' on input line 1471.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\perp' on input line 1438.
+(hyperref)                removing `superscript' on input line 1471.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1438.
+(hyperref)                removing `\perp' on input line 1471.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1471.
+
+
+LaTeX Warning: Reference `fig:fig:Abort-Augmented-Composition' on page 11 undefined on input line 1524.
 
 [11 <./figures/composition_1.pdf>]
-<figures/composition_2.pdf, id=418, 190.7125pt x 102.3825pt>
+
+LaTeX Warning: Reference `alg:alg:BobSelfTests' on page 12 undefined on input line 1524.
+
+<figures/composition_2.pdf, id=392, 190.7125pt x 102.3825pt>
 File: figures/composition_2.pdf Graphic file (type pdf)
 <use figures/composition_2.pdf>
-Package pdftex.def Info: figures/composition_2.pdf  used on input line 1491.
+Package pdftex.def Info: figures/composition_2.pdf  used on input line 1524.
 (pdftex.def)             Requested size: 190.71202pt x 102.38225pt.
- [12 <./figures/composition_2.pdf>] [13] [14]
+[12 <./figures/composition_2.pdf>]
+LaTeX Font Info:    Trying to load font information for TS1+LinuxLibertineT-TLF on input line 1564.
+ (C:\Users\atuls\AppData\Local\Programs\MiKTeX\tex/latex/libertine\ts1linuxlibertinet-tlf.fd
+File: TS1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for TS1/LinuxLibertineT-TLF.
+)
+LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 10.0pt on input line 1564.
 
-LaTeX Warning: Reference `alg:SCForiginal' on page 15 undefined on input line 1832.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1569.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1569.
+
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/it' will be
+(Font)              scaled to size 10.0pt on input line 1598.
+[13] [14]
+
+LaTeX Warning: Reference `alg:SCForiginal' on page 15 undefined on input line 1902.
+
+
+LaTeX Warning: Reference `assu:asymptotic' on page 15 undefined on input line 1902.
+
+
+LaTeX Warning: Reference `lem:self-testAsymptotic' on page 15 undefined on input line 1902.
 
 [15]
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 1834.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.5pt on input line 1834.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.9pt on input line 1834.
-
-
-LaTeX Font Warning: Font shape `U/wasy/m/n' in size <10.5> not available
-(Font)              size <10.95> substituted on input line 1834.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1834.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1834.
-
-[16] [17]
-Overfull \hbox (5.74733pt too wide) in paragraph at lines 2121--2121
-\T1/LinuxLibertineT-TLF/m/n/10 At this point, in the asymp-totic case, we could dir-ectly ap-ply the self-testing res-ult and re-place $\U/ntxmia/m/it/10 []\OML/nxlmi/m/it/10 M[] [][]$
+Overfull \hbox (24.3768pt too wide) detected at line 1949
+[]
  []
 
-[18] [19] [20] [21] [22] (DI_WCF_draft3.bbl) [23
+[16] [17]
+Overfull \hbox (50.69632pt too wide) in paragraph at lines 2056--2061
+\T1/LinuxLibertineT-TLF/m/n/10 This fol-lows from Uhl-man's the-orem which guar-an-tees that there ex-ists a $\OML/nxlmi/m/it/10 U$ \T1/LinuxLibertineT-TLF/m/n/10 act-ing on sys-tem $\OML/nxlmi/m/it/10 A$ \T1/LinuxLibertineT-TLF/m/n/10 such that $[] \OML/nxlmi/m/it/10 [] [] \U/ntxmia/m/it/10 =
+ []
 
-] [24] (DI_WCF_draft3.aux)
+[18] [19] (DI_WCF_draft4_combinedProofs.bbl) [20
+
+] [21] (DI_WCF_draft4_combinedProofs.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
@@ -1119,30 +1146,27 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package rerunfilecheck Info: File `DI_WCF_draft3.out' has not changed.
-(rerunfilecheck)             Checksum: 6ACD602C708F5B446D255C9EECB1A1F9;4969.
+Package rerunfilecheck Info: File `DI_WCF_draft4_combinedProofs.out' has not changed.
+(rerunfilecheck)             Checksum: 4B0B5D8ABEDC9741F96D2CEB63711E01;3784.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 1059 ({)
+### simple group (level 1) entered at line 1091 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 17522 strings out of 478870
- 259340 string characters out of 2848837
- 591084 words of memory out of 3000000
- 34829 multiletter control sequences out of 15000+600000
- 578165 words of font info for 229 fonts, out of 8000000 for 9000
+ 17505 strings out of 478870
+ 260002 string characters out of 2848837
+ 593566 words of memory out of 3000000
+ 34812 multiletter control sequences out of 15000+600000
+ 569315 words of font info for 204 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,14n,66p,1234b,607s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,11n,66p,1249b,585s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.12} has been referenced but does not exist, replaced by a fixed one
 
- <C:\Users\atuls\AppData\Local\MiKTeX\fonts/pk/ljfour/public/wasy/dpi600\wasy10.pk>{C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}<C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/LibertineMathMI.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/LibertineMathMI5.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/LibertineMathMI7.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/LibertineMathRM.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineT.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTB.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTI.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/NewTXMI.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/NewTXMI7.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txexs.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txmiaX.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/txsya.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/txsyb.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txsys.pfb>
-Output written on DI_WCF_draft3.pdf (24 pages, 569109 bytes).
+{C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_naooyc.enc} <C:\Users\atuls\AppData\Local\MiKTeX\fonts/pk/ljfour/public/wasy/dpi600\wasy10.pk>{C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}<C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/LibertineMathMI.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/LibertineMathMI5.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/LibertineMathMI7.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/LibertineMathRM.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineT.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTB.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTBI.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTI.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/NewTXMI.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/NewTXMI7.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txexs.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txmiaX.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/txsya.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/txsyb.pfb><C:/Users/atuls/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txsys.pfb>
+Output written on DI_WCF_draft4_combinedProofs.pdf (21 pages, 592290 bytes).
 PDF statistics:
- 724 PDF objects out of 1000 (max. 8388607)
- 230 named destinations out of 1000 (max. 500000)
- 219 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 675 PDF objects out of 1000 (max. 8388607)
+ 226 named destinations out of 1000 (max. 500000)
+ 171 words of extra memory for PDF output out of 10000 (max. 10000000)
 
