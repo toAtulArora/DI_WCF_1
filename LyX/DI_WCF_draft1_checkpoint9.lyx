@@ -8771,10 +8771,6 @@ TODO: show that for
 Bob Self-tests | simplified
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
 \begin_layout Lemma
 \begin_inset CommandInset label
 LatexCommand label
@@ -8823,88 +8819,6 @@ This is because one can take the purification and apply Uhlman's theorem;
 \end_inset
 
 .
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Corollary
-\begin_inset CommandInset label
-LatexCommand label
-name "cor:UhlmanWithTrace"
-
-\end_inset
-
-Let 
-\begin_inset Formula $\rho_{AB}\in D(AB)$
-\end_inset
-
- and 
-\begin_inset Formula $\rho'_{ABL}\in D(ABL)$
-\end_inset
-
- be two density matrices where 
-\begin_inset Formula $\dim L=\dim A\cdot\dim B$
-\end_inset
-
- [TODO: check, I might need a constant].
- Suppose 
-\begin_inset Formula $\rho'_{ABL}=\left|r'\right\rangle \left\langle r'\right|_{ABL}$
-\end_inset
-
- is pure and 
-\begin_inset Formula $\rho_{A}=\rho'_{A}$
-\end_inset
-
-.
- Then there exists a unital map 
-\begin_inset Formula $\mathcal{U}$
-\end_inset
-
- acting on registers 
-\begin_inset Formula $BL$
-\end_inset
-
- such that 
-\begin_inset Formula $\rho_{AB}=\mathcal{I}_{A}\otimes\tr_{L}\mathcal{U}_{BL}(\rho_{ABL}')$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Proof
-This follows from Uhlman's theorem.
- Let 
-\begin_inset Formula $\sigma_{ABL}=\left|s\right\rangle \left\langle s\right|_{ABL}$
-\end_inset
-
- be a purification of 
-\begin_inset Formula $\rho_{AB}$
-\end_inset
-
-.
- Since 
-\begin_inset Formula $\sigma_{A}=\rho'_{A}$
-\end_inset
-
-, there exists a unitary 
-\begin_inset Formula $U_{AB}$
-\end_inset
-
- such that 
-\begin_inset Formula $\mathbb{I}\otimes U_{BL}\left|r'\right\rangle _{ABL}=\left|s\right\rangle _{ABL}$
-\end_inset
-
- (Uhlman's theorem).
- Tracing out 
-\begin_inset Formula $L$
-\end_inset
-
- yields the result.
- 
 \end_layout
 
 \begin_layout Standard
@@ -9304,351 +9218,6 @@ One has
 status open
 
 \begin_layout Plain Layout
-\begin_inset Formula $\eta_{\epsilon}^{\rho}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- Let 
-\begin_inset Formula $c,z\in\{0,1\}$
-\end_inset
-
-.
- Let 
-\begin_inset Formula $\tau_{HIJPQR}^{0,cz}\in D(HIJPQR)$
-\end_inset
-
-, 
-\begin_inset Formula $\tau_{ZJR}^{1,cz}\in D(ZJR)$
-\end_inset
-
-, for all 
-\begin_inset Formula $c,z$
-\end_inset
-
-, 
-\begin_inset Formula $\tau_{PQR}^{{\rm junk}}\in D(PQR)$
-\end_inset
-
- be density matrices and 
-\begin_inset Formula $\Pi_{{\rm obj}}\in{\rm Proj}(CZ)$
-\end_inset
-
- be as in 
-\begin_inset CommandInset ref
-LatexCommand formatted
-reference "def:etaLab"
-plural "false"
-caps "true"
-noprefix "false"
-
-\end_inset
-
-.
- Then define 
-\begin_inset Formula 
-\[
-\eta_{\epsilon}^{\rho}:=\max\quad\tr(\Pi_{{\rm obj}}\otimes\mathbb{I}_{JR}\cdot\tau_{CZJR}^{2})
-\]
-
-\end_inset
-
-s.t.
- 
-\begin_inset Formula 
-\begin{align*}
-\left\Vert \tau_{HIJPQR}^{0,cz}-\Pi_{J}^{cz}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi_{J}^{cz}\otimes\tau_{PQR}^{{\rm junk}}\right\Vert  & \le\epsilon & \forall c,z\\
-\tr_{Z}(\tau_{ZJR}^{1,cz}) & =\tr_{HIPQ}(\tau_{HIJPQR}^{0,cz}) & \forall c,z\\
-\tau_{CZJR}^{2} & :=\sum_{z,c}\left|c\right\rangle \left\langle c\right|_{C}\otimes(\Pi_{Z}^{z}\cdot\tau_{ZJR}^{1,cz}\cdot\Pi_{Z}^{z}).
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Lemma
-One has 
-\begin_inset Formula $\eta_{\epsilon}\le\eta_{\epsilon}^{\rho}$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Proof
-This is immediate.
- Suppose 
-\begin_inset Formula $\sigma_{0},\sigma_{1},\sigma_{2}$
-\end_inset
-
- and 
-\begin_inset Formula $N^{cz}$
-\end_inset
-
- is a feasible point of 
-\begin_inset Formula $\eta_{\epsilon}$
-\end_inset
-
-.
- Then, letting 
-\begin_inset Formula $\tau^{0,cz}=N^{cz}\sigma_{0}N^{cz}$
-\end_inset
-
-, 
-\begin_inset Formula $\tau^{1,cz}=N^{cz}\cdot\sigma_{1}\cdot N^{cz}$
-\end_inset
-
- it is clear that the constraints for 
-\begin_inset Formula $\eta_{\epsilon}^{\rho}$
-\end_inset
-
- are satisfied.
- The objective function also have the same value by direct substitution.
- 
-\end_layout
-
-\begin_layout Definition
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula $\eta$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- Let 
-\begin_inset Formula $\rho_{0}=\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}$
-\end_inset
-
-, 
-\begin_inset Formula $\rho_{1}\in D(ZJ)$
-\end_inset
-
- be density matrices and 
-\begin_inset Formula $\Pi_{cz}^{J}\in{\rm Proj}(J)$
-\end_inset
-
- be GHZ scenario projectors (Pauli 
-\begin_inset Formula $x$
-\end_inset
-
- and Pauli 
-\begin_inset Formula $y$
-\end_inset
-
- projectors).
- Let 
-\begin_inset Formula $\Pi_{{\rm obj}}$
-\end_inset
-
- be as in 
-\begin_inset CommandInset ref
-LatexCommand formatted
-reference "def:etaLab"
-plural "false"
-caps "true"
-noprefix "false"
-
-\end_inset
-
-.
- Define 
-\begin_inset Formula 
-\[
-\eta:=\max\tr(\Pi_{{\rm obj}}\otimes\mathbb{I}_{J}\cdot\rho_{2})
-\]
-
-\end_inset
-
-s.t.
- 
-\begin_inset Formula 
-\begin{align*}
-\tr_{Z}(\rho_{1}) & =\tr_{IJ}(\rho_{0})\\
-\rho_{2} & =\sum_{z,z',c,c'}\left|c\right\rangle \left\langle c'\right|_{C}\otimes(\Pi_{cz}^{J}\otimes\Pi_{z}^{Z}\cdot\rho_{1}\cdot\Pi_{c'z'}^{J}\otimes\Pi_{z'}^{Z}).
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Lemma
-One has 
-\begin_inset Formula $\eta_{\epsilon}^{\rho}=\eta$
-\end_inset
-
- when 
-\begin_inset Formula $\epsilon=0$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Proof
-Consider 
-\begin_inset Formula $\eta$
-\end_inset
-
-.
- Note that one could, as before, replace 
-\begin_inset Formula $\rho_{2}$
-\end_inset
-
- with 
-\begin_inset Formula $\sum_{z,c}\left|c\right\rangle \left\langle c\right|_{C}\otimes(\Pi_{cz}^{J}\otimes\Pi_{z}^{Z}\cdot\rho_{1}\cdot\Pi_{cz}^{J}\otimes\Pi_{z}^{Z})$
-\end_inset
-
- without changing the value 
-\begin_inset Formula $\eta$
-\end_inset
-
- because 
-\begin_inset Formula $\Pi_{{\rm obj}}$
-\end_inset
-
- projects on classical values of 
-\begin_inset Formula $C$
-\end_inset
-
- and 
-\begin_inset Formula $Z$
-\end_inset
-
-.
- First, we show 
-\begin_inset Formula $\eta\le\eta_{\epsilon}^{\rho}$
-\end_inset
-
- when 
-\begin_inset Formula $\epsilon=0$
-\end_inset
-
-.
- This is simple; suppose 
-\begin_inset Formula $\rho_{1}$
-\end_inset
-
- yields the optimal value 
-\begin_inset Formula $\eta$
-\end_inset
-
-.
- Let 
-\begin_inset Formula $\tau_{PQR}^{{\rm junk}}=1$
-\end_inset
-
-, i.e.
- 
-\begin_inset Formula $PQR$
-\end_inset
-
- are zero dimensional.
- Let 
-\begin_inset Formula $\tau^{0,cz}=\Pi_{J}^{cz}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi_{J}^{cz}=\Pi_{J}^{cz}\rho_{0}\Pi_{J}^{cz}$
-\end_inset
-
-.
- Let 
-\begin_inset Formula $\tau^{1,cz}=\Pi_{J}^{cz}\rho_{1}\Pi_{J}^{cz}$
-\end_inset
-
-.
- Evidently, 
-\begin_inset Formula $\tau^{2}$
-\end_inset
-
- and 
-\begin_inset Formula $\rho_{2}$
-\end_inset
-
- are identical and so the objective values are the same.
- Now, we show that 
-\begin_inset Formula $\eta_{\epsilon}^{\rho}\le\eta$
-\end_inset
-
- when 
-\begin_inset Formula $\epsilon=0$
-\end_inset
-
-.
- Let 
-\begin_inset Formula $\{\tau^{1,cz}\}_{cz}$
-\end_inset
-
- be the optimal solution for 
-\begin_inset Formula $\eta_{\epsilon}^{\rho}$
-\end_inset
-
-with 
-\begin_inset Formula $\epsilon=0$
-\end_inset
-
-.
- Note that this requires 
-\begin_inset Formula $PQR$
-\end_inset
-
- to be zero dimensional and 
-\begin_inset Formula $\tau^{0,cz}=\Pi_{J}^{cz}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|\Pi_{J}^{cz}$
-\end_inset
-
-, 
-\begin_inset Formula $\tr_{Z}(\tau^{1,cz})=\tr_{HI}(\Pi_{J}^{cz}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|\Pi_{J}^{cz})$
-\end_inset
-
-.
- Let 
-\begin_inset Formula $\rho^{1}:=$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-[EDIT: The following is wrong; I am losing it; I somehow started assuming
- that the measurement is somehow a unitary and arguing from there.
-\end_layout
-
-\begin_layout Standard
-EDIT2: I need to be more careful; do I get the asymptotic version with 
-\begin_inset Formula $\epsilon=0$
-\end_inset
-
- if I trace out the extra part earlier and leave something lingering in
- the density matrix? Suppose 
-\begin_inset Formula $\epsilon=0$
-\end_inset
-
- in 
-\begin_inset Formula $\eta_{\epsilon}^{{\rm Tr}}$
-\end_inset
-
- below and say 
-\begin_inset Formula $\mathcal{P}$
-\end_inset
-
- is a projector.
-\end_layout
-
-\begin_layout Standard
-]
-\end_layout
-
-\begin_layout Definition
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
 \begin_inset Formula $\eta_{\epsilon}^{{\rm Tr}}$
 \end_inset
 
@@ -9658,24 +9227,15 @@ status open
 \end_inset
 
  Let 
-\begin_inset Formula $\tau_{0}\in D(HIJ),\tau_{1}\in D(ZJL)$
+\begin_inset Formula $\tau_{0}\in D(HIJ),\tau_{1}\in D(ZJ)$
 \end_inset
 
  be density matrices and 
-\begin_inset Formula $\mathcal{P}_{JL}^{cz}$
+\begin_inset Formula $\mathcal{P}_{J}^{cz}$
 \end_inset
 
- be a unital map acting on 
-\begin_inset Formula $JL$
-\end_inset
-
-.
- Here 
-\begin_inset Formula $\dim L$
-\end_inset
-
- is only a function of the dimension of 
-\begin_inset Formula $\dim(HIJZ)$
+ be CP trace non increasing map on 
+\begin_inset Formula $J$
 \end_inset
 
 .
@@ -9683,15 +9243,7 @@ status open
 \begin_inset Formula $\Xi_{J}^{cz}$
 \end_inset
 
- be the 
-\begin_inset Quotes eld
-\end_inset
-
-channel
-\begin_inset Quotes erd
-\end_inset
-
- for 
+ be the CPTNI map for 
 \begin_inset Formula $\Pi_{J}^{cz}$
 \end_inset
 
@@ -9711,7 +9263,7 @@ noprefix "false"
 \end_inset
 
 .
- Then, define (indices are in superscripts; not exponents)
+ Then, define 
 \begin_inset Formula 
 \[
 \eta_{\epsilon}^{{\rm Tr}}:=\max\tr(\Pi_{{\rm obj}}\otimes\mathbb{I}_{J}\cdot\tau_{CJZ}^{2})
@@ -9723,11 +9275,9 @@ s.t.
 \begin_inset Formula 
 \begin{align}
 \left\Vert \tau_{HIJ}^{0}-\rho_{HIJ}^{{\rm GHZ}}\right\Vert  & \le\epsilon\nonumber \\
-\left\Vert \mathcal{I}_{HI}\otimes\tr_{L}\mathcal{P}_{JL}^{c|z}(\tilde{\tau}_{HIJL}^{0})-\mathcal{I}_{HI}\otimes\Xi_{J}^{cz}(\rho_{HIJ}^{{\rm GHZ}})\right\Vert  & \le\epsilon & \forall c,z\in\{0,1\}\nonumber \\
-\tr_{L}(\tilde{\tau}_{HIJL}^{0}) & =\tau_{HIJ}^{0}\\
+\left\Vert \mathcal{I}_{HI}\otimes\mathcal{P}_{J}^{c|z}(\tau_{HIJ}^{0})-\Xi_{J}^{cz}(\rho_{HIJ}^{{\rm GHZ}})\right\Vert  & \le\epsilon & \forall c,z\in\{0,1\}\nonumber \\
 \tr_{Z}(\tau_{JZ}^{1}) & =\tr_{HI}(\tau_{HIJ}^{0})\label{eq:constr1}\\
-\tr_{L}(\tilde{\tau}_{JZL}^{1}) & =\tau_{JZ}^{1}\\
-\tau_{JZC}^{2} & =\sum_{l,z,c}\left|c\right\rangle \left\langle c\right|_{C}\otimes\left(\Xi_{Z}^{z}\otimes\tr_{L}\mathcal{P}_{JL}^{cz}(\tilde{\tau}_{JZL}^{1})\right).\label{eq:constr2}
+\tau_{JZC}^{2} & =\sum_{l,z,c}\left|c\right\rangle \left\langle c\right|_{C}\otimes\left(\Xi_{Z}^{z}\otimes\mathcal{P}_{J}^{cz}(\tau_{JZ}^{1})\right).\label{eq:constr2}
 \end{align}
 
 \end_inset
@@ -9752,11 +9302,6 @@ One has
 \end_layout
 
 \begin_layout Standard
-\begin_inset Branch proof
-inverted 0
-status open
-
-\begin_layout Standard
 \begin_inset Separator plain
 \end_inset
 
@@ -9764,7 +9309,7 @@ status open
 \end_layout
 
 \begin_layout Proof
-To simplify the proof, we first relax 
+We first relax 
 \begin_inset Formula $\eta_{\epsilon}$
 \end_inset
 
@@ -9804,7 +9349,7 @@ To simplify the proof, we first relax
 \begin_inset Formula 
 \begin{align*}
 \left\Vert \xi_{HIJR}^{0}-\rho_{HIJ}^{{\rm GHZ}}\otimes\sigma_{R}^{{\rm junk}}\right\Vert  & \le\epsilon\\
-\left\Vert \mathcal{I}_{HI}\otimes\mathcal{N}_{JR}^{c|z}(\xi^{0}{}_{HIJR})-\mathcal{I}_{HIR}\otimes\Xi_{J}^{cz}(\rho_{HIJ}^{{\rm GHZ}}\otimes\sigma_{R}^{{\rm junk}})\right\Vert  & \le\epsilon & \forall c,z\in\{0,1\}\\
+\left\Vert \mathcal{I}_{HI}\otimes\mathcal{N}_{JR}^{c|z}(\xi^{0}{}_{HIJR})-\Xi_{J}^{cz}(\rho_{HIJ}^{{\rm GHZ}}\otimes\sigma_{R}^{{\rm junk}})\right\Vert  & \le\epsilon & \forall c,z\in\{0,1\}\\
 \tr_{Z}(\xi_{JRZ}^{1}) & =\tr_{HI}(\xi_{HIJR}^{0})\\
 \xi_{JZC}^{2} & =\sum_{c}\Pi_{C}^{c}\otimes\left(\Xi_{Z}^{z}\otimes\tr_{R}\mathcal{N}_{JR}^{c|z}(\xi_{JRZ}^{1})\right).
 \end{align*}
@@ -9883,264 +9428,6 @@ s are feasible.
 
 .
  
-\end_layout
-
-\begin_layout Proof
-Suppose 
-\begin_inset Formula $\xi_{HIJR}^{0},\xi_{JRZ}^{1},\xi_{JZC}^{2}$
-\end_inset
-
- and 
-\begin_inset Formula $\mathcal{N}_{JR}^{c|z}$
-\end_inset
-
- yield an optimal solution to 
-\begin_inset Formula $\eta_{\epsilon}'$
-\end_inset
-
-.
- Using these, we first show to how construct 
-\begin_inset Formula $\mathcal{P}_{JL}^{cz}$
-\end_inset
-
-.
- The remaining argument is simple.
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Let 
-\begin_inset Formula $\bar{\xi}_{HIJRZ}^{1}$
-\end_inset
-
- be such that 
-\begin_inset Formula $\tr_{Z}\bar{\xi}_{HIJRZ}^{1}=\xi_{HIJR}^{0}$
-\end_inset
-
- and
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-(in the general case with more intermediate interaction but where the boxes
- are measured in the end, take the 
-\begin_inset Quotes eld
-\end_inset
-
-purification
-\begin_inset Quotes erd
-\end_inset
-
- of the last state to include 
-\begin_inset Formula $HI$
-\end_inset
-
- which is untouched by the protocol anyway)
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Formula $\tr_{HI}\bar{\xi}_{HIJRZ}^{1}=\xi_{JRZ}^{1}$
-\end_inset
-
-.
- Let 
-\begin_inset Formula $\bar{\tau}_{HIJZL}^{1}$
-\end_inset
-
- be the purification of 
-\begin_inset Formula $\tr_{R}(\bar{\xi}_{HIJRZ}^{1})$
-\end_inset
-
-.
- This is where we restrict to a constant dimension.
-\end_layout
-
-\begin_layout Itemize
-There exists a 
-\begin_inset Formula $\mathcal{P}_{JL}$
-\end_inset
-
- which satisfies the following: 
-\begin_inset Formula 
-\begin{equation}
-\mathcal{I}_{HIZ}\otimes\tr_{R}\mathcal{N}_{JR}^{cz}(\bar{\xi}_{HIJRZ}^{1})=\mathcal{I}_{HIZ}\otimes\tr_{L}\mathcal{P}_{JL}^{cz}(\bar{\tau}_{HIJZL}^{1}).\label{eq:purePure}
-\end{equation}
-
-\end_inset
-
-This is guaranteed to exist because the LHS is a state in 
-\begin_inset Formula $D(HIJZ)$
-\end_inset
-
- which can be purified to a state in 
-\begin_inset Formula $D(HIJZL)$
-\end_inset
-
- and one can then apply Uhlman's theorem (see 
-\begin_inset CommandInset ref
-LatexCommand formatted
-reference "cor:UhlmanWithTrace"
-plural "false"
-caps "true"
-noprefix "false"
-
-\end_inset
-
-).
- 
-\end_layout
-
-\begin_layout Standard
-Let 
-\begin_inset Formula $\tau_{HIJ}^{0}=\tr_{R}\xi_{HIJR}^{0}$
-\end_inset
-
-, 
-\begin_inset Formula $\tau_{JZ}^{1}=\tr_{R}\xi_{JRZ}^{1}$
-\end_inset
-
-, 
-\begin_inset Formula $\tilde{\tau}_{JZL}^{1}=\tr_{HI}(\bar{\tau}_{HIJZL}^{1})$
-\end_inset
-
- and 
-\begin_inset Formula $\tilde{\tau}_{HIJL}^{0}=\tr_{Z}(\bar{\tau}_{HIJZL}^{1})$
-\end_inset
-
-.
- We now show that 
-\begin_inset Formula $\tau^{0},\tau^{1},\tilde{\tau}^{1}$
-\end_inset
-
- and 
-\begin_inset Formula $\mathcal{P}_{JL}^{cz}$
-\end_inset
-
- are feasible for 
-\begin_inset Formula $\eta_{\epsilon}^{{\rm Tr}}$
-\end_inset
-
- and that the value they yield is 
-\begin_inset Formula $\eta_{\epsilon}'$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-The first inequality constraint of 
-\begin_inset Formula $\eta_{\epsilon}^{{\rm Tr}}$
-\end_inset
-
- is implied by that of 
-\begin_inset Formula $\eta_{\epsilon}'$
-\end_inset
-
- by monotonicity of trace distance under quantum operations/channels; trace
- out 
-\begin_inset Formula $R$
-\end_inset
-
-.
- Tracing out 
-\begin_inset Formula $R$
-\end_inset
-
- in the second inequality yields two terms, the first of which is 
-\begin_inset Formula $\mathcal{I}_{HI}\otimes\tr_{R}\mathcal{N}_{JR}^{cz}(\xi_{HIJR}^{0})=\mathcal{I}_{HI}\otimes{\rm tr}_{R}\mathcal{N}_{JR}^{cz}(\bar{\xi}_{HIJR}^{1})=\mathcal{I}_{HI}\otimes\tr_{L}\mathcal{P}_{JL}^{cz}(\bar{\tau}_{HIJL}^{1})=\mathcal{I}_{HI}\otimes\tr_{L}\mathcal{P}_{JL}^{cz}(\tilde{\tau}_{HIJL}^{0})$
-\end_inset
-
- using 
-\begin_inset CommandInset ref
-LatexCommand formatted
-reference "eq:purePure"
-plural "false"
-caps "true"
-noprefix "false"
-
-\end_inset
-
- and the relations between 
-\begin_inset Formula $\xi^{0}$
-\end_inset
-
-, 
-\begin_inset Formula $\bar{\xi}^{1}$
-\end_inset
-
-, 
-\begin_inset Formula $\bar{\tau}^{1}$
-\end_inset
-
- and 
-\begin_inset Formula $\tilde{\tau}^{0}$
-\end_inset
-
-.
- Thus the second inequality of 
-\begin_inset Formula $\eta_{\epsilon}^{{\rm Tr}}$
-\end_inset
-
- also holds.
- The quality constraints follow by simply tracing out 
-\begin_inset Formula $R$
-\end_inset
-
-.
- Finally, the fact that the objective remains the same follows, again, by
- starting with 
-\begin_inset CommandInset ref
-LatexCommand formatted
-reference "eq:purePure"
-plural "false"
-caps "true"
-noprefix "false"
-
-\end_inset
-
- and applying 
-\begin_inset Formula $\Xi_{Z}^{z}$
-\end_inset
-
- and appending 
-\begin_inset Formula $\Pi_{C}^{c}$
-\end_inset
-
- as necessary to conclude that 
-\begin_inset Formula $\tau^{2}=\xi^{2}$
-\end_inset
-
-.
- 
-\end_layout
-
-\end_deeper
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Define 
-\begin_inset Formula $\tau_{JZL}^{1}=\tr_{HI}\bar{\tau}_{HIJZL}^{1}$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Proof
-Let 
-\begin_inset Formula $\mathcal{P}_{JL}^{cz}$
-\end_inset
-
- be such that 
 \end_layout
 
 \begin_layout Proof
@@ -10269,6 +9556,13 @@ s,
 
  and 
 \begin_inset Formula $\sigma''_{JZC}=\tr_{R}(\sigma_{2}')$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
 \end_inset
 
 
@@ -10470,7 +9764,7 @@ This is because one can take the purification and apply Uhlman's theorem;
  
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 We show that 
 \begin_inset Formula $\tr_{R}\sigma_{2}'=\tau_{2}$
 \end_inset
@@ -10479,7 +9773,7 @@ We show that
  
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Start with 
 \begin_inset Formula 
 \[
@@ -10521,18 +9815,6 @@ where
 \end_layout
 
 \end_deeper
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
 \begin_layout Definition
 \begin_inset Argument 1
 status open
@@ -10609,169 +9891,11 @@ One has for
 \end_inset
 
 , 
-\begin_inset Formula $\eta_{\epsilon}^{{\rm tr}}=\eta$
+\begin_inset Formula $\eta_{\epsilon}=\eta$
 \end_inset
 
 .
  
-\end_layout
-
-\begin_layout Proof
-Suppose that 
-\begin_inset Formula $\tilde{\tau}_{HIJL}^{0}$
-\end_inset
-
-, 
-\begin_inset Formula $\tau_{HIL}^{0}$
-\end_inset
-
-, 
-\begin_inset Formula $\tau_{JZ}^{1}$
-\end_inset
-
-, 
-\begin_inset Formula $\tilde{\tau}_{JZL}^{1}$
-\end_inset
-
- and 
-\begin_inset Formula $\mathcal{P}_{JL}^{cz}$
-\end_inset
-
- maximize 
-\begin_inset Formula $\eta_{\epsilon}^{\tr}$
-\end_inset
-
- when 
-\begin_inset Formula $\epsilon=0$
-\end_inset
-
-.
- This means that 
-\begin_inset Formula $\tau_{HIJ}^{0}=\rho_{HIJ}^{{\rm GHZ}}$
-\end_inset
-
- which is a pure state and thus 
-\begin_inset Formula $\tilde{\tau}_{HIJL}^{0}=\tau_{HIJ}^{0}\otimes\tau_{L}$
-\end_inset
-
-.
- Assume, without loss of generality, that 
-\begin_inset Formula $\tau_{L}$
-\end_inset
-
- is also a pure state (if it is not, consider its purification which solves
- 
-\begin_inset Formula $\eta_{\epsilon}^{\tr}$
-\end_inset
-
- with the same value).
- 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Then, 
-\begin_inset Formula $\mathcal{I}_{HI}\otimes\tr_{L}\mathcal{P}_{JLJ}^{cz}(\tau_{HIJ}^{0}\otimes\tau_{L})=\mathcal{I}_{HI}\otimes\tr_{L}\mathcal{I}_{L}\otimes\Xi_{J}^{cz}(\rho_{HIJ}^{{\rm GHZ}}\otimes\tau_{L})$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Let 
-\begin_inset Formula $\bar{\tau}_{HIJZL}^{1}$
-\end_inset
-
- be such that 
-\begin_inset Formula $\tr_{Z}(\bar{\tau}_{HIJZL}^{1})=\tilde{\tau}_{HIJL}^{0}$
-\end_inset
-
- and
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-TODO: this may need some justification but should be fine because 
-\begin_inset Formula $Z$
-\end_inset
-
- can be assumed 
-\begin_inset Quotes eld
-\end_inset
-
-classical
-\begin_inset Quotes erd
-\end_inset
-
- so that something like 
-\begin_inset Formula $\left|00\right\rangle \left\langle 00\right|_{JZ}+\left|11\right\rangle \left\langle 11\right|_{JZ}$
-\end_inset
-
- is automatically disallowed.
- The classicality is enforced by the projector 
-\begin_inset Formula $\Xi_{{\rm obj}}$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Formula $\tr_{HI}\bar{\tau}_{HIJZL}^{1}=\tilde{\tau}_{JZL}^{1}$
-\end_inset
-
-.
- Now since 
-\begin_inset Formula $\tilde{\tau}_{HIJL}^{0}$
-\end_inset
-
- is a pure state, 
-\begin_inset Formula $\bar{\tau}_{HIJZL}^{1}=\tau_{Z}\otimes\tau_{HIJ}^{0}\otimes\tau_{L}$
-\end_inset
-
- for some state 
-\begin_inset Formula $\tau_{Z}$
-\end_inset
-
-.
- This structure implies that 
-\begin_inset Formula $\mathcal{I}_{HIZ}\otimes\tr_{L}\mathcal{P}_{JL}^{cz}(\bar{\tau}_{HIJZL}^{1})=\tau_{Z}\otimes\tr_{L}\mathcal{P}_{JL}^{cz}(\tau_{HIZ}^{0}\otimes\tau_{L})=\tau_{Z}\otimes\Xi_{J}^{cz}(\tau_{HIJ}^{0})$
-\end_inset
-
-.
- Consequently, ...
- [Feels strange; what if I did send a coherent copy of 
-\begin_inset Formula $H$
-\end_inset
-
- as 
-\begin_inset Formula $Z$
-\end_inset
-
-; then my state would have been something else...; I think I have to argue
- differently]
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
 \end_layout
 
 \begin_layout Proof
@@ -12073,10 +11197,6 @@ noprefix "false"
 
 \begin_layout Subsection
 The continuity argument [Enter Jamie]
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Standard
