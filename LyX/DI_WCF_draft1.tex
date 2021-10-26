@@ -33,6 +33,7 @@
 \AtBeginDocument{\providecommand\Assuref[1]{\ref{Assu:#1}}}
 \AtBeginDocument{\providecommand\Remref[1]{\ref{Rem:#1}}}
 \AtBeginDocument{\providecommand\Exaref[1]{\ref{Exa:#1}}}
+\AtBeginDocument{\providecommand\Corref[1]{\ref{Cor:#1}}}
 \newcommand{\noun}[1]{\textsc{#1}}
 %% Because html converters don't know tabularnewline
 \providecommand{\tabularnewline}{\\}
@@ -62,8 +63,12 @@
 \newtheorem{lem}[thm]{\protect\lemmaname}
 \theoremstyle{remark}
 \newtheorem{rem}[thm]{\protect\remarkname}
+\theoremstyle{plain}
+\newtheorem{conjecture}[thm]{\protect\conjecturename}
 \theoremstyle{definition}
 \newtheorem{example}[thm]{\protect\examplename}
+\theoremstyle{plain}
+\newtheorem{cor}[thm]{\protect\corollaryname}
 \theoremstyle{plain}
 \newtheorem{prop}[thm]{\protect\propositionname}
 
@@ -102,6 +107,8 @@
 \providecommand{\algorithmname}{Algorithm}
 \providecommand{\assumptionname}{Assumption}
 \providecommand{\claimname}{Claim}
+\providecommand{\conjecturename}{Conjecture}
+\providecommand{\corollaryname}{Corollary}
 \providecommand{\definitionname}{Definition}
 \providecommand{\examplename}{Example}
 \providecommand{\lemmaname}{Lemma}
@@ -1411,6 +1418,9 @@ some function $\epsilon''$ of $\epsilon$ that satisfies the above
 
 
 \subsection{Bob self tests}
+\begin{conjecture}[Continuity for $\mathcal{Q}$]
+Blabla.
+\end{conjecture}
 
 For Bob's case, we work out an example which is essentially the same
 as what we want to prove. In this case, we are unable to find a simple
@@ -1530,6 +1540,20 @@ we obtain .
 
 \subsection{Bob Self-tests | simplified}
 
+\begin{cor}
+\label{cor:UhlmanWithTrace}Let $\rho_{AB}\in D(AB)$ and $\rho'_{ABL}\in D(ABL)$
+be two density matrices where $\dim L=\dim A\cdot\dim B$ {[}TODO:
+check, I might need a constant{]}. Suppose $\rho'_{ABL}=\left|r'\right\rangle \left\langle r'\right|_{ABL}$
+is pure and $\rho_{A}=\rho'_{A}$. Then there exists a unital map
+$\mathcal{U}$ acting on registers $BL$ such that $\rho_{AB}=\mathcal{I}_{A}\otimes\tr_{L}\mathcal{U}_{BL}(\rho_{ABL}')$. 
+\end{cor}
+
+\begin{proof}
+This follows from Uhlman's theorem. Let $\sigma_{ABL}=\left|s\right\rangle \left\langle s\right|_{ABL}$
+be a purification of $\rho_{AB}$. Since $\sigma_{A}=\rho'_{A}$,
+there exists a unitary $U_{AB}$ such that $\mathbb{I}\otimes U_{BL}\left|r'\right\rangle _{ABL}=\left|s\right\rangle _{ABL}$
+(Uhlman's theorem). Tracing out $L$ yields the result. 
+\end{proof}
 Consider the following scenario:
 \begin{itemize}
 \item Bob has one box from a triple of GHZ boxes (assume he knows this box
@@ -1556,14 +1580,14 @@ of $\epsilon$.
 as defined above). 
 \end{itemize}
 In what follows, $PQR$ are arbitrary fixed dimensional spaces while
-the remaining spaces denote qubits.
+the remaining spaces denote qubits. 
 \begin{defn}[$\eta_{\epsilon}^{{\rm lab}}$]
  Let $\rho_{0}\in D(PQR),\rho_{1}\in D(ZR),\rho_{{\rm junk}}\in D(PQR)$
 be density matrices, $M_{c|z}\in{\rm Proj}(R)$ for $c,z\in\{0,1\}$
-and $\Pi_{{\rm obj}}\in{\rm Proj}(CZ)$ be projectors and finally,
-let $\Phi:PQR\to HIJPQR$ be a local isometry and let $U\otimes V\otimes W$
-denote its action, where $U^{\dagger}U=\mathbb{I}_{P}$ and so on.
-Then, define \label{def:etaLab}
+and $\Pi_{{\rm obj}}\in{\rm Proj}(CZ)$ be projectors\footnote{Take $\Pi_{{\rm obj}}$ to be a classical projector, i.e. linear combination
+of $w_{cj}\Pi_{C}^{c}\otimes\Pi_{Z}^{z}$.} and finally, let $\Phi:PQR\to HIJPQR$ be a local isometry and let
+$U\otimes V\otimes W$ denote its action, where $U^{\dagger}U=\mathbb{I}_{P}$
+and so on. Then, define \label{def:etaLab}
 
 \[
 \eta_{\epsilon}^{{\rm lab}}:=\max\tr(\Pi_{{\rm obj}}\otimes\mathbb{I}_{R}\cdot\rho_{2})
@@ -1588,9 +1612,9 @@ $\Phi$, $U,V,W$ be as in \Defref{etaLab}. Then, define
 s.t.
 \begin{align*}
 \left\Vert \sigma_{0}-\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\otimes\sigma_{{\rm junk}}\right\Vert  & \le\epsilon\\
-\left\Vert \sigma_{0}-\Pi_{cz}^{J}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi_{c'z'}^{J}\otimes\sigma_{{\rm junk}}\right\Vert  & \le\epsilon & \forall c,c',z,z'\in\{0,1\}\\
-\tr_{Z}(\sigma_{1}) & =\tr_{PQIJ}(\sigma_{0})\\
-\sigma_{2} & =\sum_{z,z',c,c'}\left|c\right\rangle \left\langle c'\right|_{C}\otimes\left(N_{cz}\otimes\Pi_{z}^{Z}\cdot\sigma_{1}\cdot N_{c'z'}\otimes\Pi_{z'}^{Z}\right).
+\left\Vert N_{c|z}\sigma_{0}N_{c|z}-\Pi_{cz}^{J}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi_{cz}^{J}\otimes\sigma_{{\rm junk}}\right\Vert  & \le\epsilon & \forall c,c',z,z'\in\{0,1\}\\
+\tr_{Z}(\sigma_{1}) & =\tr_{PQHI}(\sigma_{0})\\
+\sigma_{2} & =\sum_{z,c}\left|c\right\rangle \left\langle c\right|_{C}\otimes\left(N_{cz}\otimes\Pi_{z}^{Z}\cdot\sigma_{1}\cdot N_{cz}\otimes\Pi_{z}^{Z}\right).
 \end{align*}
 \end{defn}
 
@@ -1600,49 +1624,43 @@ One has $\eta_{\epsilon}^{{\rm lab}}\le\eta_{\epsilon}$.
 
 \begin{proof}
 {[}TODO: add details{]} Suppose $\rho_{0},\rho_{1},\rho_{2}$ and
-$M_{cz}$ achive the maximum for $\eta_{\epsilon}^{{\rm lab}}$. Then
-$\sigma_{0}=V\rho_{0}V^{\dagger}$, $\sigma_{1}=V\rho_{1}V^{\dagger}$,
+$M_{cz}$ achieve the maximum for $\eta_{\epsilon}^{{\rm lab}}$.
+Then $\sigma_{0}=V\rho_{0}V^{\dagger}$, $\sigma_{1}=V\rho_{1}V^{\dagger}$,
 $\sigma_{2}=V\rho_{2}V^{\dagger}$ and $N_{cz}=VM_{cz}V^{\dagger}$,
 observe that the constraints of $\eta_{\epsilon}$ are satisfied.
-Further, observe that $\tr(\Pi_{{\rm obj}}\otimes\mathbb{I}_{IR}\sigma_{2})=\tr(\Pi_{{\rm obj}}\otimes\mathbb{I}_{R}\rho_{2})$.
-Hence, $\eta_{\epsilon}$ is at least as large as $\eta_{\epsilon}^{{\rm lab}}$. 
+Further, observe that $\tr(\Pi_{{\rm obj}}\otimes\mathbb{I}_{IR}\sigma_{2})=\tr(\Pi_{{\rm obj}}\otimes\mathbb{I}_{R}\rho_{2})$;
+the terms omitted from $\sigma_{2}$ do not contribute anyway because
+of the structure of $\Pi_{{\rm obj}}$, i.e. it is a combination of
+terms of the form $\Pi_{z}^{Z}\otimes\Pi_{c}^{C}$. Hence, $\eta_{\epsilon}$
+is at least as large as $\eta_{\epsilon}^{{\rm lab}}$. 
 \end{proof}
-\begin{lem}
-JAMIE: $\eta_{\epsilon}$ is continuous as a function of $\epsilon$
-as $\epsilon\to0$.
-\end{lem}
-
-\begin{defn}[$\eta_{\epsilon}^{{\rm Tr}}$]
- Let $\tau_{0}\in D(HIJ),\tau_{1}\in D(ZJ)$ be density matrices
-and $P_{c|z}\in{\rm Proj}(J)$ {[}EDIT: or perhaps POVMs{]}. Let $\Pi_{{\rm obj}}$
-be as in \Defref{etaLab}. Then, define 
+\begin{defn}[$\eta_{\epsilon}^{\rho}$]
+ Let $c,z\in\{0,1\}$. Let $\tau_{HIJPQR}^{0,cz}\in D(HIJPQR)$,
+$\tau_{ZJR}^{1,cz}\in D(ZJR)$, for all $c,z$, $\tau_{PQR}^{{\rm junk}}\in D(PQR)$
+be density matrices and $\Pi_{{\rm obj}}\in{\rm Proj}(CZ)$ be as
+in \Defref{etaLab}. Then define 
 \[
-\eta_{\epsilon}^{{\rm Tr}}:=\max\tr(\Pi_{{\rm obj}}\otimes\mathbb{I}_{J}\cdot\tau_{2})
+\eta_{\epsilon}^{\rho}:=\max\quad\tr(\Pi_{{\rm obj}}\otimes\mathbb{I}_{JR}\cdot\tau_{CZJR}^{2})
 \]
-s.t.
+s.t. 
 \begin{align*}
-\left\Vert \tau_{0}-\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\right\Vert  & \le\epsilon\\
-\left\Vert P_{cz}\tau_{0}P_{c'z'}-\Pi_{cz}^{J}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi_{c'z'}^{J}\right\Vert  & \le\epsilon & \forall c,c',z,z'\in\{0,1\}\\
-\tr_{Z}(\tau_{1}) & =\tr_{IJ}(\tau_{0})\\
-\tau_{2} & =\sum_{z,z',c,c'}\left|c\right\rangle \left\langle c'\right|_{C}\otimes\left(P_{cz}\otimes\Pi_{z}^{Z}\cdot\tau_{1}\cdot P_{c'z'}\otimes\Pi_{z'}^{Z}\right).
+\left\Vert \tau_{HIJPQR}^{0,cz}-\Pi_{J}^{cz}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi_{J}^{cz}\otimes\tau_{PQR}^{{\rm junk}}\right\Vert  & \le\epsilon & \forall c,z\\
+\tr_{Z}(\tau_{ZJR}^{1,cz}) & =\tr_{HIPQ}(\tau_{HIJPQR}^{0,cz}) & \forall c,z\\
+\tau_{CZJR}^{2} & :=\sum_{z,c}\left|c\right\rangle \left\langle c\right|_{C}\otimes(\Pi_{Z}^{z}\cdot\tau_{ZJR}^{1,cz}\cdot\Pi_{Z}^{z}).
 \end{align*}
 \end{defn}
 
 \begin{lem}
-{[}may break{]} One has $\eta_{\epsilon}\le\eta_{\epsilon}^{{\rm Tr}}$. 
+One has $\eta_{\epsilon}\le\eta_{\epsilon}^{\rho}$. 
 \end{lem}
 
 \begin{proof}
-Suppose $\sigma_{0},\sigma_{1},\sigma_{2}$ and $N_{cz}$ achive the
-maximum for $\eta_{\epsilon}^{{\rm lab}}$. Let, $\tau_{0}=\tr_{PQR}(\sigma_{0})$,
-$\tau_{1}=\tr_{R}(\sigma_{1})$, $\tau_{2}=\tr_{R}(\sigma_{2})$ and
-$P_{cz}=?$ {[}TODO: figure out what happens to the measurements;
-perhaps I must relax them to POVM!{]}. Then, the inequality constraints
-of $\eta_{\epsilon}$ imply the inequality constraints of $\eta_{\epsilon}^{{\rm Tr}}$
-by the monotonicity of trace distance. The equality constraints of
-$\eta_{\epsilon}$ directly imply the equality constraints of $\eta_{\epsilon}^{{\rm Tr}}$
-as partial traces are a special case. Finally, ...{[}TODO: the measurement
-part{]}
+This is immediate. Suppose $\sigma_{0},\sigma_{1},\sigma_{2}$ and
+$N^{cz}$ is a feasible point of $\eta_{\epsilon}$. Then, letting
+$\tau^{0,cz}=N^{cz}\sigma_{0}N^{cz}$, $\tau^{1,cz}=N^{cz}\cdot\sigma_{1}\cdot N^{cz}$
+it is clear that the constraints for $\eta_{\epsilon}^{\rho}$ are
+satisfied. The objective function also have the same value by direct
+substitution. 
 \end{proof}
 \begin{defn}[$\eta$]
  Let $\rho_{0}=\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}$,
@@ -1660,9 +1678,168 @@ s.t.
 \end{defn}
 
 \begin{lem}
-One has for $\epsilon=0$, $\eta_{\epsilon}=\eta$. 
+One has $\eta_{\epsilon}^{\rho}=\eta$ when $\epsilon=0$. 
 \end{lem}
 
+\begin{proof}
+Consider $\eta$. Note that one could, as before, replace $\rho_{2}$
+with $\sum_{z,c}\left|c\right\rangle \left\langle c\right|_{C}\otimes(\Pi_{cz}^{J}\otimes\Pi_{z}^{Z}\cdot\rho_{1}\cdot\Pi_{cz}^{J}\otimes\Pi_{z}^{Z})$
+without changing the value $\eta$ because $\Pi_{{\rm obj}}$ projects
+on classical values of $C$ and $Z$. First, we show $\eta\le\eta_{\epsilon}^{\rho}$
+when $\epsilon=0$. This is simple; suppose $\rho_{1}$ yields the
+optimal value $\eta$. Let $\tau_{PQR}^{{\rm junk}}=1$, i.e. $PQR$
+are zero dimensional. Let $\tau^{0,cz}=\Pi_{J}^{cz}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}\Pi_{J}^{cz}=\Pi_{J}^{cz}\rho_{0}\Pi_{J}^{cz}$.
+Let $\tau^{1,cz}=\Pi_{J}^{cz}\rho_{1}\Pi_{J}^{cz}$. Evidently, $\tau^{2}$
+and $\rho_{2}$ are identical and so the objective values are the
+same. Now, we show that $\eta_{\epsilon}^{\rho}\le\eta$ when $\epsilon=0$.
+Let $\{\tau^{1,cz}\}_{cz}$ be the optimal solution for $\eta_{\epsilon}^{\rho}$with
+$\epsilon=0$. Note that this requires $PQR$ to be zero dimensional
+and $\tau^{0,cz}=\Pi_{J}^{cz}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|\Pi_{J}^{cz}$,
+$\tr_{Z}(\tau^{1,cz})=\tr_{HI}(\Pi_{J}^{cz}\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|\Pi_{J}^{cz})$.
+Let $\rho^{1}:=$
+\end{proof}
+{[}EDIT: The following is wrong; I am losing it; I somehow started
+assuming that the measurement is somehow a unitary and arguing from
+there.
+
+EDIT2: I need to be more careful; do I get the asymptotic version
+with $\epsilon=0$ if I trace out the extra part earlier and leave
+something lingering in the density matrix? Suppose $\epsilon=0$ in
+$\eta_{\epsilon}^{{\rm Tr}}$ below and say $\mathcal{P}$ is a projector.
+
+{]}
+\begin{defn}[$\eta_{\epsilon}^{{\rm Tr}}$]
+ Let $\tau_{0}\in D(HIJ),\tau_{1}\in D(ZJL)$ be density matrices
+and $\mathcal{P}_{JL}^{cz}$ be a unital map acting on $JL$. Here
+$\dim L$ is only a function of the dimension of $\dim(HIJZ)$. Let
+$\Xi_{J}^{cz}$ be the ``channel'' for $\Pi_{J}^{cz}$. Let $\Pi_{{\rm obj}}$
+be as in \Defref{etaLab}. Then, define (indices are in superscripts;
+not exponents)
+\[
+\eta_{\epsilon}^{{\rm Tr}}:=\max\tr(\Pi_{{\rm obj}}\otimes\mathbb{I}_{J}\cdot\tau_{CJZ}^{2})
+\]
+s.t.
+\begin{align}
+\left\Vert \tau_{HIJ}^{0}-\rho_{HIJ}^{{\rm GHZ}}\right\Vert  & \le\epsilon\nonumber \\
+\left\Vert \mathcal{I}_{HI}\otimes\tr_{L}\mathcal{P}_{JL}^{c|z}(\tilde{\tau}_{HIJL}^{0})-\mathcal{I}_{HI}\otimes\Xi_{J}^{cz}(\rho_{HIJ}^{{\rm GHZ}})\right\Vert  & \le\epsilon & \forall c,z\in\{0,1\}\nonumber \\
+\tr_{L}(\tilde{\tau}_{HIJL}^{0}) & =\tau_{HIJ}^{0}\\
+\tr_{Z}(\tau_{JZ}^{1}) & =\tr_{HI}(\tau_{HIJ}^{0})\label{eq:constr1}\\
+\tr_{L}(\tilde{\tau}_{JZL}^{1}) & =\tau_{JZ}^{1}\\
+\tau_{JZC}^{2} & =\sum_{l,z,c}\left|c\right\rangle \left\langle c\right|_{C}\otimes\left(\Xi_{Z}^{z}\otimes\tr_{L}\mathcal{P}_{JL}^{cz}(\tilde{\tau}_{JZL}^{1})\right).\label{eq:constr2}
+\end{align}
+\end{defn}
+
+\begin{lem}
+One has $\eta_{\epsilon}\le\eta_{\epsilon}^{{\rm Tr}}$. 
+\end{lem}
+
+\branchcolor{blue}{
+%
+\begin{proof}
+To simplify the proof, we first relax $\eta_{\epsilon}$ as (using
+the channel notation; $N$ is denoted by $\mathcal{N}$, $\Pi$ by
+$\Xi$, $\mathbb{I}$ by $\mathcal{I}$) 
+\[
+\eta_{\epsilon}':={\rm max}\quad\tr(\Xi_{{\rm obj}}\otimes\mathcal{I}_{J}(\xi_{JZC}))
+\]
+ 
+\begin{align*}
+\left\Vert \xi_{HIJR}^{0}-\rho_{HIJ}^{{\rm GHZ}}\otimes\sigma_{R}^{{\rm junk}}\right\Vert  & \le\epsilon\\
+\left\Vert \mathcal{I}_{HI}\otimes\mathcal{N}_{JR}^{c|z}(\xi^{0}{}_{HIJR})-\mathcal{I}_{HIR}\otimes\Xi_{J}^{cz}(\rho_{HIJ}^{{\rm GHZ}}\otimes\sigma_{R}^{{\rm junk}})\right\Vert  & \le\epsilon & \forall c,z\in\{0,1\}\\
+\tr_{Z}(\xi_{JRZ}^{1}) & =\tr_{HI}(\xi_{HIJR}^{0})\\
+\xi_{JZC}^{2} & =\sum_{c}\Pi_{C}^{c}\otimes\left(\Xi_{Z}^{z}\otimes\tr_{R}\mathcal{N}_{JR}^{c|z}(\xi_{JRZ}^{1})\right).
+\end{align*}
+
+Suppose $\sigma_{0},\sigma_{1},\sigma_{2}$ and $N_{c|z}$ are optimal
+for $\eta_{\epsilon}$. Take $\xi_{HIJR}^{0}=\tr_{PQ}(\sigma_{0})$,
+$\xi_{JRZ}^{1}=\tr_{PQ}(\sigma_{1})$ and $\xi_{JZC}^{2}=\tr_{PQR}(\sigma_{2})$.
+Clearly, the objective function for $\eta_{\epsilon}'$ equals $\eta_{\epsilon}$
+for the aforesaid choice of $\xi$s. The inequality constraints of
+$\eta_{\epsilon}'$ follow from those of $\eta_{\epsilon}$ by monotonicity
+of trace distance while the equality constraints follow from simply
+tracing (and noting that $\mathcal{N}^{c|z}$ does not act on $PQ$).
+Therefore $\xi$s are feasible. Thus $\eta_{\epsilon}'\ge\eta_{\epsilon}$. 
+
+Suppose $\xi_{HIJR}^{0},\xi_{JRZ}^{1},\xi_{JZC}^{2}$ and $\mathcal{N}_{JR}^{c|z}$
+yield an optimal solution to $\eta_{\epsilon}'$. Using these, we
+first show to how construct $\mathcal{P}_{JL}^{cz}$. The remaining
+argument is simple.
+\begin{itemize}
+\item Let $\bar{\xi}_{HIJRZ}^{1}$ be such that $\tr_{Z}\bar{\xi}_{HIJRZ}^{1}=\xi_{HIJR}^{0}$
+and\footnote{(in the general case with more intermediate interaction but where
+the boxes are measured in the end, take the ``purification'' of
+the last state to include $HI$ which is untouched by the protocol
+anyway)} $\tr_{HI}\bar{\xi}_{HIJRZ}^{1}=\xi_{JRZ}^{1}$. Let $\bar{\tau}_{HIJZL}^{1}$
+be the purification of $\tr_{R}(\bar{\xi}_{HIJRZ}^{1})$. This is
+where we restrict to a constant dimension.
+\item There exists a $\mathcal{P}_{JL}$ which satisfies the following:
+\begin{equation}
+\mathcal{I}_{HIZ}\otimes\tr_{R}\mathcal{N}_{JR}^{cz}(\bar{\xi}_{HIJRZ}^{1})=\mathcal{I}_{HIZ}\otimes\tr_{L}\mathcal{P}_{JL}^{cz}(\bar{\tau}_{HIJZL}^{1}).\label{eq:purePure}
+\end{equation}
+This is guaranteed to exist because the LHS is a state in $D(HIJZ)$
+which can be purified to a state in $D(HIJZL)$ and one can then apply
+Uhlman's theorem (see \Corref{UhlmanWithTrace}). 
+\end{itemize}
+Let $\tau_{HIJ}^{0}=\tr_{R}\xi_{HIJR}^{0}$, $\tau_{JZ}^{1}=\tr_{R}\xi_{JRZ}^{1}$,
+$\tilde{\tau}_{JZL}^{1}=\tr_{HI}(\bar{\tau}_{HIJZL}^{1})$ and $\tilde{\tau}_{HIJL}^{0}=\tr_{Z}(\bar{\tau}_{HIJZL}^{1})$.
+We now show that $\tau^{0},\tau^{1},\tilde{\tau}^{1}$ and $\mathcal{P}_{JL}^{cz}$
+are feasible for $\eta_{\epsilon}^{{\rm Tr}}$ and that the value
+they yield is $\eta_{\epsilon}'$.
+
+The first inequality constraint of $\eta_{\epsilon}^{{\rm Tr}}$ is
+implied by that of $\eta_{\epsilon}'$ by monotonicity of trace distance
+under quantum operations/channels; trace out $R$. Tracing out $R$
+in the second inequality yields two terms, the first of which is $\mathcal{I}_{HI}\otimes\tr_{R}\mathcal{N}_{JR}^{cz}(\xi_{HIJR}^{0})=\mathcal{I}_{HI}\otimes{\rm tr}_{R}\mathcal{N}_{JR}^{cz}(\bar{\xi}_{HIJR}^{1})=\mathcal{I}_{HI}\otimes\tr_{L}\mathcal{P}_{JL}^{cz}(\bar{\tau}_{HIJL}^{1})=\mathcal{I}_{HI}\otimes\tr_{L}\mathcal{P}_{JL}^{cz}(\tilde{\tau}_{HIJL}^{0})$
+using \Eqref{purePure} and the relations between $\xi^{0}$, $\bar{\xi}^{1}$,
+$\bar{\tau}^{1}$ and $\tilde{\tau}^{0}$. Thus the second inequality
+of $\eta_{\epsilon}^{{\rm Tr}}$ also holds. The quality constraints
+follow by simply tracing out $R$. Finally, the fact that the objective
+remains the same follows, again, by starting with \Eqref{purePure}
+and applying $\Xi_{Z}^{z}$ and appending $\Pi_{C}^{c}$ as necessary
+to conclude that $\tau^{2}=\xi^{2}$. 
+\end{proof}
+}
+
+\begin{defn}[$\eta$]
+ Let $\rho_{0}=\left|{\rm GHZ}\right\rangle \left\langle {\rm GHZ}\right|_{HIJ}$,
+$\rho_{1}\in D(ZJ)$ be density matrices and $\Pi_{cz}^{J}\in{\rm Proj}(J)$
+be GHZ scenario projectors (Pauli $x$ and Pauli $y$ projectors).
+Let $\Pi_{{\rm obj}}$ be as in \Defref{etaLab}. Define 
+\[
+\eta:=\max\tr(\Pi_{{\rm obj}}\otimes\mathbb{I}_{J}\cdot\rho_{2})
+\]
+s.t. 
+\begin{align*}
+\tr_{Z}(\rho_{1}) & =\tr_{IJ}(\rho_{0})\\
+\rho_{2} & =\sum_{z,z',c,c'}\left|c\right\rangle \left\langle c'\right|_{C}\otimes(\Pi_{cz}^{J}\otimes\Pi_{z}^{Z}\cdot\rho_{1}\cdot\Pi_{c'z'}^{J}\otimes\Pi_{z'}^{Z}).
+\end{align*}
+\end{defn}
+
+\begin{lem}
+One has for $\epsilon=0$, $\eta_{\epsilon}^{{\rm tr}}=\eta$. 
+\end{lem}
+
+\begin{proof}
+Suppose that $\tilde{\tau}_{HIJL}^{0}$, $\tau_{HIL}^{0}$, $\tau_{JZ}^{1}$,
+$\tilde{\tau}_{JZL}^{1}$ and $\mathcal{P}_{JL}^{cz}$ maximize $\eta_{\epsilon}^{\tr}$
+when $\epsilon=0$. This means that $\tau_{HIJ}^{0}=\rho_{HIJ}^{{\rm GHZ}}$
+which is a pure state and thus $\tilde{\tau}_{HIJL}^{0}=\tau_{HIJ}^{0}\otimes\tau_{L}$.
+Assume, without loss of generality, that $\tau_{L}$ is also a pure
+state (if it is not, consider its purification which solves $\eta_{\epsilon}^{\tr}$
+with the same value). 
+
+Let $\bar{\tau}_{HIJZL}^{1}$ be such that $\tr_{Z}(\bar{\tau}_{HIJZL}^{1})=\tilde{\tau}_{HIJL}^{0}$
+and\footnote{TODO: this may need some justification but should be fine because
+$Z$ can be assumed ``classical'' so that something like $\left|00\right\rangle \left\langle 00\right|_{JZ}+\left|11\right\rangle \left\langle 11\right|_{JZ}$
+is automatically disallowed. The classicality is enforced by the projector
+$\Xi_{{\rm obj}}$.} $\tr_{HI}\bar{\tau}_{HIJZL}^{1}=\tilde{\tau}_{JZL}^{1}$. Now since
+$\tilde{\tau}_{HIJL}^{0}$ is a pure state, $\bar{\tau}_{HIJZL}^{1}=\tau_{Z}\otimes\tau_{HIJ}^{0}\otimes\tau_{L}$
+for some state $\tau_{Z}$. This structure implies that $\mathcal{I}_{HIZ}\otimes\tr_{L}\mathcal{P}_{JL}^{cz}(\bar{\tau}_{HIJZL}^{1})=\tau_{Z}\otimes\tr_{L}\mathcal{P}_{JL}^{cz}(\tau_{HIZ}^{0}\otimes\tau_{L})=\tau_{Z}\otimes\Xi_{J}^{cz}(\tau_{HIJ}^{0})$.
+Consequently, ... {[}Feels strange; what if I did send a coherent
+copy of $H$ as $Z$; then my state would have been something else...;
+I think I have to argue differently{]}
+\end{proof}
+%
 \begin{proof}
 Follows directly from setting $\epsilon=0$ and using \Exaref{replaceM-1}
 below to argue (in $\eta_{\epsilon}$) that $P_{cz}$ can be replaced

@@ -8098,6 +8098,23 @@ and if
 Bob self tests
 \end_layout
 
+\begin_layout Conjecture
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Continuity for 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Blabla.
+\end_layout
+
 \begin_layout Standard
 For Bob's case, we work out an example which is essentially the same as
  what we want to prove.

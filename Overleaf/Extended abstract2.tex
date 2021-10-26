@@ -172,7 +172,8 @@
 \providecommand{\corollaryname}{Corollary}
 
 \begin{document}
-\title{\vspace{-2cm}Improving the security of device-independent weak coin flipping\\--Extended Abstract for QCRYPT 2021 Submission--}
+\title{\vspace{-2cm}Improving the security of device-independent weak coin flipping \\ {\large \textbf{Extended abstract}} }
+%\\--Extended Abstract for QCRYPT 2021 Submission--}
 \author[1]{Atul Singh Arora}
 \author[2]{Jamie Sikora}
 \author[3,4]{Thomas Van Himbeeck}
@@ -181,8 +182,8 @@
 \affil[3]{University of Toronto, Canada}
 \affil[4]{Institute of Quantum Computing, University of Waterloo, Canada}
 
-\nodate
-
+%\nodate
+\date{}
 %\date{May 11, 2021}                     %% if you don't need date to appear
 \setcounter{Maxaffil}{0}
 \renewcommand\Affilfont{\itshape\small}
@@ -256,7 +257,8 @@ We do this is three steps that we discuss below.
 	\subsection{Pre-processing step: Self-testing} 
 
 	A cheating party may control what measurement is performed in the boxes of other party and how the state of the boxes is correlated to its own quantum memory. This is more general then \textit{device-dependent} protocols, where for instance, the measurements are known by the honest player. 
-	However, we employ the concept of self-testing to stop Bob \NEW{or Alice} from applying such a strategy. 
+	%this said \NEW{or Alice} for some reason.
+	However, we employ the concept of self-testing to stop Bob \emph{or Alice} from applying such a strategy. 
 	
 	In the {Silman2011} protocol, Alice and Bob are \emph{supposed} to start with three boxes that implement the optimal GHZ strategy. 
 	We now illustrate the self-testing pre-processing step where Alice self-tests Bob. 

@@ -1,0 +1,310 @@
+%% LyX 2.3.6.1 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[british,11pt]{article}
+\usepackage{amsmath}
+\usepackage{authblk}
+\usepackage{amsthm}
+\usepackage{libertineRoman}
+\usepackage{biolinum}
+\renewcommand{\ttdefault}{lmtt}
+\usepackage[libertine]{newtxmath}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in,headheight=1in,headsep=1in,footskip=0.7in}
+\usepackage{color}
+\usepackage{refstyle}
+\usepackage{graphicx}
+\usepackage{wasysym}
+
+\makeatletter
+
+%%%%%%%%%%%Atul added
+\usepackage[normalem]{ulem} %for strikethrough; sout{haha}
+%%%%%
+
+%%%%%%%%%%% added for Jamie
+\usepackage{tabularx}
+%Sorry, changed this for consistency (doing it the other way would have taken longer)
+\newcommand{\PB}{p_B^*} %{\mathrm{P}_B^*} 
+\newcommand{\PA}{p_A^*} %{\mathrm{P}_A^*} 
+\newcommand{\eps}{\epsilon} %{\varepsilon}
+\newcommand{\Jnote}[1]{\textcolor{blue}{ {\textbf{(Jamie: }#1\textbf{) }}}}
+\usepackage[dvipsnames,table,xcdraw]{xcolor}
+%I put this for me and Tom
+\newcommand{\Tnote}[1]{\textcolor{ForestGreen}{ {\textbf{(Tom: }#1\textbf{) }}}}
+\newcommand{\Anote}[1]{\textcolor{red}{ {\textbf{(Atul: }#1\textbf{) }}}}
+\newcommand{\snote}[1]{\textcolor{magenta}{\textbf{[Jamie: #1]}}}
+\newtheorem{protocol}{Protocol}
+
+
+
+
+\newcommand{\complex}{\mathbb{C}} 
+\newcommand{\real}{\mathbb{R}} 
+%\newcommand{\natural}{\mathbb{N}} 
+\newcommand{\rational}{\mathbb{Q}} 
+
+\newcommand{\X}{\mathcal{X}} 
+\newcommand{\Y}{\mathcal{Y}} 
+\newcommand{\Herm}{\mathrm{Herm}} 
+
+\newcommand{\ip}[2]{\langle #1, #2 \rangle}
+\newcommand{\ketbra}[2]{\ket{#1}\bra{#2}} 
+\newcommand{\bracket}[2]{\langle #1 | #2 \rangle} 
+\newcommand{\kb}[1]{\ket{#1}\bra{#1}} 
+\newcommand{\Tr}{\mathrm{Tr}} 
+\newcommand{\tr}{\mathrm{Tr}} 
+
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\F}{\mathcal{F}} 
+\newcommand{\I}{\mathbb{1}}
+
+
+
+%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%% added by Tom
+% Sorry Tom, it wasn't compiling on my machine
+% I will try to improve the formatting tomorrow; yours looks nicer.
+
+%\usepackage{algorithm}
+%\floatname{algorithm}{Algorithm}
+%\usepackage{algcompatible}
+%\newcomhttps://www.overleaf.com/project/607e36cf16fc680c8be3f0a2mand{\aspace}{\hspace{\algorithmicindent}}
+
+\usepackage{IEEEtrantools}
+
+%\newtheorem{prop}{Proposition}
+%%Added for Tom
+\usepackage{braket}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+
+\AtBeginDocument{\providecommand\Eqref[1]{\ref{Eq:#1}}}
+\AtBeginDocument{\providecommand\Defref[1]{\ref{Def:#1}}}
+\AtBeginDocument{\providecommand\Claimref[1]{\ref{Claim:#1}}}
+\AtBeginDocument{\providecommand\Algref[1]{\ref{Alg:#1}}}
+\AtBeginDocument{\providecommand\Subsecref[1]{\ref{Subsec:#1}}}
+\AtBeginDocument{\providecommand\Secref[1]{\ref{Sec:#1}}}
+\AtBeginDocument{\providecommand\Subsubsecref[1]{\ref{Subsubsec:#1}}}
+\AtBeginDocument{\providecommand\Lemref[1]{\ref{Lem:#1}}}
+\AtBeginDocument{\providecommand\Figref[1]{\ref{Fig:#1}}}
+\AtBeginDocument{\providecommand\Thmref[1]{\ref{Thm:#1}}}
+\AtBeginDocument{\providecommand\Factref[1]{\ref{Fact:#1}}}
+\RS@ifundefined{subsecref}
+  {\newref{subsec}{name = \RSsectxt}}
+  {}
+\RS@ifundefined{thmref}
+  {\def\RSthmtxt{theorem~}\newref{thm}{name = \RSthmtxt}}
+  {}
+\RS@ifundefined{lemref}
+  {\def\RSlemtxt{lemma~}\newref{lem}{name = \RSlemtxt}}
+  {}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\theoremstyle{plain}
+\newtheorem{thm}{\protect\theoremname}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{\protect\definitionname}
+\theoremstyle{plain}
+\newtheorem{assumption}[thm]{\protect\assumptionname}
+\theoremstyle{remark}
+\newtheorem{claim}[thm]{\protect\claimname}
+\theoremstyle{plain}
+\newtheorem{lyxalgorithm}[thm]{\protect\algorithmname}
+\theoremstyle{plain}
+\newtheorem{lem}[thm]{\protect\lemmaname}
+\theoremstyle{definition}
+\newtheorem{example}[thm]{\protect\examplename}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{\protect\remarkname}
+\theoremstyle{plain}
+\newtheorem{fact}[thm]{\protect\factname}
+\theoremstyle{plain}
+\newtheorem{prop}[thm]{\protect\propositionname}
+\theoremstyle{plain}
+\newtheorem{cor}[thm]{\protect\corollaryname}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{color}
+\definecolor{purple}{RGB}{120,20,120}
+\newcommand\branchcolor[2]{{\color{#1} #2}}
+\newcommand\branchpurple[1]{{\color{purple} #1}}
+
+\usepackage{hyperref}
+
+% \hypersetup{colorlinks=true,urlcolor=blue}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+	citecolor=blue,
+    % pdftitle={Overleaf Example},
+    % pdfpagemode=FullScreen,
+    }
+
+\hypersetup{hidelinks,
+backref=true,
+pagebackref=true,
+hyperindex=true,
+breaklinks=true,
+colorlinks=true,%linkcolor=black,
+urlcolor=blue,
+bookmarks=true,
+bookmarksopen=false,
+pdftitle={Title},
+pdfauthor={Author}}
+
+
+
+\newref{thm}{name=theorem~,Name=Theorem~,names=theorems~,Names=Theorems~}
+\newref{def}{name=definition~,Name=Definition~,names=definitions~,Names=Definitions~}
+\newref{alg}{name=protocol~,Name=Protocol~,names=protocols~,Names=Protocols~}
+\newref{cor}{name=corollary~,Name=Corollary~,names=corollaries~,Names=Corollaries~}
+\newref{lem}{name=lemma~,Name=Lemma~,names=lemmas~,Names=Lemmas~}
+\newref{claim}{name=claim~,Name=Claim~,names=claims~,Names=Claims~}
+\newref{sec}{name=section~,Name=Section~,names=sections~,Names=Sections~}
+\newref{subsec}{name=section~,Name=Section~,names=sections~,Names=Sections~}
+\newref{subsubsec}{name=section~,Name=Section~,names=sections~,Names=Sections~}
+\newref{prop}{name=proposition~,Name=Proposition~,names=propositions~,Names=Propositions~}
+%\newref{conj}{name=conjecture~,Name=Conjecture~,names=conjectures~,Names=Conjectures~}
+\newref{assu}{name=assumption~,Name=Assumption~,names=assumptions~,Names=Assumptions~}
+%\newref{rem}{name=remark~,Name=Remark~,names=remarks~,Names=Remarks~}
+%\newref{alg}{name=algorithm~,Name=Algorithm~,names=algorithms~,Names=Algorithms~}
+\newref{fact}{name=fact~,Name=Fact~,names=facts~,Names=Facts~}
+
+\makeatother
+
+\usepackage{babel}
+\providecommand{\algorithmname}{Protocol}
+\providecommand{\assumptionname}{Assumption}
+\providecommand{\claimname}{Claim}
+\providecommand{\definitionname}{Definition}
+\providecommand{\examplename}{Example}
+\providecommand{\lemmaname}{Lemma}
+\providecommand{\remarkname}{Remark}
+\providecommand{\theoremname}{Theorem}
+\providecommand{\factname}{Fact}
+\providecommand{\propositionname}{Proposition}
+\providecommand{\corollaryname}{Corollary}
+
+\begin{document}
+\title{\vspace{-2cm}Improving the security of\\ device-independent weak coin flipping protocols\\ {\large \textbf{Extended abstract}} }
+
+\author{Atul Singh Arora\footnote{IQIM, Department of Computing and Mathematical Sciences, California Institute of Technology, USA},  Jamie Sikora\footnote{Virginia Polytechnic Institute and State University, USA}, Thomas Van Himbeeck\footnote{University of Toronto, Canada; Institute of Quantum Computing, University of Waterloo, Canada}}
+% \affil[1]{California Institute of Technology, USA}
+% \affil[2]{Virginia Polytechnic Institute and State University, USA}
+% \affil[3]{University of Toronto, Canada}
+% \affil[4]{Institute of Quantum Computing, University of Waterloo, Canada}
+
+%\nodate
+\date{}
+%\date{May 11, 2021}                     %% if you don't need date to appear
+\setcounter{Maxaffil}{0}
+\renewcommand\Affilfont{\itshape\small}
+
+\maketitle
+
+Coin-flipping is the two-party cryptographic primitive where two parties, henceforth called Alice and Bob, wish to flip a coin, but where, to make things interesting, they do not trust each other.
+This primitive was introduced by Blum~\cite{Blum} who also introduced the first (classical) protocol. 
+In this work, we concentrate on \emph{weak} coin flipping (WCF) protocols where Alice and Bob desire opposite outcomes. Since then, a series of quantum protocols were introduced with successively improved security. Mochon, in his tour de force, finally settled the question about the limits of the security in the quantum regime by proving the \emph{existence} of quantum protocols with security approaching the ideal limit~\cite{Mochon07}. 
+This was followed by a flurry of results which achieved diverse cryptographic functionality assuming WCF as a black-box, such as strong coin flipping~\cite{CK09}, bit commitment~\cite{CK11}, a variant of oblivious transfer~\cite{Chailloux2013a}, leader election~\cite{Ganz2009} and dice rolling~\cite{Aharon2009}, establishing the importance of WCF in the quantum setting. 
+Returning to Mochon, his work was quite technical and based on the notion of \emph{point games}, a concept introduced by Kitaev. Interestingly, his work was never published---only a preprint was available. 
+Subsequently, a sequence of works have continued the study of point games. 
+In particular, the proof of existence was eventually simplified and peer reviewed~\cite{ACG+14} and explicit protocols were reported after more than a decade of Mocohn's work~\cite{Arora2019,ARV21}.\footnote{Interestingly, Miller~\cite{Miller2019} used techniques from Mochon's proof to show that protocols approaching the ideal limit must have an exponentially increasing number of messages. It is an open question to find how small the bias can be made before any such protocol becomes impractical.}
+Yet, we note that all of this work is in the \emph{device-dependent} setting where \emph{Alice and Bob trust their quantum devices}. Very little is known in the \emph{device-independent (DI)} setting where a cheating player is allowed to control an honest player's quantum devices, opening up a plethora of new cheating strategies that were not considered in the previously mentioned references.  
+% In this work, we consider \emph{revised} security definitions where a cheating player is allowed to control an honest player's quantum devices, opening up a plethora of new cheating strategies that were not considered in the previously mentioned references. 
+
+We introduce some basic concepts to facilitate further discussion. The prefix \emph{weak} in weak coin flipping refers to the situation where Alice and Bob desire opposite outcomes of the coin.\footnote{To emphasise the distinction, coin-flipping is termed \emph{strong} coin flipping as Alice or Bob could try to bias the coin towards either outcome.}
+When designing weak coin flipping protocols, we desire correctness for honest parties---if both parties are honest, then they agree on the same outcome $c$---and soundness against one dishonest party---if Alice (Bob) is honest then a cheating Bob (Alice) cannot force the outcome $c=1$ ($c=0$).
+Typically, perfect correctness holds by construction and the goal is to ensure soundness. The latter may be measured in terms of \emph{cheating probabilities} (denoted $\PA$ and $\PB$) and \emph{bias} (denoted $\eps$)---the maximum probability with which a cheating Alice can force an honest Bob to accept the outcome $c=0$ ($c=1$) is defined to be $\PA$ ($\PB$) and $\eps=\max \{ \PA, \PB \} - 1/2$ captures how much a cheating player can bias the outcome away from uniform. 
+
+As hinted at above, we consider these definitions in the \emph{device-independent} setting. To be unambiguous, we emphasise that we study \emph{information theoretic security}---Alice and Bob are only bounded by the laws of quantum mechanics (and not required to be efficient, for instance). 
+%These definitions are not complete in the sense that we have not yet specified what a cheating Alice or a cheating Bob are allowed to do, or of their capabilities. 
+% In this work, we study \emph{information theoretic security}---Alice and Bob are only bounded by the laws of quantum mechanics. 
+% For example, they are not bounded by polynomial-time quantum computations. 
+% In addition to this, we study the security in the \emph{device-independent} regime where we assume Alice and Bob have complete control over the quantum devices when they decide to ``cheat''. 
+
+When studying DI protocols, one should first consider whether or not secure classical protocols are known (since these are not affected by the DI assumption). 
+It was proved that every classical WCF protocol has bias $\eps = 1/2$, which is the worst possible value (see~\cite{Kitaev03,HW11}). 
+Thus, it makes sense to study quantum WCF protocols in the DI setting, especially if one with bias $\eps < 1/2$ can be found. Remarkably, Silman, Chailloux, Aharon, Kerenidis, Pironio, and Massar presented a protocol~\cite{Silman2011}, call it Protocol S, ten years ago with $p^*_A=\cos^2(\pi/8)\approx 0.853$ and $p^*_B=3/4$. We briefly discuss this protocol not only because it is still the state of the art, but also because we build on this result. Their protocol begins with Alice possessing two \emph{boxes}---physical devices that accept classical inputs and yield classical outputs---and Bob possessing one box which are together supposed to contain the GHZ state and measurements.\footnote{A GHZ state is a widely used tripartite entangled quantum state with interesting non-local properties.} As the protocol proceeds, they, in addition to exchanging classical information, operate these boxes and exchange them.\footnote{Any protocol described using boxes is readily converted into one where Alice and Bob communicate over an insecure quantum channel.}
+As is, Protocol S has bias $\eps \approx 0.353$ but in \cite{Silman2011}, Protocol S is composed many times to 
+lower the bias to $\eps \le 0.33664$. 
+
+\paragraph{Contribution.} In this work, we provide two techniques for lowering the bias of DI WCF and apply them to Protocol S to obtain the first improvement since the work of SCAKPM~\cite{Silman2011}.
+
+\begin{thm}[informal] 
+There exist device-independent weak coin flipping protocols with bias, $\eps$, approaching $0.31486$. Assuming a continuity conjecture (see the manuscript), the bias can be lowered to $\eps \approx 0.29104$.
+\end{thm} 
+	
+	We now discuss the key ideas that go into the proof of our main theorem, above. Protocol S was, in fact, a strong coin flipping protocol and we begin by turning it into a weak coin flipping protocol---Protocol W---in a routine manner. 
+	Intuitively, since weak coin flipping has the notion of a ``winner'' (if $c=0$ Alice wins and if $c=1$ Bob wins) we have the party who does not win, conduct an additional test.
+
+Our first technique is to add a pre-processing step to Protocol W which \emph{self-tests} the boxes shared by Alice and Bob at the start of the protocol. %While the concept is well known, by itself, it does not improve Protocol S. 
+Our second technique is to compose and analyse the resulting protocols in a new way,\footnote{The composition in \cite{Silman2011} may also be seen as "abort-phobic" but their analysis doesn't rely on the "abort" probability; their bound essentially neglects the abort event.} which we call \emph{abort-phobic} composition.
+	
+
+	\paragraph{First technique: Self-testing.} 
+
+	Since we are in the DI setting, in Protocol S and it's WCF variant, Protocol W, a cheating party may control what measurement is performed in the boxes of the other party and how the state of the boxes is correlated to its own quantum memory. However, we employ the concept of self-testing to prevent Bob (or Alice) from applying such a strategy. Intuitively, self testing is a powerful property which allows one to, just from certain input-output behaviours of given devices (satisfying minimal assumptions), conclude uniquely which quantum states and measurements constitute the devices (up to relabelling). The GHZ state which was used in Protocols S and W can be self-tested. Clearly, this property has the potential to improve their security.\footnote{In \cite{Silman2011}, it was noted that self-testing doesn't help improve the security of Protocol S. Alternatively stated, Protocol S has the curious property that its device dependent variant has the same security as it (the device dependent variant).}
+	
+	We define two variants of Protocol W: Protocol P, where Alice self-tests Bob before executing Protocol W, and Protocol Q, where Bob self-tests Alice instead. The procedure is simple: Alice and Bob start with $n$ triples of boxes and, for instance when Alice self-tests, Alice asks Bob to send all but one randomly selected triple and tests if the GHZ test passes for these. If so, the remaining triple is used for the actual protocol. If $n$ is chosen large enough, a dishonest Bob is unable to significantly tamper with the boxes. Indeed, this step already allows us to reduce the cheating probabilities. 
+
+
+	\begin{lem} [Informal] 
+	For Protocol P, i.e. where Alice self tests Bob, the cheating probabilities, in the limit of large $n$, are
+	\begin{equation} 
+	\PA = \cos^2 (\pi/8) \approx 0.85355 \quad \text{ and } \quad \PB \approx 0.6667. 
+	\end{equation} 
+
+	\end{lem}  
+    
+
+	%%%%%%%%%%%%%%%%%% I am here%%%%%%%%%%%%%
+
+	For comparison, recall that for Protocol S (it turns out, also for Protocol W), $\PA=\cos^2(\pi/8)$ and $\PB=3/4$. We prove this lemma in two stages. In the \emph{first} stage, we assume perfect self-testing---the self-testing step results in exactly specifying (up to a relabelling) the state and measurements governing Alice's boxes. It is known that for device-dependent protocols, where Alice and Bob trust their devices, the cheating probabilities can be cast as values of semidefinite programs (SDPs) ~\cite{Kitaev03,Mochon07}. Thus one can express Bob's cheating probabilities as an SDP. Its numerical evaluation yields the quoted value. Analysis for Alice's cheating probability is unchanged from Protocol W. In the \emph{second} stage, we take $n$ to be finite and first show how self-testing results apply in this cryptographic setting---where based on $n-1$ tests, we conclude the properties of the as-yet untouched triple of boxes---and then use this characterisation to write the cheating probability for Bob as an optimisation problem which converges to the SDP above for large $n$. These techniques may be of independent interest. For Protocol Q we establish an analogous result under a continuity conjecture.
+	
+	
+	%%%%%%%%%%%%%%%%%%%
+	  
+	\paragraph{Second technique: abort-phobic composition.}
+    For a protocol with cheating probabilities $\PB$ and $\PA$, we say that it has \emph{polarity} towards Alice (Bob) when it satisfies $\PA > \PB$ ($\PB > \PA$). Given a polarised protocol $\mathcal{R}$, we may switch the roles of Alice and Bob to flip the polarity---explicitly, we write $\mathcal{R}_A$ to be the version of the protocol with $\PA > \PB$ and $\mathcal{R}_B$ to be the version with $\PB > \PA$. The \emph{standard composition} then, is simply that Alice and Bob perform $\mathcal{R}$ first. If Alice (Bob) wins, they perform $\mathcal{R}_A$ ($\mathcal{R}_B$) to determine the outcome $c$. Intuitively, the winner of the first round gets to run the protocol in a polarity which favours them. If $p^*_A > p^*_B$, then for the composed protocol, Alice's cheating is 
+	\begin{equation} \label{first}
+	(\PA)^2 + (1-\PA) \PB < \PA 
+	\end{equation}  
+	while Bob's cheating probability is
+	\begin{equation} \label{second}
+		\PB \PA + (1- \PB) \PB < \PA. 
+	\end{equation} 
+	This does indeed reduce the bias since the maximum cheating probability is now smaller.  
+
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	\paragraph{Abort-phobic composition.} 
+	WCF protocols are usually viewed as having two outcomes indicating which player wins as a player that gets detected cheating immediately loses.\footnote{We implicitly assume perfect correctness in doing this.} For ``one-shot'' applications, this makes sense. However, even in the standard composition, it is evident that Bob (Alice) should not really accept to continue onto the second protocol if he catches Alice (Bob) cheating in the first round. Denote this event by $c=\perp$, an \emph{abort}. We therefore define \emph{abort-phobic compositions} as before, where Alice and Bob use a WCF protocol to determine who gets to choose the polarity in the subsequent round, except that if either party aborts (detects maleficence), the composite protocol is aborted. 
+	As an illustration, suppose Bob adopts a cheating strategy which has a probability $v_B$ of him winning ($c = 1$), a probability $v_A$ of him losing ($c = 0$), and a probability $v_{\perp}$ of Alice catching him  cheating. 
+	Then his cheating probability for abort-phobic composition is now 
+	\begin{equation} 
+	v_B \cdot \PA \, + \, v_A \cdot \PB \, + \, v_{\perp} \cdot 0. 
+	\end{equation} 
+	This quantity may be a strict improvement if $v_{\perp} > 0$ when $v_B = \PB$. Optimising over \emph{cheat vectors}, $v_B,v_A,v_{\perp}$ in the DI setting in general is difficult but the self-testing step allows for an SDP characterisation for Alice (Bob) in Protocol P (Q). Using techniques reminiscent of dynamic programming, one can apply the analysis even if abort-phobic compositions are repeated many times. 
+
+	When applied to Protocol P (where Alice self-tests), this yields protocols which converge onto a bias of $\eps \approx 0.31486$ proving the first part of the main result. For the second part, we use Protocol P in the final round, and Protocol Q (where Bob self-tests) until then, to obtain protocols whose bias approaches $\eps \approx 0.29104$ (assuming the aforementioned continuity conjecture for Protocol Q).
+
+
+% \subsection{Main result}
+
+% \begin{thm} 
+% 	There exists device-independent weak coin flipping protocols with bias approaching $\eps \approx 0.3148$. Under a convergence assumption (explained in the manuscript), the bias can be lowered to $\eps \approx 0.29104$.
+% 	\end{thm} 
+	
+\clearpage
+\bibliographystyle{amsalpha}
+\bibliography{DI_WCF_ideas}
+
+\end{document}

@@ -364,7 +364,8 @@ We also use the revised protocol in a new way of composing protocols which we su
     \Jnote{Noice.}
 
 	In Protocols~\ref{alg:SCForiginalJ} and~\ref{alg:WCForiginalJ}, a cheating party may control what measurement is performed in the boxes of other party and how the state of the boxes is correlated to its own quantum memory. This is more general then \textit{device-dependent} protocols, where for instance, the measurements are known by the honest player. 
-	However, we employ the concept of self-testing to stop Bob \NEW{or Alice} from applying such a strategy. 
+	%\NEW{or Alice}
+	However, we employ the concept of self-testing to stop Bob \emph{or Alice} from applying such a strategy. 
 	The case where Alice self-tests Bob is illustrated below. 
 
 	\begin{lyxalgorithm}[Protocol with Alice self-testing] \label{alg:self-test}  
@@ -636,7 +637,8 @@ We also use the revised protocol in a new way of composing protocols which we su
 		so the advantage is not immediate. However, now $\mathbb{C}_{A}(\mathcal{Q})$
 		can be cast as a semidefinite program which, as we shall see, yields an advantage
 		when $\mathcal{Q}$ is composed. 
-		\NEW{In other words, Alice's cheat vectors make it so that the protocols compose nicely.} \Jnote{Atul, what do you think? Is this ok?}
+		%\NEW
+		\emph{In other words, Alice's cheat vectors make it so that the protocols compose nicely.} \Jnote{Atul, what do you think? Is this ok?}
 		\end{itemize}
 		%}
 
@@ -684,12 +686,12 @@ We also use the revised protocol in a new way of composing protocols which we su
 			\[
 			\epsilon(C^{L\perp}(\mathcal{Q}))\approx 0.3226
 			\] 
-		\end{itemize}
-		which is worse than \Eqref{SikoraP} \Jnote{This seems like it shouldn't be true...}. 
+		    which is worse than \Eqref{SikoraP} \Jnote{This seems like it shouldn't be true...}. 
 			\item However, when we compose the protocol $Q$ \Jnote{Replace $n$ with ``many''?} $n$ times with itself, followed by protocol $P$, we find
 			\[
 			\epsilon(C^{L\perp}(\mathcal{Q},\mathcal{Q},\dots,\mathcal{Q},\mathcal{P}))\approx 0.29104\dots
 			\]
+		\end{itemize}
 		where we use the same composition technique except that at the last
 		``level'' we use\footnote{$C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{Q})$
 		is strictly worse than considering $C^{\perp L}(\mathcal{P},\mathcal{P},\dots,\mathcal{P},\mathcal{P})$;
